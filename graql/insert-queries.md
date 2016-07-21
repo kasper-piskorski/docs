@@ -15,16 +15,9 @@ qb.insert(
 ```
 
 An insert query will insert the specified [variable
-patterns](#variable-patterns) into the graph. If the `where` is provided, the
-query will insert the given variable patterns for every result of the `where`
-[patterns](patterns.md).
-
-## Variable Patterns
-
-> **Inserting Only!**
->
-> The following definitions only apply when patterns are being used to insert.
-> For patterns after the `where` clause, look [here](patterns.md).
+patterns](#variable-patterns) into the graph. If a [match
+query](match-queries.md) is provided, the query will insert the given variable
+patterns for every result of the match query.
 
 A variable pattern is a pattern describing [properties](#properties) to set on
 a particular concept. The variable pattern can optionally be bound to a

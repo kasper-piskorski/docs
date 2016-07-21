@@ -1,24 +1,19 @@
 # Delete Queries
 
 ```sql
-delete $x where $x isa pokemon
+match $x isa pokemon delete $x
 ```
 ```java
-qb.delete("x").where(var("x").isa("pokemon"));
+qb.match(var("x").isa("pokemon")).delete("x").execute();
 ```
 
 A delete query will delete the specified [variable
-patterns](#variable-patterns) for every result of the `where`
-[patterns](patterns.md). If a variable pattern indicates just a variable, then
+patterns](#variable-patterns) for every result of the [match
+query](match-query.md). If a variable pattern indicates just a variable, then
 the whole concept will be deleted. If it is more specific (such as indicating
 the `id` or `isa`) it will only delete the specified properties.
 
 ## Variable Patterns
-
-> **Deleting Only!**
-> 
-> The following definitions only apply when patterns are being used to delete.
-> For patterns after the `where` clause, look [here](patterns.md).
 
 A variable pattern is a pattern describing [properties](#properties) to delete
 on a particular concept. The variable pattern is always bound to a variable
@@ -32,7 +27,7 @@ Otherwise, only the specified properties are deleted.
 ### has-role
 
 ```sql
-delete $x has-role descendant where $x id "evolution";
+match $x id "evolution" delete $x has-role descendant;
 ```
 
 Removes the given role from the relation type.
@@ -40,7 +35,7 @@ Removes the given role from the relation type.
 ### plays-role
 
 ```sql
-delete $x plays-role attacking-type where $x id "type";
+match $x id "type" delete $x plays-role attacking-type;
 ```
 
 Disallows the concept type from playing the given role.
@@ -48,7 +43,7 @@ Disallows the concept type from playing the given role.
 ### has
 
 ```sql
-delete $x has weight where $x id "Bulbasaur";
+match $x id "Bulbasaur" delete $x has weight;
 ```
 
 Deletes the resources of the given type on the concept. If a value is given,

@@ -9,7 +9,7 @@ Graql](java-graql.md).
 ## Query types
 
 There are four types of queries, which are begun with the follow keywords:
-- [select](select-queries.md) - for selecting data from the graph
+- [match](match-queries.md) - for matching patterns in the graph
 - [ask](ask-queries.md) - for querying if certain patterns exist in the graph
 - [insert](insert-queries.md) - for inserting types and instances
 - [delete](delete-queries.md) - for deleting types and instances
