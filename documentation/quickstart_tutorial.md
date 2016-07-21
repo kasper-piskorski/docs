@@ -71,7 +71,7 @@ instances.
 We'll quickly check our data has loaded:
 
 ```sql
-select $p where $p isa person
+match $p isa person
 
 $p id "Aristotle" isa person;
 $p id "Plato" isa person;
@@ -86,7 +86,7 @@ person.instances().forEach(i -> System.out.println(i.getId()));
 > **Variables**
 >
 > Graql variables start with a `$`. They represent "wildcards", and can be
-> returned as results in `select` queries. A variable name can contain
+> returned as results in `match` queries. A variable name can contain
 > alphanumeric characters, dashes and underscores.
 
 Next, let's add some `schools` of thought:
@@ -109,7 +109,7 @@ Entity cynicism = mindmapsGraph.putEntity("Cynicism", school);
 And look up one:
 
 ```sql
-select $cyn where $cyn id "Cynicism"
+match $cyn id "Cynicism"
 
 $cyn id "Cynicism" isa school;
 ```
@@ -203,7 +203,7 @@ just like normal concepts.
 Now we can query for all our Platonists:
 
 ```sql
-select $phil where (philosopher $phil, Platonism) isa practice;
+match (philosopher $phil, Platonism) isa practice;
 
 $phil id "Socrates" isa person;
 $phil id "Plato" isa person;
@@ -224,7 +224,7 @@ platonisim.relations(philosophy).forEach(relation -> {
 >
 > We didn't specify the role of `Platonism` in this query, or the type of
 > `$phil`, which is totally fine! Roles and types can be omitted in queries.
-> For example, the query `select $x where ($x, $y)` is a valid query (that will
+> For example, the query `match ($x, $y)` is a valid query (that will
 > find *everything* in a relationship with *anything*).
 
 Next let's talk about the relationships between our philosophers. Socrates
@@ -351,7 +351,7 @@ mindmapsGraph.putRelation(hasResource)
 Now we can query for people, with their id and titles:
 
 ```sql
-select $x(id, has title) where $x isa person;
+match $x isa person select $x(id, has title)
 
 $x id "Socrates";
 $x id "Plato";
@@ -362,7 +362,7 @@ $x id "Alexander" has title "Pharaoh of Egypt" has title "Hegeon" has title "Sha
 Wait, who's the Pharaoh again?
 
 ```sql
-select $pharaoh where $pharaoh has title "Pharaoh of Egypt"
+match $pharaoh has title "Pharaoh of Egypt"
 
 $pharaoh id "Alexander" isa person;
 ```
@@ -440,7 +440,7 @@ knowledge.playsRole(thought);
 We can now give Socrates one final piece of knowledge:
 
 ```sql
-insert (thinker Socrates, thought $socratesKnowsNothing) isa knowledge where $socratesKnowsNothing (Socrates, nothing);
+match $socratesKnowsNothing (Socrates, nothing) insert (thinker Socrates, thought $socratesKnowsNothing) isa knowledge
 ```
 ```java
 mindmapsGraph.putRelation(knowledge)
@@ -454,7 +454,7 @@ player.
 Finally, we'll check out everything Socrates knows:
 
 ```sql
-select $x where (Socrates, $x) isa knowledge
+match (Socrates, $x) isa knowledge
 
 $x id "nothing" isa fact;
 $x id "RelationType_knowledge_Relation_thinker_Socrates_thought_nothing" isa knowledge;

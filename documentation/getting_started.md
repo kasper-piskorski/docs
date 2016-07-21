@@ -39,7 +39,7 @@ This will create and persist an example data set. Now we can run the following
 query using the Graql shell:
 
 ```sql
->>> select $x where $x isa pokemon
+>>> match $x isa pokemon
 $x id "Bulbasaur" isa pokemon;
 $x id "Charmander" isa pokemon;
 $x id "Pikachu" isa pokemon;
