@@ -19,7 +19,7 @@ create_link() {
 
 cat navigation.header > navigation.md
 
-for i in $(find documentation/ -name '*.md')
+for i in $(find documentation/ -name '*.md' | sort -r)
 do
     create_link $i navigation.md
 done
