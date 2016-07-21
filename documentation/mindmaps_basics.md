@@ -1,3 +1,6 @@
+---
+title: Mindmaps Basics
+---
 # Mindmaps Basics
 
 ## Ontology Vs Data

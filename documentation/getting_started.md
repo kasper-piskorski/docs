@@ -1,3 +1,6 @@
+---
+title: Getting Started
+---
 # Getting Started
 
 ## Downloading and Installing Mindmaps

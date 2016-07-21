@@ -1,3 +1,6 @@
+---
+title: Quickstart Tutorial
+---
 # Quickstart Tutorial
 
 This tutorial has been designed to teach you how to load both an ontology and

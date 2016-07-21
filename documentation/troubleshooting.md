@@ -1,3 +1,6 @@
+---
+title: Troubleshooting
+---
 # Troubleshooting
 
 > **There will be bugs**

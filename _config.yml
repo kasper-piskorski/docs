@@ -17,3 +17,4 @@ github_username: mindmapsdb
 
 # Build settings
 markdown: kramdown
+exclude: [README.md, navigation.header, build-site.sh]
