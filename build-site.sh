@@ -2,7 +2,7 @@
 
 create_link() {
     local filename=$(basename $1 .md)
-    local output="- [$filename] ($1)"
+    local output="- [$filename]($1)"
 
     echo $output >> $2
 }

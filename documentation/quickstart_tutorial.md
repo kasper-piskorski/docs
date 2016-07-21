@@ -61,7 +61,7 @@ Entity alexander = mindmapsGraph.putEntity("Alexander", person);
 > arrows. You can also autocomplete keywords, type and variable names using
 > 'tab'!"
 
-![](phil.png)
+![](/docs/images/phil.png)
 
 Now we've created a super-simple graph, with one concept type and four concept
 instances.
@@ -191,7 +191,7 @@ mindmapsGraph.putRelation(practice)
 
 ![A "practice" relation, indicated by the blue concept, relating the
 philosopher Plato to the philosophy
-Idealism.](practice.png)
+Idealism.](/docs/images/practice.png)
 
 A relation comprises of pairs of role types and role players. For example,
 `Plato` is playing the role of `philosopher`. Our relations also have a type
@@ -310,7 +310,7 @@ mindmapsGraph.putRelation(hasEpithet)
 This is a quick way to add a `has-resource` relation between `Alexander` and an
 `epithet` with value `"The Great"`.
 
-![](epithet.png)
+![](/docs/images/epithet.png)
 
 Let's add the rest of Alexander's titles while we're at it:
 
@@ -456,7 +456,7 @@ $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 > If you don't provide an ID for something such as a relation, it will get an
 > automatically generated ID.
 
-![](knowledge.png)
+![](/docs/images/knowledge.png)
 
 > **When Persisting The Data To Disk**
 >
