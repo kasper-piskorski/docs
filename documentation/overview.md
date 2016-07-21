@@ -1,3 +1,6 @@
+---
+title: How does Mindmaps work
+---
 How does Mindmaps work?
 =======================
 
