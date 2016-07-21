@@ -31,7 +31,7 @@ We'll first add an ontology element - an entity type `person`...
 
 ```sql
 bin/graql.sh
-insert id "person" isa mm-entity-type;
+insert person isa entity-type;
 ```
 ```java
 EntityType person = mindmapsGraph.putEntityType("person");
@@ -40,10 +40,10 @@ EntityType person = mindmapsGraph.putEntityType("person");
 ...and a bunch of ancient Greeks:
 
 ```sql
-insert id "Socrates" isa person;
-insert id "Plato" isa person;
-insert id "Aristotle" isa person;
-insert id "Alexander" isa person;
+insert "Socrates" isa person;
+insert "Plato" isa person;
+insert "Aristotle" isa person;
+insert "Alexander" isa person;
 ```
 ```java
 Entity socrates = mindmapsGraph.putEntity("Socrates", person);
@@ -66,7 +66,7 @@ instances.
 > **Types**
 >
 > Every concept needs a type, using `isa`. `Plato` `is a` `person` and `person`
-> `is a` `mm-entity-type`.
+> `is a` `entity-type`.
 
 We'll quickly check our data has loaded:
 
@@ -92,11 +92,11 @@ person.instances().forEach(i -> System.out.println(i.getId()));
 Next, let's add some `schools` of thought:
 
 ```sql
-insert id "school" isa mm-entity-type;
-insert id "Peripateticism" isa school;
-insert id "Platonism" isa school;
-insert id "Idealism" isa school;
-insert id "Cynicism" isa school;
+insert school isa entity-type;
+insert "Peripateticism" isa school;
+insert "Platonism" isa school;
+insert "Idealism" isa school;
+insert "Cynicism" isa school;
 ```
 ```java
 EntityType school = mindmapsGraph.putEntityType("school");
@@ -117,25 +117,19 @@ $cyn id "Cynicism" isa school;
 mindmapsGraph.getEntity("Cynicism").getId();
 ```
 
-> **To quote or not to quote?**
->
-> When inserting something new, its id must be provided using the syntax `id
-> "school"`. Once it has been added, it can be, referred to without the quotes:
-> `insert id "Idealism" isa school`
-
 ## Relations
 
 How do we define a "philosopher"? Very smart people have argued for a very long
 time about this, but we're going to put our fingers in our ears and say a
 philosopher is someone who practices a philosophy.
 
-First, we define a `mm-relation-type` called `practice` that relates a
+First, we define a `relation-type` called `practice` that relates a
 `philosopher` to their `philosophy`:
 
 ```sql
-insert id "practice" isa mm-relation-type;
-insert id "philosopher" isa mm-role-type;
-insert id "philosophy" isa mm-role-type;
+insert practice isa relation-type;
+insert philosopher isa role-type;
+insert philosophy isa role-type;
 insert practice has-role philosopher, has-role philosophy;
 ```
 ```java
@@ -176,10 +170,10 @@ school.playsRole(philosophy);
 Let's relate some `philosophers` to their `philosophies`:
 
 ```sql
-insert (philosopher Socrates, philosophy Platonism) isa practice;
-insert (philosopher Plato, philosophy Idealism) isa practice;
-insert (philosopher Plato, philosophy Platonism) isa practice;
-insert (philosopher Aristotle, philosophy Peripateticism) isa practice;
+insert (philosopher "Socrates", philosophy "Platonism") isa practice;
+insert (philosopher "Plato", philosophy "Idealism") isa practice;
+insert (philosopher "Plato", philosophy "Platonism") isa practice;
+insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
 ```
 ```java
 mindmapsGraph.putRelation(practice)
@@ -203,7 +197,7 @@ just like normal concepts.
 Now we can query for all our Platonists:
 
 ```sql
-match (philosopher $phil, Platonism) isa practice;
+match (philosopher $phil, "Platonism") isa practice;
 
 $phil id "Socrates" isa person;
 $phil id "Plato" isa person;
@@ -234,9 +228,9 @@ Great!
 First, our ontology:
 
 ```sql
-insert id "education" isa mm-relation-type;
-insert id "teacher" isa mm-role-type;
-insert id "student" isa mm-role-type;
+insert education isa relation-type;
+insert teacher isa role-type;
+insert student isa role-type;
 insert education has-role teacher, has-role student;
 insert person plays-role teacher, plays-role student;
 ```
@@ -251,9 +245,9 @@ person.playsRole(teacher).playsRole(student);
 Second, our data:
 
 ```sql
-insert (teacher Socrates, student Plato) isa education;
-insert (teacher Plato, student Aristotle) isa education;
-insert (teacher Aristotle, student Alexander) isa education;
+insert (teacher "Socrates", student "Plato") isa education;
+insert (teacher "Plato", student "Aristotle") isa education;
+insert (teacher "Aristotle", student "Alexander") isa education;
 ```
 ```java
 mindmapsGraph.putRelation(education)
@@ -272,37 +266,31 @@ mindmapsGraph.putRelation(education)
 
 ## Resources
 
-We can also attach resources to our instances using `has-resource`
-relationships.
-
-```sql
-insert id "has-resource" isa mm-relation-type;
-insert id "has-resource-target" isa mm-role-type;
-insert id "has-resource-value" isa mm-role-type;
-insert has-resource has-role has-resource-target;
-insert has-resource has-role has-resource-value;
-```
-```java
-RoleType hasResourceTarget = mindmapsGraph.putRoleType("has-resource-target");
-RoleType hasResourceValue = mindmapsGraph.putRoleType("has-resource-value");
-RelationType hasResource = mindmapsGraph.putRelationType("has-resource")
-    .hasRole(hasResourceTarget).hasRole(hasResourceValue);
-```
+We can also attach resources to our instances using `has-resource`.
 
 Some people have special titles and epithets and we want to talk about that!
 So, we'll create some resource types that can be attached to a person:
 
 ```sql
-insert person plays-role has-resource-target;
-insert id "title" isa mm-resource-type, datatype string, plays-role has-resource-value;
-insert id "epithet" isa mm-resource-type, datatype string, plays-role has-resource-value;
+insert title isa resource-type, datatype string;
+insert epithet isa resource-type, datatype string;
+insert person has-resource title, has-resource epithet;
 ```
 ```java
-ResourceType<String> title = mindmapsGraph.putResourceType("title", Data.STRING);
-ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", Data.STRING);
-person.playsRole(hasResourceTarget);
-title.playsRole(hasResourceValue);
-epithet.playsRole(hasResourceValue);
+RoleType hasTitleOwner = mindmapsGraph.putRoleType("has-title-owner");
+RoleType hasTitleValue = mindmapsGraph.putRoleType("has-title-value");
+RelationType hasTitle = mindmapsGraph.putRelationType("has-title")
+    .hasRole(hasTitleOwner).hasRole(hasTitleValue);
+
+RoleType hasEpithetOwner = mindmapsGraph.putRoleType("has-epithet-owner");
+RoleType hasEpithetValue = mindmapsGraph.putRoleType("has-epithet-value");
+RelationType hasEpithet = mindmapsGraph.putRelationType("has-epithet")
+    .hasRole(hasEpithetOwner).hasRole(hasEpithetValue);
+
+ResourceType<String> title = mindmapsGraph.putResourceType("title", Data.STRING).playsRole(hasTitleValue);
+ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", Data.STRING).playsRole(hasEpithetValue);
+
+person.playsRole(hasTitleOwner).playsRole(hasEpithetValue);
 ```
 
 Let's make Alexander "Great"!
@@ -312,8 +300,8 @@ insert Alexander has epithet "The Great";
 ```
 ```java
 Resource<String> theGreat = mindmapsGraph.putResource("The Great", epithet);
-mindmapsGraph.putRelation(hasResource)
-    .putRolePlayer(hasResourceTarget, alexander).putRolePlayer(hasResourceValue, theGreat);
+mindmapsGraph.putRelation(hasEpithet)
+    .putRolePlayer(hasEpithetOwner, alexander).putRolePlayer(hasEpithetValue, theGreat);
 ```
 
 This is a quick way to add a `has-resource` relation between `Alexander` and an
@@ -336,16 +324,16 @@ Resource<String> kingOfMacedon = mindmapsGraph.putResource("King of Macedon", ti
 Resource<String> shahOfPersia = mindmapsGraph.putResource("Shah of Persia", title);
 Resource<String> pharaohOfEgypt = mindmapsGraph.putResource("Pharaoh of Egypt", title);
 Resource<String> lordOfAsia = mindmapsGraph.putResource("Lord of Asia", title);
-mindmapsGraph.putRelation(hasResource)
-    .putRolePlayer(hasResourceTarget, alexander).putRolePlayer(hasResourceValue, hegemon);
-mindmapsGraph.putRelation(hasResource)
-    .putRolePlayer(hasResourceTarget, alexander).putRolePlayer(hasResourceValue, kingOfMacedon);
-mindmapsGraph.putRelation(hasResource)
-    .putRolePlayer(hasResourceTarget, alexander).putRolePlayer(hasResourceValue, shahOfPersia);
-mindmapsGraph.putRelation(hasResource)
-    .putRolePlayer(hasResourceTarget, alexander).putRolePlayer(hasResourceValue, pharaohOfEgypt);
-mindmapsGraph.putRelation(hasResource)
-    .putRolePlayer(hasResourceTarget, alexander).putRolePlayer(hasResourceValue, lordOfAsia);
+mindmapsGraph.putRelation(hasTitle)
+    .putRolePlayer(hasTitleOwner, alexander).putRolePlayer(hasTitleValue, hegemon);
+mindmapsGraph.putRelation(hasTitle)
+    .putRolePlayer(hasTitleOwner, alexander).putRolePlayer(hasTitleValue, kingOfMacedon);
+mindmapsGraph.putRelation(hasTitle)
+    .putRolePlayer(hasTitleOwner, alexander).putRolePlayer(hasTitleValue, shahOfPersia);
+mindmapsGraph.putRelation(hasTitle)
+    .putRolePlayer(hasTitleOwner, alexander).putRolePlayer(hasTitleValue, pharaohOfEgypt);
+mindmapsGraph.putRelation(hasTitle)
+    .putRolePlayer(hasTitleOwner, alexander).putRolePlayer(hasTitleValue, lordOfAsia);
 ```
 
 Now we can query for people, with their id and titles:
@@ -384,11 +372,11 @@ Philosophers know lots of things. We should probably include this in our
 ontology.
 
 ```sql
-insert id "knowledge" isa mm-relation-type;
-insert id "thinker" isa mm-role-type;
-insert id "thought" isa mm-role-type;
+insert knowledge isa relation-type;
+insert thinker isa role-type;
+insert thought isa role-type;
 insert knowledge has-role thinker, has-role thought;
-insert id "fact" isa mm-entity-type, plays-role thought;
+insert fact isa entity-type, plays-role thought;
 insert person plays-role thinker;
 ```
 ```java
@@ -404,12 +392,12 @@ Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't
 really know anything at all.
 
 ```sql
-insert id "sun-fact" isa fact, value "The Sun is bigger than the Earth";
-insert (thinker Aristotle, thought sun-fact) isa knowledge;
-insert id "cave-fact" isa fact, value "Caves are mostly pretty dark";
-insert (thinker Plato, thought cave-fact) isa knowledge;
-insert id "nothing" isa fact;
-insert (thinker Socrates, thought nothing) isa knowledge;
+insert "sun-fact" isa fact, value "The Sun is bigger than the Earth";
+insert (thinker "Aristotle", thought "sun-fact") isa knowledge;
+insert "cave-fact" isa fact, value "Caves are mostly pretty dark";
+insert (thinker "Plato", thought "cave-fact") isa knowledge;
+insert "nothing" isa fact;
+insert (thinker "Socrates", thought "nothing") isa knowledge;
 ```
 ```java
 Entity sunFact = mindmapsGraph.putEntity("sun-fact", fact).setValue("The Sun is bigger than the Earth");
@@ -440,7 +428,7 @@ knowledge.playsRole(thought);
 We can now give Socrates one final piece of knowledge:
 
 ```sql
-match $socratesKnowsNothing (Socrates, nothing) insert (thinker Socrates, thought $socratesKnowsNothing) isa knowledge
+match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker "Socrates", thought $socratesKnowsNothing) isa knowledge
 ```
 ```java
 mindmapsGraph.putRelation(knowledge)
@@ -454,18 +442,16 @@ player.
 Finally, we'll check out everything Socrates knows:
 
 ```sql
-match (Socrates, $x) isa knowledge
+match ("Socrates", $x) isa knowledge
 
 $x id "nothing" isa fact;
-$x id "RelationType_knowledge_Relation_thinker_Socrates_thought_nothing" isa knowledge;
+$x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 ```
 
-> **RelationType_oh_my_God_what_is_That???**
+> **knowledge-ohmygod-whatisthat-???**
 >
-> Relations always have automatically generated IDs, constructed from the IDs
-> of the type, roles and role players in the relation. Because IDs are unique,
-> you are not allowed to create two relations of the same type that connect the
-> same role players.
+> If you don't provide an ID for something such as a relation, it will get an
+> automatically generated ID.
 
 ![](knowledge.png)
 
