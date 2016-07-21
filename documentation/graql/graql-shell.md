@@ -12,11 +12,11 @@ Evaluate Print Loop):
 
 ```bash
 bin/graql.sh
->>> select $x where $x id "Pikachu";
+>>> match $x id "Pikachu";
 $x id "Pikachu" isa pokemon;
 ```
 
-The user can enter a query and press enter for it to be evaluated. `select`
+The user can enter a query and press enter for it to be evaluated. `match`
 queries will return the first hundred results, `ask` queries will return `true`
 or `false`. `insert` and `delete` queries will execute with no output.
 

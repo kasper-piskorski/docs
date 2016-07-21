@@ -33,19 +33,19 @@ MindmapsGraph graph = TinkerGraphFactory.getInstance().getGraph();
 QueryBuilder qb = new QueryBuilder(graph);
 ```
 
-The `QueryBuilder` class provides methods for building `select`, `ask`,
+The `QueryBuilder` class provides methods for building `match`, `ask`,
 `insert` and `delete` queries.
 
-## Select Queries
+## Match Queries
 
-Select queries are constructed using the `select` and `where` methods and
-include all modifiers:
+Match queries are constructed using the `match` method and include all
+modifiers:
 
 ```java
-SelectQuery tallPokemon = qb.select("x").where(var("x").isa("pokemon").has("height", gt(10))).limit(50);
+MatchQuery tallPokemon = qb.match(var("x").isa("pokemon").has("height", gt(10))).limit(50);
 ```
 
-`SelectQuery` is `Iterable` and has a `stream` method. Each result is a
+`MatchQuery` is `Iterable` and has a `stream` method. Each result is a
 `Map<String, Concept>`, where the keys are the variable names in the query.
 
 ```java
@@ -61,7 +61,7 @@ tallPokemon.stream()
 
 ## Ask Queries
 
-Ask queries immediately return a boolean:
+Ask queries execute as soon as `execute()` is called:
 
 ```java
 if (qb.ask(var().isa("pokemon-type").value("dragon"))) {
@@ -71,7 +71,7 @@ if (qb.ask(var().isa("pokemon-type").value("dragon"))) {
 
 ## Insert Queries
 
-Insert queries execute as soon as `execute()` or `where()` is called:
+Insert queries execute as soon as `execute()` is called:
 
 ```java
 InsertQuery addPichu = qb.insert(var().id("Pichu").isa("pokemon"));
@@ -79,21 +79,21 @@ InsertQuery addPichu = qb.insert(var().id("Pichu").isa("pokemon"));
 addPichu.execute();
 
 // Make everything dragons!
-qb.insert(
+qb.match(
+  var("x").isa("pokemon")
+).insert(
   var().isa("has-type")
     .rel("pokemon-with-type", "x")
     .rel("type-of-pokemon", var().id("dragon"))
-).where(
-  var("x").isa("pokemon")
-);
+).execute();
 ```
 
 ## Delete Queries
 
-Delete queries are executed when `where()` is called:
+Delete queries are executed when `execute()` is called:
 
 ```java
-qb.delete(var("x")).where(var("x").id("Pichu"));
+qb.match(var("x").id("Pichu")).delete("x").execute();
 ```
 
 ## Query Parser
@@ -112,15 +112,13 @@ objects:
 ```java
 QueryParser parser = new QueryParser(graph);
 
-parser.parseSelectQuery("select $x where $x isa pokemon").forEach(
-  result -> System.out.println(result.get("x"))
-);
+parser.parseMatchQuery("match $x isa pokemon").getMatchQuery().get("x").forEach(System.out::println);
 
-if (parser.parseAskQuery("ask water isa pokemon-type")) {
+if (parser.parseAskQuery("match water isa pokemon-type ask").execute()) {
   System.out.println("Water is a pokemon type!");
 }
 
 parser.parseInsertQuery("insert id 'pichu' isa pokemon").execute();
 
-parser.parseDeleteQuery("delete $x where $x isa pokemon");
+parser.parseDeleteQuery("match $x isa pokemon delete $x");
 ```

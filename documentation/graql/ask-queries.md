@@ -1,11 +1,12 @@
 # Ask Queries
 
 ```sql
-ask dragon isa pokemon-type
+match dragon isa pokemon-type
+ask
 ```
 ```java
-qb.ask(getType("dragon").isa("pokemon-type"));
+qb.match(getType("dragon").isa("pokemon-type")).ask().execute();
 ```
 
-An ask query will search the graph and return `true` or `false` depending on
-whether the given [patterns](patterns.md) can be matched in the graph.
+An ask query will return whether the given [match query](match-query.md) has
+any results.
