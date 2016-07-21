@@ -2,9 +2,19 @@
 
 create_link() {
     local filename=$(basename $1 .md)
-    local output="- [$filename]($1)"
+    local directories=$(dirname $1)
+    local output="- [$directories/$filename]($directories/$filename.html)"
 
-    echo $output >> $2
+    local category=$(basename $directories)
+    category="$(echo $category | sed -e 's/documentation//')"
+
+    if [ $category ]
+    then
+        echo "- $category" >> $2
+        output='\t'$output
+    fi
+
+    echo -e $output >> $2
 }
 
 cat navigation.header > navigation.md
