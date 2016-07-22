@@ -1,3 +1,6 @@
+---
+title: Titan Graph Factory
+---
 # Titan Graph Factory
 
 mindmaps.zip comes with an embedded instance of TitanDB running on top of

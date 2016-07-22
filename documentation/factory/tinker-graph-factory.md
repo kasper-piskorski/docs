@@ -1,3 +1,6 @@
+---
+title: Tinker Graph Factory
+---
 # Tinker Graph Factory
 
 > Tinkergraph is n in-memory data structure only, so this backed serves as a

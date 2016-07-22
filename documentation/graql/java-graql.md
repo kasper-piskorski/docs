@@ -1,4 +1,7 @@
-# Java Graql
+---
+title: Java Graql
+---
+## Java Graql
 
 As well as the Graql shell, users can also construct and execute Graql queries
 programmatically in Java.

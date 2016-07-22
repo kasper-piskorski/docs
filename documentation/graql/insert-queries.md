@@ -1,4 +1,7 @@
-# Insert Queries
+---
+title: Insert Queries
+---
+## Insert Queries
 
 ```sql
 insert

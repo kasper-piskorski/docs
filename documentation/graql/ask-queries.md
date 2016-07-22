@@ -1,4 +1,7 @@
-# Ask Queries
+---
+title: Ask Queries
+---
+## Ask Queries
 
 ```sql
 match dragon isa pokemon-type

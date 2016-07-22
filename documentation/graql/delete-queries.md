@@ -1,4 +1,7 @@
-# Delete Queries
+---
+title: Delete Queries
+---
+## Delete Queries
 
 ```sql
 match $x isa pokemon delete $x

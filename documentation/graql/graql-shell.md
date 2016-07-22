@@ -1,4 +1,7 @@
-# Graql Shell
+---
+title: Graql Shell
+---
+## Graql Shell
 
 The Graql shell is used to execute Graql queries from the command line, or to
 let Graql be invoked from other applications.

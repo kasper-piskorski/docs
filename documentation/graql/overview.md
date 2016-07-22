@@ -1,4 +1,7 @@
-# Overview
+---
+title: Overview
+---
+## Overview
 
 Graql allows you to query a Mindmaps graph in a declarative, pattern-matching
 fashion.

@@ -1,3 +1,6 @@
+---
+title: Overview
+---
 # Overview
 
 One of the most important features of a Mindmaps graph is that it formalizes a
