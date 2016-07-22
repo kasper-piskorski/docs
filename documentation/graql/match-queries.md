@@ -114,7 +114,7 @@ The following properties only apply to types.
 ### ako
 
 ```sql
-match $x ako mm-type
+match $x ako type
 ```
 
 Match types that are a subclass of the given type.

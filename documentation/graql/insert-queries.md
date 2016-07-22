@@ -50,7 +50,7 @@ The created or retrieved concept can then be modified with further properties.
 ### value
 
 ```sql
-insert id "trained-by" isa mm-relation-type, value "Trained By";
+insert id "trained-by" isa relation-type, value "Trained By";
 ```
 
 Set the value of the concept.
@@ -96,8 +96,7 @@ Set the super type of this concept type.
 
 ```sql
 insert
-id "trained-by" isa mm-relation-type,
-  has-role trainer, has-role pokemon-trained;
+id "trained-by" isa relation-type, has-role trainer, has-role pokemon-trained;
 ```
 
 Add a role to this relation type.
