@@ -69,6 +69,9 @@ Match instances that have the given type.
 ```sql
 match $x id "Articuno"
 ```
+```java
+qb.match(var("x").id("Articuno"));
+```
 
 Match concepts that have an `id` which matches the [predicate](#predicates).
 
@@ -76,6 +79,11 @@ Match concepts that have an `id` which matches the [predicate](#predicates).
 
 ```sql
 match $x value contains "lightning";
+```
+```java
+import static io.mindmaps.graql.api.query.ValuePredicate.*;
+
+qb.match(var("x").value(contains("lightning")))
 ```
 
 Match concepts that have a `value`. If a [predicate](#predicates) is provided,
@@ -85,6 +93,11 @@ the resource must match that predicate.
 
 ```sql
 match $x has pokedex-no < 20
+```
+```java
+import static io.mindmaps.graql.api.query.ValuePredicate.*;
+
+qb.match(var("x").has("pokedex-no", lt(20)));
 ```
 
 Match concepts that have a resource of `type`. If a [predicate](#predicates) is
@@ -116,6 +129,9 @@ The following properties only apply to types.
 ```sql
 match $x ako type
 ```
+```java
+qb.match(var("x").ako("type"))
+```
 
 Match types that are a subclass of the given type.
 
@@ -124,6 +140,9 @@ Match types that are a subclass of the given type.
 ```sql
 match evolution has-role $x
 ```
+```java
+qb.match(id("evolution").hasRole(var("x")));
+```
 
 Match relation types that have the given role.
 
@@ -131,6 +150,9 @@ Match relation types that have the given role.
 
 ```sql
 match $x plays-role ancestor
+```
+```java
+qb.match(var("x").playsRole("ancestor"));
 ```
 
 Match concept types that play the given role.
@@ -146,6 +168,11 @@ If a concept doesn't have a value, all predicates are considered false.
 ```sql
 match $x has height = 19, has weight > 1500
 ```
+```java
+import static io.mindmaps.graql.api.query.ValuePredicate.*;
+
+qb.match(var("x").has("height", 19).has("weight", gt(1500)));
+```
 
 There are several standard comparators, `=`, `!=`, `>`, `>=`, `<` and `<=`. For
 longs and doubles, these sort by value. Strings are ordered lexicographically.
@@ -156,6 +183,11 @@ longs and doubles, these sort by value. Strings are ordered lexicographically.
 match $x has description contains "underground"
 select $x(id, has description)
 ```
+```java
+import static io.mindmaps.graql.api.query.ValuePredicate.*;
+
+qb.match(var("x").has("description", contains("underground")));
+```
 
 Asks if the given string is a substring.
 
@@ -163,6 +195,11 @@ Asks if the given string is a substring.
 
 ```sql
 match $x value /.*(fast|quick).*/
+```
+```java
+import static io.mindmaps.graql.api.query.ValuePredicate.*;
+
+qb.match(var("x").value(regex(".*(fast|quick).*")));
 ```
 
 Checks if the value matches a regular expression. This match is across the
@@ -173,6 +210,11 @@ surround the expression with `.*`.
 
 ```sql
 match $x has weight >20 and <30
+```
+```java
+import static io.mindmaps.graql.api.query.ValuePredicate.*;
+
+qb.match(var("x").has("weight", gt(20).or(lt(30))));
 ```
 
 `and` and `or` allows combining predicates using boolean logic.

@@ -35,6 +35,9 @@ followed by a string.
 ```sql
 insert id "Totodile" isa pokemon;
 ```
+```java
+qb.insert(id("Totodile").isa("pokemon"));
+```
 
 Set the type of this concept.
 
@@ -42,6 +45,9 @@ Set the type of this concept.
 
 ```sql
 insert id "Pikachu" isa pokemon
+```
+```java
+qb.insert(id("Pikachu").isa("pokemon"));
 ```
 
 Create a concept with the given id, or retrieve it if one with that id exists.
@@ -52,6 +58,9 @@ The created or retrieved concept can then be modified with further properties.
 ```sql
 insert id "trained-by" isa relation-type, value "Trained By";
 ```
+```java
+qb.insert(id("trained-by").isa("relation-type").value("Trained By"));
+```
 
 Set the value of the concept.
 
@@ -60,11 +69,17 @@ Set the value of the concept.
 ```sql
 insert id "Pichu" isa pokemon has height 30;
 ```
+```java
+qb.insert(id("Pichu").isa("pokemon").has("height", 30));
+```
 
 Add a resource of the given type to the concept.
 
 ### relation
 
+```sql
+insert (pokemon-with-type Pichu, type-of-pokemon electric) isa has-type;
+```
 ```java
 qb.insert(
   var()
@@ -72,9 +87,6 @@ qb.insert(
     .rel("type-of-pokemon", "electric")
     .isa("has-type")
 );",
-```
-```sql
-insert (pokemon-with-type Pichu, type-of-pokemon electric) isa has-type;
 ```
 
 Make the concept a relation that relates the given role players, playing the
@@ -89,6 +101,9 @@ The following properties only apply to types.
 ```sql
 insert id "gen2-pokemon" ako pokemon;
 ```
+```java
+qb.insert(id("gen2-pokemon").ako("pokemon"));
+```
 
 Set the super type of this concept type.
 
@@ -98,6 +113,12 @@ Set the super type of this concept type.
 insert
 id "trained-by" isa relation-type, has-role trainer, has-role pokemon-trained;
 ```
+```java
+qb.insert(
+  id("trained-by").isa("relation-type")
+    .hasRole("trainer").hasRole("pokemon-trained")
+);
+```
 
 Add a role to this relation type.
 
@@ -105,6 +126,9 @@ Add a role to this relation type.
 
 ```sql
 insert pokemon plays-role pokemon-trained;
+```
+```java
+qb.insert(id("pokemon").playsRole("pokemon-trained"));
 ```
 
 Allow the concept type to play the given role.
