@@ -214,7 +214,7 @@ match $x has weight >20 and <30
 ```java
 import static io.mindmaps.graql.api.query.ValuePredicate.*;
 
-qb.match(var("x").has("weight", gt(20).or(lt(30))));
+qb.match(var("x").has("weight", gt(20).and(lt(30))));
 ```
 
 `and` and `or` allows combining predicates using boolean logic.
