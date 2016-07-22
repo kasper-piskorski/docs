@@ -29,6 +29,9 @@ Otherwise, only the specified properties are deleted.
 ```sql
 match $x id "evolution" delete $x has-role descendant;
 ```
+```java
+qb.match(var("x").id("evolution")).delete(var("x").hasRole("descendant"));
+```
 
 Removes the given role from the relation type.
 
@@ -37,6 +40,9 @@ Removes the given role from the relation type.
 ```sql
 match $x id "type" delete $x plays-role attacking-type;
 ```
+```java
+qb.match(var("x").id("type")).delete(var("x").playsRole("attacking-type"));
+```
 
 Disallows the concept type from playing the given role.
 
@@ -44,6 +50,9 @@ Disallows the concept type from playing the given role.
 
 ```sql
 match $x id "Bulbasaur" delete $x has weight;
+```
+```java
+qb.match(var("x").id("Bulbasaur")).delete(var("x").has("weight"));
 ```
 
 Deletes the resources of the given type on the concept. If a value is given,
