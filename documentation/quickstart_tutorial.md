@@ -88,7 +88,7 @@ person.instances().forEach(i -> System.out.println(i.getId()));
 
 > **Variables**
 >
-> Graql variables start with a `$`. They represent "wildcards", and can be
+> Graql variables start with a `$`. They represent "wildcards", and are
 > returned as results in `match` queries. A variable name can contain
 > alphanumeric characters, dashes and underscores.
 
@@ -151,7 +151,7 @@ RelationType practice = mindmapsGraph.putRelationType("practice")
 > ```
 > Similarly, we could insert `practice` like this:
 > ```sql
-> insert id "practice", isa relation-type;
+> insert practice, isa relation-type;
 > ```
 
 A `person` can be a `philosopher` and a `school` can be a `philosophy`:
@@ -189,9 +189,7 @@ mindmapsGraph.putRelation(practice)
     .putRolePlayer(philosopher, aristotle).putRolePlayer(philosophy, peripateticism);
 ```
 
-![A "practice" relation, indicated by the blue concept, relating the
-philosopher Plato to the philosophy
-Idealism.](/docs/images/practice.png)
+![](/docs/images/practice.png)
 
 A relation comprises of pairs of role types and role players. For example,
 `Plato` is playing the role of `philosopher`. Our relations also have a type
@@ -269,8 +267,6 @@ mindmapsGraph.putRelation(education)
 
 ## Resources
 
-We can also attach resources to our instances using `has-resource`.
-
 Some people have special titles and epithets and we want to talk about that!
 So, we'll create some resource types that can be attached to a person:
 
@@ -299,7 +295,7 @@ person.playsRole(hasTitleOwner).playsRole(hasEpithetValue);
 Let's make Alexander "Great"!
 
 ```sql
-insert Alexander has epithet "The Great";
+insert "Alexander" has epithet "The Great";
 ```
 ```java
 Resource<String> theGreat = mindmapsGraph.putResource("The Great", epithet);
@@ -307,19 +303,19 @@ mindmapsGraph.putRelation(hasEpithet)
     .putRolePlayer(hasEpithetOwner, alexander).putRolePlayer(hasEpithetValue, theGreat);
 ```
 
-This is a quick way to add a `has-resource` relation between `Alexander` and an
-`epithet` with value `"The Great"`.
+This is a quick way to add a relation between `Alexander` and an `epithet` with
+value `"The Great"`.
 
 ![](/docs/images/epithet.png)
 
 Let's add the rest of Alexander's titles while we're at it:
 
 ```sql
-insert Alexander has title "Hegemon";
-insert Alexander has title "King of Macedon";
-insert Alexander has title "King of Persia";
-insert Alexander has title "Pharaoh of Egypt";
-insert Alexander has title "Lord of Asia";
+insert "Alexander" has title "Hegemon";
+insert "Alexander" has title "King of Macedon";
+insert "Alexander" has title "King of Persia";
+insert "Alexander" has title "Pharaoh of Egypt";
+insert "Alexander" has title "Lord of Asia";
 ```
 ```java
 Resource<String> hegemon = mindmapsGraph.putResource("Hegemon", title);
