@@ -35,7 +35,7 @@ type of an Instance, `a BMW` could be a Type, `Car`. Similarly, the type of
 The following is an example of how Instances can have a Type:
 
 ![An example of the type relationship between some Instances and a
-Type](/docs/images/example_types.png)
+Type](example_types.png)
 
 > In a Mindmaps graph we use the shorthand `isa` when representing the type
 > relationship. For example, `Aristotle` `is a` `Man`.
@@ -51,12 +51,12 @@ If we expand our example above to include female philosophers we would have the
 following graph:
 
 ![Expanding the previous example to include female
-philosophers.](/docs/images/example_no_super.png)
+philosophers.](example_no_super.png)
 
 By using subclassing we can more richly model this graph as follows:
 
 ![Expanding the example further to include
-subtypes.](/docs/images/example_super.png)
+subtypes.](example_super.png)
 
 > In a Mindmaps graph we use the shorthand `ako` when referring to a Type being
 > the sub type of another Type. For example, `Man` `a kind of (ako)` `Person`.
@@ -86,7 +86,7 @@ Going back to our philosophers example we could define the following structure
 where people can now play the roles of teachers and students:
 
 ![A simple example of allowing a Type to play specific Role
-Types.](/docs/images/example_playsrole.png)
+Types.](example_playsrole.png)
 
 ### Relation Types are Associated with Roles
 
@@ -99,7 +99,7 @@ Expanding our philosophers example we could define a Relation Type, `Education`
 which encapsulates the needed roles:
 
 ![Expanding the example to illustrate how a relation type is linked with Role
-Types.](/docs/images/example_relationtype.png)
+Types.](example_relationtype.png)
 
 ### Defining Relations
 
@@ -118,7 +118,7 @@ Aristotle:
 
 ![An example of a Relation. The dark blue represents the Relation which is an
 instance of
-`Education`](/docs/images/example_relation.png)
+`Education`](example_relation.png)
 
 > When creating a relation you must ensure that the type of the Instances are
 > allowed to play the Role Types. For example, in the above graph if we forgot
@@ -136,7 +136,7 @@ The following figure represents the inheritance structure of the Mindmaps
 object model:
 
 ![The Mindmaps Object
-Model.](/docs/images/object_model.png)
+Model.](object_model.png)
 
 > Types (The right branch in the above diagram) are ontological elements. They
 > are used to design our domain specific ontology. For example, within the
@@ -265,4 +265,4 @@ graph.
 Lets see how the meta ontology fits in with a philosophers example:
 ![The meta ontology of a Mindmaps graph. The light blue concepts represent the
 Mindmaps Meta
-ontology.](/docs/images/example_meta.png)
+ontology.](example_meta.png)
