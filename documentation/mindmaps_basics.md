@@ -34,7 +34,7 @@ type of an Instance, `a BMW` could be a Type, `Car`. Similarly, the type of
 
 The following is an example of how Instances can have a Type:
 
-![An example of the type relationship between some Instances  and a
+![An example of the type relationship between some Instances and a
 Type](/docs/images/example_types.png)
 
 > In a Mindmaps graph we use the shorthand `isa` when representing the type
