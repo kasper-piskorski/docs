@@ -56,4 +56,4 @@ mindmapsGraph.putRelation(casting)
 Bang a graph which represents that Al Pacino was in the movie Godfather where
 he played the role of Michael Corleone:
 
-![](example_core.png)
+![](/docs/images/example_core.png)

@@ -2,6 +2,15 @@
 title: Quickstart Tutorial
 ---
 
+*Last edited: 3rd August 2016*  
+
+<table>
+    <tr>
+        <td>Graql</td>
+        <td>Beginner</td>
+    </tr>
+</table>
+
 # Quickstart Tutorial
 
 This document will teach you how to use Graql to load both an ontology and some data into a Mindmaps Graph. You can find this example (philosophers.gql) in the examples directory included in the mindmaps.zip. If you have not yet set up the Mindmaps environment, please see the Quick Start guide here. LINK TO DO
@@ -28,7 +37,7 @@ insert "Aristotle" isa person;
 insert "Alexander" isa person;
 ```
 
-![](phil.png)
+![](/docs/images/phil.png)
 
 So now we've created a super-simple graph, with one concept type and four 
 concept instances.
@@ -128,7 +137,7 @@ insert (philosopher "Plato", philosophy "Platonism") isa practice;
 insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
 ```
 
-![](practice.png)
+![](/docs/images/practice.png)
 
 Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing the role of `philosophy`. 
 
@@ -197,7 +206,7 @@ insert "Alexander" has epithet "The Great";
 
 This is a quick way to add a relation between `Alexander` and an `epithet` with value `"The Great"`.
 
-![](epithet.png)
+![](/docs/images/epithet.png)
 
 Let's add the rest of Alexander's titles while we're at it:
 
@@ -297,7 +306,7 @@ $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 > **knowledge-ohmygod-whatisthat-???**
 > If you don't provide an ID for something such as a relation, it will get an automatically generated ID.
 
-![](knowledge.png)
+![](/docs/images/knowledge.png)
 
 > **When Persisting The Data To Disk**
 > Once you done make sure to use `mindmaps.sh stop && mindmaps.sh clean` if you would like to clean your graph quickly.   

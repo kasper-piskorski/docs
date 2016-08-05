@@ -1,6 +1,19 @@
+<!--perl Markdown.pl /Users/stichbury/mindmapsrepos/docs/documentation/getting_started.md > /Users/stichbury/mindmapsrepos/docs/documentation/getting_started.html-->
+
 ---
 title: Getting Started
 ---
+
+*Last edited: 3rd August 2016*  
+
+<table>
+    <tr>
+        <td>Graql</td>
+        <td>Beginner</td>
+    </tr>
+</table>
+
+
 
 # Getting Started
 
@@ -29,7 +42,7 @@ bin/mindmaps.sh start
 
 This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
 
-![Starting Mindmaps successfully](terminal_mindmaps_start.png)
+![Starting Mindmaps successfully](/docs/images/terminal_mindmaps_start.png)
 
 ## Setting up Graql
 
