@@ -41,7 +41,7 @@ bin/mindmaps.sh start
 
 This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
 
-![Starting Mindmaps successfully](/docs/images/terminal_mindmaps_start.png)
+![Starting Mindmaps successfully](/images/terminal_mindmaps_start.png)
 
 ## Setting up Graql
 
