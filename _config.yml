@@ -7,7 +7,7 @@
 
 # Build settings
 markdown: kramdown
-highlighter: none
+highlighter: prism
 #markdown: rdiscount
 exclude: [README.md, navigation.header, build-site.sh]
 include: ['documentation', 'documentation/core']

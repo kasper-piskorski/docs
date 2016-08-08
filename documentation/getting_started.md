@@ -3,17 +3,6 @@ layout: documentation
 title: Getting Started
 ---
 
-*Last edited: 3rd August 2016*  
-
-<table>
-    <tr>
-        <td>Graql</td>
-        <td>Beginner</td>
-    </tr>
-</table>
-
-
-
 # Getting Started
 
 This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql.
@@ -29,7 +18,7 @@ This document will teach you how to set up a Mindmaps environment, start it up a
 Mindmaps can be downloaded from
 [here](http://mindmaps.io/download/mindmaps-0.2.1.zip). Unzip it and run the following in the terminal:
 
-```
+```bash
 cd mindmaps-build
 bin/mindmaps.sh start
 ```
@@ -48,13 +37,13 @@ This will start an instance of Cassandra which serves as the supported backend f
 Graql is our query language, which allows you to interface with a Mindmaps graph. We will use Graql to load an example data set and run some simple queries against it.  
 The following will make Graql load an example data set and exit:
 
-```
+```bash
 bin/graql.sh -f examples/pokemon.gql
 ```
 
 This will create and persist an example data set. Now we can run the following query using the Graql shell:
 
-```
+```bash
 bin/graql.sh
 select $x where $x isa pokemon
 $x id "Bulbasaur" isa pokemon;

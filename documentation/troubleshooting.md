@@ -13,7 +13,7 @@ title: Troubleshooting
 
 ## Strange Exceptions
 
-```
+```bash
 java.lang.RuntimeException: java.lang.IllegalStateException: The vertex or type is not associated with this transaction [v[24584]]
 ```
 
