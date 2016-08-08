@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Titan Graph Factory
 ---
 # Titan Graph Factory

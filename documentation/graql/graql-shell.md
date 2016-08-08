@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Graql Shell
 ---
 ## Graql Shell

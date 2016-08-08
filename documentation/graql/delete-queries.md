@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Delete Queries
 ---
 ## Delete Queries

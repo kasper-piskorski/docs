@@ -1,4 +1,5 @@
 ---
+layout: documentation
 title: Tinker Graph Factory
 ---
 # Tinker Graph Factory
