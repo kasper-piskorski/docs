@@ -1,0 +1,12 @@
+<ul>
+    {% for each in site.data['docs-menu'] %}
+    <li>{{ each.name }}
+        <ul>
+            {% for doc in each.docs %}
+            <li><a href="{{ doc.url}}">{{doc.name}}</a></li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+
+</ul>

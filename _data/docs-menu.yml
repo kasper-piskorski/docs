@@ -1,0 +1,45 @@
+- section:
+  name: Overview
+  docs:
+    - name: Overview
+      url: /documentation/overview
+    - name: Mindmaps Basics
+      url: /documentation/mindmaps_basics
+    - name: Quickstart Tutorial
+      url: /documentation/quickstart_tutorial
+    - name: Getting Started
+      url: /documentation/getting_started
+    - name: Troubleshooting
+      url: /documentation/troubleshooting
+- section:
+  name: Core
+  docs:
+    - name: Overview
+      url: /documentation/core/overview
+- section:
+  name: Factory
+  docs:
+    - name: Overview
+      url: /documentation/factory/overview
+    - name: Tinker Graph Factory
+      url: /documentation/factory/tinker-graph-factory
+    - name: Titan Graph Factory
+      url: /documentation/factory/titan-graph-factory
+- section:
+  name: Graql
+  docs:
+    - name: Overview
+      url: /documentation/graql/
+    - name: Match Queries
+      url: /documentation/graql/match-queries
+    - name: Ask Queries
+      url: /documentation/graql/ask-queries
+    - name: Delete Queries
+      url: /documentation/graql/delete-queries
+    - name: Insert Queries
+      url: /documentation/graql/insert-queries
+    - name: Graql Shell
+      url: /documentation/graql/graql-shell
+    - name: Java Graql
+      url: /documentation/graql/java-graql
+

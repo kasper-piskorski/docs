@@ -1,6 +1,5 @@
-<!--perl Markdown.pl /Users/stichbury/mindmapsrepos/docs/documentation/getting_started.md > /Users/stichbury/mindmapsrepos/docs/documentation/getting_started.html-->
-
 ---
+layout: documentation
 title: Getting Started
 ---
 
