@@ -72,6 +72,8 @@ If you see the above output then congratulations! You have set up Mindmaps.
 
 ## Setting up Java API
 
+> TO DO - Specify Maven dependency
+
 Inside the `lib` directory of mindmaps.zip are the jars you will need to
 develop with mindmaps. 
 
