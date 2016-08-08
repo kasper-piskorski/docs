@@ -87,7 +87,7 @@ Going back to our philosophers example we could define the following structure
 where people can now play the roles of teachers and students:
 
 ![A simple example of allowing a Type to play specific Role
-Types.](/images/examples_playsrole.png)
+Types.](/images/examples_playsroles.png)
 
 ### Relation Types are Associated with Roles
 
