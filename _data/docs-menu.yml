@@ -29,7 +29,7 @@
   name: Graql
   docs:
     - name: Overview
-      url: /documentation/graql/
+      url: /documentation/graql/overview
     - name: Match Queries
       url: /documentation/graql/match-queries
     - name: Ask Queries
