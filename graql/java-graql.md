@@ -30,20 +30,27 @@ import static io.mindmaps.graql.api.query.QueryBuilder.*;
 import static io.mindmaps.graql.api.query.ValuePredicate.*;
 ```
 
-A `QueryBuilder` is constructed by providing a Mindmaps Graph:
+A `QueryBuilder` is constructed by providing a `MindmapsTransaction`:
 
 ```java
-MindmapsGraph graph = TinkerGraphFactory.getInstance().getGraph();
-QueryBuilder qb = new QueryBuilder(graph);
+MindmapsGraph graph = MindmapsClient.getGraph("my-graph");
+MindmapsTransaction transaction = graph.newTransaction();
+QueryBuilder qb = QueryBuilder.build(transaction);
 ```
 
-The `QueryBuilder` class provides methods for building `match`, `ask`,
-`insert` and `delete` queries.
+The user can also choose to not provide a transaction. This can be useful if
+you need to provide the transaction later (using `withTransaction`), or you
+only want to construct queries without executing them.
+
+The `QueryBuilder` class provides methods for building `match` and `insert`
+queries. `ask`, `insert` and `delete` queries can all be built from `match`
+queries.
 
 ## Match Queries
 
-Match queries are constructed using the `match` method and include all
-modifiers:
+Match queries are constructed using the `match` method. This will produce a
+`MatchQuery` instance, which includes additional methods that apply modifiers
+such as `limit` and `distinct`:
 
 ```java
 MatchQuery tallPokemon = qb.match(var("x").isa("pokemon").has("height", gt(10))).limit(50);
@@ -52,20 +59,22 @@ MatchQuery tallPokemon = qb.match(var("x").isa("pokemon").has("height", gt(10)))
 `MatchQuery` is `Iterable` and has a `stream` method. Each result is a
 `Map<String, Concept>`, where the keys are the variable names in the query.
 
+A `MatchQuery` will only execute when it is iterated over.
+
 ```java
 for (Map<String, Concept> result : tallPokemon) {
   System.out.println(result.get("x").getValue());
 }
+```
 
-tallPokemon.stream()
-  .map(r -> r.get("x"))
-  .map(Concept::getValue)
-  .forEach(System.out::println);
+If you're only interested in one variable name, it also includes a `get` method
+for requesting a single variable:
+
+```
+tallPokemon.get("x").forEach(x -> System.out.println(x.getValue()));
 ```
 
 ## Ask Queries
-
-Ask queries execute as soon as `execute()` is called:
 
 ```java
 if (qb.ask(var().isa("pokemon-type").value("dragon"))) {
@@ -74,8 +83,6 @@ if (qb.ask(var().isa("pokemon-type").value("dragon"))) {
 ```
 
 ## Insert Queries
-
-Insert queries execute as soon as `execute()` is called:
 
 ```java
 InsertQuery addPichu = qb.insert(var().id("Pichu").isa("pokemon"));
@@ -93,8 +100,6 @@ qb.match(
 ```
 
 ## Delete Queries
-
-Delete queries are executed when `execute()` is called:
 
 ```java
 qb.match(var("x").id("Pichu")).delete("x").execute();
