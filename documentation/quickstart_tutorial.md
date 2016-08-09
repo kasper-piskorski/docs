@@ -3,9 +3,11 @@ layout: documentation
 title: Quickstart Tutorial
 ---
 
-# Quickstart Tutorial
+# Graql Quick Start Tutorial
 
-This document will teach you how to use Graql to load both an ontology and some data into a Mindmaps Graph. You can find this example (philosophers.gql) in the examples directory included in the mindmaps.zip. If you have not yet set up the Mindmaps environment, please see the Quick Start guide here. LINK TO DO
+This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph. You can find the example ```philosophers.gql``` in the examples directory included in the mindmaps.zip.   
+If you have not yet set up the Mindmaps environment, please see the Quick Set Up guide. LINK TO DO
+If you want to get started using Java rather than Graql, please see the Java Quick Start tutorial. LINK TO DO
 
 **TO DO: Insert table of contents**
 
@@ -234,7 +236,7 @@ $pharaoh id "Alexander" isa person;
 > **Predicates**
 > When querying for an id, value or resource you can use predicates as well as direct values. For example, `has epithet contains "Great"`. See if you can write a query for everyone with a title containing "King". Answers are at the bottom of the page!
 
-## Relations as Role players
+## Relations as Role Players
 
 Philosophers know lots of things. We should probably include this in our
 ontology.
@@ -323,10 +325,15 @@ match $king has title contains "King"
         <td>Date</td>
         <td>Description</td>        
     </tr>
-        <tr>
+    <tr>
         <td>v1.01</td>
         <td>03/08/2016</td>
         <td>Updated content and formatting.</td>        
+    </tr>
+    </tr>
+        <td>v1.02</td>
+        <td>09/08/2016</td>
+        <td>Clarify this is for Graql.</td>        
     </tr>
     
 </table>

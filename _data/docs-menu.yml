@@ -1,16 +1,29 @@
 - section:
-  name: Overview
+  name: Get Started
   docs:
     - name: Overview
       url: /documentation/overview
+    - name: Setup Guide
+      url: /documentation/getting_started
+- section:
+  name: The Basics
+  docs:
     - name: Mindmaps Basics
       url: /documentation/mindmaps_basics
     - name: Quickstart Tutorial
       url: /documentation/quickstart_tutorial
-    - name: Getting Started
-      url: /documentation/getting_started
+    - name: Java Quickstart Tutorial
+      url: /documentation/quickstart_tutorial_java
+- section:
+  name: Troubleshooting
+  docs:
     - name: Troubleshooting
       url: /documentation/troubleshooting
+- section:
+  name: Resources
+  docs:
+    - name: Downloads
+      url: /documentation/downloads
 - section:
   name: Core
   docs:

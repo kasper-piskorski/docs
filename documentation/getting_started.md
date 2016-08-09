@@ -1,22 +1,22 @@
 ---
 layout: documentation
-title: Getting Started
+title: Setup Guide
 ---
 
-# Getting Started
+# Setup Guide
 
 This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql.
 
 **TO DO: Insert table of contents**
 
-## Downloading and Installing Mindmaps
+## Download and Install Mindmaps
 
 > **Prerequisites**  
 > Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set
 > accordingly. Mindmaps also requires Maven 3.
 
-Mindmaps can be downloaded from
-[here](http://mindmaps.io/download/mindmaps-0.2.1.zip). Unzip it and run the following in the terminal:
+The latest version of mindmaps can be downloaded from
+[our downloads page](http://mindmaps.io/download/mindmaps-0.2.1.zip). Unzip it and run the following in the terminal:
 
 ```bash
 cd mindmaps-build
@@ -32,7 +32,7 @@ This will start an instance of Cassandra which serves as the supported backend f
 
 ![Starting Mindmaps successfully](/images/terminal_mindmaps_start.png)
 
-## Setting up Graql
+## Set up Graql
 
 Graql is our query language, which allows you to interface with a Mindmaps graph. We will use Graql to load an example data set and run some simple queries against it.  
 The following will make Graql load an example data set and exit:
@@ -54,31 +54,19 @@ $x id "Pikachu" isa pokemon;
 
 If you see the above output then congratulations! You have set up Mindmaps. 
 
-> **Troubleshooting**  
-> If you are not seeing the above message, please check out our troubleshooting documentation or ask a question on our discussion forum.
-> 
-> TO DO - LINKS!!!
 
-## Setting up Java API
 
-> TO DO - Specify Maven dependency
+###Troubleshooting  
+If you do not see the above message, we may cover it in our troubleshooting documentation. If you have any questions, please ask a question on our discussion forum, or Stack Overflow.
+TO DO - LINKS!!!
 
-Inside the `lib` directory of mindmaps.zip are the jars you will need to
-develop with mindmaps. 
 
-If you would like to start developing with minimal effort you can integrate the jar file, e.g.
-`graql-shell-0.2.1-jar-with-dependencies.jar` into your project. This however
-may be a bit inflexible as all dependencies are compiled in. 
+##Where next?
+Our Quick Start Tutorial will show you how to load an ontology and data into a Mindmaps Graph. LINKS TO DO
 
-If you would like more flexibility, in the `lib` directory all the mindmaps
-jars are provided with no dependencies. Using these would require you to use
-maven to acquire the other dependencies.
+You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 
-Here are some links to guides for adding external jars using different IDEs:
 
-- [IntelliJ](https://www.jetbrains.com/help/idea/2016.1/configuring-module-dependencies-and-libraries.html)
-- [Eclipse](http://www.tutorialspoint.com/eclipse/eclipse_java_build_path.htm)
-- [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
 
 ## Document Changelog  
 
