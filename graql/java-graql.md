@@ -11,9 +11,9 @@ Add the following to your `pom.xml`:
 
 ```xml
 <dependency>
-  <groupId>io.mindmaps.graql</groupId>
-  <artifactId>graql-core</artifactId>
-  <version>0.2.1</version>
+  <groupId>io.mindmaps</groupId>
+  <artifactId>mindmaps-graql</artifactId>
+  <version>0.1.0</version>
 </dependency>
 ```
 
