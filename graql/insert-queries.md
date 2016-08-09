@@ -23,21 +23,16 @@ patterns](#variable-patterns) into the graph. If a [match
 query](match-queries.md) is provided, the query will insert the given variable
 patterns for every result of the match query.
 
-A variable pattern is a pattern describing [properties](#properties) to set on
-a particular concept. The variable pattern can optionally be bound to a
-variable, an ID or a "new-type".
-
-Variable patterns that are not bound, bound to a variable or bound to a
-"new-type" are inserted. Variable patterns bound to a type are not
-automatically inserted. "new-type" is indicated with the keyword `type`
-followed by a string.
+A variable pattern in an insert query describes [properties](#properties) to
+set on a particular concept. The variable pattern can optionally be bound to a
+variable or an ID.
 
 ## Properties
 
 ### isa
 
 ```sql
-insert id "Totodile" isa pokemon;
+insert "Totodile" isa pokemon;
 ```
 ```java
 qb.insert(id("Totodile").isa("pokemon"));
@@ -48,7 +43,7 @@ Set the type of this concept.
 ### id
 
 ```sql
-insert id "Pikachu" isa pokemon
+insert "Pikachu" isa pokemon
 ```
 ```java
 qb.insert(id("Pikachu").isa("pokemon"));
@@ -60,7 +55,7 @@ The created or retrieved concept can then be modified with further properties.
 ### value
 
 ```sql
-insert id "trained-by" isa relation-type, value "Trained By";
+insert trained-by isa relation-type, value "Trained By";
 ```
 ```java
 qb.insert(id("trained-by").isa("relation-type").value("Trained By"));
@@ -71,7 +66,7 @@ Set the value of the concept.
 ### has
 
 ```sql
-insert id "Pichu" isa pokemon has height 30;
+insert "Pichu" isa pokemon has height 30;
 ```
 ```java
 qb.insert(id("Pichu").isa("pokemon").has("height", 30));
@@ -82,13 +77,13 @@ Add a resource of the given type to the concept.
 ### relation
 
 ```sql
-insert (pokemon-with-type Pichu, type-of-pokemon electric) isa has-type;
+insert (pokemon-with-type "Pichu", type-of-pokemon "electric") isa has-type;
 ```
 ```java
 qb.insert(
   var()
-    .rel("pokemon-with-type", "Pichu")
-    .rel("type-of-pokemon", "electric")
+    .rel("pokemon-with-type", id("Pichu"))
+    .rel("type-of-pokemon", id("electric"))
     .isa("has-type")
 );",
 ```
@@ -103,7 +98,7 @@ The following properties only apply to types.
 ### ako
 
 ```sql
-insert id "gen2-pokemon" ako pokemon;
+insert gen2-pokemon ako pokemon;
 ```
 ```java
 qb.insert(id("gen2-pokemon").ako("pokemon"));
@@ -115,7 +110,7 @@ Set the super type of this concept type.
 
 ```sql
 insert
-id "trained-by" isa relation-type, has-role trainer, has-role pokemon-trained;
+trained-by isa relation-type, has-role trainer, has-role pokemon-trained;
 ```
 ```java
 qb.insert(
