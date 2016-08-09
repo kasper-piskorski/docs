@@ -19,9 +19,9 @@ the `id` or `isa`) it will only delete the specified properties.
 
 ## Variable Patterns
 
-A variable pattern is a pattern describing [properties](#properties) to delete
-on a particular concept. The variable pattern is always bound to a variable
-name.
+A variable pattern in a delete query describes [properties](#properties) to
+delete on a particular concept. The variable pattern is always bound to a
+variable name.
 
 If a variable pattern has no properties, then the concept itself is deleted.
 Otherwise, only the specified properties are deleted.
