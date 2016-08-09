@@ -72,7 +72,23 @@ insert "Pichu" isa pokemon has height 30;
 qb.insert(id("Pichu").isa("pokemon").has("height", 30));
 ```
 
-Add a resource of the given type to the concept.
+Add a resource of the given type to the concept. The above example is
+equivalent to:
+
+```sql
+insert
+$owner id "Pichu" isa pokemon;
+$value isa height, value 30;
+
+(height-owner $owner, height-value $value) isa has-height;
+```
+```java
+qb.insert(
+  var("owner").id("Pichu").isa("pokemon"),
+  var("value").isa("height").value(30),
+  var().rel("height-owner", "owner").rel("height-value", "value").isa("has-height")
+);
+```
 
 ### relation
 
@@ -131,3 +147,43 @@ qb.insert(id("pokemon").playsRole("pokemon-trained"));
 ```
 
 Allow the concept type to play the given role.
+
+### has-resource
+
+```sql
+insert pokemon has-resource pokedex-no;
+```
+```java
+qb.insert(id("pokemon").hasResource("pokedex-no"));
+```
+
+Allow the concept type to have the given resource.
+
+This is done by creating a specific relation type relating the concept type
+and resource. The above example is equivalent to:
+
+```sql
+insert
+
+has-pokedex-no isa relation-type,
+  has-role pokedex-no-owner,
+  has-role pokedex-no-value;
+
+pokedex-no-owner isa role-type;
+pokedex-no-value isa role-type;
+
+pokemon plays-role pokedex-no-owner;
+pokedex-no plays-role pokedex-no-value;
+```
+```java
+qb.insert(
+  id("has-pokedex-no").isa("relation-type")
+    .hasRole("pokedex-no-owner").hasRole("pokedex-no-value"),
+
+  id("pokedex-no-owner").isa("role-type"),
+  id("pokedex-no-value").isa("role-type"),
+
+  id("pokemon").playsRole("pokedex-no-owner"),
+  id("pokedex-no").playsRole("pokedex-no-value")
+);
+```

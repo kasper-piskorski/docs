@@ -107,6 +107,21 @@ qb.match(var("x").has("pokedex-no", lt(20)));
 Match concepts that have a resource of `type`. If a [predicate](#predicates) is
 provided, the resource must match that predicate.
 
+The above is equivalent to:
+
+```sql
+match
+(pokedex-no-owner $x, pokedex-no-value $pokedex-no) isa has-pokedex-no;
+$pokedex-no value < 20;
+```
+```java
+qb.match(
+  var().rel("pokedex-no-owner", "x").rel("pokedex-no-value", "pokedex-no")
+    .isa("has-pokedex-no"),
+  var("pokedex-no").value(lt(20))
+);
+```
+
 ### relation
 
 ```sql
@@ -160,6 +175,25 @@ qb.match(var("x").playsRole("ancestor"));
 ```
 
 Match concept types that play the given role.
+
+### has-resource
+
+```sql
+match $x has-resource name
+```
+```java
+qb.match(var("x").hasResource("name"));
+```
+
+Match concept types that can have the given resource types. The above is
+equivalent to:
+
+```sql
+match $x plays-role name-owner;
+```
+```java
+qb.match(var("x").playsRole("name-owner"));
+```
 
 ## Predicates
 
