@@ -1,9 +1,8 @@
 # match
 
- <pre>
-match \[ [variable](#variable) | [pattern](#pattern); ... \]
-      \[ [select | limit | offset | distinct | order ...](#modifier) \]
-</pre>
+<big><pre>
+match [ [variable](#variable) | [pattern](#pattern) ; ... ]
+      \[ [select | limit | offset | distinct | order ...](#modifier) \]</pre></big>
 
 ```
 match $x isa movie
@@ -17,27 +16,24 @@ Match multiple properties together.
 
 ## pattern
 
- <pre>
-[variable](#variable)
-</pre>
+<big><pre>
+[variable](#variable)</pre></big>
 
 ```
 match $x isa person, value "Guillermo del Toro"
 ```
 A pattern is often just a single variable.
 
- <pre>
-[pattern](#pattern) or [pattern](#pattern)
-</pre>
+<big><pre>
+[pattern](#pattern) or [pattern](#pattern)</pre></big>
 
 ```
 match $x isa movie or $x isa person
 ```
 Two patterns can be combined into a disjunction with `or`
 
- <pre>
-{ [pattern](#pattern) ; ... }
-</pre>
+<big><pre>
+{ [pattern](#pattern) ; ... }</pre></big>
 
 ```
 match $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
@@ -46,9 +42,8 @@ Several patterns can be combined into a conjunction with `{ }`
 
 ## modifier
 
- <pre>
-select [name](#name) , ...
-</pre>
+<big><pre>
+select [name](#name) , ...</pre></big>
 
 ```
 match $m isa movie; (actor $a1, $m); (actor $a2, $m);
@@ -56,9 +51,8 @@ select $a1, $a2
 ```
 The selected variables can be explicitly defined.
 
- <pre>
-limit {integer}
-</pre>
+<big><pre>
+limit {integer}</pre></big>
 
 ```
 match (director $x, $y)
@@ -66,9 +60,8 @@ limit 10
 ```
 The results can be limited.
 
- <pre>
-offset {integer}
-</pre>
+<big><pre>
+offset {integer}</pre></big>
 
 ```
 match (director $x, $y)
@@ -77,9 +70,8 @@ offset 20
 ```
 Some results can be skipped.
 
- <pre>
-distinct
-</pre>
+<big><pre>
+distinct</pre></big>
 
 ```
 match $m isa movie, id 'dr-strangelove'; (actor $a, $m);
@@ -88,9 +80,8 @@ distinct
 ```
 The results can be made distinct (de-duplicated).
 
- <pre>
-order by [name](#name) \[ (has [resource-type](#identifier)) \] \[ asc | desc \]
-</pre>
+<big><pre>
+order by [name](#name) \[ (has [resource-type](#identifier)) \] \[ asc | desc \]</pre></big>
 
 ```
 match $x isa person order by $x
@@ -104,9 +95,8 @@ Order by name in descending order.
 
 # ask
 
- <pre>
-[match](#match) ask
-</pre>
+<big><pre>
+[match](#match) ask</pre></big>
 
 ```
 match $x isa person, id 'james-cameron'; (actor $x)
@@ -116,29 +106,26 @@ Return whether the match query has any results.
 
 # insert
 
- <pre>
-insert [variable](#variable) ; ...
-</pre>
+<big><pre>
+insert [variable](#variable) ; ...</pre></big>
 
 ```
 insert 'finding-dory' isa movie;
 ```
 Insert concepts into the graph.
 
- <pre>
-[match](#match) insert [variable](#variable) ; ...
-</pre>
+<big><pre>
+[match](#match) insert [variable](#variable) ; ...</pre></big>
 
 ```
-match $x isa person, has 
+EXAMPLE
 ```
 description
 
 # delete
 
- <pre>
-[match](#match) delete [variable](#variable) ; ...
-</pre>
+<big><pre>
+[match](#match) delete [variable](#variable) ; ...</pre></big>
 
 ```
 EXAMPLE
@@ -147,9 +134,8 @@ description
 
 # variable
 
- <pre>
-[identifier](#identifier) [property](#property) , ...
-</pre>
+<big><pre>
+[identifier](#identifier) [property](#property) , ...</pre></big>
 
 ```
 EXAMPLE
@@ -167,9 +153,8 @@ or dashes.
 
 ## identifier
 
- <pre>
-[name](#name) | [id](#identifier)
-</pre>
+<big><pre>
+[name](#name) | [id](#identifier)</pre></big>
 
 ```
 EXAMPLE
@@ -179,81 +164,72 @@ An `id` is a sequence of alphanumeric characters, underscores and dashes, or a q
 
 ## property
 
- <pre>
-isa [type](#identifier)
-</pre>
+<big><pre>
+isa [type](#identifier)</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-id {string}
-</pre>
+<big><pre>
+id {string}</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-value [ = | != | < | <= | >= | > | contains ] {value}
-</pre>
+<big><pre>
+value [ = | != | < | <= | >= | > | contains ] {value}</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-has [resource-type](#identifier) [ = | != | < | <= | >= | > | contains ] {value}
-</pre>
+<big><pre>
+has [resource-type](#identifier) [ = | != | < | <= | >= | > | contains ] {value}</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-( \[ [role-type](#identifier) \] [role-player](#identifier) , ... )
-</pre>
+<big><pre>
+( \[ [role-type](#identifier) \] [role-player](#identifier) , ... )</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-ako [type](#identifier)
-</pre>
+<big><pre>
+ako [type](#identifier)</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-has-role [role-type](#identifier)
-</pre>
+<big><pre>
+has-role [role-type](#identifier)</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-plays-role [role-type](#identifier)
-</pre>
+<big><pre>
+plays-role [role-type](#identifier)</pre></big>
 
 ```
 EXAMPLE
 ```
 description
 
- <pre>
-has-resource [resource-type](#identifier)
-</pre>
+<big><pre>
+has-resource [resource-type](#identifier)</pre></big>
 
 ```
 EXAMPLE
