@@ -1,6 +1,12 @@
 ---
-layout: documentation
 title: Match Queries
+keywords: graql, query, match
+last_updated: August 10, 2016
+tags: []
+summary: "Graql Match Queries"
+sidebar: home_sidebar
+permalink: graql_match.html
+folder: graql
 ---
 ## Match Queries
 

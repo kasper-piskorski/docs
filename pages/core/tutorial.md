@@ -1,7 +1,14 @@
 ---
-layout: documentation
-title: Overview
+title: Core Overview
+keywords: core, overview
+last_updated: August 10, 2016
+tags: []
+summary: "MindmapsDB Core Overview"
+sidebar: home_sidebar
+permalink: core_overview.html
+folder: core
 ---
+
 # Overview
 
 > You should checkout the [Quickstart

@@ -1,5 +1,12 @@
 ---
 title: Java Quickstart Tutorial
+keywords: setup, getting started
+last_updated: August 10, 2016
+tags: [getting_started]
+summary: "Java quickstart tutorial for MindmapsDB"
+sidebar: home_sidebar
+permalink: java_quickstart.html
+folder: overview
 ---
 
 # Java Quick Start Tutorial

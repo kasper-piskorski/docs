@@ -1,5 +1,12 @@
 ---
 title: Troubleshooting
+keywords: troubleshooting
+last_updated: August 10, 2016
+tags: [getting_started]
+summary: "Troubleshooting guide for MindmapsDB"
+sidebar: home_sidebar
+permalink: troubleshooting.html
+folder: overview
 ---
 # Troubleshooting
 

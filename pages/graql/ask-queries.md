@@ -1,6 +1,12 @@
 ---
-layout: documentation
 title: Ask Queries
+keywords: graql, query, ask
+last_updated: August 10, 2016
+tags: []
+summary: "Graql Ask Queries"
+sidebar: home_sidebar
+permalink: graql_ask.html
+folder: graql
 ---
 ## Ask Queries
 

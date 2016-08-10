@@ -1,5 +1,12 @@
 ---
 title: Quickstart Tutorial
+keywords: setup, getting started
+last_updated: August 10, 2016
+tags: [getting_started]
+summary: "Quickstart tutorial for MindmapsDB"
+sidebar: home_sidebar
+permalink: quickstart_tutorial.html
+folder: overview
 ---
 
 # Graql Quick Start Tutorial

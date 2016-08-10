@@ -1,5 +1,12 @@
 ---
 title: Downloads
+keywords: setup, getting started, download
+last_updated: August 10, 2016
+tags: [getting_started]
+summary: "Setup guide for MindmapsDB"
+sidebar: home_sidebar
+permalink: downloads.html
+folder: overview
 ---
 
 # Downloads

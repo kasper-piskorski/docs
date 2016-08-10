@@ -1,7 +1,13 @@
 ---
 title: How does Mindmaps work
-permalink: overview.html
+keywords: setup, getting started
 tags: [overview]
+last_updated: August 10, 2016
+tags: [getting_started]
+summary: "How does MindmapsDB work"
+sidebar: home_sidebar
+permalink: overview.html
+folder: overview
 ---
 How does Mindmaps work?
 =======================

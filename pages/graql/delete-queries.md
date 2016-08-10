@@ -1,6 +1,12 @@
 ---
-layout: documentation
-title: Delete Queries
+title: Deletes Queries
+keywords: graql, query, delete
+last_updated: August 10, 2016
+tags: []
+summary: "Graql delete queries"
+sidebar: home_sidebar
+permalink: graql_delete.html
+folder: graql
 ---
 ## Delete Queries
 
