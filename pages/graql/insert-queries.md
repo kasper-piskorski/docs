@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Insert Queries
 ---
 ## Insert Queries

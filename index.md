@@ -14,4 +14,12 @@ Hello!
 
 {% include note.html content="This is how you include an information block." %}
 
+```sql
+match dragon isa pokemon-type
+ask
+```
+```java
+qb.match(id("dragon").isa("pokemon-type")).ask().execute();
+```
+
 {% include links.html %}

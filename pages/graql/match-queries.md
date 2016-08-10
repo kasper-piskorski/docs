@@ -1,5 +1,4 @@
 ---
-layout: documentation
 title: Match Queries
 ---
 ## Match Queries
