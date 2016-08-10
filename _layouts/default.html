@@ -1,47 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+<head>
+    {% include head.html %}
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
 
-        <meta name='viewport'    content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' />
-        <meta name='description' content='Open-Source Distributed Semantic Database' />
-        <meta name='keywords'    content='mindmapsdb, mindmaps, mindmaps.io, semantic database, distributed semantic database, distributed database, semantic, database, software, Mindmaps Research, Mindmaps Research Ltd, semantic search, data exploration, recommendation system, knowledge management, advanced analytics, research engines, business, big data, semantic search, semantic graph, semantic web, knowledge representation, automated reasoning, semantic network, data management, data platform, knowledge ontology, ontology, ontology engineering, graph database, graph based knowledge representation, reasoning engine, inference system, inference engine, expert systems, development platform, semantic applications, artificial intelligence' />
-        <title>Docs — MindmapsDB</title>
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
 
-        <meta property='og:title'       content='MindmapsDB' />
-        <meta property='og:type'        content='website' />
-        <meta property='og:image'       content='img/mindmaps.png' />
-        <meta property='og:url'         content='http://mindmaps.io' />
-        <meta property='og:site_name'   content='MindmapsDB' />
-        <meta property='og:description' content='Open-Source Distributed Semantic Database' />
-        <meta property='og:email'       content='info@mindmaps.io' />
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
 
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="/img/metro/ms-icon-144x144.png" />
+        });
 
-        <meta name='theme-color' content='#ffffff' />
-        <link rel='shortcut icon' href='/favicon.ico' />
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    {% if page.datatable == true %}
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function(){
 
-        <link rel="apple-touch-icon" sizes="57x57"   href="img/apple/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="img/apple/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="72x72"   href="img/apple/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="img/apple/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="60x60"   href="img/apple/apple-touch-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="img/apple/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="76x76"   href="img/apple/apple-touch-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="img/apple/apple-touch-icon-152x152.png" />
+            $('table.datatable').DataTable( {
+                        paging: false,
+                        stateSave: true
+                    }
+            );
+    </script>
+    {% endif %}
 
-        <link rel='stylesheet' type='text/css' href='/css/style.css' />
-    </head>
-    <body>
-        {% include header.html %}
+</head>
+<body>
+{% include topnav.html %}
+<!-- Page Content -->
+<div class="container">
+    <div class="col-lg-12">&nbsp;</div>
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3">
 
-        {% include nav.html %}
+          {% include sidebar.html %}
+    <!-- Content Column -->
+    <div class="col-md-9">
+        {{content}}
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+    </div>
 
-        {{ content }}
-
-        {% include footer.html %}
-    </body>
+</body>
+{% if site.google_analytics %}
+{% include google_analytics.html %}
+{% endif %}
 </html>

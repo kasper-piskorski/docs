@@ -1,4 +1,6 @@
 _site/
-navigation.md
 .sass_cache/
 .idea/
+.jekyll-metadata
+_pdf
+.DS_Store
