@@ -7,12 +7,12 @@ match [ [variable](#variable) | [pattern](#pattern) ; ... ]
 ```
 match $x isa movie
 ```
-Match patterns in the graph.
+Match a pattern in the graph.
 
 ```
 match $x isa movie, id "titanic"; (actor $a, $x);
 ```
-Match multiple properties together.
+Match several patterns together.
 
 ## pattern
 
@@ -22,7 +22,7 @@ Match multiple properties together.
 ```
 match $x isa person, value "Guillermo del Toro"
 ```
-A pattern is often just a single variable.
+Match a single variable with several properties.
 
 <big><pre>
 [pattern](#pattern) or [pattern](#pattern)</pre></big>
@@ -30,7 +30,7 @@ A pattern is often just a single variable.
 ```
 match $x isa movie or $x isa person
 ```
-Two patterns can be combined into a disjunction with `or`
+Match one pattern or another.
 
 <big><pre>
 { [pattern](#pattern) ; ... }</pre></big>
@@ -38,7 +38,7 @@ Two patterns can be combined into a disjunction with `or`
 ```
 match $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
 ```
-Several patterns can be combined into a conjunction with `{ }`
+Match one pattern or a conjunction of other patterns.
 
 ## modifier
 
@@ -49,7 +49,7 @@ select [name](#name) , ...</pre></big>
 match $m isa movie; (actor $a1, $m); (actor $a2, $m);
 select $a1, $a2
 ```
-The selected variables can be explicitly defined.
+Select particular variables from the query.
 
 <big><pre>
 limit {integer}</pre></big>
@@ -58,7 +58,7 @@ limit {integer}</pre></big>
 match (director $x, $y)
 limit 10
 ```
-The results can be limited.
+Limit the results of a query.
 
 <big><pre>
 offset {integer}</pre></big>
@@ -68,7 +68,7 @@ match (director $x, $y)
 limit 10
 offset 20
 ```
-Some results can be skipped.
+Skip some results in a query.
 
 <big><pre>
 distinct</pre></big>
@@ -78,7 +78,7 @@ match $m isa movie, id 'dr-strangelove'; (actor $a, $m);
 select $a
 distinct
 ```
-The results can be made distinct (de-duplicated).
+De-duplicate the results of a query.
 
 <big><pre>
 order by [name](#name) \[ (has [resource-type](#identifier)) \] \[ asc | desc \]</pre></big>
@@ -91,7 +91,7 @@ Order by id in ascending order.
 ```
 match $x isa person order by $x(has name) desc
 ```
-Order by name in descending order.
+Order by a resource in descending order.
 
 # ask
 
@@ -112,7 +112,7 @@ insert [variable](#variable) ; ...</pre></big>
 ```
 insert 'finding-dory' isa movie;
 ```
-Insert concepts into the graph.
+Insert a concept into the graph.
 
 <big><pre>
 [match](#match) insert [variable](#variable) ; ...</pre></big>
@@ -145,7 +145,7 @@ description
 ## name
 
 ```
-EXAMPLE
+match (director $the-director, $theMovie); $theMovie isa movie;
 ```
 
 Names start with a `$`, followed by alphanumeric characters, underscores
@@ -157,7 +157,7 @@ or dashes.
 [name](#name) | [id](#identifier)</pre></big>
 
 ```
-EXAMPLE
+insert "TV Show" isa entity-type; movie isa entity-type;
 ```
 
 An `id` is a sequence of alphanumeric characters, underscores and dashes, or a quoted string.
@@ -168,9 +168,14 @@ An `id` is a sequence of alphanumeric characters, underscores and dashes, or a q
 isa [type](#identifier)</pre></big>
 
 ```
-EXAMPLE
+match $x isa movie;
 ```
-description
+Specify the type of a variable.
+
+```
+match $x isa $y;
+```
+Match concepts and their types.
 
 <big><pre>
 id {string}</pre></big>
