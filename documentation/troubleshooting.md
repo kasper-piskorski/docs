@@ -8,8 +8,7 @@ title: Troubleshooting
 >
 > While part of the EAP program you may encounter some exceptions. This section
 > will attempt to help you debug any problems you may encounter. Please feel
-> free to use the discussion section for any specific queries. This section
-> will be periodically updated throughout the EAP program.
+> free to use our [discussion forums] (http://discuss.mindmaps.io) for any specific queries. 
 
 ## Strange Exceptions
 
@@ -42,7 +41,23 @@ removing a concept while another concurrently modifies the same concept. Both
 transactions may successfully commit if the backend is eventually consistent
 (e.g. [Titan
 Cassandra](http://s3.thinkaurelius.com/docs/titan/1.0.0/common-questions.html)
-). The concept is likely to still exists with only the modified properties.
-When using the Titan Cassandra backend it is possible to safe guard against
-this by setting the `checkInternalVertexExistence` property to true. However,
-this will result in slower transaction as more reads will be necessary.
+). The concept is likely to still exist with only the modified properties.
+When using the Titan Cassandra backend it is possible to safeguard against
+this by setting the `checkInternalVertexExistence` property to true.   
+However, this will result in slower transaction as more reads will be necessary.
+
+## Document Changelog  
+
+<table>
+    <tr>
+        <td>Version</td>
+        <td>Date</td>
+        <td>Description</td>        
+    </tr>
+    <tr>
+        <td>v1</td>
+        <td>10/08/2016</td>
+        <td>Checked for release to developer portal.</td>        
+    </tr>
+    
+</table>

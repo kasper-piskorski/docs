@@ -7,16 +7,14 @@ title: Setup Guide
 
 This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql.
 
-**TO DO: Insert table of contents**
-
 ## Download and Install Mindmaps
 
 > **Prerequisites**  
 > Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set
 > accordingly. Mindmaps also requires Maven 3.
 
-The latest version of mindmaps can be downloaded from
-[our downloads page](http://mindmaps.io/download/mindmaps-0.2.1.zip). Unzip it and run the following in the terminal:
+The latest version of mindmaps can be downloaded from the
+[downloads page](downloads.html). Unzip it and run the following in the terminal:
 
 ```bash
 cd mindmaps-build
@@ -57,12 +55,12 @@ If you see the above output then congratulations! You have set up Mindmaps.
 
 
 ###Troubleshooting  
-If you do not see the above message, we may cover it in our troubleshooting documentation. If you have any questions, please ask a question on our discussion forum, or Stack Overflow.
-TO DO - LINKS!!!
+If you do not see the above message, please check our [troubleshooting page](troubleshooting.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.mindmaps.io), or on [Stack Overflow](http://stackoverflow.com).
+
 
 
 ##Where next?
-Our Quick Start Tutorial will show you how to load an ontology and data into a Mindmaps Graph. LINKS TO DO
+Our [Quick Start Tutorial](quickstart_tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using [Graql](quickstart_tutorial.html) or [Java](quickstart_tutorial_java.html). 
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

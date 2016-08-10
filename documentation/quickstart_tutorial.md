@@ -5,13 +5,19 @@ title: Quickstart Tutorial
 
 # Graql Quick Start Tutorial
 
-This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph. You can find the example ```philosophers.gql``` in the examples directory included in the mindmaps.zip.   
-If you have not yet set up the Mindmaps environment, please see the Quick Set Up guide. LINK TO DO
-If you want to get started using Java rather than Graql, please see the Java Quick Start tutorial. LINK TO DO
+This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph.  If you have not yet set up the Mindmaps environment, please see the [Quick Set Up guide](getting_started.html).
+You can find the example ```philosophers.gql``` in the examples directory included in the Mindmaps download. 
 
-**TO DO: Insert table of contents**
+If you want to use Java rather than Graql, please see the [Java Quick Start tutorial](quickstart_tutorial_java.html), which is analagous to this one, but uses the MindmapsDB Java API.
 
-We are going model how philosophers are related to each other. By the way, don't worry if you've already loaded some data into your graph. A Mindmaps Graph can contain as many ontologies as you want.
+##Introduction
+We are going model how philosophers are related to each other. If you don't want to type everything below to build up the philosophers ontology, you can load it using:  
+
+```bash
+bin/graql.sh -f examples/philosophers.gql
+```
+
+By the way, don't worry if you've already loaded some different data into your graph. A Mindmaps Graph can contain as many ontologies as you want.
 
 ## Concepts
 
@@ -19,16 +25,16 @@ We'll first add an ontology element - an entity type: `person`...
 
 ```bash
 bin/graql.sh
-insert person isa entity-type;
+>>>insert person isa entity-type;
 ```
 
 ...and now some data in the form of concept instances: in our case, a bunch of ancient Greeks...
 
 ```sql
-insert "Socrates" isa person;
-insert "Plato" isa person;
-insert "Aristotle" isa person;
-insert "Alexander" isa person;
+>>>insert "Socrates" isa person;
+>>>insert "Plato" isa person;
+>>>insert "Aristotle" isa person;
+>>>insert "Alexander" isa person;
 ```
 
 ![](/docs/images/phil.png)
@@ -50,14 +56,13 @@ concept instances.
 We'll quickly check our data has loaded:
 
 ```sql
-match $p isa person
+>>>match $p isa person
 
 $p id "Aristotle" isa person;
 $p id "Plato" isa person;
 $p id "Socrates" isa person;
 $p id "Alexander" isa person;
 ```
-TO DO - Where did we set the id? What does this represent?
 
 > **Variables**
 > Graql variables start with a `$`. They represent "wildcards", and are
@@ -67,17 +72,17 @@ TO DO - Where did we set the id? What does this represent?
 Next, let's add some `schools` of thought:
 
 ```sql
-insert school isa entity-type;
-insert "Peripateticism" isa school;
-insert "Platonism" isa school;
-insert "Idealism" isa school;
-insert "Cynicism" isa school;
+>>>insert school isa entity-type;
+>>>insert "Peripateticism" isa school;
+>>>insert "Platonism" isa school;
+>>>insert "Idealism" isa school;
+>>>insert "Cynicism" isa school;
 ```
 
 And look up one:
 
 ```sql
-match $cyn id "Cynicism"
+>>>match $cyn id "Cynicism"
 
 $cyn id "Cynicism" isa school;
 ```
@@ -87,35 +92,35 @@ $cyn id "Cynicism" isa school;
 
 How do we define a "philosopher"? Very smart people have argued for a very long time about this, but we're going to put our fingers in our ears and say a philosopher is someone who practices a philosophy.
 
-A relation comprises of pairs of role types and role players. Relations and roles also have types, just like normal concepts.  
+A relation comprises of pairs of roles and role players. Relations and roles also have types, just like normal concepts.  
 
 First, we define a `relation-type` called `practice` that relates a
 `role-type` called `philosopher` to a `role-type` called `philosophy`:
 
 ```sql
-insert practice isa relation-type;
-insert philosopher isa role-type;
-insert philosophy isa role-type;
-insert practice has-role philosopher, has-role philosophy;
+>>>insert practice isa relation-type;
+>>>insert philosopher isa role-type;
+>>>insert philosophy isa role-type;
+>>>insert practice has-role philosopher, has-role philosophy;
 ```
 
 > **I don't like typing!**
 > Commas are totally optional in query patterns, so these pairs are equivalent:
 
 > ```sql
-> insert practice has-role philosopher, has-role philosophy;
-> insert practice has-role philosopher has-role philosophy;
+> >>>insert practice has-role philosopher, has-role philosophy;
+> >>>insert practice has-role philosopher has-role philosophy;
 >  
-> insert practice, isa relation-type;
-> insert practice isa relation-type;
+> >>>insert practice, isa relation-type;
+> >>>insert practice isa relation-type;
 > ```
 
 
 A `person` can have the role of `philosopher` and a `school` can have the role of `philosophy`:
 
 ```sql
-insert person plays-role philosopher;
-insert school plays-role philosophy;
+>>>insert person plays-role philosopher;
+>>>insert school plays-role philosophy;
 ```
 
 > **graql commit -am "changed some stuff"**  
@@ -125,10 +130,10 @@ insert school plays-role philosophy;
 Now let's relate some `philosophers` to their `philosophies`:
 
 ```sql
-insert (philosopher "Socrates", philosophy "Platonism") isa practice;
-insert (philosopher "Plato", philosophy "Idealism") isa practice;
-insert (philosopher "Plato", philosophy "Platonism") isa practice;
-insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
+>>>insert (philosopher "Socrates", philosophy "Platonism") isa practice;
+>>>insert (philosopher "Plato", philosophy "Idealism") isa practice;
+>>>insert (philosopher "Plato", philosophy "Platonism") isa practice;
+>>>insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
 ```
 
 ![](/docs/images/practice.png)
@@ -138,7 +143,7 @@ Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing th
 Now we can query for all our Platonists:
 
 ```sql
-match (philosopher $phil, "Platonism") isa practice;
+>>>match (philosopher $phil, "Platonism") isa practice;
 
 $phil id "Socrates" isa person;
 $phil id "Plato" isa person;
@@ -161,23 +166,23 @@ Great!
 First, extend our ontology:
 
 ```sql
-insert education isa relation-type;
-insert teacher isa role-type;
-insert student isa role-type;
-insert education has-role teacher, has-role student;
-insert person plays-role teacher, plays-role student;
+>>>insert education isa relation-type;
+>>>insert teacher isa role-type;
+>>>insert student isa role-type;
+>>>insert education has-role teacher, has-role student;
+>>>insert person plays-role teacher, plays-role student;
 ```
 
 
 Second, our data:
 
 ```sql
-insert (teacher "Socrates", student "Plato") isa education;
-insert (teacher "Plato", student "Aristotle") isa education;
-insert (teacher "Aristotle", student "Alexander") isa education;
+>>>insert (teacher "Socrates", student "Plato") isa education;
+>>>insert (teacher "Plato", student "Aristotle") isa education;
+>>>insert (teacher "Aristotle", student "Alexander") isa education;
 ```
 
-> **Aristotle's Teacher**  
+> **Test Yourself: Find Aristotle's Teacher**  
 > Try writing a query to see who taught Aristotle. Include all the roles and
 > types (`teacher`, `student` and `education`), then remove them one by one to see when the results change! The answer is at the bottom of this page.
 
@@ -187,15 +192,15 @@ Some people have special titles and epithets and we want to talk about that.
 So, we'll create some resource types that can be attached to a person:
 
 ```sql
-insert title isa resource-type, datatype string;
-insert epithet isa resource-type, datatype string;
-insert person has-resource title, has-resource epithet;
+>>>insert title isa resource-type, datatype string;
+>>>insert epithet isa resource-type, datatype string;
+>>>insert person has-resource title, has-resource epithet;
 ```
 
 Let's make Alexander "Great"!
 
 ```sql
-insert "Alexander" has epithet "The Great";
+>>>insert "Alexander" has epithet "The Great";
 ```
 
 This is a quick way to add a relation between `Alexander` and an `epithet` with value `"The Great"`.
@@ -205,18 +210,17 @@ This is a quick way to add a relation between `Alexander` and an `epithet` with 
 Let's add the rest of Alexander's titles while we're at it:
 
 ```sql
-insert "Alexander" has title "Hegemon";
-insert "Alexander" has title "King of Macedon";
-insert "Alexander" has title "King of Persia";
-insert "Alexander" has title "Pharaoh of Egypt";
-insert "Alexander" has title "Lord of Asia";
+>>>insert "Alexander" has title "Hegemon";
+>>>insert "Alexander" has title "King of Macedon";
+>>>insert "Alexander" has title "King of Persia";
+>>>insert "Alexander" has title "Pharaoh of Egypt";
+>>>insert "Alexander" has title "Lord of Asia";
 ```
 
 Now we can query for people, listing their id and titles:  
-**TO DO - Again, need to clarify id**
 
 ```sql
-match $x isa person select $x(id, has title)
+>>>match $x isa person select $x(id, has title)
 
 $x id "Socrates";
 $x id "Plato";
@@ -227,14 +231,14 @@ $x id "Alexander" has title "Pharaoh of Egypt" has title "Hegeon" has title "Sha
 Wait, who's the Pharaoh again?
 
 ```sql
-match $pharaoh has title "Pharaoh of Egypt"
+>>>match $pharaoh has title "Pharaoh of Egypt"
 
 $pharaoh id "Alexander" isa person;
 ```
 
 
-> **Predicates**
-> When querying for an id, value or resource you can use predicates as well as direct values. For example, `has epithet contains "Great"`. See if you can write a query for everyone with a title containing "King". Answers are at the bottom of the page!
+> **Test Yourself: Predicates**
+> When querying for an id, value or resource you can use predicates as well as direct values. For example, `has epithet contains "Great"`. See if you can write a query for everyone with a title containing "King". The answer is at the bottom of the page.
 
 ## Relations as Role Players
 
@@ -242,45 +246,41 @@ Philosophers know lots of things. We should probably include this in our
 ontology.
 
 ```sql
-insert knowledge isa relation-type;
-insert thinker isa role-type;
-insert thought isa role-type;
-insert knowledge has-role thinker, has-role thought;
-insert fact isa entity-type, plays-role thought;
-insert person plays-role thinker;
+>>>insert knowledge isa relation-type;
+>>>insert thinker isa role-type;
+>>>insert thought isa role-type;
+>>>insert knowledge has-role thinker, has-role thought;
+>>>insert fact isa entity-type, plays-role thought;
+>>>insert person plays-role thinker;
 ```
 
 Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't really know anything at all.
 
 ```sql
-insert "sun-fact" isa fact, value "The Sun is bigger than the Earth";
-insert (thinker "Aristotle", thought "sun-fact") isa knowledge;
-insert "cave-fact" isa fact, value "Caves are mostly pretty dark";
-insert (thinker "Plato", thought "cave-fact") isa knowledge;
-insert "nothing" isa fact;
-insert (thinker "Socrates", thought "nothing") isa knowledge;
+>>>insert "sun-fact" isa fact, value "The Sun is bigger than the Earth";
+>>>insert (thinker "Aristotle", thought "sun-fact") isa knowledge;
+>>>insert "cave-fact" isa fact, value "Caves are mostly pretty dark";
+>>>insert (thinker "Plato", thought "cave-fact") isa knowledge;
+>>>insert "nothing" isa fact;
+>>>insert (thinker "Socrates", thought "nothing") isa knowledge;
 ```
-
-TO DO - probably need to talk more about introducing "value" 
 
 A relation is actually just a special kind of instance. Just as
 `Socrates` can be a role player, relations themselves can also be role players.
-
-TO DO - OK, I lost it here!
 
 For example, Socrates knew nothing, but he also *knew* that he knew nothing!
 
 First, we have to state that someone can think about their own knowledge:
 
 ```sql
-insert knowledge plays-role thought;
+>>>insert knowledge plays-role thought;
 ```
 
 
 We can now give Socrates one final piece of knowledge:
 
 ```sql
-match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker "Socrates", thought $socratesKnowsNothing) isa knowledge
+>>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker "Socrates", thought $socratesKnowsNothing) isa knowledge
 ```
 
 
@@ -291,7 +291,7 @@ player.
 Finally, we'll check out everything Socrates knows:
 
 ```sql
-match ("Socrates", $x) isa knowledge
+>>>match ("Socrates", $x) isa knowledge
 
 $x id "nothing" isa fact;
 $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
@@ -306,16 +306,21 @@ $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 > Once you done make sure to use `mindmaps.sh stop && mindmaps.sh clean` if you would like to clean your graph quickly.   
 > **Warning :** This will delete all your graphs.
 
-## Answers
-We asked you to write a query to see who taught Aristotle. Answer:
+## Test Yourself: Answers
+We asked you to write a query to see who taught Aristotle.   
+Answer:
+
 ```sql
-select $teach where (teacher $teach, $student Aristotle) isa education
+match $teach where (teacher $teach, $student Aristotle) isa education
 ```
 
-We asked you to write a query for everyone with a title containing "King". Answer:
+We asked you to write a query for everyone with a title containing "King".   
+Answer:  
+
 ```sql
 match $king has title contains "King"
 ```
+
 
 ## Document Changelog  
 

@@ -5,9 +5,7 @@ title: Downloads
 
 # Downloads
 
-This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB. If you want to look at our code, we are on Github here LINK TO DO.
-
-**TO DO: Insert table of contents**
+This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB. If you want to look at our code, we are on Github [here](TO DO).
 
 ## Download Mindmaps
 
@@ -16,7 +14,7 @@ It can be downloaded from [here](http://mindmaps.io/download/mindmaps-0.2.1.zip)
 
 
 ### Past Versions
-Extend as needed
+Here is a list of previously released versions of MindmapsDB:
 
 ## What's included?
 TO DO. Directory listing and explanation. Will there be release notes?
@@ -47,7 +45,7 @@ Here are some links to guides for adding external jars using different IDEs:
 - [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
 
 ##Troubleshooting
-Please see our troubleshooting document if you encounter any problems with the installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our discussion forums. LINKS TO DO.
+Please see our [troubleshooting](troubleshooting.html) page if you encounter any problems when installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.mindmaps.io) or on [Stack Overflow] (http://www.stackoverflow.com).
 
 ## Document Changelog  
 
@@ -57,7 +55,7 @@ Please see our troubleshooting document if you encounter any problems with the i
         <td>Date</td>
         <td>Description</td>        
     </tr>
-        <tr>
+    <tr>
         <td>v1</td>
         <td>09/08/2016</td>
         <td>New page for developer portal.</td>        
