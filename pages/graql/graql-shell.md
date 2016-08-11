@@ -1,5 +1,12 @@
 ---
 title: Graql Shell
+keywords: graql, shell
+last_updated: August 10, 2016
+tags: []
+summary: "Graql Shell"
+sidebar: home_sidebar
+permalink: graql_shell.html
+folder: graql
 ---
 ## Graql Shell
 

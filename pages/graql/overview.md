@@ -1,5 +1,12 @@
 ---
 title: Overview
+keywords: graql, overview
+last_updated: August 10, 2016
+tags: []
+summary: "Graql Overview"
+sidebar: home_sidebar
+permalink: graql_overview.html
+folder: graql
 ---
 ## Overview
 

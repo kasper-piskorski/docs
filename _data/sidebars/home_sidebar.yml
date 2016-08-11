@@ -14,70 +14,70 @@ entries:
         url: /overview.html
       - title: Setup Guide
         output: web
-        url: /overview_getting_started.html
+        url: /getting_started.html
   - title: The Basics
     output: web
     folderitems:
       - title: Mindmaps Basics
         output: web
-        url: /documentation/mindmaps_basics
+        url: /mindmaps_basics.html
       - title: Quickstart Tutorial
         output: web
-        url: /documentation/quickstart_tutorial
+        url: /quickstart_tutorial.html
       - title: Java Quickstart Tutorial
         output: web
-        url: /documentation/quickstart_tutorial_java
+        url: /quickstart_tutorial_java.html
   - title: Troubleshooting
     output: web
     folderitems:
       - title: Troubleshooting
         output: web
-        url: /documentation/troubleshooting
+        url: /troubleshooting.html
   - title: Resources
     output: web
     folderitems:
       - title: Downloads
         output: web
-        url: /documentation/downloads
-  - title: Core
-    output: web
-    folderitems:
-      - title: Overview
-        output: web
-        url: /documentation/core/overview
-  - title: Factory
-    output: web
-    folderitems:
-      - title: Overview
-        output: web
-        url: /documentation/factory/overview
-      - title: Tinker Graph Factory
-        output: web
-        url: /documentation/factory/tinker-graph-factory
-      - title: Titan Graph Factory
-        output: web
-        url: /documentation/factory/titan-graph-factory
+        url: /downloads.html
+#  - title: Core
+#    output: web
+#    folderitems:
+#      - title: Overview
+#        output: web
+#        url: /core/overview.html
+#  - title: Factory
+#    output: web
+#    folderitems:
+#      - title: Overview
+#        output: web
+#        url: /factory/overview.html
+#      - title: Tinker Graph Factory
+#        output: web
+#        url: /factory/tinker-graph-factory.html
+#      - title: Titan Graph Factory
+#        output: web
+#        url: /factory/titan-graph-factory.html
   - title: Graql
     output: web
     folderitems:
       - title: Overview
         output: web
-        url: /documentation/graql/overview
+        url: /graql_overview.html
       - title: Match Queries
         output: web
-        url: /documentation/graql/match-queries
+        url: /graql_match.html
       - title: Ask Queries
         output: web
-        url: /documentation/graql/ask-queries
+        url: /graql_ask.html
       - title: Delete Queries
         output: web
-        url: /documentation/graql/delete-queries
+        url: /graql_delete.html
       - title: Insert Queries
         output: web
-        url: /documentation/graql/insert-queries
+        url: /graql_insert.html
       - title: Graql Shell
         output: web
-        url: /documentation/graql/graql-shell
+        url: /graql_shell.html
       - title: Java Graql
         output: web
-        url: /documentation/graql/java-graql
+        url: /java_graql.html

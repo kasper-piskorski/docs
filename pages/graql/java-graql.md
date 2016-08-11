@@ -1,5 +1,12 @@
 ---
 title: Java Graql
+keywords: graql, java
+last_updated: August 10, 2016
+tags: []
+summary: "Java Graql"
+sidebar: home_sidebar
+permalink: java_graql.html
+folder: graql
 ---
 ## Java Graql
 

@@ -1,12 +1,12 @@
 ---
 title: Setup Guide
-<!-- keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
-last_updated: July 3, 2016
+keywords: setup, getting started
+last_updated: August 10, 2016
 tags: [getting_started]
-summary: "I have used this theme for projects that I've worked on as a professional technical writer."
-sidebar: mydoc_sidebar
-permalink: mydoc_about.html
-folder: mydoc -->
+summary: "Setup guide for MindmapsDB"
+sidebar: home_sidebar
+permalink: getting_started.html
+folder: overview
 ---
 
 # Setup Guide
