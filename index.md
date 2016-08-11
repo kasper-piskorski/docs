@@ -17,12 +17,4 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 
 
-```sql
-match dragon isa pokemon-type
-ask
-```
-```java
-qb.match(id("dragon").isa("pokemon-type")).ask().execute();
-```
-
 {% include links.html %}
