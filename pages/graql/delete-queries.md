@@ -5,7 +5,7 @@ last_updated: August 11, 2016
 tags: [graql]
 summary: "Graql Delete Queries"
 sidebar: home_sidebar
-permalink: graql_delete.html
+permalink: graql/delete-queries
 folder: graql
 ---
 

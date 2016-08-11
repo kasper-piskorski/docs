@@ -6,7 +6,7 @@ last_updated: August 11, 2016
 tags: [getting_started]
 summary: "A platform-level overview of MindmapsDB."
 sidebar: home_sidebar
-permalink: overview.html
+permalink: overview/overview
 folder: overview
 ---
 ## THIS IS ALL GOING TO CHANGE

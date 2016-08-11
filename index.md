@@ -3,7 +3,7 @@ title: Welcome to the Mindmaps Documentation Portal
 keywords: sample homepage
 tags: [getting_started]
 sidebar: home_sidebar
-permalink: index.html
+permalink: /
 toc: false
 summary: "Documentation Portal Home."
 ---

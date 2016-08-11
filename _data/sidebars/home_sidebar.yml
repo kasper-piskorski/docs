@@ -11,34 +11,34 @@ entries:
     folderitems:
       - title: Overview
         output: web
-        url: /overview.html
+        url: /overview/overview
       - title: Setup Guide
         output: web
-        url: /getting_started.html
+        url: /overview/getting_started
   - title: The Basics
     output: web
     folderitems:
       - title: Mindmaps Basics
         output: web
-        url: /mindmaps_basics.html
+        url: /overview/mindmaps_basics
       - title: Quickstart Tutorial
         output: web
-        url: /quickstart_tutorial.html
+        url: /overview/quickstart_tutorial
       - title: Java Quickstart Tutorial
         output: web
-        url: /quickstart_tutorial_java.html
+        url: /overview/quickstart_tutorial_java
   - title: Troubleshooting
     output: web
     folderitems:
       - title: Troubleshooting
         output: web
-        url: /troubleshooting.html
+        url: /overview/troubleshooting
   - title: Resources
     output: web
     folderitems:
       - title: Downloads
         output: web
-        url: /downloads.html
+        url: /overview/downloads
 #  - title: Core
 #    output: web
 #    folderitems:
@@ -62,22 +62,22 @@ entries:
     folderitems:
       - title: Overview
         output: web
-        url: /graql_overview.html
+        url: /graql/overview
       - title: Match Queries
         output: web
-        url: /graql_match.html
+        url: /graql/match-queries
       - title: Ask Queries
         output: web
-        url: /graql_ask.html
+        url: /graql/ask-queries
       - title: Delete Queries
         output: web
-        url: /graql_delete.html
+        url: /graql/delete-queries
       - title: Insert Queries
         output: web
-        url: /graql_insert.html
+        url: /graql/insert-queries
       - title: Graql Shell
         output: web
-        url: /graql_shell.html
+        url: /graql/graql-shell
       - title: Java Graql
         output: web
-        url: /java_graql.html
+        url: /graql/java-graql

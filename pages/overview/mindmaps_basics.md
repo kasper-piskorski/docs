@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [getting_started]
 summary: "MindmapsDB basics"
 sidebar: home_sidebar
-permalink: mindmaps_basics.html
+permalink: overview/mindmaps_basics
 folder: overview
 ---
 # Mindmaps Basics

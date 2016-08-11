@@ -6,7 +6,7 @@ tags: [graql]
 summary: "
 The Graql shell is used to execute Graql queries from the command line, or to let Graql be invoked from other applications."
 sidebar: home_sidebar
-permalink: graql_shell.html
+permalink: graql/graql-shell
 folder: graql
 ---
 

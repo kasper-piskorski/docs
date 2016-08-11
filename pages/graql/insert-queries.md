@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [graql]
 summary: "Graql Insert Queries"
 sidebar: home_sidebar
-permalink: graql_insert.html
+permalink: graql/insert-queries
 folder: graql
 ---
 

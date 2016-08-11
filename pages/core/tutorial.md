@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: []
 summary: "MindmapsDB Core Overview"
 sidebar: home_sidebar
-permalink: core_overview.html
+permalink: core/tutorial
 folder: core
 ---
 

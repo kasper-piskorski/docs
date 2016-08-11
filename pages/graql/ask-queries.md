@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [graql]
 summary: "Graql Ask Queries"
 sidebar: home_sidebar
-permalink: graql_ask.html
+permalink: graql/ask-questies
 folder: graql
 ---
 

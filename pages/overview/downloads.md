@@ -6,7 +6,7 @@ tags: [getting_started]
 summary: "
 This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB."
 sidebar: home_sidebar
-permalink: downloads.html
+permalink: overview/downloads
 folder: overview
 ---
 

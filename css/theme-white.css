@@ -475,7 +475,7 @@ body.print h4 {color: #679DCE !important; font-size:14px; font-style: italic !im
 /*  */
 
 .tags b {
-    margin-right: 0.5em;
+    margin-right: 0.4em;
 }
 
 /*  */
@@ -507,7 +507,9 @@ a.dropdown-toggle,
 }
 
 .nav li li a {
-    background-color: #98DCC9;
+    background-color: #D3F7FF;
+    font-size: 1.4rem;
+    margin-left:10px;
 }
 
 .nav li > a span{
@@ -525,21 +527,28 @@ a.dropdown-toggle,
     font-weight: 200;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: 1.6rem;
     color: #383838;
-    background-color: #A7EBD8;
+    background-color: #B0E3EF;
 }
 
 .nav li a:hover,
+.nav li.active > a:hover,
 .nav li a:focus {
     color: #FFFFFF;
-    background-color: #89CDBA;
+    background-color: #56A7B9;
 }
 
 .nav li.active > a,
-.nav li.active > a:hover,
 .nav li.active > a:focus {
     color: #ffffff;
-    background-color: #79BDAA;
+    background-color: #72BDCE;
+}
+
+.nav li li.active > a,
+.nav li li.active > a:focus {
+    color: #ffffff;
+    background-color: #56A7B9;
 }
 
 .nav li a:hover span,
@@ -584,6 +593,10 @@ a.dropdown-toggle,
 
 .footer a:hover {
     text-decoration: none;
+}
+
+.footer a:after {
+    display: none;
 }
 
 .footer p svg {

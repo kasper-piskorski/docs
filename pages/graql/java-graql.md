@@ -5,7 +5,7 @@ last_updated: August 11, 2016
 tags: [graql, java]
 summary: "How to construct and execute Graql queries programmatically in Java."
 sidebar: home_sidebar
-permalink: java_graql.html
+permalink: graql/java-graql
 folder: graql
 ---
 
