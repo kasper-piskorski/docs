@@ -1,8 +1,9 @@
 # match
 
 <big><pre>
-match [ [variable](#variable) | [pattern](#pattern) ; ... ]
-      \[ [select | limit | offset | distinct | order ...](#modifier) \]</pre></big>
+match
+[ [pattern](#pattern) ; ... ]
+\[ [select | limit | offset | distinct | order ...](#modifier) \]</pre></big>
 
 ```
 match $x isa movie
@@ -10,46 +11,24 @@ match $x isa movie
 Match a pattern in the graph.
 
 ```
-match $x isa movie, id "titanic"; (actor $a, $x);
+match
+$x isa movie, id "titanic";
+(actor $a, $x);
 ```
 Match several patterns together.
-
-## pattern
-
-<big><pre>
-[variable](#variable)</pre></big>
-
-```
-match $x isa person, value "Guillermo del Toro"
-```
-Match a single variable with several properties.
-
-<big><pre>
-[pattern](#pattern) or [pattern](#pattern)</pre></big>
-
-```
-match $x isa movie or $x isa person
-```
-Match one pattern or another.
-
-<big><pre>
-{ [pattern](#pattern) ; ... }</pre></big>
-
-```
-match $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
-```
-Match one pattern or a conjunction of other patterns.
 
 ## modifier
 
 <big><pre>
-select [name](#name) , ...</pre></big>
+select \[ [variable](#variable) , ... \]</pre></big>
 
 ```
 match $m isa movie; (actor $a1, $m); (actor $a2, $m);
 select $a1, $a2
 ```
 Select particular variables from the query.
+
+---
 
 <big><pre>
 limit {integer}</pre></big>
@@ -59,6 +38,8 @@ match (director $x, $y)
 limit 10
 ```
 Limit the results of a query.
+
+---
 
 <big><pre>
 offset {integer}</pre></big>
@@ -70,6 +51,8 @@ offset 20
 ```
 Skip some results in a query.
 
+---
+
 <big><pre>
 distinct</pre></big>
 
@@ -80,8 +63,10 @@ distinct
 ```
 De-duplicate the results of a query.
 
+---
+
 <big><pre>
-order by [name](#name) \[ (has [resource-type](#identifier)) \] \[ asc | desc \]</pre></big>
+order by [variable](#variable) \[ (has [resource-type](#identifier)) \] \[ asc | desc \]</pre></big>
 
 ```
 match $x isa person order by $x
@@ -107,54 +92,77 @@ Return whether the match query has any results.
 # insert
 
 <big><pre>
-insert [variable](#variable) ; ...</pre></big>
+insert \[ [pattern](#pattern) ; ... \]</pre></big>
 
 ```
 insert 'finding-dory' isa movie;
 ```
 Insert a concept into the graph.
 
+---
+
 <big><pre>
-[match](#match) insert [variable](#variable) ; ...</pre></big>
+[match](#match) insert \[ [pattern](#pattern) ; ... \]</pre></big>
 
 ```
-EXAMPLE
+match $m isa movie; (director 'tim-burton', $m);
+insert (actor 'johnny-depp', production-with-cast $m) isa has-cast;
 ```
-description
+Insert a relation for every result of a match query.
 
 # delete
 
 <big><pre>
-[match](#match) delete [variable](#variable) ; ...</pre></big>
+[match](#match) delete \[ [pattern](#pattern) ; ... \]</pre></big>
 
 ```
-EXAMPLE
+match $x isa person;
+delete $x;
 ```
-description
+Delete every instance of a type.
 
-# variable
+# pattern
 
 <big><pre>
-[identifier](#identifier) [property](#property) , ...</pre></big>
+[identifier](#identifier) \[ [property](#property) , ... \]</pre></big>
 
 ```
-EXAMPLE
+$x isa person, value "Guillermo del Toro"
 ```
-description
+A variable with several properties.
 
-## name
+---
+
+<big><pre>
+[pattern](#pattern) or [pattern](#pattern)</pre></big>
+
+```
+$x isa movie or $x isa person
+```
+Match either the left or right pattern.
+
+---
+
+<big><pre>
+{ \[ [pattern](#pattern) ; ... \] }</pre></big>
+
+```
+$x isa movie or { (actor $x, $y); $y id 'the-martian'; }
+```
+Match either the left pattern or all the right patterns.
+
+## variable
 
 ```
 match (director $the-director, $theMovie); $theMovie isa movie;
 ```
 
-Names start with a `$`, followed by alphanumeric characters, underscores
-or dashes.
+Variables start with a `$`, followed by alphanumeric characters, underscores or dashes.
 
 ## identifier
 
 <big><pre>
-[name](#name) | [id](#identifier)</pre></big>
+[variable](#variable) | [id](#identifier)</pre></big>
 
 ```
 insert "TV Show" isa entity-type; movie isa entity-type;
@@ -170,73 +178,117 @@ isa [type](#identifier)</pre></big>
 ```
 match $x isa movie;
 ```
-Specify the type of a variable.
+Specify the type of a concept.
 
 ```
 match $x isa $y;
 ```
 Match concepts and their types.
 
+---
+
 <big><pre>
 id {string}</pre></big>
 
 ```
-EXAMPLE
+match $x id 'ridley-scott';
 ```
-description
+Match the concept with a particular ID.
+
+---
 
 <big><pre>
 value [ = | != | < | <= | >= | > | contains ] {value}</pre></big>
 
 ```
-EXAMPLE
+match $m value contains "The Lord of the Rings";
 ```
-description
+Match concepts with a value that contains the given string.
+
+---
 
 <big><pre>
 has [resource-type](#identifier) [ = | != | < | <= | >= | > | contains ] {value}</pre></big>
 
 ```
-EXAMPLE
+match $m isa movie, has runtime > 180;
 ```
-description
+Match concepts with a resource matching a predicate.
+
+---
 
 <big><pre>
-( \[ [role-type](#identifier) \] [role-player](#identifier) , ... )</pre></big>
+( \[ \[ [role-type](#identifier) \] [role-player](#identifier) , ... \] )</pre></big>
 
 ```
-EXAMPLE
+match ($x, $y);
 ```
-description
+Match related concepts.
+
+```
+match ($p1, $p2) isa marriage;
+```
+Match concepts related with a particular relation type.
+
+```
+match (director $p, $m);
+```
+Match two related concepts where one plays a specified role type.
+
+```
+match (actor $p, character-being-played $c, production-with-cast $m);
+```
+Match concepts in a ternary relation.
+
+---
 
 <big><pre>
 ako [type](#identifier)</pre></big>
 
 ```
-EXAMPLE
+insert blockbuster ako movie;
 ```
-description
+Insert a new type that is a subtype of an existing type.
+
+---
 
 <big><pre>
 has-role [role-type](#identifier)</pre></big>
 
 ```
-EXAMPLE
+insert
+director isa role-type;
+production-with-director isa role-type;
+directorship isa relation-type, has-role director, has-role production-with-director;
 ```
-description
+Insert a new relation type with two role types.
+
+---
 
 <big><pre>
 plays-role [role-type](#identifier)</pre></big>
 
 ```
-EXAMPLE
+insert person plays-role director
 ```
-description
+Allow instances of a type to play a role in a relation.
+
+---
+
+<big><pre>
+datatype ( string | long | double | boolean )</pre></big>
+
+```
+insert name isa resource-type, datatype string;
+```
+Insert a new resource type with the given datatype.
+
+---
 
 <big><pre>
 has-resource [resource-type](#identifier)</pre></big>
 
 ```
-EXAMPLE
+insert person has-resource name;
 ```
-description
+Allow instances of a type to have a resource.
