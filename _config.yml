@@ -11,7 +11,7 @@ site_title: MindmapsDB
 company_name: MindmapsDB
 # this appears in the footer
 
-github_editme_path: mindmapsdb/docs/
+github_editme_path: mindmapsdb/docs/blob/master
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 # disqus_shortname: idrbwjekyll
@@ -82,6 +82,7 @@ defaults:
 
 sidebars:
 - home_sidebar
+- alt_sidebar
 
 description: "Open-Source Distributed Semantic Database"
 # the description is used in the feed.xml file

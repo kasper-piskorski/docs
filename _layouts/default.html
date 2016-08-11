@@ -54,21 +54,25 @@
 
 </head>
 <body>
+{% include svg_sprite.html %}
 {% include topnav.html %}
 <!-- Page Content -->
 <div class="container">
-    <div class="col-lg-12">&nbsp;</div>
     <!-- Content Row -->
     <div class="row">
         <!-- Sidebar Column -->
         <div class="col-md-3">
-
           {% include sidebar.html %}
-    <!-- Content Column -->
-    <div class="col-md-9">
-        {{content}}
+        </div>
+        <!-- Content Column -->
+        <div class="col-md-9">
+            {{content}}
+        </div>
     </div>
-    <!-- /.row -->
+    <!-- Footer Row -->
+    <footer class="row">
+        {% include footer.html %}
+    </footer>
 </div>
 <!-- /.container -->
     </div>

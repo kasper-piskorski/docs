@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [getting_started]
 summary: "Quickstart tutorial for MindmapsDB"
 sidebar: home_sidebar
-permalink: quickstart_tutorial.html
+permalink: quickstart_tutorial
 folder: overview
 ---
 
