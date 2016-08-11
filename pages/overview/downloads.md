@@ -3,15 +3,13 @@ title: Downloads
 keywords: setup, getting started, download
 last_updated: August 10, 2016
 tags: [getting_started]
-summary: "Setup guide for MindmapsDB"
+summary: "
+This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB."
 sidebar: home_sidebar
 permalink: downloads.html
 folder: overview
 ---
 
-# Downloads
-
-This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB. If you want to look at our code, we are on Github [here](TO DO).
 
 ## Download Mindmaps
 
@@ -26,12 +24,18 @@ Here is a list of previously released versions of MindmapsDB:
 TO DO. Directory listing and explanation. Will there be release notes?
 
 ## Prerequisites
-Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
-Mindmaps also requires Maven 3.
+
+{% include note.html content="Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
+Mindmaps also requires Maven 3." %}
+
+## Code
+We are an open source project. If you want to look at our code, we are on Github [here](TO DO).
+
 
 ## Mindmaps Java API
 
-> TO DO - Specify Maven dependency
+
+{% include note.html content="TO DO - SPECIFY MAVEN DEPENDENCY." %}
 
 Inside the `lib` directory of mindmaps.zip are the jars you will need to
 develop with mindmaps. 
@@ -50,8 +54,8 @@ Here are some links to guides for adding external jars using different IDEs:
 - [Eclipse](http://www.tutorialspoint.com/eclipse/eclipse_java_build_path.htm)
 - [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
 
-##Troubleshooting
-Please see our [troubleshooting](troubleshooting.html) page if you encounter any problems when installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.mindmaps.io) or on [Stack Overflow] (http://www.stackoverflow.com).
+## Troubleshooting
+Please see our [troubleshooting](troubleshooting.html) page if you encounter any problems when installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.mindmaps.io) or on [Stack Overflow](http://www.stackoverflow.com).
 
 {% include links.html %}
 

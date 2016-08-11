@@ -1,17 +1,17 @@
 ---
 title: Java Graql
 keywords: graql, java
-last_updated: August 10, 2016
-tags: []
-summary: "Java Graql"
+last_updated: August 11, 2016
+tags: [graql, java]
+summary: "How to construct and execute Graql queries programmatically in Java."
 sidebar: home_sidebar
 permalink: java_graql.html
 folder: graql
 ---
-## Java Graql
 
-As well as the Graql shell, users can also construct and execute Graql queries
-programmatically in Java.
+As well as the Graql shell, users can also construct and execute Graql queries programmatically in Java.
+
+FELIX? TO DO: ADD A STATEMENT OF WHY THEY MAY WANT TO DO THIS
 
 Add the following to your `pom.xml`:
 
@@ -137,3 +137,19 @@ parser.parseInsertQuery("insert id 'pichu' isa pokemon").execute();
 
 parser.parseDeleteQuery("match $x isa pokemon delete $x");
 ```
+
+## Document Changelog  
+
+<table>
+    <tr>
+        <td>Version</td>
+        <td>Date</td>
+        <td>Description</td>        
+    </tr>
+    <tr>
+        <td>v1</td>
+        <td>11/08/2016</td>
+        <td>New page for developer portal.</td>        
+    </tr>
+    
+</table>

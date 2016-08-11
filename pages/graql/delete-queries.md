@@ -1,14 +1,19 @@
 ---
-title: Deletes Queries
+title: Delete Queries
 keywords: graql, query, delete
-last_updated: August 10, 2016
-tags: []
-summary: "Graql delete queries"
+last_updated: August 11, 2016
+tags: [graql]
+summary: "Graql Delete Queries"
 sidebar: home_sidebar
 permalink: graql_delete.html
 folder: graql
 ---
-## Delete Queries
+
+A delete query will delete the specified [variable
+patterns](#variable-patterns) for every result of the [match
+query](graql_match.html). If a variable pattern indicates just a variable, then
+the whole concept will be deleted. If it is more specific (such as indicating
+the `id` or `isa`) it will only delete the specified properties.
 
 ```sql
 match $x isa pokemon delete $x
@@ -17,11 +22,6 @@ match $x isa pokemon delete $x
 qb.match(var("x").isa("pokemon")).delete("x").execute();
 ```
 
-A delete query will delete the specified [variable
-patterns](#variable-patterns) for every result of the [match
-query](match-query.md). If a variable pattern indicates just a variable, then
-the whole concept will be deleted. If it is more specific (such as indicating
-the `id` or `isa`) it will only delete the specified properties.
 
 ## Variable Patterns
 
@@ -35,6 +35,7 @@ Otherwise, only the specified properties are deleted.
 ## Properties
 
 ### has-role
+Removes the given role from the relation type.
 
 ```sql
 match $x id "evolution" delete $x has-role descendant;
@@ -43,9 +44,9 @@ match $x id "evolution" delete $x has-role descendant;
 qb.match(var("x").id("evolution")).delete(var("x").hasRole("descendant"));
 ```
 
-Removes the given role from the relation type.
 
 ### plays-role
+Disallows the concept type from playing the given role.
 
 ```sql
 match $x id "type" delete $x plays-role attacking-type;
@@ -54,9 +55,10 @@ match $x id "type" delete $x plays-role attacking-type;
 qb.match(var("x").id("type")).delete(var("x").playsRole("attacking-type"));
 ```
 
-Disallows the concept type from playing the given role.
 
 ### has
+Deletes the resources of the given type on the concept. If a value is given,
+only delete resources matching that value.
 
 ```sql
 match $x id "Bulbasaur" delete $x has weight;
@@ -65,5 +67,19 @@ match $x id "Bulbasaur" delete $x has weight;
 qb.match(var("x").id("Bulbasaur")).delete(var("x").has("weight"));
 ```
 
-Deletes the resources of the given type on the concept. If a value is given,
-only delete resources matching that value.
+
+## Document Changelog  
+
+<table>
+    <tr>
+        <td>Version</td>
+        <td>Date</td>
+        <td>Description</td>        
+    </tr>
+    <tr>
+        <td>v1</td>
+        <td>11/08/2016</td>
+        <td>New page for developer portal.</td>        
+    </tr>
+    
+</table>

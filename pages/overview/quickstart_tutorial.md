@@ -2,21 +2,19 @@
 title: Quickstart Tutorial
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting_started]
-summary: "Quickstart tutorial for MindmapsDB"
+tags: [getting_started, graql]
+summary: "This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph."
 sidebar: home_sidebar
 permalink: quickstart_tutorial.html
 folder: overview
 ---
 
-# Graql Quick Start Tutorial
-
-This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph.  If you have not yet set up the Mindmaps environment, please see the [Quick Set Up guide](getting_started.html).
+## Introduction
+If you have not yet set up the Mindmaps environment, please see the [Quick Set Up guide](getting_started.html).
 You can find the example ```philosophers.gql``` in the examples directory included in the Mindmaps download. 
 
 If you want to use Java rather than Graql, please see the [Java Quick Start tutorial](quickstart_tutorial_java.html), which is analagous to this one, but uses the MindmapsDB Java API.
 
-##Introduction
 We are going model how philosophers are related to each other. If you don't want to type everything below to build up the philosophers ontology, you can load it using:  
 
 ```bash

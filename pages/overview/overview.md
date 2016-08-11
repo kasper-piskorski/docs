@@ -2,17 +2,18 @@
 title: How does Mindmaps work
 keywords: setup, getting started
 tags: [overview]
-last_updated: August 10, 2016
+last_updated: August 11, 2016
 tags: [getting_started]
-summary: "How does MindmapsDB work"
+summary: "A platform-level overview of MindmapsDB."
 sidebar: home_sidebar
 permalink: overview.html
 folder: overview
 ---
-How does Mindmaps work?
-=======================
+## THIS IS ALL GOING TO CHANGE
 
-There are four simple steps in using Mindmaps Knowledge Graph, which you
+Original text is commented out for now, pending revision.
+
+<!--There are four simple steps in using Mindmaps Knowledge Graph, which you
 perform intuitively through Graql as the language.
 
 1. Model Your Knowledge Ontology
@@ -44,5 +45,5 @@ perform intuitively through Graql as the language.
     Querying a knowledge graph using Graql is analogous to querying a
     relational database using SQL, through programming APIs and native syntax,
     except that <span data-toggle="tooltip" data-original-title="{{site.data.definitions.graql}}">Graql</span> is more expressive.
-
+-->
 {% include links.html %}

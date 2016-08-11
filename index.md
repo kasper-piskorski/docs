@@ -1,17 +1,20 @@
 ---
-title: Hello
+title: Welcome to the Mindmaps Documentation Portal
 keywords: sample homepage
 tags: [getting_started]
 sidebar: home_sidebar
 permalink: index.html
-summary: These brief instructions will help you get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll.
+toc: false
+summary: "Documentation Portal Home."
 ---
 
 
-## MindmapsDB Introduction
+Welcome to our documentation portal. We have a growing collection of pages to help you get up and running with the MindmapsDB environment. 
 
-Hello!
 
-{% include note.html content="This is how you include an information block." %}
+
+Take a look around! We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.mindmaps.io) or through our main [website](http://www.mindmaps.io).
+
+
 
 {% include links.html %}

@@ -2,22 +2,18 @@
 title: Setup Guide
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting_started]
-summary: "Setup guide for MindmapsDB"
+tags: [getting_started, graql]
+summary: "This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql."
 sidebar: home_sidebar
 permalink: getting_started.html
 folder: overview
 ---
 
-# Setup Guide
-
-This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql.
 
 ## Download and Install Mindmaps
 
-> **Prerequisites**  
-> Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set
-> accordingly. Mindmaps also requires Maven 3.
+{% include note.html content="Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
+Mindmaps also requires Maven 3." %}
 
 The latest version of mindmaps can be downloaded from the
 [downloads page](downloads.html). Unzip it and run the following in the terminal:
@@ -33,6 +29,7 @@ bin/mindmaps.sh start
 > To delete all data in Mindamps graph, stop the Mindmaps backend, then run `mindmaps.sh clean`
 
 This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
+
 
 ![Starting Mindmaps successfully](/images/terminal_mindmaps_start.png)
 
@@ -60,12 +57,12 @@ If you see the above output then congratulations! You have set up Mindmaps.
 
 
 
-###Troubleshooting  
+### Troubleshooting  
 If you do not see the above message, please check our [troubleshooting page](troubleshooting.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.mindmaps.io), or on [Stack Overflow](http://stackoverflow.com).
 
 
 
-##Where next?
+## Where next?
 Our [Quick Start Tutorial](quickstart_tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using [Graql](quickstart_tutorial.html) or [Java](quickstart_tutorial_java.html). 
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!

@@ -3,18 +3,15 @@ title: Troubleshooting
 keywords: troubleshooting
 last_updated: August 10, 2016
 tags: [getting_started]
-summary: "Troubleshooting guide for MindmapsDB"
+summary: "Troubleshooting guide for MindmapsDB."
 sidebar: home_sidebar
 permalink: troubleshooting.html
 folder: overview
 ---
-# Troubleshooting
 
-> **There will be bugs**
->
-> While part of the EAP program you may encounter some exceptions. This section
-> will attempt to help you debug any problems you may encounter. Please feel
-> free to use our [discussion forums] (http://discuss.mindmaps.io) for any specific queries. 
+{% include warning.html content="While MindmapsDB is still in an early adopters phase, you may encounter some exceptions. This page attempts to help you debug any problems you may experience. Please feel free to use our [discussion forums](http://discuss.mindmaps.io) for any specific queries." %}
+
+ 
 
 ## Strange Exceptions
 
