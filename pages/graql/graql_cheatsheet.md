@@ -22,7 +22,7 @@ Additional documentation about MindmapsDB and Graql is available on our develope
 {% include note.html content="This version of the cheatsheet is for Graql version 0.1.0" %}
 
 
-# match
+## match
 
 <big><pre>
 match
@@ -41,7 +41,7 @@ $x isa movie, id "titanic";
 ```
 Match several patterns together.
 
-## modifier
+### modifier
 
 <big><pre>
 select \[ [variable](#variable) , ... \]</pre></big>
@@ -101,7 +101,7 @@ match $x isa person order by $x(has name) desc
 ```
 Order by a resource in descending order.
 
-# ask
+## ask
 
 <big><pre>
 [match](#match) ask</pre></big>
@@ -112,7 +112,7 @@ ask
 ```
 Return whether the match query has any results.
 
-# insert
+## insert
 
 <big><pre>
 insert \[ [pattern](#pattern) ; ... \]</pre></big>
@@ -133,7 +133,7 @@ insert (actor 'johnny-depp', production-with-cast $m) isa has-cast;
 ```
 Insert a relation for every result of a match query.
 
-# delete
+## delete
 
 <big><pre>
 [match](#match) delete \[ [pattern](#pattern) ; ... \]</pre></big>
@@ -144,7 +144,7 @@ delete $x;
 ```
 Delete every instance of a type.
 
-# pattern
+## pattern
 
 <big><pre>
 [identifier](#identifier) \[ [property](#property) , ... \]</pre></big>
@@ -174,7 +174,7 @@ $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
 ```
 Match either the left pattern or all the right patterns.
 
-## variable
+### variable
 
 ```
 match (director $the-director, $theMovie); $theMovie isa movie;
@@ -182,7 +182,7 @@ match (director $the-director, $theMovie); $theMovie isa movie;
 
 Variables start with a `$`, followed by alphanumeric characters, underscores or dashes.
 
-## identifier
+### identifier
 
 <big><pre>
 [variable](#variable) | [id](#identifier)</pre></big>
@@ -193,7 +193,7 @@ insert "TV Show" isa entity-type; movie isa entity-type;
 
 An `id` is a sequence of alphanumeric characters, underscores and dashes, or a quoted string.
 
-## property
+### property
 
 <big><pre>
 isa [type](#identifier)</pre></big>
