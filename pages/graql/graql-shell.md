@@ -1,19 +1,15 @@
 ---
 title: Graql Shell
 keywords: graql, shell
-last_updated: August 10, 2016
-tags: []
-summary: "Graql Shell"
+last_updated: August 11, 2016
+tags: [graql]
+summary: "
+The Graql shell is used to execute Graql queries from the command line, or to let Graql be invoked from other applications."
 sidebar: home_sidebar
 permalink: graql_shell.html
 folder: graql
 ---
-## Graql Shell
 
-The Graql shell is used to execute Graql queries from the command line, or to
-let Graql be invoked from other applications.
-
-## Interactive Shell
 
 The Graql shell is contained in the `bin` folder.
 
@@ -57,3 +53,19 @@ The Graql shell accepts several arguments:
 
 If either `--execute` or `--file` is provided, the REPL will not open and the
 graph will be automatically committed.
+
+## Document Changelog  
+
+<table>
+    <tr>
+        <td>Version</td>
+        <td>Date</td>
+        <td>Description</td>        
+    </tr>
+    <tr>
+        <td>v1</td>
+        <td>11/08/2016</td>
+        <td>New page for developer portal.</td>        
+    </tr>
+    
+</table>
