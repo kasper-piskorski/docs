@@ -14,7 +14,7 @@ task :dependencies do
 end
 
 task :symlink_assets do
-    $user_files.each{ |file| FileUtils.cp_r file, '_jekyll/'+file }
+    $user_files.each{ |file| FileUtils.ln_s '../'+file, '_jekyll/'+file }
 end
 
 desc 'Clean up generated files'

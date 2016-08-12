@@ -6,3 +6,9 @@ _pdf
 .DS_Store
 *.swp
 Gemfile.lock
+_jekyll/404.md
+_jekyll/images
+_jekyll/index.md
+_jekyll/pages
+_site
+
