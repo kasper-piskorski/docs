@@ -26,6 +26,7 @@ end
 
 desc 'Generate HTML and build site'
 task :build => ['clean', 'symlink_assets'] do
+    generate_config()
     jekyll('build')
     FileUtils.ln_s '_jekyll/_site', '_site'
 end
@@ -41,3 +42,16 @@ end
 def jekyll(opts='')
    sh "cd _jekyll; bundle exec jekyll #{opts} --trace"
 end
+
+def generate_config()
+    text = File.read('_jekyll/_config.yml.template')
+
+    if ENV['urlprefix']
+        output = text.gsub(/PREFIX/, ENV['urlprefix'])
+    else
+        output = text.gsub(/PREFIX/, "")
+    end
+
+    File.open('_jekyll/_config.yml', 'w'){ |file| file.puts output }
+end
+
