@@ -1,59 +1,43 @@
-# Files to copy from _jekyll to top level
-$jekyll_files = [
-    '_data',
-    '_includes',
-    '_layouts',
-    'feed.xml',
-    'search.json',
-    'sitemap.xml',
-    'tooltips.json',
-    '_config.yml',
-    'Gemfile'
-]
-
-# Files needed in _site only; to view the generated content.
-$site_files = [
-    'css',
-    'fonts',
-    'js',
-    'img',
-    'licenses'
+# Documentation content to copy into _jekyll for conversion into HTML
+$user_files = [
+    'images',
+    'pages',
+    '404.md',
+    'index.md'
 ]
 
 # ---- Rake tasks
-
 desc 'Install dependencies to build project'
 task :dependencies do
     # Install build dependencies
     sh 'bundle install'
 end
 
-task :copy_template do
-    # Copy template files
-    $jekyll_files.each { |file|
-        FileUtils.cp_r('_jekyll/'+file, file, :verbose => true)
-    }
-end
-
-task :copy_assets do
-    # Create dir for generated HTML
-    #FileUtils.mkdir('_site')
-
-    # Copy site assets
-    $site_files.each { |asset|
-        FileUtils.cp_r('_jekyll/'+asset, asset, :verbose => true)
-    }
+task :symlink_assets do
+    $user_files.each{ |file| FileUtils.cp_r file, '_jekyll/'+file }
 end
 
 desc 'Clean up generated files'
 task :clean do
+    $user_files.each{ |file| rm_rf '_jekyll/'+file }
+    rm_rf '_jekyll/_site'
     rm_rf '_site'
-    $jekyll_files.each{ |file| rm_rf file }
-    $site_files.each{ |file| rm_rf file }
 end
 
 desc 'Generate HTML and build site'
-task :build => ['clean', 'copy_template', 'copy_assets'] do
-    sh 'bundle exec jekyll build'
+task :build => ['clean', 'symlink_assets'] do
+    jekyll('build')
+    FileUtils.ln_s '_jekyll/_site', '_site'
 end
 
+task :serve => ['clean', 'build'] do
+    jekyll('serve')
+    :clean
+end
+
+# ---- Rake functions
+
+# Run Jekyll
+def jekyll(opts='')
+   sh "cd _jekyll; bundle exec jekyll #{opts} --trace"
+end
