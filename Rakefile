@@ -44,7 +44,7 @@ def jekyll(opts='')
 end
 
 def generate_config()
-    text = File.read('_jekyll/_config.yml.template')
+    text = File.read('_jekyll/_config-template.yml')
 
     if ENV['urlprefix']
         output = text.gsub(/PREFIX/, ENV['urlprefix'])
