@@ -17,8 +17,9 @@ github_editme_path: mindmapsdb/docs/blob/master
 # disqus_shortname: idrbwjekyll
 # if you're using disqus for comments, add the shortname here. if not, leave this value blank.
 
-urlprefix: /docs
-# the url prefix for links
+# DO NOT MODIFY THIS PARAMETER
+urlprefix: PREFIX
+# DO NOT MODIFY THIS PARAMETER
 
 host: 127.0.0.1
 # the preview server used. Leave as is.
