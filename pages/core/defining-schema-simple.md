@@ -1,11 +1,11 @@
 ---
 title: Defining a Schema
 keywords: core, schema
-last_updated: August 1, 2016
-tags: []
+last_updated: August 15, 2016
+tags: [core]
 summary: "Demonstrates how to create a schema for a Mindmaps knowledge graph"
 sidebar: home_sidebar
-permalink: defining-schema.html
+permalink: core/defining-schema-simple.html
 folder: core
 ---
 
@@ -17,12 +17,12 @@ Defining a schema for your graph allows you to:
 * Ensure your graph is consistent
 * Design domain specific knowledge graphs
 
-In Mindmaps a schema is defined by adding **types** to your graph. 
+In Mindmaps, a schema is defined by adding **types** to your graph. 
 These **types** allow you to divide your  data into different categories but also control how data instances may relate to each other.
 
 In this section we will review each of these types and explain how you use them when defining a Mindmaps graph.
 
-## Basic Types
+## Basic Type Definitions
 
 This section describes basic types which are **essential** to a Mindmaps schema. 
 When creating a Mindmaps knowledge graph you should always begin with defining these schema elements.
@@ -54,7 +54,7 @@ monster = mindmapsTransaction.addEntity(movie).setValue("Monster");
 
 ### Relation and Role Types 
 
-The greatest advantage of a graph database is the expressiveness of the relationships between our data. 
+The greatest advantage of a graph database is the expressiveness of the relationships between data. 
 With Mindmaps we can control how our data relates to each other. 
 
 For example how can we say that Patrick Stewart starred in Star Treck Nemisis ? 

@@ -3,7 +3,7 @@ title: Core Overview
 keywords: core, overview
 last_updated: August 10, 2016
 tags: []
-summary: "MindmapsDB Core Overview"
+summary: "MindmapsDB Core Tutorial. Runs through a basic example of how to use Mindmaps Core API."
 sidebar: home_sidebar
 permalink: core/tutorial
 folder: core
@@ -38,7 +38,7 @@ Now that we have a graph we can create thread bound transactions from the graph
     MindmapsTransaction transaction = graph.newTransaction();
 ```
 
-## Modelling The Philosophers
+## Modelling A The Philosophers
 
 With a transaction in place lets go through and repeat the [Quickstart Tutorial](documentation/basic-tutorial.md) using the core Java API.
 
