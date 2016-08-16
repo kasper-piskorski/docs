@@ -3,14 +3,10 @@
 topnav:
 - title: Topnav
   items:
-    - title: About
-      url: /about.html
-    - title: Careers
-      url: /careers.html
-    - title: Discussion
-      external_url: //discuss.mindmaps.io
-    - title: Blog
-      external_url: //blog.mindmaps.io
+    # - title: Platform
+    #   url: /platform/
+    # - title: Documentation
+    #   url: /careers.html
 
 #Topnav dropdowns
 # topnav_dropdowns:
