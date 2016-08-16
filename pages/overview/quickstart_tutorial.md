@@ -41,21 +41,15 @@ bin/graql.sh
 >>>insert "Alexander" isa person;
 ```
 
-![](/docs/images/phil.png)
+![](/images/phil.png)
 
 So now we've created a super-simple graph, with one concept type and four 
 concept instances.
 
-> **Types**
-> Every concept needs a type, using `isa`.   
-> `Plato` `is a` `person`   
-> `person``is a` `entity-type`
+{% include note.html content="Every concept needs a type, using `isa`. <br/>   `Plato` `is a` `person`   <br/>  `person` `is a` `entity-type`" %}
 
 
-> **Ancient History**  
-> Graql shell maintains a history of past commands with the 'up' and 'down'
-> arrows. You can also autocomplete keywords, type and variable names using
-> 'tab'!" 
+{% include tip.html content="Graql shell maintains a history of past commands with the 'up' and 'down' arrows. You can also autocomplete keywords, type and variable names using tab!" %}
 
 We'll quickly check our data has loaded:
 
@@ -67,11 +61,8 @@ $p id "Plato" isa person;
 $p id "Socrates" isa person;
 $p id "Alexander" isa person;
 ```
-
-> **Variables**
-> Graql variables start with a `$`. They represent "wildcards", and are
-> returned as results in `match` queries. A variable name can contain
-> alphanumeric characters, dashes and underscores.
+ 
+{% include note.html content="Graql variables start with a `$`. They represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
 
 Next, let's add some `schools` of thought:
 
@@ -107,17 +98,14 @@ First, we define a `relation-type` called `practice` that relates a
 >>>insert philosophy isa role-type;
 >>>insert practice has-role philosopher, has-role philosophy;
 ```
-
-> **I don't like typing!**
-> Commas are totally optional in query patterns, so these pairs are equivalent:
-
-> ```sql
-> >>>insert practice has-role philosopher, has-role philosophy;
-> >>>insert practice has-role philosopher has-role philosophy;
->  
-> >>>insert practice, isa relation-type;
-> >>>insert practice isa relation-type;
-> ```
+ 
+{% include note.html content="Commas are totally optional in query patterns, so these pairs are equivalent:<br /> ```
+>>>insert practice has-role philosopher, has-role philosophy;
+>>>insert practice has-role philosopher has-role philosophy;
+and  
+>>>insert practice, isa relation-type;
+>>>insert practice isa relation-type;
+```" %}
 
 
 A `person` can have the role of `philosopher` and a `school` can have the role of `philosophy`:
@@ -127,9 +115,7 @@ A `person` can have the role of `philosopher` and a `school` can have the role o
 >>>insert school plays-role philosophy;
 ```
 
-> **graql commit -am "changed some stuff"**  
-> The changes you've made to the graph haven't been saved yet!   
-> Type `commit` in the Graql shell to commit any changes.
+{% include warning.html content="The changes you've made to the graph haven't been saved yet!  <br /> Type `commit` in the Graql shell to commit any changes." %}
 
 Now let's relate some `philosophers` to their `philosophies`:
 
@@ -140,7 +126,7 @@ Now let's relate some `philosophers` to their `philosophies`:
 >>>insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
 ```
 
-![](/docs/images/practice.png)
+![](/images/practice.png)
 
 Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing the role of `philosophy`. 
 
@@ -152,16 +138,7 @@ Now we can query for all our Platonists:
 $phil id "Socrates" isa person;
 $phil id "Plato" isa person;
 ```
-
-> **In Plain English...**  
-> This query can be read as "Get me philosophers in a practice relationship
-> with Platonism."
->
-> We didn't specify the role of `Platonism` in this query, or the type of
-> `$phil`, which is totally fine! Roles and types can be omitted in queries.  
-> 
-> For example, the query `match ($x, $y)` is a valid query (that will
-> find *everything* in a relationship with *anything*).
+{% include note.html content="This query can be read as 'Get me philosophers in a practice relationship with Platonism'.  <br/> We didn't specify the role of `Platonism` in this query, or the type of `$phil`, which is totally fine! <br /> Roles and types can be omitted in queries. <br/> For example, the query `match ($x, $y)` is a valid query (that will find *everything* in a relationship with *anything*)." %}
 
 Next let's talk about the relationships between our philosophers. Socrates
 taught Plato, Plato taught Aristotle and Aristotle even taught Alexander the
@@ -186,9 +163,7 @@ Second, our data:
 >>>insert (teacher "Aristotle", student "Alexander") isa education;
 ```
 
-> **Test Yourself: Find Aristotle's Teacher**  
-> Try writing a query to see who taught Aristotle. Include all the roles and
-> types (`teacher`, `student` and `education`), then remove them one by one to see when the results change! The answer is at the bottom of this page.
+{% include tip.html content="**Test Yourself** <br /> Try writing a query to see who taught Aristotle. Include all the roles and types (`teacher`, `student` and `education`), then remove them one by one to see when the results change! The answer is at the bottom of this page." %}
 
 ## Resources
 
@@ -209,7 +184,7 @@ Let's make Alexander "Great"!
 
 This is a quick way to add a relation between `Alexander` and an `epithet` with value `"The Great"`.
 
-![](/docs/images/epithet.png)
+![](/images/epithet.png)
 
 Let's add the rest of Alexander's titles while we're at it:
 
@@ -240,9 +215,7 @@ Wait, who's the Pharaoh again?
 $pharaoh id "Alexander" isa person;
 ```
 
-
-> **Test Yourself: Predicates**
-> When querying for an id, value or resource you can use predicates as well as direct values. For example, `has epithet contains "Great"`. See if you can write a query for everyone with a title containing "King". The answer is at the bottom of the page.
+{% include tip.html content="**Test Yourself** <br /> When querying for an id, value or resource you can use predicates as well as direct values. For example, has epithet contains 'Great'. See if you can write a query for everyone with a title containing 'King'. The answer is at the bottom of the page." %}
 
 ## Relations as Role Players
 
@@ -301,14 +274,13 @@ $x id "nothing" isa fact;
 $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 ```
 
-> **knowledge-ohmygod-whatisthat-???**
-> If you don't provide an ID for something such as a relation, it will get an automatically generated ID.
 
-![](/docs/images/knowledge.png)
+{% include note.html content="If you don't provide an ID for something such as a relation, it will get an automatically generated ID." %}
 
-> **When Persisting The Data To Disk**
-> Once you done make sure to use `mindmaps.sh stop && mindmaps.sh clean` if you would like to clean your graph quickly.   
-> **Warning :** This will delete all your graphs.
+![](/images/knowledge.png)
+ 
+{% include warning.html content="Once you have finished, make sure to use <br /> `mindmaps.sh stop && mindmaps.sh clean` <br /> if you would like to clean your graph quickly.   <br />
+**Warning: This will delete all your graphs.**" %}
 
 ## Test Yourself: Answers
 We asked you to write a query to see who taught Aristotle.   
