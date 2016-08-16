@@ -27,19 +27,19 @@ $
 
 ## Environment variables
 
-There is an environment variable that needs to be set depending on the build you wish to commence: `uriprefix`. If you only wish to preview the generated documentation itself; as server from this repository rather than integrated into the mindmaps website you do not need to do anything.
+There is an environment variable that needs to be set depending on the build you wish to commence: `urlprefix`. If you only wish to preview the generated documentation itself; as server from this repository rather than integrated into the mindmaps website you do not need to do anything.
 
-##### `uriprefix`
+##### `urlprefix`
 
 For local builds (local web server with documentation only), do not set this variable, or make sure it has been cleared with:
 ```
-$ export uriprefix=""
+$ export urlprefix=""
 $
 ```
 
 For integrating to mindmaps website, or elsewhere set as needed. For example; `www.mindmaps.io/docs/`
 ```
-$ export uriprefix=/docs
+$ export urlprefix=/docs
 $
 ```
 
