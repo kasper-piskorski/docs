@@ -33,7 +33,7 @@ To delete all data in Mindamps graph, stop the Mindmaps backend, then run `mindm
 This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
 
 
-![Starting Mindmaps successfully](/docs/images/terminal_mindmaps_start.png)
+![Starting Mindmaps successfully](/images/terminal_mindmaps_start.png)
 
 ## Set up Graql
 
