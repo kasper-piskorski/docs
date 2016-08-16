@@ -41,7 +41,7 @@ bin/graql.sh
 >>>insert "Alexander" isa person;
 ```
 
-![](/images/phil.png)
+![](/docs/images/phil.png)
 
 So now we've created a super-simple graph, with one concept type and four
 concept instances.
@@ -126,7 +126,7 @@ Now let's relate some `philosophers` to their `philosophies`:
 >>>insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
 ```
 
-![](/images/practice.png)
+![](/docs/images/practice.png)
 
 Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing the role of `philosophy`.
 
@@ -184,7 +184,7 @@ Let's make Alexander "Great"!
 
 This is a quick way to add a relation between `Alexander` and an `epithet` with value `"The Great"`.
 
-![](/images/epithet.png)
+![](/docs/images/epithet.png)
 
 Let's add the rest of Alexander's titles while we're at it:
 
@@ -277,7 +277,7 @@ $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 
 {% include note.html content="If you don't provide an ID for something such as a relation, it will get an automatically generated ID." %}
 
-![](/images/knowledge.png)
+![](/docs/images/knowledge.png)
 
 {% include warning.html content="Once you have finished, make sure to use <br /> `mindmaps.sh stop && mindmaps.sh clean` <br /> if you would like to clean your graph quickly.   <br />
 **Warning: This will delete all your graphs.**" %}
