@@ -352,6 +352,10 @@ nav.navbar .github svg {
     .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
         color: #383838;
     }
+
+    nav.navbar .navbar-nav > li > a.github {
+        margin-left: 0;
+    }
 }
 
 /*  */
@@ -395,13 +399,14 @@ div.navbar-collapse .navbar-nav input#search-input {
 
 @media (min-width: 768px) {
     div.navbar-collapse .navbar-nav input#search-input {
-        margin-left: 20px;
+        margin-right: 20px;
+        margin-left: 10px;
         width: 20em;
         margin-bottom: 0;
     }
 
     #search-demo-container ul#results-container {
-        left: 20px;
+        left: 10px;
         width: 20em;
         margin-bottom: 0;
     }

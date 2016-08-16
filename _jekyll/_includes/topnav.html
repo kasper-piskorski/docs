@@ -50,17 +50,11 @@
                 {% if site.feedback_disable == null or site.feedback_disable == false %}
 			{% include feedback.html %}
 		{% endif %}
-                <!--comment out this block if you want to hide github link-->
                 <li>
                     <a href="//discuss.mindmaps.io/">Discussion</a>
                 </li>
                 <li>
                     <a href="//blog.mindmaps.io/" target="_blank">Blog</a>
-                </li>
-                <li>
-                    <a rel="nofollow me" href="//github.com/mindmapsdb/mindmapsdb" target="_blank" class="github">
-                        <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#github"></use></svg>
-                    </a>
                 </li>
                 <!--comment out this block if you want to hide search-->
                 <li>
@@ -86,6 +80,12 @@
                         });
                     </script>
                     <!--end search-->
+                </li>
+                <!--comment out this block if you want to hide github link-->
+                <li>
+                    <a rel="nofollow me" href="//github.com/mindmapsdb/mindmapsdb" target="_blank" class="github">
+                        <svg><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#github"></use></svg>
+                    </a>
                 </li>
             </ul>
         </div>
