@@ -5,7 +5,7 @@ last_updated: August 11, 2016
 tags: [graql]
 summary: "Graql Delete Queries"
 sidebar: home_sidebar
-permalink: graql/delete-queries
+permalink: graql/delete-queries.html
 folder: graql
 ---
 
@@ -81,5 +81,5 @@ qb.match(var("x").id("Bulbasaur")).delete(var("x").has("weight"));
         <td>11/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

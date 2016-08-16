@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [graql]
 summary: "Graql Insert Queries"
 sidebar: home_sidebar
-permalink: graql/insert-queries
+permalink: graql/insert-queries.html
 folder: graql
 ---
 
@@ -73,7 +73,7 @@ qb.insert(id("trained-by").isa("relation-type").value("Trained By"));
 
 ### has
 
-Add a resource of the given type to the concept. 
+Add a resource of the given type to the concept.
 
 ```sql
 insert "Pichu" isa pokemon has height 30;
@@ -164,7 +164,7 @@ qb.insert(id("pokemon").playsRole("pokemon-trained"));
 Allow the concept type to have the given resource.
 
 This is done by creating a specific relation type relating the concept type
-and resource. 
+and resource.
 
 ```sql
 insert pokemon has-resource pokedex-no;
@@ -213,5 +213,5 @@ qb.insert(
         <td>11/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

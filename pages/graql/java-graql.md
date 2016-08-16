@@ -5,7 +5,7 @@ last_updated: August 11, 2016
 tags: [graql, java]
 summary: "How to construct and execute Graql queries programmatically in Java."
 sidebar: home_sidebar
-permalink: graql/java-graql
+permalink: graql/java-graql.html
 folder: graql
 ---
 
@@ -151,5 +151,5 @@ parser.parseDeleteQuery("match $x isa pokemon delete $x");
         <td>11/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

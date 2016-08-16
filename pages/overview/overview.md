@@ -6,7 +6,7 @@ last_updated: August 11, 2016
 tags: [getting_started]
 summary: "A platform-level overview of MindmapsDB."
 sidebar: home_sidebar
-permalink: overview/overview
+permalink: overview/overview.html
 folder: overview
 ---
 ## THIS IS ALL GOING TO CHANGE
@@ -34,7 +34,7 @@ perform intuitively through Graql as the language.
     where information is missing.
 
 3. Populate Data
-    
+
     Mindmaps allows high throughput data writes using Graql through multiple
     options of intuitive programming interfaces. Mindmaps also aids the
     knowledge acquisition process where data is acquired from multiple

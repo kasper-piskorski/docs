@@ -5,13 +5,13 @@ last_updated: August 10, 2016
 tags: [getting_started]
 summary: "Troubleshooting guide for MindmapsDB."
 sidebar: home_sidebar
-permalink: overview/troubleshooting
+permalink: overview/troubleshooting.html
 folder: overview
 ---
 
 {% include warning.html content="While MindmapsDB is still in an early adopters phase, you may encounter some exceptions. This page attempts to help you debug any problems you may experience. Please feel free to use our [discussion forums](http://discuss.mindmaps.io) for any specific queries." %}
 
- 
+
 
 ## Strange Exceptions
 
@@ -64,5 +64,5 @@ However, this will result in slower transaction as more reads will be necessary.
         <td>10/08/2016</td>
         <td>Checked for release to developer portal.</td>        
     </tr>
-    
+
 </table>

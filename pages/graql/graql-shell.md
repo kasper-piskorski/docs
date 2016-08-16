@@ -6,7 +6,7 @@ tags: [graql]
 summary: "
 The Graql shell is used to execute Graql queries from the command line, or to let Graql be invoked from other applications."
 sidebar: home_sidebar
-permalink: graql/graql-shell
+permalink: graql/graql-shell.html
 folder: graql
 ---
 
@@ -67,5 +67,5 @@ graph will be automatically committed.
         <td>11/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

@@ -5,7 +5,7 @@ last_updated: August 11, 2016
 tags: [graql]
 summary: "Graql Match Queries"
 sidebar: home_sidebar
-permalink: graql/match-queries
+permalink: graql/match-queries.html
 folder: graql
 ---
 
@@ -188,7 +188,7 @@ qb.match(var("x").playsRole("ancestor"));
 
 
 ### has-resource
-Match concept types that can have the given resource types. 
+Match concept types that can have the given resource types.
 
 ```sql
 match $x has-resource name
@@ -342,5 +342,5 @@ Get all resources of the given type on this concept.
         <td>11/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

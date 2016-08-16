@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [getting_started, graql]
 summary: "This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql."
 sidebar: home_sidebar
-permalink: overview/getting_started
+permalink: overview/getting_started.html
 folder: overview
 ---
 
@@ -53,7 +53,7 @@ $x id "Pikachu" isa pokemon;
 ...
 ```
 
-If you see the above output then congratulations! You have set up Mindmaps. 
+If you see the above output then congratulations! You have set up Mindmaps.
 
 
 
@@ -63,7 +63,7 @@ If you do not see the above message, please check our [troubleshooting page](tro
 
 
 ## Where next?
-Our [Quick Start Tutorial](quickstart_tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using [Graql](quickstart_tutorial.html) or [Java](quickstart_tutorial_java.html). 
+Our [Quick Start Tutorial](quickstart_tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using [Graql](quickstart_tutorial.html) or [Java](quickstart_tutorial_java.html).
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 
@@ -82,5 +82,5 @@ You can find additional example code and documentation on this portal. We are al
         <td>03/08/2016</td>
         <td>Updated content and formatting.</td>        
     </tr>
-    
+
 </table>

@@ -5,13 +5,13 @@ last_updated: August 10, 2016
 tags: [getting_started, graql]
 summary: "This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph."
 sidebar: home_sidebar
-permalink: overview/quickstart_tutorial
+permalink: overview/quickstart_tutorial.html
 folder: overview
 ---
 
 ## Introduction
 If you have not yet set up the Mindmaps environment, please see the [Quick Set Up guide](getting_started.html).
-You can find the example ```philosophers.gql``` in the examples directory included in the Mindmaps download. 
+You can find the example ```philosophers.gql``` in the examples directory included in the Mindmaps download.
 
 If you want to use Java rather than Graql, please see the [Java Quick Start tutorial](quickstart_tutorial_java.html), which is analagous to this one, but uses the MindmapsDB Java API.
 
@@ -43,7 +43,7 @@ bin/graql.sh
 
 ![](/images/phil.png)
 
-So now we've created a super-simple graph, with one concept type and four 
+So now we've created a super-simple graph, with one concept type and four
 concept instances.
 
 {% include note.html content="Every concept needs a type, using `isa`. <br/>   `Plato` `is a` `person`   <br/>  `person` `is a` `entity-type`" %}
@@ -61,7 +61,7 @@ $p id "Plato" isa person;
 $p id "Socrates" isa person;
 $p id "Alexander" isa person;
 ```
- 
+
 {% include note.html content="Graql variables start with a `$`. They represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
 
 Next, let's add some `schools` of thought:
@@ -98,7 +98,7 @@ First, we define a `relation-type` called `practice` that relates a
 >>>insert philosophy isa role-type;
 >>>insert practice has-role philosopher, has-role philosophy;
 ```
- 
+
 {% include note.html content="Commas are totally optional in query patterns, so these pairs are equivalent:<br /> ```
 >>>insert practice has-role philosopher, has-role philosophy;
 >>>insert practice has-role philosopher has-role philosophy;
@@ -128,7 +128,7 @@ Now let's relate some `philosophers` to their `philosophies`:
 
 ![](/images/practice.png)
 
-Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing the role of `philosophy`. 
+Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing the role of `philosophy`.
 
 Now we can query for all our Platonists:
 
@@ -278,7 +278,7 @@ $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 {% include note.html content="If you don't provide an ID for something such as a relation, it will get an automatically generated ID." %}
 
 ![](/images/knowledge.png)
- 
+
 {% include warning.html content="Once you have finished, make sure to use <br /> `mindmaps.sh stop && mindmaps.sh clean` <br /> if you would like to clean your graph quickly.   <br />
 **Warning: This will delete all your graphs.**" %}
 
@@ -317,5 +317,5 @@ match $king has title contains "King"
         <td>09/08/2016</td>
         <td>Clarify this is for Graql.</td>        
     </tr>
-    
+
 </table>

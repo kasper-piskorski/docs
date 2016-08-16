@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: []
 summary: "MindmapsDB Core Tutorial. Runs through a basic example of how to use Mindmaps Core API."
 sidebar: home_sidebar
-permalink: core/tutorial
+permalink: core/tutorial.html
 folder: core
 ---
 
@@ -19,7 +19,7 @@ Mindmaps Core API is the implementation of the object model discussed in
 [Mindmaps Basics](documentation/mindmaps-basics.md). It allows you to create
 Mindmaps Graphs using Java 8. It supports any
 [Tinkerpop](http://tinkerpop.incubator.apache.org/docs/3.0.2-incubating/) 3.0.z
-version. 
+version.
 
 Mindmaps Core API is catered towards constructing a Mindmaps Graphs. Graql is
 catered towards querying in more complex manners.
@@ -100,7 +100,7 @@ We can even define how our philosophers relate to each other:
     RoleType teacher = transaction.putRoleType("teacher");
     RoleType student = transaction.putRoleType("student");
     RelationType education = transaction.putRelationType("education").hasRole(teacher).hasRole(student);
-    
+
     transaction.putRelation(education).putRolePlayer(teacher, socrates).putRolePlayer(student, plato);
     transaction.putRelation(education).putRolePlayer(teacher, plato).putRolePlayer(student, aristotle);
     transaction.putRelation(education).putRolePlayer(teacher, aristotle).putRolePlayer(student, alexander);

@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [graql]
 summary: "An introduction to Graql"
 sidebar: home_sidebar
-permalink: graql/overview
+permalink: graql/overview.html
 folder: graql
 ---
 
@@ -35,5 +35,5 @@ There are four types of queries, which are begun with the follow keywords:
         <td>11/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

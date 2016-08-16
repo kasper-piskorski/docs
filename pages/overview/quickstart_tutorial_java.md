@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [getting_started, java]
 summary: "This document will teach you how to use Java to load both an ontology and some data into a Mindmaps Graph."
 sidebar: home_sidebar
-permalink: overview/quickstart_tutorial_java
+permalink: overview/quickstart_tutorial_java.html
 folder: overview
 ---
 
@@ -28,6 +28,6 @@ folder: overview
         <td>09/08/2016</td>
         <td>New skeleton doc just for Java.</td>        
     </tr>
-    
-    
+
+
 </table>

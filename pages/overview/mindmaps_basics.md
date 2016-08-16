@@ -5,14 +5,14 @@ last_updated: August 10, 2016
 tags: [getting_started]
 summary: "MindmapsDB basics"
 sidebar: home_sidebar
-permalink: overview/mindmaps_basics
+permalink: overview/mindmaps_basics.html
 folder: overview
 ---
 # Mindmaps Basics
 
 ## Ontology Vs Data
 
-A Mindmaps graph is made of two layers. The ontology and the data layer. 
+A Mindmaps graph is made of two layers. The ontology and the data layer.
 
 The ontology is used to formalise the data within a specific domain. If our
 data is about healthcare then we need to design an ontology specific to
@@ -23,7 +23,7 @@ graph. Example of Ontological concepts could include `Car`, `Person`, `Movie`.
 
 The data layer is categorised within the ontology. It is essentially everything
 we wish to model. Examples of data concept could include `a VW Golf TDI`, `Al
-Pacino`, `Godfather`. 
+Pacino`, `Godfather`.
 
 ## The Graph Structure
 
@@ -52,7 +52,7 @@ Type](/images/example_types.png)
 Mindmaps provides the ability to define rich semantic ontologies. One way of
 achieving this is to allow Types to be subclassed. For example, valid
 subclasses for the Type, `Vehicle` could include `Car`, `Truck`, and
-`Motorbike`. 
+`Motorbike`.
 
 If we expand our example above to include female philosophers we would have the
 following graph:
@@ -100,7 +100,7 @@ Types.](/images/examples_playsroles.png)
 A Mindmaps graph enables us to model complex n-ary relationships. To do this we
 define a Relation Type and link it with roles which flesh out the details of
 the relationship. For example, in the movie domain a valid Relation Type could
-be `Cast` which has the Role Types `Actor` and `Movie With Cast`. 
+be `Cast` which has the Role Types `Actor` and `Movie With Cast`.
 
 Expanding our philosophers example we could define a Relation Type, `Education`
 which encapsulates the needed roles:
@@ -113,12 +113,12 @@ Types.](/images/example_relationtype.png)
 Relations allow us to represent different instances of Relation Types. For
 example one Relation could represent `Al Pacino` as an `Actor` in the movie
 `Godfather`, while another Relation could represent `Al Pacino` as an `Actor`
-in the movie `S1m0ne`. 
+in the movie `S1m0ne`.
 
 Essentially they encapsulate a relationship of a specific type between
 instances of a specific type. For example, one Relation can define that the
 Instance `Al Pacino` plays the Role Type `Actor` with the movie Instance
-`Godfather` which plays the Role Type `Movie With Cast`. 
+`Godfather` which plays the Role Type `Movie With Cast`.
 
 Finally, we can expand our philosophers example to define that Plato taught
 Aristotle:
@@ -193,7 +193,7 @@ Types can have an additional property, Abstract, which indicates the type
 cannot have instances. This is useful when we want to define a deeper ontology.
 For example if we have two ontology elements `Car` which is a subclass
 `Vehicle` then we may want to define `Vehicle` as abstract to prohibit it have
-any direct instances. 
+any direct instances.
 
 ### Entity Types
 

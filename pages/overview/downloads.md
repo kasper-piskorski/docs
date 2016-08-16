@@ -6,7 +6,7 @@ tags: [getting_started]
 summary: "
 This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB."
 sidebar: home_sidebar
-permalink: overview/downloads
+permalink: overview/downloads.html
 folder: overview
 ---
 
@@ -14,7 +14,7 @@ folder: overview
 ## Download Mindmaps
 
 The latest version of mindmaps is vX.X.  TO DO  
-It can be downloaded from [here](http://mindmaps.io/download/mindmaps-0.2.1.zip). 
+It can be downloaded from [here](http://mindmaps.io/download/mindmaps-0.2.1.zip).
 
 
 ### Past Versions
@@ -38,11 +38,11 @@ We are an open source project. If you want to look at our code, we are on Github
 {% include note.html content="TO DO - SPECIFY MAVEN DEPENDENCY." %}
 
 Inside the `lib` directory of mindmaps.zip are the jars you will need to
-develop with mindmaps. 
+develop with mindmaps.
 
 If you would like to start developing with minimal effort you can integrate the jar file, e.g.
 `graql-shell-0.2.1-jar-with-dependencies.jar` into your project. This however
-may be a bit inflexible as all dependencies are compiled in. 
+may be a bit inflexible as all dependencies are compiled in.
 
 If you would like more flexibility, in the `lib` directory all the mindmaps
 jars are provided with no dependencies. Using these would require you to use
@@ -72,5 +72,5 @@ Please see our [troubleshooting](troubleshooting.html) page if you encounter any
         <td>09/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

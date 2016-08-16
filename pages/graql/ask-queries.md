@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [graql]
 summary: "Graql Ask Queries"
 sidebar: home_sidebar
-permalink: graql/ask-queries
+permalink: graql/ask-queries.html
 folder: graql
 ---
 
@@ -33,5 +33,5 @@ qb.match(id("dragon").isa("pokemon-type")).ask().execute();
         <td>11/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>
