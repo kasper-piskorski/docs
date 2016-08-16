@@ -401,13 +401,13 @@ div.navbar-collapse .navbar-nav input#search-input {
     div.navbar-collapse .navbar-nav input#search-input {
         margin-right: 20px;
         margin-left: 10px;
-        width: 20em;
+        width: 160px;
         margin-bottom: 0;
     }
 
     #search-demo-container ul#results-container {
         left: 10px;
-        width: 20em;
+        width: 160px;
         margin-bottom: 0;
     }
 }
