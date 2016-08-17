@@ -13,18 +13,6 @@ A match query will search the graph for any subgraphs that match the given
 [patterns](#variable-patterns). A result is produced for each match found,
 containing any variables in the query. The results of the query can be modified with various [modifiers](#modifiers).
 
-```sql
-match
-$x isa pokemon, id "Pikachu";
-(pokemon-with-type $x, $y);
-```
-```java
-qb.match(
-    var("x").isa("pokemon").id("Pikachu"),
-    var().rel("pokemon-with-type", "x").rel("y")
-);
-```
-
 
 ## Variable Patterns
 
@@ -328,6 +316,8 @@ Get the `value` of a concept.
 
 ##### has
 Get all resources of the given type on this concept.
+
+{% include links.html %}
 
 ## Document Changelog  
 

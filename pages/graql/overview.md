@@ -22,6 +22,8 @@ There are four types of queries, which are begun with the follow keywords:
 - [insert](graql_insert.html) - for inserting types and instances  
 - [delete](graql_delete.html) - for deleting types and instances
 
+{% include links.html %}
+
 ## Document Changelog  
 
 <table>

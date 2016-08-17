@@ -138,6 +138,8 @@ parser.parseInsertQuery("insert id 'pichu' isa pokemon").execute();
 parser.parseDeleteQuery("match $x isa pokemon delete $x");
 ```
 
+{% include links.html %}
+
 ## Document Changelog  
 
 <table>

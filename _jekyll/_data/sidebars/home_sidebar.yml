@@ -63,6 +63,9 @@ entries:
       - title: Overview
         output: web
         url: /graql/overview.html
+      - title: Graql Shell
+        output: web
+        url: /graql/graql-shell.html
       - title: Match Queries
         output: web
         url: /graql/match-queries.html
@@ -75,9 +78,9 @@ entries:
       - title: Insert Queries
         output: web
         url: /graql/insert-queries.html
-      - title: Graql Shell
+      - title: Graql Cheatsheet
         output: web
-        url: /graql/graql-shell.html
+        url: /graql/graql_cheatsheet.html
       - title: Java Graql
         output: web
         url: /graql/java-graql.html

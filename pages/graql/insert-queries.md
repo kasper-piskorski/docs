@@ -200,6 +200,9 @@ qb.insert(
   id("pokedex-no").playsRole("pokedex-no-value")
 );
 ```
+
+{% include links.html %}
+
 ## Document Changelog  
 
 <table>

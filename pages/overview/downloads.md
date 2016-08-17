@@ -60,7 +60,7 @@ Here is a listing of the key items in the Mindmaps zip that you have downloaded.
         mindmaps-test-0.2.1.jar  <br />
         mindmaps-titan-factory-0.2.1.jar <br />
         </td>        
-        <td>See Mindmaps Java API section below.</td>
+        <td>See Mindmaps Java API section below</td>
     </tr>
     <tr>
         <td>titan</td>

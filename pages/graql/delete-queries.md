@@ -67,6 +67,7 @@ match $x id "Bulbasaur" delete $x has weight;
 qb.match(var("x").id("Bulbasaur")).delete(var("x").has("weight"));
 ```
 
+{% include links.html %}
 
 ## Document Changelog  
 

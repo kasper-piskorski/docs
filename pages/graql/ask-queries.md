@@ -20,6 +20,8 @@ qb.match(id("dragon").isa("pokemon-type")).ask().execute();
 ```
 
 
+{% include links.html %}
+
 ## Document Changelog  
 
 <table>
@@ -30,8 +32,9 @@ qb.match(id("dragon").isa("pokemon-type")).ask().execute();
     </tr>
     <tr>
         <td>v1</td>
-        <td>11/08/2016</td>
+        <td>17/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-
+    
 </table>
+
