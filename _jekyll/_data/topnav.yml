@@ -1,12 +1,13 @@
 ## Topnav single links
 ## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
-# topnav:
-# - title: Topnav
-#   items:
+topnav:
+- title: Topnav
+  items:
+    - title: Documentation
+      url: /index.html
 #     - title: Platform
 #       url: /platform/
-#     - title: Documentation
-#       url: /careers.html
+
 
 #Topnav dropdowns
 # topnav_dropdowns:
