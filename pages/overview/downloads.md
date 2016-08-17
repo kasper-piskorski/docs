@@ -21,7 +21,53 @@ It can be downloaded from [here](http://mindmaps.io/download/mindmaps-0.2.1.zip)
 Here is a list of previously released versions of MindmapsDB:
 
 ## What's included?
-TO DO. Directory listing and explanation. Will there be release notes?
+TO DO: Will there be release notes?
+
+Here is a listing of the key items in the Mindmaps zip that you have downloaded.
+
+<table>
+    <tr>
+        <td>Directory</td>
+        <td>Name</td>
+        <td>Description</td>        
+    </tr>
+    <tr>
+        <td>bin</td>
+        <td>graql.sh</td>
+        <td>Graql shell script</td>        
+    </tr>
+    <tr>
+        <td>bin</td>
+        <td>mindmaps.sh</td>
+        <td>Mindmaps shell script</td>        
+    </tr>    
+    <tr>
+        <td>examples</td>
+        <td>philosophers.gql</td>
+        <td>Ontology description for philosophers example</td>        
+    </tr>
+    <tr>
+        <td>examples</td>
+        <td>pokemon.gql</td>
+        <td>Ontology description for pokemon example</td>        
+    </tr>
+    <tr>
+        <td>lib</td>
+        <td>graql-core-0.2.1.jar <br />   
+        graql-parser-0.2.1.jar  <br />
+        graql-shell-0.2.1-jar-with-dependencies.jar  <br />
+        mindmaps-core-0.2.1.jar  <br />
+        mindmaps-test-0.2.1.jar  <br />
+        mindmaps-titan-factory-0.2.1.jar <br />
+        </td>        
+        <td>See Mindmaps Java API section below.</td>
+    </tr>
+    <tr>
+        <td>titan</td>
+        <td></td>
+        <td><strong>To do: describe why this directory is here</strong></td>        
+    </tr>    
+</table>
 
 ## Prerequisites
 
@@ -29,7 +75,7 @@ TO DO. Directory listing and explanation. Will there be release notes?
 Mindmaps also requires Maven 3." %}
 
 ## Code
-We are an open source project. If you want to look at our code, we are on Github [here](TO DO).
+We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb).
 
 
 ## Mindmaps Java API
@@ -46,7 +92,7 @@ may be a bit inflexible as all dependencies are compiled in.
 
 If you would like more flexibility, in the `lib` directory all the mindmaps
 jars are provided with no dependencies. Using these would require you to use
-maven to acquire the other dependencies.
+Maven to acquire the other dependencies.
 
 Here are some links to guides for adding external jars using different IDEs:
 
