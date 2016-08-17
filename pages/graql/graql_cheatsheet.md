@@ -1,22 +1,22 @@
 ---
 title: Graql Cheatsheet
 keywords: graql
-last_updated: August 11, 2016
-tags: [graql]
+last_updated: August 17, 2016
+tags: [graql, getting_started]
 summary: "A reference card (cheatsheet) for Graql"
 sidebar: home_sidebar
-permalink: graql_cheatsheet.html
+permalink: graql/graql_cheatsheet.html
 folder: graql
 ---
 
 Graql is the declarative query language for MindmapsDB, more about which can be found at [mindmaps.io](http://www.mindmaps.io).  
 
 Key principles and capabilities of Graql are as follows:  
-* Graql is a pattern matching language that can search and modify a Mindmaps graph.
-* Graql operates on concepts and relations between them.
+* Graql is a pattern matching language that can search and modify a Mindmaps graph.   
+* Graql operates on concepts and relations between them.   
 * Graql will automatically execute the query in an efficient fashion, taking advantage of existing indexes.
 
-Additional documentation about MindmapsDB and Graql is available on our developer documentation portal [mindmaps.io/docs](http://www.mindmaps.io/docs).
+This page is intended to be a quick reference guide for those already familiar with Graql. For further information and additional documentation, please see the Graql section on our developer portal [mindmaps.io/docs](http://www.mindmaps.io/docs/graql/overview.html).
 
 
 {% include note.html content="This version of the cheatsheet is for Graql version 0.1.0" %}
@@ -24,259 +24,308 @@ Additional documentation about MindmapsDB and Graql is available on our develope
 
 ## match
 
-<big><pre>
-match
-[ [pattern](#pattern) ; ... ]
-\[ [select | limit | offset | distinct | order ...](#modifier) \]</pre></big>
+A match query will search the graph for any subgraphs that match the given
+[pattern](#pattern). A result is produced for each match to the [variables](#variables) in the query. The results of the query can be modified with various [modifiers](#modifiers): [select](#select), [limit](#limit), [offset](#offset), [distinct](#distinct) and [order](#order).
+
+```sql
+match  
+[ pattern; ... ]  
+[ select | limit | offset | distinct | order ... ]
+```
+
+Match a pattern in the graph.
 
 ```
 match $x isa movie
 ```
-Match a pattern in the graph.
+Match several patterns together.
 
 ```
 match
 $x isa movie, id "titanic";
 (actor $a, $x);
 ```
-Match several patterns together.
 
-### modifier
 
-<big><pre>
-select \[ [variable](#variable) , ... \]</pre></big>
+### modifiers
+
+#### select
+```
+select [ variable, ... ]
+```
+Select particular variables from the query.   
 
 ```
 match $m isa movie; (actor $a1, $m); (actor $a2, $m);
 select $a1, $a2
 ```
-Select particular variables from the query.
 
----
+#### limit
 
-<big><pre>
-limit {integer}</pre></big>
+```
+limit {integer}
+```
+Limit the number of results returned by a query.
 
 ```
 match (director $x, $y)
 limit 10
 ```
-Limit the results of a query.
 
----
+#### offset
 
-<big><pre>
-offset {integer}</pre></big>
+```
+offset {integer}
+```
+Skip some results in a query.
 
 ```
 match (director $x, $y)
 limit 10
 offset 20
 ```
-Skip some results in a query.
 
----
+#### distinct
 
-<big><pre>
-distinct</pre></big>
-
-```match $m isa movie, id 'dr-strangelove'; (actor $a, $m);
-select $a
+```
 distinct
 ```
 De-duplicate the results of a query.
 
----
+```
+match $m isa movie, id 'dr-strangelove'; (actor $a, $m);
+select $a
+distinct
+```
 
-<big><pre>
-order by [variable](#variable) \[ (has [resource-type](#identifier)) \] \[ asc | desc \]</pre></big>
+#### order
 
 ```
-match $x isa person order by $x
+order by variable [ (has resource-type) ] [ asc | desc ]
 ```
 Order by id in ascending order.
 
 ```
+match $x isa person order by $x
+```
+
+Order by a resource in descending order.
+
+```
 match $x isa person order by $x(has name) desc
 ```
-Order by a resource in descending order.
+
 
 ## ask
 
-<big><pre>
-[match](#match) ask</pre></big>
+An ask query will return whether the given match query has any results.
+
+```
+[match] ask
+```
+Return whether the match query has any results.
 
 ```
 match $x isa person, id 'james-cameron'; (actor $x)
 ask
 ```
-Return whether the match query has any results.
+
 
 ## insert
 
-<big><pre>
-insert \[ [pattern](#pattern) ; ... \]</pre></big>
+An insert query will insert the specified variable patterns into the graph. 
+
+
+```
+insert [ pattern ; ... ]
+```
+Insert a concept into the graph.
 
 ```
 insert 'finding-dory' isa movie;
 ```
-Insert a concept into the graph.
+If a match query is provided, the query will insert the given variable patterns for every result of the match query.
 
----
+```
+match  insert [ pattern ; ... ]
+```
 
-<big><pre>
-[match](#match) insert \[ [pattern](#pattern) ; ... \]</pre></big>
+Insert a relation for every result of a match query.
 
 ```
 match $m isa movie; (director 'tim-burton', $m);
 insert (actor 'johnny-depp', production-with-cast $m) isa has-cast;
 ```
-Insert a relation for every result of a match query.
+
 
 ## delete
 
-<big><pre>
-[match](#match) delete \[ [pattern](#pattern) ; ... \]</pre></big>
+A delete query will delete the specified variable patterns for every result of the match query. 
+
+```
+match  delete [ pattern ; ... ]
+```
+Delete every instance of a type.
 
 ```
 match $x isa person;
 delete $x;
 ```
-Delete every instance of a type.
+
 
 ## pattern
 
-<big><pre>
-[identifier](#identifier) \[ [property](#property) , ... \]</pre></big>
+```
+identifier [ property, ... ]
+```
+A variable with several properties.
 
 ```
 $x isa person, value "Guillermo del Toro"
 ```
-A variable with several properties.
 
----
+Match either the left or right pattern.
 
-<big><pre>
-[pattern](#pattern) or [pattern](#pattern)</pre></big>
+```
+pattern or pattern
+```
 
 ```
 $x isa movie or $x isa person
 ```
-Match either the left or right pattern.
 
----
+Match either the left pattern or all the right patterns.
 
-<big><pre>
-{ \[ [pattern](#pattern) ; ... \] }</pre></big>
+```
+{ [ pattern ; ... ] }
+```
+
 
 ```
 $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
 ```
-Match either the left pattern or all the right patterns.
 
-### variable
+
+### variables
+
+Variables start with a `$`, followed by alphanumeric characters, underscores or dashes.
 
 ```
 match (director $the-director, $theMovie); $theMovie isa movie;
 ```
 
-Variables start with a `$`, followed by alphanumeric characters, underscores or dashes.
+
 
 ### identifier
 
-<big><pre>
-[variable](#variable) | [id](#identifier)</pre></big>
+An `id` is a sequence of alphanumeric characters, underscores and dashes, or a quoted string.
+
+```
+variable | id
+```
 
 ```
 insert "TV Show" isa entity-type; movie isa entity-type;
 ```
 
-An `id` is a sequence of alphanumeric characters, underscores and dashes, or a quoted string.
 
-### property
 
-<big><pre>
-isa [type](#identifier)</pre></big>
+## type properties
+
+Specify the type of a concept.
+
+```
+isa type
+```
 
 ```
 match $x isa movie;
 ```
-Specify the type of a concept.
+
+Match concepts and their types.
 
 ```
 match $x isa $y;
 ```
-Match concepts and their types.
 
----
+Match the concept with a particular ID.
 
-<big><pre>
-id {string}</pre></big>
+```
+id {string}
+```
 
 ```
 match $x id 'ridley-scott';
 ```
-Match the concept with a particular ID.
 
----
 
-<big><pre>
-value [ = | != | < | <= | >= | > | contains ] {value}</pre></big>
+Match concepts with a value that contains the given string.
+
+```
+value [ = | != | < | <= | >= | > | contains ] {value}
+```
 
 ```
 match $m value contains "The Lord of the Rings";
 ```
-Match concepts with a value that contains the given string.
 
----
+Match concepts with a resource matching a predicate.
 
-<big><pre>
-has [resource-type](#identifier) [ = | != | < | <= | >= | > | contains ] {value}</pre></big>
+```
+has resource-type [ = | != | < | <= | >= | > | contains ] {value}
+```
 
 ```
 match $m isa movie, has runtime > 180;
 ```
-Match concepts with a resource matching a predicate.
 
----
+Match related concepts.
 
-<big><pre>
-( \[ \[ [role-type](#identifier) \] [role-player](#identifier) , ... \] )</pre></big>
+```
+( [ [ role-type ] role-player , ... ] )
+```
 
 ```
 match ($x, $y);
 ```
-Match related concepts.
+
+Match concepts related with a particular relation type.
 
 ```
 match ($p1, $p2) isa marriage;
 ```
-Match concepts related with a particular relation type.
+
+Match two related concepts where one plays a specified role type.
 
 ```
 match (director $p, $m);
 ```
-Match two related concepts where one plays a specified role type.
+
+
+Match concepts in a ternary relation.
 
 ```
 match (actor $p, character-being-played $c, production-with-cast $m);
 ```
-Match concepts in a ternary relation.
 
----
+### ako
 
-<big><pre>
-ako [type](#identifier)</pre></big>
+
+```
+ako type
+```
+Insert a new type that is a subtype of an existing type.
 
 ```
 insert blockbuster ako movie;
 ```
-Insert a new type that is a subtype of an existing type.
 
----
+### has-role
 
-<big><pre>
-has-role [role-type](#identifier)</pre></big>
+```
+has-role role-type
+```
+Insert a new relation type with two role types.
 
 ```
 insert
@@ -284,37 +333,42 @@ director isa role-type;
 production-with-director isa role-type;
 directorship isa relation-type, has-role director, has-role production-with-director;
 ```
-Insert a new relation type with two role types.
 
----
+### plays-role
 
-<big><pre>
-plays-role [role-type](#identifier)</pre></big>
+```
+plays-role role-type
+```
+
+Allow instances of a type to play a role in a relation.
 
 ```
 insert person plays-role director
 ```
-Allow instances of a type to play a role in a relation.
 
----
-
-<big><pre>
-datatype ( string | long | double | boolean )</pre></big>
+### has-resource
 
 ```
-insert name isa resource-type, datatype string;
+has-resource resource-type
 ```
-Insert a new resource type with the given datatype.
-
----
-
-<big><pre>
-has-resource [resource-type](#identifier)</pre></big>
+Allow instances of a type to have a resource.
 
 ```
 insert person has-resource name;
 ```
-Allow instances of a type to have a resource.
+
+### datatype
+
+```
+datatype ( string | long | double | boolean )
+```
+Insert a new resource type with the given datatype.
+
+```
+insert name isa resource-type, datatype string;
+```
+
+{% include links.html %}
 
 ## Document Changelog  
 
@@ -326,7 +380,7 @@ Allow instances of a type to have a resource.
     </tr>
     <tr>
         <td>v1</td>
-        <td>11/08/2016</td>
+        <td>17/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
     
