@@ -3,7 +3,7 @@ title: "Graql pages"
 tagName: graql
 search: exclude
 permalink: tag_graql.html
-sidebar: home_sidebar
+sidebar: documentation_sidebar
 folder: tags
 ---
 {% include taglogic.html %}

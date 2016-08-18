@@ -4,9 +4,9 @@ keywords: graql, query, delete
 last_updated: August 11, 2016
 tags: [graql]
 summary: "Graql Delete Queries"
-sidebar: home_sidebar
-permalink: graql/delete-queries.html
-folder: graql
+sidebar: documentation_sidebar
+permalink: /documentation/graql/delete-queries.html
+folder: documentation
 ---
 
 A delete query will delete the specified [variable

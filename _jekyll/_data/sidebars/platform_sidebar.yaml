@@ -1,0 +1,21 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: MindmapsDB Platform
+  items:
+    - title: What is MindmapsDB?
+      output: web
+      url: /platform/introduction.html
+    - title: What can you build with MindmapsDB?
+      output: web
+    - title: Why use MindmapsDB?
+      output: web
+    - title: How is it different from other database solutions?
+      output: web
+    - title: When to use MindmapsDB?
+      output: web
+    - title: What languages can I use to work with MindmapsDB?
+      output: web
+    - title: How can I start developing with MindmapsDB?
+      output: web

@@ -4,9 +4,9 @@ keywords: setup, getting started, basics
 last_updated: August 10, 2016
 tags: [getting_started]
 summary: "MindmapsDB basics."
-sidebar: home_sidebar
-permalink: overview/mindmaps_basics.html
-folder: overview
+sidebar: documentation_sidebar
+permalink: /documentation/the-basics/mindmaps-basics.html
+folder: documentation
 ---
 # Mindmaps Basics
 

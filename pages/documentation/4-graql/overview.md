@@ -4,9 +4,9 @@ keywords: graql, overview
 last_updated: August 10, 2016
 tags: [graql]
 summary: "An introduction to Graql"
-sidebar: home_sidebar
-permalink: graql/overview.html
-folder: graql
+sidebar: documentation_sidebar
+permalink: /documentation/graql/overview.html
+folder: documentation
 ---
 
 Graql allows you to query a Mindmaps graph in a declarative, pattern matching fashion.

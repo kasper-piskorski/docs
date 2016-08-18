@@ -4,9 +4,9 @@ keywords: graql, query, match
 last_updated: August 11, 2016
 tags: [graql]
 summary: "Graql Match Queries"
-sidebar: home_sidebar
-permalink: graql/match-queries.html
-folder: graql
+sidebar: documentation_sidebar
+permalink: /documentation/graql/match-queries.html
+folder: documentation
 ---
 
 A match query will search the graph for any subgraphs that match the given

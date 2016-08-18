@@ -3,7 +3,7 @@ title: "Java pages"
 tagName: java
 search: exclude
 permalink: tag_java.html
-sidebar: home_sidebar
+sidebar: documentation_sidebar
 folder: tags
 ---
 {% include taglogic.html %}

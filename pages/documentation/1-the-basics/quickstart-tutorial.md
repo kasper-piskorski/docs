@@ -4,9 +4,9 @@ keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting_started, graql]
 summary: "This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph."
-sidebar: home_sidebar
-permalink: overview/quickstart_tutorial.html
-folder: overview
+sidebar: documentation_sidebar
+permalink: /documentation/the-basics/quickstart-tutorial.html
+folder: documentation
 ---
 
 ## Introduction

@@ -4,9 +4,9 @@ keywords: graql
 last_updated: August 17, 2016
 tags: [graql, getting_started]
 summary: "A reference card (cheatsheet) for Graql"
-sidebar: home_sidebar
-permalink: graql/graql_cheatsheet.html
-folder: graql
+sidebar: documentation_sidebar
+permalink: /documentation/graql/graql-cheatsheet.html
+folder: documentation
 ---
 
 Graql is the declarative query language for MindmapsDB, more about which can be found at [mindmaps.io](http://www.mindmaps.io).  
@@ -133,7 +133,7 @@ ask
 
 ## insert
 
-An insert query will insert the specified variable patterns into the graph. 
+An insert query will insert the specified variable patterns into the graph.
 
 
 ```
@@ -160,7 +160,7 @@ insert (actor 'johnny-depp', production-with-cast $m) isa has-cast;
 
 ## delete
 
-A delete query will delete the specified variable patterns for every result of the match query. 
+A delete query will delete the specified variable patterns for every result of the match query.
 
 ```
 match  delete [ pattern ; ... ]
@@ -383,5 +383,5 @@ insert name isa resource-type, datatype string;
         <td>17/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
+
 </table>

@@ -78,7 +78,7 @@ defaults:
       layout: "page"
       comments: true
       search: true
-      sidebar: home_sidebar
+      sidebar: documentation_sidebar
   -
     scope:
       path: ""
@@ -92,8 +92,8 @@ defaults:
 # these are defaults used for the frontmatter for these file types
 
 sidebars:
-- home_sidebar
-- alt_sidebar
+- documentation_sidebar
+- platform_sidebar
 
 description: "Open-Source Distributed Semantic Database"
 # the description is used in the feed.xml file

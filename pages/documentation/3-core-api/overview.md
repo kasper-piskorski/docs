@@ -4,9 +4,9 @@ keywords: core, overview
 last_updated: August 10, 2016
 tags: []
 summary: "MindmapsDB Core Tutorial. Runs through a basic example of how to use Mindmaps Core API."
-sidebar: home_sidebar
-permalink: core/tutorial.html
-folder: core
+sidebar: documentation_sidebar
+permalink: /documentation/core-api/overview.html
+folder: documentation
 ---
 
 # Overview

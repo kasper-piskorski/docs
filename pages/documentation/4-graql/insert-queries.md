@@ -4,9 +4,9 @@ keywords: graql, query, insert
 last_updated: August 10, 2016
 tags: [graql]
 summary: "Graql Insert Queries"
-sidebar: home_sidebar
-permalink: graql/insert-queries.html
-folder: graql
+sidebar: documentation_sidebar
+permalink: /documentation/graql/insert-queries.html
+folder: documentation
 ---
 
 

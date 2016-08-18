@@ -5,9 +5,9 @@ last_updated: August 10, 2016
 tags: [getting_started]
 summary: "
 This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB."
-sidebar: home_sidebar
-permalink: overview/downloads.html
-folder: overview
+sidebar: documentation_sidebar
+permalink: /documentation/resources/downloads.html
+folder: documentation
 ---
 
 

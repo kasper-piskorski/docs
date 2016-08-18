@@ -1,0 +1,98 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Sidebar
+  product: MindmapsDB
+  version: 0.1
+  folders:
+
+  - title: Get Started
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /documentation/get-started/overview.html
+      - title: Setup Guide
+        output: web
+        url: /documentation/get-started/setup-guide.html
+  - title: The Basics
+    output: web
+    folderitems:
+      - title: Mindmaps Basics
+        output: web
+        url: /documentation/the-basics/mindmaps-basics.html
+      - title: Quickstart Tutorial
+        output: web
+        url: /documentation/the-basics/quickstart-tutorial.html
+      - title: Java Quickstart Tutorial
+        output: web
+        url: /documentation/the-basics/quickstart-tutorial-java.html
+  - title: Core API
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /documentation/core-api/overview.html
+      - title: Simple Schema Definition
+        output: web
+        url: /documentation/core-api/simple-schema-definition.html
+      - title: Advanced Schema Definition
+        output: web
+        url: /documentation/core-api/advanced-schema-definition.html
+  - title: Graql
+    output: web
+    folderitems:
+      - title: Overview
+        output: web
+        url: /documentation/graql/overview.html
+      - title: Graql Shell
+        output: web
+        url: /documentation/graql/graql-shell.html
+      - title: Match Queries
+        output: web
+        url: /documentation/graql/match-queries.html
+      - title: Ask Queries
+        output: web
+        url: /documentation/graql/ask-queries.html
+      - title: Delete Queries
+        output: web
+        url: /documentation/graql/delete-queries.html
+      - title: Insert Queries
+        output: web
+        url: /documentation/graql/insert-queries.html
+      - title: Graql Cheatsheet
+        output: web
+        url: /documentation/graql/graql-cheatsheet.html
+      - title: Java Graql
+        output: web
+        url: /documentation/graql/java-graql.html
+  - title: Troubleshooting
+    output: web
+    folderitems:
+      - title: Known Issues
+        output: web
+        url: /documentation/troubleshooting/known-issues.html
+  - title: Resources
+    output: web
+    folderitems:
+      - title: Downloads
+        output: web
+        url: /documentation/resources/downloads.html
+#  - title: Core
+#    output: web
+#    folderitems:
+#      - title: Overview
+#        output: web
+#        url: /core/overview.html
+#  - title: Factory
+#    output: web
+#    folderitems:
+#      - title: Overview
+#        output: web
+#        url: /factory/overview.html
+#      - title: Tinker Graph Factory
+#        output: web
+#        url: /factory/tinker-graph-factory.html
+#      - title: Titan Graph Factory
+#        output: web
+#        url: /factory/titan-graph-factory.html

@@ -4,9 +4,9 @@ keywords: core, schema
 last_updated: August 15, 2016
 tags: [core]
 summary: "Demonstrates how to create an Advanced schema for a Mindmaps knowledge graph"
-sidebar: home_sidebar
-permalink: core/defining-schema-advanced.html
-folder: core
+sidebar: documentation_sidebar
+permalink: /documentation/core-api/advanced-schema-definition.html
+folder: documentation
 ---
 
 # Advanced Schema

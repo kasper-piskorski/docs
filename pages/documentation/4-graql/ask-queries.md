@@ -4,9 +4,9 @@ keywords: graql, query, ask
 last_updated: August 10, 2016
 tags: [graql]
 summary: "Graql Ask Queries"
-sidebar: home_sidebar
-permalink: graql/ask-queries.html
-folder: graql
+sidebar: documentation_sidebar
+permalink: /documentation/graql/ask-queries.html
+folder: documentation
 ---
 
 An ask query will return whether the given [match query](graql_match.html) has any results.
@@ -35,6 +35,5 @@ qb.match(id("dragon").isa("pokemon-type")).ask().execute();
         <td>17/08/2016</td>
         <td>New page for developer portal.</td>        
     </tr>
-    
-</table>
 
+</table>

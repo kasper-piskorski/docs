@@ -1,12 +1,12 @@
 ---
-title: Troubleshooting
+title: Known Issues
 keywords: troubleshooting
 last_updated: August 10, 2016
 tags: [getting_started]
 summary: "Troubleshooting guide for MindmapsDB."
-sidebar: home_sidebar
-permalink: overview/troubleshooting.html
-folder: overview
+sidebar: documentation_sidebar
+permalink: /documentation/troubleshooting/known-issues.html
+folder: documentation
 ---
 
 {% include warning.html content="While MindmapsDB is still in an early adopters phase, you may encounter some exceptions. This page attempts to help you debug any problems you may experience. Please feel free to use our [discussion forums](http://discuss.mindmaps.io) for any specific queries." %}
