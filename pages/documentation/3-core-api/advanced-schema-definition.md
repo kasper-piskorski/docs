@@ -1,48 +1,45 @@
 ---
 title: Defining an Advanced Schema
 keywords: core, schema
-last_updated: August 15, 2016
-tags: [core]
-summary: "Demonstrates how to create an Advanced schema for a Mindmaps knowledge graph"
+last_updated: August 23, 2016
+tags: [coreAPI, java]
+summary: "Demonstrates how to create an Advanced schema for a Mindmaps knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/advanced-schema-definition.html
 folder: documentation
 ---
 
-# Advanced Schema
 
-It is recommend that you read [this](core/defining-schema-simple.html) section before continuing.
-The following section will introduce more adavanced concepts which you can use to create more expressive graphs.
-This section will also discuss creating a graph which supports Mindmaps reasoning and inference features.
+This document introduces some advanced schema concepts, which you can use to create more expressive Mindmaps graphs. It is recommend that you read our document about [defining a simple schema](simple-schema-definition) before continuing.
+
+Here, we also discuss creating a graph which supports Mindmaps reasoning and inference features.
 
 ## Sub Classing Types
 
-Let's say we wanted to model a graph which encapsulates movies and tv shows, as well as the actors who can play in them.
-The Naive way to do this would be as follows:
+Let's say we wanted to model a graph which encapsulates films and tv shows, as well as the actors who can play in them.
+The naive way to do this would be as follows:
 
-1. Create the Entity types:
+Create the Entity types:
+
 ```java
 EntityType person = mindmapsTransaction.putEntityType("Person");
 EntityType movie = mindmapsTransaction.putEntityType("Movie");
 EntityType tvShow = mindmapsTransaction.putEntityType("TV Show");
 ```
 
-2. Create the roles and relation types:
+Create the roles and relation types:
 
 ```java
 RoleType actorInMovie = mindmapsTrancation.putRoleType("Actor In Movie");
 RoleType movieCastIn = mindmapsTrancation.putRoleType("Movie Cast In");
 RelationType starsInMovie = mindmapsTransaction.putRelationType("Stars In Movie").hasRole(actorInMovie).hasRole(movieCastIn);
-```
 
-
-```java
 RoleType actorInTvShow = mindmapsTrancation.putRoleType("Actor In Tv Show");
 RoleType tvShowCastIn = mindmapsTrancation.putRoleType("Tv Show Cast In");
 RelationType starsInTvShow = mindmapsTransaction.putRelationType("Stars In Tv Show").hasRole(actorInTvShow).hasRole(tvShowCastIn);
 ```
 
-3. Allow the roles to be played
+Allow the roles to be played
 
 ```java
 person.playsRole(actorInMovie).playsRole(actorInTvShow);
@@ -51,16 +48,14 @@ tvShow.playsRole(tvShowCastIn);
 ```
 
 The above schema is valid and will allow us to model our data. However, there are a lot of duplicate definitions.
-For example, an actor should be able to star in anything (ideally) a movie, a tv show, a theater production etc . . .
-Furthermore, there is a lot of contextual overlap between movies and TV shows.
-Ideally we should be able to do so and with Mindmaps we can.
+For example, an actor should be able to star in anything (ideally) a film, a tv show, a theatre production etc.  Furthermore, there is a lot of contextual overlap between films and TV shows.
 
-Subclassing allows us to define things which fall into categories and sub categories.
-This allows us to create a deep object orientated schema where the rules of the super class provide additional functionality to the sub classes.
+A more sophisticated approach uses subclassing, which allows us to define things that fall into categories and sub categories.
+We can create a deep object-orientated schema where the rules of the super class provide additional functionality to the sub classes.
 
-Lets convert our above schema into a more expressive.
+Lets convert our schema into something that is more expressive.
 
-1. Movies and Tv Show are similar so we should have a super category to represent both:
+Films and TV shows are similar so we should have a super category to represent both:
 
 ```java
 EntityType person = mindmapsTransaction.putEntityType("Person");
@@ -69,7 +64,7 @@ EntityType movie = mindmapsTransaction.putEntityType("Movie").superType();
 EntityType tvShow = mindmapsTransaction.putEntityType("TV Show").superType(production);
 ```
 
-2. Actors should be able to star in any type of production, be it a Movie or a TV Show:
+Actors should be able to star in any type of production, be it a film or a TV Show:
 
 ```java
 RoleType actor = mindmapsTrancation.putRoleType("Actor");
@@ -77,16 +72,16 @@ RoleType productionCastIn = mindmapsTrancation.putRoleType("Production Cast In")
 RelationType starsIn = mindmapsTransaction.putRelationType("Stars In").hasRole(actor).hasRole(productionCastIn);
 ```
 
-3. Allow the role to be played:
+Allow the role to be played:
 
 ```java
 person.playsRole(actor);
 production.playsRole(productionCastIn);
 ```
 
-This schema is more expressive but is also shorted because common role type (e.g. **Actor*) are inherited through a super class.
-This also makes defining the schema shorter and gives more opportunities for graph.
-For example, we can start to differentiate between male and female actors withough largely impacting the schema:
+This schema is more expressive but is also shorter because the common role type (e.g. *Actor*) are inherited through a super class.
+This also makes defining the schema shorter and gives more opportunities for graph enhancements.
+For example, we can start to differentiate between male and female actors without impacting the schema significantly:
 
 ```java
 EntityType person = mindmapsTransaction.putEntityType("Person");
@@ -97,3 +92,22 @@ EntityType woman = mindmapsTransaction.putEntityType("Woman").superType();
 ## Rule Types
 
 TODO
+
+{% include links.html %}
+
+## Document Changelog  
+
+<table>
+    <tr>
+        <td>Version</td>
+        <td>Date</td>
+        <td>Description</td>        
+    </tr>
+    <tr>
+        <td>v1.01</td>
+        <td>23/08/2016</td>
+        <td>Updated content and formatting.</td>        
+    </tr>
+    
+
+</table>
