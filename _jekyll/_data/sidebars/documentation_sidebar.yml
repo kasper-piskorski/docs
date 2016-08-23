@@ -69,6 +69,12 @@ entries:
   - title: Resources
     output: web
     folderitems:
+      - title: Resources
+        output: web
+        url: /documentation/resources/resources.html
+      - title: Frequently Asked Questions
+        output: web
+        url: /documentation/resources/developer-faq.html
       - title: Downloads
         output: web
         url: /documentation/resources/downloads.html
