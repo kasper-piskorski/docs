@@ -17,10 +17,14 @@ Graql](java_graql.html).
 ## Query types
 
 There are four types of queries, which are begun with the follow keywords:  
-- [match](graql_match.html) - for matching patterns in the graph  
-- [ask](graql_ask.html) - for querying if certain patterns exist in the graph  
-- [insert](graql_insert.html) - for inserting types and instances  
-- [delete](graql_delete.html) - for deleting types and instances
+- [match](match-queries.html) - for matching patterns in the graph  
+- [ask](ask-queries.html) - for querying if certain patterns exist in the graph  
+- [insert](insert-queries.html) - for inserting types and instances  
+- [delete](delete-queries.html) - for deleting types and instances
+
+## Cheatsheet reference
+If you are already familiar with Graql, you may find our [cheatsheet reference](graql-cheatsheet.html) a helpful page to bookmark or print out!
+
 
 {% include links.html %}
 

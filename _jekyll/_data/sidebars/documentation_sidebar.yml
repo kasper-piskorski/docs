@@ -9,9 +9,6 @@ entries:
   - title: Get Started
     output: web
     folderitems:
-      - title: Overview
-        output: web
-        url: /documentation/get-started/overview.html
       - title: Setup Guide
         output: web
         url: /documentation/get-started/setup-guide.html
@@ -24,9 +21,6 @@ entries:
       - title: Quickstart Tutorial
         output: web
         url: /documentation/the-basics/quickstart-tutorial.html
-      - title: Java Quickstart Tutorial
-        output: web
-        url: /documentation/the-basics/quickstart-tutorial-java.html
   - title: Core API
     output: web
     folderitems:

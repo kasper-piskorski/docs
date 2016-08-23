@@ -29,7 +29,7 @@ queries will return the first hundred results.
 `insert` queries will output the concept IDs they are inserting.   
 `delete` queries will execute with no output.
 
-The interactive shell commits to the graph only when the user type `commit`.
+The interactive shell commits to the graph only when the user types `commit`.
 
 The REPL features several special commands:  
  `commit` Commits and validates the graph. If validation fails, the graph will not commit.   

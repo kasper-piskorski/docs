@@ -9,11 +9,28 @@ permalink: /documentation/the-basics/quickstart-tutorial.html
 folder: documentation
 ---
 
+{% include note.html content="This tutorial shows you how to use the Graql shell or the Java API. The code for each approach is shown at each stage: please use the tabs to move between them, as shown." %}
+
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell0" data-toggle="tab">Graql</a></li>
+    <li><a href="#java0" data-toggle="tab">Java</a></li>
+</ul>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell0">
+Graql shell.
+</div>
+<div role="tabpanel" class="tab-pane" id="java0">
+Java API.
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
+
+
+
 ## Introduction
 If you have not yet set up the Mindmaps environment, please see the [Quick Set Up guide](getting_started.html).
 You can find the example ```philosophers.gql``` in the examples directory included in the Mindmaps download.
 
-If you want to use Java rather than Graql, please see the [Java Quick Start tutorial](quickstart_tutorial_java.html), which is analagous to this one, but uses the MindmapsDB Java API.
 
 We are going model how philosophers are related to each other. If you don't want to type everything below to build up the philosophers ontology, you can load it using:  
 

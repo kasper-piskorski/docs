@@ -14,13 +14,23 @@ patterns](#variable-patterns) for every result of the [match
 query](graql_match.html). If a variable pattern indicates just a variable, then
 the whole concept will be deleted. If it is more specific (such as indicating
 the `id` or `isa`) it will only delete the specified properties.
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>
+    <li><a href="#java1" data-toggle="tab">Java</a></li>
+</ul>
 
-```sql
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell1">
+<pre>
 match $x isa pokemon delete $x
-```
-```java
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java1">
+<pre>
 qb.match(var("x").isa("pokemon")).delete("x").execute();
-```
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
 
 
 ## Variable Patterns
@@ -36,36 +46,67 @@ Otherwise, only the specified properties are deleted.
 
 ### has-role
 Removes the given role from the relation type.
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell2" data-toggle="tab">Graql</a></li>
+    <li><a href="#java2" data-toggle="tab">Java</a></li>
+</ul>
 
-```sql
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell2">
+<pre>
 match $x id "evolution" delete $x has-role descendant;
-```
-```java
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java2">
+<pre>
 qb.match(var("x").id("evolution")).delete(var("x").hasRole("descendant"));
-```
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
 
 
 ### plays-role
 Disallows the concept type from playing the given role.
 
-```sql
-match $x id "type" delete $x plays-role attacking-type;
-```
-```java
-qb.match(var("x").id("type")).delete(var("x").playsRole("attacking-type"));
-```
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell3" data-toggle="tab">Graql</a></li>
+    <li><a href="#java3" data-toggle="tab">Java</a></li>
+</ul>
 
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell3">
+<pre>
+match $x id "type" delete $x plays-role attacking-type;
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java3">
+<pre>
+qb.match(var("x").id("type")).delete(var("x").playsRole("attacking-type"));
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
 
 ### has
 Deletes the resources of the given type on the concept. If a value is given,
 only delete resources matching that value.
 
-```sql
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell4" data-toggle="tab">Graql</a></li>
+    <li><a href="#java4" data-toggle="tab">Java</a></li>
+</ul>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell4">
+<pre>
 match $x id "Bulbasaur" delete $x has weight;
-```
-```java
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java4">
+<pre>
 qb.match(var("x").id("Bulbasaur")).delete(var("x").has("weight"));
-```
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
 
 {% include links.html %}
 
