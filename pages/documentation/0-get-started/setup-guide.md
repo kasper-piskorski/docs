@@ -16,7 +16,7 @@ folder: documentation
 Mindmaps also requires Maven 3." %}
 
 The latest version of mindmaps can be downloaded from the
-[downloads page](downloads.html). Unzip it and run the following in the terminal:
+[downloads page](../resources/downloads). Unzip it and run the following in the terminal:
 
 ```bash
 cd mindmaps-build
@@ -60,12 +60,12 @@ If you see the above output then congratulations! You have set up Mindmaps.
 
 
 ### Troubleshooting  
-If you do not see the above message, please check our [troubleshooting page](troubleshooting.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.mindmaps.io), or on [Stack Overflow](http://stackoverflow.com).
+If you do not see the above message, please check our [troubleshooting page](../troubleshooting/known-issues). If you have any questions, please ask a question on our [discussion forum](http://discuss.mindmaps.io), or on [Stack Overflow](http://stackoverflow.com).
 
 
 
 ## Where next?
-Our [Quick Start Tutorial](quickstart_tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using [Graql](quickstart_tutorial.html) or [Java](quickstart_tutorial_java.html).
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial) will show you how to load an ontology and data into a Mindmaps Graph using Graql or Java.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

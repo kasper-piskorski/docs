@@ -101,7 +101,7 @@ Here are some links to guides for adding external jars using different IDEs:
 - [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
 
 ## Troubleshooting
-Please see our [troubleshooting](troubleshooting.html) page if you encounter any problems when installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.mindmaps.io) or on [Stack Overflow](http://www.stackoverflow.com).
+Please see our [troubleshooting](../troubleshooting/known-issues) page if you encounter any problems when installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.mindmaps.io) or on [Stack Overflow](http://www.stackoverflow.com).
 
 {% include links.html %}
 

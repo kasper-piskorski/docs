@@ -2,3 +2,4 @@ allowed-tags:
   - getting_started
   - graql
   - java
+  - coreAPI

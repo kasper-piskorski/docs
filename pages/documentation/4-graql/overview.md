@@ -11,8 +11,8 @@ folder: documentation
 
 Graql allows you to query a Mindmaps graph in a declarative, pattern matching fashion.
 
-You can execute Graql in the [Graql Shell](graql_shell.html) or using [Java
-Graql](java_graql.html).
+You can execute Graql in the [Graql Shell](graql-shell) or using [Java
+Graql](java-graql).
 
 ## Query types
 

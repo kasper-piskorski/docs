@@ -2,27 +2,24 @@
 title: Core Overview
 keywords: core, overview
 last_updated: August 10, 2016
-tags: []
-summary: "MindmapsDB Core Tutorial. Runs through a basic example of how to use Mindmaps Core API."
+tags: [java, coreAPI]
+summary: "A basic example of how to use Mindmaps Core API."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/overview.html
 folder: documentation
 ---
 
-# Overview
 
-> You should checkout the [Quickstart
-> Tutorial](documentation/basic-tutorial.md) before looking through here. It
-> is also recommended looking at the example code provided.
+This article assumes that you have already looked at the [Quickstart
+Tutorial](../the-basics/quickstart-tutorial). You can find the code below as part in the example code directory of the MindmapsDB zip.
+
+## Introduction
 
 Mindmaps Core API is the implementation of the object model discussed in
-[Mindmaps Basics](documentation/mindmaps-basics.md). It allows you to create
+[Mindmaps Basics](../the-basics/mindmaps-basics). It allows you to create
 Mindmaps Graphs using Java 8. It supports any
-[Tinkerpop](http://tinkerpop.incubator.apache.org/docs/3.0.2-incubating/) 3.0.z
-version.
+[Tinkerpop](http://tinkerpop.incubator.apache.org/docs/3.0.2-incubating/) 3.0.z version.
 
-Mindmaps Core API is catered towards constructing a Mindmaps Graphs. Graql is
-catered towards querying in more complex manners.
 
 ## Getting a Graph and a Transaction
 
@@ -32,19 +29,20 @@ Once you have started MindmapsDB with `mindmaps.sh start` you will be able to cr
     MindmapsGraph graph = MindmapsClient.getGraph("MyGraph");
 ```
 
-Now that we have a graph we can create thread bound transactions from the graph
+Now that we have a graph we can create thread bound transactions from the graph:
 
 ```java
     MindmapsTransaction transaction = graph.newTransaction();
 ```
 
-## Modelling A The Philosophers
+## Modelling The Philosophers
 
-With a transaction in place lets go through and repeat the [Quickstart Tutorial](documentation/basic-tutorial.md) using the core Java API.
+With a transaction in place lets go through and repeat the [Quickstart
+Tutorial](../the-basics/quickstart-tutorial) using the core Java API.
 
 ### Entity Types
 
-First we create some philosophers, do to so we define the category of `people`
+First we create some philosophers, so we define the category of `people`:
 
 ```java
     EntityType person = transaction.putEntityType("person");
@@ -59,13 +57,13 @@ Next we specify who our people are:
     Entity alexander = transaction.putEntity("Alexander", person);
 ```
 
-We can query for all the people by:
+We can query for all the people:
 
 ```java
     people.instances().forEach(System.out::println);
 ```
 
-Now lets create some schools of philosophy
+Now lets create some schools of philosophy:
 
 ```java
     EntityType school = transaction.putEntityType("school");
@@ -77,7 +75,7 @@ Now lets create some schools of philosophy
 
 ### Relation Types
 
-Now that we have some data lets specify how these philosophers relate to these schools. First we create the Relation Type and its Role Types:
+Now that we have some data lets specify how these philosophers relate to these schools. First we create the `Relation Type` and its `Role Types`:
 
 ```java
     RoleType philosopher = mindmapsGraph.putRoleType("philosopher");
@@ -85,7 +83,7 @@ Now that we have some data lets specify how these philosophers relate to these s
     RelationType practice = mindmapsGraph.putRelationType("practice").hasRole(philosopher).hasRole(philosophy);
 ```
 
-Next we can relate our philosophers and schools to east other:
+Next we can relate our philosophers and schools to each other:
 
 ```java
     transaction.addRelation(practice).putRolePlayer(philosopher, socrates).putRolePlayer(philosophy, platonisim);
@@ -105,3 +103,21 @@ We can even define how our philosophers relate to each other:
     transaction.putRelation(education).putRolePlayer(teacher, plato).putRolePlayer(student, aristotle);
     transaction.putRelation(education).putRolePlayer(teacher, aristotle).putRolePlayer(student, alexander);
 ```
+{% include links.html %}
+
+## Document Changelog  
+
+<table>
+    <tr>
+        <td>Version</td>
+        <td>Date</td>
+        <td>Description</td>        
+    </tr>
+    <tr>
+        <td>v1.01</td>
+        <td>23/08/2016</td>
+        <td>Updated content and formatting.</td>        
+    </tr>
+    
+
+</table>
