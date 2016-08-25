@@ -19,7 +19,7 @@ specific to the movie industry.
 
 Example ontological concepts could include `Car`, `Person`, `Movie`.
 
-The **data** is categorised by the ontology. It is essentially everything
+***The data is categorised by the ontology***. It is essentially everything
 we wish to model. 
 
 Example data concepts could include `a VW Golf TDI`, `Tom Cruise`, `Mission: Impossible`.
@@ -28,7 +28,7 @@ Example data concepts could include `a VW Golf TDI`, `Tom Cruise`, `Mission: Imp
 
 The Mindmaps stack provides a formal structure to a graph database.  The following figure represents the inheritance structure of the ontological elements. These are used to design our domain specific ontology. 
 
-**GRAPHIC TO DO**
+![The ontology object model](/images/ontology_object_model.png)
 
 ### Concept
 
@@ -50,7 +50,7 @@ Properties that store additional information about the concept and do not have t
 
 **Value** - A string value which can be used to store an additional piece of data. For example this could represent a person's name, a movie title, or any representative string.
 
-### Type
+### Concept Type
 
 A Type is an ontological element that represents something that can have instances, and is extended into the following types:   
 -  Entity Types  
@@ -58,14 +58,10 @@ A Type is an ontological element that represents something that can have instanc
 -  Role Types  
 -  Resource Types  
 
-Types can be subclassed. For example, subclasses for the Type, `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our ontology to whatever granularity of detail is needed. For example a simple ontology would be `Car` `is a` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `ako` `Car` `isa` `Vehicle`.
-
-Types can have an additional property, `Abstract`, which indicates the type cannot have instances. This is useful when we want to define a deeper ontology. For example if we have three ontology elements: `Person` and its subclasses `Man` and `Woman`, then we may want to define `Person` as `Abstract` to prohibit it from having any direct instances.
-
 
 ### Entity Type
 
-A Entity Type is used to represent a category of entities, e.g. `Vehicle`, `Movie` or `Country`. 
+A Entity Type is used to represent a category of entities, e.g. `Person`, `Vehicle`, `Movie` or `Country`. 
 
 ### Resource Type
 
@@ -90,11 +86,17 @@ A Role Type is used to represent a role in a relationship, and how concepts rela
 Types constrain the roles that can be played to ensure that only instances of the correct type are involved in the correct relationships. For example, in the movie domain, a `Person` Type can play the role `Actor`. This would mean that Instances of the Type `Person`, such as `Al Pacino` or `Leonardo DiCaprio` are allowed to be `Actors` in the relationship involving the `Actor` role. At the same time this would implicitly
 define that an Instance of Concept Type `Dog` would not be allowed to play the role `Actor`.
 
+### Subclasses
+
+The four types described above can be subclassed. For example, subclasses of `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our ontology to whatever granularity of detail is needed. For example a simple ontology would be `Car` `is a` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `ako` `Car` `isa` `Vehicle`.
+
+Types can have an additional property, `Abstract`, which indicates the type cannot have instances. This is useful when we want to define a deeper ontology. For example if we have `Person` and its subclasses `Man` and `Woman`, then we may want to define `Person` as `Abstract` to prohibit it from having any direct instances.
+
 
 ## The Object Model - Data
 The following figure represents the inheritance structure of the data elements.  
 
-** GRAPHIC TO DO **
+![The data object model](/images/data_object_model.png)
 
 ### Instance
 
@@ -156,6 +158,11 @@ instance of
 
 <!-- Removed a section on the meta ontology. We could create a separate article about this later if we think it's useful --> 
 
+## Where next?
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using Graql or Java.
+
+You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
+
 {% include links.html %}
 ## Document Changelog  
 
@@ -167,7 +174,7 @@ instance of
     </tr>
         <tr>
         <td>v1.01</td>
-        <td>24/08/2016</td>
+        <td>25/08/2016</td>
         <td>Updated content and formatting.</td>        
     </tr>
 
