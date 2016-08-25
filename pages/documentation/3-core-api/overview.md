@@ -11,12 +11,12 @@ folder: documentation
 
 
 This article assumes that you have already looked at the [Quickstart
-Tutorial](../the-basics/quickstart-tutorial). You can find the code below as part in the example code directory of the MindmapsDB zip.
+Tutorial](../the-basics/quickstart-tutorial.html). You can find the code below as part in the example code directory of the MindmapsDB zip.
 
 ## Introduction
 
 Mindmaps Core API is the implementation of the object model discussed in
-[Mindmaps Basics](../the-basics/mindmaps-basics). It allows you to create
+[Mindmaps Basics](../the-basics/mindmaps-basics.html). It allows you to create
 Mindmaps Graphs using Java 8. It supports any
 [Tinkerpop](http://tinkerpop.incubator.apache.org/docs/3.0.2-incubating/) 3.0.z version.
 

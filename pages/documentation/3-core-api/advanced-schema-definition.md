@@ -10,7 +10,7 @@ folder: documentation
 ---
 
 
-This document introduces some advanced schema concepts, which you can use to create more expressive Mindmaps graphs. It is recommend that you read our document about [defining a simple schema](simple-schema-definition) before continuing.
+This document introduces some advanced schema concepts, which you can use to create more expressive Mindmaps graphs. It is recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
 
 Here, we also discuss creating a graph which supports Mindmaps reasoning and inference features.
 

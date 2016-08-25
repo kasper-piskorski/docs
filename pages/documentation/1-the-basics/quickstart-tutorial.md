@@ -28,7 +28,7 @@ Java API.
 
 
 ## Introduction
-If you have not yet set up the Mindmaps environment, please see the [Setup guide](../get-started/setup-guide).
+If you have not yet set up the Mindmaps environment, please see the [Setup guide](../get-started/setup-guide.html).
 You can find the example ```philosophers.gql``` in the examples directory included in the Mindmaps download.
 
 

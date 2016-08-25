@@ -9,7 +9,7 @@ permalink: /documentation/core-api/simple-schema-definition.html
 folder: documentation
 ---
 
-This article assumes that you have already looked at page that covers [Mindmaps Basics](../the-basics/mindmaps-basics).
+This article assumes that you have already looked at page that covers [Mindmaps Basics](../the-basics/mindmaps-basics.html).
 
 
 Defining a schema for your graph allows you to:

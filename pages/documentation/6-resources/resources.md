@@ -23,7 +23,7 @@ You can find us on:
 [Stack Overflow](http://stackoverflow.com/tags/mindmapsdb)  
 
 ### Mindmaps Documentation and Discussion
-You've already found the documentation (you're on our developer site)! You can ask questions and make recommendations to us on our [forum](http://discuss.mindmaps.io).
+You've already found the documentation (you're on our developer site)! You can ask questions and make recommendations to us on our [forum](http://discuss.mindmaps.io), or suggest improvements via our [github repo](https://github.com/mindmapsdb/docs).
 
 ## Blogs
 
