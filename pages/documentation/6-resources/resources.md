@@ -15,24 +15,15 @@ This page lists useful resources for learning about MindmapsDB and Graph Databas
 ## Online Resources
 
 ### Mindmaps' Online Community
-You can find us on:
+Find out more about us on our [Community page](http://mindmaps.io/community.html).
 
-[Slack](http://mindmaps.io/slack.html)  
-[Github](https://github.com/mindmapsdb/mindmapsdb)  
-[Twitter](http://twitter.com/mindmapsdb)  
-[Stack Overflow](http://stackoverflow.com/tags/mindmapsdb)  
+## Learning Resources
 
-### Mindmaps Documentation and Discussion
-You've already found the documentation (you're on our developer site)! You can ask questions and make recommendations to us on our [forum](http://discuss.mindmaps.io), or suggest improvements via our [github repo](https://github.com/mindmapsdb/docs).
-
-## Blogs
+## Useful Blogs
 
 ## Videos and Podcasts
 
 ## Books
-
-## Events
-This is where we will list meetups and conferences that we'll attend, and link to videos or slide decks for presentations that we've given.
 
 
 {% include links.html %}
