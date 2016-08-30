@@ -14,7 +14,7 @@ This page lists useful resources for learning about MindmapsDB and Graph Databas
 
 ## Online Resources
 
-### Mindmaps' Online Community
+## Mindmaps' Online Community
 Find out more about us on our [Community page](http://mindmaps.io/community.html).
 
 ## Learning Resources

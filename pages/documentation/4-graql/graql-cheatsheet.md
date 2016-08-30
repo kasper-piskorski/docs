@@ -35,12 +35,12 @@ match
 
 Match a pattern in the graph.
 
-```
+```sql
 match $x isa movie
 ```
 Match several patterns together.
 
-```
+```sql
 match
 $x isa movie, id "titanic";
 (actor $a, $x);
@@ -50,36 +50,36 @@ $x isa movie, id "titanic";
 ### modifiers
 
 #### select
-```
+```sql
 select [ variable, ... ]
 ```
 Select particular variables from the query.   
 
-```
+```sql
 match $m isa movie; (actor $a1, $m); (actor $a2, $m);
 select $a1, $a2
 ```
 
 #### limit
 
-```
+```sql
 limit {integer}
 ```
 Limit the number of results returned by a query.
 
-```
+```sql
 match (director $x, $y)
 limit 10
 ```
 
 #### offset
 
-```
+```sql
 offset {integer}
 ```
 Skip some results in a query.
 
-```
+```sql
 match (director $x, $y)
 limit 10
 offset 20
@@ -87,12 +87,12 @@ offset 20
 
 #### distinct
 
-```
+```sql
 distinct
 ```
 De-duplicate the results of a query.
 
-```
+```sql
 match $m isa movie, id 'dr-strangelove'; (actor $a, $m);
 select $a
 distinct
@@ -100,18 +100,18 @@ distinct
 
 #### order
 
-```
+```sql
 order by variable [ (has resource-type) ] [ asc | desc ]
 ```
 Order by id in ascending order.
 
-```
+```sql
 match $x isa person order by $x
 ```
 
 Order by a resource in descending order.
 
-```
+```sql
 match $x isa person order by $x(has name) desc
 ```
 
@@ -120,12 +120,12 @@ match $x isa person order by $x(has name) desc
 
 An ask query will return whether the given match query has any results.
 
-```
+```sql
 [match] ask
 ```
 Return whether the match query has any results.
 
-```
+```sql
 match $x isa person, id 'james-cameron'; (actor $x)
 ask
 ```
@@ -136,23 +136,23 @@ ask
 An insert query will insert the specified variable patterns into the graph.
 
 
-```
+```sql
 insert [ pattern ; ... ]
 ```
 Insert a concept into the graph.
 
-```
+```sql
 insert 'finding-dory' isa movie;
 ```
 If a match query is provided, the query will insert the given variable patterns for every result of the match query.
 
-```
+```sql
 match  insert [ pattern ; ... ]
 ```
 
 Insert a relation for every result of a match query.
 
-```
+```sql
 match $m isa movie; (director 'tim-burton', $m);
 insert (actor 'johnny-depp', production-with-cast $m) isa has-cast;
 ```
@@ -162,12 +162,12 @@ insert (actor 'johnny-depp', production-with-cast $m) isa has-cast;
 
 A delete query will delete the specified variable patterns for every result of the match query.
 
-```
+```sql
 match  delete [ pattern ; ... ]
 ```
 Delete every instance of a type.
 
-```
+```sql
 match $x isa person;
 delete $x;
 ```
@@ -175,33 +175,33 @@ delete $x;
 
 ## pattern
 
-```
+```sql
 identifier [ property, ... ]
 ```
 A variable with several properties.
 
-```
+```sql
 $x isa person, value "Guillermo del Toro"
 ```
 
 Match either the left or right pattern.
 
-```
+```sql
 pattern or pattern
 ```
 
-```
+```sql
 $x isa movie or $x isa person
 ```
 
 Match either the left pattern or all the right patterns.
 
-```
+```sql
 { [ pattern ; ... ] }
 ```
 
 
-```
+```sql
 $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
 ```
 
@@ -210,7 +210,7 @@ $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
 
 Variables start with a `$`, followed by alphanumeric characters, underscores or dashes.
 
-```
+```sql
 match (director $the-director, $theMovie); $theMovie isa movie;
 ```
 
@@ -220,11 +220,11 @@ match (director $the-director, $theMovie); $theMovie isa movie;
 
 An `id` is a sequence of alphanumeric characters, underscores and dashes, or a quoted string.
 
-```
+```sql
 variable | id
 ```
 
-```
+```sql
 insert "TV Show" isa entity-type; movie isa entity-type;
 ```
 
@@ -234,100 +234,100 @@ insert "TV Show" isa entity-type; movie isa entity-type;
 
 Specify the type of a concept.
 
-```
+```sql
 isa type
 ```
 
-```
+```sql
 match $x isa movie;
 ```
 
 Match concepts and their types.
 
-```
+```sql
 match $x isa $y;
 ```
 
 Match the concept with a particular ID.
 
-```
+```sql
 id {string}
 ```
 
-```
+```sql
 match $x id 'ridley-scott';
 ```
 
 
 Match concepts with a value that contains the given string.
 
-```
+```sql
 value [ = | != | < | <= | >= | > | contains ] {value}
 ```
 
-```
+```sql
 match $m value contains "The Lord of the Rings";
 ```
 
 Match concepts with a resource matching a predicate.
 
-```
+```sql
 has resource-type [ = | != | < | <= | >= | > | contains ] {value}
 ```
 
-```
+```sql
 match $m isa movie, has runtime > 180;
 ```
 
 Match related concepts.
 
-```
+```sql
 ( [ [ role-type ] role-player , ... ] )
 ```
 
-```
+```sql
 match ($x, $y);
 ```
 
 Match concepts related with a particular relation type.
 
-```
+```sql
 match ($p1, $p2) isa marriage;
 ```
 
 Match two related concepts where one plays a specified role type.
 
-```
+```sql
 match (director $p, $m);
 ```
 
 
 Match concepts in a ternary relation.
 
-```
+```sql
 match (actor $p, character-being-played $c, production-with-cast $m);
 ```
 
 ### ako
 
 
-```
+```sql
 ako type
 ```
 Insert a new type that is a subtype of an existing type.
 
-```
+```sql
 insert blockbuster ako movie;
 ```
 
 ### has-role
 
-```
+```sql
 has-role role-type
 ```
 Insert a new relation type with two role types.
 
-```
+```sql
 insert
 director isa role-type;
 production-with-director isa role-type;
@@ -336,35 +336,35 @@ directorship isa relation-type, has-role director, has-role production-with-dire
 
 ### plays-role
 
-```
+```sql
 plays-role role-type
 ```
 
 Allow instances of a type to play a role in a relation.
 
-```
+```sql
 insert person plays-role director
 ```
 
 ### has-resource
 
-```
+```sql
 has-resource resource-type
 ```
 Allow instances of a type to have a resource.
 
-```
+```sql
 insert person has-resource name;
 ```
 
 ### datatype
 
-```
+```sql
 datatype ( string | long | double | boolean )
 ```
 Insert a new resource type with the given datatype.
 
-```
+```sql
 insert name isa resource-type, datatype string;
 ```
 

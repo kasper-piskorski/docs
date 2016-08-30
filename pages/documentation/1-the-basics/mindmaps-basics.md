@@ -30,6 +30,7 @@ The Mindmaps stack provides a formal structure to a graph database.  The followi
 
 ![The ontology object model](/images/ontology_object_model.png)
 
+
 ### Concept
 
 Just as a graph is defined by vertices and the edges between them, a
