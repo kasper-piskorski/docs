@@ -13,61 +13,13 @@ folder: documentation
 
 ## Download Mindmaps
 
-The latest version of mindmaps is vX.X.  TO DO  
-It can be downloaded from [here](http://mindmaps.io/download/mindmaps-0.2.1.zip).
+The latest version of mindmaps is v0.1.0.
+It can be downloaded from [here](https://github.com/mindmapsdb/mindmapsdb/releases/download/v0.1.0-SNAPSHOT/mindmaps-dist-0.1.0-SNAPSHOT-dist.zip).
 
 
 ### Past Versions
-Here is a list of previously released versions of MindmapsDB:
+A list of previously released versions of MindmapsDB can be found on [Github](https://github.com/mindmapsdb/mindmapsdb/releases).
 
-## What's included?
-TO DO: Will there be release notes?
-
-Here is a listing of the key items in the Mindmaps zip that you have downloaded.
-
-<table>
-    <tr>
-        <td>Directory</td>
-        <td>Name</td>
-        <td>Description</td>        
-    </tr>
-    <tr>
-        <td>bin</td>
-        <td>graql.sh</td>
-        <td>Graql shell script</td>        
-    </tr>
-    <tr>
-        <td>bin</td>
-        <td>mindmaps.sh</td>
-        <td>Mindmaps shell script</td>        
-    </tr>    
-    <tr>
-        <td>examples</td>
-        <td>philosophers.gql</td>
-        <td>Ontology description for philosophers example</td>        
-    </tr>
-    <tr>
-        <td>examples</td>
-        <td>pokemon.gql</td>
-        <td>Ontology description for pokemon example</td>        
-    </tr>
-    <tr>
-        <td>lib</td>
-        <td>graql-core-0.2.1.jar <br />   
-        graql-parser-0.2.1.jar  <br />
-        graql-shell-0.2.1-jar-with-dependencies.jar  <br />
-        mindmaps-core-0.2.1.jar  <br />
-        mindmaps-test-0.2.1.jar  <br />
-        mindmaps-titan-factory-0.2.1.jar <br />
-        </td>        
-        <td>See Mindmaps Java API section below</td>
-    </tr>
-    <tr>
-        <td>titan</td>
-        <td></td>
-        <td><strong>To do: describe why this directory is here</strong></td>        
-    </tr>    
-</table>
 
 ## Prerequisites
 
@@ -77,11 +29,20 @@ Mindmaps also requires Maven 3." %}
 ## Code
 We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb).
 
+### Building the Code
+
+To build MindmapsDB, you need git and Maven.
+
+Clone the [mindmapsdb repository](https://github.com/mindmapsdb/mindmapsdb) to a local directory.  In that directory:
+
+```bash
+mvn package
+```
+
+The code should build and tests will then run (the tests will take some time to complete - approximately 10 minutes). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`.
+
 
 ## Mindmaps Java API
-
-
-{% include note.html content="TO DO - SPECIFY MAVEN DEPENDENCY." %}
 
 Inside the `lib` directory of mindmaps.zip are the jars you will need to
 develop with mindmaps.
@@ -117,6 +78,11 @@ Please see our [troubleshooting](../troubleshooting/known-issues.html) page if y
         <td>v1</td>
         <td>09/08/2016</td>
         <td>New page for developer portal.</td>        
+    </tr>
+        <tr>
+        <td>v1</td>
+        <td>30/08/2016</td>
+        <td>Update for first release.</td>        
     </tr>
 
 </table>
