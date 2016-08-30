@@ -29,10 +29,8 @@
                     {% if subfolderitem.external_url %}
                     <li><a href="{{site.urlprefix}}{{subfolderitem.external_url}}" target="_blank">{{subfolderitem.title}}</a></li>
                     {% elsif page.url == subfolderitem.url %}
-                    <!-- <li class="active"><a href="{{subfolderitem.url | remove: "/"}}">{{subfolderitem.title}}</a></li> -->
                     <li class="active"><a href="{{site.urlprefix}}{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
                     {% else %}
-                    <!-- <li><a href="{{subfolderitem.url | remove: "/"}}">{{subfolderitem.title}}</a></li> -->
                     <li><a href="{{site.urlprefix}}{{subfolderitem.url}}">{{subfolderitem.title}}</a></li>
                     {% endif %}
                     {% endif %}
@@ -52,10 +50,8 @@
             {% if item.external_url %}
             <li><a href="{{site.urlprefix}}{{item.external_url}}" target="_blank">{{item.title}}</a></li>
             {% elsif page.url == item.url %}
-            <!-- <li class="active"><a href="{{subfolderitem.url | remove: "/"}}">{{subfolderitem.title}}</a></li> -->
             <li class="active"><a href="{{site.urlprefix}}{{item.url}}">{{item.title}}</a></li>
             {% else %}
-            <!-- <li><a href="{{subfolderitem.url | remove: "/"}}">{{subfolderitem.title}}</a></li> -->
             <li><a href="{{site.urlprefix}}{{item.url}}">{{item.title}}</a></li>
             {% endif %}
         </li>
