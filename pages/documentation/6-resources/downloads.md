@@ -39,7 +39,7 @@ Clone the [mindmapsdb repository](https://github.com/mindmapsdb/mindmapsdb) to a
 mvn package
 ```
 
-The code should build and tests will then run (the tests will take some time to complete - approximately 10 minutes). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`.
+The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://github.com/mindmapsdb/mindmapsdb/releases).
 
 
 ## Mindmaps Java API
