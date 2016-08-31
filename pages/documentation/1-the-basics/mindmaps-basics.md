@@ -92,9 +92,9 @@ define that an Instance of Concept Type `Dog` would not be allowed to play the r
 The four types described above can be subclassed. For example, subclasses of `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our ontology to whatever granularity of detail is needed.  
 
 {% include note.html content="In a Mindmaps graph, we use the shorthand `isa` when representing the type relationship. <br /> 
-For example, `Aristotle` (entity) `is a` `Man` (entity type).   <br/>
+For example, `Aristotle` (*data entity*) `is a` `Man` (*ontology entity type*).   <br/>
 We use the shorthand `ako` when referring to a type being the sub type of another Type. <br />
-For example, `Man` (entity type) `a kind of (ako)` `Person` (entity type)." %}
+For example, `Man` (*entity type*) `a kind of (ako)` `Person` (*ontology entity type*)." %}
 
  
 For example a simple ontology would be `Car` `is a` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `ako` `Car` `isa` `Vehicle`.
