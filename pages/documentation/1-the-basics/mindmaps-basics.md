@@ -89,7 +89,15 @@ define that an Instance of Concept Type `Dog` would not be allowed to play the r
 
 ### Subclasses
 
-The four types described above can be subclassed. For example, subclasses of `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our ontology to whatever granularity of detail is needed. For example a simple ontology would be `Car` `is a` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `ako` `Car` `isa` `Vehicle`.
+The four types described above can be subclassed. For example, subclasses of `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our ontology to whatever granularity of detail is needed.  
+
+{% include note.html content="In a Mindmaps graph, we use the shorthand `isa` when representing the type relationship. <br /> 
+For example, `Aristotle` (entity) `is a` `Man` (entity type).   <br/>
+We use the shorthand `ako` when referring to a type being the sub type of another Type. <br />
+For example, `Man` (entity type) `a kind of (ako)` `Person` (entity type)." %}
+
+ 
+For example a simple ontology would be `Car` `is a` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `ako` `Car` `isa` `Vehicle`.
 
 Types can have an additional property, `Abstract`, which indicates the type cannot have instances. This is useful when we want to define a deeper ontology. For example if we have `Person` and its subclasses `Man` and `Woman`, then we may want to define `Person` as `Abstract` to prohibit it from having any direct instances.
 
@@ -127,11 +135,6 @@ instances of a specific type. For example, one Relation can define that the Inst
 Consider the following example of male and female philosopers.
 
 ![Male and Female philosophers](/images/example_super.png)
-
-{% include note.html content="In a Mindmaps graph, we use the shorthand `isa` when representing the type relationship. <br /> 
-For example, `Aristotle` `is a` `Man`.   <br/>
-We use the shorthand `ako` when referring to a Type being the sub type of another Type. <br />
-For example, `Man` `a kind of (ako)` `Person`." %}
 
 ### Roles
 We can define the following structure where people can now play the roles of teachers or students:
