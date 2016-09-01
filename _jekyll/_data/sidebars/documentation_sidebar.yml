@@ -11,7 +11,7 @@ entries:
     folderitems:
       - title: Home
         output: web
-        url: https://mindmaps.io/pages/index.html
+        external_url: https://mindmaps.io/pages/index.html
       - title: Setup Guide
         output: web
         url: /documentation/get-started/setup-guide.html
@@ -38,7 +38,7 @@ entries:
         url: /documentation/core-api/advanced-schema-definition.html
       - title: API Reference documentation
         output: web
-        url: https://mindmaps.io/javadocs.html  
+        external_url: https://mindmaps.io/javadocs.html  
   - title: Graql
     output: web
     folderitems:
@@ -68,7 +68,7 @@ entries:
         url: /documentation/graql/java-graql.html
       - title: API Reference documentation
         output: web
-        url: https://mindmaps.io/javadocs.html  
+        external_url: https://mindmaps.io/javadocs.html  
   - title: Troubleshooting
     output: web
     folderitems:
