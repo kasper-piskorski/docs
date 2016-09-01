@@ -36,9 +36,9 @@ entries:
       - title: Advanced Schema Definition
         output: web
         url: /documentation/core-api/advanced-schema-definition.html
-      - title: API Reference documentation
+      - title: API Reference
         output: web
-        external_url: //mindmaps.io/javadocs.html
+        external_url: /javadocs.html
   - title: Graql
     output: web
     folderitems:
@@ -66,9 +66,9 @@ entries:
       - title: Java Graql
         output: web
         url: /documentation/graql/java-graql.html
-      - title: API Reference documentation
+      - title: API Reference
         output: web
-        external_url: //mindmaps.io/javadocs.html
+        external_url: /javadocs.html
   - title: Troubleshooting
     output: web
     folderitems:
