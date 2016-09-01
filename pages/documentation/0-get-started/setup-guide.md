@@ -65,7 +65,7 @@ If you do not see the above message, please check our [troubleshooting page](../
 
 
 ## Where next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using Graql or Java.
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query a Mindmaps Graph using Graql or Java.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 
