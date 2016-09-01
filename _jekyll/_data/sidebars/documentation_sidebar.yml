@@ -9,6 +9,9 @@ entries:
   - title: Get Started
     output: web
     folderitems:
+      - title: Home
+        output: web
+        url: https://mindmaps.io/pages/index.html
       - title: Setup Guide
         output: web
         url: /documentation/get-started/setup-guide.html
@@ -63,6 +66,9 @@ entries:
       - title: Java Graql
         output: web
         url: /documentation/graql/java-graql.html
+      - title: API Reference documentation
+        output: web
+        url: https://mindmaps.io/javadocs.html  
   - title: Troubleshooting
     output: web
     folderitems:
