@@ -11,7 +11,7 @@ entries:
     folderitems:
       - title: Home
         output: web
-        url: /
+        url: /index.html
       - title: Setup Guide
         output: web
         url: /documentation/get-started/setup-guide.html
