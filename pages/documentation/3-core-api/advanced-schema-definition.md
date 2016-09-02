@@ -91,7 +91,46 @@ EntityType woman = mindmapsTransaction.putEntityType("Woman").superType();
 
 ## Rule Types
 
-TODO
+MindmapsDB supports rule-based backward-chained (BC) reasoning to allow automated capturing and evolution of patterns within the graph. The BC approach is a goal-driven approach to reasoning where the subset of applicable rules is controlled by a particular query. In the BC mode, all the inferrable information is available at query time.
+
+The inference rules are expressed in the following form:
+
+#### if [rule-body] then [rule-head]
+
+or in Prolog/Datalog terms:
+
+#### [rule-head] :- [rule-body]
+
+Both the head and the body of the rule are graql statements. In logical terms, we restrict the rules to be definite Horn clauses (i.e. disjunctions of atoms with at most one unnegated atom).
+
+All rule instances are of type inference-rule which can be retrieved by:
+
+```java
+RuleType inferenceRule = mindmapsTransaction.getMetaRuleInference();
+```
+
+Rule instances can be added to the graph both through the Core API as well as through graql. Considering a sample rule reflecting the transitivity of a located-in relation, with the use of the Core API we can add it in the following way:
+
+```java
+String ruleBody = "match " +
+                "(geo-entity $x, entity-location $y) isa is-located-in;" +
+                "(geo-entity $y, entity-location $z) isa is-located-in; select $x, $z";
+
+String ruleHead = "match (geo-entity $x, entity-location $z) isa is-located-in select $x, $z";
+
+Rule rule = mindmapsTransaction.putRule("transitivity",ruleBody, ruleHead, inferenceRule);
+```
+
+The addition of the same rule instance can be expressed via an insert graql statement where the body and the head of the rule are separated with curly braces, the statement then reads:
+
+```java
+"transitivity" isa inference-rule,
+lhs {match
+(geo-entity $x, entity-location $y) isa is-located-in;
+(geo-entity $y, entity-location $z) isa is-located-in;
+select $x, $z},
+(geo-entity $x, entity-location $z) isa is-located-in};
+```
 
 {% include links.html %}
 
@@ -108,6 +147,6 @@ TODO
         <td>23/08/2016</td>
         <td>Updated content and formatting.</td>        
     </tr>
-    
+
 
 </table>
