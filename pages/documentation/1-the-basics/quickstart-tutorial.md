@@ -468,8 +468,6 @@ socrates.relations(thinker).forEach(relation -> {
 
 ![](/images/knowledge.png)
 
-{% include warning.html content="Once you have finished, make sure to use <br /> `mindmaps.sh stop && mindmaps.sh clean` <br /> if you would like to clean your graph quickly.   <br />
-**Warning: This will delete all your graphs.**" %}
 
 ## Test Yourself: Answers
 We asked you to write a query to see who taught Aristotle.   

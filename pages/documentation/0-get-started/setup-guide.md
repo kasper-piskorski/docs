@@ -48,7 +48,7 @@ This will create and persist an example data set. Now we can run the following q
 
 ```bash
 bin/graql.sh
-select $x where $x isa pokemon
+match $x isa pokemon
 $x id "Bulbasaur" isa pokemon;
 $x id "Charmander" isa pokemon;
 $x id "Pikachu" isa pokemon;
