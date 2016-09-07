@@ -2,7 +2,7 @@
 title: Core Overview
 keywords: core, overview
 last_updated: August 10, 2016
-tags: [java, coreAPI]
+tags: [java, core-api]
 summary: "A basic example of how to use Mindmaps Core API."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/overview.html
@@ -113,11 +113,10 @@ We can even define how our philosophers relate to each other:
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1.01</td>
-        <td>23/08/2016</td>
-        <td>Updated content and formatting.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
-    
 
 </table>

@@ -2,7 +2,7 @@
 title: Quickstart Tutorial
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting_started, graql, java]
+tags: [getting-started, graql, java]
 summary: "This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/quickstart-tutorial.html
@@ -489,21 +489,17 @@ match $king has title contains "King"
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1.01</td>
-        <td>03/08/2016</td>
-        <td>Updated content and formatting.</td>        
-    </tr>
-    </tr>
-        <td>v1.02</td>
-        <td>30/08/2016</td>
-        <td>Add Java API back into page.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

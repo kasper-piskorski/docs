@@ -2,7 +2,7 @@
 title: Graql Cheatsheet
 keywords: graql
 last_updated: August 17, 2016
-tags: [graql, getting_started]
+tags: [graql]
 summary: "A reference card (cheatsheet) for Graql"
 sidebar: documentation_sidebar
 permalink: /documentation/graql/graql-cheatsheet.html
@@ -372,16 +372,17 @@ insert name isa resource-type, datatype string;
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1</td>
-        <td>17/08/2016</td>
-        <td>New page for developer portal.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

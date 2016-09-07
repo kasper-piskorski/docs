@@ -2,7 +2,7 @@
 title: Setup Guide
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting_started, graql]
+tags: [getting-started, graql]
 summary: "This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql."
 sidebar: documentation_sidebar
 permalink: /documentation/get-started/setup-guide.html
@@ -80,9 +80,9 @@ You can find additional example code and documentation on this portal. We are al
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v1.01</td>
-        <td>03/08/2016</td>
-        <td>Updated content and formatting.</td>        
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

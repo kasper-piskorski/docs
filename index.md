@@ -1,7 +1,7 @@
 ---
 title: Welcome to the Mindmaps Documentation Portal
 keywords: sample homepage
-tags: [getting_started, graql, java, coreAPI]
+tags: [getting-started, graql, java, core-api]
 sidebar: documentation_sidebar
 permalink: index
 toc: false

@@ -2,7 +2,7 @@
 title: Defining a Schema
 keywords: core, schema
 last_updated: August 23, 2016
-tags: [java, coreAPI]
+tags: [java, core-api]
 summary: "Demonstrates how to create a schema for a Mindmaps knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/simple-schema-definition.html
@@ -112,17 +112,17 @@ relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, startre
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1.01</td>
-        <td>23/08/2016</td>
-        <td>Updated content and formatting.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
-    
 
 </table>

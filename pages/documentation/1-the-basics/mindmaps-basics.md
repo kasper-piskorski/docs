@@ -2,7 +2,7 @@
 title: Mindmaps Basics
 keywords: setup, getting started, basics
 last_updated: August 24, 2016
-tags: [getting_started]
+tags: [getting-started]
 summary: "Introducing the basics of the Mindmaps object model."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/mindmaps-basics.html
@@ -170,6 +170,7 @@ You can find additional example code and documentation on this portal. We are al
 {% include links.html %}
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
@@ -177,9 +178,9 @@ You can find additional example code and documentation on this portal. We are al
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v1.01</td>
-        <td>25/08/2016</td>
-        <td>Updated content and formatting.</td>        
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

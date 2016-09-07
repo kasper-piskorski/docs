@@ -2,7 +2,7 @@
 title: Downloads
 keywords: setup, getting started, download
 last_updated: August 10, 2016
-tags: [getting_started]
+tags: [getting-started]
 summary: "
 This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB."
 sidebar: documentation_sidebar
@@ -68,21 +68,17 @@ Please see our [troubleshooting](../troubleshooting/known-issues.html) page if y
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1</td>
-        <td>09/08/2016</td>
-        <td>New page for developer portal.</td>        
-    </tr>
         <tr>
-        <td>v1</td>
-        <td>30/08/2016</td>
-        <td>Update for first release.</td>        
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>
