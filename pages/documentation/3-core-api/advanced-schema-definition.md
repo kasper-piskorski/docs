@@ -91,43 +91,70 @@ EntityType woman = mindmapsGraph.putEntityType("Woman").superType();
 
 MindmapsDB supports rule-based backward-chained (BC) reasoning to allow automated capturing and evolution of patterns within the graph. The BC approach is a goal-driven approach to reasoning where the subset of applicable rules is controlled by a particular query. In the BC mode, all the inferrable information is available at query time.
 
-The inference rules are expressed in the following form:
+The inference rules are expressed in the following general form:
 
-#### if [rule-body] then [rule-head]
+```
+if [rule-body] then [rule-head]
+```
 
 or in Prolog/Datalog terms:
 
-#### [rule-head] :- [rule-body]
+```
+[rule-head] :- [rule-body]
+```
 
-Both the head and the body of the rule are graql statements. In logical terms, we restrict the rules to be definite Horn clauses (i.e. disjunctions of atoms with at most one unnegated atom).
+In logical terms, we restrict the rules to be definite Horn clauses (i.e. disjunctions of atoms with at most one unnegated atom). In our system we define both the head and the body of rules as graql queries. Consequently the rules are statements of the form:
 
+```
+p :- q1, q2, ..., qn
+```
+where p and qi's are atoms that each correspond to a single graql statements.
+
+
+A classic reasoning example is the ancestor example: the two rules stated below define the ancestor (anc) relationship, given a parenthood relationship (parent) between individuals:
+
+```
+R1: anc(X, Y):-parent(X, Y)
+R2: anc(X, Y):-parent(X, Z), anc(Z, Y)
+```
+### Rule Java API
 All rule instances are of type inference-rule which can be retrieved by:
 
 ```java
 RuleType inferenceRule = mindmapsGraph.getMetaRuleInference();
 ```
 
-Rule instances can be added to the graph both through the Core API as well as through graql. Considering a sample rule reflecting the transitivity of a located-in relation, with the use of the Core API we can add it in the following way:
+Rule instances can be added to the graph both through the Core API as well as through graql. Considering the ancestor example, with the use of the Core API we can add the rules in the following way:
 
 ```java
-String ruleBody = "match " +
-                "(geo-entity $x, entity-location $y) isa is-located-in;" +
-                "(geo-entity $y, entity-location $z) isa is-located-in; select $x, $z";
+String r1Body = "match (parent $x, child $y) isa Parent";
+String r1Head = "match (ancestor $x, descendant $y) isa Ancestor";
 
-String ruleHead = "match (geo-entity $x, entity-location $z) isa is-located-in select $x, $z";
+String r2Body = "match (parent $x, child $z) isa Parent;(ancestor $z, descendant $y) isa Ancestor; select $x, $y";
+String r2Head = "match (ancestor $x, descendant $y) isa Ancestor";
 
-Rule rule = mindmapsGraph.putRule("transitivity",ruleBody, ruleHead, inferenceRule);
+Rule rule1 = mindmapsGraph.putRule("R1", r1Body, r1Head, inferenceRule);
+Rule rule2 = mindmapsGraph.putRule("R2", r2Body, r2Head, inferenceRule);
 ```
 
-The addition of the same rule instance can be expressed via an insert graql statement where the body and the head of the rule are separated with curly braces, the statement then reads:
+### Rule Graql Syntax
+The addition of the rules specified above can be expressed via an insert graql statement where the body and the head of the rule are separated with curly braces, the corresponding statement then reads:
 
 ```java
-"transitivity" isa inference-rule,
+insert
+"R1" isa inference-rule,
 lhs {match
-(geo-entity $x, entity-location $y) isa is-located-in;
-(geo-entity $y, entity-location $z) isa is-located-in;
-select $x, $z},
-(geo-entity $x, entity-location $z) isa is-located-in};
+(parent $x, child $y) isa Parent},
+rhs {match
+(ancestor $x, descendant $y) isa Ancestor};
+
+"R2" isa inference-rule,
+lhs {match
+(parent $x, child $z) isa Parent;
+(ancestor $z, descendant $y) isa Ancestor;
+select $x, $y},
+rhs {match
+(ancestor $x, descendant $y) isa Ancestor};
 ```
 
 {% include links.html %}
