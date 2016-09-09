@@ -2,7 +2,7 @@
 title: Known Issues
 keywords: troubleshooting
 last_updated: August 10, 2016
-tags: [getting_started]
+tags: [getting-started]
 summary: "Troubleshooting guide for MindmapsDB."
 sidebar: documentation_sidebar
 permalink: /documentation/troubleshooting/known-issues.html
@@ -53,16 +53,17 @@ However, this will result in slower transaction as more reads will be necessary.
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1</td>
-        <td>10/08/2016</td>
-        <td>Checked for release to developer portal.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

@@ -2,7 +2,7 @@
 title: Resources
 keywords: setup, getting started, download
 last_updated: August 10, 2016
-tags: [getting_started]
+tags: [getting-started]
 summary: "Resources to help you learn more about graph databases."
 sidebar: documentation_sidebar
 permalink: /documentation/resources/resources.html
@@ -51,21 +51,17 @@ Date: June 2015.
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1</td>
-        <td>23/08/2016</td>
-        <td>New page for developer portal.</td>        
-    </tr>
-    <tr>
-        <td>v1</td>
-        <td>31/08/2016</td>
-        <td>Updated to add content.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

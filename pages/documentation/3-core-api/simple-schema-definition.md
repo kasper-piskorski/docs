@@ -2,7 +2,7 @@
 title: Defining a Schema
 keywords: core, schema
 last_updated: August 23, 2016
-tags: [java, coreAPI]
+tags: [java, core-api]
 summary: "Demonstrates how to create a schema for a Mindmaps knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/simple-schema-definition.html
@@ -37,20 +37,20 @@ Similarly we could say that Godfather, Star Trek Nemesis and Monster can all be 
 We would define such **Entity Types** as follows:
 
 ```java
-EntityType person = mindmapsTransaction.putEntityType("Person");
-EntityType movie = mindmapsTransaction.putEntityType("Movie");
+EntityType person = mindmapsGraph.putEntityType("Person");
+EntityType movie = mindmapsGraph.putEntityType("Movie");
 ```
 
 With this we can arrange our data into categories:
 
 ```java
-alPacino = mindmapsTransaction.addEntity(person).setValue("Al Pacino");
-patrickStewart = mindmapsTransaction.addEntity(person).setValue("Patrick Stewart");
-charliseTheron = mindmapsTransaction.addEntity(person).setValue("Charlise Theron");
+alPacino = mindmapsGraph.addEntity(person).setValue("Al Pacino");
+patrickStewart = mindmapsGraph.addEntity(person).setValue("Patrick Stewart");
+charliseTheron = mindmapsGraph.addEntity(person).setValue("Charlise Theron");
 
-godfather = mindmapsTransaction.addEntity(movie).setValue("Godfather");
-starTrek = mindmapsTransaction.addEntity(movie).setValue("Star Trek Nemesis");
-monster = mindmapsTransaction.addEntity(movie).setValue("Monster");
+godfather = mindmapsGraph.addEntity(movie).setValue("Godfather");
+starTrek = mindmapsGraph.addEntity(movie).setValue("Star Trek Nemesis");
+monster = mindmapsGraph.addEntity(movie).setValue("Monster");
 ```
 
 ### Relation and Role Types
@@ -64,14 +64,14 @@ We begin doing this by defining a **Relation Type** which categorises the relati
 For example:
 
 ```java
-RelationType starsIn = mindmapsTransaction.putRelationType("Stars In");
+RelationType starsIn = mindmapsGraph.putRelationType("Stars In");
 ```
 
 In addition to this we have to specify the roles of relationship:
 
 ```java
-RoleType actor = mindmapsTrancation.putRoleType("Actor");
-RoleType movieCastIn = mindmapsTrancation.putRoleType("Movie Cast In");
+RoleType actor = mindmapsGraph.putRoleType("Actor");
+RoleType movieCastIn = mindmapsGraph.putRoleType("Movie Cast In");
 ```
 
 We also have to link these roles to the correct **Relation Type** (NB Roles are unique and cannot be in more than one
@@ -99,7 +99,7 @@ First we create an instance of the Relation Type:
 
 
 ```java
-Relation relation = mindmapsTransaction.addRelation(starsIn);
+Relation relation = mindmapsGraph.addRelation(starsIn);
 ```
 
 Then we specify who is playing which role:
@@ -112,17 +112,17 @@ relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, startre
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1.01</td>
-        <td>23/08/2016</td>
-        <td>Updated content and formatting.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
-    
 
 </table>

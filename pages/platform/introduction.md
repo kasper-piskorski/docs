@@ -7,3 +7,4 @@ sidebar: platform_sidebar
 permalink: /platform/introduction.html
 folder: platform
 ---
+	

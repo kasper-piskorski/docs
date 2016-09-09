@@ -1,5 +1,5 @@
 allowed-tags:
-  - getting_started
+  - getting-started
   - graql
   - java
-  - coreAPI
+  - core-api

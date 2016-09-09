@@ -2,7 +2,7 @@
 title: Downloads
 keywords: setup, getting started, download
 last_updated: August 10, 2016
-tags: [getting_started]
+tags: [getting-started]
 summary: "
 This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB."
 sidebar: documentation_sidebar
@@ -14,11 +14,12 @@ folder: documentation
 ## Download Mindmaps
 
 The latest version of mindmaps is v0.1.0.
-It can be downloaded from [here](https://github.com/mindmapsdb/mindmapsdb/releases/download/v0.1.0-SNAPSHOT/mindmaps-dist-0.1.0-SNAPSHOT-dist.zip).
+It can be downloaded from [here](https://mindmaps/io/download/latest).
 
+We currently support Mac OS X and Linux.
 
 ### Past Versions
-A list of previously released versions of MindmapsDB can be found on [Github](https://github.com/mindmapsdb/mindmapsdb/releases).
+A list of previously released versions of MindmapsDB can be found on [Github](https://mindmaps.io/download).
 
 
 ## Prerequisites
@@ -27,7 +28,7 @@ A list of previously released versions of MindmapsDB can be found on [Github](ht
 Mindmaps also requires Maven 3." %}
 
 ## Code
-We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb).
+We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb). 
 
 ### Building the Code
 
@@ -39,7 +40,10 @@ Clone the [mindmapsdb repository](https://github.com/mindmapsdb/mindmapsdb) to a
 mvn package
 ```
 
-The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://github.com/mindmapsdb/mindmapsdb/releases).
+The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://mindmaps.io/download).
+
+### Example Code
+You can find an additional repo on Github containing our [example code](https://github.com/mindmapsdb/sample-projects).
 
 
 ## Mindmaps Java API
@@ -68,21 +72,17 @@ Please see our [troubleshooting](../troubleshooting/known-issues.html) page if y
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1</td>
-        <td>09/08/2016</td>
-        <td>New page for developer portal.</td>        
-    </tr>
         <tr>
-        <td>v1</td>
-        <td>30/08/2016</td>
-        <td>Update for first release.</td>        
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

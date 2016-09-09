@@ -1,8 +1,8 @@
 ---
-title: "Core API pages"
-tagName: coreAPI
+title: "Getting started pages"
+tagName: getting-started
 search: exclude
-permalink: tag_coreAPI.html
+permalink: tag_getting-started.html
 sidebar: documentation_sidebar
 folder: tags
 ---

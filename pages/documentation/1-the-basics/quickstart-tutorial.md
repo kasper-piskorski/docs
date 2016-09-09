@@ -2,7 +2,7 @@
 title: Quickstart Tutorial
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting_started, graql, java]
+tags: [getting-started, graql, java]
 summary: "This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/quickstart-tutorial.html
@@ -15,20 +15,21 @@ folder: documentation
 
 *(Skip to the following [Introduction](#introduction) section if you will be using Graql exclusively.)*   
 
-For this tutorial we will be creating an instance of Mindmaps graph which will use Tinkergraph as the storage backend. TinkerGraph is a simple in memory graph. This is how you can initialise a Mindmaps Graph with a TinkerGraph backend:
-  
- 
-```java  
-MindmapsGraphFactory mindmapsGraphFactory = MindmapsTinkerGraphFactory.getInstance();
-MindmapsGraph mindmapsGraph = mindmapsGraphFactory.newGraph();
-```
-
-Alternatively, a TitanGraph Backend can be started with: 
-
+Make sure you have Mindmaps Engine running locally by `mindmaps.sh start`. 
+Once you have done that a graph can be retrieved by: 
 
 ```java
-MindmapsGraphFactory mindmapsGraphFactory = MindmapsTitanGraphFactory.getInstance();
-MindmapsGraph mindmapsGraph = mindmapsGraphFactory.newGraph(../conf/titan-cassandra-es.properties);  
+MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
+```
+
+{% include note.html content="Make sure that your project depends on `mindmaps-titan-factory` at a minimum." %}
+
+```
+<dependency>
+    <groupId>io.mindmaps</groupId>
+    <artifactId>mindmaps-titan-factory</artifactId>
+    <version>0.1.0</version>
+</dependency>
 ```
  
 
@@ -282,7 +283,7 @@ So, we'll create some resource types that can be attached to a person:
 ResourceType<String> title = mindmapsGraph.putResourceType("title", Data.STRING);
 ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", Data.STRING);
 
-person().playsRole(hasResourceTarget);
+person.playsRole(hasResourceTarget);
 title.playsRole(hasResourceValue);
 epithet.playsRole(hasResourceValue);
 ```
@@ -365,6 +366,9 @@ pharaohOfEgypt.ownerInstances().forEach(instance -> {
 }); //Pssssstttt Graql is much better at querying relationships!!
 ```
 
+For the remainder of this tutorial we will exclusively use graql. 
+If you would like to learn more about the java api you can do so [here](../core-api/overview.html) or take a look at the [sample projects](https://github.com/mindmapsdb/sample-projects).
+
 {% include tip.html content="**Test Yourself** <br /> When querying for an id, value or resource you can use predicates as well as direct values. For example, has epithet contains 'Great'. See if you can write a query for everyone with a title containing 'King'. The answer is at the bottom of the page." %}
 
 ## Relations as Role Players
@@ -380,15 +384,6 @@ ontology.
 >>>insert fact isa entity-type, plays-role thought;
 >>>insert person plays-role thinker;
 ```
-```java
-RoleType thinker = mindmapsGraph.putRoleType("thinker");
-RoleType thought = mindmapsGraph.putRoleType("thought");
-RelationType knowledge = mindmapsGraph.putRelationType("knowledge").
-  hasRole(thinker).hasRole(thought);
-
-EntityType fact = mindmapsGraph.putEntitytType("fact").playsRole(thought);
-person.playsRole(thinker);
-```
 
 Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't really know anything at all.
 
@@ -399,23 +394,6 @@ Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't 
 >>>insert (thinker "Plato", thought "cave-fact") isa knowledge;
 >>>insert "nothing" isa fact;
 >>>insert (thinker "Socrates", thought "nothing") isa knowledge;
-```
-```java
-Entity sunFact = mindmapsGraph.putEntity("sun-fact", fact).setValue("The Sun is bigger than the Earth");
-Entity caveFact = mindmapsGraph.putEntity("cave-fact", fact).setValue("Caves are mostly pretty dark");
-Entity nothing = mindmapsGraph.putEntity("nothing", fact);
-
-mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, aristotle).
-  putRolePlayer(thought, sunFact);
-        
-mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, plato).
-  putRolePlayer(thought, caveFact);
-
-Relation socratesKnowsNothing = mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, socrates).
-  putRolePlayer(thought, nothing);
 ```
 
 A relation is actually just a special kind of instance. Just as
@@ -428,19 +406,11 @@ First, we have to state that someone can think about their own knowledge:
 ```sql
 >>>insert knowledge plays-role thought;
 ```
-```java
-knowledge.playsRole(thought);
-```
 
 We can now give Socrates one final piece of knowledge:
 
 ```sql
 >>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker "Socrates", thought $socratesKnowsNothing) isa knowledge
-```
-```java
-mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, socrates).
-  putRolePlayer(thought, socratesKnowsNothing);
 ```
 
 Here, `socratesKnowsNothing` is the relation between `Socrates` and `nothing`.
@@ -455,21 +425,11 @@ Finally, we'll check out everything Socrates knows:
 $x id "nothing" isa fact;
 $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 ```
-```java
-socrates.relations(thinker).forEach(relation -> {
-  relation.rolePlayers().values().forEach(instance -> {
-    if(!instance.equals(socrates))
-      System.out.println("    -> " + instance.getId() + ": " + instance.getValue());
-  });
-}); // Graql querying is more flexible
-```
 
 {% include note.html content="If you don't provide an ID for something such as a relation, it will get an automatically generated ID." %}
 
 ![](/images/knowledge.png)
 
-{% include warning.html content="Once you have finished, make sure to use <br /> `mindmaps.sh stop && mindmaps.sh clean` <br /> if you would like to clean your graph quickly.   <br />
-**Warning: This will delete all your graphs.**" %}
 
 ## Test Yourself: Answers
 We asked you to write a query to see who taught Aristotle.   
@@ -491,21 +451,17 @@ match $king has title contains "King"
 
 ## Document Changelog  
 
+
 <table>
     <tr>
         <td>Version</td>
         <td>Date</td>
         <td>Description</td>        
     </tr>
-    <tr>
-        <td>v1.01</td>
-        <td>03/08/2016</td>
-        <td>Updated content and formatting.</td>        
-    </tr>
-    </tr>
-        <td>v1.02</td>
-        <td>30/08/2016</td>
-        <td>Add Java API back into page.</td>        
+        <tr>
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>

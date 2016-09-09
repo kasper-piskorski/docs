@@ -2,7 +2,7 @@
 title: Setup Guide
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting_started, graql]
+tags: [getting-started, graql]
 summary: "This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql."
 sidebar: documentation_sidebar
 permalink: /documentation/get-started/setup-guide.html
@@ -19,21 +19,16 @@ The latest version of mindmaps can be downloaded from the
 [downloads page](../resources/downloads.html). Unzip it and run the following in the terminal:
 
 ```bash
-cd mindmaps-build
+cd [your Mindmaps install directory]
 bin/mindmaps.sh start
 ```
 
-{% include note.html content="**Useful commands**  <br />
-To start Mindmaps graph, run `mindmaps.sh start`.   
-To stop Mindmaps graph, run `mindmaps.sh stop`.   
-To delete all data in Mindamps graph, stop the Mindmaps backend, then run `mindmaps.sh clean`." %}
-
-
-
 This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
 
+{% include note.html content="**Useful commands**  <br />
+To start Mindmaps graph, run `mindmaps.sh start`.   
+To stop Mindmaps graph, run `mindmaps.sh stop`. " %}
 
-![Starting Mindmaps successfully](/images/terminal_mindmaps_start.png)
 
 ## Set up Graql
 
@@ -48,7 +43,7 @@ This will create and persist an example data set. Now we can run the following q
 
 ```bash
 bin/graql.sh
-select $x where $x isa pokemon
+match $x isa pokemon
 $x id "Bulbasaur" isa pokemon;
 $x id "Charmander" isa pokemon;
 $x id "Pikachu" isa pokemon;
@@ -80,9 +75,9 @@ You can find additional example code and documentation on this portal. We are al
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v1.01</td>
-        <td>03/08/2016</td>
-        <td>Updated content and formatting.</td>        
+        <td>v0.1.0.1</td>
+        <td>03/09/2016</td>
+        <td>First release.</td>        
     </tr>
 
 </table>
