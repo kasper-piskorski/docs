@@ -15,20 +15,21 @@ folder: documentation
 
 *(Skip to the following [Introduction](#introduction) section if you will be using Graql exclusively.)*   
 
-For this tutorial we will be creating an instance of Mindmaps graph which will use Tinkergraph as the storage backend. TinkerGraph is a simple in memory graph. This is how you can initialise a Mindmaps Graph with a TinkerGraph backend:
-  
- 
-```java  
-MindmapsGraphFactory mindmapsGraphFactory = MindmapsTinkerGraphFactory.getInstance();
-MindmapsGraph mindmapsGraph = mindmapsGraphFactory.newGraph();
-```
-
-Alternatively, a TitanGraph Backend can be started with: 
-
+Make sure you have Mindmaps Engine running locally by `mindmaps.sh start`. 
+Once you have done that a graph can be retreived by: 
 
 ```java
-MindmapsGraphFactory mindmapsGraphFactory = MindmapsTitanGraphFactory.getInstance();
-MindmapsGraph mindmapsGraph = mindmapsGraphFactory.newGraph(../conf/titan-cassandra-es.properties);  
+MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
+```
+
+**Note:** Make sure that your project depends on `mindmaps-titan-factory` at a minimum:
+
+```
+<dependency>
+    <groupId>io.mindmaps</groupId>
+    <artifactId>mindmaps-titan-factory</artifactId>
+    <version>0.1.0</version>
+</dependency>
 ```
  
 
@@ -401,8 +402,8 @@ Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't 
 >>>insert (thinker "Socrates", thought "nothing") isa knowledge;
 ```
 ```java
-Entity sunFact = mindmapsGraph.putEntity("sun-fact", fact).setValue("The Sun is bigger than the Earth");
-Entity caveFact = mindmapsGraph.putEntity("cave-fact", fact).setValue("Caves are mostly pretty dark");
+Entity sunFact = mindmapsGraph.putEntity("sun-fact", fact);
+Entity caveFact = mindmapsGraph.putEntity("cave-fact", fact);
 Entity nothing = mindmapsGraph.putEntity("nothing", fact);
 
 mindmapsGraph.putRelation(knowledge).
