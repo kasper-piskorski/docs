@@ -19,21 +19,16 @@ The latest version of mindmaps can be downloaded from the
 [downloads page](../resources/downloads.html). Unzip it and run the following in the terminal:
 
 ```bash
-cd mindmaps-build
+cd [your Mindmaps install directory]
 bin/mindmaps.sh start
 ```
 
-{% include note.html content="**Useful commands**  <br />
-To start Mindmaps graph, run `mindmaps.sh start`.   
-To stop Mindmaps graph, run `mindmaps.sh stop`.   
-To delete all data in Mindamps graph, stop the Mindmaps backend, then run `mindmaps.sh clean`." %}
-
-
-
 This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
 
+{% include note.html content="**Useful commands**  <br />
+To start Mindmaps graph, run `mindmaps.sh start`.   
+To stop Mindmaps graph, run `mindmaps.sh stop`. " %}
 
-![Starting Mindmaps successfully](/images/terminal_mindmaps_start.png)
 
 ## Set up Graql
 
