@@ -283,7 +283,7 @@ So, we'll create some resource types that can be attached to a person:
 ResourceType<String> title = mindmapsGraph.putResourceType("title", Data.STRING);
 ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", Data.STRING);
 
-person().playsRole(hasResourceTarget);
+person.playsRole(hasResourceTarget);
 title.playsRole(hasResourceValue);
 epithet.playsRole(hasResourceValue);
 ```
