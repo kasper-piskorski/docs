@@ -366,6 +366,9 @@ pharaohOfEgypt.ownerInstances().forEach(instance -> {
 }); //Pssssstttt Graql is much better at querying relationships!!
 ```
 
+For the remainder of this tutorial we will exclusively use graql. 
+If you would like to learn more about the java api you can do so [here](../core-api/overview.html) or take a look at the sample projects.
+
 {% include tip.html content="**Test Yourself** <br /> When querying for an id, value or resource you can use predicates as well as direct values. For example, has epithet contains 'Great'. See if you can write a query for everyone with a title containing 'King'. The answer is at the bottom of the page." %}
 
 ## Relations as Role Players
@@ -381,15 +384,6 @@ ontology.
 >>>insert fact isa entity-type, plays-role thought;
 >>>insert person plays-role thinker;
 ```
-```java
-RoleType thinker = mindmapsGraph.putRoleType("thinker");
-RoleType thought = mindmapsGraph.putRoleType("thought");
-RelationType knowledge = mindmapsGraph.putRelationType("knowledge").
-  hasRole(thinker).hasRole(thought);
-
-EntityType fact = mindmapsGraph.putEntitytType("fact").playsRole(thought);
-person.playsRole(thinker);
-```
 
 Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't really know anything at all.
 
@@ -400,23 +394,6 @@ Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't 
 >>>insert (thinker "Plato", thought "cave-fact") isa knowledge;
 >>>insert "nothing" isa fact;
 >>>insert (thinker "Socrates", thought "nothing") isa knowledge;
-```
-```java
-Entity sunFact = mindmapsGraph.putEntity("sun-fact", fact);
-Entity caveFact = mindmapsGraph.putEntity("cave-fact", fact);
-Entity nothing = mindmapsGraph.putEntity("nothing", fact);
-
-mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, aristotle).
-  putRolePlayer(thought, sunFact);
-        
-mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, plato).
-  putRolePlayer(thought, caveFact);
-
-Relation socratesKnowsNothing = mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, socrates).
-  putRolePlayer(thought, nothing);
 ```
 
 A relation is actually just a special kind of instance. Just as
@@ -429,19 +406,11 @@ First, we have to state that someone can think about their own knowledge:
 ```sql
 >>>insert knowledge plays-role thought;
 ```
-```java
-knowledge.playsRole(thought);
-```
 
 We can now give Socrates one final piece of knowledge:
 
 ```sql
 >>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker "Socrates", thought $socratesKnowsNothing) isa knowledge
-```
-```java
-mindmapsGraph.putRelation(knowledge).
-  putRolePlayer(thinker, socrates).
-  putRolePlayer(thought, socratesKnowsNothing);
 ```
 
 Here, `socratesKnowsNothing` is the relation between `Socrates` and `nothing`.
@@ -455,14 +424,6 @@ Finally, we'll check out everything Socrates knows:
 
 $x id "nothing" isa fact;
 $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
-```
-```java
-socrates.relations(thinker).forEach(relation -> {
-  relation.rolePlayers().values().forEach(instance -> {
-    if(!instance.equals(socrates))
-      System.out.println("    -> " + instance.getId() + ": " + instance.getValue());
-  });
-}); // Graql querying is more flexible
 ```
 
 {% include note.html content="If you don't provide an ID for something such as a relation, it will get an automatically generated ID." %}
