@@ -118,7 +118,7 @@ String ruleBody = "match " +
 
 String ruleHead = "match (geo-entity $x, entity-location $z) isa is-located-in select $x, $z";
 
-Rule rule = mindmapsTransaction.putRule("transitivity",ruleBody, ruleHead, inferenceRule);
+Rule rule = mindmapsTransaction.putRule("transitivity", ruleBody, ruleHead, inferenceRule);
 ```
 
 The addition of the same rule instance can be expressed via an insert graql statement where the body and the head of the rule are separated with curly braces, the statement then reads:
