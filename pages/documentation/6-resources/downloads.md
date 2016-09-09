@@ -16,6 +16,7 @@ folder: documentation
 The latest version of mindmaps is v0.1.0.
 It can be downloaded from [here](https://github.com/mindmapsdb/mindmapsdb/releases/download/v0.1.0-SNAPSHOT/mindmaps-dist-0.1.0-SNAPSHOT-dist.zip).
 
+We currently support Mac OS X and Linux.
 
 ### Past Versions
 A list of previously released versions of MindmapsDB can be found on [Github](https://github.com/mindmapsdb/mindmapsdb/releases).
@@ -27,7 +28,7 @@ A list of previously released versions of MindmapsDB can be found on [Github](ht
 Mindmaps also requires Maven 3." %}
 
 ## Code
-We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb).
+We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb). 
 
 ### Building the Code
 
@@ -40,6 +41,9 @@ mvn package
 ```
 
 The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://github.com/mindmapsdb/mindmapsdb/releases).
+
+### Example Code
+You can find an additional repo on Github containing our [example code](https://github.com/mindmapsdb/sample-projects).
 
 
 ## Mindmaps Java API

@@ -16,13 +16,13 @@ folder: documentation
 *(Skip to the following [Introduction](#introduction) section if you will be using Graql exclusively.)*   
 
 Make sure you have Mindmaps Engine running locally by `mindmaps.sh start`. 
-Once you have done that a graph can be retreived by: 
+Once you have done that a graph can be retrieved by: 
 
 ```java
 MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
 ```
 
-**Note:** Make sure that your project depends on `mindmaps-titan-factory` at a minimum:
+{% include note.html content="Make sure that your project depends on `mindmaps-titan-factory` at a minimum." %}
 
 ```
 <dependency>
@@ -367,7 +367,7 @@ pharaohOfEgypt.ownerInstances().forEach(instance -> {
 ```
 
 For the remainder of this tutorial we will exclusively use graql. 
-If you would like to learn more about the java api you can do so [here](../core-api/overview.html) or take a look at the sample projects.
+If you would like to learn more about the java api you can do so [here](../core-api/overview.html) or take a look at the [sample projects](https://github.com/mindmapsdb/sample-projects).
 
 {% include tip.html content="**Test Yourself** <br /> When querying for an id, value or resource you can use predicates as well as direct values. For example, has epithet contains 'Great'. See if you can write a query for everyone with a title containing 'King'. The answer is at the bottom of the page." %}
 
