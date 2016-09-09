@@ -3,21 +3,20 @@ title: Defining an Advanced Schema
 keywords: core, schema
 last_updated: August 23, 2016
 tags: [core-api, java]
-summary: "Demonstrates how to create an Advanced schema for a Mindmaps knowledge graph."
+summary: "Demonstrates how to create an advanced schema for a Mindmaps knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/advanced-schema-definition.html
 folder: documentation
 ---
 
 
-This document introduces some advanced schema concepts, which you can use to create more expressive Mindmaps graphs. It is recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
+This document introduces some advanced schema concepts, which you can use to create more expressive Mindmaps graphs. We recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
 
 Here, we also discuss creating a graph which supports Mindmaps reasoning and inference features.
 
-## Sub Classing Types
+## Sub-Classing Types
 
-Let's say we wanted to model a graph which encapsulates films and tv shows, as well as the actors who can play in them.
-The naive way to do this would be as follows:
+Let's say we wanted to model a graph that encapsulates films and tv shows, as well as the actors who can play in them. The naive way to do this would be as follows:
 
 Create the Entity types:
 
@@ -39,7 +38,7 @@ RoleType tvShowCastIn = mindmapsGraph.putRoleType("Tv Show Cast In");
 RelationType starsInTvShow = mindmapsGraph.putRelationType("Stars In Tv Show").hasRole(actorInTvShow).hasRole(tvShowCastIn);
 ```
 
-Allow the roles to be played
+Allow the roles to be played:
 
 ```java
 person.playsRole(actorInMovie).playsRole(actorInTvShow);
@@ -47,15 +46,14 @@ movie.playsRole(movieCastIn;
 tvShow.playsRole(tvShowCastIn);
 ```
 
-The above schema is valid and will allow us to model our data. However, there are a lot of duplicate definitions.
-For example, an actor should be able to star in anything (ideally) a film, a tv show, a theatre production etc.  Furthermore, there is a lot of contextual overlap between films and TV shows.
+The above schema is valid and will allow us to model our data. However, there are a lot of duplicate definitions. For example, an actor should be able to star in anything (ideally): a film, a tv show, a theatre production etc.  Furthermore, there is a lot of contextual overlap between films and TV shows.
 
-A more sophisticated approach uses subclassing, which allows us to define things that fall into categories and sub categories.
-We can create a deep object-orientated schema where the rules of the super class provide additional functionality to the sub classes.
+A more sophisticated approach uses sub-classing, which allows us to define things that fall into categories and sub-categories.
+We can create a deep object-orientated schema where the rules of the super-class provide additional functionality to its sub-classes.
 
-Lets convert our schema into something that is more expressive.
+Let's convert our schema into something that is more expressive.   
 
-Films and TV shows are similar so we should have a super category to represent both:
+Films and TV shows are similar so we should have a super-class `Production` to represent both:
 
 ```java
 EntityType person = mindmapsGraph.putEntityType("Person");
@@ -64,7 +62,7 @@ EntityType movie = mindmapsGraph.putEntityType("Movie").superType();
 EntityType tvShow = mindmapsGraph.putEntityType("TV Show").superType(production);
 ```
 
-Actors should be able to star in any type of production, be it a film or a TV Show:
+Actors should be able to star in any type of `Production`, be it a film or a TV Show:
 
 ```java
 RoleType actor = mindmapsGraph.putRoleType("Actor");
@@ -79,7 +77,7 @@ person.playsRole(actor);
 production.playsRole(productionCastIn);
 ```
 
-This schema is more expressive but is also shorter because the common role type (e.g. *Actor*) are inherited through a super class.
+This schema is more expressive but is also shorter because the common role type (e.g. *Actor*) are inherited through a super-class.
 This also makes defining the schema shorter and gives more opportunities for graph enhancements.
 For example, we can start to differentiate between male and female actors without impacting the schema significantly:
 
