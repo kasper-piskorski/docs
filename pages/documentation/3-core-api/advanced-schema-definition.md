@@ -114,8 +114,8 @@ where p and qi's are atoms that each correspond to a single graql statements.
 A classic reasoning example is the ancestor example: the two rules stated below define the ancestor (anc) relationship, given a parenthood relationship (parent) between individuals:
 
 ```
-R1: anc(X, Y):-parent(X, Y)
-R2: anc(X, Y):-parent(X, Z), anc(Z, Y)
+R1: anc(X, Y) :- parent(X, Y)
+R2: anc(X, Y) :- parent(X, Z), anc(Z, Y)
 ```
 ### Rule Java API
 All rule instances are of type inference-rule which can be retrieved by:
@@ -130,7 +130,8 @@ Rule instances can be added to the graph both through the Core API as well as th
 String r1Body = "match (parent $x, child $y) isa Parent";
 String r1Head = "match (ancestor $x, descendant $y) isa Ancestor";
 
-String r2Body = "match (parent $x, child $z) isa Parent;(ancestor $z, descendant $y) isa Ancestor; select $x, $y";
+String r2Body = "match (parent $x, child $z) isa Parent;" +
+                "(ancestor $z, descendant $y) isa Ancestor select $x, $y";
 String r2Head = "match (ancestor $x, descendant $y) isa Ancestor";
 
 Rule rule1 = mindmapsGraph.putRule("R1", r1Body, r1Head, inferenceRule);
@@ -143,18 +144,13 @@ The addition of the rules specified above can be expressed via an insert graql s
 ```java
 insert
 "R1" isa inference-rule,
-lhs {match
-(parent $x, child $y) isa Parent},
-rhs {match
-(ancestor $x, descendant $y) isa Ancestor};
+lhs {match (parent $x, child $y) isa Parent},
+rhs {match (ancestor $x, descendant $y) isa Ancestor};
 
 "R2" isa inference-rule,
-lhs {match
-(parent $x, child $z) isa Parent;
-(ancestor $z, descendant $y) isa Ancestor;
-select $x, $y},
-rhs {match
-(ancestor $x, descendant $y) isa Ancestor};
+lhs {match (parent $x, child $z) isa Parent;
+(ancestor $z, descendant $y) isa Ancestor select $x, $y},
+rhs {match (ancestor $x, descendant $y) isa Ancestor};
 ```
 
 {% include links.html %}
