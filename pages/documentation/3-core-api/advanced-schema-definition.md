@@ -22,21 +22,21 @@ The naive way to do this would be as follows:
 Create the Entity types:
 
 ```java
-EntityType person = mindmapsTransaction.putEntityType("Person");
-EntityType movie = mindmapsTransaction.putEntityType("Movie");
-EntityType tvShow = mindmapsTransaction.putEntityType("TV Show");
+EntityType person = mindmapsGraph.putEntityType("Person");
+EntityType movie = mindmapsGraph.putEntityType("Movie");
+EntityType tvShow = mindmapsGraph.putEntityType("TV Show");
 ```
 
 Create the roles and relation types:
 
 ```java
-RoleType actorInMovie = mindmapsTrancation.putRoleType("Actor In Movie");
-RoleType movieCastIn = mindmapsTrancation.putRoleType("Movie Cast In");
-RelationType starsInMovie = mindmapsTransaction.putRelationType("Stars In Movie").hasRole(actorInMovie).hasRole(movieCastIn);
+RoleType actorInMovie = mindmapsGraph.putRoleType("Actor In Movie");
+RoleType movieCastIn = mindmapsGraph.putRoleType("Movie Cast In");
+RelationType starsInMovie = mindmapsGraph.putRelationType("Stars In Movie").hasRole(actorInMovie).hasRole(movieCastIn);
 
-RoleType actorInTvShow = mindmapsTrancation.putRoleType("Actor In Tv Show");
-RoleType tvShowCastIn = mindmapsTrancation.putRoleType("Tv Show Cast In");
-RelationType starsInTvShow = mindmapsTransaction.putRelationType("Stars In Tv Show").hasRole(actorInTvShow).hasRole(tvShowCastIn);
+RoleType actorInTvShow = mindmapsGraph.putRoleType("Actor In Tv Show");
+RoleType tvShowCastIn = mindmapsGraph.putRoleType("Tv Show Cast In");
+RelationType starsInTvShow = mindmapsGraph.putRelationType("Stars In Tv Show").hasRole(actorInTvShow).hasRole(tvShowCastIn);
 ```
 
 Allow the roles to be played
@@ -58,18 +58,18 @@ Lets convert our schema into something that is more expressive.
 Films and TV shows are similar so we should have a super category to represent both:
 
 ```java
-EntityType person = mindmapsTransaction.putEntityType("Person");
-EntityType production = mindmapsTransaction.putEntityType("Production");
-EntityType movie = mindmapsTransaction.putEntityType("Movie").superType();
-EntityType tvShow = mindmapsTransaction.putEntityType("TV Show").superType(production);
+EntityType person = mindmapsGraph.putEntityType("Person");
+EntityType production = mindmapsGraph.putEntityType("Production");
+EntityType movie = mindmapsGraph.putEntityType("Movie").superType();
+EntityType tvShow = mindmapsGraph.putEntityType("TV Show").superType(production);
 ```
 
 Actors should be able to star in any type of production, be it a film or a TV Show:
 
 ```java
-RoleType actor = mindmapsTrancation.putRoleType("Actor");
-RoleType productionCastIn = mindmapsTrancation.putRoleType("Production Cast In");
-RelationType starsIn = mindmapsTransaction.putRelationType("Stars In").hasRole(actor).hasRole(productionCastIn);
+RoleType actor = mindmapsGraph.putRoleType("Actor");
+RoleType productionCastIn = mindmapsGraph.putRoleType("Production Cast In");
+RelationType starsIn = mindmapsGraph.putRelationType("Stars In").hasRole(actor).hasRole(productionCastIn);
 ```
 
 Allow the role to be played:
@@ -84,9 +84,9 @@ This also makes defining the schema shorter and gives more opportunities for gra
 For example, we can start to differentiate between male and female actors without impacting the schema significantly:
 
 ```java
-EntityType person = mindmapsTransaction.putEntityType("Person");
-EntityType man = mindmapsTransaction.putEntityType("Man").superType(person);
-EntityType woman = mindmapsTransaction.putEntityType("Woman").superType();
+EntityType person = mindmapsGraph.putEntityType("Person");
+EntityType man = mindmapsGraph.putEntityType("Man").superType(person);
+EntityType woman = mindmapsGraph.putEntityType("Woman").superType();
 ```
 
 ## Rule Types
@@ -106,7 +106,7 @@ Both the head and the body of the rule are graql statements. In logical terms, w
 All rule instances are of type inference-rule which can be retrieved by:
 
 ```java
-RuleType inferenceRule = mindmapsTransaction.getMetaRuleInference();
+RuleType inferenceRule = mindmapsGraph.getMetaRuleInference();
 ```
 
 Rule instances can be added to the graph both through the Core API as well as through graql. Considering a sample rule reflecting the transitivity of a located-in relation, with the use of the Core API we can add it in the following way:
@@ -118,7 +118,7 @@ String ruleBody = "match " +
 
 String ruleHead = "match (geo-entity $x, entity-location $z) isa is-located-in select $x, $z";
 
-Rule rule = mindmapsTransaction.putRule("transitivity",ruleBody, ruleHead, inferenceRule);
+Rule rule = mindmapsGraph.putRule("transitivity",ruleBody, ruleHead, inferenceRule);
 ```
 
 The addition of the same rule instance can be expressed via an insert graql statement where the body and the head of the rule are separated with curly braces, the statement then reads:
