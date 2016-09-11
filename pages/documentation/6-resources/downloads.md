@@ -14,7 +14,7 @@ folder: documentation
 ## Download Mindmaps
 
 The latest version of mindmaps is v0.1.0.
-It can be downloaded from [here](https://mindmaps/io/download/latest).
+It can be downloaded from [here](https://mindmaps.io/download/latest).
 
 We currently support Mac OS X and Linux.
 
@@ -28,7 +28,7 @@ A list of previously released versions of MindmapsDB can be found on [Github](ht
 Mindmaps also requires Maven 3." %}
 
 ## Code
-We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb). 
+We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb).
 
 ### Building the Code
 
