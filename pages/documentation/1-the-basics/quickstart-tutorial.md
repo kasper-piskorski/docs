@@ -67,10 +67,10 @@ EntityType person = mindmapsGraph.putEntityType("person");
 >>>insert "Alexander" isa person;
 ```
 ```java
-Entity socrates = mindmapsGraph.putEntity("Socrates", person));
-Entity plato = mindmapsGraph.putEntity("Plato", person));
-Entity aristotle = mindmapsGraph.putEntity("Aristotle", person));
-Entity alexander = mindmapsGraph.putEntity("Alexander", person));
+Entity socrates = mindmapsGraph.putEntity("Socrates", person);
+Entity plato = mindmapsGraph.putEntity("Plato", person);
+Entity aristotle = mindmapsGraph.putEntity("Aristotle", person);
+Entity alexander = mindmapsGraph.putEntity("Alexander", person);
 ```
 
 ![](/images/phil.png)
@@ -111,10 +111,10 @@ Next, let's add some `schools` of thought:
 ```
 ```java
 EntityType school = mindmapsGraph.putEntityType("school");
-Entity peripateticism = mindmapsGraph.putEntity("Peripateticism", person));
-Entity platonism = mindmapsGraph.putEntity("Platonism", person));
-Entity idealism = mindmapsGraph.putEntity("Idealism", person));
-Entity cynicism = mindmapsGraph.putEntity("Cynicism", person));
+Entity peripateticism = mindmapsGraph.putEntity("Peripateticism", person);
+Entity platonism = mindmapsGraph.putEntity("Platonism", person);
+Entity idealism = mindmapsGraph.putEntity("Idealism", person);
+Entity cynicism = mindmapsGraph.putEntity("Cynicism", person);
 ```
 
 And look up one:
@@ -262,7 +262,7 @@ mindmapsGraph.putRelation(education).
 
 mindmapsGraph.putRelation(education).
   putRolePlayer(teacher, aristotle).
-  putRolePlayer(student, alexander));
+  putRolePlayer(student, alexander);
 ```
 
 
