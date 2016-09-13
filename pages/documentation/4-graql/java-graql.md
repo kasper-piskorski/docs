@@ -11,8 +11,6 @@ folder: documentation
 
 As well as the Graql shell, users can also construct and execute Graql queries programmatically in Java.
 
-FELIX? TO DO: ADD A STATEMENT OF WHY THEY MAY WANT TO DO THIS
-
 Add the following to your `pom.xml`:
 
 ```xml
