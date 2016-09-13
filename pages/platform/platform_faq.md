@@ -1,39 +1,40 @@
 ## What is MindmapsDB?
 
-**<<< to do - this needs significant rework from someone who knows what they're talking about >>>**
-
 MindmapsDB is a distributed semantic database that provides a flexible object-oriented schema and a knowledge-oriented query language, capable of real-time analytics and reasoning.
 
 Let's break that down a bit and explain what it means.
 
-*"MindmapsDB is a distributed semantic database..."*   
+*"MindmapsDB is a distributed semantic database ..."*   
 
-MindmapsDB is built on top of a graph database, the benefits of which, we will discuss in a moment. The fact that it is "distributed" means that different portions of the database may be stored in multiple physical locations, over a network of interconnected computers. The advantages of this approach include reliability, cost and extensibility. A semantic database is one in which the data defines its meaning within the context of its interrelationships with other data. 
+MindmapsDB is built on top of a graph database, the benefits of which, we will discuss in a moment. The fact that it is "distributed" means that different portions (sharding) or multiple copies (replication) of the database may be stored in multiple physical locations, over a network of interconnected computers. The advantages of this approach include reliability, cost and extensibility. A semantic database is one in which the data defines its meaning within the context of its interrelationships with other data.
 
-*"...that provides a flexible object-oriented schema..."*   
+*"... that provides a flexible object-oriented schema ..."*   
 
-MindmapsDB provides a core API with an object model that enables the programmatic definition of an ontology. Data can then be interacted with solely in terms of the API, without having to consider the complexities of the underlying graph. MindmapsDB abstracts away nodes and edges and structures data in terms of concepts, the relationships between them, and the roles they play in these relationships.
+MindmapsDB provides an API with an object model that enables the programmatic definition of a schema. Highly expressive data models can built through the API, without having to consider the complexities of the underlying graph. Your schema could flexibly evolve as your application grows and MindmapsDB will guarantee the consistency of your data to meet the model you have defined.
 
 
-*"...and a knowledge-oriented query language..."*    
+*"... and a knowledge-oriented query language ..."*    
 
-Our query language, Graql, uses pattern matching to retrieve explicitly stored and implicitly derived knowledge from the data.
+Our query language, Graql, is a declarative, knowledge-oriented query language that uses pattern matching for retrieving explicitly stored and implicitly derived knowledge. Graql allows you to express complex queries in simple and short pattern matching statements and it leverages the inherent semantics of data.
 
-*"...capable of real-time analytics and reasoning..."*   
+*"... capable of real-time analytics ..."*   
 
-In the past, a model of the relationships within a dataset would have to be built by hand. It is now possible for machine-assisted or inferred relationship mapping to derive this model. In doing so, this presents new opportunities to business by inferring new relationships and additional context from data. 
+Graql is capable of performing distributed computation over large amount of data to answer common analytics questions which would otherwise be impossible to query on big data.
 
+*"... and reasoning."*
+
+Graql also serves as a general purpose inference engine that provides a powerful mechanism for validating constraints and inferring new information in a MindmapsDB graph. In the past, queries that are executed on a database have to explicitly define the relationship pattern of interest. Graql, on the other hand, will infer all relationships that matches a query pattern, as well as relationships that are semantic equivalent.
 
 ### What is a Graph Database?
 As [Wikipedia](https://en.wikipedia.org/wiki/Graph_database) explains, a graph database is "*...a database that uses graph structures for semantic queries with nodes, edges and properties to represent and store data. A key concept of the system is the graph (or edge or relationship), which directly relates data items in the store. The relationships allow data in the store to be linked together directly, and in most cases retrieved with a single operation.*".
 
 Put another way: a graph database can store, manage and query complex and highly-connected data (that is, data where there are a high number of relationships between the elements). A graph database is well-suited for uncovering common attributes and anomalies within a given volume of data, and are designed to express the relatedness of that data, allowing them to  uncover patterns that are otherwise difficult to detect.    
 
-A graph is a structure composed of vertices and edges, which can have an arbitrary number of key/value-pairs called properties. 
+A graph is a structure composed of vertices and edges, which can have an arbitrary number of key/value-pairs called properties.
 
-Vertices represent entities: discrete objects such as a person, a place, or an event. 
+Vertices represent entities: discrete objects such as a person, a place, or an event.
 
-Edges represent relationships between those objects. For instance, a person may know another person, have been involved in an event, or lives at a particular place. 
+Edges represent relationships between those objects. For instance, a person may know another person, have been involved in an event, or lives at a particular place.
 
 Properties express non-relational information about the vertices and edges. Example properties include a vertex having a name, an age and an edge having a timestamp and/or a weight.
 
@@ -43,7 +44,7 @@ Properties express non-relational information about the vertices and edges. Exam
 
 Relational and graph databases differ in the way data is stored and accessed. The primary difference is how relationships between objects are prioritized and managed. A relational database connects entities in a secondary fashion using foreign keys, but in a graph database, the relationships between them (the 'edges') are of first order importance. The ability to map any-to-any relationships is what makes graph databases so powerful. A graph database can be likened to a pre-joined RDBMS.
 
-Graph computing can offer algorithms that support complex reasoning: path analysis, vertex clustering and ranking, subgraph identification, and more. 
+Graph computing can offer algorithms that support complex reasoning: path analysis, vertex clustering and ranking, subgraph identification, and more.
 
 **Temporary graphic - would need to redraw**
 ![](http://www.pwc.com/content/dam/pwc/us/en/technology-forecast/2015/remapping-database-landscape/features/assets/mw-15-1351-the-power-of-graph-databases-in-public-health-modal-chart-2-modal.png)
@@ -77,7 +78,7 @@ Some common use cases for graph databases include:
 
 ### What can you build with MindmapsDB?   
 
-Common uses for graph databases include geospatial problems, recommendation engines, network/cloud analysis, bioinformatics and financial analysis. 
+Common uses for graph databases include geospatial problems, recommendation engines, network/cloud analysis, bioinformatics and financial analysis.
 
 We have several examples that show how MindmapsDB can be used...
 
