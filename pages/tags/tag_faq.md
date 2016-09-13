@@ -1,8 +1,8 @@
 ---
-title: "Overview pages"
-tagName: overview
+title: "FAQ pages"
+tagName: faq
 search: exclude
-permalink: tag_overview.html
+permalink: tag_faq.html
 sidebar: platform_sidebar
 folder: tags
 ---

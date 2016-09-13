@@ -1,29 +1,12 @@
-## What is MindmapsDB?
-
-MindmapsDB is a distributed semantic database that provides a flexible object-oriented schema and a knowledge-oriented query language, capable of real-time analytics and reasoning.
-
-Let's break that down a bit and explain what it means.
-
-*"MindmapsDB is a distributed semantic database ..."*   
-
-MindmapsDB is built on top of a graph database, the benefits of which, we will discuss in a moment. The fact that it is "distributed" means that different portions (sharding) or multiple copies (replication) of the database may be stored in multiple physical locations, over a network of interconnected computers. The advantages of this approach include reliability, cost and extensibility. A semantic database is one in which the data defines its meaning within the context of its interrelationships with other data.
-
-*"... that provides a flexible object-oriented schema ..."*   
-
-MindmapsDB provides an API with an object model that enables the programmatic definition of a schema. Highly expressive data models can built through the API, without having to consider the complexities of the underlying graph. Your schema could flexibly evolve as your application grows and MindmapsDB will guarantee the consistency of your data to meet the model you have defined.
-
-
-*"... and a knowledge-oriented query language ..."*    
-
-Our query language, Graql, is a declarative, knowledge-oriented query language that uses pattern matching for retrieving explicitly stored and implicitly derived knowledge. Graql allows you to express complex queries in simple and short pattern matching statements and it leverages the inherent semantics of data.
-
-*"... capable of real-time analytics ..."*   
-
-Graql is capable of performing distributed computation over large amount of data to answer common analytics questions which would otherwise be impossible to query on big data.
-
-*"... and reasoning."*
-
-Graql also serves as a general purpose inference engine that provides a powerful mechanism for validating constraints and inferring new information in a MindmapsDB graph. In the past, queries that are executed on a database have to explicitly define the relationship pattern of interest. Graql, on the other hand, will infer all relationships that matches a query pattern, as well as relationships that are semantic equivalent.
+---
+title: Mindmaps Platform
+keywords: platform
+last_updated: September 13, 2016
+tags: [overview, faq]
+sidebar: platform_sidebar
+permalink: /platform/faq.html
+folder: platform
+---
 
 ### What is a Graph Database?
 As [Wikipedia](https://en.wikipedia.org/wiki/Graph_database) explains, a graph database is "*...a database that uses graph structures for semantic queries with nodes, edges and properties to represent and store data. A key concept of the system is the graph (or edge or relationship), which directly relates data items in the store. The relationships allow data in the store to be linked together directly, and in most cases retrieved with a single operation.*".
@@ -59,10 +42,6 @@ Graph computing can offer algorithms that support complex reasoning: path analys
 ![](https://www.datastax.com/wp-content/uploads/2016/07/databases.jpg)
 
 
-## Why use MindmapsDB?
-
-This section explains why you may consider using MindmapsDB. We will start by examining when using a graph database makes sense, and then explain what additional value our stack offers.
-
 ### Why would you use a graph database?
 
 As we've discussed above, relationships are explicit in a graph data model.  If tracking the relationships between your data entities is a primary concern, it is often a good fit to use a graph database.
@@ -76,13 +55,6 @@ Some common use cases for graph databases include:
 
 **<<< to do - Not a promotional thing here - what is the technical reason for choosing it rather than orientdb or neo4j? What are the problems that we specifically solve? >>> **
 
-### What can you build with MindmapsDB?   
-
-Common uses for graph databases include geospatial problems, recommendation engines, network/cloud analysis, bioinformatics and financial analysis.
-
-We have several examples that show how MindmapsDB can be used...
-
-**<<< TO DO - links and descriptions of examples >>>**
 
 ### When a graph database is not a good solution   
 
@@ -96,14 +68,3 @@ As described by [PWC's recent database technology forecast](http://www.pwc.com/u
 **Temporary graphic - discuss and redraw**   
 
 ![](https://www.datastax.com/wp-content/uploads/2016/07/rdbmsgraphcompare2.jpg)
-
-
-## What languages can I use to work with MindmapsDB?   
-
-At present, you can use Java. We also have Graql, a knowledge-oriented query language, which is allows you to express complex questions in simple and short pattern matching statements.    
-
-Graql is declarative and therefore it handles the optimisation of the graph traversals needed to retrieve information.
-
-## How can I start developing with MindmapsDB?   
-
-MindmapsDB is an open source project, which is available now on [Github](https://github.com/mindmapsdb/mindmapsdb). Our developer documentation provides a range of guides to getting started, and can be found at [mindmaps.io](https://mindmaps.io/pages/index.html).

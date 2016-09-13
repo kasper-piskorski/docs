@@ -3,3 +3,5 @@ allowed-tags:
   - graql
   - java
   - core-api
+  - overview
+  - faq

@@ -4,18 +4,24 @@ entries:
 - title: Sidebar
   product: MindmapsDB Platform
   items:
-    - title: What is MindmapsDB?
+    - title: Introduction
       output: web
-      url: /platform/introduction.html
-    - title: What can you build with MindmapsDB?
+      url: /platform/index.html
+    - title: System Applications
       output: web
-    - title: Why use MindmapsDB?
+      url: /platform/applications.html
+    - title: Advantages
       output: web
-    - title: How is it different from other database solutions?
+      url: /platform/advantages.html
+    - title: Database Comparison
       output: web
-    - title: When to use MindmapsDB?
+      url: /platform/comparison.html
+    - title: Use Case
       output: web
-    - title: What languages can I use to work with MindmapsDB?
+      url: /platform/use-case.html
+    - title: Developer
       output: web
-    - title: How can I start developing with MindmapsDB?
+      url: /platform/developer.html
+    - title: FAQ
       output: web
+      url: /platform/faq.html
