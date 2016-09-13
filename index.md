@@ -34,7 +34,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 <div role="tabpanel" class="tab-pane" id="coreapi">
     <h2>API documentation</h2>
-    <p>Our API reference documents can be found <a target="_blank" href="https://mindmaps.io/javadocs.html">here</a>.</p>
+    <p>Our API reference documents can be found <a target="_blank" href="https://mindmaps.io/javadocs.html">here</a>. It is also available in the Mindmaps distribution that you can download from <a href="https://mindmaps.io/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="gethelp">
