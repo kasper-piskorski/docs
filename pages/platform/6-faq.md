@@ -43,6 +43,7 @@ Graph computing can offer algorithms that support complex reasoning: path analys
 ![](https://www.datastax.com/wp-content/uploads/2016/07/databases.jpg)
 
 -->
+
 ### Why would you use a graph database?
 
 As we've discussed above, relationships are explicit in a graph data model.  If tracking the relationships between your data entities is a primary concern, it is often a good fit to use a graph database.
