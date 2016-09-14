@@ -36,9 +36,9 @@ Graph computing can offer algorithms that support complex reasoning: path analys
 
 ### What is the difference between other NoSQL databases and graph databases?   
 
-**<<< to do - Another short section to describe the difference in brief (maybe just use a diagram) >>>**
+<!--**<<< to do - Another short section to describe the difference in brief (maybe just use a diagram) >>>**
 
-<!--**Temporary graphic - discuss and redraw**
+**Temporary graphic - discuss and redraw**
 
 ![](https://www.datastax.com/wp-content/uploads/2016/07/databases.jpg)
 
