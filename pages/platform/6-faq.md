@@ -29,19 +29,20 @@ Relational and graph databases differ in the way data is stored and accessed. Th
 
 Graph computing can offer algorithms that support complex reasoning: path analysis, vertex clustering and ranking, subgraph identification, and more.
 
+<!--
 **Temporary graphic - would need to redraw**
 ![](http://www.pwc.com/content/dam/pwc/us/en/technology-forecast/2015/remapping-database-landscape/features/assets/mw-15-1351-the-power-of-graph-databases-in-public-health-modal-chart-2-modal.png)
-
+-->
 
 ### What is the difference between other NoSQL databases and graph databases?   
 
 **<<< to do - Another short section to describe the difference in brief (maybe just use a diagram) >>>**
 
-**Temporary graphic - discuss and redraw**
+<!--**Temporary graphic - discuss and redraw**
 
 ![](https://www.datastax.com/wp-content/uploads/2016/07/databases.jpg)
 
-
+-->
 ### Why would you use a graph database?
 
 As we've discussed above, relationships are explicit in a graph data model.  If tracking the relationships between your data entities is a primary concern, it is often a good fit to use a graph database.
@@ -52,8 +53,8 @@ Some common use cases for graph databases include:
 - IoT and Networking
 
 ### Why would you specifically choose MindmapsDB?   
-
-**<<< to do - Not a promotional thing here - what is the technical reason for choosing it rather than orientdb or neo4j? What are the problems that we specifically solve? >>> **
+<!--
+**<<< to do - Not a promotional thing here - what is the technical reason for choosing it rather than orientdb or neo4j? What are the problems that we specifically solve? >>> **-->
 
 
 ### When a graph database is not a good solution   
@@ -65,6 +66,6 @@ As described by [PWC's recent database technology forecast](http://www.pwc.com/u
 
 ### Database types compared   
 
-**Temporary graphic - discuss and redraw**   
+<!--**Temporary graphic - discuss and redraw**   
 
-![](https://www.datastax.com/wp-content/uploads/2016/07/rdbmsgraphcompare2.jpg)
+![](https://www.datastax.com/wp-content/uploads/2016/07/rdbmsgraphcompare2.jpg)-->
