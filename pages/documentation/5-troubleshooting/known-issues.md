@@ -11,7 +11,7 @@ folder: documentation
 
 {% include warning.html content="While MindmapsDB is still in an early adopters phase, you may encounter some exceptions. This page attempts to help you debug any problems you may experience. Please feel free to use our [discussion forums](http://discuss.mindmaps.io) for any specific queries." %}
 
-## Mindmaps does not start
+## MindmapsDB does not start
 Problem: You run `mindmaps.sh` and it hangs on `Starting Cassandra`. 
 
 Solution: This may be because you have cloned the mindmapsdb repo into a directory which has a space in its name (e.g. `/mindmaps DB`). You can build our code successfully, but when you start `mindmaps.sh`, it hangs because Cassandra needs you to have single word pathnames. Remove the spaces (e.g. `/mindmapsDB`) and try again.

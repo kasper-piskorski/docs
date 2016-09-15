@@ -1,9 +1,9 @@
 ---
-title: Setup Guide
+title: MindmapsDB Setup Guide
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting-started, graql]
-summary: "This document will teach you how to set up a Mindmaps environment, start it up and load an example dataset to make a query using our query language, Graql."
+summary: "This document will teach you how to set up a MindmapsDB environment, start it up and load an example dataset to make a query using our query language, Graql."
 sidebar: documentation_sidebar
 permalink: /documentation/get-started/setup-guide.html
 folder: documentation
@@ -12,27 +12,28 @@ folder: documentation
 
 ## Download and Install Mindmaps
 
-{% include note.html content="Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
-Mindmaps also requires Maven 3." %}
+{% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
+MindmapsDB also requires Maven 3." %}
 
-The latest version of mindmaps can be downloaded from the
+The latest version of MindmapsDB can be downloaded from the
 [downloads page](../resources/downloads.html). Unzip it and run the following in the terminal:
 
 ```bash
-cd [your Mindmaps install directory]
+cd [your MindmapsDB install directory]
 bin/mindmaps.sh start
 ```
 
 This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
 
 {% include note.html content="**Useful commands**  <br />
-To start Mindmaps graph, run `mindmaps.sh start`.   
-To stop Mindmaps graph, run `mindmaps.sh stop`. " %}
+To start MindmapsDB graph, run `mindmaps.sh start`.   
+To stop MindmapsDB graph, run `mindmaps.sh stop`. " %}
 
 
 ## Set up Graql
 
-Graql is our query language, which allows you to interface with a Mindmaps graph. We will use Graql to load an example data set and run some simple queries against it.  
+Graql is our query language, which allows you to interface with a MindmapsDB graph. We will use Graql to load an example data set and run some simple queries against it.  
+
 The following will make Graql load an example data set and exit:
 
 ```bash
@@ -50,7 +51,7 @@ $x id "Pikachu" isa pokemon;
 ...
 ```
 
-If you see the above output then congratulations! You have set up Mindmaps.
+If you see the above output then congratulations! You have set up MindmapsDB.
 
 
 
@@ -60,7 +61,7 @@ If you do not see the above message, please check our [troubleshooting page](../
 
 
 ## Where next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query a Mindmaps Graph using Graql or Java.
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query a MindmapsDB Graph using Graql or Java.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

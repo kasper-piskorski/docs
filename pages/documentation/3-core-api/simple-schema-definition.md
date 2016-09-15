@@ -1,32 +1,32 @@
 ---
 title: Defining a Schema
-keywords: core, schema
+keywords: schema
 last_updated: August 23, 2016
-tags: [java, core-api]
-summary: "Demonstrates how to create a schema for a Mindmaps knowledge graph."
+tags: [java, graph-api]
+summary: "Demonstrates how to create a schema for a MindmapsDB knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/simple-schema-definition.html
 folder: documentation
 ---
 
-This article assumes that you have already looked at page that covers [Mindmaps Basics](../the-basics/mindmaps-basics.html).
+This article assumes that you have already looked at page that covers [MindmapsDB Basics](../the-basics/mindmaps-basics.html).
 
 
 Defining a schema for your graph allows you to:
 
 * control how your data relates to each other
 * ensure your graph is consistent
-* design domain specific knowledge graphs.
+* design domain-specific knowledge graphs.
 
 In Mindmaps, a schema is defined by adding **types** to your graph.
 These **types** allow you to divide your data into different categories but also control how data instances may relate to each other.
 
-In this section we will review each of these types and explain how you use them when defining a Mindmaps graph.
+In this section we will review each of these types and explain how you use them when defining a MindmapsDB graph.
 
 ## Basic Type Definitions
 
-This section describes basic types which are **essential** to a Mindmaps schema.
-When creating a Mindmaps knowledge graph you should always begin by defining these schema elements.
+This section describes basic types which are **essential** to a MindmapsDB schema.
+When creating a MindmapsDB knowledge graph you should always begin by defining these schema elements.
 
 ### Entity Type
 
@@ -56,7 +56,7 @@ monster = mindmapsGraph.addEntity(movie).setValue("Monster");
 ### Relation and Role Types
 
 The greatest advantage of a graph database is the expressiveness of the relationships between data.
-With Mindmaps we can control how our data relates to each other.
+With MindmapsDB we can control how our data relates to each other.
 
 For example how can we say that Patrick Stewart starred in Star Trek Nemesis?
 To be able to do so we must first allow such behaviour between our types.
@@ -94,7 +94,7 @@ The above statements allow people to be actors and allow movies to have actors c
 {% include note.html content="Explicitly specifying which **Role Types** an **Entity Type** can play allows us to control our data more easily.
 Essentially it would prevent us from accidentally saying that a movie starred in another movie." %}
 
-Now finally we can specify that Patrick Stewart was in Star Trek Nemesis.
+Now, finally, we can specify that Patrick Stewart was in Star Trek Nemesis.
 First we create an instance of the Relation Type:
 
 
@@ -125,4 +125,4 @@ relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, startre
         <td>First release.</td>        
     </tr>
 
-</table>
+</table>MindmapsDB 

@@ -12,7 +12,7 @@ folder: documentation
 This page lists useful resources for learning about MindmapsDB and Graph Databases.
 
 
-## Mindmaps' Online Community
+## MindmapsDB's Online Community
 Find out more about us on our [Community page](http://mindmaps.io/community.html).
 
 ## Learning Resources
@@ -64,4 +64,4 @@ Date: June 2015.
         <td>First release.</td>        
     </tr>
 
-</table>
+</table>MindmapsDB 

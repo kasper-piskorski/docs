@@ -4,7 +4,7 @@ keywords: setup, getting started, download
 last_updated: August 10, 2016
 tags: [getting-started]
 summary: "
-This is a list of Mindmaps releases. It's the place to come to download the most recent versions of MindmapsDB."
+This is a list of MindmapsDB releases. It's the place to come to download the most recent versions of MindmapsDB."
 sidebar: documentation_sidebar
 permalink: /documentation/resources/downloads.html
 folder: documentation
@@ -13,7 +13,7 @@ folder: documentation
 
 ## Download Mindmaps
 
-The latest version of mindmaps is v0.1.0.
+The latest version of MindmapsDB is v0.1.0.
 It can be downloaded from [here](https://mindmaps.io/download/latest).
 
 We currently support Mac OS X and Linux.
@@ -24,8 +24,8 @@ A list of previously released versions of MindmapsDB can be found on [Github](ht
 
 ## Prerequisites
 
-{% include note.html content="Mindmaps requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
-Mindmaps also requires Maven 3." %}
+{% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
+MindmapsDB also requires Maven 3." %}
 
 ## Code
 We are an open source project. If you want to look at our code, we are on Github at [https://github.com/mindmapsdb/mindmapsdb](https://github.com/mindmapsdb/mindmapsdb).
@@ -46,7 +46,7 @@ The code should build and the tests will then run (the tests will take approxima
 You can find an additional repo on Github containing our [example code](https://github.com/mindmapsdb/sample-projects).
 
 
-## Mindmaps Java API
+## MindmapsDB Java API
 
 Inside the `lib` directory of mindmaps.zip are the jars you will need to
 develop with mindmaps.

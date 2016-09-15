@@ -1,40 +1,39 @@
 ---
-title: Mindmaps Basics
+title: MindmapsDB Basics
 keywords: setup, getting started, basics
 last_updated: August 24, 2016
 tags: [getting-started]
-summary: "Introducing the basics of the Mindmaps object model."
+summary: "Introducing the basics of the MindmapsDB object model."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/mindmaps-basics.html
 folder: documentation
 ---
-# Mindmaps Basics
+# MindmapsDB Basics
 
-## Ontology and Data
+## Schema and Data
 
-A Mindmaps graph is made of two layers: the ontology and the data layer.
+A MindmapsDB graph is made of two layers: the database schema and the data layer.
 
-***A Mindmaps ontology is analogous to a database schema***. Ideally, it should be clearly defined before loading data into the graph. The ontology is used to formalise the data within a specific domain. If data is about healthcare, then we need to design an ontology specific to healthcare. If data is about movies, then we need to define an ontology
-specific to the movie industry.   
+***A MindmapsDB schema should be clearly defined before loading data into the graph.*** The schema is used to formalise the data within a specific domain. If data is about healthcare, then we need to design a schema specific to healthcare. If data is about movies, then we need to define an schema specific to the movie industry.   
 
-Example ontological concepts could include `Car`, `Person`, `Movie`.
+Example schema concepts could include `Car`, `Person`, `Movie`.
 
-***The data is categorised by the ontology***. It is essentially everything
+***The data is categorised by the schema.*** It is essentially everything
 we wish to model. 
 
 Example data concepts could include `a VW Golf TDI`, `Tom Cruise`, `Mission: Impossible`.
 
-## The Object Model - Ontology
+## The Object Model - Schema
 
-The Mindmaps stack provides a formal structure to a graph database.  The following figure represents the inheritance structure of the ontological elements. These are used to design our domain specific ontology. 
+The MindmapsDB stack provides a formal structure to a graph database.  The following figure represents the inheritance structure of the schema elements. These are used to design our domain specific schema. 
 
-![The ontology object model](/images/ontology_object_model.png)
+![The schema object model](/images/ontology_object_model.png)
 
 
 ### Concept
 
 Just as a graph is defined by vertices and the edges between them, a
-Mindmaps graph is defined by concepts and the relationships between those
+MindmapsDB graph is defined by concepts and the relationships between those
 concepts.  Every vertex is a concept and has the following properties:
 
 #### Unique Properties
@@ -42,6 +41,8 @@ concepts.  Every vertex is a concept and has the following properties:
 Properties which must be unique throughout the entire graph.
 
 **Id** - A concept must, at minimum, have a unique ID. This is a string which identifies the concept. For example if a concept is representing a person it could be their id number.   
+
+
 **Subject** - An optional unique string which can be used to refer to
 external resources relating to the concept. For example if the concept is used to represent a country or city the subject could point to the wikipedia page of that city.   
 
@@ -53,7 +54,7 @@ Properties that store additional information about the concept and do not have t
 
 ### Concept Type
 
-A Type is an ontological element that represents something that can have instances, and is extended into the following types:   
+A Type is a schema element that represents something that can have instances, and is extended into the following types:   
 -  Entity Types  
 -  Relation Types  
 -  Role Types  
@@ -66,10 +67,12 @@ A Entity Type is used to represent a category of entities, e.g. `Person`, `Vehic
 
 ### Resource Type
 
-A Resource Type is used to represent a category of resources. e.g. `birthdate` or `name`. Resource Types have additional properties including:
+A Resource Type is used to represent a category of resources e.g. `birthdate` or `name`. Resource Types have additional properties including:
 
-1. **Datatype** - Indicates the datatype of the resource. For example if the resource is `Age` the the datatype would be **integer**
-2. **Regex** - Used to constrain string data types to specific regex patterns.
+1. **Datatype** - Indicates the datatype of the resource. For example if the resource is `Age` the datatype would be **integer**   
+
+2. **Regex** - Used to constrain string data types to specific regex patterns.   
+
 3. **Unique** - A boolean which indicates if the resource should be unique
 across the graph.
 
@@ -78,7 +81,7 @@ across the graph.
 A Relation Type is used to model relationships. For example, to model that `Tom Cruise` is an `Actor` in `Mission: Impossible` we need to use a Relation Type such as `Has Cast`. This allows us to model that
 `Mission: Impossible` `Has Cast` `Tom Cruise`.
 
-A Mindmaps graph enables us to model complex n-ary relationships. To do this we define a Relation Type and link it with roles which flesh out the details of the relationship. For example, in the movie domain a valid Relation Type could be `Cast` which has the Role Types `Actor` and `Movie With Cast`.
+A MindmapsDB graph enables us to model complex n-ary relationships. To do this we define a Relation Type and link it with roles which flesh out the details of the relationship. For example, in the movie domain a valid Relation Type could be `Cast` which has the Role Types `Actor` and `Movie With Cast`.
 
 ### Role Type
 
@@ -89,17 +92,18 @@ define that an Instance of Concept Type `Dog` would not be allowed to play the r
 
 ### Subclasses
 
-The four types described above can be subclassed. For example, subclasses of `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our ontology to whatever granularity of detail is needed.  
+The four types described above can be subclassed. For example, subclasses of `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our schema to whatever granularity of detail is needed.  
 
-{% include note.html content="In a Mindmaps graph, we use the shorthand `isa` when representing the type relationship. <br /> 
-For example, `Aristotle` (*data entity*) `is a` `Man` (*ontology entity type*).   <br/>
-We use the shorthand `ako` when referring to a type being the sub type of another Type. <br />
-For example, `Man` (*entity type*) `a kind of (ako)` `Person` (*ontology entity type*)." %}
+{% include note.html content="In a MindmapsDB graph, we use the shorthand `isa` when representing the type relationship. <br /> 
+For example, `Aristotle` (*data entity*) `isa ` `Man` (*schema entity type*).   <br /><br />
+
+We use the shorthand `ako ('a kind of')` when referring to a type being the sub type of another Type. <br />
+For example, `Man` (*entity type*) `ako` `Person` (*schema entity type*)." %}
 
  
-For example a simple ontology would be `Car` `is a` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `ako` `Car` `isa` `Vehicle`.
+For example a simple schema would be `Car` `isa` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa ` `VW` `ako` `Car` `isa` `Vehicle`.
 
-Types can have an additional property, `Abstract`, which indicates the type cannot have instances. This is useful when we want to define a deeper ontology. For example if we have `Person` and its subclasses `Man` and `Woman`, then we may want to define `Person` as `Abstract` to prohibit it from having any direct instances.
+Types can have an additional property, `Abstract`, which indicates the type cannot have instances. This is useful when we want to define a deeper schema. For example if we have `Person` and its subclasses `Man` and `Woman`, then we may want to define `Person` as `Abstract` to prohibit it from having any direct instances.
 
 
 ## The Object Model - Data
@@ -113,7 +117,7 @@ Instances are data elements. They are named as such because they are instances o
 
 ### Entity
 
-An instance of the Entity Type (which is known as an Entity)  represents an actual item of data. For example, Entity Type `Car` could have Entities `a BMW`, `this Mercedes`, and `that Volkswagen`. The Mindmaps graph enables us to model relationships between these entities, once they have been defined.
+An instance of the Entity Type (which is known as an Entity)  represents an actual item of data. For example, Entity Type `Car` could have Entities `a BMW`, `this Mercedes`, and `that Volkswagen`. The MindmapsDB graph enables us to model relationships between these entities, once they have been defined.
 
 ### Resource
 
@@ -163,7 +167,7 @@ instance of
 <!-- Removed a section on the meta ontology. We could create a separate article about this later if we think it's useful --> 
 
 ## Where next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load an ontology and data into a Mindmaps Graph using Graql or Java.
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load a schema and data into a MindmapsDB Graph using Graql.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

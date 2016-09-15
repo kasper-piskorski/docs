@@ -2,60 +2,34 @@
 title: Quickstart Tutorial
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting-started, graql, java]
-summary: "This document will teach you how to use Graql to load an ontology and some data into a Mindmaps Graph."
+tags: [getting-started, graql]
+summary: "This document will teach you how to use Graql to load a schema and some data into a MindmapsDB Graph."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/quickstart-tutorial.html
 folder: documentation
 ---
 
-{% include note.html content="This tutorial shows you how to use the Graql shell or the Java API. The code for each approach is shown at each stage: Graql first, and then the equivalent in Java." %}
-
-**Initialising a Mindmaps Graph in Java**
-
-*(Skip to the following [Introduction](#introduction) section if you will be using Graql exclusively.)*   
-
-Make sure you have Mindmaps Engine running locally by `mindmaps.sh start`. 
-Once you have done that a graph can be retrieved by: 
-
-```java
-MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
-```
-
-{% include note.html content="Make sure that your project depends on `mindmaps-titan-factory` at a minimum." %}
-
-```
-<dependency>
-    <groupId>io.mindmaps</groupId>
-    <artifactId>mindmaps-titan-factory</artifactId>
-    <version>0.1.0</version>
-</dependency>
-```
+{% include note.html content="This tutorial shows you how to use the Graql shell. The equivalent code, using the Graph API is described in the [Overview](https://mindmaps.io/pages/documentation/core-api/overview.html) to the Graph API." %}
  
-
 ## Introduction
-If you have not yet set up the Mindmaps environment, please see the [Setup guide](../get-started/setup-guide.html).
-You can find the example ```philosophers.gql``` in the examples directory included in the Mindmaps download.
+If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
+You can find the example ```philosophers.gql``` in the examples directory included in the MindmapsDB download zip.
 
-
-We are going model how philosophers are related to each other. If you are using Graql and don't want to type everything below to build up the philosophers ontology, you can load it using:  
+We are going model how philosophers are related to each other. If you are using Graql and don't want to type everything below to build up the schema, you can load it using:  
 
 ```bash
 bin/graql.sh -f examples/philosophers.gql
 ```
 
-By the way, don't worry if you've already loaded some different data into your graph. A Mindmaps Graph can contain as many ontologies as you want.
+By the way, don't worry if you've already loaded some different data into your graph. A MindmapsDB graph can simultaneously contain as many schemas as you want.
 
 ## Concepts
 
-We'll first add an ontology element - an entity type: `person`...
+We'll first add an entity type `person`:
 
 ```bash
 bin/graql.sh
 >>>insert person isa entity-type;
-```
-```java
-EntityType person = mindmapsGraph.putEntityType("person");
 ```
 
 ...and now some data in the form of concept instances: in our case, a bunch of ancient Greeks...
@@ -66,16 +40,10 @@ EntityType person = mindmapsGraph.putEntityType("person");
 >>>insert "Aristotle" isa person;
 >>>insert "Alexander" isa person;
 ```
-```java
-Entity socrates = mindmapsGraph.putEntity("Socrates", person);
-Entity plato = mindmapsGraph.putEntity("Plato", person);
-Entity aristotle = mindmapsGraph.putEntity("Aristotle", person);
-Entity alexander = mindmapsGraph.putEntity("Alexander", person);
-```
 
 ![](/images/phil.png)
 
-So now we've created a super-simple graph, with one concept type and four
+So now we've created a simple graph, with one concept type and four
 concept instances.
 
 {% include note.html content="Every concept needs a type, using `isa`. <br/>   `Plato` `is a` `person`   <br/>  `person` `is a` `entity-type`" %}
@@ -83,7 +51,7 @@ concept instances.
 
 {% include tip.html content="Graql shell maintains a history of past commands with the 'up' and 'down' arrows. You can also autocomplete keywords, type and variable names using tab!" %}
 
-We'll quickly check our data has loaded:
+We'll quickly check that our data has loaded:
 
 ```sql
 >>>match $p isa person
@@ -92,10 +60,6 @@ $p id "Aristotle" isa person;
 $p id "Plato" isa person;
 $p id "Socrates" isa person;
 $p id "Alexander" isa person;
-```
-```java
-System.out.println("Instances of Person:");
- person.instances().forEach(i -> System.out.println(i.getId()));
 ```
 
 {% include note.html content="Graql variables start with a `$`. They represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
@@ -109,13 +73,6 @@ Next, let's add some `schools` of thought:
 >>>insert "Idealism" isa school;
 >>>insert "Cynicism" isa school;
 ```
-```java
-EntityType school = mindmapsGraph.putEntityType("school");
-Entity peripateticism = mindmapsGraph.putEntity("Peripateticism", person);
-Entity platonism = mindmapsGraph.putEntity("Platonism", person);
-Entity idealism = mindmapsGraph.putEntity("Idealism", person);
-Entity cynicism = mindmapsGraph.putEntity("Cynicism", person);
-```
 
 And look up one:
 
@@ -124,9 +81,7 @@ And look up one:
 
 $cyn id "Cynicism" isa school;
 ```
-```java
-mindmapsGraph.getEntity("Cynicism").getId();
-```
+
 
 ## Relations
 
@@ -142,12 +97,6 @@ First, we define a `relation-type` called `practice` that relates a
 >>>insert philosopher isa role-type;
 >>>insert philosophy isa role-type;
 >>>insert practice has-role philosopher, has-role philosophy;
-```
-```java
-RoleType philosopher = mindmapsGraph.putRoleType("philosopher");
-RoleType philosophy = mindmapsGraph.putRoleType("philosophy");
-RelationType practice = mindmapsGraph.putRelationType("practice").
-  hasRole(philosopher).hasRole(philosophy);
 ```
 
 {% include note.html content="Commas are totally optional in query patterns, so these pairs are equivalent:<br /> ```
@@ -165,10 +114,6 @@ A `person` can have the role of `philosopher` and a `school` can have the role o
 >>>insert person plays-role philosopher;
 >>>insert school plays-role philosophy;
 ```
-```java
-person.playsRole(philosopher);
-school.playsRole(philosophy);
-```
 
 {% include warning.html content="The changes you've made to the graph haven't been saved yet!  <br /> Type `commit` in the Graql shell to commit any changes." %}
 
@@ -179,23 +124,6 @@ Now let's relate some `philosophers` to their `philosophies`:
 >>>insert (philosopher "Plato", philosophy "Idealism") isa practice;
 >>>insert (philosopher "Plato", philosophy "Platonism") isa practice;
 >>>insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
-```
-```java
-mindmapsGraph.putRelation(practice).
-  putRolePlayer(philosopher, socrates).
-  putRolePlayer(philosophy, platonisim);
-
-mindmapsGraph.putRelation(practice).
-  putRolePlayer(philosopher, plato).
-  putRolePlayer(philosophy, idealism);
-
-mindmapsGraph.putRelation(practice).
-  putRolePlayer(philosopher, plato).
-  putRolePlayer(philosophy, platonisim);
-
-mindmapsGraph.putRelation(practice).
-  putRolePlayer(philosopher, aristotle).
-  putRolePlayer(philosophy, peripateticism);
 ```
 
 ![](/images/practice.png)
@@ -210,14 +138,6 @@ Now we can query for all our Platonists:
 $phil id "Socrates" isa person;
 $phil id "Plato" isa person;
 ```
-```java
-platonisim.relations(philosophy).forEach(relation -> {
-  relation.rolePlayers().values().forEach(rolePlayer -> {
-    if (!rolePlayer.equals(platonisim))
-      System.out.println("    -> " + rolePlayer.getId());
-  });
-}); //Pssssstttt Graql is much better at querying relationships!!
-```
 
 {% include note.html content="This query can be read as 'Get me philosophers in a practice relationship with Platonism'.  <br/> We didn't specify the role of `Platonism` in this query, or the type of `$phil`, which is totally fine! <br /> Roles and types can be omitted in queries. <br/> For example, the query `match ($x, $y)` is a valid query (that will find *everything* in a relationship with *anything*)." %}
 
@@ -225,7 +145,7 @@ Next let's talk about the relationships between our philosophers. Socrates
 taught Plato, Plato taught Aristotle and Aristotle even taught Alexander the
 Great!
 
-First, extend our ontology:
+First, extend our schema:
 
 ```sql
 >>>insert education isa relation-type;
@@ -233,15 +153,6 @@ First, extend our ontology:
 >>>insert student isa role-type;
 >>>insert education has-role teacher, has-role student;
 >>>insert person plays-role teacher, plays-role student;
-```
-```java
-RoleType teacher = mindmapsGraph.putRoleType("teacher");
-RoleType student = mindmapsGraph.putRoleType("student");
-
-RelationType education = mindmapsGraph.putRelationType("education").
-  hasRole(teacher).hasRole(student);
-
-person.playsRole(teacher).playsRole(student);
 ```
 
 Second, our data:
@@ -251,21 +162,6 @@ Second, our data:
 >>>insert (teacher "Plato", student "Aristotle") isa education;
 >>>insert (teacher "Aristotle", student "Alexander") isa education;
 ```
-```java
-mindmapsGraph.putRelation(education).
-  putRolePlayer(teacher, socrates).
-  putRolePlayer(student, plato);
-
-mindmapsGraph.putRelation(education).
-  putRolePlayer(teacher, plato).
-  putRolePlayer(student, aristotle);
-
-mindmapsGraph.putRelation(education).
-  putRolePlayer(teacher, aristotle).
-  putRolePlayer(student, alexander);
-```
-
-
 
 {% include tip.html content="**Test Yourself** <br /> Try writing a query to see who taught Aristotle. Include all the roles and types (`teacher`, `student` and `education`), then remove them one by one to see when the results change! The answer is at the bottom of this page." %}
 
@@ -366,15 +262,12 @@ pharaohOfEgypt.ownerInstances().forEach(instance -> {
 }); //Pssssstttt Graql is much better at querying relationships!!
 ```
 
-For the remainder of this tutorial we will exclusively use graql. 
-If you would like to learn more about the java api you can do so [here](../core-api/overview.html) or take a look at the [sample projects](https://github.com/mindmapsdb/sample-projects).
-
 {% include tip.html content="**Test Yourself** <br /> When querying for an id, value or resource you can use predicates as well as direct values. For example, has epithet contains 'Great'. See if you can write a query for everyone with a title containing 'King'. The answer is at the bottom of the page." %}
 
 ## Relations as Role Players
 
 Philosophers know lots of things. We should probably include this in our
-ontology.
+schema.
 
 ```sql
 >>>insert knowledge isa relation-type;
@@ -465,3 +358,4 @@ match $king has title contains "King"
     </tr>
 
 </table>
+MindmapsDB 

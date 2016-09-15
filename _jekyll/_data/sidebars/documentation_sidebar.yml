@@ -24,7 +24,7 @@ entries:
       - title: Quickstart Tutorial
         output: web
         url: /documentation/the-basics/quickstart-tutorial.html
-  - title: Core API
+  - title: Graph API
     output: web
     folderitems:
       - title: Overview

@@ -1,18 +1,18 @@
 ---
 title: Defining an Advanced Schema
-keywords: core, schema
+keywords: schema
 last_updated: August 23, 2016
-tags: [core-api, java]
-summary: "Demonstrates how to create an advanced schema for a Mindmaps knowledge graph."
+tags: [graph-api, java]
+summary: "Demonstrates how to create an advanced schema for a MindmapsDB knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/advanced-schema-definition.html
 folder: documentation
 ---
 
 
-This document introduces some advanced schema concepts, which you can use to create more expressive Mindmaps graphs. We recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
+This document introduces some advanced schema concepts, which you can use to create more expressive MindmapsDB graphs. We recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
 
-Here, we also discuss creating a graph which supports Mindmaps reasoning and inference features.
+Here, we also discuss creating a graph which supports MindmapsDB reasoning and inference features.
 
 ## Sub-Classing Types
 
@@ -53,7 +53,7 @@ We can create a deep object-orientated schema where the rules of the super-class
 
 Let's convert our schema into something that is more expressive.   
 
-Films and TV shows are similar so we should have a super-class `Production` to represent both:
+Films and TV shows are similar, so we should have a super-class `Production` to represent both:
 
 ```java
 EntityType person = mindmapsGraph.putEntityType("Person");
@@ -103,12 +103,12 @@ or in Prolog/Datalog terms:
 [rule-head] :- [rule-body]
 ```
 
-In logical terms, we restrict the rules to be definite Horn clauses (i.e. disjunctions of atoms with at most one unnegated atom). In our system we define both the head and the body of rules as graql queries. Consequently the rules are statements of the form:
+In logical terms, we restrict the rules to be definite Horn clauses (i.e. disjunctions of atoms with at most one unnegated atom). In our system we define both the head and the body of rules as Graql queries. Consequently, the rules are statements of the form:
 
 ```
 p :- q1, q2, ..., qn
 ```
-where p and qi's are atoms that each correspond to a single graql statements.
+where p and q's are atoms that each correspond to a single Graql statement.
 
 
 A classic reasoning example is the ancestor example: the two rules stated below define the ancestor (anc) relationship, given a parenthood relationship (parent) between individuals:
@@ -117,6 +117,7 @@ A classic reasoning example is the ancestor example: the two rules stated below 
 R1: anc(X, Y) :- parent(X, Y)
 R2: anc(X, Y) :- parent(X, Z), anc(Z, Y)
 ```
+
 ### Rule Java API
 All rule instances are of type inference-rule which can be retrieved by:
 
@@ -124,7 +125,7 @@ All rule instances are of type inference-rule which can be retrieved by:
 RuleType inferenceRule = mindmapsGraph.getMetaRuleInference();
 ```
 
-Rule instances can be added to the graph both through the Core API as well as through graql. Considering the ancestor example, with the use of the Core API we can add the rules in the following way:
+Rule instances can be added to the graph both through the Graph API as well as through Graql. Considering the ancestor example, with the use of the Graph API we can add the rules in the following way:
 
 ```java
 String r1Body = "match (parent $x, child $y) isa Parent";
@@ -139,7 +140,7 @@ Rule rule2 = mindmapsGraph.putRule("R2", r2Body, r2Head, inferenceRule);
 ```
 
 ### Rule Graql Syntax
-The addition of the rules specified above can be expressed via an insert graql statement where the body and the head of the rule are separated with curly braces, the corresponding statement then reads:
+The addition of the rules specified above can be expressed via an insert Graql statement where the body and the head of the rule are separated with curly braces, the corresponding statement then reads:
 
 ```java
 insert
@@ -171,3 +172,4 @@ rhs {match (ancestor $x, descendant $y) isa Ancestor};
     </tr>
 
 </table>
+MindmapsDB 

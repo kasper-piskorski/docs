@@ -310,9 +310,7 @@ qb.match(var("x").playsRole("name-owner"));
 
 ## Predicates
 
-A predicate is a boolean function applied to values.
-
-If a concept doesn't have a value, all predicates are considered false.
+A predicate is a boolean function applied to values. If a concept doesn't have a value, all predicates are considered false.
 
 ### Comparators
 
@@ -338,6 +336,13 @@ qb.match(var("x").has("height", 19).has("weight", gt(1500)));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
+
+If a concept doesn't have a value, all predicates are considered false. The query below matches everything where the predicate `>10` is true. So, it will find all concepts with value greater than 10. However, if a concept does not have a value at all, the predicate is considered false, so it won’t appear in the results.
+
+```sql
+match $x value >10
+``` 
+
 
 ### Contains
 Asks if the given string is a substring.

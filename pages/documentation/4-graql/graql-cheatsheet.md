@@ -9,10 +9,9 @@ permalink: /documentation/graql/graql-cheatsheet.html
 folder: documentation
 ---
 
-Graql is the declarative query language for MindmapsDB, more about which can be found at [mindmaps.io](http://www.mindmaps.io).  
+Graql is the declarative query language for MindmapsDB.  The key principles and capabilities of Graql are as follows:  
 
-Key principles and capabilities of Graql are as follows:  
-* Graql is a pattern matching language that can search and modify a Mindmaps graph.   
+* Graql is a pattern matching language that can search and modify a MindmapsDB graph.   
 * Graql operates on concepts and relations between them.   
 * Graql will automatically execute the query in an efficient fashion, taking advantage of existing indexes.
 

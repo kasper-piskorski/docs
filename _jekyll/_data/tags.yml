@@ -2,6 +2,6 @@ allowed-tags:
   - getting-started
   - graql
   - java
-  - core-api
+  - graph-api
   - overview
   - faq
