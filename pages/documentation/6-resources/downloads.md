@@ -13,7 +13,7 @@ folder: documentation
 
 ## Download Mindmaps
 
-The latest version of MindmapsDB is v0.1.0.
+The latest version of MindmapsDB is v0.1.1.
 It can be downloaded from [here](https://mindmaps.io/download/latest).
 
 We currently support Mac OS X and Linux.
