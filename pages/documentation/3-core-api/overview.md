@@ -19,8 +19,8 @@ MindmapsDB Graph API is the implementation of the object model discussed in
 
 ### Initialising a MindmapsDB Graph in Java    
 
-Make sure you have MindmapsDB Engine running locally by using `mindmaps.sh start`. 
-Once you have done that, a thread-bound graph can be retrieved by: 
+Make sure you have MindmapsDB Engine running locally by using `mindmaps.sh start`.
+Once you have done that, a thread-bound graph can be retrieved by:
 
 ```java
 MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
@@ -32,7 +32,7 @@ MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
 <dependency>
     <groupId>io.mindmaps</groupId>
     <artifactId>mindmaps-titan-factory</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
@@ -100,15 +100,15 @@ Next we can relate our philosophers and schools to each other:
     mindmapsGraph.addRelation(practice).  
       putRolePlayer(philosopher, socrates).
       putRolePlayer(philosophy, platonisim);
-    
+
     mindmapsGraph.addRelation(practice).
       putRolePlayer(philosopher, plato).
       putRolePlayer(philosophy, idealism);
-    
+
     mindmapsGraph.addRelation(practice).
       putRolePlayer(philosopher, plato).
       putRolePlayer(philosophy, platonisim);
-      
+
     mindmapsGraph.addRelation(practice).
       putRolePlayer(philosopher, aristotle).
       putRolePlayer(philosophy, peripateticism);
@@ -204,9 +204,9 @@ If you want to find out more about using the Graph API, please take a look at th
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.0.1</td>
+        <td>v0.1.1.1</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>
 
-</table>MindmapsDB 
+</table>MindmapsDB

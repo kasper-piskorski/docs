@@ -18,7 +18,7 @@ Graql is the declarative query language for MindmapsDB.  The key principles and 
 This page is intended to be a quick reference guide for those already familiar with Graql. For further information and additional documentation, please see the Graql section on our developer portal [mindmaps.io/docs](http://www.mindmaps.io/docs/graql/overview.html).
 
 
-{% include note.html content="This version of the cheatsheet is for Graql version 0.1.0" %}
+{% include note.html content="This version of the cheatsheet is for Graql version 0.1.1" %}
 
 
 ## match
@@ -379,7 +379,7 @@ insert name isa resource-type, datatype string;
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.0.1</td>
+        <td>v0.1.1.1</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>

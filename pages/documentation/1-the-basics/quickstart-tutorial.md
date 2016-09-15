@@ -10,7 +10,7 @@ folder: documentation
 ---
 
 {% include note.html content="This tutorial shows you how to use the Graql shell. The equivalent code, using the Graph API is described in the [Overview](https://mindmaps.io/pages/documentation/core-api/overview.html) to the Graph API." %}
- 
+
 ## Introduction
 If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
 You can find the example ```philosophers.gql``` in the examples directory included in the MindmapsDB download zip.
@@ -199,7 +199,7 @@ Let's add the rest of Alexander's titles while we're at it:
 ```
 
 
-Using Graql, we can query for people, listing their id and titles. 
+Using Graql, we can query for people, listing their id and titles.
 
 ```sql
 >>>match $x isa person select $x(id, has title)
@@ -309,7 +309,7 @@ match $king has title contains "King"
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.0.1</td>
+        <td>v0.1.1.1</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>

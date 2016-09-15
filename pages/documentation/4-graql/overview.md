@@ -38,7 +38,7 @@ If you are already familiar with Graql, you may find our [cheatsheet reference](
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.0.1</td>
+        <td>v0.1.1.1</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>

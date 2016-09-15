@@ -17,7 +17,7 @@ Add the following to your `pom.xml`:
 <dependency>
   <groupId>io.mindmaps</groupId>
   <artifactId>mindmaps-graql</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
@@ -147,7 +147,7 @@ parser.parseDeleteQuery("match $x isa pokemon delete $x");
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.0.1</td>
+        <td>v0.1.1.1</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>
