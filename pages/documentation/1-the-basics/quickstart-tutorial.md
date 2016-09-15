@@ -175,27 +175,14 @@ So, we'll create some resource types that can be attached to a person:
 >>>insert epithet isa resource-type, datatype string;
 >>>insert person has-resource title, has-resource epithet;
 ```
-```java
-ResourceType<String> title = mindmapsGraph.putResourceType("title", Data.STRING);
-ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", Data.STRING);
 
-person.playsRole(hasResourceTarget);
-title.playsRole(hasResourceValue);
-epithet.playsRole(hasResourceValue);
-```
 
 Let's make Alexander "Great"!
 
 ```sql
 >>>insert "Alexander" has epithet "The Great";
 ```
-```java
-Resource<String> theGreat = mindmapsGraph.putResource("The Great", epithet);
 
-mindmapsGraph.putRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, theGreat);
-```
 
 This is a quick way to add a relation between `Alexander` and an `epithet` with value `"The Great"`.
 
@@ -210,33 +197,7 @@ Let's add the rest of Alexander's titles while we're at it:
 >>>insert "Alexander" has title "Pharaoh of Egypt";
 >>>insert "Alexander" has title "Lord of Asia";
 ```
-```java
-Resource<String> hegemon = mindmapsGraph.putResource("Hegemon", title);
-Resource<String> kingOfMacedon = mindmapsGraph.putResource("King of Macedon", title);
-Resource<String> shahOfPersia = mindmapsGraph.putResource("Shah of Persia", title);
-Resource<String> pharaohOfEgypt = mindmapsGraph.putResource("Pharaoh of Egypt", title);
-Resource<String> lordOfAsia = mindmapsGraph.putResource("Lord of Asia", title);
 
-mindmapsGraph.putRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, hegemon);
-
-mindmapsGraph.putRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, kingOfMacedon);
-
-mindmapsGraph.putRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, shahOfPersia);
-
-mindmapsGraph.putRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, pharaohOfEgypt);
-
-mindmapsGraph.putRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, lordOfAsia);
-```
 
 Using Graql, we can query for people, listing their id and titles. 
 
@@ -256,11 +217,7 @@ Wait, who's the Pharaoh again?
 
 $pharaoh id "Alexander" isa person;
 ```
-```java
-pharaohOfEgypt.ownerInstances().forEach(instance -> {
-  System.out.println("    ->" + instance.getId());
-}); //Pssssstttt Graql is much better at querying relationships!!
-```
+
 
 {% include tip.html content="**Test Yourself** <br /> When querying for an id, value or resource you can use predicates as well as direct values. For example, has epithet contains 'Great'. See if you can write a query for everyone with a title containing 'King'. The answer is at the bottom of the page." %}
 
