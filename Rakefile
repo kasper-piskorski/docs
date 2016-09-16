@@ -10,7 +10,7 @@ $user_files = [
 desc 'Install dependencies to build project'
 task :dependencies do
     # Install build dependencies
-    sh 'bundle install'
+    sh 'cd _jekyll;bundle install'
 end
 
 task :symlink_assets do
