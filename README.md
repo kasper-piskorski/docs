@@ -5,24 +5,30 @@
 You need to install the following dependencies to be able to build HTML pages in the documentation repository. **NOTE:** this is *not* necessary for updating the documentation itself.
 
 1. Bundle; you will need to install `bundler` through your package manager of choice.
-    ```
-    $ gem install bundler
-    $
-    ```
+    
+    **Arch Linux**
     ```
     $ yaourt -S ruby-bundler
-    $
+    ```
+
+    **OSX**
+    ```
+    $ brew install bundler
+    ```
+
+    **Ruby Gems (generic)**
+    ```
+    $ gem install bundler
     ```
 
 2. Rake; this is used to automate the rest of the site building process.
     ```
-    gem install rake
+    $ gem install rake
     ```
 
 With `rake` installed you can now install all other dependencies:
 ```
 $ rake dependencies
-$
 ```
 
 ## Environment variables
@@ -34,13 +40,11 @@ There is an environment variable that needs to be set depending on the build you
 For local builds (local web server with documentation only), do not set this variable, or make sure it has been cleared with:
 ```
 $ export urlprefix=""
-$
 ```
 
 For integrating to mindmaps website, or elsewhere set as needed. For example; `www.mindmaps.io/docs/`
 ```
 $ export urlprefix=/docs
-$
 ```
 
 ## Building
@@ -61,7 +65,6 @@ This will build the documentation site in `_jekyll` and create a symlink `_site`
 Clean by running the following command in the repository top level:
 ```
 $ rake clean
-$
 ```
 
 This will remove all generated files.
