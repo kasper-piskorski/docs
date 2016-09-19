@@ -87,6 +87,12 @@ entries:
       - title: Downloads
         output: web
         url: /documentation/resources/downloads.html
+#  - title: Examples
+#    output: web
+#    folderitems:
+#      - title: Test your Graql
+#        output: web
+#        url: /documentation/examples/modern.html      
 #  - title: Core
 #    output: web
 #    folderitems:
