@@ -13,15 +13,15 @@ entries:
     - title: Advantages
       output: web
       url: /platform/advantages.html
-    - title: Database Comparison
-      output: web
-      url: /platform/comparison.html
-    - title: Use Case
-      output: web
-      url: /platform/use-case.html
+    # - title: Database Comparison
+    #   output: web
+    #   url: /platform/comparison.html
+    # - title: Use Case
+    #   output: web
+    #   url: /platform/use-case.html
     - title: Developer
       output: web
       url: /platform/developer.html
-    - title: FAQ
-      output: web
-      url: /platform/faq.html
+    # - title: FAQ
+    #   output: web
+    #   url: /platform/faq.html
