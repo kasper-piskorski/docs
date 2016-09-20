@@ -116,7 +116,7 @@ insert (programmer "josh", programmed "ripple") isa programming;
    
 ## Querying
 
-This example is designed to make you get up close and personal with Graql queries. It will run through a few basic examples, then ask you a set of "Test Yourself" questions. The answers are available at the end of the page, but please don't look at them immediately! The best way to find out how much you understand about using Graql is to challenge yourself to work out the Graql query without a prompt. 
+This example is designed to make you get up close and personal with Graql queries. It will run through a few basic examples, then ask you a set of "Test Yourself" questions. The answers are available at the end of the page, but please don't look at them immediately! The best way to find out how much you understand about using Graql is to challenge yourself to work out the queries without a prompt. 
 
 OK, so if you've followed the above, you should now have a schema and some data in a graph. How do you go about using the graph to answer your queries? That's where the `match` statement comes in. 
 
@@ -133,7 +133,7 @@ $x id "peter" isa person;
  
 In Graql, a match is formed of three parts: the `match` statement, an optional `select` statement, and any optional [modifiers](../graql/match-queries.html#modifiers) that you choose to apply to the listing of results. Only the first part of a match query is actually needed: the select and modifier parts are optional.   In the above query we are not using any select or delimiters, so let's show how to add them now.
 
-In the query below, we add a `select` statement to ask Graql to list out every person and to include their names and ages. We use `order by` to modify how the results are listed out - in this case, we order them by ascending age, so the youngest person is shown first.
+In the query below, we add a `select` statement to ask Graql to list out every person and to include their id (which is their name) and age. We use `order by` to modify how the results are listed out - in this case, we order them by ascending age, so the youngest person is shown first.
 
 ```sql
 match $x isa person select $x(id, has age) order by $x(has age) asc
@@ -144,7 +144,11 @@ $x id "josh" has age "32";
 $x id "peter" has age "35";
 ```
 
+Now let's look at querying for a relationship. We can query to find out which entities have a particular role-type associated with a relation-type. For example, we can match everyone with a `knower` role who knows someone else:
 
+```sql
+match (knower $x) isa knows; 
+```
 
 ## Test Yourself
 

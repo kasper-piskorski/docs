@@ -204,9 +204,9 @@ If you want to find out more about using the Graph API, please take a look at th
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>
 
-</table>MindmapsDB
+</table>
