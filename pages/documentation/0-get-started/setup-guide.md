@@ -7,6 +7,7 @@ summary: "This document will teach you how to set up a MindmapsDB environment, s
 sidebar: documentation_sidebar
 permalink: /documentation/get-started/setup-guide.html
 folder: documentation
+comment_issue_id: 16
 ---
 
 
@@ -82,3 +83,6 @@ You can find additional example code and documentation on this portal. We are al
     </tr>
 
 </table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/16" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account).
