@@ -18,7 +18,7 @@ entries:
   - title: The Basics
     output: web
     folderitems:
-      - title: Mindmaps Basics
+      - title: MindmapsDB Basics
         output: web
         url: /documentation/the-basics/mindmaps-basics.html
       - title: Quickstart Tutorial
@@ -69,21 +69,15 @@ entries:
       - title: API Reference
         output: web
         url: /documentation/api-reference/api-reference.html
-  - title: Troubleshooting
-    output: web
-    folderitems:
-      - title: Known Issues
-        output: web
-        url: /documentation/troubleshooting/known-issues.html
   - title: Resources
     output: web
     folderitems:
       - title: Resources
         output: web
         url: /documentation/resources/resources.html
- #     - title: Frequently Asked Questions
- #       output: web
- #       url: /documentation/resources/developer-faq.html
+      - title: MindmapsDB FAQ
+        output: web
+        url: /documentation/resources/faq.html  
       - title: Downloads
         output: web
         url: /documentation/resources/downloads.html

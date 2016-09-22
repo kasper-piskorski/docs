@@ -5,7 +5,7 @@ tags: [graql, java, graph-api]
 sidebar: documentation_sidebar
 permalink: /documentation/api-reference/api-reference.html
 toc: false
-
+comment_issue_id: 19
 ---
 
 Welcome to the API Reference landing page. From here, you can find the latest, and all previous, versions of our API reference, which are built from Javadocs.
@@ -39,3 +39,6 @@ We hope you find our documentation helpful, but if you need more information, pl
     </tr>
 
 </table>MindmapsDB 
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/19" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

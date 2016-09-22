@@ -7,6 +7,7 @@ summary: "This document will teach you how to use Graql to load a schema and som
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/quickstart-tutorial.html
 folder: documentation
+comment_issue_id: 18
 ---
 
 {% include note.html content="This tutorial shows you how to use the Graql shell. The equivalent code, using the Graph API is described in the [Overview](https://mindmaps.io/pages/documentation/core-api/overview.html) to the Graph API." %}
@@ -315,3 +316,6 @@ match $king has title contains "King"
     </tr>
 
 </table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/18" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

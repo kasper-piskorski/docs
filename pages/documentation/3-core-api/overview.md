@@ -7,6 +7,7 @@ summary: "A basic example of how to use MindmapsDB Graph API."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/overview.html
 folder: documentation
+comment_issue_id: 20
 ---
 
 If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). This article assumes that you are set up and have already looked at the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that covers Graql queries.   
@@ -210,3 +211,6 @@ If you want to find out more about using the Graph API, please take a look at th
     </tr>
 
 </table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/20" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

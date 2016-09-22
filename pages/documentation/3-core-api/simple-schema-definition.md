@@ -7,6 +7,7 @@ summary: "Demonstrates how to create a schema for a MindmapsDB knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/simple-schema-definition.html
 folder: documentation
+comment_issue_id: 21
 ---
 
 This article assumes that you have already looked at page that covers [MindmapsDB Basics](../the-basics/mindmaps-basics.html).
@@ -126,3 +127,6 @@ relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, startre
     </tr>
 
 </table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/21" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
