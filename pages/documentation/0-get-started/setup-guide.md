@@ -14,7 +14,7 @@ comment_issue_id: 16
 ## Download and Install Mindmaps
 
 {% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
-MindmapsDB also requires Maven 3." %}
+If you intend to build MindmapsDB, you will also need Maven 3." %}
 
 The latest version of MindmapsDB can be downloaded from the
 [downloads page](../resources/downloads.html). Unzip it and run the following in the terminal:
@@ -24,7 +24,7 @@ cd [your MindmapsDB install directory]
 bin/mindmaps.sh start
 ```
 
-This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
+This will start an instance of Cassandra, which serves as the supported backend for Mindmaps. It starts also MindmapsDB Engine, which is an HTTP server providing batch loading, monitoring and the browser Dashboard.
 
 {% include note.html content="**Useful commands**  <br />
 To start MindmapsDB graph, run `mindmaps.sh start`.   

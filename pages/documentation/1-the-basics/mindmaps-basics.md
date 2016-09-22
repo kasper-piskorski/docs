@@ -7,16 +7,17 @@ summary: "Introducing the basics of the MindmapsDB object model."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/mindmaps-basics.html
 folder: documentation
+comment_issue_id: 17
 ---
 # MindmapsDB Basics
 
 ## Schema and Data
 
-A MindmapsDB graph is made of two layers: the database schema and the data layer.
+A MindmapsDB graph is made of two layers: the database schema (which you can also think of as an ontology) and the data layer.
 
-***A MindmapsDB schema should be clearly defined before loading data into the graph.*** The schema is used to formalise the data within a specific domain. If data is about healthcare, then we need to design a schema specific to healthcare. If data is about movies, then we need to define an schema specific to the movie industry.   
+***The schema should be clearly defined before loading data into the graph.*** The schema is used to formalise the data within a specific domain. If data is about healthcare, then we need to design a schema specific to healthcare. If data is about movies, then we need to define an schema specific to the movie industry.   
 
-Example schema concepts could include `Car`, `Person`, `Movie`.
+Example schema concepts could include `car`, `person`, `movie`.
 
 ***The data is categorised by the schema.*** It is essentially everything
 we wish to model. 
@@ -32,78 +33,60 @@ The MindmapsDB stack provides a formal structure to a graph database.  The follo
 
 ### Concept
 
-Just as a graph is defined by vertices and the edges between them, a
+Just as a [graph](https://en.wikipedia.org/wiki/Graph_theory) is defined by vertices and the edges between them, a
 MindmapsDB graph is defined by concepts and the relationships between those
-concepts.  Every vertex is a concept and has the following properties:
-
-#### Unique Properties
-
-Properties which must be unique throughout the entire graph.
-
-**Id** - A concept must, at minimum, have a unique ID. This is a string which identifies the concept. For example if a concept is representing a person it could be their id number.   
-
-
-**Subject** - An optional unique string which can be used to refer to
-external resources relating to the concept. For example if the concept is used to represent a country or city the subject could point to the wikipedia page of that city.   
-
-#### Additional Properties
-
-Properties that store additional information about the concept and do not have to be unique across the graph.
-
-**Value** - A string value which can be used to store an additional piece of data. For example this could represent a person's name, a movie title, or any representative string.
+concepts.  Every vertex is a concept and must, at minimum, have a unique ID. This is a string that identifies the concept.    
 
 ### Concept Type
 
-A Type is a schema element that represents something that can have instances, and is extended into the following types:   
--  Entity Types  
--  Relation Types  
--  Role Types  
--  Resource Types  
+A schema element that represents something that can have instances, and is extended into the following types:   
+
+* Entity Types  
+* Relation Types  
+* Role Types  
+* Resource Types  
 
 
 ### Entity Type
 
-A Entity Type is used to represent a category of entities, e.g. `Person`, `Vehicle`, `Movie` or `Country`. 
+An Entity Type is used to represent a category e.g. `person`, `vehicle`, `movie` or `country`. 
 
 ### Resource Type
 
-A Resource Type is used to represent a category of resources e.g. `birthdate` or `name`. Resource Types have additional properties including:
+A Resource Type is used to represent an attribute associated with an Entity Type, e.g. `birthdate` or `name`. Resource Types are effectively properties, and consist of primitive types and values. They are very much like "data properties" in OWL.
 
-1. **Datatype** - Indicates the datatype of the resource. For example if the resource is `Age` the datatype would be **integer**   
+Resource types have the following properties:
 
-2. **Regex** - Used to constrain string data types to specific regex patterns.   
+* **Datatype** - Indicates the datatype of the resource. For example if the resource type is `age` the datatype would be `long`.   
 
-3. **Unique** - A boolean which indicates if the resource should be unique
+* **Regex** - Optional. Can be used to constrain string data types to specific regex patterns.   
+
+* **Unique** - A boolean which indicates if the resource should be unique
 across the graph.
 
-### Relation Type
+### Relation Type and Role Type
 
-A Relation Type is used to model relationships. For example, to model that `Tom Cruise` is an `Actor` in `Mission: Impossible` we need to use a Relation Type such as `Has Cast`. This allows us to model that
-`Mission: Impossible` `Has Cast` `Tom Cruise`.
+A MindmapsDB graph enables us to model complex n-ary relationships. To do this we define a Relation Type, which is used to model relationships, and an associated pair of Role Types that are used to represent the two roles within that relationship. There is one Role Type for each entity to explain fully how the two relate to one another. 
 
-A MindmapsDB graph enables us to model complex n-ary relationships. To do this we define a Relation Type and link it with roles which flesh out the details of the relationship. For example, in the movie domain a valid Relation Type could be `Cast` which has the Role Types `Actor` and `Movie With Cast`.
+For example, to model that a `person` acted in a `movie` we need to use a Relation Type such as `has-cast`. The Role Type for the `person` is  `actor`, while the Role Type for the movie is `production-with-cast`. 
 
-### Role Type
+Role Types are associated with a particular Relation Type between Entity Types, and constrain it to ensure that only instances of the correct types are involved. In the movie domain, for example, the Relation Type `has-cast` involves a `person` Entity Type playing the Role Type `actor`. An Entity Type `dog` is implicitly excluded from playing the role `actor` - to include a dog in the cast of a movie, the `dog` Entity Type must explicitly be given the role `actor` too.
 
-A Role Type is used to represent a role in a relationship, and how concepts relate to one another. For example, if we wish to model that `Jon Voight` is an `Actor` in `Mission: Impossible` then we need to define a Role Type `Actor`. However, `Jon Voight` would have the role of `Father` relating to his daughter `Angelina Jolie`.
-
-Types constrain the roles that can be played to ensure that only instances of the correct type are involved in the correct relationships. For example, in the movie domain, a `Person` Type can play the role `Actor`. This would mean that Instances of the Type `Person`, such as `Al Pacino` or `Leonardo DiCaprio` are allowed to be `Actors` in the relationship involving the `Actor` role. At the same time this would implicitly
-define that an Instance of Concept Type `Dog` would not be allowed to play the role `Actor`.
+The Role Types associated with a Relation Type can only be used for that relationship.
 
 ### Subclasses
 
-The four types described above can be subclassed. For example, subclasses of `Person` could be `Man` and `Woman`.  This simple subclassing allows us to expand and deepen our schema to whatever granularity of detail is needed.  
+Instances of the four meta-types described above can be subclassed. For example, subclasses of `person` (which is an instance of the meta-type EntityType) could be `man` and `woman`.  This simple subclassing allows us to expand and deepen our schema to whatever granularity of detail is needed.  
 
-{% include note.html content="In a MindmapsDB graph, we use the shorthand `isa` when representing the type relationship. <br /> 
-For example, `Aristotle` (*data entity*) `isa ` `Man` (*schema entity type*).   <br /><br />
+{% include note.html content="In a MindmapsDB graph, we use the shorthand `ako ('a kind of')` when referring to sub-typing or specialisation. <br />
+For example, `man ako person`. <br />
+We use the shorthand `isa` ('is a') to represent the type relationship. <br />
+For example, `car isa vehicle`.
+" %}
 
-We use the shorthand `ako ('a kind of')` when referring to a type being the sub type of another Type. <br />
-For example, `Man` (*entity type*) `ako` `Person` (*schema entity type*)." %}
+For example a simple schema would be `car` `isa` `vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `ako` `car` `isa` `vehicle`.
 
- 
-For example a simple schema would be `Car` `isa` `Vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa ` `VW` `ako` `Car` `isa` `Vehicle`.
-
-Types can have an additional property, `Abstract`, which indicates the type cannot have instances. This is useful when we want to define a deeper schema. For example if we have `Person` and its subclasses `Man` and `Woman`, then we may want to define `Person` as `Abstract` to prohibit it from having any direct instances.
+Types can have an additional property, `abstract`, which indicates the type cannot have direct instances. This is useful when we want to define a deeper schema. For example if we have `person` and its subclasses `man` and `woman`, then we may want to define `person` as `abstract` to prohibit it from having any direct instances, whereas the concrete types `man` and `woman` can have direct instances.
 
 
 ## The Object Model - Data
@@ -113,24 +96,19 @@ The following figure represents the inheritance structure of the data elements.
 
 ### Instance
 
-Instances are data elements. They are named as such because they are instances of the Types described above. For example: a `BMW` is an instance of the Entity Type `Car` and `09/10/1988` is an instance of Resource Type `Date`.
+Instances are data elements. They are named as such because they are instances of the Types described above. For example: a `BMW` is an instance of the Entity Type `car` and `09/10/1988` is an instance of Resource Type `date`.
 
 ### Entity
 
-An instance of the Entity Type (which is known as an Entity)  represents an actual item of data. For example, Entity Type `Car` could have Entities `a BMW`, `this Mercedes`, and `that Volkswagen`. The MindmapsDB graph enables us to model relationships between these entities, once they have been defined.
+An instance of the Entity Type (which is known as an Entity)  represents an actual item of data. For example, Entity Type `car` could have Entities `a BMW`, `this Mercedes`, and `that Volkswagen`. The MindmapsDB graph enables us to model relationships between these entities, once they have been defined.
 
 ### Resource
 
-Resources are instances of the Resource Type described above. They allow us to attribute data to a specific instance. For example, if `Alice` is an instance of `Person` we could model Alice's birthday `09/10/1988` as an instance of the Resource Type `Birthdate`.  The Resource object allows us to impose some additional constraints, such as ensuring that it conforms to a regex pattern or is of a particular data type.
+Resources are instances of the Resource Type described above. They allow us to attribute data to a specific instance. For example, if `Alice` is an instance of `person` we could model Alice's birthday `09/10/1988` as an instance of the Resource Type `birthdate`.  The Resource object allows us to impose some additional constraints, such as ensuring that it conforms to a regex pattern or is of a particular data type.
 
 ### Relation
 
-A Relation represents an instance of a Relation Type. We can use a Relation to model multiple relationships between instances. For example, if `Alice` and `Bob` are married then we would create a Relation object `Marriage`, which is an instance of Relation Type, to model that relationship. At the same time, Alice could work for an organisation `Apache`. Similarly, we would create an instance of the Relation
-Type `Works For` to model that relationship.
-
-Essentially a Relation describes a relationship of a specific type between
-instances of a specific type. For example, one Relation can define that the Instance `Tom Cruise` plays the Role Type `Actor` with the movie Instance `Mission: Impossible` which plays the Role Type `Movie With Cast`.
-
+A Relation represents an instance of a Relation Type. Essentially a Relation describes a relationship between instances of a specific type. For example, a Relation between `Tom Cruise` (isa `person`) and `Mission: Impossible` (isa `movie`) where `Tom Cruise` plays the Role Type `actor` and `Mission: Impossible` plays the Role Type `production-with-crew`. 
 
 ## An Example Graph Structure
 
@@ -148,7 +126,7 @@ Types.](/images/examples_playsroles.png)
 
 ### Relation Types
 
-Expanding our philosophers example we could define a Relation Type, `Education` to encapsulate the needed roles:
+Expanding our philosophers example we could define a Relation Type, `education` to encapsulate the needed roles:
 
 ![Expanding the example to illustrate how a relation type is linked with Role
 Types.](/images/example_relationtype.png)
@@ -161,7 +139,7 @@ Finally, we can expand our philosophers example to define that Plato taught Aris
 instance of
 `Education`](/images/example_relation.png)
 
-{% include note.html content="When creating a relation you must ensure that the type of the Instances are allowed to play the Role Types. For example, in the above graph if we forgot to define that the Type `Person` is allowed to play the Role `Teacher` then the Relation between `Plato` and `Aristotle` would not be valid." %}
+{% include note.html content="When creating a relation you must ensure that the type of the Instances are allowed to play the Role Types. For example, in the above graph if we forgot to define that the Type `person` is allowed to play the Role `teacher` then the Relation between `Plato` and `Aristotle` would not be valid." %}
 
 
 <!-- Removed a section on the meta ontology. We could create a separate article about this later if we think it's useful --> 
@@ -188,3 +166,6 @@ You can find additional example code and documentation on this portal. We are al
     </tr>
 
 </table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/17" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

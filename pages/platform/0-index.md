@@ -24,7 +24,7 @@ MindmapsDB provides an object model with an API that enables the programmatic de
 
 **_"... and a knowledge-oriented query language ..."_**
 
-Our query language, Graql, is a declarative, knowledge-oriented query language that uses pattern matching for retrieving explicitly stored and implicitly derived knowledge. Graql allows you to express complex queries in simple and short pattern matching statements and it leverages the inherent semantics of data.
+Our query language, Graql, is a [declarative](https://dzone.com/articles/imperative-vs-declarative-query-languages-whats-th), knowledge-oriented query language that uses pattern matching for retrieving explicitly stored and implicitly derived knowledge. Graql allows you to express complex queries in simple and short pattern matching statements and it leverages the inherent semantics of data.
 
 **_"... capable of real-time analytics ..."_**
 
