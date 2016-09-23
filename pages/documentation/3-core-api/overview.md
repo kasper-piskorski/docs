@@ -16,7 +16,7 @@ You can find the code below in the example code directory of the MindmapsDB dist
 ## Introduction
 
 MindmapsDB Graph API is the implementation of the object model discussed in
-[MindmapsDB Basics](../the-basics/mindmaps-basics.html). It allows you to create MindmapsDB Graphs using Java 8. It supports any [Tinkerpop](http://tinkerpop.incubator.apache.org/docs/3.0.2-incubating/) 3.0.z version.
+[MindmapsDB Basics](../the-basics/mindmaps-basics.html). It allows you to create MindmapsDB Graphs using Java 8. 
 
 ### Initialising a MindmapsDB Graph in Java    
 

@@ -7,6 +7,7 @@ summary: "A short example to illustrate Graql queries"
 sidebar: documentation_sidebar
 permalink: /documentation/examples/modern.html
 folder: documentation
+comment_issue_id: 26
 ---
 
 If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to all Graql keywords, please see the [Graql documentation](https://mindmaps.io/pages/documentation/graql/overview.html).
@@ -20,8 +21,17 @@ This example takes a very simple example from [TinkerPop3 Documentation](http://
 
 The image above is used from the documentation provided for TinkerPop3, and licensed by the [Apache Software Foundation](http://www.apache.org). 
 
-
 We have chosen this example as it may already be familiar, and is simple enough to demonstrate some of the fundamentals of Graql. We walk through the entities ("things") and relationships between them and show how to represent them in a MindmapsDB graph using Graql to define a schema. We then use Graql to add the data to the graph.  The main purpose of this example, however, is to use it for practice at making sample queries on the graph. 
+
+### Starting Graql
+
+If it is not already running, start MindmapsDB, then open a Graql shell:
+
+```
+cd [your MindmapsDB install directory]
+bin/mindmaps.sh start
+bin/graql.sh
+```
 
 ## Defining a Schema
 
@@ -35,11 +45,11 @@ The relationships between the entities are straightforward:
 * there are two connections between marko and other people who he "knows" (josh and vadas). 
 * there are four connections between people and software, such that the people "created" the software. Lop was created by marko, peter and josh, which ripple was created by josh.
 
-In this example, we use the name of the person or software to make up their id, rather than ascribe them numbers (as shown in the diagram). We will not use the "weight" along each connection as it is shown in the diagram.
+In this example, we use the name of the person or software to make up their id, as in real life, rather than ascribe them the numbers used in the diagram.  
 
 ### Entity Types
 
-Here, we add person and software entity types:
+Here, we add person and software entity types to the graph, via the Graql shell:
 
 ```sql
 insert person isa entity-type;
@@ -49,38 +59,52 @@ insert software isa entity-type;
 
 ### Resource Types
 
-To assign resources, which you can think of as attributes, to the entities, we use resource types. First, we define what they are (age is a number, programming language is a string, which represents the language's name), then we allocate them to the entity in question:
+To assign resources to the entities, which you can think of as attributes, we use resource types. First, we define what they are (age is a number, programming language is a string that represents the language's name), then we allocate them to the entity in question:
 
 ```sql
-insert age isa resource-type, datatype long;
+insert age isa resource-type
+	datatype long;
+	
 insert person has-resource age;
 
-insert lang isa resource-type, datatype string;
+insert lang isa resource-type
+ datatype string;
+ 
 insert software has-resource lang;
 ```
 
 ### Relation Types
 
-Let's first define the relationship between people. The diagram shows that marko knows vadas, but we don't have any information about whether the inverse is true (though it seems likely that vadas probably also knows marko). Let's set up a relationship called `knows`, which has two role-types (`knower` (for marko) and `known-about` (for vadas):
+Let's first define the relationship between people. The diagram shows that marko knows vadas, but we don't have any information about whether the inverse is true (though it seems likely that vadas probably also knows marko). Let's set up a relationship called `knows`, which has two role-types - `knower` (for marko) and `known-about` (for vadas):
 
 ```sql
-insert knows isa relation-type;
 insert knower isa role-type;
-insert known-about isa role-type
-insert knows has-role knower, has-role known-about;
+insert known-about isa role-type;
+
 insert person plays-role knower;
 insert person plays-role known-about;
+
+insert knows isa relation-type
+	has-role knower
+	has-role known-about
+	has-resource weight;	
 ```
+
+Note that the  `knows` relation type also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
 
 We can set up a similar relationship between software and the people that created it:
 
 ```sql
-insert programming isa relation-type;
 insert programmer isa role-type;
 insert programmed isa role-type;
-insert programming has-role programmer, has-role programmed;
+
 insert person plays-role programmer;
 insert software plays-role programmed;
+
+insert programming isa relation-type
+	has-role programmer
+	has-role programmed
+	has-resource weight;
 ```
 
 And that's it. At this point, we have defined the schema of the MindmapsDB graph.
@@ -97,8 +121,8 @@ insert "marko" has age 29;
 insert "josh" has age 32;
 insert "vadas" has age 27;
 insert "peter" has age 35;
-insert (knower "marko", known-about "josh") isa knows;
-insert (knower "marko", known-about "vadas") isa knows;
+insert (knower "marko", known-about "josh") isa knows has weight 1.0;
+insert (knower "marko", known-about "vadas") isa knows has weight 0.5;
 ```
 
 
@@ -107,16 +131,16 @@ insert "lop" isa software;
 insert "ripple" isa software;
 insert "lop" has lang "java";
 insert "ripple" has lang "java";
-insert (programmer "marko", programmed "lop") isa programming;
-insert (programmer "peter", programmed "lop") isa programming;
-insert (programmer "josh", programmed "lop") isa programming;
-insert (programmer "josh", programmed "ripple") isa programming;
+insert (programmer "marko", programmed "lop") isa programming has weight 0.4;
+insert (programmer "peter", programmed "lop") isa programming has weight 0.2;
+insert (programmer "josh", programmed "lop") isa programming has weight 0.4;
+insert (programmer "josh", programmed "ripple") isa programming has weight 1.0;
 ```
    
    
 ## Querying
 
-This example is designed to make you get up close and personal with Graql queries. It will run through a few basic examples, then ask you a set of "Test Yourself" questions. The answers are available at the end of the page, but please don't look at them immediately! The best way to find out how much you understand about using Graql is to challenge yourself to work out the queries without a prompt. 
+This example is designed to get you up close and personal with Graql queries. It will run through a few basic examples, then ask you a set of "Test Yourself" questions. The answers are available at the end of the page, but please don't look at them immediately! The best way to find out how much you understand about using Graql is to challenge yourself to work out the queries without a prompt. 
 
 OK, so if you've followed the above, you should now have a schema and some data in a graph. How do you go about using the graph to answer your queries? That's where the `match` statement comes in. 
 
@@ -131,9 +155,9 @@ $x id "josh" isa person;
 $x id "peter" isa person; 
 ```
  
-In Graql, a match is formed of three parts: the `match` statement, an optional `select` statement, and any optional [modifiers](../graql/match-queries.html#modifiers) that you choose to apply to the listing of results. Only the first part of a match query is actually needed: the select and modifier parts are optional.   In the above query we are not using any select or delimiters, so let's show how to add them now.
+In Graql, a match is formed of three parts: the `match` statement, an optional `select` statement, and any optional [modifiers](../graql/match-queries.html#modifiers) that you choose to apply to the listing of results. Only the first part of a match query is needed: the select and modifier parts are optional.   
 
-In the query below, we add a `select` statement to ask Graql to list out every person and to include their id (which is their name) and age. We use `order by` to modify how the results are listed out - in this case, we order them by ascending age, so the youngest person is shown first.
+In the `match $x isa person` query we are not using any select or delimiters, so let's add some now.  We can add a `select` statement to ask Graql to list out every person and to include their id (which is their name) and age. We use `order by` to modify how the results are listed out - in this case, we order them by ascending age, so the youngest person is shown first.
 
 ```sql
 match $x isa person select $x(id, has age) order by $x(has age) asc
@@ -147,7 +171,12 @@ $x id "peter" has age "35";
 Now let's look at querying for a relationship. We can query to find out which entities have a particular role-type associated with a relation-type. For example, we can match everyone with a `knower` role who knows someone else:
 
 ```sql
-match (knower $x) isa knows; 
+match $x plays-role knows; 
+```
+
+We can also match every role that a `person` can play:
+```sql
+match person plays-role $x;
 ```
 
 ## Test Yourself
@@ -176,126 +205,135 @@ match (knower $x) isa knows;
 8. List everything you know about Marko
 
 
-9. List everything you know about every person
-
-
-
 ## Complete Example
-Here is the complete example - the code to define the Schema and insert the data into a graph, followed by the queries for the Test Yourself section.
+Here is the complete example - the code to define the schema and insert the data into a graph. You can load this directly into Graql, if you don't want to type it out for yourself. Cut and paste the Graql below and start Graql:
+
+```
+bin/graql.sh
+```
+
+Then type edit, which will open up the systems default text editor where you can paste your chunk of text. Upon exiting the editor, the Graql will execute.
 
 
 ```sql 
+insert 
+age isa resource-type
+	datatype long;
+person isa entity-type;
+person has-resource age;
 
-insert age isa resource-type, datatype long;
-insert person isa entity-type;
-insert person has-resource age;
+"marko" isa person;
+"vadas" isa person;
+"josh" isa person;
+"peter" isa person;
+"marko" has age 29;
+"josh" has age 32;
+"vadas" has age 27;
+"peter" has age 35;
 
-insert "marko" isa person;
-insert "vadas" isa person;
-insert "josh" isa person;
-insert "peter" isa person;
-insert "marko" has age 29;
-insert "josh" has age 32;
-insert "vadas" has age 27;
-insert "peter" has age 35;
+weight isa resource-type
+	datatype double;
 
-insert knows isa relation-type;
-insert knower isa role-type;
-insert known-about isa role-type
+knower isa role-type;
+known-about isa role-type;
 
-insert knows has-role knower, has-role known-about;
-insert person plays-role knower;
-insert person plays-role known-about;
+person plays-role knower;
+person plays-role known-about;
 
-insert (knower "marko", known-about "josh") isa knows;
-insert (knower "marko", known-about "vadas") isa knows;
+knows isa relation-type
+	has-role knower
+	has-role known-about
+	has-resource weight;
 
-insert lang isa resource-type, datatype string;
-insert software isa entity-type;
-insert software has-resource lang;
+(knower "marko", known-about "josh") isa knows has weight 1.0;
+(knower "marko", known-about "vadas") isa knows has weight 0.5;
 
-insert "lop" isa software;
-insert "ripple" isa software;
+lang isa resource-type
+	datatype string;
+software isa entity-type;
+software has-resource lang;
 
-insert "lop" has lang "java";
-insert "ripple" has lang "java";
+"lop" isa software;
+"ripple" isa software;
 
-insert programming isa relation-type;
-insert programmer isa role-type;
-insert programmed isa role-type;
-insert programming has-role programmer, has-role programmed;
-insert person plays-role programmer;
-insert software plays-role programmed;
+"lop" has lang "java";
+"ripple" has lang "java";
 
-insert (programmer "marko", programmed "lop") isa programming;
-insert (programmer "peter", programmed "lop") isa programming;
-insert (programmer "josh", programmed "lop") isa programming;
-insert (programmer "josh", programmed "ripple") isa programming;
+programmer isa role-type;
+programmed isa role-type;
 
+person plays-role programmer;
+software plays-role programmed;
+
+programming isa relation-type
+	has-role programmer
+	has-role programmed
+	has-resource weight;
+
+(programmer "marko", programmed "lop") isa programming has weight 0.4;
+(programmer "peter", programmed "lop") isa programming has weight 0.2;
+(programmer "josh", programmed "lop") isa programming has weight 0.4;
+(programmer "josh", programmed "ripple") isa programming has weight 1.0;
 ```   
 
 ## Answers to the Test Yourself section
 
 Here are our solutions to the queries we asked you to form. Please do have a go at them yourself first, before you peek below!
 
-1. List every person with their name and age in ascending age order
+List every person with their name and age in ascending age order
 
 ```sql
 match $x isa person select $x(id, has age) order by $x(has age) asc
 ```
 
-2. List every person who has an age over 30, showing their name and age
+List every person who has an age over 30, showing their name and age
 
 ```sql
 match $x isa person, has age > 30, select $x(id, has age)
 ```
 
-3. List every person who knows someone else, and every person who is known about
+List every person who knows someone else, and every person who is known about
 
 ```sql
-match (knower $x) isa knows; 
-match (known-about $x) isa knows;
+match (knower $x) isa knows
+match (known-about $x) isa knows
 ```
 
-4. List every person that Marko knows
+List every person that marko knows
 
 ```sql
-match (known-about $x, "marko") isa knows;
+match (known-about $x, "marko") isa knows
 ```
 
-5. List every item of software and the language associated with it
+List every item of software and the language associated with it
 
 ```sql
 match $x isa software select $x(id, has lang)
 ```
 
-6. List everything that Josh has programmed
+List everything that josh has programmed
 
 ```sql
 match (programmed $x, "josh") isa programming
 ```
 
-7. List everyone who has programmed Lop
+List everyone who has programmed Lop
 
 ```sql
 match (programmer $x, "lop") isa programming
 ```
 
-8. List everything you know about Marko
+List everything you know about marko
 
 ```sql
-AARRRRRGH!
+match $relation("marko", $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype
 
 ```
 
-9. List everything you know about every person
 
-```sql
-AARRRRRGH!AARRRRRGH!AARRRRRGH!
-```
+## Where next?
 
-
-
+This example should give you some confidence at looking at the basic types and queries used in a MindmapDB graph. Take a look at the landing page for the MindmapsDB Examples, for more complex examples, such as the Moogi movies dataset.
 
 {% include links.html %}
 
@@ -316,5 +354,6 @@ AARRRRRGH!AARRRRRGH!AARRRRRGH!
 
 </table>
 
-
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/26" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 

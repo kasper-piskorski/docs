@@ -10,22 +10,31 @@ permalink: /documentation/graql/graql-shell.html
 folder: documentation
 ---
 
+The Graql shell is contained in the `bin` folder. After starting the MindmapsDB server, you can load data into a MindmapsDB graph as follows:
 
-The Graql shell is contained in the `bin` folder.
-
-After starting the MindmapsDB server, you can execute the shell without any
-parameters to open a REPL (Read Evaluate Print Loop):
-
-```bash
-bin/graql.sh
+```
+bin/graql.sh -f examples/pokemon.gql
 ```
 
-The user can enter a query and press enter for it to be evaluated:   
+Then you can enter a query and press enter for it to be evaluated:   
 
 ```bash
 >>> match $x id "Pikachu";
 $x id "Pikachu" isa pokemon;
 ```
+
+If you already have a graph loaded, you can just execute the shell without any parameters to open a REPL (Read Evaluate Print Loop):
+
+```bash
+bin/graql.sh
+```
+
+To load an additional graph into a different keyspace, that is, to load a graph with a different name to any already loaded, you can specify the graph name:
+
+```
+./graql.sh -n <graphname>
+``` 
+
 
 | Query | Description                                   |
 | ----------- | --------------------------------------------- |
@@ -42,7 +51,7 @@ The REPL features several special commands:
 | Query | Description                                   |
 | ----------- | --------------------------------------------- |
 | `commit`     | Commits and validates the graph. If validation fails, the graph will not commit.                          |
-| `edit`       | Opens the user's default text editor, specified by the `$EDITOR` environment variable. By default set to `vim`. When the editor exits, the query is executed in the shell.                           |
+| `edit`       | Opens the user's default text editor, specified by the `$EDITOR` environment variable. By default set to `vim`. When the editor exits, the query is executed in the shell. Useful for executing a large chunk of Graql without typing it all in (e.g. cut and paste from an example).                           |
 | `load <filename>`    | Executes the given file containing a Graql query. |
 | `clear`    | Clears the console window.                          |
 | `license`    | Prints the license                           |

@@ -9,9 +9,9 @@ permalink: /documentation/graql/java-graql.html
 folder: documentation
 ---
 
-As well as the Graql shell, users can also construct and execute Graql queries programmatically in Java.
+As well as the Graql shell, users can also construct and execute Graql queries programmatically in Java. The Java Graql API expresses the concepts and functionality of the Graql language in the syntax of Java. It is useful if you want to make queries using Java, without having to construct a string containing the appropriate Graql expression.
 
-Add the following to your `pom.xml`:
+To use the API, add the following to your `pom.xml`:
 
 ```xml
 <dependency>
