@@ -67,6 +67,7 @@ The Graql shell accepts several arguments:
 | `--execute`   | `-e`     | A query to execute.                           |
 | `--file`      | `-f`     | A path to a file containg a query to execute. |
 | `--help`      | `-h`     | Print usage message                           |
+| `--uri`       | `-u`     | Uri to connect to Engine                      |
 | `--version`   | `-v`     | Print version                                 |
 
 If either `--execute` or `--file` is provided, the REPL will not open and the
