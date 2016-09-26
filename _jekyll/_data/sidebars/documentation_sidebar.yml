@@ -81,12 +81,24 @@ entries:
       - title: Downloads
         output: web
         url: /documentation/resources/downloads.html
-#  - title: Examples
-#    output: web
-#    folderitems:
-#      - title: Test your Graql
-#        output: web
-#        url: /documentation/examples/modern.html      
+  - title: Examples
+    output: web
+    folderitems:
+      - title: Examples
+        output: web
+        url: /documentation/examples/examples.html
+      - title: Pokemon example
+        output: web
+        url: /documentation/examples/pokemon.html      
+      - title: Philosophers example
+        output: web
+        url: /documentation/examples/philosophers.html      
+      - title: Moogi example
+        output: web
+        url: /documentation/examples/moogi.html      
+      - title: Modern example
+        output: web
+        url: /documentation/examples/modern.html      
 #  - title: Core
 #    output: web
 #    folderitems:

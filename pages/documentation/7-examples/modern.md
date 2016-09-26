@@ -1,5 +1,5 @@
 ---
-title: Test your Graql
+title: Modern MindmapsDB Example
 keywords: graql, query
 last_updated: September 19, 2016
 tags: [graql]

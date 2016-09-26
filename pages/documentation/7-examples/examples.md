@@ -17,21 +17,22 @@ This page lists the examples of MindmapsDB that we suggest you study to learn ho
 
 If you would like to request a particular example, please get in touch with us by leaving a comment on this page or posting a question on the discussion boards.  Our [Community page](https://mindmaps.io/community.html) lists other ways you can talk to us.
 
-### Pokemon
+### [Pokemon](./pokemon.html)
 
-The MindmapsDB distribution zip contains pokemon.gql, which is a [simple example](./pokemon.html) to illustrate the basics of MindmapsDB Graql statements and queries.
+The MindmapsDB [sample-projects](https://github.com/mindmapsdb/sample-projects) repo on Github contains [pokemon.gql](https://github.com/mindmapsdb/sample-projects/blob/master/pokemon.gql), which is a [simple example](./pokemon.html) to illustrate the basics of MindmapsDB Graql statements and queries. You can also find the example within the MindmapsDB distribution zip.
 
-### Philosophers
+### [Philosophers](./philosophers.html)
 
-The MindmapsDB distribution zip contains philosophers.gql, which is another [simple example](./philosophers.html) to illustrate the [basics of the object model](../the-basics/mindmaps-basics.html).
+The MindmapsDB [sample-projects](https://github.com/mindmapsdb/sample-projects) repo on Github contains [philosophers.gql](https://github.com/mindmapsdb/sample-projects/blob/master/philosophers.gql), which is a [simple example](./philosophers.html) to illustrate the [basics of the object model](../the-basics/mindmaps-basics.html). You can also find the example within the MindmapsDB distribution zip.
 
-### Moogi
+
+### [Moogi](./moogi.html)
 
 [Moogi](https://moogi.co) is a large database of information about movies. We have provided some [documentation](./mini-moogi.html) and a subset of the data for you to investigate.
 
-### Modern
+### [Modern](./modern.html)
 
-The [Modern example](./modern.html) is a simple one, designed for you to test your knowledge of Graql.
+The [Modern example](./modern.html) is a simple one, designed to test your knowledge of Graql.
 
 ### Oncologists
 
@@ -40,7 +41,7 @@ The oncologists example walks through the basics of MindmapsDB from a beginner's
 * [Part 1](https://blog.mindmaps.io/adding-semantics-to-graph-databases-with-mindmapsdb-part-1-82022bbb3b1c#.fyfw6h93a)    
 * [Part 2](https://blog.mindmaps.io/adding-semantics-to-graph-databases-with-mindmapsdb-part2-833ec05bd28#.moeauu6sd)
 * [Part 3](https://blog.mindmaps.io/adding-semantics-to-graph-databases-with-mindmapsdb-part-3-5bd4c8be91ec#.1z2qtq8ms)
-* [Part 4]()
+* [Part 4](https://blog.mindmaps.io/adding-semantics-to-graph-databases-with-mindmapsdb-part-4-e1125e02dc85#.fc9qnj9bc)
 
 
 Sample code is here: [https://github.com/mikonapoli/oncologists_ontology](https://github.com/mikonapoli/oncologists_ontology)
