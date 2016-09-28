@@ -24,6 +24,9 @@ entries:
       - title: Quickstart Tutorial
         output: web
         url: /documentation/the-basics/quickstart-tutorial.html
+      - title: Migrating to MindmapsDB
+        output: web
+        url: /documentation/the-basics/migration-tutorial.html  
   - title: Graph API
     output: web
     folderitems:
