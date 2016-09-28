@@ -13,10 +13,11 @@ comment_issue_id: 30
 
 ## Introduction
 
-
 ### Philosophers
 
 The MindmapsDB [sample-projects](https://github.com/mindmapsdb/sample-projects) repo on Github contains [philosophers.gql](https://github.com/mindmapsdb/sample-projects/blob/master/philosophers.gql), which illustrates the [basics of the object model](../the-basics/mindmaps-basics.html). You can also find the example within the MindmapsDB distribution zip.
+
+The philosophers example is discussed in the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html), which explains the basics and illustrates how to make simple queries on the graph.
 
 ## Where Next?
 

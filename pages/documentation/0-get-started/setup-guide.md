@@ -13,7 +13,7 @@ comment_issue_id: 16
 
 ## Download and Install Mindmaps
 
-{% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
+{% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
 If you intend to build MindmapsDB, you will also need Maven 3." %}
 
 The latest version of MindmapsDB can be downloaded from the

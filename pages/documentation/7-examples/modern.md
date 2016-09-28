@@ -68,9 +68,12 @@ insert age isa resource-type
 insert person has-resource age;
 
 insert lang isa resource-type
- datatype string;
+    datatype string;
  
 insert software has-resource lang;
+
+insert weight isa resource-type
+    datatype double;
 ```
 
 ### Relation Types
@@ -121,8 +124,8 @@ insert "marko" has age 29;
 insert "josh" has age 32;
 insert "vadas" has age 27;
 insert "peter" has age 35;
-insert (knower "marko", known-about "josh") isa knows has weight 1.0;
-insert (knower "marko", known-about "vadas") isa knows has weight 0.5;
+insert (knower: "marko", known-about: "josh") isa knows has weight 1.0;
+insert (knower: "marko", known-about: "vadas") isa knows has weight 0.5;
 ```
 
 
@@ -131,10 +134,10 @@ insert "lop" isa software;
 insert "ripple" isa software;
 insert "lop" has lang "java";
 insert "ripple" has lang "java";
-insert (programmer "marko", programmed "lop") isa programming has weight 0.4;
-insert (programmer "peter", programmed "lop") isa programming has weight 0.2;
-insert (programmer "josh", programmed "lop") isa programming has weight 0.4;
-insert (programmer "josh", programmed "ripple") isa programming has weight 1.0;
+insert (programmer: "marko", programmed: "lop") isa programming has weight 0.4;
+insert (programmer: "peter", programmed: "lop") isa programming has weight 0.2;
+insert (programmer: "josh", programmed: "lop") isa programming has weight 0.4;
+insert (programmer: "josh", programmed: "ripple") isa programming has weight 1.0;
 ```
    
    
@@ -147,7 +150,7 @@ OK, so if you've followed the above, you should now have a schema and some data 
 As with any query language, you use a variable to receive the results of the match query, which you must prefix with a `$`. So, to make the query "List every person in the graph", you would use the following in Graql:
 
 ```sql
-match $x isa person
+match $x isa person;
 
 $x id "marko" isa person; 
 $x id "vadas" isa person; 
@@ -155,12 +158,12 @@ $x id "josh" isa person;
 $x id "peter" isa person; 
 ```
  
-In Graql, a match is formed of three parts: the `match` statement, an optional `select` statement, and any optional [modifiers](../graql/match-queries.html#modifiers) that you choose to apply to the listing of results. Only the first part of a match query is needed: the select and modifier parts are optional.   
+In Graql, a match is formed of three parts: the `match` statement, an optional `select` statement, and any other optional [modifiers](../graql/match-queries.html#modifiers) that you choose to apply to the listing of results. Only the first part of a match query is needed: the modifier parts are optional.   
 
 In the `match $x isa person` query we are not using any select or delimiters, so let's add some now.  We can add a `select` statement to ask Graql to list out every person and to include their id (which is their name) and age. We use `order by` to modify how the results are listed out - in this case, we order them by ascending age, so the youngest person is shown first.
 
 ```sql
-match $x isa person select $x(id, has age) order by $x(has age) asc
+match $x isa person; select $x(id, has age); order by $x(has age) asc;
 
 $x id "vadas" has age "27"; 
 $x id "marko" has age "29"; 
@@ -245,8 +248,8 @@ knows isa relation-type
 	has-role known-about
 	has-resource weight;
 
-(knower "marko", known-about "josh") isa knows has weight 1.0;
-(knower "marko", known-about "vadas") isa knows has weight 0.5;
+(knower: "marko", known-about: "josh") isa knows has weight 1.0;
+(knower: "marko", known-about: "vadas") isa knows has weight 0.5;
 
 lang isa resource-type
 	datatype string;
@@ -270,10 +273,10 @@ programming isa relation-type
 	has-role programmed
 	has-resource weight;
 
-(programmer "marko", programmed "lop") isa programming has weight 0.4;
-(programmer "peter", programmed "lop") isa programming has weight 0.2;
-(programmer "josh", programmed "lop") isa programming has weight 0.4;
-(programmer "josh", programmed "ripple") isa programming has weight 1.0;
+(programmer: "marko", programmed: "lop") isa programming has weight 0.4;
+(programmer: "peter", programmed: "lop") isa programming has weight 0.2;
+(programmer: "josh", programmed: "lop") isa programming has weight 0.4;
+(programmer: "josh", programmed: "ripple") isa programming has weight 1.0;
 ```   
 
 ## Answers to the Test Yourself section
@@ -283,50 +286,50 @@ Here are our solutions to the queries we asked you to form. Please do have a go 
 List every person with their name and age in ascending age order
 
 ```sql
-match $x isa person select $x(id, has age) order by $x(has age) asc
+match $x isa person; select $x(id, has age); order by $x(has age) asc;
 ```
 
 List every person who has an age over 30, showing their name and age
 
 ```sql
-match $x isa person, has age > 30, select $x(id, has age)
+match $x isa person; has age > 30; select $x(id, has age);
 ```
 
 List every person who knows someone else, and every person who is known about
 
 ```sql
-match (knower $x) isa knows
-match (known-about $x) isa knows
+match (knower $x) isa knows;
+match (known-about $x) isa knows;
 ```
 
 List every person that marko knows
 
 ```sql
-match (known-about $x, "marko") isa knows
+match (known-about $x, "marko") isa knows;
 ```
 
 List every item of software and the language associated with it
 
 ```sql
-match $x isa software select $x(id, has lang)
+match $x isa software; select $x(id, has lang);
 ```
 
 List everything that josh has programmed
 
 ```sql
-match (programmed $x, "josh") isa programming
+match (programmed $x, "josh") isa programming;
 ```
 
 List everyone who has programmed Lop
 
 ```sql
-match (programmer $x, "lop") isa programming
+match (programmer $x, "lop") isa programming;
 ```
 
 List everything you know about marko
 
 ```sql
-match $relation("marko", $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype
+match $relation("marko", $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype;
 
 ```
 
