@@ -42,6 +42,7 @@ To load an additional graph into a different keyspace, that is, to load a graph 
 | `ask`       | Returns `true` or `false`.                           |
 | `insert`    | Outputs the concept IDs inserted. |
 | `delete`    | Executes with no output.                           |
+| `compute`    | Returns either a value or a map from concept to value.        |
 
    
 The interactive shell commits to the graph only when the user types `commit`.

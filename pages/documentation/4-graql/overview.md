@@ -21,6 +21,7 @@ There are four types of queries, which are begun with the follow keywords:
 - [ask](ask-queries.html) - for querying if certain patterns exist in the graph  
 - [insert](insert-queries.html) - for inserting types and instances  
 - [delete](delete-queries.html) - for deleting types and instances
+- [compute](compute-queries.html) - for computing useful information about your graph
 
 ## Cheatsheet reference
 If you are already familiar with Graql, you may find our [cheatsheet reference](graql-cheatsheet.html) a helpful page to bookmark or print out!
