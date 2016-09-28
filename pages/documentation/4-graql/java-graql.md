@@ -34,12 +34,11 @@ import static io.mindmaps.graql.api.query.QueryBuilder.*;
 import static io.mindmaps.graql.api.query.ValuePredicate.*;
 ```
 
-A `QueryBuilder` is constructed by providing a `MindmapsTransaction`:
+A `QueryBuilder` is constructed by providing a `MindmapsGraph`:
 
 ```java
-MindmapsGraph graph = MindmapsClient.getGraph("my-graph");
-MindmapsTransaction transaction = graph.newTransaction();
-QueryBuilder qb = QueryBuilder.build(transaction);
+MindmapsGraph graph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
+QueryBuilder qb = QueryBuilder.build(graph);
 ```
 
 The user can also choose to not provide a transaction. This can be useful if

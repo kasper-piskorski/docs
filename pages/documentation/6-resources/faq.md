@@ -141,7 +141,7 @@ I want to clear the graph I've been experimenting with and try something with a 
 If you are using the Java API, it's a simple as:
 
 ```
-graph = MindmapsClient.getGraph("myGraph");
+graph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
 graph.clear();
 ```
 
