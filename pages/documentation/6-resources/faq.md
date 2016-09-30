@@ -32,30 +32,6 @@ Failing that, you can often find out more information by looking in the `/logs` 
 
 Please see the answer to the question below "Can I run MindmapsDB on an existing Cassandra Platform?" if you are already using Cassandra and want to run MindmapsDB on a different instance of Cassandra to our default.
 
-
-### Why am I getting a strange exception?
-
-I am seeing the following exception. Why?
-```bash
-java.lang.RuntimeException: java.lang.IllegalStateException: The vertex or type is not associated with this transaction [v[24584]]
-```
-
-This exception occurs when you try to create links between concepts in
-different graphs. The following code reproduces this exception:
-
-```java
-MindmapsTitanGraphFactory factory = MindmapsTitanGraphFactory.getInstance();
-//Configuration pointing to keyspace one
-MindmapsGraph mindmapsGraph1 = factory.newGraph("conf1.properties");
-//Configuration pointing to keyspace two
-MindmapsGraph mindmapsGraph2 = factory.newGraph("conf2.properties");
-
-ConceptType conceptType1 = mindmapsGraph1.putConceptType("1");
-ConceptType conceptType2 = mindmapsGraph2.putConceptType("2");
-
-conceptType1.superConcept(conceptType2);
-```
-
 ### Why am I getting ghost vertices?
 
 In a  transaction based environment it is possible to have one transaction removing a concept while another concurrently modifies the same concept. Both
