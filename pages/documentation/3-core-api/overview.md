@@ -24,7 +24,13 @@ Make sure you have MindmapsDB Engine running locally by using `mindmaps.sh start
 Once you have done that, a thread-bound graph can be retrieved by:
 
 ```java
-MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
+MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
+```
+
+Alternatively an in-memory graph can be created with:
+
+```java
+MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, "my-graph").getGraph();
 ```
 
 {% include note.html content="Make sure that your project depends on `mindmaps-titan-factory` at a minimum." %}
