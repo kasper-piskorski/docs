@@ -20,7 +20,7 @@ There are four types of queries, which are begun with the follow keywords:
 - [match](match-queries.html) - for matching patterns in the graph  
 - [ask](ask-queries.html) - for querying if certain patterns exist in the graph  
 - [insert](insert-queries.html) - for inserting types and instances  
-- [delete](delete-queries.html) - for deleting types and instances
+- [delete](delete-queries.html) - for deleting types and instances    
 - [compute](compute-queries.html) - for computing useful information about your graph
 
 ## Cheatsheet reference
