@@ -110,8 +110,8 @@ a comma separated list of type IDs will restrict the calculations to instances o
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.0</td>
-        <td>03/09/2016</td>
+        <td>v0.2.0</td>
+        <td>01/10/2016</td>
         <td>First release.</td>        
     </tr>
 
