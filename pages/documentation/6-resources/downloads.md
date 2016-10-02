@@ -1,7 +1,7 @@
 ---
 title: Downloads
 keywords: setup, getting started, download
-last_updated: August 10, 2016
+last_updated: October 1st, 2016
 tags: [getting-started]
 summary: "
 This is a list of MindmapsDB releases. It's the place to come to download the most recent versions of MindmapsDB."
@@ -14,7 +14,7 @@ comment_issue_id: 24
 
 ## Download Mindmaps
 
-The latest version of MindmapsDB is v0.1.1.
+The latest version of MindmapsDB is v0.2.0.
 It can be downloaded from [here](https://mindmaps.io/download/latest).
 
 We currently support Mac OS X and Linux.
