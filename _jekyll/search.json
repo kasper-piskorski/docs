@@ -7,6 +7,8 @@ search: exclude
 [
 {% for page in site.pages %}
 {% unless page.search == "exclude" %}
+{% unless isFirst %},{% endunless %}
+
 {
 "title": "{{ page.title | escape }}",
 "tags": "{{ page.tags }}",
@@ -14,8 +16,7 @@ search: exclude
 "url": "{{ page.url | remove: "/"}}",
 "summary": "{{page.summary | strip }}"
 }
-{% unless forloop.last %},{% endunless %}
+
 {% endunless %}
 {% endfor %}
-
 ]
