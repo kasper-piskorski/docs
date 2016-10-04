@@ -20,7 +20,7 @@ The migration shell script can be found in `mindmaps-dist/bin` after it has been
 
 ```
 usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password> -database <url> -graph <graphname> [engine <url>]
-       -driver           JDBC driver 
+       -driver           JDBC driver
        -user             username for SQL database
        -pass             password for SQL database
        -database         URL to SQL database
@@ -61,7 +61,7 @@ usage: ./migration.sh owl -file <path> [-graph <name>] [-engine <url>]
 
 ## SQL Migration Example
 
-One of the most common use cases of the migration component will be to move data from an RDBMS into MindmapsDB. MindmapsDB relies on the JDBC API to connect to any RDBMS that uses the SQL language. The example that follows is written in MySQL, but MindmapsDB SQL migration will work with any database it can connect to using a JDBC driver. This has been tested on MySQL, Oracle and PostgresQL. 
+One of the most common use cases of the migration component will be to move data from an RDBMS into MindmapsDB. MindmapsDB relies on the JDBC API to connect to any RDBMS that uses the SQL language. The example that follows is written in MySQL, but MindmapsDB SQL migration will work with any database it can connect to using a JDBC driver. This has been tested on MySQL, Oracle and PostgresQL.
 
 ### SQL Schema Migration
 
@@ -120,7 +120,7 @@ The SQL schema line `ALTER TABLE event ADD FOREIGN KEY ( name ) REFERENCES pet (
 event-child isa role-type;
 event-parent isa role-type;
 
-event-relation isa relation-type, 
+event-relation isa relation-type,
  	has-role event-child,
  	has-role event-parent;
 
@@ -135,21 +135,21 @@ Lets imagine that the data in the SQL database is as follows:
 pet:
 
 ```
---------------------------------------------------------------- 
+---------------------------------------------------------------
 | name     | owner  | species | sex | birth      | death      |
---------------------------------------------------------------- 
+---------------------------------------------------------------
 | Bowser   | Diane  | dog     | m   | 1979-08-31 | 1995-07-29 |
---------------------------------------------------------------- 
+---------------------------------------------------------------
 | Fluffy   | Harold | cat     | f   | 1993-02-04 | NULL       |
---------------------------------------------------------------- 
+---------------------------------------------------------------
 | Claws    | Gwen   | cat     | m   | 1994-03-17 | NULL       |
---------------------------------------------------------------- 
+---------------------------------------------------------------
 | Buffy    | Harold | dog     | f   | 1989-05-13 | NULL       |
---------------------------------------------------------------- 
+---------------------------------------------------------------
 | Fang     | Benny  | dog     | m   | 1990-08-27 | NULL       |
---------------------------------------------------------------- 
+---------------------------------------------------------------
 | Puffball | Diane  | hamster | f   | 1999-03-30 | NULL       |
---------------------------------------------------------------- 
+---------------------------------------------------------------
 ```
 
 event:
@@ -174,9 +174,9 @@ event:
 -----------------------------------------------------------------------
 ```
 
-Similar to how the schema is migrated, each row of data in an SQL table can be mapped to a single entity instance and each column value can be mapped as a resource. 
+Similar to how the schema is migrated, each row of data in an SQL table can be mapped to a single entity instance and each column value can be mapped as a resource.
 
-Another feature of the migration component is that it will turn any `primary key` of a row into the ID of that instance. This works for combined keys as well. 
+Another feature of the migration component is that it will turn any `primary key` of a row into the ID of that instance. This works for combined keys as well.
 
 This is how the first two rows of the `pet` and `event` tables would look if written in Graql:
 
@@ -194,7 +194,7 @@ $y isa event
 	has date "1991-10-12",
 	has eventtype "kennel";
 
-``` 
+```
 
 If the value of a column is `NULL`, that resource is not added to the graph.
 
@@ -237,9 +237,110 @@ dataMigrator
 
 ```
 
+## OWL Migration Example
+Consider the following OWL ontology:
+
+```xml
+<rdf:RDF xmlns="http://www.co-ode.org/roberts/family-tree.owl#"
+     xml:base="http://www.co-ode.org/roberts/family-tree.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+    <owl:Class rdf:about="http://www.co-ode.org/roberts/family-tree.owl#Person"/>
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/roberts/family-tree.owl#isAncestorOf"/>
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/roberts/family-tree.owl#isParentOf"/>
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/roberts/family-tree.owl#hasParent"/>
+
+    <owl:ObjectProperty rdf:about="http://www.co-ode.org/roberts/family-tree.owl#hasAncestor">
+        <owl:inverseOf rdf:resource="http://www.co-ode.org/roberts/family-tree.owl#isAncestorOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.co-ode.org/roberts/family-tree.owl#Person"/>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+             <rdf:Description rdf:about="http://www.co-ode.org/roberts/family-tree.owl#hasParent"/>
+             <rdf:Description rdf:about="http://www.co-ode.org/roberts/family-tree.owl#hasAncestor"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+
+    <owl:NamedIndividual rdf:about="#Witold">
+        <rdf:type rdf:resource="http://www.co-ode.org/roberts/family-tree.owl#Person"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Stefan">
+        <rdf:type rdf:resource="http://www.co-ode.org/roberts/family-tree.owl#Person"/>
+        <isParentOf rdf:resource="#Witold"/>
+    </owl:NamedIndividual>
+<\rdf:RDF>
+```
+The ontology defines a single class (type) Person as well as two instances of the class - individuals Witold and Stefan. The ontology defines properties hasAncestor and its inverse isAncestorOf as well as hasParent and isParentOf properties. The hasAncestor property is defined as transitive and additionally defines a property chain which corresponds to the rule:
+
+```
+hasAncestor(X, Y) :- hasParent(X, Z), hasAncestor(Z, Y)
+```
+
+Upon migration, the OWL ontology will be mapped to the Mindmaps Model. The following graql statement inserts an equivalent structure to the one obtained through the migration mapping:
+
+```
+insert
+
+"tPerson" isa entity-type;
+"eWitold" isa tPerson;
+"eStefan" isa tPerson;
+
+"owl-subject-op-isAncestorOf" isa role-type;
+"owl-object-op-isAncestorOf" isa role-type;
+"op-isAncestorOf" isa relation-type, has-role owl-subject-op-isAncestorOf, has-role owl-object-op-isAncestorOf;
+tPerson plays-role owl-subject-op-isAncestorOf, plays-role owl-object-op-isAncestorOf;
+
+"owl-subject-op-hasAncestor" isa role-type;
+"owl-object-op-hasAncestor" isa role-type;
+"op-hasAncestor" isa relation-type, has-role owl-subject-op-hasAncestor, has-role owl-object-op-hasAncestor;
+tPerson plays-role owl-subject-op-hasAncestor, plays-role owl-object-op-hasAncestor;
+
+"owl-subject-op-isParentOf" isa role-type;
+"owl-object-op-isParentOf" isa role-type;
+"op-isParentOf" isa relation-type, has-role owl-subject-op-isParentOf, has-role owl-object-op-isParentOf;
+tPerson plays-role owl-subject-op-isParentOf, plays-role owl-object-op-isParentOf;
+
+"owl-subject-op-hasParent" isa role-type;
+"owl-object-op-hasParent" isa role-type;
+"op-hasParent" isa relation-type, has-role owl-subject-op-hasParent, has-role owl-object-op-hasParent;
+tPerson plays-role owl-subject-op-hasParent, plays-role owl-object-op-hasParent;
+
+(owl-subject-op-isParentOf: 'eStefan', owl-object-op-isParentOf: eWitold) isa op-isParentOf;
+
+"inv-op-hasAncestor" isa inference-rule,
+lhs {match
+(owl-subject-op-hasAncestor: $x, owl-object-op-hasAncestor: $y) isa hasAncestor;},
+rhs {match
+(owl-subject-op-isAncestorOf: $y, owl-object-op-isAncestorOf: $x) isa isAncestorOf;};
+
+"inv-op-isAncestorOf" isa inference-rule,
+lhs {match
+(owl-subject-op-isAncestorOf: $x, owl-object-op-isAncestorOf: $y) isa isAncestorOf;},
+rhs {match
+(owl-subject-op-hasAncestor: $y, owl-object-op-hasAncestor: $x) isa hasAncestor;};
+
+"trst-op-hasAncestor" isa inference-rule,
+lhs {match
+(owl-subject-op-hasParent: $x, owl-object-op-hasParent: $z) isa hasAncestor;
+(owl-subject-op-hasAncestor: $z, owl-object-op-hasAncestor: $y) isa hasAncestor;},
+rhs {match
+(owl-subject-op-hasAncestor: $x, owl-object-op-hasAncestor: $y) isa hasAncestor;};
+
+"pch-op-hasAncestor" isa inference-rule,
+lhs {match
+(owl-subject-op-hasParent: $x, owl-object-op-hasParent: $z) isa hasParent;
+(owl-subject-op-hasAncestor: $z, owl-object-op-hasAncestor: $y) isa hasAncestor;},
+rhs {match
+(owl-subject-op-hasAncestor: $x, owl-object-op-hasAncestor: $y) isa hasAncestor;};
+```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)). 
+You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)).
 
 
 {% include links.html %}
