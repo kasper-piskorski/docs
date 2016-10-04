@@ -11,7 +11,7 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This tutorial shows you how to use migrate content in different formats to populate a MindmapsDB graph. If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
+This tutorial shows you how to migrate content in different formats to populate a MindmapsDB graph. If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script
 The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:
@@ -196,7 +196,7 @@ $y isa event
 
 ``` 
 
-If the value of a column is `null`, that resource is not added to the graph.
+If the value of a column is `NULL`, that resource is not added to the graph.
 
 The `name` column of the event instance was not migrated as a resource. This is because that column is a foreign key. The migration component will detect when one of the columns is a `foreign key` and create a relation between those two instances:
 
@@ -239,7 +239,7 @@ dataMigrator
 
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online here). 
+You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)). 
 
 
 {% include links.html %}

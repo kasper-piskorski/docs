@@ -16,7 +16,7 @@ compute algorithm in subgraph;
 ```
 
 where algorithm can be any of the [available](#available-algorithms) options. Subgraph is a comma separated list of
-type IDs that defines the instances that will be visited by the pregel algorithm. For example,
+type IDs that defines the instances that will be visited by the Pregel algorithm. For example,
 
 ```
 compute count in person;
@@ -39,7 +39,7 @@ to you. A summary of the algorithms is given in the table below.
 | [`min`](#minimum)    | Compute the minimum value of a resource. |
 | [`max`](#maximum)    | Compute the maximum value of a resource. |
 | [`std`](#standard-deviation)    | Compute the standard deviation of a resource. |
-| [`sum`](#sum)    | Comoute the sum of a resource. |
+| [`sum`](#sum)    | Compute the sum of a resource. |
 
 For further information see the individual sections below.
 
