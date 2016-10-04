@@ -12,7 +12,7 @@ search: exclude
 "title": "{{ page.title | escape }}",
 "tags": "{{ page.tags }}",
 "keywords": "{{page.keywords}}",
-"url": "{{ page.url }}",
+"url": "{{ site.urlprefix }}{{ page.url }}",
 "summary": "{{page.summary | strip }}"
 }
 {% endunless %}
