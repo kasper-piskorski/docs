@@ -121,10 +121,10 @@ A `person` can have the role of `philosopher` and a `school` can have the role o
 Now let's relate some `philosophers` to their `philosophies`:
 
 ```sql
->>>insert (philosopher "Socrates", philosophy "Platonism") isa practice;
->>>insert (philosopher "Plato", philosophy "Idealism") isa practice;
->>>insert (philosopher "Plato", philosophy "Platonism") isa practice;
->>>insert (philosopher "Aristotle", philosophy "Peripateticism") isa practice;
+>>>insert (philosopher: "Socrates", philosophy: "Platonism") isa practice;
+>>>insert (philosopher: "Plato", philosophy: "Idealism") isa practice;
+>>>insert (philosopher: "Plato", philosophy: "Platonism") isa practice;
+>>>insert (philosopher: "Aristotle", philosophy: "Peripateticism") isa practice;
 ```
 
 ![](/images/practice.png)
@@ -159,9 +159,9 @@ First, extend our schema:
 Second, our data:
 
 ```sql
->>>insert (teacher "Socrates", student "Plato") isa education;
->>>insert (teacher "Plato", student "Aristotle") isa education;
->>>insert (teacher "Aristotle", student "Alexander") isa education;
+>>>insert (teacher: "Socrates", student: "Plato") isa education;
+>>>insert (teacher: "Plato", student: "Aristotle") isa education;
+>>>insert (teacher: "Aristotle", student: "Alexander") isa education;
 ```
 
 {% include tip.html content="**Test Yourself** <br /> Try writing a query to see who taught Aristotle. Include all the roles and types (`teacher`, `student` and `education`), then remove them one by one to see when the results change! The answer is at the bottom of this page." %}
@@ -240,11 +240,11 @@ Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't 
 
 ```sql
 >>>insert "sun-fact" isa fact, value "The Sun is bigger than the Earth";
->>>insert (thinker "Aristotle", thought "sun-fact") isa knowledge;
+>>>insert (thinker: "Aristotle", thought: "sun-fact") isa knowledge;
 >>>insert "cave-fact" isa fact, value "Caves are mostly pretty dark";
->>>insert (thinker "Plato", thought "cave-fact") isa knowledge;
+>>>insert (thinker: "Plato", thought: "cave-fact") isa knowledge;
 >>>insert "nothing" isa fact;
->>>insert (thinker "Socrates", thought "nothing") isa knowledge;
+>>>insert (thinker: "Socrates", thought: "nothing") isa knowledge;
 ```
 
 A relation is actually just a special kind of instance. Just as
@@ -261,7 +261,7 @@ First, we have to state that someone can think about their own knowledge:
 We can now give Socrates one final piece of knowledge:
 
 ```sql
->>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker "Socrates", thought $socratesKnowsNothing) isa knowledge
+>>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker: "Socrates", thought: $socratesKnowsNothing) isa knowledge
 ```
 
 Here, `socratesKnowsNothing` is the relation between `Socrates` and `nothing`.
