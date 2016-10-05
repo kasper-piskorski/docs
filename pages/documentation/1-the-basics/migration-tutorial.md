@@ -2,7 +2,7 @@
 title: Migrating to MindmapsDB
 keywords: setup, getting started
 last_updated: August 10, 2016
-tags: [getting-started, graql]
+tags: [getting-started, graql, migration]
 summary: "This document will teach you how to load data in different formats to populate a MindmapsDB graph."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/migration-tutorial.html
@@ -238,6 +238,7 @@ dataMigrator
 ```
 
 ## OWL Migration Example
+
 Consider the following OWL ontology:
 
 ```xml
@@ -275,13 +276,14 @@ Consider the following OWL ontology:
     </owl:NamedIndividual>
 <\rdf:RDF>
 ```
-The ontology defines a single class (type) Person as well as two instances of the class - individuals Witold and Stefan. The ontology defines properties hasAncestor and its inverse isAncestorOf as well as hasParent and isParentOf properties. The hasAncestor property is defined as transitive and additionally defines a property chain which corresponds to the rule:
+
+The ontology defines a single class (type) `Person` as well as two instances of the class - individuals `Witold` and `Stefan`. The ontology defines properties `hasAncestor` and its inverse `isAncestorOf` as well as `hasParent` and `isParentOf` properties. The `hasAncestor` property is defined as transitive and additionally defines a property chain which corresponds to the rule:
 
 ```
 hasAncestor(X, Y) :- hasParent(X, Z), hasAncestor(Z, Y)
 ```
 
-Upon migration, the OWL ontology will be mapped to the Mindmaps Model. The following graql statement inserts an equivalent structure to the one obtained through the migration mapping:
+Upon migration, the OWL ontology will be mapped to the MindmapsDB Model. The following Graql statement inserts an equivalent structure to the one obtained through the migration mapping:
 
 ```
 insert
@@ -342,6 +344,7 @@ rhs {match
 ## Where Next?
 You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)).
 
+There is an example of OWL migration [here](../examples/OWL-migration.html).
 
 {% include links.html %}
 

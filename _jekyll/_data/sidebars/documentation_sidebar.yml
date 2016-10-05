@@ -104,7 +104,10 @@ entries:
         url: /documentation/examples/moogi.html      
       - title: Modern example
         output: web
-        url: /documentation/examples/modern.html      
+        url: /documentation/examples/modern.html
+      - title: OWL migration
+        output: web
+        url: /documentation/examples/OWL-migration.html      
 #  - title: Core
 #    output: web
 #    folderitems:
