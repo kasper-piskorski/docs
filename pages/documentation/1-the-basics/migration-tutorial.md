@@ -237,9 +237,11 @@ dataMigrator
 
 ```
 
-Please take a look at our example of [SQL migration](../examples/SQL-migration.html) to find out more.
+<!--Please take a look at our example of [SQL migration](../examples/SQL-migration.html) to find out more.-->
 
 ## OWL Migration Example
+
+<!--When you have read the following, you may find our extended example of [OWL migration](../examples/OWL-migration.html) useful.-->
 
 Consider the following OWL ontology:
 
@@ -346,8 +348,8 @@ rhs {match
 ## Where Next?
 You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)).
 
-Please take a look at our examples to further illustrate [SQL migration](../examples/SQL-migration.html) and [OWL migration](../examples/OWL-migration.html).
-
+<!--Please take a look at our examples to further illustrate [SQL migration](../examples/SQL-migration.html) and [OWL migration](../examples/OWL-migration.html).
+-->
 {% include links.html %}
 
 ## Document Changelog  
