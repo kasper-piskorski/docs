@@ -155,7 +155,7 @@ The above is equivalent to:
 <div role="tabpanel" class="tab-pane active" id="shell5">
 <pre>
 match
-(pokedex-no-owner $x, pokedex-no-value $pokedex-no) isa has-pokedex-no;
+(has-pokedex-no-owner: $x, has-pokedex-no-value: $pokedex-no) isa has-pokedex-no;
 $pokedex-no value < 20;
 </pre>
 </div>
@@ -186,7 +186,7 @@ Match concepts that are relations between the given variables. If a role type is
 <pre>
 match
 $x isa pokemon;
-(ancestor $x, $y)
+(ancestor: $x, $y);
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java6">
@@ -257,7 +257,7 @@ Match concept types that play the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-match $x plays-role ancestor
+match $x plays-role ancestor;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
@@ -355,8 +355,8 @@ Asks if the given string is a substring.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell13">
 <pre>
-match $x has description contains "underground";
-select $x(id, has description);
+match $x has description $desc;
+$desc value contains "underground";
 
 </pre>
 </div>
@@ -364,7 +364,10 @@ select $x(id, has description);
 <pre>
 import static io.mindmaps.graql.api.query.ValuePredicate.*;
 
-qb.match(var("x").has("description", contains("underground")));
+qb.match(
+    var("x").has("description", var("desc")),
+    var("desc").value(contains("underground"))
+);
 
 </pre>
 </div> <!-- tab-pane -->
@@ -430,20 +433,20 @@ qb.match(var("x").has("weight", gt(20).and(lt(30))));
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell16">
 <pre>
-match $x isa pokemon;
-select $x(has pokedex-no, id);
-limit 30, offset 10, distinct, order by $x(has pokedex-no) asc;
+match $x isa pokemon, has pokedex-no $no;
+select $x;
+limit 30; offset 10; distinct; order by $no asc;
 
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java16">
 <pre>
-qb.match(var("x").isa("pokemon"))
+qb.match(var("x").isa("pokemon").has("pokedex-no", var("no"))
     .select("x")
     .limit(30)
     .offset(10)
     .distinct()
-    .orderBy("x", "pokedex-no", true);
+    .orderBy("no", true);
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -463,46 +466,7 @@ by the resource of that type on that concept. Order is ascending by default.
 
 ### select
 
-Indicates which variables to include in the results as well as optionally some
-[getters](#getters), e.g. `$x(id)`. If no getters are provided, the query will
-get the [id](#section-id), [value](#section-value) and [isa](#section-isa) from
-each result.
-
-#### Getters
-A getter indicates a property to get from a variable. Getters are supported in
-the Graql shell, but are not supported in [Java Graql](java_graql.html).
-
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell17" data-toggle="tab">Graql</a></li>
-    <li><a href="#java17" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell17">
-<pre>
-match $x isa pokemon;
-select $x(id, has pokedex-no, has description);
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java17">
-<p>
-Not supported by the Java API.
-</p>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-
-##### isa
-Get the type of a concept.
-
-##### id
-Get the `id` of a concept.
-
-##### value
-Get the `value` of a concept.
-
-##### has
-Get all resources of the given type on this concept.
+Indicates which variables to include in the results.
 
 {% include links.html %}
 
