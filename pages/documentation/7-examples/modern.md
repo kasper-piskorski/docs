@@ -298,14 +298,14 @@ match $x isa person; has age > 30; select $x(id, has age);
 List every person who knows someone else, and every person who is known about
 
 ```sql
-match (knower $x) isa knows;
-match (known-about $x) isa knows;
+match (knower: $x) isa knows;
+match (known-about: $x) isa knows;
 ```
 
 List every person that marko knows
 
 ```sql
-match (known-about $x, "marko") isa knows;
+match (known-about: $x, "marko") isa knows;
 ```
 
 List every item of software and the language associated with it
@@ -317,13 +317,13 @@ match $x isa software; select $x(id, has lang);
 List everything that josh has programmed
 
 ```sql
-match (programmed $x, "josh") isa programming;
+match (programmed: $x, "josh") isa programming;
 ```
 
 List everyone who has programmed Lop
 
 ```sql
-match (programmer $x, "lop") isa programming;
+match (programmer: $x, "lop") isa programming;
 ```
 
 List everything you know about marko
