@@ -39,7 +39,7 @@ MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, "my-graph").g
 <dependency>
     <groupId>io.mindmaps</groupId>
     <artifactId>mindmaps-titan-factory</artifactId>
-    <version>0.1.1</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
