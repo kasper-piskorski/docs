@@ -20,6 +20,7 @@ An ask query will return whether the given [match query](graql_match.html) has a
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
 match dragon isa pokemon-type;
+ask;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
