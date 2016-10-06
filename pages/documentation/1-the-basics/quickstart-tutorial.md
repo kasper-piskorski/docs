@@ -55,7 +55,7 @@ concept instances.
 We'll quickly check that our data has loaded:
 
 ```sql
->>>match $p isa person
+>>>match $p isa person;
 
 $p id "Aristotle" isa person;
 $p id "Plato" isa person;
@@ -78,7 +78,7 @@ Next, let's add some `schools` of thought:
 And look up one:
 
 ```sql
->>>match $cyn id "Cynicism"
+>>>match $cyn id "Cynicism";
 
 $cyn id "Cynicism" isa school;
 ```
@@ -203,7 +203,7 @@ Let's add the rest of Alexander's titles while we're at it:
 Using Graql, we can query for people, listing their id and titles.
 
 ```sql
->>>match $x isa person select $x(id, has title)
+>>>match $x isa person select $x(id, has title);
 
 $x id "Socrates";
 $x id "Plato";
@@ -214,7 +214,7 @@ $x id "Alexander" has title "Pharaoh of Egypt" has title "Hegeon" has title "Sha
 Wait, who's the Pharaoh again?
 
 ```sql
->>>match $pharaoh has title "Pharaoh of Egypt"
+>>>match $pharaoh has title "Pharaoh of Egypt";
 
 $pharaoh id "Alexander" isa person;
 ```
@@ -261,7 +261,7 @@ First, we have to state that someone can think about their own knowledge:
 We can now give Socrates one final piece of knowledge:
 
 ```sql
->>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker: "Socrates", thought: $socratesKnowsNothing) isa knowledge
+>>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker: "Socrates", thought: $socratesKnowsNothing) isa knowledge;
 ```
 
 Here, `socratesKnowsNothing` is the relation between `Socrates` and `nothing`.
@@ -271,7 +271,7 @@ player.
 Finally, we'll check out everything Socrates knows:
 
 ```sql
->>>match ("Socrates", $x) isa knowledge
+>>>match ("Socrates", $x) isa knowledge;
 
 $x id "nothing" isa fact;
 $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
@@ -287,14 +287,14 @@ We asked you to write a query to see who taught Aristotle.
 Graql answers:
 
 ```sql
-match (teacher $teach, $student Aristotle) isa education
+match (teacher $teach, $student Aristotle) isa education;
 ```
 
 We asked you to write a query for everyone with a title containing "King".   
 Answer:  
 
 ```sql
-match $king has title contains "King"
+match $king has title contains "King";
 ```
 
 
@@ -313,6 +313,11 @@ match $king has title contains "King"
         <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
+    </tr>
+    <tr>
+        <td>v0.2.0</td>
+        <td>06/09/2016</td>
+        <td>Updates for Graql syntax changes.</td>        
     </tr>
 
 </table>

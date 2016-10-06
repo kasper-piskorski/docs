@@ -84,7 +84,7 @@ The created or retrieved concept can then be modified with further properties.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-insert "Pikachu" isa pokemon
+insert "Pikachu" isa pokemon;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">

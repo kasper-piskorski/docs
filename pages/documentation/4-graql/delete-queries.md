@@ -22,7 +22,7 @@ the `id` or `isa`) it will only delete the specified properties.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match $x isa pokemon delete $x
+match $x isa pokemon delete $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">

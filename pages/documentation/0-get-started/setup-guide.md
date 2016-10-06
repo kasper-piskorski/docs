@@ -33,28 +33,25 @@ To stop MindmapsDB graph, run `mindmaps.sh stop`. " %}
 
 ## Set up Graql
 
-Graql is our query language, which allows you to interface with a MindmapsDB graph. We will use Graql to load an example data set and run some simple queries against it.  
-
-The following will make Graql load an example data set and exit:
-
-```bash
-bin/graql.sh -f examples/pokemon.gql
-```
-
-This will create and persist an example data set. Now we can run the following query using the Graql shell:
+Graql is our query language, which allows you to interface with a MindmapsDB graph. We will start Graql and enter a few lines to check that all is working as it should.
 
 ```bash
 bin/graql.sh
-match $x isa pokemon;
-$x id "Bulbasaur" isa pokemon;
-$x id "Charmander" isa pokemon;
-$x id "Pikachu" isa pokemon;
-...
+```
+
+The Graql shell starts and you see a `>>>` prompt. Type in the following:   
+
+```sql   
+insert twin isa entity-type;
+insert topsy isa twin;
+insert tim isa twin;
+match $x isa twin;   
+
+$x id "tim" isa twin; 
+$x id "topsy" isa twin;
 ```
 
 If you see the above output then congratulations! You have set up MindmapsDB.
-
-
 
 ### Troubleshooting  
 If you do not see the above message, please check our [troubleshooting page](../troubleshooting/known-issues.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.mindmaps.io), or on [Stack Overflow](http://stackoverflow.com).
