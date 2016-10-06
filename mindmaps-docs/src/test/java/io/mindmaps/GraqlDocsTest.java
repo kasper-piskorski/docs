@@ -18,10 +18,13 @@ import static org.junit.Assert.fail;
 
 public class GraqlDocsTest {
 
-    private static final Pattern HTML_GRAQL =
-            Pattern.compile("id=\"shell[0-9]+\">\\s*<pre>\\s*(.*?)\\s*</pre>", Pattern.DOTALL);
+    private static final Pattern TAG_GRAQL =
+            Pattern.compile(
+                    "(id=\"shell[0-9]+\">\\s*<pre>|```graql)" +
+                    "\\s*(.*?)\\s*" +
+                    "(</pre>|```)", Pattern.DOTALL);
 
-    private static final Pattern SHELL_GRAQL = Pattern.compile("\\s*>>> (.*?)\r?\n.*", Pattern.DOTALL);
+    private static final Pattern SHELL_GRAQL = Pattern.compile("^*>>>(.*?)$", Pattern.MULTILINE);
 
     private int numFound = 0;
 
@@ -49,27 +52,31 @@ public class GraqlDocsTest {
 
         String contents = new String(encoded, StandardCharsets.UTF_8);
 
-        Matcher matcher = HTML_GRAQL.matcher(contents);
+        Matcher matcher = TAG_GRAQL.matcher(contents);
 
         while (matcher.find()) {
             numFound += 1;
 
-            String graqlString = matcher.group(1);
+            String graqlString = matcher.group(2);
 
-            try {
-                assertStringValidSyntax(file.toString(), graqlString);
-            } catch (IllegalArgumentException e) {
-            }
+            assertCodeblockValidSyntax(file.toString(), graqlString);
         }
     }
 
-    private void assertStringValidSyntax(String fileName, String graqlString) {
-        Matcher shellMatcher = SHELL_GRAQL.matcher(graqlString);
+    private void assertCodeblockValidSyntax(String fileName, String block) {
+        Matcher shellMatcher = SHELL_GRAQL.matcher(block);
 
-        if (shellMatcher.matches()) {
-            graqlString = shellMatcher.group(1);
+        if (shellMatcher.find()) {
+            while (shellMatcher.find()) {
+                String graqlString = shellMatcher.group(1);
+                assertGraqlStringValidSyntax(fileName, graqlString);
+            }
+        } else {
+            assertGraqlStringValidSyntax(fileName, block);
         }
+    }
 
+    private void assertGraqlStringValidSyntax(String fileName, String graqlString) {
         try {
             Graql.parse(graqlString);
         } catch (IllegalArgumentException e1) {
@@ -79,7 +86,7 @@ public class GraqlDocsTest {
             try {
                 if (lines.length > 1) {
                     for (String line : lines) {
-                        Graql.parse(line);
+                        if (!line.isEmpty()) Graql.parse(line);
                     }
                 } else {
                     syntaxFail(fileName, graqlString, e1.getMessage());
