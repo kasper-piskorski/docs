@@ -8,7 +8,6 @@ _pdf
 Gemfile.lock
 _site
 *.geany
-navigation.md
 
 # Mac files #
 .DS_Store
