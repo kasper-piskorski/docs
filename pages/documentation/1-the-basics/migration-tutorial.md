@@ -93,7 +93,7 @@ ALTER TABLE event ADD FOREIGN KEY ( name ) REFERENCES pet ( name );
 
 Each SQL table is mapped to one MindmapsDB entity type. Each column of a table can be mapped as a resource type of that entity type. So the SQL tables above can be directly mapped to a MindmapsDB schema:
 
-```sql
+```graql
 insert
 
 pet isa entity-type,
@@ -116,7 +116,9 @@ In SQL, a `foreign key` is a column that references another column. The Mindmaps
 
 The SQL schema line `ALTER TABLE event ADD FOREIGN KEY ( name ) REFERENCES pet ( name );` would be migrated as:
 
-```sql
+```graql
+insert
+
 event-child isa role-type;
 event-parent isa role-type;
 
@@ -180,7 +182,7 @@ Another feature of the migration component is that it will turn any `primary key
 
 This is how the first two rows of the `pet` and `event` tables would look if written in Graql:
 
-```sql
+```graql
 insert
 
 $x isa pet id "Bowser",
@@ -200,8 +202,8 @@ If the value of a column is `NULL`, that resource is not added to the graph.
 
 The `name` column of the event instance was not migrated as a resource. This is because that column is a foreign key. The migration component will detect when one of the columns is a `foreign key` and create a relation between those two instances:
 
-```sql
-(event-child $x, event-parent $y) isa event-relation;
+```graql
+insert (event-child: $x, event-parent: $y) isa event-relation;
 ```
 
 ### In Java

@@ -51,7 +51,7 @@ In this example, we use the name of the person or software to make up their id, 
 
 Here, we add person and software entity types to the graph, via the Graql shell:
 
-```sql
+```graql
 insert person isa entity-type;
 insert software isa entity-type;
 ```
@@ -61,53 +61,40 @@ insert software isa entity-type;
 
 To assign resources to the entities, which you can think of as attributes, we use resource types. First, we define what they are (age is a number, programming language is a string that represents the language's name), then we allocate them to the entity in question:
 
-```sql
-insert age isa resource-type
-	datatype long;
-	
+```graql
+insert age isa resource-type, datatype long;
 insert person has-resource age;
 
-insert lang isa resource-type
-    datatype string;
- 
+insert lang isa resource-type, datatype string;
 insert software has-resource lang;
 
-insert weight isa resource-type
-    datatype double;
+insert weight isa resource-type, datatype double;
 ```
 
 ### Relation Types
 
 Let's first define the relationship between people. The diagram shows that marko knows vadas, but we don't have any information about whether the inverse is true (though it seems likely that vadas probably also knows marko). Let's set up a relationship called `knows`, which has two role-types - `knower` (for marko) and `known-about` (for vadas):
 
-```sql
+```graql
 insert knower isa role-type;
 insert known-about isa role-type;
-
 insert person plays-role knower;
 insert person plays-role known-about;
-
-insert knows isa relation-type
-	has-role knower
-	has-role known-about
-	has-resource weight;	
+insert knows isa relation-type, has-role knower, has-role known-about, has-resource weight;	
 ```
 
 Note that the  `knows` relation type also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
 
 We can set up a similar relationship between software and the people that created it:
 
-```sql
+```graql
 insert programmer isa role-type;
 insert programmed isa role-type;
 
 insert person plays-role programmer;
 insert software plays-role programmed;
 
-insert programming isa relation-type
-	has-role programmer
-	has-role programmed
-	has-resource weight;
+insert programming isa relation-type, has-role programmer, has-role programmed, has-resource weight;
 ```
 
 And that's it. At this point, we have defined the schema of the MindmapsDB graph.
@@ -115,7 +102,7 @@ And that's it. At this point, we have defined the schema of the MindmapsDB graph
 ## Adding the Data
 Now we have a schema, we can move on to adding in the data, which is pretty much just a typing exercise:
 
-```sql
+```graql
 insert "marko" isa person;
 insert "vadas" isa person;
 insert "josh" isa person;
@@ -129,7 +116,7 @@ insert (knower: "marko", known-about: "vadas") isa knows has weight 0.5;
 ```
 
 
-```sql
+```graql
 insert "lop" isa software;
 insert "ripple" isa software;
 insert "lop" has lang "java";
@@ -149,7 +136,7 @@ OK, so if you've followed the above, you should now have a schema and some data 
 
 As with any query language, you use a variable to receive the results of the match query, which you must prefix with a `$`. So, to make the query "List every person in the graph", you would use the following in Graql:
 
-```sql
+```graql
 match $x isa person;
 
 $x id "marko" isa person; 
@@ -162,8 +149,8 @@ In Graql, a match is formed of three parts: the `match` statement, an optional `
 
 In the `match $x isa person` query we are not using any select or delimiters, so let's add some now.  We can add a `select` statement to ask Graql to list out every person and to include their id (which is their name) and age. We use `order by` to modify how the results are listed out - in this case, we order them by ascending age, so the youngest person is shown first.
 
-```sql
-match $x isa person; select $x(id, has age); order by $x(has age) asc;
+```graql
+>>> match $x isa person, has age $a; select $x, $a; order by $a asc;
 
 $x id "vadas" has age "27"; 
 $x id "marko" has age "29"; 
@@ -173,12 +160,12 @@ $x id "peter" has age "35";
 
 Now let's look at querying for a relationship. We can query to find out which entities have a particular role-type associated with a relation-type. For example, we can match everyone with a `knower` role who knows someone else:
 
-```sql
+```graql
 match $x plays-role knows; 
 ```
 
 We can also match every role that a `person` can play:
-```sql
+```graql
 match person plays-role $x;
 ```
 
@@ -218,7 +205,7 @@ bin/graql.sh
 Then type edit, which will open up the systems default text editor where you can paste your chunk of text. Upon exiting the editor, the Graql will execute.
 
 
-```sql 
+```graql 
 insert 
 age isa resource-type
 	datatype long;
@@ -285,50 +272,50 @@ Here are our solutions to the queries we asked you to form. Please do have a go 
 
 List every person with their name and age in ascending age order
 
-```sql
-match $x isa person; select $x(id, has age); order by $x(has age) asc;
+```graql
+match $x isa person, has age $a; select $x, $a; order by $a asc;
 ```
 
 List every person who has an age over 30, showing their name and age
 
-```sql
-match $x isa person; has age > 30; select $x(id, has age);
+```graql
+match $x isa person, has age $a, has age > 30; select $x, $a;
 ```
 
 List every person who knows someone else, and every person who is known about
 
-```sql
+```graql
 match (knower: $x) isa knows;
 match (known-about: $x) isa knows;
 ```
 
 List every person that marko knows
 
-```sql
+```graql
 match (known-about: $x, "marko") isa knows;
 ```
 
 List every item of software and the language associated with it
 
-```sql
-match $x isa software; select $x(id, has lang);
+```graql
+match $x isa software, has lang $lang;
 ```
 
 List everything that josh has programmed
 
-```sql
+```graql
 match (programmed: $x, "josh") isa programming;
 ```
 
 List everyone who has programmed Lop
 
-```sql
+```graql
 match (programmer: $x, "lop") isa programming;
 ```
 
 List everything you know about marko
 
-```sql
+```graql
 match $relation("marko", $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype;
 
 ```

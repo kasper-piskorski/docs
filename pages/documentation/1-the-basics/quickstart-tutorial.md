@@ -35,7 +35,7 @@ bin/graql.sh
 
 ...and now some data in the form of concept instances: in our case, a bunch of ancient Greeks...
 
-```sql
+```graql
 >>>insert "Socrates" isa person;
 >>>insert "Plato" isa person;
 >>>insert "Aristotle" isa person;
@@ -54,7 +54,7 @@ concept instances.
 
 We'll quickly check that our data has loaded:
 
-```sql
+```graql
 >>>match $p isa person;
 
 $p id "Aristotle" isa person;
@@ -67,7 +67,7 @@ $p id "Alexander" isa person;
 
 Next, let's add some `schools` of thought:
 
-```sql
+```graql
 >>>insert school isa entity-type;
 >>>insert "Peripateticism" isa school;
 >>>insert "Platonism" isa school;
@@ -77,7 +77,7 @@ Next, let's add some `schools` of thought:
 
 And look up one:
 
-```sql
+```graql
 >>>match $cyn id "Cynicism";
 
 $cyn id "Cynicism" isa school;
@@ -93,7 +93,7 @@ A relation comprises of pairs of roles and role players. Relations and roles als
 First, we define a `relation-type` called `practice` that relates a
 `role-type` called `philosopher` to a `role-type` called `philosophy`:
 
-```sql
+```graql
 >>>insert practice isa relation-type;
 >>>insert philosopher isa role-type;
 >>>insert philosophy isa role-type;
@@ -111,7 +111,7 @@ and
 
 A `person` can have the role of `philosopher` and a `school` can have the role of `philosophy`:
 
-```sql
+```graql
 >>>insert person plays-role philosopher;
 >>>insert school plays-role philosophy;
 ```
@@ -120,7 +120,7 @@ A `person` can have the role of `philosopher` and a `school` can have the role o
 
 Now let's relate some `philosophers` to their `philosophies`:
 
-```sql
+```graql
 >>>insert (philosopher: "Socrates", philosophy: "Platonism") isa practice;
 >>>insert (philosopher: "Plato", philosophy: "Idealism") isa practice;
 >>>insert (philosopher: "Plato", philosophy: "Platonism") isa practice;
@@ -133,7 +133,7 @@ Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing th
 
 Now we can query for all our Platonists:
 
-```sql
+```graql
 >>>match (philosopher $phil, "Platonism") isa practice;
 
 $phil id "Socrates" isa person;
@@ -148,7 +148,7 @@ Great!
 
 First, extend our schema:
 
-```sql
+```graql
 >>>insert education isa relation-type;
 >>>insert teacher isa role-type;
 >>>insert student isa role-type;
@@ -158,7 +158,7 @@ First, extend our schema:
 
 Second, our data:
 
-```sql
+```graql
 >>>insert (teacher: "Socrates", student: "Plato") isa education;
 >>>insert (teacher: "Plato", student: "Aristotle") isa education;
 >>>insert (teacher: "Aristotle", student: "Alexander") isa education;
@@ -171,7 +171,7 @@ Second, our data:
 Some people have special titles and epithets and we want to talk about that.
 So, we'll create some resource types that can be attached to a person:
 
-```sql
+```graql
 >>>insert title isa resource-type, datatype string;
 >>>insert epithet isa resource-type, datatype string;
 >>>insert person has-resource title, has-resource epithet;
@@ -180,7 +180,7 @@ So, we'll create some resource types that can be attached to a person:
 
 Let's make Alexander "Great"!
 
-```sql
+```graql
 >>>insert "Alexander" has epithet "The Great";
 ```
 
@@ -191,7 +191,7 @@ This is a quick way to add a relation between `Alexander` and an `epithet` with 
 
 Let's add the rest of Alexander's titles while we're at it:
 
-```sql
+```graql
 >>>insert "Alexander" has title "Hegemon";
 >>>insert "Alexander" has title "King of Macedon";
 >>>insert "Alexander" has title "King of Persia";
@@ -202,7 +202,7 @@ Let's add the rest of Alexander's titles while we're at it:
 
 Using Graql, we can query for people, listing their id and titles.
 
-```sql
+```graql
 >>>match $x isa person select $x(id, has title);
 
 $x id "Socrates";
@@ -213,7 +213,7 @@ $x id "Alexander" has title "Pharaoh of Egypt" has title "Hegeon" has title "Sha
 
 Wait, who's the Pharaoh again?
 
-```sql
+```graql
 >>>match $pharaoh has title "Pharaoh of Egypt";
 
 $pharaoh id "Alexander" isa person;
@@ -227,7 +227,7 @@ $pharaoh id "Alexander" isa person;
 Philosophers know lots of things. We should probably include this in our
 schema.
 
-```sql
+```graql
 >>>insert knowledge isa relation-type;
 >>>insert thinker isa role-type;
 >>>insert thought isa role-type;
@@ -238,7 +238,7 @@ schema.
 
 Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't really know anything at all.
 
-```sql
+```graql
 >>>insert "sun-fact" isa fact, value "The Sun is bigger than the Earth";
 >>>insert (thinker: "Aristotle", thought: "sun-fact") isa knowledge;
 >>>insert "cave-fact" isa fact, value "Caves are mostly pretty dark";
@@ -254,13 +254,13 @@ For example, Socrates knew nothing, but he also *knew* that he knew nothing!
 
 First, we have to state that someone can think about their own knowledge:
 
-```sql
+```graql
 >>>insert knowledge plays-role thought;
 ```
 
 We can now give Socrates one final piece of knowledge:
 
-```sql
+```graql
 >>>match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker: "Socrates", thought: $socratesKnowsNothing) isa knowledge;
 ```
 
@@ -270,7 +270,7 @@ player.
 
 Finally, we'll check out everything Socrates knows:
 
-```sql
+```graql
 >>>match ("Socrates", $x) isa knowledge;
 
 $x id "nothing" isa fact;
@@ -286,14 +286,14 @@ $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 We asked you to write a query to see who taught Aristotle.   
 Graql answers:
 
-```sql
-match (teacher $teach, $student Aristotle) isa education;
+```graql
+match (teacher: $teach, $student: Aristotle) isa education;
 ```
 
 We asked you to write a query for everyone with a title containing "King".   
 Answer:  
 
-```sql
+```graql
 match $king has title contains "King";
 ```
 

@@ -41,12 +41,11 @@ bin/graql.sh
 
 The Graql shell starts and you see a `>>>` prompt. Type in the following:   
 
-```sql   
-insert twin isa entity-type;
-insert topsy isa twin;
-insert tim isa twin;
-match $x isa twin;   
-
+```graql   
+>>> insert twin isa entity-type;
+>>> insert topsy isa twin;
+>>> insert tim isa twin;
+>>> match $x isa twin;
 $x id "tim" isa twin; 
 $x id "topsy" isa twin;
 ```

@@ -339,7 +339,7 @@ qb.match(var("x").has("height", 19).has("weight", gt(1500)));
 
 If a concept doesn't have a value, all predicates are considered false. The query below matches everything where the predicate `>10` is true. So, it will find all concepts with value greater than 10. However, if a concept does not have a value at all, the predicate is considered false, so it won’t appear in the results.
 
-```sql
+```graql
 match $x value >10;
 ``` 
 
