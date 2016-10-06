@@ -13,13 +13,11 @@ Welcome to the API Reference landing page. From here, you can find the latest, a
 ## Latest Version
 The latest version will always be posted at [https://mindmaps.io/pages/api-reference/latest/index.html](https://mindmaps.io/pages/api-reference/latest/index.html).
 
-## Past Versions
+## API Reference for Past Versions of MindmapsDB
 
-### v0.1.1  
-Find it [here](https://mindmaps.io/pages/api-reference/v0.1.1/index.html)
+**[v0.1.1](https://mindmaps.io/pages/api-reference/v0.1.1/index.html)**     
+**[v0.1.0](https://mindmaps.io/pages/api-reference/v0.1.0/index.html)**
 
-### v0.1.0
-Find it [here](https://mindmaps.io/pages/api-reference/v0.1.0/index.html).
 
 ## Feedback
 We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.mindmaps.io) or through our main [website](http://www.mindmaps.io). 
