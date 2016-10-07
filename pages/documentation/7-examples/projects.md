@@ -20,7 +20,7 @@ This page lists potential research projects that could be based upon MindmapsDB.
 
 * Define a simple ontology, which is just a specification of the components of a system and how they relate, and then devise logical rules to construct a simple application. An example may be to produce a set of rules that can validate that a Sudoku puzzle has been filled correctly.
 
-* Add a new feature to Moogi that allows users to “like” concepts. Then produce a visualisation that displays the link between the things that a user likes. For more information about Moogi, the film discovery engine that is built on MindmapsDB, please see https://moogi.co/.
+* Add a new feature to Moogi that allows users to “like” concepts. Then produce a visualisation that displays the link between the things that a user likes. For more information about Moogi, the film discovery engine that is built on MindmapsDB, please see [https://moogi.co/](https://moogi.co/).
 
 * Write a review of Graph Database technologies with pros and cons and example apps.	
 
