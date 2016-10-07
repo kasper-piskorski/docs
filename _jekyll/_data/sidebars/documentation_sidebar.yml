@@ -110,7 +110,10 @@ entries:
 #        url: /documentation/examples/OWL-migration.html 
       - title: SQL migration
         output: web
-        url: /documentation/examples/SQL-migration.html      
+        url: /documentation/examples/SQL-migration.html 
+      - title: Example Projects
+        output: web
+        url: /documentation/examples/projects.html      
 #  - title: Core
 #    output: web
 #    folderitems:
