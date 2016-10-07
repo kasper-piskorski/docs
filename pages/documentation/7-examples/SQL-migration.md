@@ -14,7 +14,7 @@ If you have not yet set up the MindmapsDB environment, please see the [Setup gui
 
 ## Migrating the World
 
-In this example, we will show you how to import data from a relational database to a Mindamps graph. 
+In this example, we will show you how to import SQL data, from a relational database, to a MindmapsDB graph. 
 
 ### Prerequisites
 
@@ -22,9 +22,9 @@ In this example, we will show you how to import data from a relational database 
 
 To run this example, you should have set up [MySQL](http://dev.mysql.com/doc/mysql-getting-started/en/) and the [MySQL world](http://dev.mysql.com/doc/world-setup/en/world-setup-installation.html) example. 
 
-One you have the SQL database loaded, you need to allow the mindmaps migration default user (username: `mindmaps`, password: `mindmaps`) access, which you can do with the following command from within the MySQL shell:
+One you have the SQL database loaded, you need to allow the MindmapsDB migration default user (username: `mindmaps`, password: `mindmaps`) access, which you can do with the following command from within the MySQL shell:
 
-```
+```sql
 CREATE USER 'mindmaps'@'localhost' IDENTIFIED BY 'mindmaps';
 GRANT ALL PRIVILEGES ON *.* TO 'mindmaps'@'localhost'
 	WITH GRANT OPTION;
@@ -32,32 +32,46 @@ GRANT ALL PRIVILEGES ON *.* TO 'mindmaps'@'localhost'
 
 This will allow the migration example access to your new MySQL world database. 
 
-#### Mindmaps Engine
+#### MindmapsDB Engine
 
-Mindmaps Engine needs to be running, as always, for this example to work. If you need help starting Engine, see the [Setup Guide](https://mindmaps.io/pages/documentation/get-started/setup-guide.html)
+MindmapsDB Engine needs to be running, as always, for this example to work. If you need help starting Engine, please see the [Setup guide](../get-started/setup-guide.html).
 
-### Running the example
+### Running the Example
 
 You can run this example by running the `Main` class. Check out the `SqlWorldMigrator` class for the bulk of the migration code.  
 
-We run a few queries in the example to prove that the data has been migrated. After running the example, you should be able to answer the following questions:
+We run a few queries in the example to prove that the data has been migrated. After running the example, you should be able to answer the following questions (see the bottom of the page for answers - but please don't peek until you've tried it!):
 
-+ What are the Types in the World Mindmaps graph?
++ What are the Types in the World MindmapsDB graph?
 + How many cities are in Niger?
 + How many countries are in the world?
 + What are the languages spoken in Sweden?
 
 (We do not provide any guarantees for data integrity. Data is provided by MySQL.)
 
-### In-Memory example (Lazy folks here, please)
+### In-Memory Example (Lazy folks here, please)
 
-If you are feeling lazy, and do not want to install MySQL to test this out, we do provide and in-memory SQL database option.
+If you are feeling lazy, and do not want to install MySQL to test this out, we do provide an in-memory SQL database option.
 
-You can run this example by running the `MainInMemory` class. It demonstrates the exact same functionality by pre-loading the World data into an [H2](http://www.h2database.com/html/main.html) SQL database.
+You can run this example by running the `MainInMemory` class. It demonstrates the same functionality by pre-loading the World data into an [H2](http://www.h2database.com/html/main.html) SQL database.
 
-## Where next?
+## Test Yourself Answers
 
-After running this SQL migration, check out [Graql](https://mindmaps.io/pages/documentation/graql/overview.html) and [the Graph API](https://mindmaps.io/pages/documentation/core-api/overview.html) for more instructions on how you can explore **the world**.
+**What are the Types in the World MindmapsDB graph?**   
+Answer:
+ 	
+**How many cities are in Niger?**   
+Answer:
+
+**How many countries are in the world?**   
+Answer:
+
+**What are the languages spoken in Sweden?**   
+Answer:
+
+## Where Next?
+
+After running this SQL migration, check out the [Graql documentation](../graql/overview.html) and the [Graph API documentation](../core-api/overview.html) for more instructions on how you can explore **the world**.
 
 
 {% include links.html %}

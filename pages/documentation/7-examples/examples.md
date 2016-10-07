@@ -34,6 +34,10 @@ The MindmapsDB [sample-projects](https://github.com/mindmapsdb/sample-projects) 
 
 The [Modern example](./modern.html) is a simple one, designed to test your knowledge of Graql.
 
+### [SQL Migration](./SQL-migration.html)
+
+A common use-case is to migrate existing SQL data to a MindmapsDB graph. Please see the [SQL migration example](../examples/SQL-migration.html) for an example of how to use the migrator.
+
 ### Oncologists
 
 The oncologists example walks through the basics of MindmapsDB from a beginner's perspective. You can find the blog posts here:
@@ -45,7 +49,6 @@ The oncologists example walks through the basics of MindmapsDB from a beginner's
 
 
 Sample code is here: [https://github.com/mikonapoli/oncologists_ontology](https://github.com/mikonapoli/oncologists_ontology)
-
 
 {% include links.html %}
 

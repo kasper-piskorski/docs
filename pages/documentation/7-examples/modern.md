@@ -27,7 +27,7 @@ We have chosen this example as it may already be familiar, and is simple enough 
 
 If it is not already running, start MindmapsDB, then open a Graql shell:
 
-```
+```bash
 cd [your MindmapsDB install directory]
 bin/mindmaps.sh start
 bin/graql.sh
@@ -198,7 +198,7 @@ match person plays-role $x;
 ## Complete Example
 Here is the complete example - the code to define the schema and insert the data into a graph. You can load this directly into Graql, if you don't want to type it out for yourself. Cut and paste the Graql below and start Graql:
 
-```
+```bash
 bin/graql.sh
 ```
 

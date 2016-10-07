@@ -50,19 +50,19 @@ You can use Mac OS X or Linux right now. We plan to support Windows at a later d
 
 There are several ways to load data into a MindmapsDB graph. For small amounts of data (<1000 lines), you an load it directly via the Graql shell. For example, the following loads up the Pokemon example data:
 
-```
+```bash
 bin/graql.sh -f examples/pokemon.gql
 ```
 
 If you have a larger file, you will need to `curl` Mindmaps Engine. Loading through Engine will result in a "batch loading" where the file will be divided in batches that will be committed concurrently. This differs from loading through Graql shell, where the whole file is committed in a single chunk when you call commit. See the example below, which loads the Graql file FILENAME.gql, from PATH.
 
-```
+```bash
 curl -H "Content-Type: application/json" -X POST -d '{"path":"PATH/FILENAME.gql"}' http://localhost:4567/import/batch/data
 ```
 
 In order to check the status of the loading, you can open a new terminal window, navigate to the logs directory of your MindmapsDB installation and run the command:
 
-```
+```bash
 tail -f mindmaps.log
 ```
 
@@ -72,14 +72,14 @@ By default, MindmapsDB is shipped with TitanDB, which in turn relies on Cassandr
 
 Specifically you should change the following parameters:
 
-```
+```bash
 # Host Location
 storage.hostname=127.0.0.1
 ```
 
 You can also, for example, add the following to specify a custom port:
 
-```
+```bash
 storage.port = 1234
 ```
 
@@ -96,7 +96,7 @@ MindmapsDB comes with a basic visualiser, with a web-interface. We appreciate an
 
 Once you have started MindmapsDB, you will see a message in the console, like:
 
-```
+```bash
 Started ServerConnector@7aa5814d{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
 ```
 
@@ -104,8 +104,8 @@ Started ServerConnector@7aa5814d{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
 
 You can then open your browser and connect to the address printed on the console (http://0.0.0.0:4567). Select the Graql Visualiser tab and you will see a Graql shell, from which you can input queries, for example:
 
-```
-match $x isa concept-type
+```graql
+match $x isa concept-type;
 ``` 
 
 In result, you will see the resulting nodes and relations displayed inside the graql visualiser on the same page.
@@ -116,7 +116,7 @@ I want to clear the graph I've been experimenting with and try something with a 
 
 If you are using the Java API, it's a simple as:
 
-```
+```java
 graph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
 graph.clear();
 ```
@@ -125,7 +125,7 @@ If you are using the Graql shell and have not committed what you have in the gra
 
 If you've committed, then you must currently remove your installation and re-create it.  First, call
 
-```
+```bash
 pkill -9 java
 ```
 

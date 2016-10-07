@@ -100,7 +100,9 @@ First, we define a `relation-type` called `practice` that relates a
 >>>insert practice has-role philosopher, has-role philosophy;
 ```
 
-{% include note.html content="Commas are totally optional in query patterns, so these pairs are equivalent:<br /> ```
+{% include note.html content="Commas are totally optional in query patterns, so these pairs are equivalent:<br /> 
+
+```graql
 >>>insert practice has-role philosopher, has-role philosophy;
 >>>insert practice has-role philosopher has-role philosophy;
 and  
@@ -297,6 +299,9 @@ Answer:
 match $king has title contains "King";
 ```
 
+## Where Next?
+
+Now you have started getting to grips with MindmapsDB, please explore our additional [example code](../examples/examples.html) and documentation. We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://mindmaps.io/community.html)!
 
 {% include links.html %}
 
