@@ -12,20 +12,52 @@ comment_issue_id: 42
 
 If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to migration, please see the [Migration Tutorial](../the-basics/migration-tutorial.html).
 
-## Introduction
+## Migrating the World
 
+In this example, we will show you how to import data from a relational database to a Mindamps graph. 
 
-### Second level header
+### Prerequisites
 
+#### MySQL
 
+To run this example, you should have set up [MySQL](http://dev.mysql.com/doc/mysql-getting-started/en/) and the [MySQL world](http://dev.mysql.com/doc/world-setup/en/world-setup-installation.html) example. 
 
+One you have the SQL database loaded, you need to allow the mindmaps migration default user (username: `mindmaps`, password: `mindmaps`) access, which you can do with the following command from within the MySQL shell:
 
+```
+CREATE USER 'mindmaps'@'localhost' IDENTIFIED BY 'mindmaps';
+GRANT ALL PRIVILEGES ON *.* TO 'mindmaps'@'localhost'
+	WITH GRANT OPTION;
+```
 
+This will allow the migration example access to your new MySQL world database. 
 
+#### Mindmaps Engine
 
+Mindmaps Engine needs to be running, as always, for this example to work. If you need help starting Engine, see the [Setup Guide](https://mindmaps.io/pages/documentation/get-started/setup-guide.html)
 
+### Running the example
+
+You can run this example by running the `Main` class. Check out the `SqlWorldMigrator` class for the bulk of the migration code.  
+
+We run a few queries in the example to prove that the data has been migrated. After running the example, you should be able to answer the following questions:
+
++ What are the Types in the World Mindmaps graph?
++ How many cities are in Niger?
++ How many countries are in the world?
++ What are the languages spoken in Sweden?
+
+(We do not provide any guarantees for data integrity. Data is provided by MySQL.)
+
+### In-Memory example (Lazy folks here, please)
+
+If you are feeling lazy, and do not want to install MySQL to test this out, we do provide and in-memory SQL database option.
+
+You can run this example by running the `MainInMemory` class. It demonstrates the exact same functionality by pre-loading the World data into an [H2](http://www.h2database.com/html/main.html) SQL database.
 
 ## Where next?
+
+After running this SQL migration, check out [Graql](https://mindmaps.io/pages/documentation/graql/overview.html) and [the Graph API](https://mindmaps.io/pages/documentation/core-api/overview.html) for more instructions on how you can explore **the world**.
 
 
 {% include links.html %}
