@@ -285,8 +285,8 @@ Consider the following OWL ontology:
 
 The ontology defines a single class (type) `Person` as well as two instances of the class - individuals `Witold` and `Stefan`. The ontology defines properties `hasAncestor` and its inverse `isAncestorOf` as well as `hasParent` and `isParentOf` properties. The `hasAncestor` property is defined as transitive and additionally defines a property chain which corresponds to the rule:
 
-```graql
-hasAncestor(X, Y) :- hasParent(X, Z), hasAncestor(Z, Y)
+```
+hasAncestor(X, Y) :- hasParent(X, Z), hasAncestor(Z, Y);
 ```
 
 Upon migration, the OWL ontology will be mapped to the MindmapsDB Model. The following Graql statement inserts an equivalent structure to the one obtained through the migration mapping:
