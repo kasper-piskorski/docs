@@ -78,9 +78,9 @@ insert "Cynicism" isa school;
 And look up one:
 
 ```graql
-match $cyn id "Cynicism";
+match $c id "Cynicism";
 
-$cyn id "Cynicism" isa school;
+$c id "Cynicism" isa school;
 ```
 
 
@@ -99,17 +99,6 @@ insert philosopher isa role-type;
 insert philosophy isa role-type;
 insert practice has-role philosopher, has-role philosophy;
 ```
-
-{% include note.html content="Commas are totally optional in query patterns, so these pairs are equivalent:<br /> 
-
-```
-insert practice has-role philosopher, has-role philosophy;
-insert practice has-role philosopher has-role philosophy;
-#and  
-insert practice, isa relation-type;
-insert practice isa relation-type;
-```" %}
-
 
 A `person` can have the role of `philosopher` and a `school` can have the role of `philosophy`:
 
@@ -136,8 +125,11 @@ Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing th
 Now we can query for all our Platonists:
 
 ```graql
-match (philosopher $phil, "Platonism") isa practice;
+match (philosopher: $phil, "Platonism") isa practice;
+```
 
+This returns:   
+```
 $phil id "Socrates" isa person;
 $phil id "Plato" isa person;
 ```
@@ -202,23 +194,16 @@ insert "Alexander" has title "Lord of Asia";
 ```
 
 
-Using Graql, we can query for people, listing their id and titles.
+Using Graql, we can query for people who have titles, and list them out.
 
 ```graql
-match $x isa person select $x(id, has title);
+match $x isa person, has title $y;
 
-$x id "Socrates";
-$x id "Plato";
-$x id "Aristotle";
-$x id "Alexander" has title "Pharaoh of Egypt" has title "Hegeon" has title "Shah of Persia" has title "King of Macedon" has title "Lord of Asia";
-```
-
-Wait, who's the Pharaoh again?
-
-```graql
-match $pharaoh has title "Pharaoh of Egypt";
-
-$pharaoh id "Alexander" isa person;
+$x id "Alexander" isa person; $y value "Shah of Persia" isa title; 
+$x id "Alexander" isa person; $y value "Hegeon" isa title; 
+$x id "Alexander" isa person; $y value "King of Macedon" isa title; 
+$x id "Alexander" isa person; $y value "Pharaoh of Egypt" isa title; 
+$x id "Alexander" isa person; $y value "Lord of Asia" isa title; 
 ```
 
 
@@ -263,7 +248,7 @@ insert knowledge plays-role thought;
 We can now give Socrates one final piece of knowledge:
 
 ```graql
-match $socratesKnowsNothing ("Socrates", "nothing") insert (thinker: "Socrates", thought: $socratesKnowsNothing) isa knowledge;
+match $socratesKnowsNothing ("Socrates", "nothing"); insert (thinker: "Socrates", thought: $socratesKnowsNothing) isa knowledge;
 ```
 
 Here, `socratesKnowsNothing` is the relation between `Socrates` and `nothing`.
