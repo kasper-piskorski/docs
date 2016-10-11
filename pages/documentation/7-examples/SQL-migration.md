@@ -59,6 +59,7 @@ You can run this example by running the [`MainInMemory`](https://github.com/mind
 
 **What are the Types in the World MindmapsDB graph?**   
 Answer:
+   
 ```
 country
 city 
@@ -66,13 +67,16 @@ countrylanguage
 ```     	
 
 **How many countries are in the world?**   
+   
 Answer: `239`
 
 **How may cities are in the world?**   
+   
 Answer: `4079`
 
 **What are the cities in Niger?**   
-Answer: 
+Answer:   
+
 ```
 Niamey
 Zinder
