@@ -10,7 +10,7 @@ folder: platform
 toc: false
 ---
 
-MindmapsDB is a distributed knowledge graph that provides an flexible object-oriented schema as ontology, and a knowledge-oriented query language capable of real-time analytics and reasoning.
+MindmapsDB is a distributed knowledge graph that provides a flexible object-oriented schema as ontology, and a knowledge-oriented query language capable of real-time analytics and reasoning.
 
 Let's break that down a bit and explain what it means.
 
