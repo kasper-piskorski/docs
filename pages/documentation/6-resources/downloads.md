@@ -1,19 +1,20 @@
 ---
 title: Downloads
 keywords: setup, getting started, download
-last_updated: August 10, 2016
+last_updated: October 1st, 2016
 tags: [getting-started]
 summary: "
 This is a list of MindmapsDB releases. It's the place to come to download the most recent versions of MindmapsDB."
 sidebar: documentation_sidebar
 permalink: /documentation/resources/downloads.html
 folder: documentation
+comment_issue_id: 24
 ---
 
 
-## Download Mindmaps
+## Download MindmapsDB
 
-The latest version of MindmapsDB is v0.1.1.
+The latest version of MindmapsDB is v0.2.0.
 It can be downloaded from [here](https://mindmaps.io/download/latest).
 
 We currently support Mac OS X and Linux.
@@ -43,7 +44,7 @@ mvn package
 The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://mindmaps.io/download).
 
 ### Example Code
-You can find an additional repo on Github containing our [example code](https://github.com/mindmapsdb/sample-projects).
+You can find an additional repo on Github containing our [example code](https://github.com/mindmapsdb/sample-projects), while further information about the examples is [here](../examples/examples.html).
 
 
 ## MindmapsDB Java API
@@ -65,8 +66,8 @@ Here are some links to guides for adding external jars using different IDEs:
 - [Eclipse](http://www.tutorialspoint.com/eclipse/eclipse_java_build_path.htm)
 - [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
 
-## Troubleshooting
-Please see our [troubleshooting](../troubleshooting/known-issues.html) page if you encounter any problems when installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.mindmaps.io) or on [Stack Overflow](http://www.stackoverflow.com).
+## Questions?
+Please see our [FAQ](../resources/faq.html) page if you encounter any problems when installing and running MindmapsDB. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.mindmaps.io) or on [Stack Overflow](http://www.stackoverflow.com).
 
 {% include links.html %}
 
@@ -80,9 +81,12 @@ Please see our [troubleshooting](../troubleshooting/known-issues.html) page if y
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>
 
 </table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/24" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

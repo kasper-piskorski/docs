@@ -3,7 +3,7 @@
 entries:
 - title: Sidebar
   product: MindmapsDB
-  version: 0.1
+  version: 0.2
   folders:
 
   - title: Get Started
@@ -18,12 +18,15 @@ entries:
   - title: The Basics
     output: web
     folderitems:
-      - title: Mindmaps Basics
+      - title: MindmapsDB Basics
         output: web
         url: /documentation/the-basics/mindmaps-basics.html
       - title: Quickstart Tutorial
         output: web
         url: /documentation/the-basics/quickstart-tutorial.html
+      - title: Migrating to MindmapsDB
+        output: web
+        url: /documentation/the-basics/migration-tutorial.html  
   - title: Graph API
     output: web
     folderitems:
@@ -36,9 +39,6 @@ entries:
       - title: Advanced Schema Definition
         output: web
         url: /documentation/core-api/advanced-schema-definition.html
-      - title: API Reference
-        output: web
-        external_url: //mindmaps.io/javadocs.html
   - title: Graql
     output: web
     folderitems:
@@ -60,39 +60,60 @@ entries:
       - title: Insert Queries
         output: web
         url: /documentation/graql/insert-queries.html
+      - title: Compute Queries
+        output: web
+        url: /documentation/graql/compute-queries.html
       - title: Graql Cheatsheet
         output: web
         url: /documentation/graql/graql-cheatsheet.html
       - title: Java Graql
         output: web
         url: /documentation/graql/java-graql.html
-      - title: API Reference
-        output: web
-        external_url: //mindmaps.io/javadocs.html
-  - title: Troubleshooting
+  - title: API Reference
     output: web
     folderitems:
-      - title: Known Issues
+      - title: API Reference
         output: web
-        url: /documentation/troubleshooting/known-issues.html
+        url: /documentation/api-reference/api-reference.html
   - title: Resources
     output: web
     folderitems:
       - title: Resources
         output: web
         url: /documentation/resources/resources.html
- #     - title: Frequently Asked Questions
- #       output: web
- #       url: /documentation/resources/developer-faq.html
+      - title: MindmapsDB FAQ
+        output: web
+        url: /documentation/resources/faq.html  
       - title: Downloads
         output: web
         url: /documentation/resources/downloads.html
-#  - title: Examples
-#    output: web
-#    folderitems:
-#      - title: Test your Graql
+  - title: Examples
+    output: web
+    folderitems:
+      - title: Examples
+        output: web
+        url: /documentation/examples/examples.html
+      - title: Pokemon example
+        output: web
+        url: /documentation/examples/pokemon.html      
+      - title: Philosophers example
+        output: web
+        url: /documentation/examples/philosophers.html      
+      - title: Moogi example
+        output: web
+        url: /documentation/examples/moogi.html      
+      - title: Modern example
+        output: web
+        url: /documentation/examples/modern.html
+#     - title: OWL migration
 #        output: web
-#        url: /documentation/examples/modern.html      
+#        url: /documentation/examples/OWL-migration.html 
+      - title: SQL migration
+        output: web
+        url: /documentation/examples/SQL-migration.html 
+      - title: Example Projects
+        output: web
+        url: /documentation/examples/projects.html      
 #  - title: Core
 #    output: web
 #    folderitems:

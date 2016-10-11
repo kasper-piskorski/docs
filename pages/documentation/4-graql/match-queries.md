@@ -66,7 +66,7 @@ Match instances that have the given type.
 
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
-<pre>match $x isa pokemon</pre>
+<pre>match $x isa pokemon;</pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>qb.match(var("x").isa("pokemon"));</pre>
@@ -83,7 +83,7 @@ Match concepts that have an `id` which matches the [predicate](#predicates).
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x id "Articuno"
+match $x id "Articuno";
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
@@ -130,7 +130,7 @@ Match concepts that have a resource of `type`. If a [predicate](#predicates) is 
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
-match $x has pokedex-no < 20
+match $x has pokedex-no < 20;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
@@ -155,7 +155,7 @@ The above is equivalent to:
 <div role="tabpanel" class="tab-pane active" id="shell5">
 <pre>
 match
-(pokedex-no-owner $x, pokedex-no-value $pokedex-no) isa has-pokedex-no;
+(has-pokedex-no-owner: $x, has-pokedex-no-value: $pokedex-no) isa has-pokedex-no;
 $pokedex-no value < 20;
 </pre>
 </div>
@@ -186,7 +186,7 @@ Match concepts that are relations between the given variables. If a role type is
 <pre>
 match
 $x isa pokemon;
-(ancestor $x, $y)
+(ancestor: $x, $y);
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java6">
@@ -214,7 +214,7 @@ Match types that are a subclass of the given type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell7">
 <pre>
-match $x ako type
+match $x ako type;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java7">
@@ -236,7 +236,7 @@ Match relation types that have the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell8">
 <pre>
-match evolution has-role $x
+match evolution has-role $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
@@ -257,7 +257,7 @@ Match concept types that play the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-match $x plays-role ancestor
+match $x plays-role ancestor;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
@@ -278,7 +278,7 @@ Match concept types that can have the given resource types.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell10">
 <pre>
-match $x has-resource name
+match $x has-resource name;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java10">
@@ -324,7 +324,7 @@ longs and doubles, these sort by value. Strings are ordered lexicographically.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell12">
 <pre>
-match $x has height = 19, has weight > 1500
+match $x has height = 19, has weight > 1500;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java12">
@@ -339,8 +339,8 @@ qb.match(var("x").has("height", 19).has("weight", gt(1500)));
 
 If a concept doesn't have a value, all predicates are considered false. The query below matches everything where the predicate `>10` is true. So, it will find all concepts with value greater than 10. However, if a concept does not have a value at all, the predicate is considered false, so it won’t appear in the results.
 
-```sql
-match $x value >10
+```graql
+match $x value >10;
 ``` 
 
 
@@ -355,8 +355,8 @@ Asks if the given string is a substring.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell13">
 <pre>
-match $x has description contains "underground"
-select $x(id, has description)
+match $x has description $desc;
+$desc value contains "underground";
 
 </pre>
 </div>
@@ -364,7 +364,10 @@ select $x(id, has description)
 <pre>
 import static io.mindmaps.graql.api.query.ValuePredicate.*;
 
-qb.match(var("x").has("description", contains("underground")));
+qb.match(
+    var("x").has("description", var("desc")),
+    var("desc").value(contains("underground"))
+);
 
 </pre>
 </div> <!-- tab-pane -->
@@ -383,7 +386,7 @@ surround the expression with `.*`.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell14">
 <pre>
-match $x value /.*(fast|quick).*/
+match $x value /.*(fast|quick).*/;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java14">
@@ -407,7 +410,7 @@ qb.match(var("x").value(regex(".*(fast|quick).*")));
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell15">
 <pre>
-match $x has weight >20 and <30
+match $x has weight >20 and <30;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java15">
@@ -430,20 +433,20 @@ qb.match(var("x").has("weight", gt(20).and(lt(30))));
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell16">
 <pre>
-match $x isa pokemon
-select $x(has pokedex-no, id)
-limit 30, offset 10, distinct, order by $x(has pokedex-no) asc
+match $x isa pokemon, has pokedex-no $no;
+select $x;
+limit 30; offset 10; distinct; order by $no asc;
 
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java16">
 <pre>
-qb.match(var("x").isa("pokemon"))
+qb.match(var("x").isa("pokemon").has("pokedex-no", var("no"))
     .select("x")
     .limit(30)
     .offset(10)
     .distinct()
-    .orderBy("x", "pokedex-no", true);
+    .orderBy("no", true);
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -463,46 +466,7 @@ by the resource of that type on that concept. Order is ascending by default.
 
 ### select
 
-Indicates which variables to include in the results as well as optionally some
-[getters](#getters), e.g. `$x(id)`. If no getters are provided, the query will
-get the [id](#section-id), [value](#section-value) and [isa](#section-isa) from
-each result.
-
-#### Getters
-A getter indicates a property to get from a variable. Getters are supported in
-the Graql shell, but are not supported in [Java Graql](java_graql.html).
-
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell17" data-toggle="tab">Graql</a></li>
-    <li><a href="#java17" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell17">
-<pre>
-match $x isa pokemon
-select $x(id, has pokedex-no, has description)
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java17">
-<p>
-Not supported by the Java API.
-</p>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-
-##### isa
-Get the type of a concept.
-
-##### id
-Get the `id` of a concept.
-
-##### value
-Get the `value` of a concept.
-
-##### has
-Get all resources of the given type on this concept.
+Indicates which variables to include in the results.
 
 {% include links.html %}
 
@@ -516,7 +480,7 @@ Get all resources of the given type on this concept.
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>

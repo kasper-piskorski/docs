@@ -34,15 +34,15 @@ match
 
 Match a pattern in the graph.
 
-```sql
-match $x isa movie
+```graql
+match $x isa movie;
 ```
 Match several patterns together.
 
-```sql
+```graql
 match
 $x isa movie, id "titanic";
-(actor $a, $x);
+(actor: $a, $x);
 ```
 
 
@@ -54,9 +54,9 @@ select [ variable, ... ]
 ```
 Select particular variables from the query.   
 
-```sql
-match $m isa movie; (actor $a1, $m); (actor $a2, $m);
-select $a1, $a2
+```graql
+match $m isa movie; (actor: $a1, $m); (actor: $a2, $m);
+select $a1, $a2;
 ```
 
 #### limit
@@ -66,9 +66,9 @@ limit {integer}
 ```
 Limit the number of results returned by a query.
 
-```sql
-match (director $x, $y)
-limit 10
+```graql
+match (director: $x, $y);
+limit 10;
 ```
 
 #### offset
@@ -78,10 +78,10 @@ offset {integer}
 ```
 Skip some results in a query.
 
-```sql
-match (director $x, $y)
-limit 10
-offset 20
+```graql
+match (director: $x, $y);
+limit 10;
+offset 20;
 ```
 
 #### distinct
@@ -91,27 +91,21 @@ distinct
 ```
 De-duplicate the results of a query.
 
-```sql
-match $m isa movie, id 'dr-strangelove'; (actor $a, $m);
-select $a
-distinct
+```graql
+match $m isa movie, id 'dr-strangelove'; (actor: $a, $m);
+select $a;
+distinct;
 ```
 
 #### order
 
 ```sql
-order by variable [ (has resource-type) ] [ asc | desc ]
+order by variable [ asc | desc ]
 ```
-Order by id in ascending order.
-
-```sql
-match $x isa person order by $x
-```
-
 Order by a resource in descending order.
 
-```sql
-match $x isa person order by $x(has name) desc
+```graql
+match $x isa person, has name $n; order by $n desc;
 ```
 
 
@@ -124,9 +118,9 @@ An ask query will return whether the given match query has any results.
 ```
 Return whether the match query has any results.
 
-```sql
-match $x isa person, id 'james-cameron'; (actor $x)
-ask
+```graql
+match $x isa person, id 'james-cameron'; (actor: $x);
+ask;
 ```
 
 
@@ -140,7 +134,7 @@ insert [ pattern ; ... ]
 ```
 Insert a concept into the graph.
 
-```sql
+```graql
 insert 'finding-dory' isa movie;
 ```
 If a match query is provided, the query will insert the given variable patterns for every result of the match query.
@@ -151,9 +145,9 @@ match  insert [ pattern ; ... ]
 
 Insert a relation for every result of a match query.
 
-```sql
-match $m isa movie; (director 'tim-burton', $m);
-insert (actor 'johnny-depp', production-with-cast $m) isa has-cast;
+```graql
+match $m isa movie; (director: 'tim-burton', $m);
+insert (actor: 'johnny-depp', production-with-cast: $m) isa has-cast;
 ```
 
 
@@ -166,7 +160,7 @@ match  delete [ pattern ; ... ]
 ```
 Delete every instance of a type.
 
-```sql
+```graql
 match $x isa person;
 delete $x;
 ```
@@ -179,8 +173,8 @@ identifier [ property, ... ]
 ```
 A variable with several properties.
 
-```sql
-$x isa person, value "Guillermo del Toro"
+```graql
+match $x isa person, value "Guillermo del Toro";
 ```
 
 Match either the left or right pattern.
@@ -189,8 +183,8 @@ Match either the left or right pattern.
 pattern or pattern
 ```
 
-```sql
-$x isa movie or $x isa person
+```graql
+match $x isa movie or $x isa person;
 ```
 
 Match either the left pattern or all the right patterns.
@@ -200,8 +194,8 @@ Match either the left pattern or all the right patterns.
 ```
 
 
-```sql
-$x isa movie or { (actor $x, $y); $y id 'the-martian'; }
+```graql
+match $x isa movie or { (actor: $x, $y); $y id 'the-martian'; };
 ```
 
 
@@ -209,8 +203,8 @@ $x isa movie or { (actor $x, $y); $y id 'the-martian'; }
 
 Variables start with a `$`, followed by alphanumeric characters, underscores or dashes.
 
-```sql
-match (director $the-director, $theMovie); $theMovie isa movie;
+```graql
+match (director: $the-director, $theMovie); $theMovie isa movie;
 ```
 
 
@@ -223,7 +217,7 @@ An `id` is a sequence of alphanumeric characters, underscores and dashes, or a q
 variable | id
 ```
 
-```sql
+```graql
 insert "TV Show" isa entity-type; movie isa entity-type;
 ```
 
@@ -237,13 +231,13 @@ Specify the type of a concept.
 isa type
 ```
 
-```sql
+```graql
 match $x isa movie;
 ```
 
 Match concepts and their types.
 
-```sql
+```graql
 match $x isa $y;
 ```
 
@@ -253,7 +247,7 @@ Match the concept with a particular ID.
 id {string}
 ```
 
-```sql
+```graql
 match $x id 'ridley-scott';
 ```
 
@@ -264,7 +258,7 @@ Match concepts with a value that contains the given string.
 value [ = | != | < | <= | >= | > | contains ] {value}
 ```
 
-```sql
+```graql
 match $m value contains "The Lord of the Rings";
 ```
 
@@ -274,7 +268,7 @@ Match concepts with a resource matching a predicate.
 has resource-type [ = | != | < | <= | >= | > | contains ] {value}
 ```
 
-```sql
+```graql
 match $m isa movie, has runtime > 180;
 ```
 
@@ -284,27 +278,27 @@ Match related concepts.
 ( [ [ role-type ] role-player , ... ] )
 ```
 
-```sql
+```graql
 match ($x, $y);
 ```
 
 Match concepts related with a particular relation type.
 
-```sql
+```graql
 match ($p1, $p2) isa marriage;
 ```
 
 Match two related concepts where one plays a specified role type.
 
-```sql
-match (director $p, $m);
+```graql
+match (director: $p, $m);
 ```
 
 
 Match concepts in a ternary relation.
 
-```sql
-match (actor $p, character-being-played $c, production-with-cast $m);
+```graql
+match (actor: $p, character-being-played: $c, production-with-cast: $m);
 ```
 
 ### ako
@@ -315,7 +309,7 @@ ako type
 ```
 Insert a new type that is a subtype of an existing type.
 
-```sql
+```graql
 insert blockbuster ako movie;
 ```
 
@@ -326,7 +320,7 @@ has-role role-type
 ```
 Insert a new relation type with two role types.
 
-```sql
+```graql
 insert
 director isa role-type;
 production-with-director isa role-type;
@@ -341,8 +335,8 @@ plays-role role-type
 
 Allow instances of a type to play a role in a relation.
 
-```sql
-insert person plays-role director
+```graql
+insert person plays-role director;
 ```
 
 ### has-resource
@@ -352,7 +346,7 @@ has-resource resource-type
 ```
 Allow instances of a type to have a resource.
 
-```sql
+```graql
 insert person has-resource name;
 ```
 
@@ -363,7 +357,7 @@ datatype ( string | long | double | boolean )
 ```
 Insert a new resource type with the given datatype.
 
-```sql
+```graql
 insert name isa resource-type, datatype string;
 ```
 
@@ -379,7 +373,7 @@ insert name isa resource-type, datatype string;
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>

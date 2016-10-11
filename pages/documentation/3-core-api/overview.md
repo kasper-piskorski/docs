@@ -7,6 +7,7 @@ summary: "A basic example of how to use MindmapsDB Graph API."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/overview.html
 folder: documentation
+comment_issue_id: 20
 ---
 
 If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). This article assumes that you are set up and have already looked at the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that covers Graql queries.   
@@ -15,7 +16,7 @@ You can find the code below in the example code directory of the MindmapsDB dist
 ## Introduction
 
 MindmapsDB Graph API is the implementation of the object model discussed in
-[MindmapsDB Basics](../the-basics/mindmaps-basics.html). It allows you to create MindmapsDB Graphs using Java 8. It supports any [Tinkerpop](http://tinkerpop.incubator.apache.org/docs/3.0.2-incubating/) 3.0.z version.
+[MindmapsDB Basics](../the-basics/mindmaps-basics.html). It allows you to create MindmapsDB Graphs using Java 8. 
 
 ### Initialising a MindmapsDB Graph in Java    
 
@@ -23,7 +24,13 @@ Make sure you have MindmapsDB Engine running locally by using `mindmaps.sh start
 Once you have done that, a thread-bound graph can be retrieved by:
 
 ```java
-MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
+MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
+```
+
+Alternatively an in-memory graph can be created with:
+
+```java
+MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, "my-graph").getGraph();
 ```
 
 {% include note.html content="Make sure that your project depends on `mindmaps-titan-factory` at a minimum." %}
@@ -32,7 +39,7 @@ MindmapsGraph mindmapsGraph = MindmapsClient.getGraph();
 <dependency>
     <groupId>io.mindmaps</groupId>
     <artifactId>mindmaps-titan-factory</artifactId>
-    <version>0.1.1</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
@@ -204,9 +211,12 @@ If you want to find out more about using the Graph API, please take a look at th
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>
 
-</table>MindmapsDB
+</table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/20" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

@@ -7,15 +7,14 @@ search: exclude
 [
 {% for page in site.pages %}
 {% unless page.search == "exclude" %}
+{% unless forloop.first %},{% endunless %}
 {
 "title": "{{ page.title | escape }}",
 "tags": "{{ page.tags }}",
 "keywords": "{{page.keywords}}",
-"url": "{{ page.url | remove: "/"}}",
+"url": "{{ site.urlprefix }}{{ page.url }}",
 "summary": "{{page.summary | strip }}"
 }
-{% unless forloop.last %},{% endunless %}
 {% endunless %}
 {% endfor %}
-
 ]

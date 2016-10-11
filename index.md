@@ -16,7 +16,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#getstarted" data-toggle="tab">Get Started</a></li>
-    <li><a href="#graphapi" data-toggle="tab">Graph API</a></li>
+    <li><a href="#apireference" data-toggle="tab">API Reference</a></li>
     <li><a href="#graql" data-toggle="tab">Graql</a></li>
     <li><a href="#gethelp" data-toggle="tab">Get Help</a></li>
 </ul>
@@ -32,9 +32,9 @@ Take a look around! We hope you find our documentation helpful, but if you need 
     <h2>About</h2>
     <p>We have a set of pages about <a href="https://mindmaps.io/pages/documentation/graql/overview.html">Graql queries</a>, and a <a href="https://mindmaps.io/pages/documentation/graql/graql-cheatsheet.html">cheatsheet</a> as a handy reference.</p></div>
 
-<div role="tabpanel" class="tab-pane" id="graphapi">
-    <h2>API documentation</h2>
-    <p>Our API reference documents can be found <a target="_blank" href="https://mindmaps.io/javadocs.html">here</a>. The API reference is also available in the MindmapsDB distribution that you can download from <a href="https://mindmaps.io/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
+<div role="tabpanel" class="tab-pane" id="apireference">
+    <h2>API Reference</h2>
+    <p>Our API reference documents can be found <a target="_blank" href="https://mindmaps.io/pages/documentation/api-reference/api-reference.html">here</a>. The API reference is also available in the MindmapsDB distribution that you can download from <a href="https://mindmaps.io/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="gethelp">

@@ -7,13 +7,14 @@ summary: "This document will teach you how to set up a MindmapsDB environment, s
 sidebar: documentation_sidebar
 permalink: /documentation/get-started/setup-guide.html
 folder: documentation
+comment_issue_id: 16
 ---
 
 
 ## Download and Install Mindmaps
 
-{% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
-MindmapsDB also requires Maven 3." %}
+{% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
+If you intend to build MindmapsDB, you will also need Maven 3." %}
 
 The latest version of MindmapsDB can be downloaded from the
 [downloads page](../resources/downloads.html). Unzip it and run the following in the terminal:
@@ -23,7 +24,7 @@ cd [your MindmapsDB install directory]
 bin/mindmaps.sh start
 ```
 
-This will start an instance of Cassandra which serves as the supported backend for Mindmaps.
+This will start an instance of Cassandra, which serves as the supported backend for Mindmaps. It starts also MindmapsDB Engine, which is an HTTP server providing batch loading, monitoring and the browser Dashboard.
 
 {% include note.html content="**Useful commands**  <br />
 To start MindmapsDB graph, run `mindmaps.sh start`.   
@@ -32,28 +33,24 @@ To stop MindmapsDB graph, run `mindmaps.sh stop`. " %}
 
 ## Set up Graql
 
-Graql is our query language, which allows you to interface with a MindmapsDB graph. We will use Graql to load an example data set and run some simple queries against it.  
-
-The following will make Graql load an example data set and exit:
-
-```bash
-bin/graql.sh -f examples/pokemon.gql
-```
-
-This will create and persist an example data set. Now we can run the following query using the Graql shell:
+Graql is our query language, which allows you to interface with a MindmapsDB graph. We will start Graql and enter a few lines to check that all is working as it should.
 
 ```bash
 bin/graql.sh
-match $x isa pokemon
-$x id "Bulbasaur" isa pokemon;
-$x id "Charmander" isa pokemon;
-$x id "Pikachu" isa pokemon;
-...
+```
+
+The Graql shell starts and you see a `>>>` prompt. Type in the following:   
+
+```graql   
+>>> insert twin isa entity-type;
+>>> insert topsy isa twin;
+>>> insert tim isa twin;
+>>> match $x isa twin;
+$x id "tim" isa twin; 
+$x id "topsy" isa twin;
 ```
 
 If you see the above output then congratulations! You have set up MindmapsDB.
-
-
 
 ### Troubleshooting  
 If you do not see the above message, please check our [troubleshooting page](../troubleshooting/known-issues.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.mindmaps.io), or on [Stack Overflow](http://stackoverflow.com).
@@ -76,9 +73,12 @@ You can find additional example code and documentation on this portal. We are al
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>
 
 </table>
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/16" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

@@ -9,9 +9,9 @@ permalink: /documentation/graql/java-graql.html
 folder: documentation
 ---
 
-As well as the Graql shell, users can also construct and execute Graql queries programmatically in Java.
+As well as the Graql shell, users can also construct and execute Graql queries programmatically in Java. The Java Graql API expresses the concepts and functionality of the Graql language in the syntax of Java. It is useful if you want to make queries using Java, without having to construct a string containing the appropriate Graql expression.
 
-Add the following to your `pom.xml`:
+To use the API, add the following to your `pom.xml`:
 
 ```xml
 <dependency>
@@ -34,12 +34,11 @@ import static io.mindmaps.graql.api.query.QueryBuilder.*;
 import static io.mindmaps.graql.api.query.ValuePredicate.*;
 ```
 
-A `QueryBuilder` is constructed by providing a `MindmapsTransaction`:
+A `QueryBuilder` is constructed by providing a `MindmapsGraph`:
 
 ```java
-MindmapsGraph graph = MindmapsClient.getGraph("my-graph");
-MindmapsTransaction transaction = graph.newTransaction();
-QueryBuilder qb = QueryBuilder.build(transaction);
+MindmapsGraph graph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
+QueryBuilder qb = QueryBuilder.build(graph);
 ```
 
 The user can also choose to not provide a transaction. This can be useful if
@@ -147,7 +146,7 @@ parser.parseDeleteQuery("match $x isa pokemon delete $x");
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>

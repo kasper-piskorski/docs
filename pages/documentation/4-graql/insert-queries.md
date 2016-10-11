@@ -28,7 +28,7 @@ variable or an ID.
 <pre>
 insert
 $p isa pokemon, id "Pichu", has pokedex-no 172;
-(descendant Pikachu, ancestor $p) isa evolution;
+(descendant: Pikachu, ancestor: $p) isa evolution;
 
 </pre>
 </div>
@@ -84,7 +84,7 @@ The created or retrieved concept can then be modified with further properties.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-insert "Pikachu" isa pokemon
+insert "Pikachu" isa pokemon;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
@@ -153,7 +153,7 @@ insert
 $owner id "Pichu" isa pokemon;
 $value isa height, value 30;
 
-(height-owner $owner, height-value $value) isa has-height;
+(has-height-owner: $owner, has-height-value: $value) isa has-height;
 
 </pre>
 </div>
@@ -162,7 +162,7 @@ $value isa height, value 30;
 qb.insert(
   var("owner").id("Pichu").isa("pokemon"),
   var("value").isa("height").value(30),
-  var().rel("height-owner", "owner").rel("height-value", "value").isa("has-height")
+  var().rel("has-height-owner", "owner").rel("has-height-value", "value").isa("has-height")
 );
 </pre>
 </div> <!-- tab-pane -->
@@ -182,7 +182,7 @@ given roles.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell7">
 <pre>
-insert (pokemon-with-type "Pichu", type-of-pokemon "electric") isa has-type;
+insert (pokemon-with-type: "Pichu", type-of-pokemon: "electric") isa has-type;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java7">
@@ -297,14 +297,14 @@ insert pokemon has-resource pokedex-no;
 insert
 
 has-pokedex-no isa relation-type,
-  has-role pokedex-no-owner,
-  has-role pokedex-no-value;
+  has-role has-pokedex-no-owner,
+  has-role has-pokedex-no-value;
 
-pokedex-no-owner isa role-type;
-pokedex-no-value isa role-type;
+has-pokedex-no-owner isa role-type;
+has-pokedex-no-value isa role-type;
 
-pokemon plays-role pokedex-no-owner;
-pokedex-no plays-role pokedex-no-value;
+pokemon plays-role has-pokedex-no-owner;
+pokedex-no plays-role has-pokedex-no-value;
 </pre>
 
 </div>
@@ -316,13 +316,13 @@ qb.insert(id("pokemon").hasResource("pokedex-no"));
 <pre>
 qb.insert(
   id("has-pokedex-no").isa("relation-type")
-    .hasRole("pokedex-no-owner").hasRole("pokedex-no-value"),
+    .hasRole("has-pokedex-no-owner").hasRole("has-pokedex-no-value"),
 
-  id("pokedex-no-owner").isa("role-type"),
-  id("pokedex-no-value").isa("role-type"),
+  id("has-pokedex-no-owner").isa("role-type"),
+  id("has-pokedex-no-value").isa("role-type"),
 
-  id("pokemon").playsRole("pokedex-no-owner"),
-  id("pokedex-no").playsRole("pokedex-no-value")
+  id("pokemon").playsRole("has-pokedex-no-owner"),
+  id("pokedex-no").playsRole("has-pokedex-no-value")
 );
 </pre>
 </div> <!-- tab-pane -->
@@ -340,7 +340,7 @@ qb.insert(
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>

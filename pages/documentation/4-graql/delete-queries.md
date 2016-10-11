@@ -22,7 +22,7 @@ the `id` or `isa`) it will only delete the specified properties.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match $x isa pokemon delete $x
+match $x isa pokemon; delete $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
@@ -54,7 +54,7 @@ Removes the given role from the relation type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x id "evolution" delete $x has-role descendant;
+match $x id "evolution"; delete $x has-role descendant;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
@@ -76,7 +76,7 @@ Disallows the concept type from playing the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x id "type" delete $x plays-role attacking-type;
+match $x id "type"; delete $x plays-role attacking-type;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
@@ -98,7 +98,7 @@ only delete resources matching that value.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
-match $x id "Bulbasaur" delete $x has weight;
+match $x id "Bulbasaur"; delete $x has weight;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
@@ -120,7 +120,7 @@ qb.match(var("x").id("Bulbasaur")).delete(var("x").has("weight"));
         <td>Description</td>        
     </tr>
         <tr>
-        <td>v0.1.1.1</td>
+        <td>v0.1.0</td>
         <td>03/09/2016</td>
         <td>First release.</td>        
     </tr>
