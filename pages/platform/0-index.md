@@ -10,7 +10,7 @@ folder: platform
 toc: false
 ---
 
-MindmapsDB is a distributed knowledge graph that provides a flexible object-oriented schema as ontology, and a knowledge-oriented query language capable of real-time analytics and reasoning.
+MindmapsDB is a distributed knowledge graph that provides an ontology as a highly expressive flexible object-oriented schema, and a knowledge-oriented query language capable of real-time analytics and reasoning.
 
 Let's break that down a bit and explain what it means.
 
@@ -18,9 +18,9 @@ Let's break that down a bit and explain what it means.
 
 MindmapsDB is graph data platform that stores data in a way that allows machines to understand the meaning of information and their relationships, which would allow computers to process complex information more intelligently with less human intervention. MindmapsDB is implemented using [Apache TinkerPop](http://tinkerpop.apache.org) and the [Titan Graph Database](http://titan.thinkaurelius.com) that could be sharded and replicated over a network of distributed machines. Effectively, MindmapsDB turns your dataset into a distributed knowledge graph.
 
-**_"... that provides a flexible object-oriented schema as an ontology..."_**
+**_"... that provides an ontology as a highly expressive flexible object-oriented schema..."_**
 
-MindmapsDB provides an object model with an API that enables the programmatic definition of highly expressive domain models, i.e. ontologies. Your ontology could flexibly evolve as your application grows while it acts as a schema that guarantees the consistency of your data.
+MindmapsDB provides an object model with an API that enables the programmatic definition of highly expressive domain models, i.e. knowledge ontologies. Your ontology could flexibly evolve as your application grows while it acts as a schema that guarantees the consistency of your data.
 
 **_"... and a knowledge-oriented query language ..."_**
 
