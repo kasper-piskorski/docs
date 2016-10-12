@@ -13,20 +13,52 @@ comment_issue_id: 41
 If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to migration, please see the [Migration Tutorial](../the-basics/migration-tutorial.html).
 
 ## Introduction
+This example addresses the topic of OWL interoperability through a migration of a family tree OWL ontology. The sole prerequisity of the example is having the Mindmaps Engine running. If you need help starting Engine, please see the [Setup guide](../get-started/setup-guide.html).
 
+### Running the example
+You can run this example by running the [`Main`](https://github.com/mindmapsdb/sample-projects/blob/master/example-owl-migration/src/main/java/Main.java) class. Check out the `OWLResourceMigrator` class for the bulk of the migration code.  
 
-### Second level header
+We run a few queries in the example to prove that the data has been migrated. After running the example, you should be able to answer the following questions (see the bottom of the page for answers - but please don't peek until you've tried it!):
 
++ What are the Types in the Family Tree MindmapsDB graph?
++ How many people are in the family tree?
++ How many descendants does Eleanor Pringle have?
++ Who are the great uncles of Ethel Archer?
 
+## Test Yourself Answers
 
+**What are the Types in the Family Tree MindmapsDB graph?**   
+Answer:
 
+```
+tThing
+tPerson
+tMan
+tWoman
+```     	
 
+**How many people are in the family tree?**   
 
+Answer: `407`
 
+**How many descendants does Eleanor Pringle have?**   
 
+Answer: `53`
+
+**Who are the great uncles of Ethel Archer?**   
+Answer:   
+
+```
+William Whitfield
+Harry Whitfield
+George Whitfield
+Walter Whitfield
+James Whitfield
+```
 
 ## Where next?
 
+After running this OWL migration, check out the [Graql documentation](../graql/overview.html) and the [Graph API documentation](../core-api/overview.html) for more instructions on how you can explore **the family tree**.
 
 {% include links.html %}
 
@@ -49,4 +81,3 @@ If you have not yet set up the MindmapsDB environment, please see the [Setup gui
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/41" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
-
