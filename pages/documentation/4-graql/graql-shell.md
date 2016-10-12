@@ -42,36 +42,40 @@ To load an additional graph into a different keyspace, that is, to load a graph 
 | `ask`       | Returns `true` or `false`.                           |
 | `insert`    | Outputs the concept IDs inserted. |
 | `delete`    | Executes with no output.                           |
-| `compute`    | Returns either a value or a map from concept to value.        |
+| `compute`   | Returns either a value or a map from concept to value.        |
 
    
 The interactive shell commits to the graph only when the user types `commit`.
 
 The REPL features several special commands:  
 
-| Query | Description                                   |
-| ----------- | --------------------------------------------- |
-| `commit`     | Commits and validates the graph. If validation fails, the graph will not commit.                          |
+| Query        | Description                                            |
+| -----------  | ------------------------------------------------------ |
+| `commit`     | Commits and validates the graph. If validation fails, the graph will not commit. |
+| `rollback`   | Rolls back the transaction, undoing everything that hasn't been committed. |
 | `edit`       | Opens the user's default text editor, specified by the `$EDITOR` environment variable. By default set to `vim`. When the editor exits, the query is executed in the shell. Useful for executing a large chunk of Graql without typing it all in (e.g. cut and paste from an example).                           |
-| `load <filename>`    | Executes the given file containing a Graql query. |
-| `clear`    | Clears the console window.                          |
-| `license`    | Prints the license                           |
+| `load <filename>` | Executes the given file containing a Graql query. |
+| `clear`      | Clears the console window.                             |
+| `exit`       | Exits the REPL                                         |
+| `license`    | Prints the license                                     |
 
 
 ## Arguments
 
 The Graql shell accepts several arguments:
 
-| Long Option | Option | Description                                   |
-| ----------- | ------ | --------------------------------------------- |
-| `--name`      | `-n`     | The name of the graph.                        |
-| `--execute`   | `-e`     | A query to execute.                           |
-| `--file`      | `-f`     | A path to a file containg a query to execute. |
-| `--help`      | `-h`     | Print usage message                           |
-| `--uri`       | `-u`     | Uri to connect to Engine                      |
-| `--version`   | `-v`     | Print version                                 |
+| Long Option   | Option   | Description                                      |
+| ------------- | -------- | ------------------------------------------------ |
+| `--name`      | `-n`     | The name of the graph.                           |
+| `--execute`   | `-e`     | A query to execute.                              |
+| `--file`      | `-f`     | A path to a file containg a query to execute.    |
+| `--uri`       | `-u`     | The URI to connect to engine.                    |
+| `--batch`     | `-b`     | A path to a file containg a query to batch load. |
+| `--help`      | `-h`     | Print usage message                              |
+| `--uri`       | `-u`     | Uri to connect to Engine                         |
+| `--version`   | `-v`     | Print version                                    |
 
-If either `--execute` or `--file` is provided, the REPL will not open and the
+If `--execute`, `--file` or `--batch` is provided, the REPL will not open and the
 graph will be automatically committed.
 
 {% include links.html %}

@@ -54,10 +54,10 @@ There are several ways to load data into a MindmapsDB graph. For small amounts o
 bin/graql.sh -f examples/pokemon.gql
 ```
 
-If you have a larger file, you will need to `curl` Mindmaps Engine. Loading through Engine will result in a "batch loading" where the file will be divided in batches that will be committed concurrently. This differs from loading through Graql shell, where the whole file is committed in a single chunk when you call commit. See the example below, which loads the Graql file FILENAME.gql, from PATH.
+If you have a larger file, you will need to batch load it. The file will be divided in batches that will be committed concurrently. This differs from a regular load, where the whole file is committed in a single chunk when you call commit. See the example below, which loads the Graql file FILENAME.gql, from PATH.
 
 ```bash
-curl -H "Content-Type: application/json" -X POST -d '{"path":"PATH/FILENAME.gql"}' http://localhost:4567/import/batch/data
+bin/graql.sh -b PATH/FILENAME.gql
 ```
 
 In order to check the status of the loading, you can open a new terminal window, navigate to the logs directory of your MindmapsDB installation and run the command:
