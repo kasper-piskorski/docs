@@ -36,7 +36,7 @@ This will allow the migration example access to your new MySQL world database.
 
 MindmapsDB Engine needs to be running for this example to work. If you need help starting Engine, please see the [Setup guide](../get-started/setup-guide.html).
 
-### Running the Example
+### Running the Example in Java
 
 You can run this example by running the [`Main`](https://github.com/mindmapsdb/sample-projects/blob/master/example-sql-migration/src/main/java/Main.java) class. Check out the `SqlWorldMigrator` class for the bulk of the migration code.  
 
@@ -54,6 +54,14 @@ We run a few queries in the example to prove that the data has been migrated. Af
 If you are feeling lazy, and do not want to install MySQL to test this out, we do provide an in-memory SQL database option.
 
 You can run this example by running the [`MainInMemory`](https://github.com/mindmapsdb/sample-projects/blob/master/example-sql-migration/src/main/java/MainInMemory.java) class. It demonstrates the same functionality by pre-loading the World data into an [H2](http://www.h2database.com/html/main.html) SQL database.
+
+### Running the example in the shell
+
+The following command will run the above migration by using the shell script. Be sure to execute this from within `mindmaps-dist-x.x.x/bin`. 
+
+```
+./migration.sh sql -database jdbc:mysql://localhost:3306/world -user mindmaps -pass mindmaps -driver com.mysql.jdbc.Driver
+```
 
 ## Test Yourself Answers
 
