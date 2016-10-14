@@ -22,7 +22,7 @@ In this example, we will show you how to import SQL data, from a relational data
 
 To run this example, you should have set up [MySQL](http://dev.mysql.com/doc/mysql-getting-started/en/) and the [MySQL world](http://dev.mysql.com/doc/world-setup/en/world-setup-installation.html) example. 
 
-One you have the SQL database loaded, you need to allow the MindmapsDB migration default user (username: `mindmaps`, password: `mindmaps`) access, which you can do with the following command from within the MySQL shell:
+Once you have the SQL database loaded, you need to allow the MindmapsDB migration default user (username: `mindmaps`, password: `mindmaps`) access, which you can do with the following command from within the MySQL shell:
 
 ```sql
 CREATE USER 'mindmaps'@'localhost' IDENTIFIED BY 'mindmaps';
@@ -56,6 +56,9 @@ If you are feeling lazy, and do not want to install MySQL to test this out, we d
 You can run this example by running the [`MainInMemory`](https://github.com/mindmapsdb/sample-projects/blob/master/example-sql-migration/src/main/java/MainInMemory.java) class. It demonstrates the same functionality by pre-loading the World data into an [H2](http://www.h2database.com/html/main.html) SQL database.
 
 ## Test Yourself Answers
+
+You can see the code to answer these questions in the function [printInformationAboutWorld()](https://github.com/mindmapsdb/sample-projects/blob/master/example-sql-migration/src/main/java/SqlWorldMigrator.java).
+
 
 **What are the Types in the World MindmapsDB graph?**   
 Answer:

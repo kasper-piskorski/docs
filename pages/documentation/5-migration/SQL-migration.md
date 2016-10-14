@@ -13,10 +13,9 @@ comment_issue_id: 32
 ## Introduction
 This tutorial shows you how to populate a MindmapsDB graph with SQL data. If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
 
-## Migration Shell Script
+## Migration Shell Script for SQL
 The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed. For SQL:
 
-### SQL Migration
 
 ```
 usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password> -database <url> -graph <graphname> [engine <url>]
@@ -27,8 +26,6 @@ usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password>
        -graph            graph name
        -engine           MindmapsDB engine URL, default localhost
 ```
-
-## SQL Migration
 
 One of the most common use cases of the migration component will be to move data from an RDBMS into a MindmapsDB graph. MindmapsDB relies on the JDBC API to connect to any RDBMS that uses the SQL language. The example that follows is written in MySQL, but SQL -> MindmapsDB migration will work with any database it can connect to using a JDBC driver. This has been tested on MySQL, Oracle and PostgresQL.
 

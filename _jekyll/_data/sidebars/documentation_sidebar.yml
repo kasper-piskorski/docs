@@ -72,6 +72,9 @@ entries:
       - title: Compute Queries
         output: web
         url: /documentation/graql/compute-queries.html
+      - title: Graql Templating
+        output: web
+        url: /documentation/graql/graql-templating.html
       - title: Graql Cheatsheet
         output: web
         url: /documentation/graql/graql-cheatsheet.html
