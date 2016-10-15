@@ -14,7 +14,7 @@ comment_issue_id: 24
 
 ## Download MindmapsDB
 
-The latest version of MindmapsDB is v0.2.0.
+The latest version of MindmapsDB is v0.3.0.
 It can be downloaded from [here](https://mindmaps.io/download/latest).
 
 We currently support Mac OS X and Linux.
