@@ -29,7 +29,7 @@ Date: August 2012.
 
 ## Useful Blogs
 
-Please [let us know](https://mindmaps.io/community.html) if you have a blog or a favourite blogger that you'd like to see listed here!
+Check out [our blog](https://blog.mindmaps.io) for insider news and industry views. Please [let us know](https://mindmaps.io/community.html) if you have a blog or a favourite blogger that you'd like to see listed here!
 
 ## Videos and Podcasts
 

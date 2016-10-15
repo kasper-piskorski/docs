@@ -24,9 +24,18 @@ entries:
       - title: Quickstart Tutorial
         output: web
         url: /documentation/the-basics/quickstart-tutorial.html
+  - title: Migrating to MindmapsDB
+    output: web
+    folderitems:    
       - title: Migrating to MindmapsDB
         output: web
-        url: /documentation/the-basics/migration-tutorial.html  
+        url: /documentation/migration/migration.html 
+      - title: SQL Migration
+        output: web
+        url: /documentation/migration/SQL-migration.html
+      - title: OWL Migration
+        output: web
+        url: /documentation/migration/OWL-migration.html   
   - title: Graph API
     output: web
     folderitems:
@@ -63,6 +72,9 @@ entries:
       - title: Compute Queries
         output: web
         url: /documentation/graql/compute-queries.html
+      - title: Graql Templating
+        output: web
+        url: /documentation/graql/graql-templating.html
       - title: Graql Cheatsheet
         output: web
         url: /documentation/graql/graql-cheatsheet.html
