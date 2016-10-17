@@ -39,11 +39,11 @@ tWoman
 
 **How many people are in the family tree?**   
 
-Answer: `407`
+Answer: `411`
 
 **How many descendants does Eleanor Pringle have?**   
 
-Answer: `53`
+Answer: `55`
 
 **Who are the great uncles of Ethel Archer?**   
 Answer:   
