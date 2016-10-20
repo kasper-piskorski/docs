@@ -14,10 +14,9 @@ comment_issue_id: 24
 
 ## Download MindmapsDB
 
-The latest version of MindmapsDB is v0.3.0.
-It can be downloaded from [here](https://mindmaps.io/download/latest).
+The latest version of MindmapsDB is v0.3.0.   
 
-We currently support Mac OS X and Linux.
+<span class="glyphicon glyphicon-download gi-2x">[Download](https://mindmaps.io/download/latest)</span>
 
 ### Past Versions
 A list of previously released versions of MindmapsDB can be found on [Github](https://mindmaps.io/download).
@@ -25,7 +24,7 @@ A list of previously released versions of MindmapsDB can be found on [Github](ht
 
 ## Prerequisites
 
-{% include note.html content="MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
+{% include note.html content="We currently support Mac OS X and Linux. MindmapsDB requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly.   
 MindmapsDB also requires Maven 3." %}
 
 ## Code
