@@ -45,6 +45,7 @@ The Graql shell starts and you see a `>>>` prompt. Type in the following:
 >>> insert twin isa entity-type;
 >>> insert topsy isa twin;
 >>> insert tim isa twin;
+>>> commit;
 >>> match $x isa twin;
 $x id "tim" isa twin; 
 $x id "topsy" isa twin;
@@ -52,9 +53,14 @@ $x id "topsy" isa twin;
 
 If you see the above output then congratulations! You have set up MindmapsDB.
 
+You can now open [localhost:4567](http://localhost:4567) in your browser to start the visualiser, which provides a graphical dashboard on a MindmapsDB graph.
+
+![Visualising a MindmapsDB graph](/images/topsyandtim.jpg)
+
+Further information about the visualiser can be found in [Visualising a MindmapsDB Graph](./visualiser.html).
+
 ### Troubleshooting  
 If you do not see the above message, please check our [troubleshooting page](../troubleshooting/known-issues.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.mindmaps.io), or on [Stack Overflow](http://stackoverflow.com).
-
 
 
 ## Where next?

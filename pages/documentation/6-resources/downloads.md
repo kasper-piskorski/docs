@@ -33,9 +33,9 @@ We are an open source project. If you want to look at our code, we are on Github
 
 ### Building the Code
 
-To build MindmapsDB, you need git and Maven.
+To build MindmapsDB, you need Maven, node.js and npm. Make sure you have the most recent version of node.js and npm.
 
-Clone the [mindmapsdb repository](https://github.com/mindmapsdb/mindmapsdb) to a local directory.  In that directory:
+Using git, clone the [mindmapsdb repository](https://github.com/mindmapsdb/mindmapsdb) to a local directory.  In that directory:
 
 ```bash
 mvn package
