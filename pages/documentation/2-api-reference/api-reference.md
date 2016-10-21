@@ -15,6 +15,7 @@ The latest version will always be posted at [https://mindmaps.io/pages/api-refer
 
 ## API Reference for Past Versions of MindmapsDB
 
+**[v0.2.0](https://mindmaps.io/pages/api-reference/v0.2.0/index.html)**   
 **[v0.1.1](https://mindmaps.io/pages/api-reference/v0.1.1/index.html)**     
 **[v0.1.0](https://mindmaps.io/pages/api-reference/v0.1.0/index.html)**
 
