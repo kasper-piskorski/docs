@@ -24,7 +24,7 @@ usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password>
        -user             username for SQL database
        -pass             password for SQL database
        -database         URL to SQL database
-       -graph            graph name
+       -graph            graph name (or defaults to the default keyspace)
        -engine           MindmapsDB engine URL, default localhost
 ```
 
@@ -35,7 +35,7 @@ Please see the [SQL migration documentation](./SQL-migration.html) for further i
 ```
 usage: ./migration.sh csv -file <file> -graph <graphname> [-engine <url] [-as <type>]
       -file             csv file to migrate
-      -graph            graph name
+      -graph            graph name (or defaults to the default keyspace)
       -engine           MindmapsDB engine URL, default localhost
       -as               entity type of this file
 ```
@@ -46,7 +46,7 @@ usage: ./migration.sh csv -file <file> -graph <graphname> [-engine <url] [-as <t
 usage: ./migration json -schema <schema> -data <path> -graph <name> [-engine <url>]
        -schema           json schema file or directory
        -data             json data file or directory
-       -graph            graph name
+       -graph            graph name (or defaults to the default keyspace)
        -engine           MindmapsDB engine URL, default localhost
 ```
 
@@ -55,7 +55,7 @@ usage: ./migration json -schema <schema> -data <path> -graph <name> [-engine <ur
 ```
 usage: ./migration.sh owl -file <path> [-graph <name>] [-engine <url>]
        -file             OWL file
-       -graph            graph name
+       -graph            graph name (defaults to the name of the file with spaces replaced by _)
        -engine           MindmapsDB engine URL, default localhost
 ```
 
@@ -69,21 +69,6 @@ Please take a look at our examples to further illustrate [SQL migration](../exam
 -->
 {% include links.html %}
 
-## Document Changelog  
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>        
-    </tr>
-        <tr>
-        <td>v0.2.0</td>
-        <td>28/09/2016</td>
-        <td>First doc release.</td>        
-    </tr>
-
-</table>
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

@@ -71,21 +71,5 @@ You can find additional example code and documentation on this portal. We are al
 
 {% include links.html %}
 
-## Document Changelog  
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>        
-    </tr>
-        <tr>
-        <td>v0.1.0</td>
-        <td>03/09/2016</td>
-        <td>First release.</td>        
-    </tr>
-
-</table>
-
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/16" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

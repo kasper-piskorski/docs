@@ -51,21 +51,6 @@ Semantic search engine for computer science publications. How do ranking results
 
 {% include links.html %}
 
-## Document Changelog  
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>        
-    </tr>
-        <tr>
-        <td>v0.2.0</td>
-        <td>07/10/2016</td>
-        <td>First release.</td>        
-    </tr>
-</table>
-
 
 
 	

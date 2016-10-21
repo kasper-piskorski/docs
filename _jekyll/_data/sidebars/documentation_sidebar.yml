@@ -3,7 +3,7 @@
 entries:
 - title: Sidebar
   product: MindmapsDB
-  version: 0.2
+  version: 0.3.0
   folders:
 
   - title: Get Started

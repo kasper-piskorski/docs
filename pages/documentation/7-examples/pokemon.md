@@ -13,7 +13,7 @@ comment_issue_id: 29
 
 ## Introduction
 
-The MindmapsDB [sample-projects](https://github.com/mindmapsdb/sample-projects) repo on Github contains [pokemon.gql](https://github.com/mindmapsdb/sample-projects/blob/master/pokemon.gql), which is a simple example to illustrate the basics of MindmapsDB Graql statements and queries. You can also find the example within the MindmapsDB distribution zip.
+The MindmapsDB repo on Github contains [pokemon.gql](https://github.com/mindmapsdb/mindmapsdb/blob/master/mindmaps-dist/src/examples/pokemon.gql), which is a simple example to illustrate the basics of MindmapsDB Graql statements and queries. You can also find the example within the MindmapsDB distribution zip.
 
 
 
@@ -23,21 +23,6 @@ If you would like to request more information about this particular example, ple
 
 
 {% include links.html %}
-
-## Document Changelog  
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>        
-    </tr>
-        <tr>
-        <td>v0.1.1</td>
-        <td>23/09/2016</td>
-        <td>First release.</td>        
-    </tr>
-</table>
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/29" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

@@ -99,20 +99,3 @@ operating on. The algorithms, by default, include every instance in the calculat
 a comma separated list of type IDs will restrict the calculations to instances of those types only.
 
 {% include links.html %}
-
-## Document Changelog  
-
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>        
-    </tr>
-        <tr>
-        <td>v0.2.0</td>
-        <td>01/10/2016</td>
-        <td>First release.</td>        
-    </tr>
-
-</table>

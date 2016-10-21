@@ -19,7 +19,7 @@ The migration shell script can be found in `mindmaps-dist/bin` after it has been
 ```
 usage: ./migration.sh owl -file <path> [-graph <name>] [-engine <url>]
        -file             OWL file
-       -graph            graph name
+       -graph            graph name (defaults to the name of the file with spaces replaced by _)
        -engine           MindmapsDB engine URL, default localhost
 ```
 
@@ -134,21 +134,6 @@ You can find further documentation about migration in our API reference document
 -->
 {% include links.html %}
 
-## Document Changelog  
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>        
-    </tr>
-        <tr>
-        <td>v0.2.0</td>
-        <td>28/09/2016</td>
-        <td>First doc release.</td>        
-    </tr>
-
-</table>
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

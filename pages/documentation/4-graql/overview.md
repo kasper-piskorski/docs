@@ -29,19 +29,3 @@ If you are already familiar with Graql, you may find our [cheatsheet reference](
 
 {% include links.html %}
 
-## Document Changelog  
-
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>        
-    </tr>
-        <tr>
-        <td>v0.1.0</td>
-        <td>03/09/2016</td>
-        <td>First release.</td>        
-    </tr>
-
-</table>
