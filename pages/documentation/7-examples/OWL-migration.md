@@ -10,10 +10,10 @@ folder: documentation
 comment_issue_id: 41
 ---
 
-If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to migration, please see the [Migration Tutorial](../the-basics/migration-tutorial.html).
+If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to migration, please see the [Migration Tutorial](../migration/migration.html).
 
 ## Introduction
-This example addresses the topic of OWL interoperability through a migration of a family tree OWL ontology. The sole prerequisity of the example is having the Mindmaps Engine running. If you need help starting Engine, please see the [Setup guide](../get-started/setup-guide.html).
+This example addresses the topic of OWL interoperability through a migration of a family tree OWL ontology. The sole prerequisite of this example is having the MindmapsDB environment installed and the Engine running. If you need help starting MindmapsDB Engine, please see the [setup guide](../get-started/setup-guide.html).
 
 ### Running the example
 You can run this example by running the [`Main`](https://github.com/mindmapsdb/sample-projects/blob/master/example-owl-migration/src/main/java/Main.java) class. Check out the `OWLResourceMigrator` class for the bulk of the migration code.  
