@@ -38,6 +38,10 @@ The [Modern example](./modern.html) is a simple one, designed to test your knowl
 
 A common use-case is to migrate existing SQL data to a MindmapsDB graph. Please see the [SQL migration example](../examples/SQL-migration.html) for an example of how to use the migrator.
 
+### [OWL Migration](./OWL-migration.html)
+
+For more information about migrating OWL to a MindmapsDB graph, please see the [OWL migration example](../examples/OWL-migration.html).
+
 ### Oncologists
 
 The oncologists example walks through the basics of MindmapsDB from a beginner's perspective. You can find the blog posts here:
