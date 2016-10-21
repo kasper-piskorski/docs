@@ -19,11 +19,11 @@ If you would like to request a particular example, please get in touch with us b
 
 ### [Pokemon](./pokemon.html)
 
-The MindmapsDB [sample-projects](https://github.com/mindmapsdb/sample-projects) repo on Github contains [pokemon.gql](https://github.com/mindmapsdb/sample-projects/blob/master/pokemon.gql), which is a [simple example](./pokemon.html) to illustrate the basics of MindmapsDB Graql statements and queries. You can also find the example within the MindmapsDB distribution zip.
+A [simple example](./pokemon.html) to illustrate the basics of MindmapsDB Graql statements and queries. You can also find the example within the MindmapsDB distribution zip.
 
 ### [Philosophers](./philosophers.html)
 
-The MindmapsDB [sample-projects](https://github.com/mindmapsdb/sample-projects) repo on Github contains [philosophers.gql](https://github.com/mindmapsdb/sample-projects/blob/master/philosophers.gql), which is a [simple example](./philosophers.html) to illustrate the [basics of the object model](../the-basics/mindmaps-basics.html). You can also find the example within the MindmapsDB distribution zip.
+This is a [simple example](./philosophers.html) to illustrate the [basics of the object model](../the-basics/mindmaps-basics.html). You can also find the example within the MindmapsDB distribution zip.
 
 
 ### [Moogi](./moogi.html)
