@@ -15,13 +15,14 @@ The latest version will always be posted at [https://mindmaps.io/pages/api-refer
 
 ## API Reference for Past Versions of MindmapsDB
 
+**[v0.3.0](https://mindmaps.io/pages/api-reference/v0.3.0/index.html)**   
 **[v0.2.0](https://mindmaps.io/pages/api-reference/v0.2.0/index.html)**   
 **[v0.1.1](https://mindmaps.io/pages/api-reference/v0.1.1/index.html)**     
 **[v0.1.0](https://mindmaps.io/pages/api-reference/v0.1.0/index.html)**
 
 
 ## Feedback
-We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.mindmaps.io) or through our main [website](http://www.mindmaps.io). 
+We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.mindmaps.io) or through our main [website](http://www.mindmaps.io).
 
 {% include links.html %}
 

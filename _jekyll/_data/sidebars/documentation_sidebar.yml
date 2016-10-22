@@ -3,7 +3,7 @@
 entries:
 - title: Sidebar
   product: MindmapsDB
-  version: 0.3.0
+  version: 0.4.0
   folders:
 
   - title: Get Started
@@ -29,16 +29,16 @@ entries:
         url: /documentation/the-basics/visualiser.html
   - title: Migrating to MindmapsDB
     output: web
-    folderitems:    
+    folderitems:
       - title: Migrating to MindmapsDB
         output: web
-        url: /documentation/migration/migration.html 
+        url: /documentation/migration/migration.html
       - title: SQL Migration
         output: web
         url: /documentation/migration/SQL-migration.html
       - title: OWL Migration
         output: web
-        url: /documentation/migration/OWL-migration.html   
+        url: /documentation/migration/OWL-migration.html
   - title: Graph API
     output: web
     folderitems:
@@ -98,7 +98,7 @@ entries:
         url: /documentation/resources/resources.html
       - title: MindmapsDB FAQ
         output: web
-        url: /documentation/resources/faq.html  
+        url: /documentation/resources/faq.html
       - title: Downloads
         output: web
         url: /documentation/resources/downloads.html
@@ -110,25 +110,25 @@ entries:
         url: /documentation/examples/examples.html
       - title: Pokemon example
         output: web
-        url: /documentation/examples/pokemon.html      
+        url: /documentation/examples/pokemon.html
       - title: Philosophers example
         output: web
-        url: /documentation/examples/philosophers.html      
+        url: /documentation/examples/philosophers.html
       - title: Moogi example
         output: web
-        url: /documentation/examples/moogi.html      
+        url: /documentation/examples/moogi.html
       - title: Modern example
         output: web
         url: /documentation/examples/modern.html
       - title: OWL migration
         output: web
-        url: /documentation/examples/OWL-migration.html 
+        url: /documentation/examples/OWL-migration.html
       - title: SQL migration
         output: web
-        url: /documentation/examples/SQL-migration.html 
+        url: /documentation/examples/SQL-migration.html
       - title: Example Projects
         output: web
-        url: /documentation/examples/projects.html      
+        url: /documentation/examples/projects.html
 #  - title: Core
 #    output: web
 #    folderitems:
