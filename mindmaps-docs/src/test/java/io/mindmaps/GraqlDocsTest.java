@@ -84,7 +84,7 @@ public class GraqlDocsTest {
 
     private void assertGraqlStringValidSyntax(String fileName, String graqlString) {
         try {
-            Graql.parse(graqlString);
+            parse(graqlString);
         } catch (IllegalArgumentException e1) {
             // Try and parse line-by-line instead
             String[] lines = graqlString.split("\n");
@@ -92,7 +92,7 @@ public class GraqlDocsTest {
             try {
                 if (lines.length > 1) {
                     for (String line : lines) {
-                        if (!line.isEmpty()) Graql.parse(line);
+                        if (!line.isEmpty()) parse(line);
                     }
                 } else {
                     syntaxFail(fileName, graqlString, e1.getMessage());
@@ -100,6 +100,14 @@ public class GraqlDocsTest {
             } catch (IllegalArgumentException e2) {
                 syntaxFail(fileName, graqlString, e1.getMessage() + "\nOR\n" + e2.getMessage());
             }
+        }
+    }
+
+    private void parse(String line) {
+        // TODO: Handle this in a more elegant way
+        // 'commit' is a valid command
+        if (!line.trim().equals("commit")) {
+            Graql.parse(line);
         }
     }
 
