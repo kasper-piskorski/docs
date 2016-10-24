@@ -101,29 +101,29 @@ tPerson plays-role owl-subject-op-hasParent, plays-role owl-object-op-hasParent;
 (owl-subject-op-isParentOf: 'eStefan', owl-object-op-isParentOf: eWitold) isa op-isParentOf;
 
 "inv-op-hasAncestor" isa inference-rule,
-lhs {match
+lhs {
 (owl-subject-op-hasAncestor: $x, owl-object-op-hasAncestor: $y) isa hasAncestor;},
-rhs {match
+rhs {
 (owl-subject-op-isAncestorOf: $y, owl-object-op-isAncestorOf: $x) isa isAncestorOf;};
 
 "inv-op-isAncestorOf" isa inference-rule,
-lhs {match
+lhs {
 (owl-subject-op-isAncestorOf: $x, owl-object-op-isAncestorOf: $y) isa isAncestorOf;},
-rhs {match
+rhs {
 (owl-subject-op-hasAncestor: $y, owl-object-op-hasAncestor: $x) isa hasAncestor;};
 
 "trst-op-hasAncestor" isa inference-rule,
-lhs {match
+lhs {
 (owl-subject-op-hasParent: $x, owl-object-op-hasParent: $z) isa hasAncestor;
 (owl-subject-op-hasAncestor: $z, owl-object-op-hasAncestor: $y) isa hasAncestor;},
-rhs {match
+rhs {
 (owl-subject-op-hasAncestor: $x, owl-object-op-hasAncestor: $y) isa hasAncestor;};
 
 "pch-op-hasAncestor" isa inference-rule,
-lhs {match
+lhs {
 (owl-subject-op-hasParent: $x, owl-object-op-hasParent: $z) isa hasParent;
 (owl-subject-op-hasAncestor: $z, owl-object-op-hasAncestor: $y) isa hasAncestor;},
-rhs {match
+rhs {
 (owl-subject-op-hasAncestor: $x, owl-object-op-hasAncestor: $y) isa hasAncestor;};
 ```
 
