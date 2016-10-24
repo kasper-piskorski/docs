@@ -1,5 +1,6 @@
 package io.mindmaps;
 
+import com.google.common.collect.ImmutableSet;
 import io.mindmaps.graql.Graql;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
@@ -18,6 +19,9 @@ import static org.junit.Assert.fail;
 
 public class GraqlDocsTest {
 
+    // TODO: Make these tests work with the templating language
+    private static final ImmutableSet<String> IGNORE_FILES = ImmutableSet.of("graql-templating.md");
+
     private static final Pattern TAG_GRAQL =
             Pattern.compile(
                     "(id=\"shell[0-9]+\">\\s*<pre>|```graql)" +
@@ -35,7 +39,9 @@ public class GraqlDocsTest {
         Collection<File> files =
                 FileUtils.listFiles(dir, new RegexFileFilter(".*\\.md"), DirectoryFileFilter.DIRECTORY);
 
-        files.forEach(this::assertFileValidSyntax);
+        files.stream()
+                .filter(file -> !IGNORE_FILES.contains(file.getName()))
+                .forEach(this::assertFileValidSyntax);
 
         if (numFound < 10) {
             fail("Only found " + numFound + " Graql examples. Perhaps the regex is wrong?");
