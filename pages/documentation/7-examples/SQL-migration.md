@@ -14,7 +14,7 @@ If you have not yet set up the MindmapsDB environment, please see the [Setup gui
 
 ## Migrating the World
 
-In this example, we will show you how to import SQL data, from a relational database, to a MindmapsDB graph. The code for this example can be found in our [github repo](https://github.com/mindmapsdb/sample-projects/tree/master/example-sql-migration). 
+In this example, we will show you how to import SQL data, from a relational database, to a MindmapsDB graph. The code for this example can be found in our [github repo](https://github.com/mindmapsdb/sample-projects/tree/master/example-sql-migration). We have a [blog post](https://blog.mindmaps.io/populating-mindmapsdb-with-the-world-5b2445aee60c#) that also discusses SQL migration, using the migration shell script.
 
 ### Prerequisites
 

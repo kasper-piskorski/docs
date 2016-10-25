@@ -30,6 +30,23 @@ Clean Moogi data and port it to Mindmaps. This requires dabbling a bit with Grem
 ### Graph Database Pros and Cons
 Write a review of Graph Database technologies with pros and cons and example apps.
 
+### JavaScript Driver for MindmapsDB
+Create a prototype to interface with the MindmapsDB REST API in a simple manner.
+
+### Create a Graph Representation of a Website
+Write a simple tool that follows links in a website and constructs a graph representation of it in Mindmaps. This could simply be pages and links, but could even pull out structural information such as containers and side panes inside pages. Follow on projects could be:   
+ - mapping click stream data onto the graph - and analysing
+ - analysing clusters and shortest paths through the website.
+
+### Graph a Subject's (e.g. Computer Science) Publications
+Build a graph of academic publications on a particular subject for analysis.
+
+### Sports Results
+For example, a knowledge graph of the Rio Olympics stats dataset, Premier League results etc.
+
+### Recommendation Engine
+Shows how to leverage connections in your data to gather insights and start recommending currently unrelated but relevant facts.
+
 ## Medium
 
 The following would particularly suit an undergraduate project.
@@ -48,6 +65,14 @@ Using Machine Learning to work with the semantics of the graph.
 
 ### Publication Topology Based Ranking   
 Semantic search engine for computer science publications. How do ranking results based on topology compare to user data? Can we use an ensemble measure to get “better” results?
+
+### Life Sciences Knowledge Graph
+There is potential to use the open data from Elixir and Bioschemas.org to build a life science graph.
+
+### European Broadcast Union 
+The European Broadcast Union are interested interested in semantics and have documented what they are pursuing [here](https://nlpdbpedia2016.files.wordpress.com/2016/09/nlpdbpedia2016_paper_1.pdf).
+
+
 
 {% include links.html %}
 
