@@ -129,12 +129,12 @@ RuleType inferenceRule = mindmapsGraph.getMetaRuleInference();
 Rule instances can be added to the graph both through the Graph API as well as through Graql. Considering the ancestor example, with the use of the Graph API we can add the rules in the following way:
 
 ```java
-String r1Body = "match (parent $x, child $y) isa Parent";
-String r1Head = "match (ancestor $x, descendant $y) isa Ancestor";
+String r1Body = "(parent $x, child $y) isa Parent";
+String r1Head = "(ancestor $x, descendant $y) isa Ancestor";
 
-String r2Body = "match (parent $x, child $z) isa Parent;" +
+String r2Body = "(parent $x, child $z) isa Parent;" +
                 "(ancestor $z, descendant $y) isa Ancestor select $x, $y";
-String r2Head = "match (ancestor $x, descendant $y) isa Ancestor";
+String r2Head = "(ancestor $x, descendant $y) isa Ancestor";
 
 Rule rule1 = mindmapsGraph.putRule("R1", r1Body, r1Head, inferenceRule);
 Rule rule2 = mindmapsGraph.putRule("R2", r2Body, r2Head, inferenceRule);
@@ -146,13 +146,13 @@ The addition of the rules specified above can be expressed via an insert Graql s
 ```java
 insert
 "R1" isa inference-rule,
-lhs {match (parent $x, child $y) isa Parent},
-rhs {match (ancestor $x, descendant $y) isa Ancestor};
+lhs {(parent $x, child $y) isa Parent},
+rhs {(ancestor $x, descendant $y) isa Ancestor};
 
 "R2" isa inference-rule,
-lhs {match (parent $x, child $z) isa Parent;
+lhs {(parent $x, child $z) isa Parent;
 (ancestor $z, descendant $y) isa Ancestor select $x, $y},
-rhs {match (ancestor $x, descendant $y) isa Ancestor};
+rhs {(ancestor $x, descendant $y) isa Ancestor};
 ```
 
 {% include links.html %}
