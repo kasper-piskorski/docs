@@ -46,7 +46,7 @@ The Graql shell starts and you see a `>>>` prompt. Type in the following:
 >>> insert twin isa entity-type;
 >>> insert topsy isa twin;
 >>> insert tim isa twin;
->>> commit;
+>>> commit
 >>> match $x isa twin;
 $x id "tim" isa twin; 
 $x id "topsy" isa twin;
