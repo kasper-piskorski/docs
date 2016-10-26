@@ -122,7 +122,7 @@ Consider the following example of male and female philosopers.
 We can define the following structure where people can now play the roles of teachers or students:
 
 ![A simple example of allowing a Type to play specific Role
-Types.](/images/examples_playsroles.png)
+Types.](/images/example_playsrole.png)
 
 ### Relation Types
 
