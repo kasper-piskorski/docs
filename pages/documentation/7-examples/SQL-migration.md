@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 42
 ---
 
-If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to migration, please see the [Migration Tutorial](../migration/migration.html).
+If you have not yet set up the MindmapsDB environment, please see the [setup guide](../get-started/setup-guide.html). For a comprehensive guide to migration, please see both our [Migration Tutorial](../migration/migration.html) and our additional documentation specific to [SQL Migration](../migration/SQL-migration.html).
 
 ## Migrating the World
 

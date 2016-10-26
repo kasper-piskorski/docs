@@ -11,7 +11,7 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This tutorial shows you how to migrate OWL into a MindmapsDB graph. If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
+This tutorial shows you how to migrate OWL into a MindmapsDB graph. If you have not yet set up the MindmapsDB environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for OWL
 The migration shell script can be found in the `bin` directory after the MindmapsDB distribution file has been unzipped. Usage is specific to the type of migration being performed. For OWL:

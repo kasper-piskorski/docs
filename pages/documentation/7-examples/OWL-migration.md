@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 41
 ---
 
-If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to migration, please see the [Migration Tutorial](../migration/migration.html).
+For a comprehensive guide to migration, please see both our [Migration Tutorial](../migration/migration.html) and our additional documentation specific to [OWL Migration](../migration/OWL-migration.html).
 
 ## Introduction
 This example addresses the topic of OWL interoperability through a migration of a family tree OWL ontology. The sole prerequisite of this example is having the MindmapsDB environment installed and the Engine running. If you need help starting MindmapsDB Engine, please see the [setup guide](../get-started/setup-guide.html).

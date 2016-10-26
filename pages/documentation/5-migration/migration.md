@@ -11,7 +11,7 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This page introduces migration of data, stored in different formats, to populate a MindmapsDB graph. If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
+This page introduces migration of data, stored in different formats, to populate a MindmapsDB graph. If you have not yet set up the MindmapsDB environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script
 The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:
