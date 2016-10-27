@@ -39,7 +39,7 @@ MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, "my-graph").g
 <dependency>
     <groupId>io.mindmaps</groupId>
     <artifactId>mindmaps-titan-factory</artifactId>
-    <version>0.2.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
@@ -145,8 +145,8 @@ Some people have special titles and epithets and we want to talk about that.
 So, we'll create some resource types that can be attached to a person:
 
 ```java
-ResourceType<String> title = mindmapsGraph.putResourceType("title", Data.STRING);
-ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", Data.STRING);
+ResourceType<String> title = mindmapsGraph.putResourceType("title", ResourceType.DataType.STRING);
+ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", ResourceType.DataType.STRING);
 
 person.playsRole(hasResourceTarget);
 title.playsRole(hasResourceValue);
