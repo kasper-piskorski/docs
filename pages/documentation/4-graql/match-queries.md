@@ -110,8 +110,6 @@ match $x value contains "lightning";
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
 <pre>
-import static io.mindmaps.graql.api.query.ValuePredicate.*;
-
 qb.match(var("x").value(contains("lightning")))
 </pre>
 </div> <!-- tab-pane -->
@@ -135,10 +133,7 @@ match $x has pokedex-no < 20;
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
 <pre>
-import static io.mindmaps.graql.api.query.ValuePredicate.*;
-
 qb.match(var("x").has("pokedex-no", lt(20)));
-
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -329,10 +324,7 @@ match $x has height = 19, has weight > 1500;
 </div>
 <div role="tabpanel" class="tab-pane" id="java12">
 <pre>
-import static io.mindmaps.graql.api.query.ValuePredicate.*;
-
 qb.match(var("x").has("height", 19).has("weight", gt(1500)));
-
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -362,13 +354,10 @@ $desc value contains "underground";
 </div>
 <div role="tabpanel" class="tab-pane" id="java13">
 <pre>
-import static io.mindmaps.graql.api.query.ValuePredicate.*;
-
 qb.match(
     var("x").has("description", var("desc")),
     var("desc").value(contains("underground"))
 );
-
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -391,10 +380,7 @@ match $x value /.*(fast|quick).*/;
 </div>
 <div role="tabpanel" class="tab-pane" id="java14">
 <pre>
-import static io.mindmaps.graql.api.query.ValuePredicate.*;
-
 qb.match(var("x").value(regex(".*(fast|quick).*")));
-
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -415,10 +401,7 @@ match $x has weight >20 and <30;
 </div>
 <div role="tabpanel" class="tab-pane" id="java15">
 <pre>
-import static io.mindmaps.graql.api.query.ValuePredicate.*;
-
 qb.match(var("x").has("weight", gt(20).and(lt(30))));
-
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -441,7 +424,7 @@ limit 30; offset 10; distinct; order by $no asc;
 </div>
 <div role="tabpanel" class="tab-pane" id="java16">
 <pre>
-qb.match(var("x").isa("pokemon").has("pokedex-no", var("no"))
+qb.match(var("x").isa("pokemon").has("pokedex-no", var("no")))
     .select("x")
     .limit(30)
     .offset(10)

@@ -239,7 +239,7 @@ String template = "" +
                 "   $x isa whale has name <whale>;" +
                 "}";
 
-Map<String, Object> data = Collection.singletonMap("whales", Arrays.asList("shamu", "dory"));
+Map<String, Object> data = Collections.singletonMap("whales", Arrays.asList("shamu", "dory"));
 
 Graql.parseTemplate(template, data);
 ```

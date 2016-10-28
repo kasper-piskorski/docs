@@ -106,7 +106,7 @@ Next we can relate our philosophers and schools to each other:
 ```java
     mindmapsGraph.addRelation(practice).  
       putRolePlayer(philosopher, socrates).
-      putRolePlayer(philosophy, platonisim);
+      putRolePlayer(philosophy, platonism);
 
     mindmapsGraph.addRelation(practice).
       putRolePlayer(philosopher, plato).
@@ -114,7 +114,7 @@ Next we can relate our philosophers and schools to each other:
 
     mindmapsGraph.addRelation(practice).
       putRolePlayer(philosopher, plato).
-      putRolePlayer(philosophy, platonisim);
+      putRolePlayer(philosophy, platonism);
 
     mindmapsGraph.addRelation(practice).
       putRolePlayer(philosopher, aristotle).
@@ -131,11 +131,11 @@ Now we can define how our philosophers relate to each other:
     RelationType education = mindmapsGraph.putRelationType("education").
       hasRole(teacher).hasRole(student);
 
-    mindmapsGraph.putRelation(education).putRolePlayer(teacher, socrates).
+    mindmapsGraph.addRelation(education).putRolePlayer(teacher, socrates).
       putRolePlayer(student, plato);
-    mindmapsGraph.putRelation(education).putRolePlayer(teacher, plato).
+    mindmapsGraph.addRelation(education).putRolePlayer(teacher, plato).
       putRolePlayer(student, aristotle);
-    mindmapsGraph.putRelation(education).putRolePlayer(teacher, aristotle).
+    mindmapsGraph.addRelation(education).putRolePlayer(teacher, aristotle).
       putRolePlayer(student, alexander);
 ```
 
@@ -145,6 +145,11 @@ Some people have special titles and epithets and we want to talk about that.
 So, we'll create some resource types that can be attached to a person:
 
 ```java
+RoleType hasResourceTarget = mindmapsGraph.putRoleType("has-resource-target");
+RoleType hasResourceValue = mindmapsGraph.putRoleType("has-resource-value");
+RelationType hasResource = mindmapsGraph.putRelationType("has-resource")
+    .hasRole(hasResourceTarget).hasRole(hasResourceValue);
+
 ResourceType<String> title = mindmapsGraph.putResourceType("title", ResourceType.DataType.STRING);
 ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", ResourceType.DataType.STRING);
 
@@ -158,7 +163,7 @@ Let's make Alexander "Great"!
 ```java
 Resource<String> theGreat = mindmapsGraph.putResource("The Great", epithet);
 
-mindmapsGraph.putRelation(hasResource).
+mindmapsGraph.addRelation(hasResource).
   putRolePlayer(hasResourceTarget, alexander).
   putRolePlayer(hasResourceValue, theGreat);
 ```
@@ -176,23 +181,23 @@ Resource<String> shahOfPersia = mindmapsGraph.putResource("Shah of Persia", titl
 Resource<String> pharaohOfEgypt = mindmapsGraph.putResource("Pharaoh of Egypt", title);
 Resource<String> lordOfAsia = mindmapsGraph.putResource("Lord of Asia", title);
 
-mindmapsGraph.putRelation(hasResource).
+mindmapsGraph.addRelation(hasResource).
   putRolePlayer(hasResourceTarget, alexander).
   putRolePlayer(hasResourceValue, hegemon);
 
-mindmapsGraph.putRelation(hasResource).
+mindmapsGraph.addRelation(hasResource).
   putRolePlayer(hasResourceTarget, alexander).
   putRolePlayer(hasResourceValue, kingOfMacedon);
 
-mindmapsGraph.putRelation(hasResource).
+mindmapsGraph.addRelation(hasResource).
   putRolePlayer(hasResourceTarget, alexander).
   putRolePlayer(hasResourceValue, shahOfPersia);
 
-mindmapsGraph.putRelation(hasResource).
+mindmapsGraph.addRelation(hasResource).
   putRolePlayer(hasResourceTarget, alexander).
   putRolePlayer(hasResourceValue, pharaohOfEgypt);
 
-mindmapsGraph.putRelation(hasResource).
+mindmapsGraph.addRelation(hasResource).
   putRolePlayer(hasResourceTarget, alexander).
   putRolePlayer(hasResourceValue, lordOfAsia);
 ```
