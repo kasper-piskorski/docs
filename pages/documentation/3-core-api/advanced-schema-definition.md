@@ -43,7 +43,7 @@ Allow the roles to be played:
 
 ```java
 person.playsRole(actorInMovie).playsRole(actorInTvShow);
-movie.playsRole(movieCastIn;
+movie.playsRole(movieCastIn);
 tvShow.playsRole(tvShowCastIn);
 ```
 
@@ -57,10 +57,9 @@ Let's convert our schema into something that is more expressive.
 Films and TV shows are similar, so we should have a super-class `Production` to represent both:
 
 ```java
-EntityType person = mindmapsGraph.putEntityType("Person");
 EntityType production = mindmapsGraph.putEntityType("Production");
-EntityType movie = mindmapsGraph.putEntityType("Movie").superType();
-EntityType tvShow = mindmapsGraph.putEntityType("TV Show").superType(production);
+movie.superType(production);
+tvShow.superType(production);
 ```
 
 Actors should be able to star in any type of `Production`, be it a film or a TV Show:
@@ -83,7 +82,6 @@ This also makes defining the schema shorter and gives more opportunities for gra
 For example, we can start to differentiate between male and female actors without impacting the schema significantly:
 
 ```java
-EntityType person = mindmapsGraph.putEntityType("Person");
 EntityType man = mindmapsGraph.putEntityType("Man").superType(person);
 EntityType woman = mindmapsGraph.putEntityType("Woman").superType();
 ```
@@ -143,7 +141,7 @@ Rule rule2 = mindmapsGraph.putRule("R2", r2Body, r2Head, inferenceRule);
 ### Rule Graql Syntax
 The addition of the rules specified above can be expressed via an insert Graql statement where the body and the head of the rule are separated with curly braces, the corresponding statement then reads:
 
-```java
+```graql
 insert
 "R1" isa inference-rule,
 lhs {(parent $x, child $y) isa Parent},

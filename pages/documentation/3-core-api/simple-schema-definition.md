@@ -45,13 +45,13 @@ EntityType movie = mindmapsGraph.putEntityType("Movie");
 With this we can arrange our data into categories:
 
 ```java
-alPacino = mindmapsGraph.addEntity(person).setValue("Al Pacino");
-patrickStewart = mindmapsGraph.addEntity(person).setValue("Patrick Stewart");
-charliseTheron = mindmapsGraph.addEntity(person).setValue("Charlise Theron");
+alPacino = mindmapsGraph.addEntity(person);
+patrickStewart = mindmapsGraph.addEntity(person);
+charliseTheron = mindmapsGraph.addEntity(person);
 
-godfather = mindmapsGraph.addEntity(movie).setValue("Godfather");
-starTrek = mindmapsGraph.addEntity(movie).setValue("Star Trek Nemesis");
-monster = mindmapsGraph.addEntity(movie).setValue("Monster");
+godfather = mindmapsGraph.addEntity(movie);
+starTrek = mindmapsGraph.addEntity(movie);
+monster = mindmapsGraph.addEntity(movie);
 ```
 
 ### Relation and Role Types
@@ -106,7 +106,7 @@ Relation relation = mindmapsGraph.addRelation(starsIn);
 Then we specify who is playing which role:
 
 ```java
-relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, startrek);
+relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, starTrek);
 ```
 
 {% include links.html %}

@@ -28,7 +28,7 @@ variable or an ID.
 <pre>
 insert
 $p isa pokemon, id "Pichu", has pokedex-no 172;
-(descendant: Pikachu, ancestor: $p) isa evolution;
+(descendent: Pikachu, ancestor: $p) isa evolution;
 
 </pre>
 </div>
@@ -37,9 +37,9 @@ $p isa pokemon, id "Pichu", has pokedex-no 172;
 qb.insert(
     var("p").isa("pokemon").id("Pichu").has("pokedex-no", 172),
     var().isa("evolution")
-        .rel("descendant", var().id("Pikachu"))
+        .rel("descendent", var().id("Pikachu"))
         .rel("ancestor", "p")
-).execute();",
+).execute();
 
 </pre>
 </div> <!-- tab-pane -->
@@ -192,7 +192,7 @@ qb.insert(
     .rel("pokemon-with-type", id("Pichu"))
     .rel("type-of-pokemon", id("electric"))
     .isa("has-type")
-);",
+);
 
 </pre>
 </div> <!-- tab-pane -->
