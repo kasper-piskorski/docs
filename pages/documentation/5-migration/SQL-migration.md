@@ -176,7 +176,7 @@ insert (event-child: $x, event-parent: $y) isa event-relation;
 
 While the migration seems rather lengthy when written out in Graql, you only need a few lines of code to accomplish this migration in Mindmaps:
 
-```java
+```java test-ignore
 // get the JDBC connection
 
 Connection connection = DriverManager.getConnection(jdbcDBUrl, jdbcUser, jdbcPass);

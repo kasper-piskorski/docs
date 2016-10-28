@@ -33,8 +33,8 @@ import static io.mindmaps.graql.Graql.*;
 
 A `QueryBuilder` is constructed by providing a `MindmapsGraph`:
 
-```java
-MindmapsGraph graph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
+```java test-ignore
+MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
 QueryBuilder qb = withGraph(mindmapsGraph);
 ```
 

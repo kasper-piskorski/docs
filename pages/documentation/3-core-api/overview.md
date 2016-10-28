@@ -23,13 +23,13 @@ MindmapsDB Graph API is the implementation of the object model discussed in
 Make sure you have MindmapsDB Engine running locally by using `mindmaps.sh start`.
 Once you have done that, a thread-bound graph can be retrieved by:
 
-```java
+```java test-ignore
 MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
 ```
 
 Alternatively an in-memory graph can be created with:
 
-```java
+```java test-ignore
 MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, "my-graph").getGraph();
 ```
 
@@ -71,7 +71,9 @@ We can query for all the people:
 
 ```java
 System.out.println("Instances of Person:");
- person.instances().forEach(i -> System.out.println(i.getId()));
+for (Entity i : person.instances()) {
+    System.out.println(i.getId());
+}
 ```
 
 Next, let's add some `schools` of thought:
