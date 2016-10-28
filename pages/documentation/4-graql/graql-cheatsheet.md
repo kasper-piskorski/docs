@@ -301,16 +301,16 @@ Match concepts in a ternary relation.
 match (actor: $p, character-being-played: $c, production-with-cast: $m);
 ```
 
-### ako
+### sub
 
 
 ```sql
-ako type
+sub type
 ```
-Insert a new type that is a subtype of an existing type.
+Insert a new type that is a subclass of an existing type.
 
 ```graql
-insert blockbuster ako movie;
+insert blockbuster sub movie;
 ```
 
 ### has-role

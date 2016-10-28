@@ -203,7 +203,7 @@ qb.match(
 
 The following properties only apply to types.
 
-### ako
+### sub
 Match types that are a subclass of the given type.
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -214,12 +214,12 @@ Match types that are a subclass of the given type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell7">
 <pre>
-match $x ako type;
+match $x sub type;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java7">
 <pre>
-qb.match(var("x").ako("type"))
+qb.match(var("x").sub("type"))
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

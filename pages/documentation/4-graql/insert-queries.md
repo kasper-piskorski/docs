@@ -203,9 +203,9 @@ qb.insert(
 
 The following properties only apply to types.
 
-### ako
+### sub
 
-Set the supertype of this concept type.
+Set up the hierarchy.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell8" data-toggle="tab">Graql</a></li>
@@ -215,12 +215,12 @@ Set the supertype of this concept type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell8">
 <pre>
-insert gen2-pokemon ako pokemon;
+insert gen2-pokemon sub pokemon;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.insert(id("gen2-pokemon").ako("pokemon"));
+qb.insert(id("gen2-pokemon").sub("pokemon"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
