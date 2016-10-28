@@ -32,7 +32,7 @@ bin/graql.sh
 To load an additional graph into a different keyspace, that is, to load a graph with a different name to any already loaded, you can specify the graph name:
 
 ```
-./graql.sh -n <graphname>
+./graql.sh -k <graphname>
 ``` 
 
 
@@ -66,7 +66,7 @@ The Graql shell accepts several arguments:
 
 | Long Option   | Option   | Description                                      |
 | ------------- | -------- | ------------------------------------------------ |
-| `--name`      | `-n`     | The name of the graph.                           |
+| `--keyspace`  | `-k`     | The keyspace of the graph.                           |
 | `--execute`   | `-e`     | A query to execute.                              |
 | `--file`      | `-f`     | A path to a file containg a query to execute.    |
 | `--uri`       | `-u`     | The URI to connect to engine.                    |
