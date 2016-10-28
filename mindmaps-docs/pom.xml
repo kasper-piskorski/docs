@@ -7,6 +7,11 @@
     <groupId>io.mindmaps</groupId>
     <artifactId>mindmaps-docs</artifactId>
     <version>0.4.0</version>
+
+    <properties>
+        <mindmaps.version>0.4.0</mindmaps.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -23,8 +28,13 @@
     <dependencies>
         <dependency>
             <groupId>io.mindmaps</groupId>
+            <artifactId>mindmaps-graph</artifactId>
+            <version>${mindmaps.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.mindmaps</groupId>
             <artifactId>mindmaps-graql</artifactId>
-            <version>0.4.0</version>
+            <version>${mindmaps.version}</version>
         </dependency>
 
         <dependency>
@@ -38,6 +48,11 @@
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>2.4.7</version>
         </dependency>
     </dependencies>
 
