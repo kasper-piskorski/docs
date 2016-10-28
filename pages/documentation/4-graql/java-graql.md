@@ -17,7 +17,7 @@ To use the API, add the following to your `pom.xml`:
 <dependency>
   <groupId>io.mindmaps</groupId>
   <artifactId>mindmaps-graql</artifactId>
-  <version>0.1.1</version>
+  <version>0.5.0</version>
 </dependency>
 ```
 
