@@ -9,7 +9,7 @@
     <version>0.4.0</version>
 
     <properties>
-        <mindmaps.version>0.4.0</mindmaps.version>
+        <mindmaps.version>0.5.0-SNAPSHOT</mindmaps.version>
     </properties>
 
     <build>
