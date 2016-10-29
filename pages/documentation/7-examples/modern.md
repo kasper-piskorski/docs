@@ -1,5 +1,5 @@
 ---
-title: Modern MindmapsDB Example
+title: Modern Grakn Example
 keywords: graql, query
 last_updated: September 19, 2016
 tags: [graql]
@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 26
 ---
 
-If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to all Graql keywords, please see the [Graql documentation](https://mindmaps.io/pages/documentation/graql/overview.html).
+If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to all Graql keywords, please see the [Graql documentation](https://grakn.ai/pages/documentation/graql/overview.html).
 
 ## Introduction
 We have a few examples on how to work with Graql using different datasets. For example, see our [blog posts](https://medium.com/p/e1125e02dc85) and the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that introduces how to make Graql queries.
@@ -21,14 +21,14 @@ This example takes a very simple example from [TinkerPop3 Documentation](http://
 
 The image above is used from the documentation provided for TinkerPop3, and licensed by the [Apache Software Foundation](http://www.apache.org). 
 
-We have chosen this example as it may already be familiar, and is simple enough to demonstrate some of the fundamentals of Graql. We walk through the entities ("things") and relationships between them and show how to represent them in a MindmapsDB graph using Graql to define a schema. We then use Graql to add the data to the graph.  The main purpose of this example, however, is to use it for practice at making sample queries on the graph. 
+We have chosen this example as it may already be familiar, and is simple enough to demonstrate some of the fundamentals of Graql. We walk through the entities ("things") and relationships between them and show how to represent them in a Grakn graph using Graql to define a schema. We then use Graql to add the data to the graph.  The main purpose of this example, however, is to use it for practice at making sample queries on the graph. 
 
 ### Starting Graql
 
-If it is not already running, start MindmapsDB, then open a Graql shell:
+If it is not already running, start Grakn, then open a Graql shell:
 
 ```bash
-cd [your MindmapsDB install directory]
+cd [your Grakn install directory]
 bin/mindmaps.sh start
 bin/graql.sh
 ```
@@ -97,7 +97,7 @@ insert software plays-role programmed;
 insert programming isa relation-type, has-role programmer, has-role programmed, has-resource weight;
 ```
 
-And that's it. At this point, we have defined the schema of the MindmapsDB graph.
+And that's it. At this point, we have defined the schema of the Grakn graph.
 
 ## Adding the Data
 Now we have a schema, we can move on to adding in the data, which is pretty much just a typing exercise:
@@ -323,11 +323,11 @@ match $relation("marko", $y); $y isa $z; $z isa entity-type; $relation isa $relt
 
 ## Where next?
 
-This example should give you some confidence at looking at the basic types and queries used in a MindmapDB graph. Take a look at the landing page for the MindmapsDB Examples, for more complex examples, such as the Moogi movies dataset.
+This example should give you some confidence at looking at the basic types and queries used in a MindmapDB graph. Take a look at the landing page for the Grakn Examples, for more complex examples, such as the Moogi movies dataset.
 
 {% include links.html %}
 
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/26" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/26" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 

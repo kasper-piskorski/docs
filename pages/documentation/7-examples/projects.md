@@ -3,7 +3,7 @@ title: Example Projects
 keywords: examples, projects
 last_updated: October 7, 2016
 tags: 
-summary: "A list of potential projects that use MindmapsDB."
+summary: "A list of potential projects that use Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/examples/projects.html
 folder: documentation
@@ -12,7 +12,7 @@ folder: documentation
 
 ## Introduction
 
-This page lists potential research projects that could be based upon MindmapsDB. We have estimated the amount of work involved in them as T-shirt sizes (small, medium and large) and indicated the level of expertise we think would be required. If you are unsure of whether an idea would be suitable for you, please do talk to us. We are always happy to discuss your ideas, either based on these suggestions or for other projects. Just see our [Community page](https://mindmaps.io/community.html) for ways to get in touch with us!
+This page lists potential research projects that could be based upon Grakn. We have estimated the amount of work involved in them as T-shirt sizes (small, medium and large) and indicated the level of expertise we think would be required. If you are unsure of whether an idea would be suitable for you, please do talk to us. We are always happy to discuss your ideas, either based on these suggestions or for other projects. Just see our [Community page](https://grakn.ai/community.html) for ways to get in touch with us!
 
 ## Small
 
@@ -22,7 +22,7 @@ The following would particularly suit an undergraduate project.
 Define a simple ontology, which is just a specification of the components of a system and how they relate, and then devise logical rules to construct a simple application. An example may be to produce a set of rules that can validate that a Sudoku puzzle has been filled correctly.
 
 ### Links Between Likes
-Add a new feature to Moogi that allows users to “like” concepts. Then produce a visualisation that displays the link between the things that a user likes. For more information about Moogi, the film discovery engine that is built on MindmapsDB, please see [https://moogi.co/](https://moogi.co/).
+Add a new feature to Moogi that allows users to “like” concepts. Then produce a visualisation that displays the link between the things that a user likes. For more information about Moogi, the film discovery engine that is built on Grakn, please see [https://moogi.co/](https://moogi.co/).
 
 ### Moogi Data Cleanup
 Clean Moogi data and port it to Mindmaps. This requires dabbling a bit with Gremlin, scripting, exploring the graph and ETL probably.
@@ -30,8 +30,8 @@ Clean Moogi data and port it to Mindmaps. This requires dabbling a bit with Grem
 ### Graph Database Pros and Cons
 Write a review of Graph Database technologies with pros and cons and example apps.
 
-### JavaScript Driver for MindmapsDB
-Create a prototype to interface with the MindmapsDB REST API in a simple manner.
+### JavaScript Driver for Grakn
+Create a prototype to interface with the Grakn REST API in a simple manner.
 
 ### Create a Graph Representation of a Website
 Write a simple tool that follows links in a website and constructs a graph representation of it in Mindmaps. This could simply be pages and links, but could even pull out structural information such as containers and side panes inside pages. Follow on projects could be:   

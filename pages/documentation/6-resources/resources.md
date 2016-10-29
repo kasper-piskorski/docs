@@ -10,11 +10,11 @@ folder: documentation
 comment_issue_id: 25
 ---
 
-This page lists useful resources for learning about MindmapsDB and Graph Databases.
+This page lists useful resources for learning about Grakn and Graph Databases.
 
 
-## MindmapsDB's Online Community
-Find out more about us on our [Community page](http://mindmaps.io/community.html).
+## Grakn's Online Community
+Find out more about us on our [Community page](http://grakn.ai/community.html).
 
 ## Learning Resources
 
@@ -29,7 +29,7 @@ Date: August 2012.
 
 ## Useful Blogs
 
-Check out [our blog](https://blog.mindmaps.io) for insider news and industry views. Please [let us know](https://mindmaps.io/community.html) if you have a blog or a favourite blogger that you'd like to see listed here!
+Check out [our blog](https://blog.grakn.ai) for insider news and industry views. Please [let us know](https://grakn.ai/community.html) if you have a blog or a favourite blogger that you'd like to see listed here!
 
 ## Videos and Podcasts
 
@@ -51,4 +51,4 @@ Date: June 2015.
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/25" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/25" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

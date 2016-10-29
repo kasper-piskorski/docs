@@ -3,14 +3,14 @@ title: Defining a Schema
 keywords: schema
 last_updated: August 23, 2016
 tags: [java, graph-api]
-summary: "Demonstrates how to create a schema for a MindmapsDB knowledge graph."
+summary: "Demonstrates how to create a schema for a Grakn knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/simple-schema-definition.html
 folder: documentation
 comment_issue_id: 21
 ---
 
-This article assumes that you have already looked at page that covers [MindmapsDB Basics](../the-basics/mindmaps-basics.html).
+This article assumes that you have already looked at page that covers [Grakn Basics](../the-basics/mindmaps-basics.html).
 
 
 Defining a schema for your graph allows you to:
@@ -22,12 +22,12 @@ Defining a schema for your graph allows you to:
 In Mindmaps, a schema is defined by adding **types** to your graph.
 These **types** allow you to divide your data into different categories but also control how data instances may relate to each other.
 
-In this section we will review each of these types and explain how you use them when defining a MindmapsDB graph.
+In this section we will review each of these types and explain how you use them when defining a Grakn graph.
 
 ## Basic Type Definitions
 
-This section describes basic types which are **essential** to a MindmapsDB schema.
-When creating a MindmapsDB knowledge graph you should always begin by defining these schema elements.
+This section describes basic types which are **essential** to a Grakn schema.
+When creating a Grakn knowledge graph you should always begin by defining these schema elements.
 
 ### Entity Type
 
@@ -57,7 +57,7 @@ monster = mindmapsGraph.addEntity(movie);
 ### Relation and Role Types
 
 The greatest advantage of a graph database is the expressiveness of the relationships between data.
-With MindmapsDB we can control how our data relates to each other.
+With Grakn we can control how our data relates to each other.
 
 For example how can we say that Patrick Stewart starred in Star Trek Nemesis?
 To be able to do so we must first allow such behaviour between our types.
@@ -112,4 +112,4 @@ relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, starTre
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/21" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/21" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

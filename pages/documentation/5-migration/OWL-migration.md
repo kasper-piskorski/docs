@@ -1,9 +1,9 @@
 ---
-title: OWL Migration to MindmapsDB
+title: OWL Migration to Grakn
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [migration]
-summary: "This document will teach you how to load OWL into MindmapsDB."
+summary: "This document will teach you how to load OWL into Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/migration/OWL-migration.html
 folder: documentation
@@ -11,16 +11,16 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This tutorial shows you how to migrate OWL into a MindmapsDB graph. If you have not yet set up the MindmapsDB environment, please see the [setup guide](../get-started/setup-guide.html).
+This tutorial shows you how to migrate OWL into a Grakn graph. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for OWL
-The migration shell script can be found in the `bin` directory after the MindmapsDB distribution file has been unzipped. Usage is specific to the type of migration being performed. For OWL:
+The migration shell script can be found in the `bin` directory after the Grakn distribution file has been unzipped. Usage is specific to the type of migration being performed. For OWL:
 
 ```
 usage: ./migration.sh owl -file <path> [-graph <name>] [-engine <url>]
        -file             OWL file
        -graph            graph name (defaults to the name of the file with spaces replaced by _)
-       -engine           MindmapsDB engine URL, default localhost
+       -engine           Grakn engine URL, default localhost
 ```
 
 When you have read the following, you may find our extended example of [OWL migration](../examples/OWL-migration.html) useful.
@@ -69,7 +69,7 @@ The ontology defines a single class (type) `Person` as well as two instances of 
 hasAncestor(X, Y) :- hasParent(X, Z), hasAncestor(Z, Y);
 ```
 
-Upon migration, the OWL ontology will be mapped to the MindmapsDB Model. The following Graql statement inserts an equivalent structure to the one obtained through the migration mapping:
+Upon migration, the OWL ontology will be mapped to the Grakn Model. The following Graql statement inserts an equivalent structure to the one obtained through the migration mapping:
 
 ```graql
 insert
@@ -128,11 +128,11 @@ rhs {
 ```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)).
+You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html)).
 
 Please take a look at our examples to further illustrate [SQL migration](../examples/SQL-migration.html) and [OWL migration](../examples/OWL-migration.html).
 {% include links.html %}
 
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

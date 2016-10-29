@@ -6,7 +6,7 @@ search: exclude
 "entries":
 [
 {% for page in site.tooltips %}
-{% if page.product == "MindmapsDB" %}
+{% if page.product == "GRAKN.AI" %}
 {
 "id"    : "{{ page.id }}",
 "body": "{{ page.content | strip_newlines | replace: '\', '\\\\' | replace: '"', '\\"' }}"
@@ -15,6 +15,3 @@ search: exclude
 {% endfor %}
 ]
 }
-
-
-

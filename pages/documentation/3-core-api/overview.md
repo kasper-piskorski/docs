@@ -3,24 +3,24 @@ title: Graph API Overview
 keywords: overview
 last_updated: August 10, 2016
 tags: [java, graph-api]
-summary: "A basic example of how to use MindmapsDB Graph API."
+summary: "A basic example of how to use Grakn Graph API."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/overview.html
 folder: documentation
 comment_issue_id: 20
 ---
 
-If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html). This article assumes that you are set up and have already looked at the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that covers Graql queries.   
-You can find the code below in the example code directory of the MindmapsDB distribution zip.
+If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html). This article assumes that you are set up and have already looked at the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that covers Graql queries.   
+You can find the code below in the example code directory of the Grakn distribution zip.
 
 ## Introduction
 
-MindmapsDB Graph API is the implementation of the object model discussed in
-[MindmapsDB Basics](../the-basics/mindmaps-basics.html). It allows you to create MindmapsDB Graphs using Java 8. 
+Grakn Graph API is the implementation of the object model discussed in
+[Grakn Basics](../the-basics/mindmaps-basics.html). It allows you to create Grakn Graphs using Java 8. 
 
-### Initialising a MindmapsDB Graph in Java    
+### Initialising a Grakn Graph in Java    
 
-Make sure you have MindmapsDB Engine running locally by using `mindmaps.sh start`.
+Make sure you have Grakn Engine running locally by using `mindmaps.sh start`.
 Once you have done that, a thread-bound graph can be retrieved by:
 
 ```java test-ignore
@@ -205,9 +205,9 @@ mindmapsGraph.addRelation(hasResource).
 ```
 
 ## Where Next?
-If you want to find out more about using the Graph API, please take a look at the documentation about how to define a [simple schema](../core-api/simple-schema-definition.html) or an [advanced schema](../core-api/advanced-schema-definition.html) for a MindmapsDB graph.
+If you want to find out more about using the Graph API, please take a look at the documentation about how to define a [simple schema](../core-api/simple-schema-definition.html) or an [advanced schema](../core-api/advanced-schema-definition.html) for a Grakn graph.
 
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/20" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/20" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

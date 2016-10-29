@@ -3,7 +3,7 @@ title: Defining an Advanced Schema
 keywords: schema
 last_updated: August 23, 2016
 tags: [graph-api, java]
-summary: "Demonstrates how to create an advanced schema for a MindmapsDB knowledge graph."
+summary: "Demonstrates how to create an advanced schema for a Grakn knowledge graph."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/advanced-schema-definition.html
 folder: documentation
@@ -11,9 +11,9 @@ comment_issue_id: 22
 ---
 
 
-This document introduces some advanced schema concepts, which you can use to create more expressive MindmapsDB graphs. We recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
+This document introduces some advanced schema concepts, which you can use to create more expressive Grakn graphs. We recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
 
-Here, we also discuss creating a graph which supports MindmapsDB reasoning and inference features.
+Here, we also discuss creating a graph which supports Grakn reasoning and inference features.
 
 ## Sub-Classing Types
 
@@ -88,7 +88,7 @@ EntityType woman = mindmapsGraph.putEntityType("Woman").superType();
 
 ## Rule Types
 
-MindmapsDB supports rule-based backward-chained (BC) reasoning to allow automated capturing and evolution of patterns within the graph. The BC approach is a goal-driven approach to reasoning where the subset of applicable rules is controlled by a particular query. In the BC mode, all the inferrable information is available at query time.
+Grakn supports rule-based backward-chained (BC) reasoning to allow automated capturing and evolution of patterns within the graph. The BC approach is a goal-driven approach to reasoning where the subset of applicable rules is controlled by a particular query. In the BC mode, all the inferrable information is available at query time.
 
 The inference rules are expressed in the following general form:
 
@@ -156,4 +156,4 @@ rhs {(ancestor $x, descendant $y) isa Ancestor};
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

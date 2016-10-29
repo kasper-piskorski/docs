@@ -1,9 +1,9 @@
 ---
-title: Visualising a MindmapsDB Graph
+title: Visualising a Grakn Graph
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting-started, graql]
-summary: "How to use the MindmapsDB Visualiser."
+summary: "How to use the Grakn Visualiser."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/visualiser.html
 folder: documentation
@@ -11,11 +11,11 @@ comment_issue_id: 52
 ---
 
 ## Introduction
-The MindmapsDB visualiser provides a graphical tool to inspect and query your graph data. This article shows how to get it up and running on a basic example and introduces the visualiser's key features.
+The Grakn visualiser provides a graphical tool to inspect and query your graph data. This article shows how to get it up and running on a basic example and introduces the visualiser's key features.
 
 ## Loading and Visualising a Graph
-If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
-You can find the ```pokemon.gql``` example we will work with in the examples directory that is included in the MindmapsDB download zip, or in our [MindmapsDB repo](https://github.com/mindmapsdb/mindmapsdb/tree/master/mindmaps-dist/src/examples).
+If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
+You can find the ```pokemon.gql``` example we will work with in the examples directory that is included in the Grakn download zip, or in our [Grakn repo](https://github.com/graknlabs/grakn/tree/master/mindmaps-dist/src/examples).
 
 The first step is to load the Pokemon graph from the example file into the default keyspace. You need to use your terminal to do this, as the visualiser is a read-only interface to a graph.
 
@@ -53,13 +53,13 @@ The help pane shows a set of key combinations that you can use to further drill 
 You can use this console to make queries instead of running a Graql shell in your terminal. 
 
 ### Documentation
-This opens a separate tab in your browser on the MindmapsDB documentation portal.
+This opens a separate tab in your browser on the Grakn documentation portal.
 
 ## Where Next?
 
-Now you have started getting to grips with MindmapsDB, please explore our additional [example code](../examples/examples.html) and documentation. We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://mindmaps.io/community.html)!
+Now you have started getting to grips with Grakn, please explore our additional [example code](../examples/examples.html) and documentation. We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://grakn.ai/community.html)!
 
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/52" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/52" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

@@ -9,7 +9,7 @@ permalink: /documentation/graql/overview.html
 folder: documentation
 ---
 
-Graql allows you to query a MindmapsDB graph in a declarative, pattern matching fashion.
+Graql allows you to query a Grakn graph in a declarative, pattern matching fashion.
 
 You can execute Graql in the [Graql Shell](graql-shell.html) or using [Java
 Graql](java-graql.html).

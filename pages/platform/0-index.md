@@ -1,5 +1,5 @@
 ---
-title: What is MindmapsDB?
+title: What is Grakn?
 keywords: intro
 last_updated: September 13, 2016
 summary: false
@@ -10,17 +10,17 @@ folder: platform
 toc: false
 ---
 
-MindmapsDB is a distributed knowledge graph that provides an ontology as a highly expressive flexible object-oriented schema, and a knowledge-oriented query language capable of real-time analytics and reasoning.
+Grakn is a distributed knowledge graph that provides an ontology as a highly expressive flexible object-oriented schema, and a knowledge-oriented query language capable of real-time analytics and reasoning.
 
 Let's break that down a bit and explain what it means.
 
-**_"MindmapsDB is a distributed knowledge graph ..."_**
+**_"Grakn is a distributed knowledge graph ..."_**
 
-MindmapsDB is graph data platform that stores data in a way that allows machines to understand the meaning of information and their relationships, which would allow computers to process complex information more intelligently with less human intervention. MindmapsDB is implemented using [Apache TinkerPop](http://tinkerpop.apache.org) and the [Titan Graph Database](http://titan.thinkaurelius.com) that could be sharded and replicated over a network of distributed machines. Effectively, MindmapsDB turns your dataset into a distributed knowledge graph.
+Grakn is graph data platform that stores data in a way that allows machines to understand the meaning of information and their relationships, which would allow computers to process complex information more intelligently with less human intervention. Grakn is implemented using [Apache TinkerPop](http://tinkerpop.apache.org) and the [Titan Graph Database](http://titan.thinkaurelius.com) that could be sharded and replicated over a network of distributed machines. Effectively, Grakn turns your dataset into a distributed knowledge graph.
 
 **_"... that provides an ontology as a highly expressive flexible object-oriented schema..."_**
 
-MindmapsDB provides an object model with an API that enables the programmatic definition of highly expressive domain models, i.e. knowledge ontologies. Your ontology could flexibly evolve as your application grows while it acts as a schema that guarantees the consistency of your data.
+Grakn provides an object model with an API that enables the programmatic definition of highly expressive domain models, i.e. knowledge ontologies. Your ontology could flexibly evolve as your application grows while it acts as a schema that guarantees the consistency of your data.
 
 **_"... and a knowledge-oriented query language ..."_**
 
@@ -32,4 +32,4 @@ Graql is capable of performing distributed computation over large amount of data
 
 **_"... and reasoning."_**
 
-Graql is capable of validating constraints and inferring new information in a MindmapsDB graph. In the past, queries that are executed on a database have to explicitly define the relationship they are looking for. Graql, on the other hand, will infer all relationships that matches a query pattern, as well as relationships that are semantically equivalent.
+Graql is capable of validating constraints and inferring new information in a Grakn graph. In the past, queries that are executed on a database have to explicitly define the relationship they are looking for. Graql, on the other hand, will infer all relationships that matches a query pattern, as well as relationships that are semantically equivalent.

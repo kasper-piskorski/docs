@@ -27,7 +27,7 @@ will return the number of instances of the concept type person.
 ## Available Algorithms
 
 The available algorithms currently perform simple tasks and the idea is to add to these as demand dictates. Please get
-in touch on our [discussion](https://discuss.mindmaps.io/) page to request any features that are of particular interest
+in touch on our [discussion](https://discuss.grakn.ai/) page to request any features that are of particular interest
 to you. A summary of the algorithms is given in the table below.
 
 | Algorithm | Description                                   |

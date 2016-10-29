@@ -1,11 +1,11 @@
-# MindmapsDB Documentation
+# Grakn Documentation
 
 ## Dependencies
 
 You need to install the following dependencies to be able to build HTML pages in the documentation repository. **NOTE:** this is *not* necessary for updating the documentation itself.
 
 1. Bundle; you will need to install `bundler` through your package manager of choice.
-    
+
     **Arch Linux**
     ```
     $ yaourt -S ruby-bundler
@@ -42,7 +42,7 @@ For local builds (local web server with documentation only), do not set this var
 $ export urlprefix=""
 ```
 
-For integrating to mindmaps website, or elsewhere set as needed. For example; `www.mindmaps.io/docs/`
+For integrating to mindmaps website, or elsewhere set as needed. For example; `www.grakn.ai/docs/`
 ```
 $ export urlprefix=/docs
 ```
@@ -52,7 +52,7 @@ $ export urlprefix=/docs
 You can generate the documentation HTML by running the following in the repository top level.
 ```
 $ rake build
-      Generating... 
+      Generating...
                     done in 1.503 seconds.
  Auto-regeneration: disabled. Use --watch to enable.
 $
@@ -82,4 +82,3 @@ $
 ```
 
 You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005/`
-

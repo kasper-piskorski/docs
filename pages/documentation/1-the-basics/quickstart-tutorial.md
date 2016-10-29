@@ -3,18 +3,18 @@ title: Quickstart Tutorial
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting-started, graql]
-summary: "This document will teach you how to use Graql to load a schema and some data into a MindmapsDB Graph."
+summary: "This document will teach you how to use Graql to load a schema and some data into a Grakn Graph."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/quickstart-tutorial.html
 folder: documentation
 comment_issue_id: 18
 ---
 
-{% include note.html content="This tutorial shows you how to use the Graql shell. The equivalent code, using the Graph API is described in the [Overview](https://mindmaps.io/pages/documentation/core-api/overview.html) to the Graph API." %}
+{% include note.html content="This tutorial shows you how to use the Graql shell. The equivalent code, using the Graph API is described in the [Overview](https://grakn.ai/pages/documentation/core-api/overview.html) to the Graph API." %}
 
 ## Introduction
-If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
-You can find the example ```philosophers.gql``` in the examples directory included in the MindmapsDB download zip.
+If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
+You can find the example ```philosophers.gql``` in the examples directory included in the Grakn download zip.
 
 We are going model how philosophers are related to each other. If you are using Graql and don't want to type everything below to build up the schema, you can load it using:  
 
@@ -22,7 +22,7 @@ We are going model how philosophers are related to each other. If you are using 
 bin/graql.sh -f examples/philosophers.gql
 ```
 
-By the way, don't worry if you've already loaded some different data into your graph. A MindmapsDB graph can simultaneously contain as many schemas as you want.
+By the way, don't worry if you've already loaded some different data into your graph. A Grakn graph can simultaneously contain as many schemas as you want.
 
 ## Concepts
 
@@ -286,9 +286,9 @@ match $king has title contains "King";
 
 ## Where Next?
 
-Now you have started getting to grips with MindmapsDB, please explore our additional [example code](../examples/examples.html) and documentation. We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://mindmaps.io/community.html)!
+Now you have started getting to grips with Grakn, please explore our additional [example code](../examples/examples.html) and documentation. We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://grakn.ai/community.html)!
 
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/18" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/18" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

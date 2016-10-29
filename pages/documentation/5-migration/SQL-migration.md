@@ -1,9 +1,9 @@
 ---
-title: SQL Migration to MindmapsDB
+title: SQL Migration to Grakn
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [migration]
-summary: "This document will teach you how to migrate SQL data into a MindmapsDB graph."
+summary: "This document will teach you how to migrate SQL data into a Grakn graph."
 sidebar: documentation_sidebar
 permalink: /documentation/migration/SQL-migration.html
 folder: documentation
@@ -11,10 +11,10 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This tutorial shows you how to populate a MindmapsDB graph with SQL data. If you have not yet set up the MindmapsDB environment, please see the [setup guide](../get-started/setup-guide.html).
+This tutorial shows you how to populate a Grakn graph with SQL data. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for SQL
-The migration shell script can be found in the `bin` directory after the MindmapsDB distribution file has been unzipped. Usage is specific to the type of migration being performed. For SQL:
+The migration shell script can be found in the `bin` directory after the Grakn distribution file has been unzipped. Usage is specific to the type of migration being performed. For SQL:
 
 
 ```
@@ -24,10 +24,10 @@ usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password>
        -pass             password for SQL database
        -database         URL to SQL database
        -graph            graph name (or defaults to the default keyspace)
-       -engine           MindmapsDB engine URL, default localhost
+       -engine           Grakn engine URL, default localhost
 ```
 
-One of the most common use cases of the migration component will be to move data from an RDBMS into a MindmapsDB graph. MindmapsDB relies on the JDBC API to connect to any RDBMS that uses the SQL language. The example that follows is written in MySQL, but SQL -> MindmapsDB migration will work with any database it can connect to using a JDBC driver. This has been tested on MySQL, Oracle and PostgresQL.
+One of the most common use cases of the migration component will be to move data from an RDBMS into a Grakn graph. Grakn relies on the JDBC API to connect to any RDBMS that uses the SQL language. The example that follows is written in MySQL, but SQL -> Grakn migration will work with any database it can connect to using a JDBC driver. This has been tested on MySQL, Oracle and PostgresQL.
 
 ### SQL Schema Migration
 
@@ -57,7 +57,7 @@ CREATE TABLE event
 ALTER TABLE event ADD FOREIGN KEY ( name ) REFERENCES pet ( name );
 ```
 
-Each SQL table is mapped to one MindmapsDB entity type. Each column of a table can be mapped as a resource type of that entity type. So the SQL tables above can be directly mapped to a MindmapsDB schema:
+Each SQL table is mapped to one Grakn entity type. Each column of a table can be mapped as a resource type of that entity type. So the SQL tables above can be directly mapped to a Grakn schema:
 
 ```graql
 insert
@@ -78,7 +78,7 @@ event isa entity-type,
 
 ```
 
-In SQL, a `foreign key` is a column that references another column. The MindmapsDB equivalent is a relationship type. Because SQL `foreign key` are not explicitly named, as they are in Mindmaps, the relation and roles have auto-generated names.
+In SQL, a `foreign key` is a column that references another column. The Grakn equivalent is a relationship type. Because SQL `foreign key` are not explicitly named, as they are in Mindmaps, the relation and roles have auto-generated names.
 
 The SQL schema line `ALTER TABLE event ADD FOREIGN KEY ( name ) REFERENCES pet ( name );` would be migrated as:
 
@@ -181,7 +181,7 @@ While the migration seems rather lengthy when written out in Graql, you only nee
 
 Connection connection = DriverManager.getConnection(jdbcDBUrl, jdbcUser, jdbcPass);
 
-// get the MindmapsDB connection
+// get the Grakn connection
 
 MindmapsGraph graph = Mindmaps.factory(Mindmaps.DEFAULT_URI).getGraph("sql-test-graph");
 Loader loader = new BlockingLoader("sql-test-graph");
@@ -205,13 +205,13 @@ dataMigrator
 
 ```
 
-Please take a look at our example of [SQL migration](../examples/SQL-migration.html) to find out more, and read our [blog post](https://blog.mindmaps.io/populating-mindmapsdb-with-the-world-5b2445aee60c#) which covers using the shell script for SQL migration in more detail.
+Please take a look at our example of [SQL migration](../examples/SQL-migration.html) to find out more, and read our [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#) which covers using the shell script for SQL migration in more detail.
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)).
+You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html)).
 
 
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

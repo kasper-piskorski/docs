@@ -10,4 +10,4 @@ folder: platform
 toc: false
 ---
 
-MindmapsDB has the consistency of RDBMS, flexibility of NoSQL and expressivity of a graph database.
+Grakn has the consistency of RDBMS, flexibility of NoSQL and expressivity of a graph database.

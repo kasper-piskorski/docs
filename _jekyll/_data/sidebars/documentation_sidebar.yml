@@ -2,8 +2,8 @@
 
 entries:
 - title: Sidebar
-  product: MindmapsDB
-  version: 0.5.0
+  product: Grakn
+  version: 0.5
   folders:
 
   - title: Get Started
@@ -18,7 +18,7 @@ entries:
   - title: The Basics
     output: web
     folderitems:
-      - title: MindmapsDB Basics
+      - title: Grakn Basics
         output: web
         url: /documentation/the-basics/mindmaps-basics.html
       - title: Quickstart Tutorial
@@ -27,10 +27,10 @@ entries:
       - title: Visualising a Graph
         output: web
         url: /documentation/the-basics/visualiser.html
-  - title: Migrating to MindmapsDB
+  - title: Migrating to Grakn
     output: web
     folderitems:
-      - title: Migrating to MindmapsDB
+      - title: Migrating to Grakn
         output: web
         url: /documentation/migration/migration.html
       - title: SQL Migration
@@ -96,7 +96,7 @@ entries:
       - title: Resources
         output: web
         url: /documentation/resources/resources.html
-      - title: MindmapsDB FAQ
+      - title: Grakn FAQ
         output: web
         url: /documentation/resources/faq.html
       - title: Downloads

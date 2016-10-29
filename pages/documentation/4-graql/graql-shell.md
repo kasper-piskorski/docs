@@ -10,7 +10,7 @@ permalink: /documentation/graql/graql-shell.html
 folder: documentation
 ---
 
-The Graql shell is contained in the `bin` folder. After starting the MindmapsDB server, you can load data into a MindmapsDB graph as follows:
+The Graql shell is contained in the `bin` folder. After starting the Grakn server, you can load data into a Grakn graph as follows:
 
 ```
 bin/graql.sh -f examples/pokemon.gql

@@ -53,7 +53,7 @@ Some common use cases for graph databases include:
 - Recommendation and Personalization   - Security and Fraud Detection   
 - IoT and Networking
 
-### Why would you specifically choose MindmapsDB?   
+### Why would you specifically choose Grakn?   
 <!--
 **<<< to do - Not a promotional thing here - what is the technical reason for choosing it rather than orientdb or neo4j? What are the problems that we specifically solve? >>> **-->
 

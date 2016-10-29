@@ -2,7 +2,7 @@
 
 entries:
 - title: Sidebar
-  product: MindmapsDB Platform
+  product: Grakn Platform
   items:
     - title: Introduction
       output: web

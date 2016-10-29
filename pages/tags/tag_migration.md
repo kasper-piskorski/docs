@@ -1,5 +1,5 @@
 ---
-title: "Migration to MindmapsDB pages"
+title: "Migration to Grakn pages"
 tagName: migration
 search: exclude
 permalink: tag_migration.html

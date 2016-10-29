@@ -2,16 +2,16 @@
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: MindmapsDB
+topnav_title: GRAKN.AI
 # this appears on the top navigation bar next to the home button
 
-site_title: MindmapsDB
+site_title: GRAKN.AI
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
-company_name: MindmapsDB
+company_name: GRAKN.AI
 # this appears in the footer
 
-github_editme_path: mindmapsdb/docs/blob/master
+github_editme_path: graknlabs/docs/blob/master
 # if you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
 
 # disqus_shortname: idrbwjekyll
@@ -39,9 +39,9 @@ exclude:
 
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: MindmapsDB
+feedback_subject_line: GRAKN.AI Feedback
 
-feedback_email: contact@mindmaps.io
+feedback_email: info@grakn.ai
 # used as a contact email for the Feedback link in the top navigation bar
 
 feedback_disable: true
@@ -95,8 +95,8 @@ sidebars:
 - documentation_sidebar
 - platform_sidebar
 
-description: "Open-Source Distributed Semantic Database"
+description: "A Distributed Knowledge Graph"
 # the description is used in the feed.xml file
 
 # needed for sitemap.xml file only
-url: http://mindmaps.io/pages/
+url: http://grakn.ai/pages/

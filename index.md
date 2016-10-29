@@ -1,5 +1,5 @@
 ---
-title: Welcome to the MindmapsDB Documentation Portal
+title: Documentation Portal
 keywords: sample homepage
 tags: [getting-started, graql, java, core-api]
 sidebar: documentation_sidebar
@@ -9,9 +9,9 @@ toc: false
 ---
 
 
-Welcome to our documentation portal. We have a growing collection of pages to help you get up and running with the MindmapsDB environment.
+Welcome to our documentation portal. We have a growing collection of pages to help you get up and running with the Grakn environment.
 
-Take a look around! We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.mindmaps.io) or through our main [website](http://www.mindmaps.io). If you'd like to request a page, please ask us on the forums - and if there's anything you want to improve on these pages, you can contribute to them directly via [github](https://github.com/mindmapsdb/docs/).
+Take a look around! We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.grakn.ai) or through our main [website](http://www.grakn.ai). If you'd like to request a page, please ask us on the forums - and if there's anything you want to improve on these pages, you can contribute to them directly via [github](https://github.com/graknlabs/docs/).
 
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -23,24 +23,24 @@ Take a look around! We hope you find our documentation helpful, but if you need 
   <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="getstarted">
     <h2>Guide for beginners</h2>
-<p>Check out our guide to <a href="https://mindmaps.io/pages/documentation/get-started/setup-guide.html">download and set up MindmapsDB</a>.</p> 
-<p>When you're set up, there's an <a href="https://mindmaps.io/pages/documentation/the-basics/quickstart-tutorial.html">introductory tutorial</a> to show the basics of Graql and how to use the Java API.</p>
-<p>Read about the <a href="https://mindmaps.io/pages/documentation/the-basics/mindmaps-basics.html">basics of the MindmapsDB object model</a>.</p>
+<p>Check out our guide to <a href="https://grakn.ai/pages/documentation/get-started/setup-guide.html">download and set up Grakn</a>.</p>
+<p>When you're set up, there's an <a href="https://grakn.ai/pages/documentation/the-basics/quickstart-tutorial.html">introductory tutorial</a> to show the basics of Graql and how to use the Java API.</p>
+<p>Read about the <a href="https://grakn.ai/pages/documentation/the-basics/mindmaps-basics.html">basics of the Grakn object model</a>.</p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="graql">
     <h2>About</h2>
-    <p>We have a set of pages about <a href="https://mindmaps.io/pages/documentation/graql/overview.html">Graql queries</a>, and a <a href="https://mindmaps.io/pages/documentation/graql/graql-cheatsheet.html">cheatsheet</a> as a handy reference.</p></div>
+    <p>We have a set of pages about <a href="https://grakn.ai/pages/documentation/graql/overview.html">Graql queries</a>, and a <a href="https://grakn.ai/pages/documentation/graql/graql-cheatsheet.html">cheatsheet</a> as a handy reference.</p></div>
 
 <div role="tabpanel" class="tab-pane" id="apireference">
     <h2>API Reference</h2>
-    <p>Our API reference documents can be found <a target="_blank" href="https://mindmaps.io/pages/documentation/api-reference/api-reference.html">here</a>. The API reference is also available in the MindmapsDB distribution that you can download from <a href="https://mindmaps.io/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
+    <p>Our API reference documents can be found <a target="_blank" href="https://grakn.ai/pages/documentation/api-reference/api-reference.html">here</a>. The API reference is also available in the Grakn distribution that you can download from <a href="https://grakn.ai/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="gethelp">
     <h2>Get Help</h2>
-    <p>We are here to help! Take a look at our <a href="https://mindmaps.io/pages/documentation/resources/resources.html">resources</a> page for a list of ways to get what you need, and the <a href="https://mindmaps.io/pages/documentation/troubleshooting/known-issues.html">troubleshooting</a> page for some tips on common MindmapsDB problems.</p>
- <p>Our <a href="https://mindmaps.io/pages/documentation/resources/downloads.html">downloads page</a> lists all MindmapsDB downloads and prerequisites.</p>   
+    <p>We are here to help! Take a look at our <a href="https://grakn.ai/pages/documentation/resources/resources.html">resources</a> page for a list of ways to get what you need, and the <a href="https://grakn.ai/pages/documentation/troubleshooting/known-issues.html">troubleshooting</a> page for some tips on common Grakn problems.</p>
+ <p>Our <a href="https://grakn.ai/pages/documentation/resources/downloads.html">downloads page</a> lists all Grakn downloads and prerequisites.</p>   
 </div>
 </div>
 

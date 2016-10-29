@@ -1,5 +1,5 @@
 ---
-title: When to use MindmapsDB?
+title: When to use Grakn?
 keywords: use case
 last_updated: September 13, 2016
 summary: false
@@ -10,4 +10,4 @@ folder: platform
 toc: false
 ---
 
-MindmapsDB is perfect when you have heterogeneous data with complex relations that is challenging, unscalable, and cumbersome to model, query and maintain.
+Grakn is perfect when you have heterogeneous data with complex relations that is challenging, unscalable, and cumbersome to model, query and maintain.
