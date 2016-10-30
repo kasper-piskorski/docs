@@ -15,11 +15,11 @@ The latest version will always be posted at [https://grakn.ai/pages/api-referenc
 
 ## API Reference for Past Versions of Grakn
 
-**[v0.4.0](https://grakn.ai/pages/api-reference/v0.4.0/index.html)**
+**[v0.4.0](https://grakn.ai/pages/api-reference/v0.4.0/index.html)**   
 **[v0.3.0](https://grakn.ai/pages/api-reference/v0.3.0/index.html)**   
 **[v0.2.0](https://grakn.ai/pages/api-reference/v0.2.0/index.html)**   
 **[v0.1.1](https://grakn.ai/pages/api-reference/v0.1.1/index.html)**     
-**[v0.1.0](https://grakn.ai/pages/api-reference/v0.1.0/index.html)**
+**[v0.1.0](https://grakn.ai/pages/api-reference/v0.1.0/index.html)**   
 
 
 ## Feedback

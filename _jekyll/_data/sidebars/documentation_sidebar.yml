@@ -27,18 +27,6 @@ entries:
       - title: Visualising a Graph
         output: web
         url: /documentation/the-basics/visualiser.html
-  - title: Migrating to Grakn
-    output: web
-    folderitems:
-      - title: Migrating to Grakn
-        output: web
-        url: /documentation/migration/migration.html
-      - title: SQL Migration
-        output: web
-        url: /documentation/migration/SQL-migration.html
-      - title: OWL Migration
-        output: web
-        url: /documentation/migration/OWL-migration.html
   - title: Graph API
     output: web
     folderitems:
@@ -84,6 +72,18 @@ entries:
       - title: Java Graql
         output: web
         url: /documentation/graql/java-graql.html
+  - title: Migrating to Grakn
+    output: web
+    folderitems:
+      - title: Migrating to Grakn
+        output: web
+        url: /documentation/migration/migration.html
+      - title: SQL Migration
+        output: web
+        url: /documentation/migration/SQL-migration.html
+      - title: OWL Migration
+        output: web
+        url: /documentation/migration/OWL-migration.html
   - title: API Reference
     output: web
     folderitems:
