@@ -19,12 +19,9 @@ import static org.junit.Assert.fail;
 
 public class GraqlDocsTest {
 
-    // TODO: Make these tests work with the templating language
-    private static final ImmutableSet<String> IGNORE_FILES = ImmutableSet.of("graql-templating.md");
-
     private static final Pattern TAG_GRAQL =
             Pattern.compile(
-                    "(id=\"shell[0-9]+\">\\s*<pre>|```graql)" +
+                    "(id=\"shell[0-9]+\">\\s*<pre>|```graql\\n)" +
                     "\\s*(.*?)\\s*" +
                     "(</pre>|```)", Pattern.DOTALL);
 
@@ -40,7 +37,6 @@ public class GraqlDocsTest {
                 FileUtils.listFiles(dir, new RegexFileFilter(".*\\.md"), DirectoryFileFilter.DIRECTORY);
 
         files.stream()
-                .filter(file -> !IGNORE_FILES.contains(file.getName()))
                 .forEach(this::assertFileValidSyntax);
 
         if (numFound < 10) {
