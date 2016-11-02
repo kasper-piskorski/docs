@@ -180,7 +180,7 @@ In this final template we create a `has-type` relationship between the values of
 
 This example is very simple in java. First we assign each template to a variable. Then we can call the `migrator.migrate()` function on each of the template/datafile pairs.
 
-```java test-ignore
+```test-ignore
 LoadingMigrator migrator = new LoadingMigrator(loader, new CSVMigrator());
 
 String pokemonTemplate = "" +
