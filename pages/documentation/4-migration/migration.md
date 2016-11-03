@@ -18,7 +18,7 @@ The migration shell script can be found in `mindmaps-dist/bin` after it has been
 
 ### SQL Migration
 
-```
+```bash
 usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password> -database <url> -graph <graphname> [engine <url>]
        -driver           JDBC driver
        -user             username for SQL database
@@ -32,17 +32,22 @@ Please see the [SQL migration documentation](./SQL-migration.html) for further i
 
 ### CSV Migration
 
-```
-usage: ./migration.sh csv -file <file> -graph <graphname> [-engine <url] [-as <type>]
-      -file             csv file to migrate
-      -graph            graph name (or defaults to the default keyspace)
-      -engine           Grakn engine URL, default localhost
-      -as               entity type of this file
+```bash
+usage: ./migration.sh csv -template <arg> -file <arg> [-help] [-delimiter <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+
+OPTIONS
+   -b,--batch <arg>       number of row to load at once
+   -d,--delimiter <arg>   delimiter of columns in input file
+   -f,--file <arg>        csv file
+   -h,--help              print usage message
+   -k,--keyspace <arg>    keyspace to use
+   -t,--template <arg>    graql template to apply over data
+   -u,--uri <arg>         uri to engine endpoint
 ```
 
 ### JSON Migration
 
-```
+```bash
 usage: ./migration json -schema <schema> -data <path> -graph <name> [-engine <url>]
        -schema           json schema file or directory
        -data             json data file or directory
@@ -52,7 +57,7 @@ usage: ./migration json -schema <schema> -data <path> -graph <name> [-engine <ur
 
 ### OWL Migration
 
-```
+```bash
 usage: ./migration.sh owl -file <path> [-graph <name>] [-engine <url>]
        -file             OWL file
        -graph            graph name (defaults to the name of the file with spaces replaced by _)

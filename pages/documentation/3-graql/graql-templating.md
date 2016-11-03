@@ -18,12 +18,12 @@ Graql Templates are Graql statements with the addition of functions and variable
 Templates are used to expand Graql queries given data. They allow you to control the flow of information.
 
 Accessing a single value:
-```graql
+```graql-template
 $x isa thing has value <value>
 ```
 
 Value in a nested context:
-```graql
+```graql-template
 $x isa person has name <person.name.firstName>
 ```
 
@@ -35,11 +35,11 @@ Replacement occurs inside the `<` `>` characters or when executing a macro that 
 
 A quick example of what the replacement looks like:
 
-```graql
+```graql-template
 first is a <string>, second a <long>, third a <double>, fourth a <boolean>
 ```
 
-```graql
+```graql-template
 first is a "string", second a 40, third a 0.001, fourth a false
 ```
 
@@ -81,13 +81,13 @@ Expressions can be grouped using `(` and `)`.
 Graql Templates allow you to iterate over a maps or lists.
 
 Example 1: `for` over a list
-```graql
+```graql-template
 for (whale in whales)
 do { $x isa whale has name <whale>; }
 ```
 
 Example 2: `for` over a map
-```graql
+```graql-template
 insert $x isa person;
     for (name in names) do {
         $x has nickname <name.nickname> ;
@@ -95,7 +95,7 @@ insert $x isa person;
 ```
 
 Example 3: "enhanced" `for` over a map
-```graql
+```graql-template
 insert $x isa person;
     for (names) do {
         $x has nickname <nickname> ;
@@ -105,7 +105,7 @@ insert $x isa person;
 When iterating over a map as in Example 3, you are allowed to use the "enhanced" for syntax. In this loop, it is not required to provide the item name. The properties within the `do` block context are inferred to be the first level children of tbe property in the `for` statement.
 
 Example 5: doubly nested `for`
-```graql
+```graql-template
 for (people) do { 
 insert $x isa person has name <name>;
     for (addresses) do {
@@ -123,13 +123,13 @@ insert $x isa person has name <name>;
 
 
 Example 6: `if`
-```graql
+```graql-template
 if (ne dog null)
 do { insert $dog isa dog; }
 ```
 
 Example 7: `if`...`else`
-```graql
+```graql-template
 if (ne firstName null) do {
     insert $person has name <firstName>;
 } else {
@@ -147,7 +147,7 @@ Macros are denoted by an `@` symbol prefixing the name of the macro function. Mi
 Macro `noescp` is short for "no escape". This function will not add quotes or escape the characters inside the value when doing replacement. Accepts exactly one argument.
 
 e.g.
-```graql
+```graql-template
 insert $person has introduction "Hi! My name is @noescp(firstname) @noescp(lastname)";
 ```
 
@@ -156,7 +156,7 @@ insert $person has introduction "Hi! My name is @noescp(firstname) @noescp(lastn
 `int` converts the contents of the data to an interger. Accepts exactly one argument.
 
 e.g.
-```graql
+```graql-template
 match $x isa thing has value @int(value);
 ```
 
@@ -165,7 +165,7 @@ match $x isa thing has value @int(value);
 `double` converts the contents of the data to a double. Accepts exactly one argument.
 
 e.g.
-```graql
+```graql-template
 match $x isa thing has value @double(value);
 ```
 
@@ -174,12 +174,12 @@ match $x isa thing has value @double(value);
 The `equals` macro returns a boolean and as such can be used in conditional statements. It can also be used in the Graql statment. Requires at least two arguments. 
 
 e.g. in Graql
-```graql
+```graql-template
 insert $x isa hasEquivalentResource value @equals(this that other)
 ```
 
 e.g. in conditional
-```graql
+```graql-template
 if (@equals(this that)) do { equals } else { not }"
 ```
 
@@ -188,7 +188,7 @@ if (@equals(this that)) do { equals } else { not }"
 When using iterators Graql variables will be automatically suffixed with an aggregate index of the loop. This is necessary because otherwise Graql would confuse variables belonging to different statements when running the queries. 
 
 For example, the following loop:
-```graql
+```graql-template
 insert $x isa person has name <name>;
     
 for (addresses) do {
@@ -203,7 +203,7 @@ $y isa person, id 1234;
 ```
 
 would result in the expanded Graql query:
-```graql
+```graql-template
 insert $x0 isa person has name "Elmo";
     
     insert $y0 isa address ;
