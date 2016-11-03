@@ -3,7 +3,7 @@ title: Graph API Overview
 keywords: overview
 last_updated: August 10, 2016
 tags: [java, graph-api]
-summary: "A basic example of how to use Grakn Graph API."
+summary: "A basic example of how to use Grakn's Graph API."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/overview.html
 folder: documentation
@@ -15,10 +15,10 @@ You can find the code below in the example code directory of the Grakn distribut
 
 ## Introduction
 
-Grakn Graph API is the implementation of the object model discussed in
-[Grakn Basics](../the-basics/mindmaps-basics.html). It allows you to create Grakn Graphs using Java 8. 
+In Grakn, the Graph API is the implementation of the object model discussed in
+[Grakn Basics](../the-basics/mindmaps-basics.html). It allows you to create graphs using Java 8. 
 
-### Initialising a Grakn Graph in Java    
+### Initialising Grakn in Java    
 
 Make sure you have Grakn Engine running locally by using `mindmaps.sh start`.
 Once you have done that, a thread-bound graph can be retrieved by:
@@ -205,7 +205,7 @@ mindmapsGraph.addRelation(hasResource).
 ```
 
 ## Where Next?
-If you want to find out more about using the Graph API, please take a look at the documentation about how to define a [simple schema](../core-api/simple-schema-definition.html) or an [advanced schema](../core-api/advanced-schema-definition.html) for a Grakn graph.
+If you want to find out more about using the Graph API, please take a look at the documentation about how to define a [simple schema](../core-api/simple-schema-definition.html) or an [advanced schema](../core-api/advanced-schema-definition.html).
 
 {% include links.html %}
 

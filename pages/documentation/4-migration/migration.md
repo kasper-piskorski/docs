@@ -3,7 +3,7 @@ title: Migrating to Grakn
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting-started, graql, migration]
-summary: "Landing page for documentation about loading data in different formats to populate a Grakn graph."
+summary: "Landing page for documentation about loading data in different formats to populate a graph in Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/migration/migration.html
 folder: documentation
@@ -11,7 +11,7 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This page introduces migration of data, stored in different formats, to populate a Grakn graph. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
+This page introduces migration of data, stored in different formats, to populate a graph in Grakn. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script
 The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:

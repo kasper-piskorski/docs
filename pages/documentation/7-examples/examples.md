@@ -36,11 +36,11 @@ The [Modern example](./modern.html) is a simple one, designed to test your knowl
 
 ### [SQL Migration](./SQL-migration.html)
 
-A common use-case is to migrate existing SQL data to a Grakn graph. Please see the [SQL migration example](../examples/SQL-migration.html) for an example of how to use the migrator. We also cover SQL migration in a [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#).
+A common use-case is to migrate existing SQL data to a graph in Grakn. Please see the [SQL migration example](../examples/SQL-migration.html) for an example of how to use the migrator. We also cover SQL migration in a [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#).
 
 ### [OWL Migration](./OWL-migration.html)
 
-For more information about migrating OWL to a Grakn graph, please see the [OWL migration example](../examples/OWL-migration.html).
+For more information about migrating OWL to Grakn, please see the [OWL migration example](../examples/OWL-migration.html).
 
 ### Oncologists
 
@@ -55,7 +55,7 @@ The oncologists example walks through the basics of Grakn from a beginner's pers
 Sample code is here: [https://github.com/mikonapoli/oncologists_ontology](https://github.com/mikonapoli/oncologists_ontology)
 
 ### R and Python bindings
-It is possible to extract data from a Grakn graph and use it as a data science tool for analysis. You can take the results of a Graql query and store the results in a dataframe or similar structure, for use with R or Python. This [blog post](https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99#) explains and gives a simple example.
+It is possible to extract data from Grakn and use it as a data science tool for analysis. You can take the results of a Graql query and store the results in a dataframe or similar structure, for use with R or Python. This [blog post](https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99#) explains and gives a simple example.
 
 {% include links.html %}
 

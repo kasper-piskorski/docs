@@ -14,7 +14,7 @@ If you have not yet set up the Grakn environment, please see the [setup guide](.
 
 ## Migrating the World
 
-In this example, we will show you how to import SQL data, from a relational database, to a Grakn graph. The code for this example can be found in our [github repo](https://github.com/graknlabs/sample-projects/tree/master/example-sql-migration). We have a [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#) that also discusses SQL migration, using the migration shell script.
+In this example, we will show you how to import SQL data, from a relational database, to Grakn. The code for this example can be found in our [github repo](https://github.com/graknlabs/sample-projects/tree/master/example-sql-migration). We have a [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#) that also discusses SQL migration, using the migration shell script.
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ You can run this example by running the [`Main`](https://github.com/graknlabs/sa
 
 We run a few queries in the example to prove that the data has been migrated. After running the example, you should be able to answer the following questions (see the bottom of the page for answers - but please don't peek until you've tried it!):
 
-+ What are the Types in the World Grakn graph?
++ What are the Types in the World graph in Grakn?
 + How many countries are in the world?
 + How may cities are in the world?
 + What are the cities in Niger?
@@ -68,7 +68,7 @@ The following command will run the above migration by using the shell script. Be
 You can see the code to answer these questions in the function [printInformationAboutWorld()](https://github.com/graknlabs/sample-projects/blob/master/example-sql-migration/src/main/java/SqlWorldMigrator.java).
 
 
-**What are the Types in the World Grakn graph?**   
+**What are the Types in the World graph in Grakn?**   
 Answer:
    
 ```

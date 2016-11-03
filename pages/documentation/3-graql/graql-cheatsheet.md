@@ -11,7 +11,7 @@ folder: documentation
 
 Graql is the declarative query language for Grakn.  The key principles and capabilities of Graql are as follows:  
 
-* Graql is a pattern matching language that can search and modify a Grakn graph.   
+* Graql is a pattern matching language that can search and modify a graph in Grakn.   
 * Graql operates on concepts and relations between them.   
 * Graql will automatically execute the query in an efficient fashion, taking advantage of existing indexes.
 

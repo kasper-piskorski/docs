@@ -21,7 +21,7 @@ This example takes a very simple example from [TinkerPop3 Documentation](http://
 
 The image above is used from the documentation provided for TinkerPop3, and licensed by the [Apache Software Foundation](http://www.apache.org). 
 
-We have chosen this example as it may already be familiar, and is simple enough to demonstrate some of the fundamentals of Graql. We walk through the entities ("things") and relationships between them and show how to represent them in a Grakn graph using Graql to define a schema. We then use Graql to add the data to the graph.  The main purpose of this example, however, is to use it for practice at making sample queries on the graph. 
+We have chosen this example as it may already be familiar, and is simple enough to demonstrate some of the fundamentals of Graql. We walk through the entities ("things") and relationships between them and show how to represent them using Graql to define a schema. We then use Graql to add the data to the graph.  The main purpose of this example, however, is to use it for practice at making sample queries on the graph. 
 
 ### Starting Graql
 
@@ -97,7 +97,7 @@ insert software plays-role programmed;
 insert programming isa relation-type, has-role programmer, has-role programmed, has-resource weight;
 ```
 
-And that's it. At this point, we have defined the schema of the Grakn graph.
+And that's it. At this point, we have defined the schema of the graph.
 
 ## Adding the Data
 Now we have a schema, we can move on to adding in the data, which is pretty much just a typing exercise:

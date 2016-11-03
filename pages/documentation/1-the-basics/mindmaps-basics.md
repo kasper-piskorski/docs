@@ -13,7 +13,7 @@ comment_issue_id: 17
 
 ## Schema and Data
 
-A Grakn graph is made of two layers: the database schema (which you can also think of as an ontology) and the data layer.
+In Grakn, a graph is made of two layers: the database schema (which you can also think of as an ontology) and the data layer.
 
 ***The schema should be clearly defined before loading data into the graph.*** The schema is used to formalise the data within a specific domain. If data is about healthcare, then we need to design a schema specific to healthcare. If data is about movies, then we need to define an schema specific to the movie industry.   
 
@@ -33,8 +33,8 @@ The Grakn stack provides a formal structure to a graph database.  The following 
 
 ### Concept
 
-Just as a [graph](https://en.wikipedia.org/wiki/Graph_theory) is defined by vertices and the edges between them, a
-Grakn graph is defined by concepts and the relationships between those
+Just as a [graph](https://en.wikipedia.org/wiki/Graph_theory) is defined by vertices and the edges between them, in Grakn, a
+graph is defined by concepts and the relationships between those
 concepts.  Every vertex is a concept and must, at minimum, have a unique ID. This is a string that identifies the concept.    
 
 ### Concept Type
@@ -66,7 +66,7 @@ across the graph.
 
 ### Relation Type and Role Type
 
-A Grakn graph enables us to model complex n-ary relationships. To do this we define a Relation Type, which is used to model relationships, and an associated pair of Role Types that are used to represent the two roles within that relationship. There is one Role Type for each entity to explain fully how the two relate to one another. 
+In Grakn, the graph enables us to model complex n-ary relationships. To do this we define a Relation Type, which is used to model relationships, and an associated pair of Role Types that are used to represent the two roles within that relationship. There is one Role Type for each entity to explain fully how the two relate to one another. 
 
 For example, to model that a `person` acted in a `movie` we need to use a Relation Type such as `has-cast`. The Role Type for the `person` is  `actor`, while the Role Type for the movie is `production-with-cast`. 
 
@@ -78,7 +78,7 @@ The Role Types associated with a Relation Type can only be used for that relatio
 
 Instances of the four meta-types described above can be subclassed. For example, subclasses of `person` (which is an instance of the meta-type EntityType) could be `man` and `woman`.  This simple subclassing allows us to expand and deepen our schema to whatever granularity of detail is needed.  
 
-{% include note.html content="In a Grakn graph, we use the shorthand `sub ('subclass')` when referring to sub-typing or specialisation. <br />
+{% include note.html content="In Grakl, we use the shorthand `sub ('subclass')` when referring to sub-typing or specialisation. <br />
 For example, `man sub person`. <br />
 We use the shorthand `isa` ('is a') to represent the type relationship. <br />
 For example, `car isa vehicle`.
@@ -100,7 +100,7 @@ Instances are data elements. They are named as such because they are instances o
 
 ### Entity
 
-An instance of the Entity Type (which is known as an Entity)  represents an actual item of data. For example, Entity Type `car` could have Entities `a BMW`, `this Mercedes`, and `that Volkswagen`. The Grakn graph enables us to model relationships between these entities, once they have been defined.
+An instance of the Entity Type (which is known as an Entity)  represents an actual item of data. For example, Entity Type `car` could have Entities `a BMW`, `this Mercedes`, and `that Volkswagen`. Grakn enables us to model relationships between these entities, once they have been defined.
 
 ### Resource
 
@@ -145,7 +145,7 @@ instance of
 <!-- Removed a section on the meta ontology. We could create a separate article about this later if we think it's useful --> 
 
 ## Where Next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load a schema and data into a Grakn Graph using Graql.
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load a schema and data into Grakn using Graql.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

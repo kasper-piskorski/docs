@@ -46,9 +46,9 @@ this by setting the `checkInternalVertexExistence` property to true. However, th
 
 You can use Mac OS X or Linux right now. We plan to support Windows at a later date.
 
-### How do I load data into a Grakn graph?
+### How do I load data into Grakn?
 
-There are several ways to load data into a Grakn graph. For small amounts of data (<1000 lines), you an load it directly via the Graql shell. For example, the following loads up the Pokemon example data:
+There are several ways to load data into Grakn. For small amounts of data (<1000 lines), you an load it directly via the Graql shell. For example, the following loads up the Pokemon example data:
 
 ```bash
 bin/graql.sh -f examples/pokemon.gql

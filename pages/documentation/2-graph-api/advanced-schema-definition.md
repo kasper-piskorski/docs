@@ -3,7 +3,7 @@ title: Defining an Advanced Schema
 keywords: schema
 last_updated: August 23, 2016
 tags: [graph-api, java]
-summary: "Demonstrates how to create an advanced schema for a Grakn knowledge graph."
+summary: "Demonstrates how to create an advanced schema for Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/advanced-schema-definition.html
 folder: documentation
@@ -11,7 +11,7 @@ comment_issue_id: 22
 ---
 
 
-This document introduces some advanced schema concepts, which you can use to create more expressive Grakn graphs. We recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
+This document introduces some advanced schema concepts, which you can use to create more expressive graphs. We recommend that you read our document about [defining a simple schema](simple-schema-definition.html) before continuing.
 
 Here, we also discuss creating a graph which supports Grakn reasoning and inference features.
 

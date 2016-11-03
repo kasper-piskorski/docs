@@ -28,13 +28,13 @@ bin/mindmaps.sh start
 This will start an instance of Cassandra, which serves as the supported backend for Mindmaps. It starts also Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser Dashboard.
 
 {% include note.html content="**Useful commands**  <br />
-To start Grakn graph, run `mindmaps.sh start`.   
-To stop Grakn graph, run `mindmaps.sh stop`. " %}
+To start Grakn, run `mindmaps.sh start`.   
+To stop Grakn, run `mindmaps.sh stop`. " %}
 
 
 ## Set up Graql
 
-Graql is our query language, which allows you to interface with a Grakn graph. We will start Graql and enter a few lines to check that all is working as it should.
+Graql is our query language, which allows you to interface with Grakn. We will start Graql and enter a few lines to check that all is working as it should.
 
 ```bash
 bin/graql.sh
@@ -54,11 +54,11 @@ $x id "topsy" isa twin;
 
 If you see the above output then congratulations! You have set up Grakn.
 
-You can now open [localhost:4567](http://localhost:4567) in your browser to start the visualiser, which provides a graphical dashboard on a Grakn graph.
+You can now open [localhost:4567](http://localhost:4567) in your browser to start the visualiser, which provides a graphical dashboard on a graph.
 
-![Visualising a Grakn graph](/images/topsyandtim.jpg)
+![Visualising a graph](/images/topsyandtim.jpg)
 
-Further information about the visualiser can be found in [Visualising a Grakn Graph](../the-basics/visualiser.html).
+Further information about the visualiser can be found in [Visualising a Graph](../the-basics/visualiser.html).
 
 
 ### Troubleshooting  
@@ -66,7 +66,7 @@ If you do not see the above message, please check our [troubleshooting page](../
 
 
 ## Where next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query a Grakn Graph using Graql or Java.
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query Grakn using Graql or Java.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

@@ -3,7 +3,7 @@ title: Quickstart Tutorial
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting-started, graql]
-summary: "This document will teach you how to use Graql to load a schema and some data into a Grakn Graph."
+summary: "This document will teach you how to use Graql to load a schema and some data into Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/quickstart-tutorial.html
 folder: documentation
@@ -22,7 +22,7 @@ We are going model how philosophers are related to each other. If you are using 
 bin/graql.sh -f examples/philosophers.gql
 ```
 
-By the way, don't worry if you've already loaded some different data into your graph. A Grakn graph can simultaneously contain as many schemas as you want.
+By the way, don't worry if you've already loaded some different data into your graph. In Grakn, a graph can simultaneously contain as many schemas as you want.
 
 ## Concepts
 

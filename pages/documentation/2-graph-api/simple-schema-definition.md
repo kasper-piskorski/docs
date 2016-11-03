@@ -3,7 +3,7 @@ title: Defining a Schema
 keywords: schema
 last_updated: August 23, 2016
 tags: [java, graph-api]
-summary: "Demonstrates how to create a schema for a Grakn knowledge graph."
+summary: "Demonstrates how to create a schema for Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/simple-schema-definition.html
 folder: documentation
@@ -22,7 +22,7 @@ Defining a schema for your graph allows you to:
 In Mindmaps, a schema is defined by adding **types** to your graph.
 These **types** allow you to divide your data into different categories but also control how data instances may relate to each other.
 
-In this section we will review each of these types and explain how you use them when defining a Grakn graph.
+In this section we will review each of these types and explain how you use them when defining a graph in Grakn.
 
 ## Basic Type Definitions
 
