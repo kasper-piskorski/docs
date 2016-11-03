@@ -208,7 +208,7 @@ dataMigrator
 Please take a look at our example of [SQL migration](../examples/SQL-migration.html) to find out more, and read our [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#) which covers using the shell script for SQL migration in more detail.
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html)).
+You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html).
 
 
 {% include links.html %}

@@ -128,7 +128,7 @@ rhs {
 ```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html)).
+You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html).
 
 Please take a look at our examples to further illustrate [SQL migration](../examples/SQL-migration.html) and [OWL migration](../examples/OWL-migration.html).
 {% include links.html %}

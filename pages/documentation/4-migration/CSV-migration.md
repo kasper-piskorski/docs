@@ -1,9 +1,9 @@
 ---
-title: CSV Migration to MindmapsDB
+title: CSV Migration to Grakn
 keywords: setup, getting started
-last_updated: August 10, 2016
+last_updated: November 2nd 2016
 tags: [migration]
-summary: "This document will teach you how to migrate CSV data into a MindmapsDB graph."
+summary: "This document will teach you how to migrate CSV data into Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/migration/CSV-migration.html
 folder: documentation
@@ -11,10 +11,10 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This tutorial shows you how to populate a MindmapsDB graph with CSV data. If you have not yet set up the MindmapsDB environment, please see the [Setup guide](../get-started/setup-guide.html).
+This tutorial shows you how to populate Grakn with CSV data. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for CSV
-The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed. For CSV:
+The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed. For CSV:
 
 ```bash
 usage: ./migration.sh csv -template <arg> -file <arg> [-help] [-delimiter <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
@@ -31,13 +31,13 @@ OPTIONS
 
 ## CSV Migration Basics
 
-CSV Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html).
+CSV Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
 
 #### What about the ontology?
 
 YOU must write the ontology!
 
-There are limitations on the CSV format that prevent it from expressing the semantics of the data. If we were to automatically migrate the ontology, your data would remain as unhelpful as in CSV, and we want our users to have the full benefit of a knowledge graph.
+There are limitations on the CSV format that prevent it from expressing the semantics of the data. If we were to automatically migrate the ontology, your data would remain as unhelpful as it is in CSV, and we want our users to have the full benefit of a knowledge graph.
 
 Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator how your data can be mapped to your ontology.
 
@@ -66,7 +66,7 @@ $x isa car id <Make>-<Model>
 
 This template will create a `car` entity for each row. It will attach `year` and `price` resources to each of these entities. If the `description` resource is present in the data, it will attach the approriate `description` to the `car`.
 
-The template is applied to each row, and the resulting Graql statement, if printed out, would look like:
+The template is applied to each row, and the resulting Graql statement, if printed out, looks like:
 
 ```graql
 insert
@@ -89,7 +89,7 @@ $x3 isa car id "Jeep-GrandCherokee"
 
 You will note that `$x1` is missing the `description` resource because it is not present in the data.
 
-This is the query that the migrator will send to the loader and eventually will be persisted in a graph.
+This is the query that the migrator will send to the loader and that will be persisted in a graph.
 
 ### Delimiter
 
@@ -109,7 +109,7 @@ air  moon roof   loaded"  4799.00
 
 ### Multiple Files
 
-This small example will demonstract creating one Mindmaps graph from three CSV data files using the templating language.
+This small example will demonstrate creating one graph from three CSV data files using the templating language.
 
 To start, we define the three data files. Each file needs a template that to tell the Migrator how to deal with the data in each row.
 
@@ -201,26 +201,10 @@ migrator.migrate(edgeTemplate, new File("edges.csv"));
 ```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://mindmaps.io/pages/api-reference/latest/index.html)).
-
+You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html).
 
 {% include links.html %}
 
-## Document Changelog
-
-<table>
-    <tr>
-        <td>Version</td>
-        <td>Date</td>
-        <td>Description</td>
-    </tr>
-        <tr>
-        <td>v0.2.0</td>
-        <td>28/09/2016</td>
-        <td>First doc release.</td>
-    </tr>
-
-</table>
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/mindmapsdb/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/32" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
