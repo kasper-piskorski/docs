@@ -16,6 +16,20 @@ This page introduces migration of data, stored in different formats, to populate
 ## Migration Shell Script
 The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:
 
+### SQL Migration
+
+```bash
+usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password> -database <url> -graph <graphname> [engine <url>]
+       -driver           JDBC driver
+       -user             username for SQL database
+       -pass             password for SQL database
+       -database         URL to SQL database
+       -graph            graph name (or defaults to the default keyspace)
+       -engine           Grakn engine URL, default localhost
+```
+
+Please see the [SQL migration documentation](./SQL-migration.html) for further information.
+
 ### CSV Migration
 
 ```bash
