@@ -16,24 +16,10 @@ This page introduces migration of data, stored in different formats, to populate
 ## Migration Shell Script
 The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:
 
-### SQL Migration
-
-```bash
-usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password> -database <url> -graph <graphname> [engine <url>]
-       -driver           JDBC driver
-       -user             username for SQL database
-       -pass             password for SQL database
-       -database         URL to SQL database
-       -graph            graph name (or defaults to the default keyspace)
-       -engine           Grakn engine URL, default localhost
-```
-
-Please see the [SQL migration documentation](./SQL-migration.html) for further information.
-
 ### CSV Migration
 
 ```bash
-usage: ./migration.sh csv -template <arg> -file <arg> [-help] [-delimiter <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
 
 OPTIONS
    -b,--batch <arg>       number of row to load at once
@@ -45,27 +31,49 @@ OPTIONS
    -u,--uri <arg>         uri to engine endpoint
 ```
 
+Please see the [CSV migration documentation](./CSV-migration.html) for further information.
+
 ### JSON Migration
 
 ```bash
-usage: ./migration json -schema <schema> -data <path> -graph <name> [-engine <url>]
-       -schema           json schema file or directory
-       -data             json data file or directory
-       -graph            graph name (or defaults to the default keyspace)
-       -engine           Grakn engine URL, default localhost
+usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+ -b,--batch <arg>      number of row to load at once
+ -h,--help             print usage message
+ -i,--input <arg>      input json data file or directory
+ -k,--keyspace <arg>   keyspace to use
+ -n,--no               dry run- write to standard out
+ -t,--template <arg>   graql template to apply over data
+ -u,--uri <arg>        uri to engine endpoint
 ```
+
+### Export 
+
+```bash
+usage: migration.sh export -data -ontology [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+ -data                 export data
+ -ontology             export ontology
+ -h,--help             print usage message
+ -k,--keyspace <arg>   keyspace to use
+ -n,--no               dry run- write to standard out
+ -u,--uri <arg>        uri to engine endpoint
+```
+
+Export will always redirect to standard out. 
 
 ### OWL Migration
 
 ```bash
-usage: ./migration.sh owl -file <path> [-graph <name>] [-engine <url>]
-       -file             OWL file
-       -graph            graph name (defaults to the name of the file with spaces replaced by _)
-       -engine           Grakn engine URL, default localhost
+usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+ -h,--help             print usage message
+ -i,--input <arg>      input owl file
+ -k,--keyspace <arg>   keyspace to use
+ -n,--no               dry run- write to standard out
+ -u,--uri <arg>        uri to engine endpoint
 ```
 
 Please see the [OWL migration documentation](./OWL-migration.html) for further information.
 
+NOTE: `-no` is not supported by OWL migration at the moment
 
 ## Where Next?
 You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html).
