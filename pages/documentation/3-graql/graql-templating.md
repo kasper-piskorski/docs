@@ -1,7 +1,7 @@
 ---
 title: Graql Templating
 keywords: graql, java
-last_updated: October 14, 2016
+last_updated: November 4, 2016
 tags: [graql]
 summary: "How to use templating on top of Graql"
 sidebar: documentation_sidebar
@@ -11,18 +11,20 @@ folder: documentation
 
 ## Basic Syntax
  
-Graql Templates are Graql statements with the addition of functions and variables. Graql templates are primarily used for migrating data into a Mindmaps graph, although as a component of graql can be used whevever writing Graql in java. You can find more examples of their usage in the Migration section of the documentaion. 
+Graql templates are Graql statements with the addition of functions and variables. Graql templates are primarily used for migrating data into Grakn, although as a component of Graql, they can be used whevever writing Graql in Java. You can find more examples of their usage in the [Migration](../migration/migration.html) section of the documentation. 
 
-{% include note.html content=" For the moment, Graql Template usage is limited to Graql java. It will not work in the shell. " %}
+{% include note.html content=" For the moment, Graql Template usage is limited to Graql Java. It will not work in the Graql shell. " %}
 
-Templates are used to expand Graql queries given data. They allow you to control the flow of information.
+Templates are used to expand Graql queries, given data. They allow you to control the flow of information.
 
 Accessing a single value:
+
 ```graql-template
 $x isa thing has value <value>
 ```
 
 Value in a nested context:
+
 ```graql-template
 $x isa person has name <person.name.firstName>
 ```
@@ -70,23 +72,20 @@ Boolean expressions only accept `true` and `false` (they will not work with `0/1
 | `lt`          | `this < that`   |  `if (lt this that) do { ... }` | operates on numbers
 | `le`          | `this <= that`  |  `if (le this that) do { ... }` | operates on numbers
 
-#### Grouping expressions
-
-Expressions can be grouped using `(` and `)`. 
-
-//TODO
 
 ### Iteration
 
 Graql Templates allow you to iterate over a maps or lists.
 
-Example 1: `for` over a list
+Example 1: `for` over a list:
+
 ```graql-template
 for (whale in whales)
 do { $x isa whale has name <whale>; }
 ```
 
-Example 2: `for` over a map
+Example 2: `for` over a map:
+
 ```graql-template
 insert $x isa person;
     for (name in names) do {
@@ -94,7 +93,8 @@ insert $x isa person;
     }
 ```
 
-Example 3: "enhanced" `for` over a map
+Example 3: "enhanced" `for` over a map:
+
 ```graql-template
 insert $x isa person;
     for (names) do {
@@ -102,9 +102,10 @@ insert $x isa person;
     }
 ```
 
-When iterating over a map as in Example 3, you are allowed to use the "enhanced" for syntax. In this loop, it is not required to provide the item name. The properties within the `do` block context are inferred to be the first level children of tbe property in the `for` statement.
+When iterating over a map as in Example 3, you are allowed to use the "enhanced" for syntax. In this loop, it is not required to provide the item name. The properties within the `do` block context are inferred to be the first level children of the property in the `for` statement.
 
-Example 5: doubly nested `for`
+Example 5: doubly nested `for`:
+
 ```graql-template
 for (people) do { 
 insert $x isa person has name <name>;
@@ -122,13 +123,15 @@ insert $x isa person has name <name>;
 `if`, `else` and `elseif` are the included commands that provide conditional logic. 
 
 
-Example 6: `if`
+Example 6: `if`:
+
 ```graql-template
 if (ne dog null)
 do { insert $dog isa dog; }
 ```
 
-Example 7: `if`...`else`
+Example 7: `if`...`else`:
+
 ```graql-template
 if (ne firstName null) do {
     insert $person has name <firstName>;
@@ -147,6 +150,7 @@ Macros are denoted by an `@` symbol prefixing the name of the macro function. Mi
 Macro `noescp` is short for "no escape". This function will not add quotes or escape the characters inside the value when doing replacement. Accepts exactly one argument.
 
 e.g.
+
 ```graql-template
 insert $person has introduction "Hi! My name is @noescp(firstname) @noescp(lastname)";
 ```
@@ -156,6 +160,7 @@ insert $person has introduction "Hi! My name is @noescp(firstname) @noescp(lastn
 `int` converts the contents of the data to an interger. Accepts exactly one argument.
 
 e.g.
+
 ```graql-template
 match $x isa thing has value @int(value);
 ```
@@ -165,6 +170,7 @@ match $x isa thing has value @int(value);
 `double` converts the contents of the data to a double. Accepts exactly one argument.
 
 e.g.
+
 ```graql-template
 match $x isa thing has value @double(value);
 ```
@@ -174,11 +180,13 @@ match $x isa thing has value @double(value);
 The `equals` macro returns a boolean and as such can be used in conditional statements. It can also be used in the Graql statment. Requires at least two arguments. 
 
 e.g. in Graql
+
 ```graql-template
 insert $x isa hasEquivalentResource value @equals(this that other)
 ```
 
 e.g. in conditional
+
 ```graql-template
 if (@equals(this that)) do { equals } else { not }"
 ```
@@ -188,6 +196,7 @@ if (@equals(this that)) do { equals } else { not }"
 When using iterators Graql variables will be automatically suffixed with an aggregate index of the loop. This is necessary because otherwise Graql would confuse variables belonging to different statements when running the queries. 
 
 For example, the following loop:
+
 ```graql-template
 insert $x isa person has name <name>;
     
@@ -203,6 +212,7 @@ $y isa person, id 1234;
 ```
 
 would result in the expanded Graql query:
+
 ```graql-template
 insert $x0 isa person has name "Elmo";
     
@@ -231,7 +241,7 @@ insert $x1 isa person has name "Flounder";
 
 ## Usage in Java
 
-For the moment, Graql templating can only be used through the java API:
+For the moment, Graql templating can only be used through the Java API:
 
 ```java
 String template = "" +
