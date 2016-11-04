@@ -16,11 +16,13 @@ This tutorial shows you how to migrate OWL into Grakn. If you have not yet set u
 ## Migration Shell Script for OWL
 The migration shell script can be found in the `bin` directory after the Grakn distribution file has been unzipped. Usage is specific to the type of migration being performed. For OWL:
 
-```
-usage: ./migration.sh owl -file <path> [-graph <name>] [-engine <url>]
-       -file             OWL file
-       -graph            graph name (defaults to the name of the file with spaces replaced by _)
-       -engine           Grakn engine URL, default localhost
+```bash
+usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+ -h,--help             print usage message
+ -i,--input <arg>      input owl file
+ -k,--keyspace <arg>   keyspace to use
+ -n,--no               dry run- write to standard out
+ -u,--uri <arg>        uri to engine endpoint
 ```
 
 When you have read the following, you may find our extended example of [OWL migration](../examples/OWL-migration.html) useful.
