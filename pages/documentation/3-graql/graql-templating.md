@@ -157,7 +157,7 @@ insert $person has introduction "Hi! My name is @noescp(firstname) @noescp(lastn
 
 #### int
 
-`int` converts the contents of the data to an interger. Accepts exactly one argument.
+`int` converts the contents of the data to an integer. Accepts exactly one argument.
 
 e.g.
 
