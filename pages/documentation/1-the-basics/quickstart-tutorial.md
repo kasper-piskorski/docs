@@ -26,7 +26,7 @@ By the way, don't worry if you've already loaded some different data into your g
 
 ## Concepts
 
-We'll first add an entity type `person`:
+Assuming that you are building up the graph from scratch, rather than loading it directly from the `philosophers.gql` file, let's first add an entity type `person`:
 
 ```bash
 bin/graql.sh
@@ -83,6 +83,8 @@ match $c id "Cynicism";
 $c id "Cynicism" isa school;
 ```
 
+## A note on `commit`
+Nothing you have entered into the Graql shell has yet been committed to the graph, nor has it been validated. To save any changes you make to a graph, you need to type `commit` in the shell. It is a good habit to get into regularly committing what you have entered, so we will show this in the following example.
 
 ## Relations
 
@@ -107,8 +109,6 @@ insert person plays-role philosopher;
 insert school plays-role philosophy;
 ```
 
-{% include warning.html content="The changes you've made to the graph haven't been saved yet!  <br /> Type `commit` in the Graql shell to commit any changes." %}
-
 Now let's relate some `philosophers` to their `philosophies`:
 
 ```graql
@@ -116,6 +116,7 @@ insert (philosopher: "Socrates", philosophy: "Platonism") isa practice;
 insert (philosopher: "Plato", philosophy: "Idealism") isa practice;
 insert (philosopher: "Plato", philosophy: "Platonism") isa practice;
 insert (philosopher: "Aristotle", philosophy: "Peripateticism") isa practice;
+commit;
 ```
 
 ![](/images/practice.png)
@@ -156,6 +157,7 @@ Second, our data:
 insert (teacher: "Socrates", student: "Plato") isa education;
 insert (teacher: "Plato", student: "Aristotle") isa education;
 insert (teacher: "Aristotle", student: "Alexander") isa education;
+commit;
 ```
 
 {% include tip.html content="**Test Yourself** <br /> Try writing a query to see who taught Aristotle. Include all the roles and types (`teacher`, `student` and `education`), then remove them one by one to see when the results change! The answer is at the bottom of this page." %}
@@ -191,6 +193,7 @@ insert "Alexander" has title "King of Macedon";
 insert "Alexander" has title "King of Persia";
 insert "Alexander" has title "Pharaoh of Egypt";
 insert "Alexander" has title "Lord of Asia";
+commit;
 ```
 
 
@@ -232,6 +235,7 @@ insert "cave-fact" isa fact, value "Caves are mostly pretty dark";
 insert (thinker: "Plato", thought: "cave-fact") isa knowledge;
 insert "nothing" isa fact;
 insert (thinker: "Socrates", thought: "nothing") isa knowledge;
+commit;
 ```
 
 A relation is actually just a special kind of instance. Just as
@@ -243,6 +247,7 @@ First, we have to state that someone can think about their own knowledge:
 
 ```graql
 insert knowledge plays-role thought;
+commit;
 ```
 
 We can now give Socrates one final piece of knowledge:
