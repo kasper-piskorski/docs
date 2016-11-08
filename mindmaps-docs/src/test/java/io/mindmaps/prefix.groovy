@@ -9,8 +9,8 @@ import static io.mindmaps.graql.Graql.*;
 if (false) {
     Concept concept = null;
     Var var = null;
-    withoutGraph();
     PokemonGraphFactory.loadGraph(null);
 }
 
 MindmapsGraph mindmapsGraph = DocTestUtil.getTestGraph();
+QueryBuilder qb = withGraph(mindmapsGraph);
