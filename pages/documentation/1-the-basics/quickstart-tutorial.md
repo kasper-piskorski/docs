@@ -30,16 +30,25 @@ Assuming that you are building up the graph from scratch, rather than loading it
 
 ```bash
 bin/graql.sh
+```
+```graql
 insert person isa entity-type;
+```
+
+And a resource for people's names:
+
+```graql
+insert name isa resource-type, datatype string;
+insert person has-resource name;
 ```
 
 ...and now some data in the form of concept instances: in our case, a bunch of ancient Greeks...
 
 ```graql
-insert "Socrates" isa person;
-insert "Plato" isa person;
-insert "Aristotle" isa person;
-insert "Alexander" isa person;
+insert isa person, has name "Socrates";
+insert isa person, has name "Plato";
+insert isa person, has name "Aristotle";
+insert isa person, has name "Alexander";
 ```
 
 ![](/images/phil.png)
@@ -55,12 +64,12 @@ concept instances.
 We'll quickly check that our data has loaded:
 
 ```graql
-match $p isa person;
+match $p isa person, has name $n;
 
-$p id "Aristotle" isa person;
-$p id "Plato" isa person;
-$p id "Socrates" isa person;
-$p id "Alexander" isa person;
+$p isa person; $n value "Aristotle" isa name;
+$p isa person; $n value "Plato" isa name;
+$p isa person; $n value "Socrates" isa name;
+$p isa person; $n value "Alexander" isa name;
 ```
 
 {% include note.html content="Graql variables start with a `$`. They represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
@@ -68,19 +77,19 @@ $p id "Alexander" isa person;
 Next, let's add some `schools` of thought:
 
 ```graql
-insert school isa entity-type;
-insert "Peripateticism" isa school;
-insert "Platonism" isa school;
-insert "Idealism" isa school;
-insert "Cynicism" isa school;
+insert school isa entity-type, has-resource name;
+insert isa school, has name "Peripateticism";
+insert isa school, has name "Platonism";
+insert isa school, has name "Idealism";
+insert isa school, has name "Cynicism";
 ```
 
 And look up one:
 
 ```graql
-match $c id "Cynicism";
+match $c has name "Cynicism";
 
-$c id "Cynicism" isa school;
+$c isa school;
 ```
 
 ## A note on `commit`
@@ -112,12 +121,14 @@ insert school plays-role philosophy;
 Now let's relate some `philosophers` to their `philosophies`:
 
 ```graql
-insert (philosopher: "Socrates", philosophy: "Platonism") isa practice;
-insert (philosopher: "Plato", philosophy: "Idealism") isa practice;
-insert (philosopher: "Plato", philosophy: "Platonism") isa practice;
-insert (philosopher: "Aristotle", philosophy: "Peripateticism") isa practice;
+match $socrates has name "Socrates"; $platonism has name "Platonism"; insert (philosopher: $socrates, philosophy: $platonism) isa practice;
+match $plato has name "Plato"; $idealism has name "Idealism"; insert (philosopher: $plato, philosophy: $idealism) isa practice;
+match $plato has name "Plato"; $platonism has name "Platonism"; insert (philosopher: $plato, philosophy: $platonism) isa practice;
+match $aristotle has name "Aristotle"; $peripateticism has name "Peripateticism"; insert (philosopher: $aristotle, philosophy: $peripateticism) isa practice;
 commit;
 ```
+
+The `match .... insert ...` syntax will perform the `insert` query for every result of the `match` query.
 
 ![](/images/practice.png)
 
@@ -155,9 +166,9 @@ insert person plays-role teacher, plays-role student;
 Second, our data:
 
 ```graql
-insert (teacher: "Socrates", student: "Plato") isa education;
-insert (teacher: "Plato", student: "Aristotle") isa education;
-insert (teacher: "Aristotle", student: "Alexander") isa education;
+match $socrates has name "Socrates"; $plato has name "Plato"; insert (teacher: $socrates, student: $plato) isa education;
+match $plato has name "Plato"; $aristotle has name "Aristotle"; insert (teacher: $plato, student: $aristotle) isa education;
+match $aristotle has name "Aristotle"; $alexander has name "Alexander"; insert (teacher: $aristotle, student: $alexander) isa education;
 commit;
 ```
 
@@ -178,7 +189,7 @@ insert person has-resource title, has-resource epithet;
 Let's make Alexander "Great"!
 
 ```graql
-insert "Alexander" has epithet "The Great";
+match $alexander has name "Alexander"; insert $alexander has epithet "The Great";
 ```
 
 
@@ -189,11 +200,11 @@ This is a quick way to add a relation between `Alexander` and an `epithet` with 
 Let's add the rest of Alexander's titles while we're at it:
 
 ```graql
-insert "Alexander" has title "Hegemon";
-insert "Alexander" has title "King of Macedon";
-insert "Alexander" has title "King of Persia";
-insert "Alexander" has title "Pharaoh of Egypt";
-insert "Alexander" has title "Lord of Asia";
+match $alexander has name "Alexander"; insert $alexander has title "Hegemon";
+match $alexander has name "Alexander"; insert $alexander has title "King of Macedon";
+match $alexander has name "Alexander"; insert $alexander has title "King of Persia";
+match $alexander has name "Alexander"; insert $alexander has title "Pharaoh of Egypt";
+match $alexander has name "Alexander"; insert $alexander has title "Lord of Asia";
 commit;
 ```
 
@@ -201,13 +212,13 @@ commit;
 Using Graql, we can query for people who have titles, and list them out.
 
 ```graql
-match $x isa person, has title $y;
+match isa person, has title $y, has name $n;
 
-$x id "Alexander" isa person; $y value "Shah of Persia" isa title; 
-$x id "Alexander" isa person; $y value "Hegeon" isa title; 
-$x id "Alexander" isa person; $y value "King of Macedon" isa title; 
-$x id "Alexander" isa person; $y value "Pharaoh of Egypt" isa title; 
-$x id "Alexander" isa person; $y value "Lord of Asia" isa title; 
+$n value "Alexander" isa name; $y value "Shah of Persia" isa title; 
+$n value "Alexander" isa name; $y value "Hegeon" isa title; 
+$n value "Alexander" isa name; $y value "King of Macedon" isa title; 
+$n value "Alexander" isa name; $y value "Pharaoh of Egypt" isa title; 
+$n value "Alexander" isa name; $y value "Lord of Asia" isa title; 
 ```
 
 
@@ -223,19 +234,21 @@ insert knowledge isa relation-type;
 insert thinker isa role-type;
 insert thought isa role-type;
 insert knowledge has-role thinker, has-role thought;
-insert fact isa entity-type, plays-role thought;
+insert fact isa entity-type, plays-role thought, has-resource name;
+insert description isa resource-type, datatype string;
+insert fact has-resource description;
 insert person plays-role thinker;
 ```
 
 Aristotle knew some astronomy, Plato knew a lot about caves and Socrates didn't really know anything at all.
 
 ```graql
-insert "sun-fact" isa fact, value "The Sun is bigger than the Earth";
-insert (thinker: "Aristotle", thought: "sun-fact") isa knowledge;
-insert "cave-fact" isa fact, value "Caves are mostly pretty dark";
-insert (thinker: "Plato", thought: "cave-fact") isa knowledge;
-insert "nothing" isa fact;
-insert (thinker: "Socrates", thought: "nothing") isa knowledge;
+insert has name "sun-fact" isa fact, has description "The Sun is bigger than the Earth";
+match $aristotle has name "Aristotle"; $sun-fact has name "sun-fact"; insert (thinker: $aristotle, thought: $sun-fact) isa knowledge;
+insert has name "cave-fact" isa fact, has description "Caves are mostly pretty dark";
+match $plato has name "Plato"; $cave-fact has name "cave-fact"; insert (thinker: $plato, thought: $cave-fact) isa knowledge;
+insert has name "nothing" isa fact;
+match $socrates has name "Socrates"; $nothing has name "nothing"; insert (thinker: $socrates, thought: $nothing) isa knowledge;
 commit;
 ```
 
@@ -254,7 +267,7 @@ commit;
 We can now give Socrates one final piece of knowledge:
 
 ```graql
-match $socratesKnowsNothing ("Socrates", "nothing"); insert (thinker: "Socrates", thought: $socratesKnowsNothing) isa knowledge;
+match $socrates has name "Socrates"; $nothing has name "nothing"; $socratesKnowsNothing ($socrates, $nothing); insert (thinker: $socrates, thought: $socratesKnowsNothing) isa knowledge;
 ```
 
 Here, `socratesKnowsNothing` is the relation between `Socrates` and `nothing`.
@@ -264,9 +277,9 @@ player.
 Finally, we'll check out everything Socrates knows:
 
 ```graql
-match ("Socrates", $x) isa knowledge;
+match $socrates has name "Socrates"; ($socrates, $x) isa knowledge;
 
-$x id "nothing" isa fact;
+$x id "fact-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa fact;
 $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 ```
 
@@ -280,7 +293,7 @@ We asked you to write a query to see who taught Aristotle.
 Graql answers:
 
 ```graql
-match (teacher: $teach, $student: Aristotle) isa education;
+match $aristotle has name "Aristotle"; (teacher: $teach, student: $aristotle) isa education;
 ```
 
 We asked you to write a query for everyone with a title containing "King".   

@@ -5,13 +5,12 @@ import io.mindmaps.graql.*;
 import static io.mindmaps.graql.Graql.*;
 
 // This is some dumb stuff so IntelliJ doesn't get rid of the imports
-Concept concept = null;
+//noinspection GroovyConstantIfStatement
+if (false) {
+    Concept concept = null;
+    Var var = null;
+    PokemonGraphFactory.loadGraph(null);
+}
 
-String keyspace = UUID.randomUUID().toString().replaceAll("-", "");
-MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, keyspace).getGraph();
-PokemonGraphFactory.loadGraph(mindmapsGraph);
+MindmapsGraph mindmapsGraph = DocTestUtil.getTestGraph();
 QueryBuilder qb = withGraph(mindmapsGraph);
-qb.insert(
-    id("Pikachu").isa("pokemon"),
-    id("dragon").isa("pokemon-type")
-).execute();

@@ -77,7 +77,7 @@ tallPokemon.get("x").forEach(x -> System.out.println(x.getValue()));
 ## Ask Queries
 
 ```java
-if (qb.match(var().isa("pokemon-type").value("dragon")).ask().execute()) {
+if (qb.match(var().isa("pokemon-type").has("name", "dragon")).ask().execute()) {
   System.out.println("Dragons are real!");
 }
 ```
@@ -85,24 +85,25 @@ if (qb.match(var().isa("pokemon-type").value("dragon")).ask().execute()) {
 ## Insert Queries
 
 ```java
-InsertQuery addPichu = qb.insert(var().id("Pichu").isa("pokemon"));
+InsertQuery addPichu = qb.insert(var().isa("pokemon").has("name", "Pichu"));
 
 addPichu.execute();
 
 // Make everything dragons!
 qb.match(
-  var("x").isa("pokemon")
+  var("x").isa("pokemon"),
+  var("dragon").has("name", "dragon")
 ).insert(
   var().isa("has-type")
     .rel("pokemon-with-type", "x")
-    .rel("type-of-pokemon", var().id("dragon"))
+    .rel("type-of-pokemon", "dragon")
 ).execute();
 ```
 
 ## Delete Queries
 
 ```java
-qb.match(var("x").id("Pichu")).delete("x").execute();
+qb.match(var("x").has("name", "Pichu")).delete("x").execute();
 ```
 
 ## Query Parser
@@ -123,11 +124,11 @@ for (Concept x : qb.<MatchQuery>parse("match $x isa pokemon;").get("x")) {
     System.out.println(x);
 }
 
-if (qb.<AskQuery>parse("match water isa pokemon-type; ask;").execute()) {
+if (qb.<AskQuery>parse("match has name 'water' isa pokemon-type; ask;").execute()) {
   System.out.println("Water is a pokemon type!");
 }
 
-qb.parse("insert id 'pichu' isa pokemon;").execute();
+qb.parse("insert isa pokemon, has name 'Pichu';").execute();
 
 qb.parse("match $x isa pokemon; delete $x;").execute();
 ```

@@ -1,7 +1,5 @@
 package io.mindmaps;
 
-import com.google.common.collect.ImmutableSet;
-import io.mindmaps.graql.Graql;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.RegexFileFilter;
@@ -14,7 +12,10 @@ import java.nio.file.Files;
 import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
+import static io.mindmaps.DocTestUtil.getTestGraph;
+import static io.mindmaps.graql.Graql.withGraph;
 import static org.junit.Assert.fail;
 
 public class GraqlDocsTest {
@@ -36,8 +37,7 @@ public class GraqlDocsTest {
         Collection<File> files =
                 FileUtils.listFiles(dir, new RegexFileFilter(".*\\.md"), DirectoryFileFilter.DIRECTORY);
 
-        files.stream()
-                .forEach(this::assertFileValidSyntax);
+        files.forEach(this::assertFileValidSyntax);
 
         if (numFound < 10) {
             fail("Only found " + numFound + " Graql examples. Perhaps the regex is wrong?");
@@ -45,6 +45,8 @@ public class GraqlDocsTest {
     }
 
     private void assertFileValidSyntax(File file) {
+        MindmapsGraph graph = getTestGraph();
+
         byte[] encoded = new byte[0];
         try {
             encoded = Files.readAllBytes(file.toPath());
@@ -61,53 +63,56 @@ public class GraqlDocsTest {
 
             String graqlString = matcher.group(2);
 
-            assertCodeblockValidSyntax(file.toString(), graqlString);
+            if (!graqlString.trim().startsWith("test-ignore")) {
+                assertCodeblockValidSyntax(graph, file.toString(), graqlString);
+            }
         }
     }
 
-    private void assertCodeblockValidSyntax(String fileName, String block) {
+    private void assertCodeblockValidSyntax(MindmapsGraph graph, String fileName, String block) {
         Matcher shellMatcher = SHELL_GRAQL.matcher(block);
 
         if (shellMatcher.find()) {
             while (shellMatcher.find()) {
                 String graqlString = shellMatcher.group(1);
-                assertGraqlStringValidSyntax(fileName, graqlString);
+                assertGraqlStringValidSyntax(graph, fileName, graqlString);
             }
         } else {
-            assertGraqlStringValidSyntax(fileName, block);
+            assertGraqlStringValidSyntax(graph, fileName, block);
         }
     }
 
-    private void assertGraqlStringValidSyntax(String fileName, String graqlString) {
+    private void assertGraqlStringValidSyntax(MindmapsGraph graph, String fileName, String graqlString) {
         try {
-            parse(graqlString);
-        } catch (IllegalArgumentException e1) {
+            parse(graph, graqlString);
+        } catch (Exception e1) {
             // Try and parse line-by-line instead
             String[] lines = graqlString.split("\n");
 
             try {
                 if (lines.length > 1) {
                     for (String line : lines) {
-                        if (!line.isEmpty()) parse(line);
+                        if (!line.isEmpty()) parse(graph, line);
                     }
                 } else {
-                    syntaxFail(fileName, graqlString, e1.getMessage());
+                    graqlFail(fileName, graqlString, e1.getMessage(), e1);
                 }
-            } catch (IllegalArgumentException e2) {
-                syntaxFail(fileName, graqlString, e1.getMessage() + "\nOR\n" + e2.getMessage());
+            } catch (Exception e2) {
+                graqlFail(fileName, graqlString, e1.getMessage() + "\nOR\n" + e2.getMessage(), e1, e2);
             }
         }
     }
 
-    private void parse(String line) {
+    private void parse(MindmapsGraph graph, String line) {
         // TODO: Handle this in a more elegant way
         // 'commit' is a valid command
         if (!line.trim().equals("commit")) {
-            Graql.parse(line);
+            withGraph(graph).parse(line).execute();
         }
     }
 
-    private void syntaxFail(String fileName, String graqlString, String error) {
-        fail("Invalid syntax in " + fileName + ":\n" + graqlString + "\nERROR:\n" + error);
+    private void graqlFail(String fileName, String graqlString, String error, Exception... exceptions) {
+        Stream.of(exceptions).forEach(Throwable::printStackTrace);
+        fail("Failure in " + fileName + ":\n" + graqlString + "\nERROR:\n" + error);
     }
 }

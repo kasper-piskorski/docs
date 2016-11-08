@@ -293,12 +293,12 @@ The above is equivalent to:
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell11">
 <pre>
-match $x plays-role name-owner;
+match $x plays-role has-name-owner;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java11">
 <pre>
-qb.match(var("x").playsRole("name-owner"));
+qb.match(var("x").playsRole("has-name-owner"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
