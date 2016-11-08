@@ -130,6 +130,7 @@ match (philosopher: $phil, "Platonism") isa practice;
 ```
 
 This returns:   
+
 ```
 $phil id "Socrates" isa person;
 $phil id "Plato" isa person;
