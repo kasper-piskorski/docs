@@ -26,18 +26,22 @@ variable or an ID.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
+match
+$pk has name "Pikachu";
 insert
-$p isa pokemon, id "Pichu", has pokedex-no 172;
-(descendent: Pikachu, ancestor: $p) isa evolution;
+$p isa pokemon, has name "Pichu", has pokedex-no 172;
+(descendent: $pk, ancestor: $p) isa evolution;
 
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
-qb.insert(
-    var("p").isa("pokemon").id("Pichu").has("pokedex-no", 172),
+qb.match(
+    var("pk").has("name", "Pikachu")
+).insert(
+    var("p").isa("pokemon").has("name", "Pichu").has("pokedex-no", 172),
     var().isa("evolution")
-        .rel("descendent", var().id("Pikachu"))
+        .rel("descendent", "pk")
         .rel("ancestor", "p")
 ).execute();
 
@@ -128,12 +132,12 @@ Add a resource of the given type to the concept.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell5">
 <pre>
-insert "Pichu" isa pokemon has height 30;
+insert isa pokemon, has name "Pichu" has height 30;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java5">
 <pre>
-qb.insert(id("Pichu").isa("pokemon").has("height", 30));
+qb.insert(var().isa("pokemon").has("name", "Pichu").has("height", 30));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -150,7 +154,7 @@ The above example is equivalent to:
 <div role="tabpanel" class="tab-pane active" id="shell6">
 <pre>
 insert
-$owner id "Pichu" isa pokemon;
+$owner isa pokemon, has name "Pichu";
 $value isa height, value 30;
 
 (has-height-owner: $owner, has-height-value: $value) isa has-height;
@@ -160,7 +164,7 @@ $value isa height, value 30;
 <div role="tabpanel" class="tab-pane" id="java6">
 <pre>
 qb.insert(
-  var("owner").id("Pichu").isa("pokemon"),
+  var("owner").isa("pokemon").has("name", "Pichu"),
   var("value").isa("height").value(30),
   var().rel("has-height-owner", "owner").rel("has-height-value", "value").isa("has-height")
 );
@@ -182,15 +186,22 @@ given roles.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell7">
 <pre>
-insert (pokemon-with-type: "Pichu", type-of-pokemon: "electric") isa has-type;
+match
+$p has name "Pichu";
+$e has name "electric";
+insert
+(pokemon-with-type: $p, type-of-pokemon: $e) isa has-type;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java7">
 <pre>
-qb.insert(
+qb.match(
+  var("p").has("name", "Pichu"),
+  var("e").has("name", "electric")
+).insert(
   var()
-    .rel("pokemon-with-type", id("Pichu"))
-    .rel("type-of-pokemon", id("electric"))
+    .rel("pokemon-with-type", "p")
+    .rel("type-of-pokemon", "e")
     .isa("has-type")
 );
 

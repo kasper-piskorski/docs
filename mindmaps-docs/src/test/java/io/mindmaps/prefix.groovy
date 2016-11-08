@@ -12,6 +12,6 @@ MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, keyspace).get
 PokemonGraphFactory.loadGraph(mindmapsGraph);
 QueryBuilder qb = withGraph(mindmapsGraph);
 qb.insert(
-    id("Pikachu").isa("pokemon"),
-    id("dragon").isa("pokemon-type")
+    var().isa("pokemon").has("name", "Pikachu"),
+    var().isa("pokemon-type").has("name", "dragon")
 ).execute();
