@@ -41,7 +41,7 @@ Match several patterns together.
 
 ```graql
 match
-$x isa movie, id "titanic";
+$x isa movie, has title "Titanic";
 (actor: $a, $x);
 ```
 
@@ -92,7 +92,7 @@ distinct
 De-duplicate the results of a query.
 
 ```graql
-match $m isa movie, id 'dr-strangelove'; (actor: $a, $m);
+match $m isa movie, has title 'Dr. Strangelove'; (actor: $a, $m);
 select $a;
 distinct;
 ```
@@ -119,7 +119,7 @@ An ask query will return whether the given match query has any results.
 Return whether the match query has any results.
 
 ```graql
-match $x isa person, id 'james-cameron'; (actor: $x);
+match $x isa person, has name 'James Cameron'; (actor: $x);
 ask;
 ```
 
@@ -135,7 +135,7 @@ insert [ pattern ; ... ]
 Insert a concept into the graph.
 
 ```graql
-insert 'finding-dory' isa movie;
+insert isa movie, has title 'Finding Dory';
 ```
 If a match query is provided, the query will insert the given variable patterns for every result of the match query.
 
@@ -146,8 +146,12 @@ match  insert [ pattern ; ... ]
 Insert a relation for every result of a match query.
 
 ```graql
-match $m isa movie; (director: 'tim-burton', $m);
-insert (actor: 'johnny-depp', production-with-cast: $m) isa has-cast;
+match
+$burton has name "Tim Burton";
+$m isa movie;
+(director: $burton, $m);
+$depp has name "Johnny Depp";
+insert (actor: $depp, production-with-cast: $m) isa has-cast;
 ```
 
 

@@ -143,7 +143,7 @@ The addition of the rules specified above can be expressed via an insert Graql s
 
 ```graql
 insert
-"R1" isa inference-rule,
+isa inference-rule,
 lhs {
     (parent: $x, child: $y) isa Parent;
 },
@@ -151,7 +151,7 @@ rhs {
     (ancestor: $x, descendant: $y) isa Ancestor;
 };
 
-"R2" isa inference-rule,
+isa inference-rule,
 lhs {
     (parent: $x, child: $z) isa Parent;
     (ancestor: $z, descendant: $y) isa Ancestor;
