@@ -54,12 +54,12 @@ Removes the given role from the relation type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x id "evolution"; delete $x has-role descendant;
+match $x id "evolution"; delete $x has-role descendent;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.match(var("x").id("evolution")).delete(var("x").hasRole("descendant"));
+qb.match(var("x").id("evolution")).delete(var("x").hasRole("descendent"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

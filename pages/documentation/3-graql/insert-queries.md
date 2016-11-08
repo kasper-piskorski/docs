@@ -248,9 +248,7 @@ Add a role to this relation type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-insert
-trained-by isa relation-type, has-role trainer, has-role pokemon-trained;
-
+insert trained-by isa relation-type, has-role trainer, has-role pokemon-trained;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
