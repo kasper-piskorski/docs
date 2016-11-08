@@ -103,28 +103,28 @@ And that's it. At this point, we have defined the schema of the graph.
 Now we have a schema, we can move on to adding in the data, which is pretty much just a typing exercise:
 
 ```graql
-insert "marko" isa person;
-insert "vadas" isa person;
-insert "josh" isa person;
-insert "peter" isa person;
-insert "marko" has age 29;
-insert "josh" has age 32;
-insert "vadas" has age 27;
-insert "peter" has age 35;
-insert (knower: "marko", known-about: "josh") isa knows has weight 1.0;
-insert (knower: "marko", known-about: "vadas") isa knows has weight 0.5;
+insert has name "marko" isa person;
+insert has name "vadas" isa person;
+insert has name "josh" isa person;
+insert has name "peter" isa person;
+match $marko has name "marko"; insert $marko has age 29;
+match $josh has name "josh"; insert $josh has age 32;
+match $vadas has name "vadas"; insert $vadas has age 27;
+match $peter has name "peter"; insert $peter has age 35;
+match $marko has name "marko"; $josh has name "josh"; insert (knower: $marko, known-about: $josh) isa knows has weight 1.0;
+match $marko has name "marko"; $vadas has name "vadas"; insert (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 ```
 
 
 ```graql
-insert "lop" isa software;
-insert "ripple" isa software;
-insert "lop" has lang "java";
-insert "ripple" has lang "java";
-insert (programmer: "marko", programmed: "lop") isa programming has weight 0.4;
-insert (programmer: "peter", programmed: "lop") isa programming has weight 0.2;
-insert (programmer: "josh", programmed: "lop") isa programming has weight 0.4;
-insert (programmer: "josh", programmed: "ripple") isa programming has weight 1.0;
+insert has name "lop" isa software;
+insert has name "ripple" isa software;
+match $lop has name "lop"; insert $lop has lang "java";
+match $ripple has name "ripple"; insert $ripple has lang "java";
+match $marko has name "marko"; $lop has name "lop"; insert (programmer: $marko, programmed: $lop) isa programming has weight 0.4;
+match $peter has name "peter"; $lop has name "lop"; insert (programmer: $peter, programmed: $lop) isa programming has weight 0.2;
+match $josh has name "josh"; $lop has name "lop"; insert (programmer: $josh, programmed: $lop) isa programming has weight 0.4;
+match $josh has name "josh"; $ripple has name "ripple"; insert (programmer: $josh, programmed: $ripple) isa programming has weight 1.0;
 ```
    
    

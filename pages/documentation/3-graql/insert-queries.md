@@ -62,12 +62,12 @@ qb.match(
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-insert "Totodile" isa pokemon;
+insert has name "Totodile" isa pokemon;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.insert(id("Totodile").isa("pokemon"));
+qb.insert(var().has("name", "Totodile").isa("pokemon"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -88,12 +88,12 @@ The created or retrieved concept can then be modified with further properties.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-insert "Pikachu" isa pokemon;
+insert has name "Pikachu" isa pokemon;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
 <pre>
-qb.insert(id("Pikachu").isa("pokemon"));
+qb.insert(var().has("name", "Pikachu").isa("pokemon"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -110,12 +110,12 @@ Set the value of the concept.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
-insert trained-by isa relation-type, value "Trained By";
+insert value "Ash" isa name;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
 <pre>
-qb.insert(id("trained-by").isa("relation-type").value("Trained By"));
+qb.insert(var().value("Ash").isa("name"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
