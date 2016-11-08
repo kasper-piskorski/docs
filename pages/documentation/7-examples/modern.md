@@ -45,8 +45,6 @@ The relationships between the entities are straightforward:
 * there are two connections between marko and other people who he "knows" (josh and vadas). 
 * there are four connections between people and software, such that the people "created" the software. Lop was created by marko, peter and josh, which ripple was created by josh.
 
-In this example, we use the name of the person or software to make up their id, as in real life, rather than ascribe them the numbers used in the diagram.  
-
 ### Entity Types
 
 Here, we add person and software entity types to the graph, via the Graql shell:
