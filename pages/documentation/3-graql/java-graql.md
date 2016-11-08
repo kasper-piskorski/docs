@@ -77,7 +77,7 @@ tallPokemon.get("x").forEach(x -> System.out.println(x.getValue()));
 ## Ask Queries
 
 ```java
-if (qb.match(var().isa("pokemon-type").value("dragon")).ask().execute()) {
+if (qb.match(var().isa("pokemon-type").has("name", "dragon")).ask().execute()) {
   System.out.println("Dragons are real!");
 }
 ```
