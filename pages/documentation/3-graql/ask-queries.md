@@ -9,7 +9,7 @@ permalink: /documentation/graql/ask-queries.html
 folder: documentation
 ---
 
-An ask query will return whether the given [match query](graql_match.html) has any results.
+An ask query will return whether the given [match query](match-queries.html) has any results.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>

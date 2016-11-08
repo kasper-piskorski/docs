@@ -62,7 +62,7 @@ Further information about the visualiser can be found in [Visualising a Graph](.
 
 
 ### Troubleshooting  
-If you do not see the above message, please check our [troubleshooting page](../troubleshooting/known-issues.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.grakn.ai), or on [Stack Overflow](http://stackoverflow.com).
+If you do not see the above message, please check our [FAQ page](../resources/faq.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.grakn.ai), or on [Stack Overflow](http://stackoverflow.com).
 
 
 ## Where next?

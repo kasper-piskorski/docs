@@ -11,7 +11,7 @@ folder: documentation
 
 A delete query will delete the specified [variable
 patterns](#variable-patterns) for every result of the [match
-query](graql_match.html). If a variable pattern indicates just a variable, then
+query](match-queries.html). If a variable pattern indicates just a variable, then
 the whole concept will be deleted. If it is more specific (such as indicating
 the `id` or `isa`) it will only delete the specified properties.
 <ul id="profileTabs" class="nav nav-tabs">

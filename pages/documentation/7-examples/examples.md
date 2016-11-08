@@ -28,7 +28,7 @@ This is a [simple example](./philosophers.html) to illustrate the [basics of the
 
 ### [Moogi](./moogi.html)
 
-[Moogi](https://moogi.co) is a large database of information about movies. We have provided some [documentation](./mini-moogi.html) and a subset of the data for you to investigate.
+[Moogi](https://moogi.co) is a large database of information about movies. We have provided some [documentation](./moogi.html) and a subset of the data for you to investigate.
 
 ### [Modern](./modern.html)
 

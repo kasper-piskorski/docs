@@ -39,7 +39,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 <div role="tabpanel" class="tab-pane" id="gethelp">
     <h2>Get Help</h2>
-    <p>We are here to help! Take a look at our <a href="https://grakn.ai/pages/documentation/resources/resources.html">resources</a> page for a list of ways to get what you need, and the <a href="https://grakn.ai/pages/documentation/troubleshooting/known-issues.html">troubleshooting</a> page for some tips on common Grakn problems.</p>
+    <p>We are here to help! Take a look at our <a href="https://grakn.ai/pages/documentation/resources/resources.html">resources</a> page for a list of ways to get what you need, and the <a href="https://grakn.ai/pages/documentation/resources/faq.html">FAQ</a> page for some tips on common Grakn problems.</p>
  <p>Our <a href="https://grakn.ai/pages/documentation/resources/downloads.html">downloads page</a> lists all Grakn downloads and prerequisites.</p>   
 </div>
 </div>
