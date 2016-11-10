@@ -78,9 +78,9 @@ entries:
       - title: Migrating to Grakn
         output: web
         url: /documentation/migration/migration.html
-      - title: CSV Migration
-        output: web
-        url: /documentation/migration/CSV-migration.html
+    #  - title: CSV Migration
+    #    output: web
+    #    url: /documentation/migration/CSV-migration.html
       - title: SQL Migration
         output: web
         url: /documentation/migration/SQL-migration.html
