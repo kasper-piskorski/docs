@@ -20,13 +20,14 @@ The migration shell script can be found in `/bin` directory of your Grakn enviro
 usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
 
 OPTIONS
-   -b,--batch <arg>       number of row to load at once
-   -d,--delimiter <arg>   delimiter of columns in input file
-   -f,--file <arg>        csv file
-   -h,--help              print usage message
-   -k,--keyspace <arg>    keyspace to use
-   -t,--template <arg>    graql template to apply over data
-   -u,--uri <arg>         uri to engine endpoint
+ -b,--batch <arg>       number of row to load at once
+ -h,--help              print usage message
+ -i,--input <arg>       input csv file
+ -k,--keyspace <arg>    keyspace to use
+ -n,--no                dry run- write to standard out
+ -s,--separator <arg>   separator of columns in input file
+ -t,--template <arg>    graql template to apply over data
+ -u,--uri <arg>         uri to engine endpoint
 ```
 
 ## CSV Migration Basics
@@ -47,18 +48,38 @@ The CSV migrator will apply the template to each row of data in the CSV file. If
 
 #### Simple example
 
+```graql
+insert
+
+car isa entity-type
+    has-resource name
+    has-resource year
+    has-resource description
+    has-resource price;
+
+name isa resource-type datatype string;
+year isa resource-type datatype string;
+description isa resource-type datatype string;
+price isa resource-type datatype double;
+
+```
+
+Above is the ontology for the following example
+
 **cars.csv**:
 ```csv
 Year,Make,Model,Description,Price
 1997,Ford,E350,"ac, abs, moon",3000.00
 1999,Chevy,"Venture",,4900.00
-1999,Chevy,"Venture","Another description",4900.00
 1996,Jeep,Grand Cherokee,"MUST SELL! air, moon roof, loaded",4799.00
 ```
 
 *template*:
 ```graql-template
-$x isa car id <Make>-<Model>
+insert 
+
+$x isa car 
+    has name <Make>-<Model>
     has year <Year>
     has price @double(Price)
     if (ne Description null) do { has description <Description>};
@@ -68,41 +89,24 @@ This template will create a `car` entity for each row. It will attach `year` and
 
 The template is applied to each row, and the resulting Graql statement, if printed out, looks like:
 
-```graql-test-ignore
-insert
-$x0 isa car id "Ford-E350"
-    has year "1997"
-    has price 3000.00
-    has description "ac, abs, moon";
-$x1 isa car id "Chevy-Venture"
-    has year "1999"
-    has price 4900.00;
-$x2 isa car id "Chevy-Venture"
-    has year "1999"
-    has price 4900.00
-    has description "Another description";
-$x3 isa car id "Jeep-GrandCherokee"
-    has year "1996"
-    has price 4799.00
-    has description "MUST SELL! air, moon roof, loaded";
+```graql
+insert $x0 isa car has name "Ford" has description "ac, abs, moon" has price 3000.0 has year "1997";
+insert $x0 isa car has name "Chevy" has price 4900.0 has year "1999";
+insert $x0 isa car has description "MUST SELL! air, moon roof, loaded" has price 4799.0 has name "Jeep" has year "1996";
 ```
 
-You will note that `$x1` is missing the `description` resource because it is not present in the data.
+You will note that the third Graql insert is missing the `description` resource. This is because that value is not present in the data and the template uses an `if` statement to check if it exists.
 
-This is the query that the migrator will send to the loader and that will be persisted in a graph.
+### Separator
 
-### Delimiter
+The `separator` option allows you to specify the column separator. With this we are able to migrate a wider range of formats, including TSV.
 
-The `delimiter` option allows you to specify the column separator. With this we are able to migrate a wider range of formats, including TSV.
+This file would be migrated in the same way as the previous example when you specify the `\t` separator:
 
-
-This file would be migrated in the same way as the previous example when you specify the `\t` delimiter:
 ```tsv
 Year  Make  Model Description Price
 1997  Ford  E350  "ac  abs   moon"  3000.00
 1999  Chevy "Venture" ""  4900.00
-1999  Chevy "Venture" "Another description" 4900.00
-1999  Chevy "Venture Large"   5000.00
 1996  Jeep  Grand Cherokee  "MUST SELL!
 air  moon roof   loaded"  4799.00
 ```
@@ -111,7 +115,33 @@ air  moon roof   loaded"  4799.00
 
 This small example will demonstrate creating one graph from three CSV data files using the templating language.
 
-To start, we define the three data files. Each file needs a template that to tell the Migrator how to deal with the data in each row.
+To start, we must write the ontology for this example.
+
+```graql
+insert
+
+pokemon isa entity-type
+    plays-role pokemon-with-type
+    has-resource pokedex-no
+    has-resource description;
+
+type-id isa resource-type datatype string;
+pokedex-no isa resource-type datatype long;
+description isa resource-type datatype string;
+
+pokemon-type isa entity-type
+    has-resource description
+    has-resource type-id
+    plays-role type-of-pokemon;
+
+has-type isa relation-type
+    has-role pokemon-with-type
+    has-role type-of-pokemon;
+pokemon-with-type isa role-type;
+type-of-pokemon isa role-type;
+```
+
+We define the three data files. Each file needs a template that to tell the Migrator how to deal with the data in each row.
 
 **pokemon.csv**
 
@@ -125,12 +155,20 @@ id,identifier,species_id,height,weight
 *template*:
 
 ```graql-template
-$x isa pokemon id <id>-pokemon
+insert 
+
+$x isa pokemon 
   has description <identifier>
   has pokedex-no @int(id);
 ```
 
-To keep this example simple, here we've chosen to only migrate the data from the `id` and the `identifier` columns. The template creates one pokemon per row, attaching their descriptions and pokemon numbers as resources.
+To keep this example simple, here we've chosen to only migrate the data from the `id` and the `identifier` columns. The template creates one pokemon per row, attaching the descriptions and pokemon numbers as resources. The migrated insert statements look like:
+
+```graql
+insert $x0 has pokedex-no 4 isa pokemon has description "charmander";
+insert $x0 has description "charmeleon" has pokedex-no 5 isa pokemon;
+insert $x0 has pokedex-no 6 isa pokemon has description "charizard";
+```
 
 **types.csv**
 ```csv
@@ -149,14 +187,28 @@ id,identifier
 
 *template*:
 ```graql-template
-$x isa pokemon-type id <id>-type has description <identifier>;
+insert
+
+$x isa pokemon-type 
+  has type-id <id>
+  has description <identifier>;
 ```
 
-Notice that in the pokemon template we have appended the tag `-pokemon` to the value of the `id` column (`$x isa pokemon id <id>-pokemon`). We have also done so with the type: `isa pokemon-type id <id>-type`. This is to avoid conflicts in ids across multiple files.
+This is another very simple example that results in the following inserts: 
 
-Let's imagine the scenario where we do not make the id unique: Migrating would create three pokemon, with ids `1`, `2`, and `3` respectively. Migrating the types would also create 10 `pokemon-type` entities, which would have ids `1`-`10`.
+```graql
+insert $x0 has description "normal" has type-id "1" isa pokemon-type;
+insert $x0 has type-id "2" has description "fighting" isa pokemon-type;
+insert $x0 has type-id "3" isa pokemon-type has description "flying";
+insert $x0 has description "poison" has type-id "4" isa pokemon-type;
+insert $x0 has type-id "5" has description "ground" isa pokemon-type;
+insert $x0 has description "rock" has type-id "6" isa pokemon-type;
+insert $x0 has description "bug" has type-id "7" isa pokemon-type;
+insert $x0 has type-id "8" isa pokemon-type has description "ghost";
+insert $x0 has description "steel" isa pokemon-type has type-id "9";
+insert $x0 has description "fire" has type-id "10" isa pokemon-type;
+```
 
-You can see the obvious conflict here. You've tried to create entities with the same ids! By appending to the id value we avoided this conflict. These are all things that any user of CSV migration must keep in mind.
 
 **edges.csv**
 ```csv
@@ -169,36 +221,16 @@ pokemon_id,type_id,slot
 
 *template*:
 ```graql-template
-(pokemon-with-type: <pokemon_id>-pokemon, type-of-pokemon: <type_id>-type) isa has-type;"
+match
+  $pokemon has pokedex-no <pokemon_id>;
+  $type has type-id <type_id>;
+insert (pokemon-with-type: $pokemon, type-of-pokemon: $type) isa has-type;
+
 ```
 
-In this final template we create a `has-type` relationship between the values of the `pokemon_id` and `type_id` columns. You'll notice that to ensure the relationship is between the correct entities, we've had to modify the ids in the same way as above.
+In this final template we create a `has-type` relationship between the values of the `pokemon_id` and `type_id` columns. You'll notice that to ensure the relationship is between the correct entities, we've had to find them in the graph before inserting using a `match-insert` query. 
 
 {% include note.html content="It is the responsibility of the user to ensure that all entities exist in the graph before they insert relations." %}
-
-#### This example in Java
-
-This example is very simple in java. First we assign each template to a variable. Then we can call the `migrator.migrate()` function on each of the template/datafile pairs.
-
-```test-ignore
-LoadingMigrator migrator = new LoadingMigrator(loader, new CSVMigrator());
-
-String pokemonTemplate = "" +
-                "$x isa pokemon id <id>-pokemon \n" +
-                "    has description <identifier>\n" +
-                "    has pokedex-no @int(id)\n";
-
-
-String pokemonTypeTemplate = "$x isa pokemon-type id <id>-type has description <identifier>;";
-
-
-String edgeTemplate = "(pokemon-with-type: <pokemon_id>-pokemon, type-of-pokemon: <type_id>-type) isa has-type;";
-
-
-migrator.migrate(pokemonTemplate, new File("pokemon.csv"));
-migrator.migrate(pokemonTypeTemplate, new File("types.csv"));
-migrator.migrate(edgeTemplate, new File("edges.csv"));
-```
 
 ## Where Next?
 You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html).

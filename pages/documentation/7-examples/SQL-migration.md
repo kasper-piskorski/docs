@@ -75,7 +75,7 @@ Answer:
 country
 city 
 countrylanguage
-```     	
+```
 
 **How many countries are in the world?**   
    
