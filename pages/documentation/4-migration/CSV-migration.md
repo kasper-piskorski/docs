@@ -66,7 +66,8 @@ price isa resource-type datatype double;
 
 Above is the ontology for the following example
 
-**cars.csv**:
+**cars.csv**   
+
 ```csv
 Year,Make,Model,Description,Price
 1997,Ford,E350,"ac, abs, moon",3000.00
@@ -74,7 +75,8 @@ Year,Make,Model,Description,Price
 1996,Jeep,Grand Cherokee,"MUST SELL! air, moon roof, loaded",4799.00
 ```
 
-*template*:
+**template**   
+
 ```graql-template
 insert 
 
@@ -152,7 +154,7 @@ id,identifier,species_id,height,weight
 6,charizard,6,17,905
 ```
 
-*template*:
+**template**
 
 ```graql-template
 insert 
@@ -170,7 +172,8 @@ insert $x0 has description "charmeleon" has pokedex-no 5 isa pokemon;
 insert $x0 has pokedex-no 6 isa pokemon has description "charizard";
 ```
 
-**types.csv**
+**types.csv**   
+
 ```csv
 id,identifier
 1,normal
@@ -185,7 +188,8 @@ id,identifier
 10,fire
 ```
 
-*template*:
+**template**:   
+
 ```graql-template
 insert
 
@@ -211,6 +215,7 @@ insert $x0 has description "fire" has type-id "10" isa pokemon-type;
 
 
 **edges.csv**
+
 ```csv
 pokemon_id,type_id,slot
 4,10,1
@@ -219,7 +224,8 @@ pokemon_id,type_id,slot
 6,3,2
 ```
 
-*template*:
+**template**:   
+
 ```graql-template
 match
   $pokemon has pokedex-no <pokemon_id>;
