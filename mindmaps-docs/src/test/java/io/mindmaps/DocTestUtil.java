@@ -8,7 +8,6 @@ import java.util.UUID;
 
 import static io.mindmaps.graql.Graql.id;
 import static io.mindmaps.graql.Graql.var;
-import static io.mindmaps.graql.Graql.withGraph;
 
 public class DocTestUtil {
 
@@ -17,7 +16,7 @@ public class DocTestUtil {
         MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, keyspace).getGraph();
         PokemonGraphFactory.loadGraph(mindmapsGraph);
         MovieGraphFactory.loadGraph(mindmapsGraph);
-        QueryBuilder qb = withGraph(mindmapsGraph);
+        QueryBuilder qb = mindmapsGraph.graql();
         qb.insert(
                 var().isa("pokemon").has("name", "Pikachu"),
                 var().isa("pokemon-type").has("name", "dragon"),

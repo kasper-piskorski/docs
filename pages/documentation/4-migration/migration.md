@@ -19,13 +19,17 @@ The migration shell script can be found in `mindmaps-dist/bin` after it has been
 ### SQL Migration
 
 ```bash
-usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password> -database <url> -graph <graphname> [engine <url>]
-       -driver           JDBC driver
-       -user             username for SQL database
-       -pass             password for SQL database
-       -database         URL to SQL database
-       -graph            graph name (or defaults to the default keyspace)
-       -engine           Grakn engine URL, default localhost
+usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> [-help] [-no] [-batch <arg>] [-keyspace <arg>] [-uri <arg>]
+ -driver <arg>         JDBC driver
+ -h,--help             print usage message
+ -k,--keyspace <arg>   keyspace to use
+ -location <arg>       JDBC url (location of DB)
+ -n,--no               dry run- write to standard out
+ -pass <arg>           JDBC password
+ -q,--query <arg>      SQL Query
+ -t,--template <arg>   template for the given SQL query
+ -u,--uri <arg>        uri to engine endpoint
+ -user <arg>           JDBC username
 ```
 
 Please see the [SQL migration documentation](./SQL-migration.html) for further information.
@@ -36,13 +40,14 @@ Please see the [SQL migration documentation](./SQL-migration.html) for further i
 usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
 
 OPTIONS
-   -b,--batch <arg>       number of row to load at once
-   -d,--delimiter <arg>   delimiter of columns in input file
-   -f,--file <arg>        csv file
-   -h,--help              print usage message
-   -k,--keyspace <arg>    keyspace to use
-   -t,--template <arg>    graql template to apply over data
-   -u,--uri <arg>         uri to engine endpoint
+ -b,--batch <arg>       number of row to load at once
+ -h,--help              print usage message
+ -i,--input <arg>       input csv file
+ -k,--keyspace <arg>    keyspace to use
+ -n,--no                dry run- write to standard out
+ -s,--separator <arg>   separator of columns in input file
+ -t,--template <arg>    graql template to apply over data
+ -u,--uri <arg>         uri to engine endpoint
 ```
 
 Please see the [CSV migration documentation](./CSV-migration.html) for further information.

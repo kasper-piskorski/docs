@@ -12,7 +12,7 @@ folder: documentation
 
 The Graql shell is contained in the `bin` folder. After starting the Grakn server, you can load data into a graph as follows:
 
-```
+```bash
 bin/graql.sh -f examples/pokemon.gql
 ```
 
@@ -31,7 +31,7 @@ bin/graql.sh
 
 To load an additional graph into a different keyspace, that is, to load a graph with a different name to any already loaded, you can specify the graph name:
 
-```
+```bash
 ./graql.sh -k <graphname>
 ``` 
 

@@ -41,7 +41,7 @@ A quick example of what the replacement looks like:
 first is a <string>, second a <long>, third a <double>, fourth a <boolean>
 ```
 
-```graql-template
+```text
 first is a "string", second a 40, third a 0.001, fourth a false
 ```
 
@@ -107,10 +107,12 @@ When iterating over a map as in Example 3, you are allowed to use the "enhanced"
 Example 5: doubly nested `for`:
 
 ```graql-template
+insert
+
 for (people) do { 
-insert $x isa person has name <name>;
+$x isa person has name <name>;
     for (addresses) do {
-    insert $y isa address ;
+    $y isa address ;
         $y has street <street> ;
         $y has number <number> ;
         ($x, $y) isa resides;
@@ -121,7 +123,6 @@ insert $x isa person has name <name>;
 ### Conditionals 
 
 `if`, `else` and `elseif` are the included commands that provide conditional logic. 
-
 
 Example 6: `if`:
 
@@ -139,7 +140,6 @@ if (ne firstName null) do {
     insert $person;
 }
 ```
-
 
 ### Macros
 
@@ -193,50 +193,48 @@ if (@equals(this that)) do { equals } else { not }"
 
 ### Scopes
 
-When using iterators Graql variables will be automatically suffixed with an aggregate index of the loop. This is necessary because otherwise Graql would confuse variables belonging to different statements when running the queries. 
+During iteration Graql variables will be automatically suffixed with an index.  
 
 For example, the following loop:
 
 ```graql-template
-insert $x isa person has name <name>;
+insert $x isa pokemon has description <name>;
     
-for (addresses) do {
-    insert $y isa address ;
-        $y has street <street> ;
-        $y has number <number> ;
-        ($x, $y) isa resides;
+for (types) do {
+    $y isa pokemon-type ;
+        $y has description <type-description> ;
+        (pokemon-with-type: $x, type-of-pokemon: $y) isa has-type;
 }
 
-$y isa person, id 1234;
-($x, $y) isa friends;
+$y isa pokemon;
+(ancestor: $x, descendent: $y) isa evolution;
 ```
 
-would result in the expanded Graql query:
+would result in the expanded Graql queries:
 
-```graql-template
-insert $x0 isa person has name "Elmo";
+```graql
+insert $x0 isa pokemon has description "Pikachu";
     
-    insert $y0 isa address ;
-        $y0 has street "North Pole" ;
-        $y0 has number 100 ;
-        ($x0 $y0) isa resides;
-    insert $y1 isa address ;
-        $y1 has street "South Pole" ;
-        $y1 has number -100 ;
-        ($x0 $y1) isa resides;
+    $y0 isa pokemon-type ;
+        $y0 has description "Electric" ;
+        (pokemon-with-type: $x0, type-of-pokemon: $y0) isa has-type;
+    $y1 isa pokemon-type ;
+        $y1 has description "Mouse" ;
+        (pokemon-with-type: $x0, type-of-pokemon: $y1) isa has-type;
 
-    $y2 isa person, id 1234;
-    ($x0, $y2) isa friends; 
+    $y2 isa pokemon;
+    (ancestor: $x0, descendent: $y2) isa evolution; 
+```
 
-insert $x1 isa person has name "Flounder";
+```
+insert $x1 isa pokemon has description "Raichu";
     
-    insert $y3 isa address ;
-        $y3 has street "Under the sea" ;
-        $y3 has number 22 ;
-        ($x1 $y3) isa resides;
+    $y3 isa pokemon-type ;
+        $y3 has street "Electric" ;
+        (pokemon-with-type: $x1, type-of-pokemon: $y3) isa has-type;
 
-    $y4 isa person, id 1234;
-    ($x1, $y4) isa friends; 
+    $y4 isa pokemon;
+    (ancestor: $x1, descendent: $y4) isa evolution; 
 ```
 
 ## Usage in Java
