@@ -23,13 +23,13 @@ In Grakn, the Graph API is the implementation of the object model discussed in
 Make sure you have Grakn Engine running locally by using `mindmaps.sh start`.
 Once you have done that, a thread-bound graph can be retrieved by:    
 
-```
+```java-test-ignore
 MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
 ```
 
 Alternatively an in-memory graph can be created with:     
 
-```
+```java-test-ignore
 MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.IN_MEMORY, "my-graph").getGraph();
 ```
 

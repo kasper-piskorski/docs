@@ -68,7 +68,7 @@ This template will create a `car` entity for each row. It will attach `year` and
 
 The template is applied to each row, and the resulting Graql statement, if printed out, looks like:
 
-```graql test-ignore
+```graql-test-ignore
 insert
 $x0 isa car id "Ford-E350"
     has year "1997"
