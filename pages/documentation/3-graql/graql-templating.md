@@ -226,7 +226,7 @@ insert $x0 isa pokemon has description "Pikachu";
     (ancestor: $x0, descendent: $y2) isa evolution; 
 ```
 
-```
+```graql
 insert $x1 isa pokemon has description "Raichu";
     
     $y3 isa pokemon-type ;
