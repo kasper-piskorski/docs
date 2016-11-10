@@ -14,17 +14,20 @@ comment_issue_id: 32
 This tutorial shows you how to populate a graph in Grakn with SQL data. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for SQL
-The migration shell script can be found in the `bin` directory after the Grakn distribution file has been unzipped. Usage is specific to the type of migration being performed. For SQL:
+The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed. For SQL:
 
-
-```
-usage: ./migration.sh sql -driver <jdbcDriver> -user <username> -pass <password> -database <url> -graph <graphname> [engine <url>]
-       -driver           JDBC driver
-       -user             username for SQL database
-       -pass             password for SQL database
-       -database         URL to SQL database
-       -graph            graph name (or defaults to the default keyspace)
-       -engine           Grakn engine URL, default localhost
+```bash
+usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> [-help] [-no] [-batch <arg>] [-keyspace <arg>] [-uri <arg>]
+ -driver <arg>         JDBC driver
+ -h,--help             print usage message
+ -k,--keyspace <arg>   keyspace to use
+ -location <arg>       JDBC url (location of DB)
+ -n,--no               dry run- write to standard out
+ -pass <arg>           JDBC password
+ -q,--query <arg>      SQL Query
+ -t,--template <arg>   template for the given SQL query
+ -u,--uri <arg>        uri to engine endpoint
+ -user <arg>           JDBC username
 ```
 
 One of the most common use cases of the migration component will be to move data from an RDBMS into Grakn. Grakn relies on the JDBC API to connect to any RDBMS that uses the SQL language. The example that follows is written in MySQL, but SQL -> Grakn migration will work with any database it can connect to using a JDBC driver. This has been tested on MySQL, Oracle and PostgresQL.

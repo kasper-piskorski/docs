@@ -64,7 +64,7 @@ public class JavaDocsTest {
 
         while (matcher.find()) {
             String match = matcher.group(2);
-            if (!match.trim().startsWith("test-ignore")) {
+            if (!match.trim().startsWith("-test-ignore")) {
                 numFound += 1;
                 groovyString += matcher.group(2) + "\n";
             }

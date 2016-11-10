@@ -59,10 +59,21 @@ First we create some philosophers, so we define the category of `people`:
 Next we specify who our people are:
 
 ```java
-    Entity socrates = mindmapsGraph.putEntity("Socrates", person);
-    Entity plato = mindmapsGraph.putEntity("Plato", person);
-    Entity aristotle = mindmapsGraph.putEntity("Aristotle", person);
-    Entity alexander = mindmapsGraph.putEntity("Alexander", person);
+    ResourceType<String> name = mindmapsGraph.putResourceType("name", ResourceType.DataType.STRING);
+
+    Resource<String> socratesName  = mindmapsGraph.putResource("Socrates", name);
+    Resource<String> platoName     = mindmapsGraph.putResource("Socrates", name);
+    Resource<String> aristotleName = mindmapsGraph.putResource("Socrates", name);
+    Resource<String> alexanderName = mindmapsGraph.putResource("Socrates", name);
+
+    Entity socrates  = mindmapsGraph.addEntity(person);
+    socrates.hasResource(socratesName);
+    Entity plato     = mindmapsGraph.addEntity(person);
+    plato.hasResource(platoName);
+    Entity aristotle = mindmapsGraph.addEntity(person);
+    aristotle.hasResource(aristotleName);
+    Entity alexander = mindmapsGraph.addEntity(person);
+    alexander.hasResource(alexanderName);
 ```
 
 ![](/images/phil.png)
@@ -72,7 +83,7 @@ We can query for all the people:
 ```java
 System.out.println("Instances of Person:");
 for (Entity i : person.instances()) {
-    System.out.println(i.getId());
+    System.out.println(i.resources(name).iterator().next());
 }
 ```
 
@@ -80,16 +91,26 @@ Next, let's add some `schools` of thought:
 
 ```java
     EntityType school = mindmapsGraph.putEntityType("school");
-    Entity peripateticism = mindmapsGraph.putEntity("Peripateticism", school);
-    Entity platonism = mindmapsGraph.putEntity("Platonism", school);
-    Entity idealism = mindmapsGraph.putEntity("Idealism", school);
-    Entity cynicism = mindmapsGraph.putEntity("Cynicism", school);
+
+    Resource<String> peripateticismName  = mindmapsGraph.putResource("Peripateticism", name);
+    Resource<String> platonismName       = mindmapsGraph.putResource("Platonism", name);
+    Resource<String> idealismName        = mindmapsGraph.putResource("Idealism", name);
+    Resource<String> cynicismName        = mindmapsGraph.putResource("Cynicism", name);
+
+    Entity peripateticism = mindmapsGraph.addEntity(school);
+    peripateticism.hasResource(peripateticismName);
+    Entity platonism      = mindmapsGraph.addEntity(school);
+    platonism.hasResource(platonismName);
+    Entity idealism       = mindmapsGraph.addEntity(school);
+    idealism.hasResource(idealismName);
+    Entity cynicism       = mindmapsGraph.addEntity(school);
+    cynicism.hasResource(cynicismName);
 ```
 
 And look one up:
 
 ```java
-mindmapsGraph.getEntity("Cynicism").getId();
+mindmapsGraph.getResource("Cynicism", name).owner();
 ```   
 
 ### Relation Types
@@ -147,27 +168,15 @@ Some people have special titles and epithets and we want to talk about that.
 So, we'll create some resource types that can be attached to a person:
 
 ```java
-RoleType hasResourceTarget = mindmapsGraph.putRoleType("has-resource-target");
-RoleType hasResourceValue = mindmapsGraph.putRoleType("has-resource-value");
-RelationType hasResource = mindmapsGraph.putRelationType("has-resource")
-    .hasRole(hasResourceTarget).hasRole(hasResourceValue);
-
 ResourceType<String> title = mindmapsGraph.putResourceType("title", ResourceType.DataType.STRING);
 ResourceType<String> epithet = mindmapsGraph.putResourceType("epithet", ResourceType.DataType.STRING);
-
-person.playsRole(hasResourceTarget);
-title.playsRole(hasResourceValue);
-epithet.playsRole(hasResourceValue);
 ```
 
 Let's make Alexander "Great"!
 
 ```java
 Resource<String> theGreat = mindmapsGraph.putResource("The Great", epithet);
-
-mindmapsGraph.addRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, theGreat);
+alexander.hasResource(theGreat);
 ```
 
 This is a quick way to add a relation between `Alexander` and an `epithet` with value `"The Great"`.
@@ -183,25 +192,11 @@ Resource<String> shahOfPersia = mindmapsGraph.putResource("Shah of Persia", titl
 Resource<String> pharaohOfEgypt = mindmapsGraph.putResource("Pharaoh of Egypt", title);
 Resource<String> lordOfAsia = mindmapsGraph.putResource("Lord of Asia", title);
 
-mindmapsGraph.addRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, hegemon);
-
-mindmapsGraph.addRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, kingOfMacedon);
-
-mindmapsGraph.addRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, shahOfPersia);
-
-mindmapsGraph.addRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, pharaohOfEgypt);
-
-mindmapsGraph.addRelation(hasResource).
-  putRolePlayer(hasResourceTarget, alexander).
-  putRolePlayer(hasResourceValue, lordOfAsia);
+alexander.hasResource(hegemon);
+alexander.hasResource(kingOfMacedon);
+alexander.hasResource(shahOfPersia);
+alexander.hasResource(pharaohOfEgypt);
+alexander.hasResource(lordOfAsia);
 ```
 
 ## Where Next?
