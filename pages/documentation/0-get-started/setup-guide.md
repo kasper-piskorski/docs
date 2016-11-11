@@ -3,7 +3,7 @@ title: Grakn Setup Guide
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting-started, graql]
-summary: "This document will teach you how to set up a Grakn environment, start it up and load an example dataset to make a query using our query language, Graql."
+summary: "This document will teach you how to set up a Grakn environment, start it up and load a simple example."
 sidebar: documentation_sidebar
 permalink: /documentation/get-started/setup-guide.html
 folder: documentation
@@ -11,21 +11,22 @@ comment_issue_id: 16
 ---
 
 
-## Download Grakn
+## First: Download Grakn
 <span class="glyphicon glyphicon-download gi-3x"></span>Visit the [downloads page](../resources/downloads.html) for the latest version of Grakn.    
 
 ## Install Grakn
-{% include note.html content="Grakn requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
+{% include note.html content="**Prerequisites**   <br />
+Grakn requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
 If you intend to build Grakn, you will also need Maven 3." %}
 
-Unzip the download and run the following in the terminal:
+Unzip the download into your preferred location and run the following in the terminal:
 
 ```bash
 cd [your Grakn install directory]
 bin/mindmaps.sh start
 ```
 
-This will start an instance of Cassandra, which serves as the supported backend for Mindmaps. It starts also Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser Dashboard.
+This will start an instance of Cassandra, which serves as the supported backend for Mindmaps. It starts also Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser dashboard.
 
 {% include note.html content="**Useful commands**  <br />
 To start Grakn, run `mindmaps.sh start`.   
@@ -34,7 +35,7 @@ To stop Grakn, run `mindmaps.sh stop`. " %}
 
 ## Set up Graql
 
-Graql is our query language, which allows you to interface with Grakn. We will start Graql and enter a few lines to check that all is working as it should.
+Graql is our knowledge-oriented query language, which allows you to interface with Grakn. We will start Graql and enter a few lines to check that all is working as it should.
 
 ```bash
 bin/graql.sh
