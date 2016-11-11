@@ -13,4 +13,4 @@ if (false) {
 }
 
 MindmapsGraph mindmapsGraph = DocTestUtil.getTestGraph();
-QueryBuilder qb = withGraph(mindmapsGraph);
+QueryBuilder qb = mindmapsGraph.graql();

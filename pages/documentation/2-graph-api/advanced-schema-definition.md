@@ -134,8 +134,8 @@ String r2Body = "(parent $x, child $z) isa Parent;" +
                 "(ancestor $z, descendant $y) isa Ancestor select $x, $y";
 String r2Head = "(ancestor $x, descendant $y) isa Ancestor";
 
-Rule rule1 = mindmapsGraph.putRule("R1", r1Body, r1Head, inferenceRule);
-Rule rule2 = mindmapsGraph.putRule("R2", r2Body, r2Head, inferenceRule);
+Rule rule1 = mindmapsGraph.addRule(r1Body, r1Head, inferenceRule);
+Rule rule2 = mindmapsGraph.addRule(r2Body, r2Head, inferenceRule);
 ```
 
 ### Rule Graql Syntax
