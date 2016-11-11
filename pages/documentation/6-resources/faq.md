@@ -16,9 +16,9 @@ comment_issue_id: 23
 
 ### Why does Grakn hang when I try to start it?   
 
-I am running `mindmaps.sh start` but it hangs on `Starting Cassandra`. Why?
+I am running `grakn.sh start` but it hangs on `Starting Cassandra`. Why?
 
-This may be because you have cloned the Grakn repo into a directory which has a space in its name (e.g. `/mindmaps DB`). You can build our code successfully, but when you start `mindmaps.sh`, it hangs because Cassandra needs you to have single word pathnames. Remove the spaces (e.g. `/mindmapsDB`) and try again.
+This may be because you have cloned the Grakn repo into a directory which has a space in its name (e.g. `/grakn test`). You can build our code successfully, but when you start `grakn.sh`, it hangs because Cassandra needs you to have single word pathnames. Remove the spaces (e.g. `/grakn_test`) and try again.
 
 There are other possible reasons why Grakn hangs starting Cassandra. One may be that some other application is using the port 7199, which Cassandra needs.  To find out what is using port 7199:
 `lsof -i tcp:7199`
@@ -26,7 +26,7 @@ There are other possible reasons why Grakn hangs starting Cassandra. One may be 
 From there, you'll see the PID of application using that port. Check if you can safely kill it or change its port. It may be that another instance of Cassandra is blocking it, and you can simply kill it using:
 `pkill -9 java`
 
-Then try `mindmaps.sh start` again.
+Then try `grakn.sh start` again.
 
 Failing that, you can often find out more information by looking in the `/logs` directory under your Grakn installation.  
 
@@ -63,12 +63,12 @@ bin/graql.sh -b PATH/FILENAME.gql
 In order to check the status of the loading, you can open a new terminal window, navigate to the logs directory of your Grakn installation and run the command:
 
 ```bash
-tail -f mindmaps.log
+tail -f grakn.log
 ```
 
 ### Can I run Grakn on an existing Cassandra Platform?
 
-By default, Grakn is shipped with TitanDB, which in turn relies on Cassandra. When you call `mindmaps.sh start`, this starts a Cassandra instance and then starts the Mindmaps server.  You are not bound to use our instance of Cassandra, and can make adjustments to the settings in the `.properties` file in the `conf/main` directory of the Grakn, e.g. to make Titan use your Cassandra instance.
+By default, Grakn is shipped with TitanDB, which in turn relies on Cassandra. When you call `grakn.sh start`, this starts a Cassandra instance and then starts the Grakn server.  You are not bound to use our instance of Cassandra, and can make adjustments to the settings in the `.properties` file in the `conf/main` directory of the Grakn, e.g. to make Titan use your Cassandra instance.
 
 Specifically you should change the following parameters:
 
@@ -94,13 +94,11 @@ Currently, there is no official support for languages other than Java. But we ar
 
 Grakn comes with a basic visualiser, with a web-interface. We appreciate any feedback you give us about it via the [discussion boards](https://discuss.grakn.ai/t/visualise-my-data/57).
 
-Once you have started Grakn, you will see a message in the console, like:
+Once you have started Grakn, you will see a message in the console:
 
 ```bash
 Started ServerConnector@7aa5814d{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
 ```
-
-(We are working to improve this message, in fact in the new release it will be something more similar to `Mindmaps Engine is ready. Listening on [http://0.0.0.0:4567]`.)
 
 You can then open your browser and connect to the address printed on the console (http://0.0.0.0:4567). Select the Graql Visualiser tab and you will see a Graql shell, from which you can input queries, for example:
 
@@ -117,7 +115,7 @@ I want to clear the graph I've been experimenting with and try something with a 
 If you are using the Java API, it's a simple as:
 
 ```java-test-ignore
-graph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
+graph = Grakn.factory(Grakn.DEFAULT_URI, "my-graph").getGraph();
 graph.clear();
 ```
 

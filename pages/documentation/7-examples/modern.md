@@ -29,7 +29,7 @@ If it is not already running, start Grakn, then open a Graql shell:
 
 ```bash
 cd [your Grakn install directory]
-bin/mindmaps.sh start
+bin/grakn.sh start
 bin/graql.sh
 ```
 

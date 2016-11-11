@@ -22,21 +22,21 @@ Let's say we wanted to model a graph that encapsulates films and tv shows, as we
 Create the Entity types:
 
 ```java
-EntityType person = mindmapsGraph.putEntityType("Person");
-EntityType movie = mindmapsGraph.putEntityType("Movie");
-EntityType tvShow = mindmapsGraph.putEntityType("TV Show");
+EntityType person = graknGraph.putEntityType("Person");
+EntityType movie = graknGraph.putEntityType("Movie");
+EntityType tvShow = graknGraph.putEntityType("TV Show");
 ```
 
 Create the roles and relation types:
 
 ```java
-RoleType actorInMovie = mindmapsGraph.putRoleType("Actor In Movie");
-RoleType movieCastIn = mindmapsGraph.putRoleType("Movie Cast In");
-RelationType starsInMovie = mindmapsGraph.putRelationType("Stars In Movie").hasRole(actorInMovie).hasRole(movieCastIn);
+RoleType actorInMovie = graknGraph.putRoleType("Actor In Movie");
+RoleType movieCastIn = graknGraph.putRoleType("Movie Cast In");
+RelationType starsInMovie = graknGraph.putRelationType("Stars In Movie").hasRole(actorInMovie).hasRole(movieCastIn);
 
-RoleType actorInTvShow = mindmapsGraph.putRoleType("Actor In Tv Show");
-RoleType tvShowCastIn = mindmapsGraph.putRoleType("Tv Show Cast In");
-RelationType starsInTvShow = mindmapsGraph.putRelationType("Stars In Tv Show").hasRole(actorInTvShow).hasRole(tvShowCastIn);
+RoleType actorInTvShow = graknGraph.putRoleType("Actor In Tv Show");
+RoleType tvShowCastIn = graknGraph.putRoleType("Tv Show Cast In");
+RelationType starsInTvShow = graknGraph.putRelationType("Stars In Tv Show").hasRole(actorInTvShow).hasRole(tvShowCastIn);
 ```
 
 Allow the roles to be played:
@@ -57,7 +57,7 @@ Let's convert our schema into something that is more expressive.
 Films and TV shows are similar, so we should have a super-class `Production` to represent both:
 
 ```java
-EntityType production = mindmapsGraph.putEntityType("Production");
+EntityType production = graknGraph.putEntityType("Production");
 movie.superType(production);
 tvShow.superType(production);
 ```
@@ -65,9 +65,9 @@ tvShow.superType(production);
 Actors should be able to star in any type of `Production`, be it a film or a TV Show:
 
 ```java
-RoleType actor = mindmapsGraph.putRoleType("Actor");
-RoleType productionCastIn = mindmapsGraph.putRoleType("Production Cast In");
-RelationType starsIn = mindmapsGraph.putRelationType("Stars In").hasRole(actor).hasRole(productionCastIn);
+RoleType actor = graknGraph.putRoleType("Actor");
+RoleType productionCastIn = graknGraph.putRoleType("Production Cast In");
+RelationType starsIn = graknGraph.putRelationType("Stars In").hasRole(actor).hasRole(productionCastIn);
 ```
 
 Allow the role to be played:
@@ -82,8 +82,8 @@ This also makes defining the schema shorter and gives more opportunities for gra
 For example, we can start to differentiate between male and female actors without impacting the schema significantly:
 
 ```java
-EntityType man = mindmapsGraph.putEntityType("Man").superType(person);
-EntityType woman = mindmapsGraph.putEntityType("Woman").superType();
+EntityType man = graknGraph.putEntityType("Man").superType(person);
+EntityType woman = graknGraph.putEntityType("Woman").superType();
 ```
 
 ## Rule Types
@@ -121,7 +121,7 @@ R2: anc(X, Y) :- parent(X, Z), anc(Z, Y)
 All rule instances are of type inference-rule which can be retrieved by:
 
 ```java
-RuleType inferenceRule = mindmapsGraph.getMetaRuleInference();
+RuleType inferenceRule = graknGraph.getMetaRuleInference();
 ```
 
 Rule instances can be added to the graph both through the Graph API as well as through Graql. Considering the ancestor example, with the use of the Graph API we can add the rules in the following way:
@@ -134,8 +134,8 @@ String r2Body = "(parent $x, child $z) isa Parent;" +
                 "(ancestor $z, descendant $y) isa Ancestor select $x, $y";
 String r2Head = "(ancestor $x, descendant $y) isa Ancestor";
 
-Rule rule1 = mindmapsGraph.addRule(r1Body, r1Head, inferenceRule);
-Rule rule2 = mindmapsGraph.addRule(r2Body, r2Head, inferenceRule);
+Rule rule1 = graknGraph.addRule(r1Body, r1Head, inferenceRule);
+Rule rule2 = graknGraph.addRule(r2Body, r2Head, inferenceRule);
 ```
 
 ### Rule Graql Syntax

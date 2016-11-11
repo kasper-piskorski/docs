@@ -19,7 +19,7 @@ Defining a schema for your graph allows you to:
 * ensure your graph is consistent
 * design domain-specific knowledge graphs.
 
-In Mindmaps, a schema is defined by adding **types** to your graph.
+In Grakn, a schema is defined by adding **types** to your graph.
 These **types** allow you to divide your data into different categories but also control how data instances may relate to each other.
 
 In this section we will review each of these types and explain how you use them when defining a graph in Grakn.
@@ -38,20 +38,20 @@ Similarly we could say that Godfather, Star Trek Nemesis and Monster can all be 
 We would define such **Entity Types** as follows:
 
 ```java
-EntityType person = mindmapsGraph.putEntityType("Person");
-EntityType movie = mindmapsGraph.putEntityType("Movie");
+EntityType person = graknGraph.putEntityType("Person");
+EntityType movie = graknGraph.putEntityType("Movie");
 ```
 
 With this we can arrange our data into categories:
 
 ```java
-alPacino = mindmapsGraph.addEntity(person);
-patrickStewart = mindmapsGraph.addEntity(person);
-charliseTheron = mindmapsGraph.addEntity(person);
+alPacino = graknGraph.addEntity(person);
+patrickStewart = graknGraph.addEntity(person);
+charliseTheron = graknGraph.addEntity(person);
 
-godfather = mindmapsGraph.addEntity(movie);
-starTrek = mindmapsGraph.addEntity(movie);
-monster = mindmapsGraph.addEntity(movie);
+godfather = graknGraph.addEntity(movie);
+starTrek = graknGraph.addEntity(movie);
+monster = graknGraph.addEntity(movie);
 ```
 
 ### Relation and Role Types
@@ -65,14 +65,14 @@ We begin doing this by defining a **Relation Type** which categorises the relati
 For example:
 
 ```java
-RelationType starsIn = mindmapsGraph.putRelationType("Stars In");
+RelationType starsIn = graknGraph.putRelationType("Stars In");
 ```
 
 In addition to this we have to specify the roles of relationship:
 
 ```java
-RoleType actor = mindmapsGraph.putRoleType("Actor");
-RoleType movieCastIn = mindmapsGraph.putRoleType("Movie Cast In");
+RoleType actor = graknGraph.putRoleType("Actor");
+RoleType movieCastIn = graknGraph.putRoleType("Movie Cast In");
 ```
 
 We also have to link these roles to the correct **Relation Type** (NB Roles are unique and cannot be in more than one
@@ -100,7 +100,7 @@ First we create an instance of the Relation Type:
 
 
 ```java
-Relation relation = mindmapsGraph.addRelation(starsIn);
+Relation relation = graknGraph.addRelation(starsIn);
 ```
 
 Then we specify who is playing which role:

@@ -15,9 +15,9 @@ To use the API, add the following to your `pom.xml`:
 
 ```xml
 <dependency>
-  <groupId>io.mindmaps</groupId>
-  <artifactId>mindmaps-graql</artifactId>
-  <version>0.5.0</version>
+  <groupId>io.grakn</groupId>
+  <artifactId>grakn-graql</artifactId>
+  <version>0.6.0</version>
 </dependency>
 ```
 
@@ -28,14 +28,14 @@ The `QueryBuilder` class is how you begin building Graql queries.
 `Graql` contains several useful static methods such as `var` and `eq`, so it's recommended that you use a static import:
 
 ```java
-import static io.mindmaps.graql.Graql.*;
+import static io.grakn.graql.Graql.*;
 ```
 
-A `QueryBuilder` is constructed by providing a `MindmapsGraph`:
+A `QueryBuilder` is constructed by providing a `GraknGraph`:
 
 ```java-test-ignore
-MindmapsGraph mindmapsGraph = Mindmaps.factory(Mindmaps.DEFAULT_URI, "my-graph").getGraph();
-QueryBuilder qb = withGraph(mindmapsGraph);
+GraknGraph graknGraph = Grakn.factory(Grakn.DEFAULT_URI, "my-graph").getGraph();
+QueryBuilder qb = withGraph(graknGraph);
 ```
 
 The user can also choose to not provide a transaction. This can be useful if
@@ -110,7 +110,7 @@ qb.match(var("x").has("name", "Pichu")).delete("x").execute();
 
 ```xml
 <dependency>
-  <groupId>io.mindmaps.graql</groupId>
+  <groupId>io.grakn.graql</groupId>
   <artifactId>graql-parser</artifactId>
   <version>0.2.1</version>
 </dependency>

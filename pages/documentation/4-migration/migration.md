@@ -14,7 +14,7 @@ comment_issue_id: 32
 This page introduces migration of data, stored in different formats, to populate a graph in Grakn. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script
-The migration shell script can be found in `mindmaps-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:
+The migration shell script can be found in `grakn-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:
 
 ### SQL Migration
 

@@ -23,14 +23,14 @@ Unzip the download into your preferred location and run the following in the ter
 
 ```bash
 cd [your Grakn install directory]
-bin/mindmaps.sh start
+bin/grakn.sh start
 ```
 
-This will start an instance of Cassandra, which serves as the supported backend for Mindmaps. It starts also Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser dashboard.
+This will start an instance of Cassandra, which serves as the supported backend for Grakn. It starts also Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser dashboard.
 
 {% include note.html content="**Useful commands**  <br />
-To start Grakn, run `mindmaps.sh start`.   
-To stop Grakn, run `mindmaps.sh stop`. " %}
+To start Grakn, run `grakn.sh start`.   
+To stop Grakn, run `grakn.sh stop`. " %}
 
 
 ## Set up Graql

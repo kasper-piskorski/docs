@@ -37,7 +37,7 @@ Using git, clone the [Grakn repository](https://github.com/graknlabs/grakn) to a
 mvn package
 ```
 
-The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `mindmaps-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://grakn.ai/download).
+The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `grakn-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://grakn.ai/download).
 
 ### Example Code
 You can find an additional repo on Github containing our [example code](https://github.com/graknlabs/sample-projects), while further information about the examples is [here](../examples/examples.html).
@@ -45,14 +45,14 @@ You can find an additional repo on Github containing our [example code](https://
 
 ## Grakn Java API
 
-Inside the `lib` directory of mindmaps.zip are the jars you will need to
-develop with mindmaps.
+Inside the `lib` directory of Grakn.zip are the jars you will need to
+develop with Grakn.
 
 If you would like to start developing with minimal effort you can integrate the jar file, e.g.
 `graql-shell-0.2.1-jar-with-dependencies.jar` into your project. This however
 may be a bit inflexible as all dependencies are compiled in.
 
-If you would like more flexibility, in the `lib` directory all the mindmaps
+If you would like more flexibility, in the `lib` directory all the Grakn
 jars are provided with no dependencies. Using these would require you to use
 Maven to acquire the other dependencies.
 
