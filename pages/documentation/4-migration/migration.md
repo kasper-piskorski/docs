@@ -95,7 +95,7 @@ Please see the [OWL migration documentation](./OWL-migration.html) for further i
 NOTE: `-no` is not supported by OWL migration at the moment
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html).
+You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
 
 {% include links.html %}
 

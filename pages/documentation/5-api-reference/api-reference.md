@@ -10,17 +10,9 @@ comment_issue_id: 19
 
 Welcome to the API Reference landing page. From here, you can find the latest, and all previous, versions of our API reference, which are built from Javadocs.
 
-## Latest Version
-The latest version will always be posted at [https://grakn.ai/pages/api-reference/latest/index.html](https://grakn.ai/pages/api-reference/latest/index.html).
-
-## API Reference for Past Versions of Grakn
-
-**[v0.4.0](https://grakn.ai/pages/api-reference/v0.4.0/index.html)**   
-**[v0.3.0](https://grakn.ai/pages/api-reference/v0.3.0/index.html)**   
-**[v0.2.0](https://grakn.ai/pages/api-reference/v0.2.0/index.html)**   
-**[v0.1.1](https://grakn.ai/pages/api-reference/v0.1.1/index.html)**     
-**[v0.1.0](https://grakn.ai/pages/api-reference/v0.1.0/index.html)**   
-
+## Versions
+The latest version will always be posted at [https://grakn.ai/javadocs.html](https://grakn.ai/javadocs.html).   
+You can use the drop down selector to choose previous versions of the API reference, should you want to refer back to them.
 
 ## Feedback
 We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.grakn.ai) or through our main [website](http://www.grakn.ai).
