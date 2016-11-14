@@ -1,5 +1,5 @@
 ---
-title: Mindmaps Platform
+title: Grakn Platform
 keywords: platform
 last_updated: September 13, 2016
 tags: [overview, faq]

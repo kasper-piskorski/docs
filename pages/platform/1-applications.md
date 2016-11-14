@@ -1,5 +1,5 @@
 ---
-title: What can you build with MindampsDB?
+title: What can you build with Grakn?
 keywords: applications
 last_updated: September 13, 2016
 summary: false
