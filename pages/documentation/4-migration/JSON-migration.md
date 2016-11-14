@@ -1,11 +1,11 @@
 ---
-title: CSV Migration to Grakn
+title: JSON Migration to Grakn
 keywords: setup, getting started
-last_updated: November 2nd 2016
+last_updated: November 14th 2016
 tags: [migration]
-summary: "This document will teach you how to migrate CSV data into Grakn."
+summary: "This document will teach you how to migrate JSON data into Grakn."
 sidebar: documentation_sidebar
-permalink: /documentation/migration/CSV-migration.html
+permalink: /documentation/migration/JSON-migration.html
 folder: documentation
 comment_issue_id: 32
 ---
@@ -14,10 +14,9 @@ comment_issue_id: 32
 This tutorial shows you how to populate Grakn with JSON data. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for JSON
-The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed.
+The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed.    
 
 ```bash
-
 usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
  -b,--batch <arg>      number of row to load at once
  -h,--help             print usage message
@@ -29,24 +28,21 @@ usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg
 ```
 
 ## JSON Migration Basics
-
 JSON Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
 
-JSON Migration will apply your template to each 
+<!-- JSON Migration will apply your template to each [Alex - something missing here?] -->
 
 #### What about the ontology?
-
-YOU must write the ontology! Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator how your data can be mapped to your ontology.
+YOU must write the ontology! Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology.
 
 #### How do you write a template?
-
 Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our other migration guides for more ideas on how to use Graql templates with data. 
 
 {% include note.html content="The JSON migrator can handle either a directory or a file as the -input parameter!" %}
 
 #### Looping over a JSON array
+**types.json**    
 
-**types.json**
 ```json
 {
     "types": [
@@ -63,7 +59,7 @@ Approach each JSON file as though you were inserting a single query. The migrato
 }
 ```
 
-To migrate all of these types, we need to iterate over the array.
+To migrate all of these types, we need to iterate over the array:    
 
 ```graql-template
 insert
@@ -74,7 +70,7 @@ for(types) do {
 }
 ```
 
-Which will resolve as:
+Which will resolve as:    
 
 ```graql
 insert $x0 has type-id "1" has description "normal" isa pokemon-type;
@@ -90,12 +86,12 @@ $x9 has description "fire" isa pokemon-type has type-id "10";
 ```
 
 #### Match-Inserts with loops
-
 In some situations, you'll need to look up references to existing entities so that you can refer to them when inserting data. 
 
 Once the above types are migrated, we can move on to the pokemon JSON file.
 
-**pokemon.json**
+**pokemon.json**    
+
 ```json
 {
     "pokemon": [
@@ -131,7 +127,7 @@ Once the above types are migrated, we can move on to the pokemon JSON file.
 }
 ```
 
-This template is rather complicated. The first `match` portion is necessary to look up all of the already migrated pokemon types in the graph. You can then refer to these variables in your `insert` statement while creating the relationships.
+This template is rather complicated. The first `match` portion is necessary to look up all of the already migrated pokemon types in the graph. You can then refer to these variables in your `insert` statement while creating the relationships.   
 
 ```graql-template
 match
@@ -155,7 +151,7 @@ for(pokemon) do {
 }
 ```
 
-It will resolve as:
+It will resolve as:    
 
 ```graql
 match $1 has type-id "1"; $2 has type-id "2";
