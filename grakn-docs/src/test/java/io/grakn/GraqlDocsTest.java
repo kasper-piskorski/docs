@@ -1,6 +1,6 @@
-package io.mindmaps;
+package io.grakn;
 
-import io.mindmaps.exception.GraqlParsingException;
+import io.grakn.exception.GraqlParsingException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.RegexFileFilter;
@@ -16,7 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import static io.mindmaps.DocTestUtil.getTestGraph;
+import static io.grakn.DocTestUtil.getTestGraph;
 import static org.junit.Assert.fail;
 
 public class GraqlDocsTest {
@@ -52,7 +52,7 @@ public class GraqlDocsTest {
     }
 
     private void assertFileValidSyntax(File file) {
-        MindmapsGraph graph = getTestGraph();
+        GraknGraph graph = getTestGraph();
 
         byte[] encoded = new byte[0];
         try {
@@ -67,8 +67,8 @@ public class GraqlDocsTest {
         executeAssertionOnContents(graph, TEMPLATE_GRAQL, file, contents, this::assertGraqlTemplateValidSyntax);
     }
 
-    private void executeAssertionOnContents(MindmapsGraph graph, Pattern pattern, File file, String contents,
-                                            Fn<MindmapsGraph, String, String> assertion){
+    private void executeAssertionOnContents(GraknGraph graph, Pattern pattern, File file, String contents,
+                                            Fn<GraknGraph, String, String> assertion){
         Matcher matcher = pattern.matcher(contents);
 
         while (matcher.find()) {
@@ -82,7 +82,7 @@ public class GraqlDocsTest {
         }
     }
 
-    private void assertGraqlCodeblockValidSyntax(MindmapsGraph graph, String fileName, String block) {
+    private void assertGraqlCodeblockValidSyntax(GraknGraph graph, String fileName, String block) {
         Matcher shellMatcher = SHELL_GRAQL.matcher(block);
 
         if (shellMatcher.find()) {
@@ -95,7 +95,7 @@ public class GraqlDocsTest {
         }
     }
 
-    private void assertGraqlStringValidSyntax(MindmapsGraph graph, String fileName, String graqlString) {
+    private void assertGraqlStringValidSyntax(GraknGraph graph, String fileName, String graqlString) {
         try {
             parse(graph, graqlString);
         } catch (Exception e1) {
@@ -116,7 +116,7 @@ public class GraqlDocsTest {
         }
     }
 
-    private void assertGraqlTemplateValidSyntax(MindmapsGraph graph, String fileName, String templateBlock){
+    private void assertGraqlTemplateValidSyntax(GraknGraph graph, String fileName, String templateBlock){
         try {
             graph.graql().parseTemplate(templateBlock, new HashMap<>());
         } catch (GraqlParsingException e){
@@ -124,7 +124,7 @@ public class GraqlDocsTest {
         } catch (Exception e){}
     }
 
-    private void parse(MindmapsGraph graph, String line) {
+    private void parse(GraknGraph graph, String line) {
         // TODO: Handle this in a more elegant way
         // 'commit' is a valid command
         if (!line.trim().matches("commit;?")) {
