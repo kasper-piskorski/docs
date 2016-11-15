@@ -24,7 +24,7 @@ OPTIONS
  -h,--help              print usage message
  -i,--input <arg>       input csv file
  -k,--keyspace <arg>    keyspace to use
- -n,--no                dry run- write to standard out
+ -n,--no                dry run - write to standard out
  -s,--separator <arg>   separator of columns in input file
  -t,--template <arg>    graql template to apply over data
  -u,--uri <arg>         uri to engine endpoint
@@ -32,21 +32,24 @@ OPTIONS
 
 ## CSV Migration Basics
 
+There are limitations on the CSV format that prevent it from expressing the semantics of the data. If we were to automatically migrate an ontology, your data would remain as unhelpful as it is in CSV, and we want our users to have the full benefit of a knowledge graph. So you must write an ontology for your dataset.
+
 CSV Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
 
-#### What about the ontology?
+Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The CSV migrator will apply the template to each row of data in the CSV file. If you are familiar with the Graql templating language, you are aware that it replaces the indicated sections in the template with provided data. In this migrator, the column header is the key and the content of each row at that column the value.
 
-YOU must write the ontology!
+#### Cars example
 
-There are limitations on the CSV format that prevent it from expressing the semantics of the data. If we were to automatically migrate the ontology, your data would remain as unhelpful as it is in CSV, and we want our users to have the full benefit of a knowledge graph.
+Let's take a simple example. First, the CSV:
 
-Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator how your data can be mapped to your ontology.
+```csv
+Year,Make,Model,Description,Price
+1997,Ford,E350,"ac, abs, moon",3000.00
+1999,Chevy,"Venture",,4900.00
+1996,Jeep,Grand Cherokee,"MUST SELL! air, moon roof, loaded",4799.00
+```
 
-#### How do I write a template?
-
-The CSV migrator will apply the template to each row of data in the CSV file. If you are familiar with the Graql templating language, you are aware that it replaces the indicated sections in the template with provided data. In this migrator, the column header is the key and the content of each row at that column the value.
-
-#### Simple example
+Here is the ontology for the example:   
 
 ```graql
 insert
@@ -64,18 +67,8 @@ price isa resource-type datatype double;
 
 ```
 
-Above is the ontology for the following example
 
-**cars.csv**   
-
-```csv
-Year,Make,Model,Description,Price
-1997,Ford,E350,"ac, abs, moon",3000.00
-1999,Chevy,"Venture",,4900.00
-1996,Jeep,Grand Cherokee,"MUST SELL! air, moon roof, loaded",4799.00
-```
-
-**template**   
+And the Graql template:   
 
 ```graql-template
 insert 
@@ -87,7 +80,7 @@ $x isa car
     if (ne Description null) do { has description <Description>};
 ```
 
-This template will create a `car` entity for each row. It will attach `year` and `price` resources to each of these entities. If the `description` resource is present in the data, it will attach the approriate `description` to the `car`.
+The template will create a `car` entity for each row. It will attach `year` and `price` resources to each of these entities. If the `description` resource is present in the data, it will attach the approriate `description` to the `car`.
 
 The template is applied to each row, and the resulting Graql statement, if printed out, looks like:
 
@@ -97,7 +90,7 @@ insert $x0 isa car has name "Chevy" has price 4900.0 has year "1999";
 insert $x0 isa car has description "MUST SELL! air, moon roof, loaded" has price 4799.0 has name "Jeep" has year "1996";
 ```
 
-You will note that the third Graql insert is missing the `description` resource. This is because that value is not present in the data and the template uses an `if` statement to check if it exists.
+You will note that the second Graql insert is missing the `description` resource. This is because that value is not present in the data and the template uses an `if` statement to check if it exists.
 
 ### Separator
 
@@ -236,7 +229,7 @@ insert (pokemon-with-type: $pokemon, type-of-pokemon: $type) isa has-type;
 
 In this final template we create a `has-type` relationship between the values of the `pokemon_id` and `type_id` columns. You'll notice that to ensure the relationship is between the correct entities, we've had to find them in the graph before inserting using a `match-insert` query. 
 
-{% include note.html content="It is the responsibility of the user to ensure that all entities exist in the graph before they insert relations." %}
+{% include note.html content="You must ensure that all entities exist in a graph before inserting relations." %}
 
 ## Where Next?
 You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).

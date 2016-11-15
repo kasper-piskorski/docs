@@ -22,26 +22,26 @@ usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg
  -h,--help             print usage message
  -i,--input <arg>      input json data file or directory
  -k,--keyspace <arg>   keyspace to use
- -n,--no               dry run- write to standard out
+ -n,--no               dry run - write to standard out
  -t,--template <arg>   graql template to apply over data
  -u,--uri <arg>        uri to engine endpoint
 ```
 
 ## JSON Migration Basics
+
+Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology.
+
 JSON Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
 
 <!-- JSON Migration will apply your template to each [Alex - something missing here?] -->
 
-#### What about the ontology?
-YOU must write the ontology! Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology.
-
-#### How do you write a template?
-Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our other migration guides for more ideas on how to use Graql templates with data. 
+Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our [other migration guides](../migration.html) for more ideas on how to use Graql templates with data. 
 
 {% include note.html content="The JSON migrator can handle either a directory or a file as the -input parameter!" %}
 
-#### Looping over a JSON array
-**types.json**    
+### Looping over a JSON array   
+
+As an example, let's take some JSON:
 
 ```json
 {
@@ -85,12 +85,11 @@ $x8 has type-id "9" has description "steel" isa pokemon-type;
 $x9 has description "fire" isa pokemon-type has type-id "10";
 ```
 
-#### Match-Inserts with loops
+### Match-Inserts with loops   
+
 In some situations, you'll need to look up references to existing entities so that you can refer to them when inserting data. 
 
-Once the above types are migrated, we can move on to the pokemon JSON file.
-
-**pokemon.json**    
+Once the above types are migrated, we can move on to the pokemon JSON file:   
 
 ```json
 {

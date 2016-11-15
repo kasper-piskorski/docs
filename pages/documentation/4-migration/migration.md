@@ -24,7 +24,7 @@ usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -l
  -h,--help             print usage message
  -k,--keyspace <arg>   keyspace to use
  -location <arg>       JDBC url (location of DB)
- -n,--no               dry run- write to standard out
+ -n,--no               dry run - write to standard out
  -pass <arg>           JDBC password
  -q,--query <arg>      SQL Query
  -t,--template <arg>   template for the given SQL query
@@ -44,7 +44,7 @@ OPTIONS
  -h,--help              print usage message
  -i,--input <arg>       input csv file
  -k,--keyspace <arg>    keyspace to use
- -n,--no                dry run- write to standard out
+ -n,--no                dry run - write to standard out
  -s,--separator <arg>   separator of columns in input file
  -t,--template <arg>    graql template to apply over data
  -u,--uri <arg>         uri to engine endpoint
@@ -60,12 +60,28 @@ usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg
  -h,--help             print usage message
  -i,--input <arg>      input json data file or directory
  -k,--keyspace <arg>   keyspace to use
- -n,--no               dry run- write to standard out
+ -n,--no               dry run - write to standard out
  -t,--template <arg>   graql template to apply over data
  -u,--uri <arg>        uri to engine endpoint
 ```
 
-### Export 
+Please see the [JSON migration documentation](./JSON-migration.html) for further information.
+
+### OWL Migration
+
+```bash
+usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+ -h,--help             print usage message
+ -i,--input <arg>      input owl file
+ -k,--keyspace <arg>   keyspace to use
+ -u,--uri <arg>        uri to engine endpoint
+```
+
+NOTE: `-no` is not supported by OWL migration at the moment
+
+Please see the [OWL migration documentation](./OWL-migration.html) for further information.
+
+### Export from Grakn
 
 ```bash
 usage: migration.sh export -data -ontology [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
@@ -77,22 +93,7 @@ usage: migration.sh export -data -ontology [-help] [-no] [-batch <arg>] [-uri <a
  -u,--uri <arg>        uri to engine endpoint
 ```
 
-Export will always redirect to standard out. 
-
-### OWL Migration
-
-```bash
-usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
- -h,--help             print usage message
- -i,--input <arg>      input owl file
- -k,--keyspace <arg>   keyspace to use
- -n,--no               dry run- write to standard out
- -u,--uri <arg>        uri to engine endpoint
-```
-
-Please see the [OWL migration documentation](./OWL-migration.html) for further information.
-
-NOTE: `-no` is not supported by OWL migration at the moment
+Exporting data or the ontology from Grakn, into Graql, will always redirect to standard out. 
 
 ## Where Next?
 You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).

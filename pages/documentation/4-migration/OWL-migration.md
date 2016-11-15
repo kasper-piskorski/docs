@@ -21,7 +21,7 @@ usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [
  -h,--help             print usage message
  -i,--input <arg>      input owl file
  -k,--keyspace <arg>   keyspace to use
- -n,--no               dry run- write to standard out
+ -n,--no               dry run - write to standard out - not currently supported by the OWL migrator
  -u,--uri <arg>        uri to engine endpoint
 ```
 

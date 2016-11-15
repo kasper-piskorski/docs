@@ -22,7 +22,7 @@ usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -l
  -h,--help             print usage message
  -k,--keyspace <arg>   keyspace to use
  -location <arg>       JDBC url (location of DB)
- -n,--no               dry run- write to standard out
+ -n,--no               dry run - write to standard out
  -pass <arg>           JDBC password
  -q,--query <arg>      SQL Query
  -t,--template <arg>   template for the given SQL query
