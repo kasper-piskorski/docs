@@ -1,4 +1,4 @@
-# Grakn Documentation
+# GRAKN.AI Documentation
 
 ## Dependencies
 
@@ -33,7 +33,7 @@ $ rake dependencies
 
 ## Environment variables
 
-There is an environment variable that needs to be set depending on the build you wish to commence: `urlprefix`. If you only wish to preview the generated documentation itself; as server from this repository rather than integrated into the mindmaps website you do not need to do anything.
+There is an environment variable that needs to be set depending on the build you wish to commence: `urlprefix`. If you only wish to preview the generated documentation itself; as server from this repository rather than integrated into the GRAKN.AI website you do not need to do anything.
 
 ##### `urlprefix`
 
@@ -42,7 +42,7 @@ For local builds (local web server with documentation only), do not set this var
 $ export urlprefix=""
 ```
 
-For integrating to mindmaps website, or elsewhere set as needed. For example; `www.grakn.ai/docs/`
+For integrating to GRAKN.AI website, or elsewhere set as needed. For example; `www.grakn.ai/docs/`
 ```
 $ export urlprefix=/docs
 ```

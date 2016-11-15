@@ -16,7 +16,7 @@ You can find the code below in the example code directory of the Grakn distribut
 ## Introduction
 
 In Grakn, the Graph API is the implementation of the object model discussed in
-[Grakn Basics](../the-basics/mindmaps-basics.html). It allows you to create graphs using Java 8. 
+[Grakn Basics](../the-basics/grakn-basics.html). It allows you to create graphs using Java 8. 
 
 ### Initialising Grakn in Java    
 

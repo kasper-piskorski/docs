@@ -25,7 +25,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
     <h2>Guide for beginners</h2>
 <p>Check out our guide to <a href="https://grakn.ai/pages/documentation/get-started/setup-guide.html">download and set up Grakn</a>.</p>
 <p>When you're set up, there's an <a href="https://grakn.ai/pages/documentation/the-basics/quickstart-tutorial.html">introductory tutorial</a> to show the basics of Graql and how to use the Java API.</p>
-<p>Read about the <a href="https://grakn.ai/pages/documentation/the-basics/mindmaps-basics.html">basics of the Grakn object model</a>.</p>
+<p>Read about the <a href="https://grakn.ai/pages/documentation/the-basics/grakn-basics.html">basics of the Grakn object model</a>.</p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="graql">

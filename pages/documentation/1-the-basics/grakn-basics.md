@@ -5,7 +5,7 @@ last_updated: August 24, 2016
 tags: [getting-started]
 summary: "Introducing the basics of the Grakn object model."
 sidebar: documentation_sidebar
-permalink: /documentation/the-basics/mindmaps-basics.html
+permalink: /documentation/the-basics/grakn-basics.html
 folder: documentation
 comment_issue_id: 17
 ---

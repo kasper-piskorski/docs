@@ -15,7 +15,7 @@ The Grakn visualiser provides a graphical tool to inspect and query your graph d
 
 ## Loading and Visualising a Graph
 If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
-You can find the ```pokemon.gql``` example we will work with in the examples directory that is included in the Grakn download zip, or in our [Grakn repo](https://github.com/graknlabs/grakn/tree/master/mindmaps-dist/src/examples).
+You can find the ```pokemon.gql``` example we will work with in the examples directory that is included in the Grakn download zip, or in our [Grakn repo](https://github.com/graknlabs/grakn/tree/master/grakn-dist/src/examples).
 
 The first step is to load the Pokemon graph from the example file into the default keyspace. You need to use your terminal to do this, as the visualiser is a read-only interface to a graph.
 

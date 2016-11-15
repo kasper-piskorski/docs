@@ -20,7 +20,7 @@ entries:
     folderitems:
       - title: Grakn Basics
         output: web
-        url: /documentation/the-basics/mindmaps-basics.html
+        url: /documentation/the-basics/grakn-basics.html
       - title: Quickstart Tutorial
         output: web
         url: /documentation/the-basics/quickstart-tutorial.html

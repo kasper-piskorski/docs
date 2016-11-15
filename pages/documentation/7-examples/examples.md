@@ -23,7 +23,7 @@ A [simple example](./pokemon.html) to illustrate the basics of Grakn Graql state
 
 ### [Philosophers](./philosophers.html)
 
-This is a [simple example](./philosophers.html) to illustrate the [basics of the object model](../the-basics/mindmaps-basics.html). You can also find the example within the Grakn distribution zip.
+This is a [simple example](./philosophers.html) to illustrate the [basics of the object model](../the-basics/grakn-basics.html). You can also find the example within the Grakn distribution zip.
 
 
 ### [Moogi](./moogi.html)

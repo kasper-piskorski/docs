@@ -13,7 +13,7 @@ comment_issue_id: 29
 
 ## Introduction
 
-The Grakn repo on Github contains [pokemon.gql](https://github.com/graknlabs/grakn/blob/master/mindmaps-dist/src/examples/pokemon.gql), which is a simple example to illustrate the basics of Grakn Graql statements and queries. You can also find the example within the Grakn distribution zip.
+The Grakn repo on Github contains [pokemon.gql](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/pokemon.gql), which is a simple example to illustrate the basics of Grakn Graql statements and queries. You can also find the example within the Grakn distribution zip.
 
 
 

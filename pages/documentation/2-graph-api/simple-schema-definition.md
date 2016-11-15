@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 21
 ---
 
-This article assumes that you have already looked at page that covers [Grakn Basics](../the-basics/mindmaps-basics.html).
+This article assumes that you have already looked at page that covers [Grakn Basics](../the-basics/grakn-basics.html).
 
 
 Defining a schema for your graph allows you to:
