@@ -1,7 +1,7 @@
 ---
 title: Grakn Data Validation
 keywords: validation
-last_updated: September 23, 2016
+last_updated: November 17, 2016
 tags: 
 summary: "Description of Schema Validation"
 sidebar: documentation_sidebar
