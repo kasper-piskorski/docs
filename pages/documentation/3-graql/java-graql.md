@@ -15,7 +15,7 @@ To use the API, add the following to your `pom.xml`:
 
 ```xml
 <dependency>
-  <groupId>io.grakn</groupId>
+  <groupId>ai.grakn</groupId>
   <artifactId>grakn-graql</artifactId>
   <version>0.6.0</version>
 </dependency>
@@ -110,9 +110,9 @@ qb.match(var("x").has("name", "Pichu")).delete("x").execute();
 
 ```xml
 <dependency>
-  <groupId>io.grakn.graql</groupId>
+  <groupId>ai.grakn.graql</groupId>
   <artifactId>graql-parser</artifactId>
-  <version>0.2.1</version>
+  <version>0.6.0</version>
 </dependency>
 ```
 

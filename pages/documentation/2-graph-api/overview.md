@@ -37,7 +37,7 @@ GraknGraph graknGraph = Grakn.factory(Grakn.IN_MEMORY, "my-graph").getGraph();
 
 ```
 <dependency>
-    <groupId>io.grakn</groupId>
+    <groupId>ai.grakn</groupId>
     <artifactId>grakn-titan-factory</artifactId>
     <version>0.6.0</version>
 </dependency>

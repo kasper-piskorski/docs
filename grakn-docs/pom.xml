@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.grakn</groupId>
+    <groupId>ai.grakn</groupId>
     <artifactId>grakn-docs</artifactId>
     <version>0.6.0</version>
 
@@ -27,12 +27,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.grakn</groupId>
+            <groupId>ai.grakn</groupId>
             <artifactId>grakn-graph</artifactId>
             <version>${grakn.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.grakn</groupId>
+            <groupId>ai.grakn</groupId>
             <artifactId>grakn-graql</artifactId>
             <version>${grakn.version}</version>
         </dependency>
