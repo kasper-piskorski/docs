@@ -28,14 +28,14 @@ The `QueryBuilder` class is how you begin building Graql queries.
 `Graql` contains several useful static methods such as `var` and `eq`, so it's recommended that you use a static import:
 
 ```java
-import static io.grakn.graql.Graql.*;
+import static ai.grakn.graql.Graql.*;
 ```
 
 A `QueryBuilder` is constructed by providing a `GraknGraph`:
 
 ```java-test-ignore
 GraknGraph graknGraph = Grakn.factory(Grakn.DEFAULT_URI, "my-graph").getGraph();
-QueryBuilder qb = withGraph(graknGraph);
+QueryBuilder qb = graknGraph.graql();
 ```
 
 The user can also choose to not provide a transaction. This can be useful if
