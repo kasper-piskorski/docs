@@ -84,13 +84,21 @@ entries:
       - title: JSON Migration
         output: web
         url: /documentation/migration/JSON-migration.html
-
       - title: SQL Migration
         output: web
         url: /documentation/migration/SQL-migration.html
       - title: OWL Migration
         output: web
         url: /documentation/migration/OWL-migration.html
+  - title: Advanced Grakn
+    output: web
+    folderitems:
+      - title: Post Processing
+        output: web
+        url: /documentation/advanced-grakn/post-processing.html
+      - title: Validation
+        output: web
+        url: /documentation/advanced-grakn/validation.html
   - title: API Reference
     output: web
     folderitems:
