@@ -127,15 +127,17 @@ RuleType inferenceRule = graknGraph.getMetaRuleInference();
 Rule instances can be added to the graph both through the Graph API as well as through Graql. Considering the ancestor example, with the use of the Graph API we can add the rules in the following way:
 
 ```java
-String r1Body = "(parent $x, child $y) isa Parent";
-String r1Head = "(ancestor $x, descendant $y) isa Ancestor";
+Pattern r1Body = var().rel("parent", "x").rel("child", "y").isa("Parent");
+Pattern r1Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
 
-String r2Body = "(parent $x, child $z) isa Parent;" +
-                "(ancestor $z, descendant $y) isa Ancestor select $x, $y";
-String r2Head = "(ancestor $x, descendant $y) isa Ancestor";
+Pattern r2Body = and(
+        var().rel("parent", "x").rel("child", "y").isa("Parent')"),
+        var().rel("ancestor", "z").rel("descendant", "y").isa("Ancestor")
+);
+Pattern r2Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
 
-Rule rule1 = graknGraph.addRule(r1Body, r1Head, inferenceRule);
-Rule rule2 = graknGraph.addRule(r2Body, r2Head, inferenceRule);
+Rule rule1 = inferenceRule.addRule(r1Body, r1Head);
+Rule rule2 = inferenceRule.addRule(r2Body, r2Head);
 ```
 
 ### Rule Graql Syntax

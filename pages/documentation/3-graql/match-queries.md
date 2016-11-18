@@ -429,7 +429,7 @@ qb.match(var("x").isa("pokemon").has("pokedex-no", var("no")))
     .limit(30)
     .offset(10)
     .distinct()
-    .orderBy("no", true);
+    .orderBy("no", Order.asc);
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

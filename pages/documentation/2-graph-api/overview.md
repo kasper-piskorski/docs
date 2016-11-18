@@ -60,19 +60,20 @@ Next we specify who our people are:
 
 ```java
     ResourceType<String> name = graknGraph.putResourceType("name", ResourceType.DataType.STRING);
+    person.hasResource(name);
 
-    Resource<String> socratesName  = graknGraph.putResource("Socrates", name);
-    Resource<String> platoName     = graknGraph.putResource("Socrates", name);
-    Resource<String> aristotleName = graknGraph.putResource("Socrates", name);
-    Resource<String> alexanderName = graknGraph.putResource("Socrates", name);
+    Resource<String> socratesName  = name.putResource("Socrates");
+    Resource<String> platoName     = name.putResource("Plato");
+    Resource<String> aristotleName = name.putResource("Aristotle");
+    Resource<String> alexanderName = name.putResource("Alexander");
 
-    Entity socrates  = graknGraph.addEntity(person);
+    Entity socrates  = person.addEntity();
     socrates.hasResource(socratesName);
-    Entity plato     = graknGraph.addEntity(person);
+    Entity plato     = person.addEntity();
     plato.hasResource(platoName);
-    Entity aristotle = graknGraph.addEntity(person);
+    Entity aristotle = person.addEntity();
     aristotle.hasResource(aristotleName);
-    Entity alexander = graknGraph.addEntity(person);
+    Entity alexander = person.addEntity();
     alexander.hasResource(alexanderName);
 ```
 
@@ -91,19 +92,20 @@ Next, let's add some `schools` of thought:
 
 ```java
     EntityType school = graknGraph.putEntityType("school");
+    school.hasResource(name);
 
-    Resource<String> peripateticismName  = graknGraph.putResource("Peripateticism", name);
-    Resource<String> platonismName       = graknGraph.putResource("Platonism", name);
-    Resource<String> idealismName        = graknGraph.putResource("Idealism", name);
-    Resource<String> cynicismName        = graknGraph.putResource("Cynicism", name);
+    Resource<String> peripateticismName  = name.putResource("Peripateticism");
+    Resource<String> platonismName       = name.putResource("Platonism");
+    Resource<String> idealismName        = name.putResource("Idealism");
+    Resource<String> cynicismName        = name.putResource("Cynicism");
 
-    Entity peripateticism = graknGraph.addEntity(school);
+    Entity peripateticism = school.addEntity();
     peripateticism.hasResource(peripateticismName);
-    Entity platonism      = graknGraph.addEntity(school);
+    Entity platonism      = school.addEntity();
     platonism.hasResource(platonismName);
-    Entity idealism       = graknGraph.addEntity(school);
+    Entity idealism       = school.addEntity();
     idealism.hasResource(idealismName);
-    Entity cynicism       = graknGraph.addEntity(school);
+    Entity cynicism       = school.addEntity();
     cynicism.hasResource(cynicismName);
 ```
 
@@ -127,19 +129,19 @@ RelationType practice = graknGraph.putRelationType("practice").
 Next we can relate our philosophers and schools to each other:
 
 ```java
-    graknGraph.addRelation(practice).  
+    practice.addRelation().  
       putRolePlayer(philosopher, socrates).
       putRolePlayer(philosophy, platonism);
 
-    graknGraph.addRelation(practice).
+    practice.addRelation().
       putRolePlayer(philosopher, plato).
       putRolePlayer(philosophy, idealism);
 
-    graknGraph.addRelation(practice).
+    practice.addRelation().
       putRolePlayer(philosopher, plato).
       putRolePlayer(philosophy, platonism);
 
-    graknGraph.addRelation(practice).
+    practice.addRelation().
       putRolePlayer(philosopher, aristotle).
       putRolePlayer(philosophy, peripateticism);
 ```
@@ -154,11 +156,11 @@ Now we can define how our philosophers relate to each other:
     RelationType education = graknGraph.putRelationType("education").
       hasRole(teacher).hasRole(student);
 
-    graknGraph.addRelation(education).putRolePlayer(teacher, socrates).
+    education.addRelation().putRolePlayer(teacher, socrates).
       putRolePlayer(student, plato);
-    graknGraph.addRelation(education).putRolePlayer(teacher, plato).
+    education.addRelation().putRolePlayer(teacher, plato).
       putRolePlayer(student, aristotle);
-    graknGraph.addRelation(education).putRolePlayer(teacher, aristotle).
+    education.addRelation().putRolePlayer(teacher, aristotle).
       putRolePlayer(student, alexander);
 ```
 
@@ -170,12 +172,13 @@ So, we'll create some resource types that can be attached to a person:
 ```java
 ResourceType<String> title = graknGraph.putResourceType("title", ResourceType.DataType.STRING);
 ResourceType<String> epithet = graknGraph.putResourceType("epithet", ResourceType.DataType.STRING);
+person.hasResource(title).hasResource(epithet);
 ```
 
 Let's make Alexander "Great"!
 
 ```java
-Resource<String> theGreat = graknGraph.putResource("The Great", epithet);
+Resource<String> theGreat = epithet.putResource("The Great");
 alexander.hasResource(theGreat);
 ```
 
@@ -186,11 +189,11 @@ This is a quick way to add a relation between `Alexander` and an `epithet` with 
 Let's add the rest of Alexander's titles while we're at it:
 
 ```java
-Resource<String> hegemon = graknGraph.putResource("Hegemon", title);
-Resource<String> kingOfMacedon = graknGraph.putResource("King of Macedon", title);
-Resource<String> shahOfPersia = graknGraph.putResource("Shah of Persia", title);
-Resource<String> pharaohOfEgypt = graknGraph.putResource("Pharaoh of Egypt", title);
-Resource<String> lordOfAsia = graknGraph.putResource("Lord of Asia", title);
+Resource<String> hegemon = title.putResource("Hegemon");
+Resource<String> kingOfMacedon = title.putResource("King of Macedon");
+Resource<String> shahOfPersia = title.putResource("Shah of Persia");
+Resource<String> pharaohOfEgypt = title.putResource("Pharaoh of Egypt");
+Resource<String> lordOfAsia = title.putResource("Lord of Asia");
 
 alexander.hasResource(hegemon);
 alexander.hasResource(kingOfMacedon);
