@@ -9,7 +9,7 @@
     <version>0.6.0</version>
 
     <properties>
-        <grakn.version>0.6.0</grakn.version>
+        <grakn.version>0.7.0-SNAPSHOT</grakn.version>
     </properties>
 
     <build>

@@ -1,14 +1,14 @@
-import io.grakn.*;
-import io.grakn.concept.*;
-import io.grakn.example.PokemonGraphFactory;
-import io.grakn.graql.*;
-import static io.grakn.graql.Graql.*;
+package ai.grakn
 
+import ai.grakn.concept.*
+import ai.grakn.example.*
+import ai.grakn.graql.*
+import static ai.grakn.graql.Graql.*;
 // This is some dumb stuff so IntelliJ doesn't get rid of the imports
 //noinspection GroovyConstantIfStatement
 if (false) {
     Concept concept = null;
-    Var var = null;
+    Var var = var();
     PokemonGraphFactory.loadGraph(null);
 }
 

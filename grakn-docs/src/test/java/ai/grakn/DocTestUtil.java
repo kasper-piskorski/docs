@@ -1,13 +1,14 @@
-package io.grakn;
+package ai.grakn;
 
-import io.grakn.example.MovieGraphFactory;
-import io.grakn.example.PokemonGraphFactory;
-import io.grakn.graql.QueryBuilder;
+import ai.grakn.concept.ResourceType;
+import ai.grakn.example.MovieGraphFactory;
+import ai.grakn.example.PokemonGraphFactory;
+import ai.grakn.graql.QueryBuilder;
 
 import java.util.UUID;
 
-import static io.grakn.graql.Graql.id;
-import static io.grakn.graql.Graql.var;
+import static ai.grakn.graql.Graql.id;
+import static ai.grakn.graql.Graql.var;
 
 public class DocTestUtil {
 
@@ -22,7 +23,9 @@ public class DocTestUtil {
                 var().isa("pokemon-type").has("name", "dragon"),
                 id("marriage").isa("relation-type"),
                 id("trainer").isa("role-type"),
-                id("pokemon-trained").isa("role-type")
+                id("pokemon-trained").isa("role-type"),
+                id("type-id").isa("resource-type").datatype(ResourceType.DataType.STRING),
+                id("pokemon-type").hasResource("type-id")
         ).execute();
 
         return graknGraph;
