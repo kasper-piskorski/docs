@@ -1,6 +1,6 @@
-package io.grakn;
+package ai.grakn;
 
-import io.grakn.exception.GraqlParsingException;
+import ai.grakn.exception.GraqlParsingException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.RegexFileFilter;
@@ -16,7 +16,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import static io.grakn.DocTestUtil.getTestGraph;
 import static org.junit.Assert.fail;
 
 public class GraqlDocsTest {
@@ -52,7 +51,7 @@ public class GraqlDocsTest {
     }
 
     private void assertFileValidSyntax(File file) {
-        GraknGraph graph = getTestGraph();
+        GraknGraph graph = DocTestUtil.getTestGraph();
 
         byte[] encoded = new byte[0];
         try {

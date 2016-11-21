@@ -230,7 +230,7 @@ insert $x0 isa pokemon has description "Pikachu";
 insert $x1 isa pokemon has description "Raichu";
     
     $y3 isa pokemon-type ;
-        $y3 has street "Electric" ;
+        $y3 has description "Electric" ;
         (pokemon-with-type: $x1, type-of-pokemon: $y3) isa has-type;
 
     $y4 isa pokemon;
@@ -242,7 +242,7 @@ insert $x1 isa pokemon has description "Raichu";
 For the moment, Graql templating can only be used through the Java API:
 
 ```java
-String template = "" +
+String template = "insert " +
                 "for (whale in whales ) do {" +
                 "   $x isa whale has name <whale>;" +
                 "}";

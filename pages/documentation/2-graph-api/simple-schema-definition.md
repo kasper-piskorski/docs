@@ -45,13 +45,13 @@ EntityType movie = graknGraph.putEntityType("Movie");
 With this we can arrange our data into categories:
 
 ```java
-alPacino = graknGraph.addEntity(person);
-patrickStewart = graknGraph.addEntity(person);
-charliseTheron = graknGraph.addEntity(person);
+alPacino = person.addEntity();
+patrickStewart = person.addEntity();
+charliseTheron = person.addEntity();
 
-godfather = graknGraph.addEntity(movie);
-starTrek = graknGraph.addEntity(movie);
-monster = graknGraph.addEntity(movie);
+godfather = movie.addEntity();
+starTrek = movie.addEntity();
+monster = movie.addEntity();
 ```
 
 ### Relation and Role Types
@@ -100,7 +100,7 @@ First we create an instance of the Relation Type:
 
 
 ```java
-Relation relation = graknGraph.addRelation(starsIn);
+Relation relation = starsIn.addRelation();
 ```
 
 Then we specify who is playing which role:

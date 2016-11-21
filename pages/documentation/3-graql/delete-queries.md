@@ -76,7 +76,7 @@ Disallows the concept type from playing the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x id "type"; delete $x plays-role attacking-type;
+match $x id "pokemon-type"; delete $x plays-role attacking-type;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">

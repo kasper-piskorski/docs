@@ -1,4 +1,4 @@
-package io.grakn;
+package ai.grakn;
 
 import groovy.util.Eval;
 import org.apache.commons.io.FileUtils;
@@ -31,7 +31,7 @@ public class JavaDocsTest {
 
     @BeforeClass
     public static void loadGroovyPrefix() throws IOException {
-        groovyPrefix = new String(Files.readAllBytes(Paths.get("src/test/java/io/grakn/prefix.groovy")));
+        groovyPrefix = new String(Files.readAllBytes(Paths.get("src/test/java/ai/grakn/prefix.groovy")));
     }
 
     @Test
