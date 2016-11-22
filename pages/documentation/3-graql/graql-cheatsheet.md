@@ -17,10 +17,6 @@ Graql is the declarative query language for Grakn.  The key principles and capab
 
 This page is intended to be a quick reference guide for those already familiar with Graql. For further information and additional documentation, please see the Graql section on our developer portal [grakn.ai/docs](http://www.grakn.ai/docs/graql/overview.html).
 
-
-{% include note.html content="This version of the cheatsheet is for Graql version 0.1.1" %}
-
-
 ## match
 
 A match query will search the graph for any subgraphs that match the given
