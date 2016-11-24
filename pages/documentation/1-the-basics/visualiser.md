@@ -27,12 +27,7 @@ While in the terminal, you can test in the Graql shell that all is well. For exa
 
 ```bash
 bin/graql.sh
->>>match $x isa pokemon; limit 5;
-$x id "Venusaur" isa pokemon; 
-$x id "Raticate" isa pokemon; 
-$x id "Nidorina" isa pokemon; 
-$x id "Victreebel" isa pokemon; 
-$x id "Haunter" isa pokemon; 
+>>>match $x isa pokemon, has name $n; select $x, $n; 
 ```
 
 Now to open the visualiser by browsing to [localhost:4567](http://localhost:4567). 
@@ -43,7 +38,7 @@ The visualiser has 4 horizontal navigation tabs on its left hand side, below the
 The Status pane lists various configuration items and their current settings.
 
 ### Graph
-This is the main section of the visualiser that you will use to explore the graph. Type in a query to receive a graphical view on the data. For example, `match $x isa pokemon; limit 10;`
+This is the main section of the visualiser that you will use to explore the graph. Type in a query to receive a graphical view on the data. For example, `match $x isa pokemon, has name $n; select $x, $n;limit 5;`
 
 ![Pokemon query](/images/pokemon-query-visualiser.jpg)
 
