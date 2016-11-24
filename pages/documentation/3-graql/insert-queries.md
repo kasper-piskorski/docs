@@ -9,7 +9,7 @@ permalink: /documentation/graql/insert-queries.html
 folder: documentation
 ---
 
-
+## `match-insert`
 An insert query will insert the specified [variable
 patterns](#variable-patterns) into the graph. If a [match
 query](match-queries.html) is provided, the query will insert the given variable
