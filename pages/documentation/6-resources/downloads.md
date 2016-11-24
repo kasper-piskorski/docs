@@ -34,10 +34,10 @@ To build Grakn, you need Maven, node.js and npm. Make sure you have the most rec
 Using git, clone the [Grakn repository](https://github.com/graknlabs/grakn) to a local directory.  In that directory:
 
 ```bash
-mvn package
+mvn package -DskipTests
 ```
 
-The code should build and the tests will then run (the tests will take approximately 10 minutes to finish). When the build has completed, you will find it in the `grakn-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://grakn.ai/download).
+When the build has completed, you will find it in the `grakn-dist` directory under `target`. The zip file built into that directory is the same as that distributed as a release on [Github](https://grakn.ai/download).
 
 ### Example Code
 You can find an additional repo on Github containing our [example code](https://github.com/graknlabs/sample-projects), while further information about the examples is [here](../examples/examples.html).
