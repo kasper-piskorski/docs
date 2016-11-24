@@ -202,6 +202,58 @@ alexander.hasResource(pharaohOfEgypt);
 alexander.hasResource(lordOfAsia);
 ```
 
+### How to Get Resources
+
+#### Getting Resources When not Knowing the Entity:
+
+Suppose you have an instance with a resource, which in Graql would look something like:
+    
+```graql
+my-thing has-resource name;
+```
+
+How do you retrieve the name using the Graph API? There are three ways to get resources. The simplest is via its id, if that is known:
+    
+```java
+<V> Resource<V> getResource(String id);
+```
+
+Another method is to use the literal value, but this returns a collection of resources:
+   
+```java
+<V> Collection<Resource<V>> getResourcesByValue(V value);
+
+//Example:
+graph.getResourcesByValue("bob"); // Will get you all the resources with the value "bob"
+```   
+
+Finally you can get resource by resource type, which returns a single resource because resources are unique to their type:
+
+```java
+<V> Resource<V> getResource(V value, ResourceType<V> type);
+//For Example:
+graph.getResource("bob", graph.getResourceType("name")); //This will return a single resource with the value bob of type name
+```
+
+#### Getting Resources When Knowing The Entity
+
+If you have an entity and want to get a resource of a particular type attached to that entity you can do so with:
+   
+```java
+Collection<Resource<?>> resources(ResourceType ... resourceTypes);
+//Example
+myThing.resources(graph.getResourceType("name"));
+```
+
+#### Getting From The Resource To The Entity
+
+If you have a resource you can get the entitie(s) attached to it with:
+   
+```java   
+resource.owner();
+resource.ownerInstances();
+```
+
 ## Where Next?
 If you want to find out more about using the Graph API, please take a look at the documentation about how to define a [simple schema](../core-api/simple-schema-definition.html) or an [advanced schema](../core-api/advanced-schema-definition.html).
 

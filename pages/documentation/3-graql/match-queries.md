@@ -418,7 +418,7 @@ qb.match(var("x").has("weight", gt(20).and(lt(30))));
 <pre>
 match $x isa pokemon, has pokedex-no $no;
 select $x;
-limit 30; offset 10; distinct; order by $no asc;
+limit 10; offset 30; distinct; order by $no asc;
 
 </pre>
 </div>
@@ -426,22 +426,30 @@ limit 30; offset 10; distinct; order by $no asc;
 <pre>
 qb.match(var("x").isa("pokemon").has("pokedex-no", var("no")))
     .select("x")
-    .limit(30)
-    .offset(10)
+    .limit(10)
+    .offset(30)
     .distinct()
     .orderBy("no", Order.asc);
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
+### distinct
+Remove any duplicate results.
+
 ### limit
 Limit the query to the given number of results.
 
+Note that the order in which you specify modifiers can be important. If you make a query and `limit` the results returned, say to 10 as in the example, then specify the `distinct` modifier _after_ the `limit`, you may find that `distinct` removes any non-unique results, so you end up with fewer than the 10 results you expected to be returned to you. To ensure that you receive _exactly_ 10 distinct results, you are better to use `distinct` before `limit`.
+     
+```graql
+match $x isa pokemon, has pokedex-no $no;
+select $x;
+distinct; limit 10; offset 30; order by $no asc;
+```
+
 ### offset
 Offset the query by the given number of results.
-
-### distinct
-Remove any duplicate results.
 
 ### order
 Order the results by the given variable's degree. If a type is provided, order

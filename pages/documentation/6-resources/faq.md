@@ -66,6 +66,17 @@ In order to check the status of the loading, you can open a new terminal window,
 tail -f grakn.log
 ```
 
+### What are the differences between a batch graph load and a normal graph load?
+
+The batch load is faster for larger datasets because it ignores some consistency checks, on the assumption that you have pre-filtered your data. Checks ignored include:
+
+*  When looking up concepts any duplicates which are found are ignored and a random one is returned.
+*  When creating a relation it is possible for an entity to be doubly associated with a role. This is later cleaned up by engine.
+*  Concepts with duplicate ids can be inserted.
+*  Duplicate relations can also be inserted.
+
+Ignoring these checks allows data to be processed much faster at the risk of breaking consistency.
+
 ### Can I run Grakn on an existing Cassandra Platform?
 
 By default, Grakn is shipped with TitanDB, which in turn relies on Cassandra. When you call `grakn.sh start`, this starts a Cassandra instance and then starts the Grakn server.  You are not bound to use our instance of Cassandra, and can make adjustments to the settings in the `.properties` file in the `conf/main` directory of the Grakn, e.g. to make Titan use your Cassandra instance.
@@ -128,6 +139,16 @@ pkill -9 java
 ```
 
 Then delete the Grakn install directory, and unzip a fresh copy from the distribution zip. It isn't very elegant at present, and we are working on a simpler way to clear out a graph.
+
+### How do I run Graql from a bash script?
+
+If you want to run Graql from a bash script, for example, to grep the results, you don't want to have to filter out stuff the license and command prompt. The best way therefor, is to use the -e flag or -f flag, which lets you provide a query to the shell. The -e flag accepts a query, while the -f flag accepts a filename. For example:
+    
+```    
+graql.sh -e "match \$x isa movie;"
+```
+
+Notice that you have to escape the dollars to stop the shell interpreting them. You can then pipe the output into a command or a file.
 
 {% include links.html %}
 
