@@ -1,7 +1,7 @@
 ---
 title: SQL Migration to Grakn
 keywords: setup, getting started
-last_updated: August 10, 2016
+last_updated: November 25, 2016
 tags: [migration]
 summary: "This document will teach you how to migrate SQL data into Grakn."
 sidebar: documentation_sidebar
@@ -82,7 +82,7 @@ event isa entity-type,
 
 ```
 
-In SQL, a `foreign key` is a column that references another column. The Grakn equivalent is a relationship type. Because SQL `foreign key` are not explicitly named, as they are in Mindmaps, the relation and roles have auto-generated names.
+In SQL, a `foreign key` is a column that references another column. The Grakn equivalent is a relationship type. Because SQL `foreign key` are not explicitly named, as they are in Grakn, the relation and roles have auto-generated names.
 
 The SQL schema line `ALTER TABLE event ADD FOREIGN KEY ( name ) REFERENCES pet ( name );` would be migrated as:
 
@@ -178,7 +178,7 @@ insert (event-child: $x, event-parent: $y) isa event-relation;
 
 ### In Java
 
-While the migration seems rather lengthy when written out in Graql, you only need a few lines of code to accomplish this migration in Mindmaps:
+While the migration seems rather lengthy when written out in Graql, you only need a few lines of code to accomplish this migration in Grakn:
 
 ```java-test-ignore
 // get the JDBC connection
@@ -187,7 +187,7 @@ Connection connection = DriverManager.getConnection(jdbcDBUrl, jdbcUser, jdbcPas
 
 // get the Grakn connection
 
-MindmapsGraph graph = Mindmaps.factory(Mindmaps.DEFAULT_URI).getGraph("sql-test-graph");
+GraknGraph graph = Grakn.factory(Grakn.DEFAULT_URI).getGraph("sql-test-graph");
 Loader loader = new BlockingLoader("sql-test-graph");
 
 // create migrators and perform migration
@@ -210,8 +210,7 @@ dataMigrator
 ```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
-
+You can find further documentation about migration in our API reference documentation (which is in the `docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html). Examples of SQL migration are also available from [here](../examples/SQL-migration.html).
 
 {% include links.html %}
 
