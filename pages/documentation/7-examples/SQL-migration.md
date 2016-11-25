@@ -55,6 +55,7 @@ If you are feeling lazy, and do not want to install MySQL to test this out, we d
 
 You can run this example by running the [`MainInMemory`](https://github.com/graknlabs/sample-projects/blob/master/example-sql-migration/src/main/java/MainInMemory.java) class. It demonstrates the same functionality by pre-loading the World data into an [H2](http://www.h2database.com/html/main.html) SQL database.
 
+<!--
 ### Running the example in the shell
 
 The following command will run the above migration by using the shell script. Be sure to execute this from within `mindmaps-dist-x.x.x/bin`. 
@@ -62,7 +63,7 @@ The following command will run the above migration by using the shell script. Be
 ```
 ./migration.sh sql -database jdbc:mysql://localhost:3306/world -user mindmaps -pass mindmaps -driver com.mysql.jdbc.Driver
 ```
-
+-->
 ## Test Yourself Answers
 
 You can see the code to answer these questions in the function [printInformationAboutWorld()](https://github.com/graknlabs/sample-projects/blob/master/example-sql-migration/src/main/java/SqlWorldMigrator.java).
