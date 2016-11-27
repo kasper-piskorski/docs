@@ -13,7 +13,9 @@ comment_issue_id: 16
 
 ## First: Download Grakn
 
-[![download](/images/download.png)](../resources/downloads.html)  
+[![download](/images/download.png)](https://grakn.ai/download/latest)
+
+For more information on how to download older versions of Grakn, compiling from source code, or importing Grakn Java API library as development dependency, please visit our [Downloads page](../resources/downloads.html).
 
 ## Install Grakn
 {% include note.html content="**Prerequisites**   <br />
@@ -45,14 +47,16 @@ bin/graql.sh
 The Graql shell starts and you see a `>>>` prompt. Type in the following:   
 
 ```graql   
->>> insert person isa entity-type;
->>> insert name isa resource-type, datatype string;
->>> insert person has-resource name;
->>> insert isa person, has name "Topsy";
->>> insert isa person, has name "Tim";
->>> commit
->>> match $x isa person, has name $n; select $x, $n;
+insert person isa entity-type;
+insert name isa resource-type, datatype string;
+insert person has-resource name;
+insert isa person, has name "Topsy";
+insert isa person, has name "Tim";
+commit
+```
 
+```graql
+match $x isa person, has name $n; select $x, $n;
 $x id "ENTITY-person-89b823a0-606d-434d-a533-1e172b90c7bc" isa person; $n value "Topsy" isa name;
 $x id "ENTITY-person-afd29319-ff33-4b0c-b7e3-63d04ac81dcf" isa person; $n value "Tim" isa name;
 ```
@@ -61,7 +65,7 @@ If you see the above output then congratulations! You have set up Grakn.
 
 You can now open [localhost:4567](http://localhost:4567) in your browser to start the visualiser, which provides a graphical dashboard on a graph.
 
-![Visualising a graph](/images/topsyandtim.jpg)
+![Visualising a graph](/images/topsyandtim.png)
 
 Further information about the visualiser can be found in [Visualising a Graph](../the-basics/visualiser.html).
 
