@@ -10,21 +10,17 @@ folder: platform
 toc: false
 ---
 
-Grakn is a distributed knowledge graph that provides an ontology as a highly expressive flexible object-oriented schema, and a knowledge-oriented query language capable of real-time analytics and reasoning.
+Grakn is a knowledge graph data platform that stores data in a way that allows machines to understand the meaning of information, and equipped with a knowledge-oriented query language capable of real-time analytics and reasoning.
 
 Let's break that down a bit and explain what it means.
 
-**_"Grakn is a distributed knowledge graph ..."_**
+**_"Grakn is a knowledge graph data platform ..."_**
 
-Grakn is graph data platform that stores data in a way that allows machines to understand the meaning of information and their relationships, which would allow computers to process complex information more intelligently with less human intervention. Grakn is implemented using [Apache TinkerPop](http://tinkerpop.apache.org) and the [Titan Graph Database](http://titan.thinkaurelius.com) that could be sharded and replicated over a network of distributed machines. Effectively, Grakn turns your dataset into a distributed knowledge graph.
-
-**_"... that provides an ontology as a highly expressive flexible object-oriented schema..."_**
-
-Grakn provides an object model with an API that enables the programmatic definition of highly expressive domain models, i.e. knowledge ontologies. Your ontology could flexibly evolve as your application grows while it acts as a schema that guarantees the consistency of your data.
+Grakn is a knowledge graph data platform that enables the programmatic definition of highly expressive domain models and rules, i.e. knowledge ontologies. Your ontology could flexibly evolve as your application grows while it acts as a schema that guarantees the consistency of your data. This allows Grakn to store data in a way that allows machines to understand the meaning of information and their relationships, which would allow computers to process complex information more intelligently with less human intervention. Grakn is built using various graph computing technologies which allows it to be sharded and replicated over a network of distributed machines. Effectively, Grakn turns your dataset into a distributed knowledge graph data platform.
 
 **_"... and a knowledge-oriented query language ..."_**
 
-Our query language, Graql, is a [declarative](https://dzone.com/articles/imperative-vs-declarative-query-languages-whats-th), knowledge-oriented query language that uses pattern matching for retrieving explicitly stored and implicitly derived knowledge. Graql allows you to express complex queries in simple and short pattern matching statements and it leverages the inherent semantics of data.
+Our query language, Graql, is a [declarative](https://dzone.com/articles/imperative-vs-declarative-query-languages-whats-th), knowledge-oriented query language that uses machine reasoning for retrieving explicitly stored and implicitly derived knowledge. Graql allows you to express complex queries in simple and short pattern matching statements and it leverages the inherent semantics of data.
 
 **_"... capable of real-time analytics ..."_**
 
