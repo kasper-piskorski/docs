@@ -14,7 +14,7 @@ comment_issue_id: 24
 
 ## Download Grakn Latest Version
 
-[![download](/img/download.png)](/download/latest)
+[![download](/images/download.png)](/download/latest)
 
 
 ### Past Versions

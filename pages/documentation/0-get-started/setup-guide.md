@@ -13,7 +13,7 @@ comment_issue_id: 16
 
 ## First: Download Grakn
 
-[![download](/img/download.png)](../resources/downloads.html)  
+[![download](/images/download.png)](../resources/downloads.html)  
 
 ## Install Grakn
 {% include note.html content="**Prerequisites**   <br />
