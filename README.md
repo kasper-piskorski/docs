@@ -1,5 +1,7 @@
 # GRAKN.AI Documentation
 
+[![Code Triagers Badge](https://www.codetriage.com/graknlabs/docs/badges/users.svg)](https://www.codetriage.com/graknlabs/docs)
+
 ## Dependencies
 
 You need to install the following dependencies to be able to build HTML pages in the documentation repository. **NOTE:** this is *not* necessary for updating the documentation itself.
