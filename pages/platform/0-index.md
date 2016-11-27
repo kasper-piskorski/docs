@@ -18,7 +18,7 @@ Grakn is a platform that stores data in a way that allows machines to understand
 
 This is possible because Grakn allows the definition of highly expressive domain models and rules, i.e. [knowledge ontologies](https://en.wikipedia.org/wiki/Ontology_(information_science)), to provide a semantic layer over data. The ontology functions as a richer translation of data as well as a schema that guarantees information consistency. The ontology could also flexibly evolve as your application grows.
 
-Grakn builds on top of several graph computing and distributed computing platforms, such as Apache TinkerPop and Apache Spark. Grakn is designed to be sharded and replicated over a network of distributed machines.
+Grakn builds on top of several graph computing and distributed computing platforms, such as [Apache TinkerPop](https://tinkerpop.apache.org/) and [Apache Spark](http://spark.apache.org/). Grakn is designed to be sharded and replicated over a network of distributed machines.
 
 Effectively, Grakn turns your dataset into a distributed graph of knowledge.
 

@@ -92,7 +92,7 @@ match $c has name "Cynicism";
 $c isa school;
 ```
 
-## A note on `commit`
+## A note on commit
 Nothing you have entered into the Graql shell has yet been committed to the graph, nor has it been validated. To save any changes you make to a graph, you need to type `commit` in the shell. It is a good habit to get into regularly committing what you have entered, so we will show this in the following example.
 
 ## Relations
@@ -214,11 +214,11 @@ Using Graql, we can query for people who have titles, and list them out.
 ```graql
 match isa person, has title $y, has name $n;
 
-$n value "Alexander" isa name; $y value "Shah of Persia" isa title; 
-$n value "Alexander" isa name; $y value "Hegeon" isa title; 
-$n value "Alexander" isa name; $y value "King of Macedon" isa title; 
-$n value "Alexander" isa name; $y value "Pharaoh of Egypt" isa title; 
-$n value "Alexander" isa name; $y value "Lord of Asia" isa title; 
+$n value "Alexander" isa name; $y value "Shah of Persia" isa title;
+$n value "Alexander" isa name; $y value "Hegeon" isa title;
+$n value "Alexander" isa name; $y value "King of Macedon" isa title;
+$n value "Alexander" isa name; $y value "Pharaoh of Egypt" isa title;
+$n value "Alexander" isa name; $y value "Lord of Asia" isa title;
 ```
 
 
