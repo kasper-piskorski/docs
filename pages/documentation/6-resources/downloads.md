@@ -14,7 +14,8 @@ comment_issue_id: 24
 
 ## Download Grakn Latest Version
 
-<span class="glyphicon glyphicon-download gi-2x">[Download](https://grakn.ai/download/latest)</span>
+[![download](/img/download.png)](/download/latest)
+
 
 ### Past Versions
 A list of previously released versions of Grakn can be found on [Github](https://grakn.ai/download).

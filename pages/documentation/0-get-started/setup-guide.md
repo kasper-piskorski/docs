@@ -12,7 +12,8 @@ comment_issue_id: 16
 
 
 ## First: Download Grakn
-<span class="glyphicon glyphicon-download gi-3x"></span>Visit the [downloads page](../resources/downloads.html) for the latest version of Grakn.    
+
+[![download](/img/download.png)](../resources/downloads.html)  
 
 ## Install Grakn
 {% include note.html content="**Prerequisites**   <br />
@@ -52,8 +53,8 @@ The Graql shell starts and you see a `>>>` prompt. Type in the following:
 >>> commit
 >>> match $x isa person, has name $n; select $x, $n;
 
-$x id "ENTITY-person-89b823a0-606d-434d-a533-1e172b90c7bc" isa person; $n value "Topsy" isa name; 
-$x id "ENTITY-person-afd29319-ff33-4b0c-b7e3-63d04ac81dcf" isa person; $n value "Tim" isa name; 
+$x id "ENTITY-person-89b823a0-606d-434d-a533-1e172b90c7bc" isa person; $n value "Topsy" isa name;
+$x id "ENTITY-person-afd29319-ff33-4b0c-b7e3-63d04ac81dcf" isa person; $n value "Tim" isa name;
 ```
 
 If you see the above output then congratulations! You have set up Grakn.
