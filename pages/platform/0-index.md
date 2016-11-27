@@ -1,5 +1,5 @@
 ---
-title: What is Grakn?
+title: What is Grakn and Graql?
 keywords: intro
 last_updated: September 13, 2016
 summary: false
@@ -10,22 +10,20 @@ folder: platform
 toc: false
 ---
 
-Grakn is a knowledge graph data platform that stores data in a way that allows machines to understand the meaning of information, and equipped with a knowledge-oriented query language capable of real-time analytics and reasoning.
+*Grakn is a knowledge graph data platform that stores data in a way that allows machines to understand the meaning of information. Grakn performs machine reasoning through Graql, a knowledge-oriented graph query language capable of reasoning and graph analytics.*
 
-Let's break that down a bit and explain what it means.
+## Grakn
 
-**_"Grakn is a knowledge graph data platform ..."_**
+Grakn is a platform that stores data in a way that allows machines to understand the meaning of information in the context of their relationships. Consequently, Grakn allows computers to process complex information more intelligently with less human intervention.
 
-Grakn is a knowledge graph data platform that enables the programmatic definition of highly expressive domain models and rules, i.e. knowledge ontologies. Your ontology could flexibly evolve as your application grows while it acts as a schema that guarantees the consistency of your data. This allows Grakn to store data in a way that allows machines to understand the meaning of information and their relationships, which would allow computers to process complex information more intelligently with less human intervention. Grakn is built using various graph computing technologies which allows it to be sharded and replicated over a network of distributed machines. Effectively, Grakn turns your dataset into a distributed knowledge graph data platform.
+This is possible because Grakn allows the definition of highly expressive domain models and rules, i.e. [knowledge ontologies](https://en.wikipedia.org/wiki/Ontology_(information_science)), to provide a semantic layer over data. The ontology functions as a richer translation of data as well as a schema that guarantees information consistency. The ontology could also flexibly evolve as your application grows.
 
-**_"... and a knowledge-oriented query language ..."_**
+Effectively, Grakn turns your dataset into a graph of knowledge.
 
-Our query language, Graql, is a [declarative](https://dzone.com/articles/imperative-vs-declarative-query-languages-whats-th), knowledge-oriented query language that uses machine reasoning for retrieving explicitly stored and implicitly derived knowledge. Graql allows you to express complex queries in simple and short pattern matching statements and it leverages the inherent semantics of data.
+## Graql
 
-**_"... capable of real-time analytics ..."_**
+Graql is a [declarative](https://en.wikipedia.org/wiki/Declarative_programming), knowledge-oriented graph query language that uses machine reasoning for retrieving explicitly stored and implicitly derived knowledge from the Grakn graph.
 
-Graql is capable of performing distributed computation over large amount of data to answer commonly asked analytics queries. These types of analytics queries is usually not possible to perform on big data without developing custom distributed algorithms.
+In the past, database queries have to define the data patterns they are looking for explicitly. Graql, on the other hand, will translate a query pattern into all of its logical equivalence and evaluate them against the database. As a result, Graql allows you to derive implicit information that is hidden in your dataset, as well as reduce the complexity of expressing intelligent questions to concise and intuitive statements.
 
-**_"... and reasoning."_**
-
-Graql is capable of validating constraints and inferring new information in a Grakn graph. In the past, queries that are executed on a database have to explicitly define the relationship they are looking for. Graql, on the other hand, will infer all relationships that matches a query pattern, as well as relationships that are semantically equivalent.
+Graql is also capable of performing distributed graph analytics as part of the language, which allows you to perform analytics over large graphs out of the box. These types of analytics are usually not possible without developing custom distributed graph algorithms that are unique to a use case.
