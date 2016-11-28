@@ -385,27 +385,6 @@ qb.match(var("x").value(regex(".*(fast|quick).*")));
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
-### And and Or
-`and` and `or` allows combining predicates using boolean logic.
-
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell15" data-toggle="tab">Graql</a></li>
-    <li><a href="#java15" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell15">
-<pre>
-match $x has weight >20 and <30;
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java15">
-<pre>
-qb.match(var("x").has("weight", gt(20).and(lt(30))));
-</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
 ## Modifiers
 
 <ul id="profileTabs" class="nav nav-tabs">
