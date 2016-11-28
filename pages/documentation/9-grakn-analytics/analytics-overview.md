@@ -35,7 +35,7 @@ then the instances of this: `Mike's car`, `Dave's car` and `Alice's car` can be 
 compute count in car;
 ```
 Often you are not interested in the whole knowledge graph when performing calculations and it is possible in Graql to
-specify a subgraph (a subset of instances to work on). In the previous example we counted cars, but imagine the
+specify a subgraph (a subset of your data to work on). In the previous example we counted cars, but imagine the
 knowledge graph also contained trucks, trains, people and the relationships between them. These have effectively been
 excluded from the calculation by specifying a subgraph using the `in` keyword.
 
