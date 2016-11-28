@@ -16,3 +16,4 @@ The connected components algorithm can be used to find clusters of instances in 
  friends. In this graph three unique labels will be created one corresponding to each of the sets of connected instances.
 
  ![Three connected components representing groups of friends.](/images/analytics_conn_comp.png)
+
