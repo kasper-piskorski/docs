@@ -206,11 +206,7 @@ alexander.hasResource(lordOfAsia);
 
 #### Getting Resources When not Knowing the Entity:
 
-Suppose you have an instance with a resource, which in Graql would look something like:
-    
-```graql
-my-thing has-resource name;
-```
+Suppose you have an instance with a resource, which in Graql would look something like `my-thing has-resource name`:
 
 How do you retrieve the name using the Graph API? There are three ways to get resources. The simplest is via its id, if that is known:
     
