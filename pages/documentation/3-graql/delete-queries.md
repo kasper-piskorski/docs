@@ -98,7 +98,7 @@ only delete resources matching that value.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
-match $x id "Bulbasaur"; delete $x has weight;
+match $x id "Bulbasaur"; delete $x has weight $y;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">

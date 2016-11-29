@@ -210,35 +210,41 @@ Suppose you have an instance with a resource, which in Graql would look somethin
 
 How do you retrieve the name using the Graph API? There are three ways to get resources. The simplest is via its id, if that is known:
     
-```java
+```java-test-ignore
 <V> Resource<V> getResource(String id);
 ```
 
 Another method is to use the literal value, but this returns a collection of resources:
    
-```java
+```java-test-ignore
 <V> Collection<Resource<V>> getResourcesByValue(V value);
-
+```
+```java
 //Example:
-graph.getResourcesByValue("bob"); // Will get you all the resources with the value "bob"
+graknGraph.getResourcesByValue("bob"); // Will get you all the resources with the value "bob"
 ```   
 
 Finally you can get resource by resource type, which returns a single resource because resources are unique to their type:
 
-```java
+```java-test-ignore
 <V> Resource<V> getResource(V value, ResourceType<V> type);
+```
+```java
 //For Example:
-graph.getResource("bob", graph.getResourceType("name")); //This will return a single resource with the value bob of type name
+graknGraph.getResource("bob", graknGraph.getResourceType("name")); //This will return a single resource with the value bob of type name
 ```
 
 #### Getting Resources When Knowing The Entity
 
 If you have an entity and want to get a resource of a particular type attached to that entity you can do so with:
    
-```java
+```java-test-ignore
 Collection<Resource<?>> resources(ResourceType ... resourceTypes);
+```
+```java
 //Example
-myThing.resources(graph.getResourceType("name"));
+myThing = graknGraph.getEntityType("pokemon").instances().iterator().next();
+resources = myThing.resources(graknGraph.getResourceType("name"));
 ```
 
 #### Getting From The Resource To The Entity
@@ -246,6 +252,7 @@ myThing.resources(graph.getResourceType("name"));
 If you have a resource you can get the entitie(s) attached to it with:
    
 ```java   
+resource = resources.iterator().next();
 resource.owner();
 resource.ownerInstances();
 ```
