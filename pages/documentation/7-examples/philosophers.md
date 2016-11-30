@@ -2,7 +2,7 @@
 title: Philosophers Grakn Example
 keywords: examples
 last_updated: September 23, 2016
-tags: [getting-started, graql]
+tags: [getting-started, graql, examples]
 summary: "Philosophers Grakn example."
 sidebar: documentation_sidebar
 permalink: /documentation/examples/philosophers.html

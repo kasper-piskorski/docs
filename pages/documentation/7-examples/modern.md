@@ -2,7 +2,7 @@
 title: Modern Grakn Example
 keywords: graql, query
 last_updated: September 19, 2016
-tags: [graql]
+tags: [graql, examples]
 summary: "A short example to illustrate Graql queries"
 sidebar: documentation_sidebar
 permalink: /documentation/examples/modern.html

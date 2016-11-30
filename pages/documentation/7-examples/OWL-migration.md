@@ -2,7 +2,7 @@
 title: An Example of Migrating OWL to Grakn
 keywords: migration
 last_updated: September 19, 2016
-tags: [migration]
+tags: [migration, examples]
 summary: "A short example to illustrate migration of OWL to Grakn"
 sidebar: documentation_sidebar
 permalink: /documentation/examples/OWL-migration.html

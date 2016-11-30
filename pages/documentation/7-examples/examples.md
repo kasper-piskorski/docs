@@ -2,7 +2,7 @@
 title: Grakn Examples
 keywords: examples
 last_updated: September 23, 2016
-tags: [getting-started]
+tags: [getting-started, examples]
 summary: "Landing page for Grakn examples."
 sidebar: documentation_sidebar
 permalink: /documentation/examples/examples.html

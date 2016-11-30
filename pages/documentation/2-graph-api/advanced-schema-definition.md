@@ -2,7 +2,7 @@
 title: Defining an Advanced Schema
 keywords: schema
 last_updated: August 23, 2016
-tags: [graph-api, java]
+tags: [graph-api, java, advanced-grakn]
 summary: "Demonstrates how to create an advanced schema for Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/core-api/advanced-schema-definition.html

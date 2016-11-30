@@ -6,3 +6,7 @@ allowed-tags:
   - overview
   - faq
   - migration
+  - analytics
+  - reasoner
+  - advanced-grakn
+  - examples

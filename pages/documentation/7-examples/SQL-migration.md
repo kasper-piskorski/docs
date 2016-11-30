@@ -2,7 +2,7 @@
 title: An Example of Migrating SQL to Grakn
 keywords: migration
 last_updated: September 19, 2016
-tags: [migration]
+tags: [migration, examples, java]
 summary: "A short example to illustrate migration of SQL to Grakn"
 sidebar: documentation_sidebar
 permalink: /documentation/examples/SQL-migration.html

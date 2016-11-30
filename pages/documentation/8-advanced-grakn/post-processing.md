@@ -2,7 +2,7 @@
 title: Grakn Post Processing  
 keywords: 
 last_updated: November 17, 2016
-tags: 
+tags: [advanced-grakn]
 summary: "This page describes post processing by the Grakn engine."
 sidebar: documentation_sidebar
 permalink: /documentation/advanced-grakn/post-processing.html

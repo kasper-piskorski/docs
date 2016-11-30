@@ -1,13 +1,12 @@
 ---
 title: Degrees
-keywords:
 last_updated: November 24, 2016
-tags:
+tags: [analytics]
 summary: "This page introduces the computation of degrees in a graph."
 sidebar: documentation_sidebar
 permalink: /documentation/graql-analytics/analytics-degrees.html
 folder: documentation
-comment_issue_id:
+comment_issue_id: 71
 ---
 
 What is the most important instance in my graph? Given no more context than this the degree can provide an answer of
@@ -23,3 +22,8 @@ this Graql query:
 ```
 compute degrees in person, knows;
 ```
+
+{% include links.html %}
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/71" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of this page.

@@ -1,13 +1,12 @@
 ---
 title: Graql Analytics
-keywords:
 last_updated: November 24, 2016
-tags:
+tags: [analytics]
 summary: "This page provides an overview of the Graql analytics capabilities."
 sidebar: documentation_sidebar
 permalink: /documentation/graql-analytics/analytics-overview.html
 folder: documentation
-comment_issue_id:
+comment_issue_id: 71
 ---
 
 The distributed Grakn knowledge graph presents two different ways to obtain insight on a dataset:   
@@ -97,3 +96,7 @@ Graql if very flexible and allows us to define the subgraph in which we want to 
 importance according to various structures in the graph.
 " %}
 
+{% include links.html %}
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/71" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of this page.
