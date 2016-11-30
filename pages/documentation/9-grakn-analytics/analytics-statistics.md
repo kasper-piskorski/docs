@@ -5,7 +5,7 @@ last_updated: November 24, 2016
 tags:
 summary: "This page introduces the statistics functionality of analytics."
 sidebar: documentation_sidebar
-permalink: /documentation/grakn-analytics/analytics-statistics.html
+permalink: /documentation/graql-analytics/analytics-statistics.html
 folder: documentation
 comment_issue_id:
 ---
@@ -25,3 +25,5 @@ compute mean of price in vehicles;
 The above query will determine that cars, trucks and motorbikes are types of vehicle using the ontology, and then
 execute a distributed computation to determine the mean price of all the vehicles in the graph. The available algorithms
 are: min, max, sum, mean, standard deviation, and median.
+
+<!-- JCS Comments: Please can you give a small example of each? I think the above is a bit promotional in tone, so I will probably revise it, so we keep this page as a tutorial guide - we can use this kind of description in a blog post though! -->

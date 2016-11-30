@@ -5,7 +5,7 @@ last_updated: November 24, 2016
 tags:
 summary: "This page introduces the connected components algorithm and explains how to use it."
 sidebar: documentation_sidebar
-permalink: /documentation/grakn-analytics/analytics-connected-components.html
+permalink: /documentation/graql-analytics/analytics-connected-components.html
 folder: documentation
 comment_issue_id:
 ---

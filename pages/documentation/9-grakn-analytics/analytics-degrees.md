@@ -5,7 +5,7 @@ last_updated: November 24, 2016
 tags:
 summary: "This page introduces the computation of degrees in a graph."
 sidebar: documentation_sidebar
-permalink: /documentation/grakn-analytics/analytics-degrees.html
+permalink: /documentation/graql-analytics/analytics-degrees.html
 folder: documentation
 comment_issue_id:
 ---
