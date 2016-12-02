@@ -112,7 +112,7 @@ Next, let's add some `schools` of thought:
 And look one up:
 
 ```java
-graknGraph.getResource("Cynicism", name).owner();
+name.getResource("Cynicism").owner();
 ```   
 
 ### Relation Types
@@ -224,14 +224,14 @@ Another method is to use the literal value, but this returns a collection of res
 graknGraph.getResourcesByValue("bob"); // Will get you all the resources with the value "bob"
 ```   
 
-Finally you can get resource by resource type, which returns a single resource because resources are unique to their type:
+Finally you can get resource by its resource type, which returns a single resource because resources are unique to their type:
 
 ```java-test-ignore
-<V> Resource<V> getResource(V value, ResourceType<V> type);
+<V> Resource<V> getResource(V value);
 ```
 ```java
 //For Example:
-graknGraph.getResource("bob", graknGraph.getResourceType("name")); //This will return a single resource with the value bob of type name
+graknGraph.getResourceType("name").getResource("bob"); //This will return a single resource with the value bob of type name
 ```
 
 #### Getting Resources When Knowing The Entity
