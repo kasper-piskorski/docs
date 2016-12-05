@@ -17,7 +17,7 @@ To use the API, add the following to your `pom.xml`:
 <dependency>
   <groupId>ai.grakn</groupId>
   <artifactId>grakn-graql</artifactId>
-  <version>0.7.0</version>
+  <version>0.8.0</version>
 </dependency>
 ```
 

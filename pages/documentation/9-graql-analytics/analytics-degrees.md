@@ -9,19 +9,36 @@ folder: documentation
 comment_issue_id: 71
 ---
 
-What is the most important instance in my graph? Given no more context than this the degree can provide an answer of
+What is the most important instance in my graph? Given no more context than this, the degree can provide an answer of
 sorts. The degree of an instance gives the number of other instances directly connected to it. For an entity, such as
 a person, this means the number of relations they are connected to, for example instances of a friendship. In this case
 the person with the highest degree, number of friends, is arguably the most important.
 
-In Grakn your graph will be much more expressive than just containing people and friendships, and computing the degree
-alone may not be very informative. If the graph also included messages being sent, we might not want to include these
-when deciding if a person was important or not. The specific degree we are interested in can be easily computed with
-this Graql query:
+## Available Algorithms
+
+| Algorithm | Description                                   |
+| ----------- | --------------------------------------------- |
+| [`degrees`](#degrees)       | Compute the degree of the instances.                           |
+| [`degreesAndPersist`](#degrees-and-persist)    | Compute the degree of the instances and persist this in the graph. |
+
+### Degrees
+
+The `degrees` algorithm computes how many edges there are attached to a given instances in the graph. A map is returned
+that displays an instance ID and its degree.
 
 ```
-compute degrees in person, knows;
+compute degrees in person;
 ```
+
+### Degrees and Persist
+
+This algorithm starts by calling [`degrees`](#degrees). Instead of returning the map of results it persists each degree
+to its respective instance in the graph using a resource.
+
+```
+compute degreesAndPersist in person;
+```
+
 
 {% include links.html %}
 

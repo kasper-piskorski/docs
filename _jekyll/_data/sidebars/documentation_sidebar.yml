@@ -72,6 +72,24 @@ entries:
       - title: Java Graql
         output: web
         url: /documentation/graql/java-graql.html
+  - title: Graql Analytics
+    output: web
+    folderitems: 
+      - title: Graql Analytics Overview
+        output: web
+        url: /documentation/graql-analytics/analytics-overview.html
+      - title: Analytics Statistics
+        output: web
+        url: /documentation/graql-analytics/analytics-statistics.html 
+      - title: Analytics Degrees
+        output: web
+        url: /documentation/graql-analytics/analytics-degrees.html 
+      - title: Connected Components
+        output: web
+        url: /documentation/graql-analytics/analytics-connected-components.html
+      #- title: Analytics Shortest Path
+      #  output: web
+      #  url: /documentation/graql-analytics/analytics-shortest-path.html   
   - title: Migrating to Grakn
     output: web
     folderitems:
