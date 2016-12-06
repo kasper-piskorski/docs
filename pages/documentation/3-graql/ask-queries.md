@@ -25,7 +25,7 @@ ask;
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
-qb.match(id("dragon").isa("pokemon-type")).ask().execute();
+qb.match(name("dragon").isa("pokemon-type")).ask().execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

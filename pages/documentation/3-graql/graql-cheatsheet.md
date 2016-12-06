@@ -195,7 +195,7 @@ Match either the left pattern or all the right patterns.
 
 
 ```graql
-match $x isa movie or { (actor: $x, $y); $y id 'the-martian'; };
+match $x isa movie or { (actor: $x, $y); $y has name 'The Martian'; };
 ```
 
 
@@ -248,7 +248,7 @@ id {string}
 ```
 
 ```graql
-match $x id 'ridley-scott';
+match $x id '12345';
 ```
 
 

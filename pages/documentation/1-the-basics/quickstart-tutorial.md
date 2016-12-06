@@ -137,7 +137,9 @@ Here, `Plato` is playing the role of `philosopher`, and `Idealism` is playing th
 Now we can query for all our Platonists:
 
 ```graql
-match (philosopher: $phil, "Platonism") isa practice;
+match
+$platonism has name "Platonism";
+(philosopher: $phil, $platonism) isa practice;
 ```
 
 This returns:   
@@ -277,8 +279,7 @@ player.
 Finally, we'll check out everything Socrates knows:
 
 ```graql
-match $socrates has name "Socrates"; ($socrates, $x) isa knowledge;
-
+>>> match $socrates has name "Socrates"; ($socrates, $x) isa knowledge;
 $x id "fact-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa fact;
 $x id "knowledge-e387d27c-4f5e-11e6-beb8-9e71128cae77" isa knowledge;
 ```

@@ -83,12 +83,12 @@ Match concepts that have an `id` which matches the [predicate](#predicates).
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x id "Articuno";
+match $x has name "Articuno";
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.match(var("x").id("Articuno"));
+qb.match(var("x").has("name", "Articuno"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -236,7 +236,7 @@ match evolution has-role $x;
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.match(id("evolution").hasRole(var("x")));
+qb.match(name("evolution").hasRole(var("x")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

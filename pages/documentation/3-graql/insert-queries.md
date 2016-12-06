@@ -231,7 +231,7 @@ insert gen2-pokemon sub pokemon;
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.insert(id("gen2-pokemon").sub("pokemon"));
+qb.insert(name("gen2-pokemon").sub("pokemon"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -254,7 +254,7 @@ insert trained-by isa relation-type, has-role trainer, has-role pokemon-trained;
 <div role="tabpanel" class="tab-pane" id="java9">
 <pre>
 qb.insert(
-  id("trained-by").isa("relation-type")
+  name("trained-by").isa("relation-type")
     .hasRole("trainer").hasRole("pokemon-trained")
 );
 </pre>
@@ -278,7 +278,7 @@ insert pokemon plays-role pokemon-trained;
 </div>
 <div role="tabpanel" class="tab-pane" id="java10">
 <pre>
-qb.insert(id("pokemon").playsRole("pokemon-trained"));
+qb.insert(name("pokemon").playsRole("pokemon-trained"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -319,19 +319,19 @@ pokedex-no plays-role has-pokedex-no-value;
 </div>
 <div role="tabpanel" class="tab-pane" id="java11">
 <pre>
-qb.insert(id("pokemon").hasResource("pokedex-no"));
+qb.insert(name("pokemon").hasResource("pokedex-no"));
 </pre>
 <p>The above example is equivalent to:</p>
 <pre>
 qb.insert(
-  id("has-pokedex-no").isa("relation-type")
+  name("has-pokedex-no").isa("relation-type")
     .hasRole("has-pokedex-no-owner").hasRole("has-pokedex-no-value"),
 
-  id("has-pokedex-no-owner").isa("role-type"),
-  id("has-pokedex-no-value").isa("role-type"),
+  name("has-pokedex-no-owner").isa("role-type"),
+  name("has-pokedex-no-value").isa("role-type"),
 
-  id("pokemon").playsRole("has-pokedex-no-owner"),
-  id("pokedex-no").playsRole("has-pokedex-no-value")
+  name("pokemon").playsRole("has-pokedex-no-owner"),
+  name("pokedex-no").playsRole("has-pokedex-no-value")
 );
 </pre>
 </div> <!-- tab-pane -->
