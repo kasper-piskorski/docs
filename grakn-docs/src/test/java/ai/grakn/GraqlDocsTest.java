@@ -4,6 +4,7 @@ import ai.grakn.exception.GraqlParsingException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
 import org.apache.commons.io.filefilter.RegexFileFilter;
+import org.apache.tinkerpop.gremlin.util.function.TriConsumer;
 import org.junit.Test;
 
 import java.io.File;
@@ -67,7 +68,7 @@ public class GraqlDocsTest {
     }
 
     private void executeAssertionOnContents(GraknGraph graph, Pattern pattern, File file, String contents,
-                                            Fn<GraknGraph, String, String> assertion){
+                                            TriConsumer<GraknGraph, String, String> assertion){
         Matcher matcher = pattern.matcher(contents);
 
         while (matcher.find()) {
@@ -76,7 +77,7 @@ public class GraqlDocsTest {
             String graqlString = matcher.group(2);
 
             if (!graqlString.trim().startsWith("test-ignore")) {
-                assertion.apply(graph, file.toString(), graqlString);
+                assertion.accept(graph, file.toString(), graqlString);
             }
         }
     }
@@ -136,8 +137,4 @@ public class GraqlDocsTest {
         fail("Failure in " + fileName + ":\n" + graqlString + "\nERROR:\n" + error);
     }
 
-    @FunctionalInterface
-    interface Fn <A, B, C> {
-        void apply(A a, B b, C c);
-    }
 }
