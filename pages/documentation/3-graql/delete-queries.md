@@ -54,12 +54,12 @@ Removes the given role from the relation type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x id "evolution"; delete $x has-role descendent;
+match $x type-name "evolution"; delete $x has-role descendent;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.match(var("x").id("evolution")).delete(var("x").hasRole("descendent"));
+qb.match(var("x").name("evolution")).delete(var("x").hasRole("descendent"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -76,12 +76,12 @@ Disallows the concept type from playing the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x id "pokemon-type"; delete $x plays-role attacking-type;
+match $x type-name "pokemon-type"; delete $x plays-role attacking-type;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
 <pre>
-qb.match(var("x").id("type")).delete(var("x").playsRole("attacking-type"));
+qb.match(var("x").name("pokemon-type")).delete(var("x").playsRole("attacking-type"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -98,12 +98,12 @@ only delete resources matching that value.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
-match $x id "Bulbasaur"; delete $x has weight $y;
+match $x has name "Bulbasaur"; delete $x has weight $y;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
 <pre>
-qb.match(var("x").id("Bulbasaur")).delete(var("x").has("weight"));
+qb.match(var("x").has("name", "Bulbasaur")).delete(var("x").has("weight"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

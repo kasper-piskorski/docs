@@ -135,7 +135,7 @@ OK, so if you've followed the above, you should now have a schema and some data 
 As with any query language, you use a variable to receive the results of the match query, which you must prefix with a `$`. So, to make the query "List every person in the graph", you would use the following in Graql:
 
 ```graql
-match $x isa person;
+>>> match $x isa person;
 
 $x id "marko" isa person; 
 $x id "vadas" isa person; 
@@ -210,14 +210,14 @@ age isa resource-type
 person isa entity-type;
 person has-resource age;
 
-"marko" isa person;
-"vadas" isa person;
-"josh" isa person;
-"peter" isa person;
-"marko" has age 29;
-"josh" has age 32;
-"vadas" has age 27;
-"peter" has age 35;
+$marko isa person;
+$vadas isa person;
+$josh isa person;
+$peter isa person;
+$marko has age 29;
+$josh has age 32;
+$vadas has age 27;
+$peter has age 35;
 
 weight isa resource-type
 	datatype double;
@@ -233,8 +233,8 @@ knows isa relation-type
 	has-role known-about
 	has-resource weight;
 
-(knower: "marko", known-about: "josh") isa knows has weight 1.0;
-(knower: "marko", known-about: "vadas") isa knows has weight 0.5;
+(knower: $marko, known-about: $josh) isa knows has weight 1.0;
+(knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 
 lang isa resource-type
 	datatype string;
@@ -290,7 +290,7 @@ match (known-about: $x) isa knows;
 List every person that marko knows
 
 ```graql
-match (known-about: $x, "marko") isa knows;
+match $marko has name "marco"; (known-about: $x, $marko) isa knows;
 ```
 
 List every item of software and the language associated with it
@@ -302,19 +302,19 @@ match $x isa software, has lang $lang;
 List everything that josh has programmed
 
 ```graql
-match (programmed: $x, "josh") isa programming;
+match $josh has name "josh"; (programmed: $x, $josh) isa programming;
 ```
 
 List everyone who has programmed Lop
 
 ```graql
-match (programmer: $x, "lop") isa programming;
+match $lop has name "lop"; (programmer: $x, $lop) isa programming;
 ```
 
 List everything you know about marko
 
 ```graql
-match $relation("marko", $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype;
+match $marko has name "marko"; $relation($marko, $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype;
 
 ```
 
