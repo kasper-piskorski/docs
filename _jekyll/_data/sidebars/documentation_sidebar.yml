@@ -60,6 +60,9 @@ entries:
       - title: Insert Queries
         output: web
         url: /documentation/graql/insert-queries.html
+      - title: Aggregate Queries
+        output: web
+        url: /documentation/graql/aggregate-queries.html
       - title: Compute Queries
         output: web
         url: /documentation/graql/compute-queries.html
