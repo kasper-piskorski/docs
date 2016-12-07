@@ -115,6 +115,23 @@ compute std of age in person;
 
 Computes the sum of a given resource type, similar to [mean](#mean).
 
+## When to Use `aggregate` and When to Use `compute`
+
+[Aggregate queries](./aggregate-queries.html) are computationally light and run single-threaded on a single machine, but are more flexible than the equivalent compute queries described above.
+
+For example, you can use an aggregate query to filter results by resource. The following  aggregate query, allows you to match the number of people of a particular name:
+
+```
+match $x has name 'Bob'; aggregate count;
+```
+
+Compute queries are computationally intensive and run in parallel on a cluster (so are good for big data).
+
+```
+compute count of person; 
+```
+
+Compute queries can be used to calculate the number of people in the graph very fast, but you can't filter the results to determine the number of people with a certain name.
 
 
 {% include links.html %}

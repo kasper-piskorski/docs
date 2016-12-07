@@ -9,31 +9,8 @@ permalink: /documentation/graql/aggregate-queries.html
 folder: documentation
 ---
 
-An aggregate query applies an operation on a [match query](match-queries.html).
+An aggregate query applies an operation onto a [match query](match-queries.html), to return information about the results (e.g. a count).
 
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>
-    <li><a href="#java1" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
-<pre>
-match
-$x isa pokemon-type;
-($x, $y) isa has-type;
-aggregate group $x count;
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java1">
-<pre>
-qb.match(
-    var("x").isa("pokemon-type"),
-    var().rel("x").rel("y").isa("has-type")
-).aggregate(group("x", count()));
-</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
 
 ## Aggregate Functions
 
@@ -207,6 +184,24 @@ qb.match(
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
+
+## When to Use `aggregate` and When to Use `compute`
+
+Aggregate queries are computationally light and run single-threaded on a single machine, but are more flexible than the equivalent [compute query](./compute-queries.html).
+
+For example, you can use an aggregate query to filter results by resource. The following  aggregate query, allows you to match the number of people of a particular name:
+
+```
+match $x has name 'Bob'; aggregate count;
+```
+
+Compute queries are computationally intensive and run in parallel on a cluster (so are good for big data).
+
+```
+compute count of person; 
+```
+
+Can be used to calculate the number of people in the graph very fast, but you can't filter the results to determine the number of people with a certain name.
 
 
 {% include links.html %}
