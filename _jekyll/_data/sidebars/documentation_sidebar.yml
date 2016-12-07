@@ -30,18 +30,18 @@ entries:
       - title: Visualising a Graph
         output: web
         url: /documentation/the-basics/visualiser.html
-  - title: Grakn Knowledge Model
-    output: web
-    folderitems:
-      - title: Fundamentals
-        output: web
-        url: /documentation/knowledge-model/fundamentals.html
-      - title: Inheritance
-        output: web
-        url: /documentation/knowledge-model/inheritance.html
-      - title: Rules
-        output: web
-        url: /documentation/knowledge-model/rules.html
+  #- title: Grakn Knowledge Model
+  #  output: web
+  #  folderitems:
+  #    - title: Fundamentals
+  #      output: web
+  #      url: /documentation/knowledge-model/fundamentals.html
+  #    - title: Inheritance
+  #      output: web
+  #      url: /documentation/knowledge-model/inheritance.html
+  #    - title: Rules
+  #      output: web
+  #      url: /documentation/knowledge-model/rules.html
   - title: Graph API
     output: web
     folderitems:
