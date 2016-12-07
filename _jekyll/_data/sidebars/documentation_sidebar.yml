@@ -3,7 +3,7 @@
 entries:
 - title: Sidebar
   product: Grakn
-  version: 0.7
+  version: 0.8
   folders:
 
   - title: Get Started
@@ -23,7 +23,7 @@ entries:
         url: /documentation/the-basics/grakn-basics.html
       - title: Grakn Knowledge Model
         output: web
-        url: /documentation/the-basics/grakn-knowlege-model.html
+        url: /documentation/the-basics/grakn-knowledge-model.html
       - title: Quickstart Tutorial
         output: web
         url: /documentation/the-basics/quickstart-tutorial.html
