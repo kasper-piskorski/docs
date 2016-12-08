@@ -25,31 +25,39 @@ Grakn ontologies use four types of concepts for modeling domain knowledge:
 * **Role Types**: Types of roles involved in specific relationships, for example: `mother`, `child`.     
 * **Resource Types**: Types of attributes associated with entities and relations, for example, `name`, or `age`.    
 
-Different concept types can be related to each other via four constructs (see Figure~1): 
+In Grakn, different concept types can be related to each other via four constructs (see Figure~1): 
 
 * **sub**: used to express that a concept type is a subtype of another one, for example, `woman sub person`.
 * **has-resource**: used to express that a concept type can be associated with a given resource type, for example, `person has-resource name`.
 * **plays-role**: used to express that instances of a given concept type are allowed to play a specific role, for example, `woman plays-role mother`, 
 * **has-role**: used to express that a given relation type involves a specific role, for example, `motherhood has-role mother`.
 
-Additionally, entity and relation types can be declared as `abstract`, meaning that they cannot have any direct instances, for example, `Person is-abstract` expresses that the only instances of Person can be those that belong to more specific types, e.g., `man` or `woman`. 
+Additionally, entity types and relation types can be declared as `abstract`, meaning that they cannot have any direct instances. For example, `person is-abstract` expresses that the only instances of `person` can be those that belong to more specific types, e.g., `man` or `woman`. 
 
 [... here comes a figure]
 Figure~1: The concept types and their permitted associations via Grakn ontology constructs.
 
+<!-- This section may possibly be better if moved into a different, more low level page -->
 A well-formed Grakn ontology is further required to satisfy the following structural properties:
 
 * each concept type can have at most one direct supertype,
 * each role type must be involved in exactly one relation type,
-* each relation type must involve at least two distinct role types; 
-* each relation type must involve the same number of roles as its direct supertype; in such case, every role type involved in the subtype relation must be a (possibly indirect) subtype of exactly one role type involved in the supertype relation.   
+* each relation type must involve at least two distinct role types, <!-- I think an example would help here--> 
+* each relation type must involve the same number of roles as its direct supertype. In such a case, every role type involved in the subtype relation must be a (possibly indirect) subtype of exactly one role type involved in the supertype relation.   <!-- definitely need an example or diagram -->
 
 ### Inheritance 
 
-To enable more succinct representation of the ontology structure, Grakn supports inheritance of `has-resource` and `plays-role` constraints downwards the `sub` hierarchies. Every (possibly indirect) subtype of an entity or a relation type implicitly inherits all its `has-resource` and `plays-role` constraints. For example, in Figure~2, the entity type `woman` inherits the constraints `has-resource name`, `plays-role child`, `plays-role m-child` and `plays-role mother` from its supertype `person`. Similarly, the relation type `motherhood` inherits the constraint `has-resource since` from `parenthood`. Note that no other forms of inheritance are currently supported in Grakn. All the explicitly represented constraints together with the inherited ones form complete schema templates for particular entity and relation types, which are used to guide the data entry process and to validate the consistency of the data with respect to the ontology (see details below).  
+Inheritance allows the domain to be modelled as expressively as possible.  Grakn supports inheritance of `has-resource` and `plays-role` constraints downwards, via the `sub` hierarchies, to enable the more succinct representation of the ontology structure. Every (possibly indirect) subtype of an entity or a relation type implicitly inherits all its `has-resource` and `plays-role` constraints. 
+   
+For example, in Figure~2, the entity type `woman` inherits the constraints `has-resource name`, `plays-role child`, `plays-role m-child` and `plays-role mother` from its supertype `person`. Similarly, the relation type `motherhood` inherits the constraint `has-resource since` from `parenthood`. 
+
 
 [... here comes a figure]
 Figure~2: A sample of a Grakn ontology involving entity, relation and role types.
+
+
+Note that no other forms of inheritance are currently supported in Grakn. All the explicitly represented constraints, together with the inherited ones, form complete schema templates for particular entity and relation types, which are used to guide the data entry process and to validate the consistency of the data with respect to the ontology (see details below).  
+
 
 ## Data
 
