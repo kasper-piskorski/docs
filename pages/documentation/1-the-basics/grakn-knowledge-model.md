@@ -16,14 +16,14 @@ In Grakn, a graph is made of two layers: the ontology layer and the data layer.
 
 ## Ontology
 
-The ontology is used to formalise the data within its domain, and it categorises the data.
+The ontology is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed. Specifying the ontology enables logical reasoning over the represented knowledge, such as the extraction of implicit information from explicit data (inference) or discovery of inconsistencies in the data (validation).   
 
-Grakn provides a formal knowledge model to define the ontology, which comprises of four types:
-
-* **Entity Types**: An Entity Type is used to represent a thing, for example, a `person`, and can be thought of as a noun.
-* **Relation Types**: A Relation Type is used to model a relationship between two Entity Types, for example, `marriage`, and can be thought of as a verb.
-* **Role Types**: Two role types are used to represent the two roles within a Relationship Type. There is one Role Type for each Entity Type to explain fully how the two relate to one another, for example, `husband` and `wife`.
-* **Resource Types**: A Resource Type is used to represent an attribute associated with an Entity Type, for example, `name`. These are properties consisting of primitive types and values.
+Grakn ontologies use four types of concepts for modeling domain knowledge:   
+ 
+* **Entity Types**: Types of objects or things in the domain, for example, a `person`.    
+* **Relation Types**: Types of n-ary relationships between different objects (or possibly other relations), for example, `motherhood`, which is a relationship between two people playing roles of `mother` and `child`.    
+* **Role Types**: Types of roles involved in specific relationships, for example: `mother`, `child`.     
+* **Resource Types**: Types of attributes associated with entities and relations, for example, `name`, or `age`.    
 
 
 ### Inheritance
