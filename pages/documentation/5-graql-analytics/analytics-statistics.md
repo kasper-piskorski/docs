@@ -22,6 +22,7 @@ are:
 *  `min`
 *  `std (standard deviation)`
 *  `sum`
+*  `count`
 
 For example, the following query executes a distributed computation to determine the mean price of all the vehicles (cars, trucks and motorbikes) in the graph. 
 
