@@ -9,6 +9,7 @@ folder: documentation
 comment_issue_id: 71
 ---
 
+How are two instances in the graph related? When starting a task you don't always know in advance what you are looking for. Finding the shortest path between two instances in a graph can be a great way to explore connections because you do not need to provide any guidance.
 
 {% include links.html %}
 

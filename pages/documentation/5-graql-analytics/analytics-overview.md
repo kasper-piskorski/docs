@@ -11,7 +11,7 @@ comment_issue_id: 71
 
 The distributed Grakn knowledge graph presents two different ways to obtain insight on a large dataset:   
  
- *   It intelligently aggregates large amounts of information. Graql allows you to specify what you want, instead of how to get it, and analytics allows you to do it at scale. For example, finding out the mean number and standard deviation of vehicles owned by companies (not individuals), no matter how big the dataset. 
+ *   It intelligently aggregates large amounts of information. Graql allows you to specify what you want, instead of how to get it, and analytics allows you to do it at scale. For example, finding out the mean number and standard deviation of vehicles owned by companies (not individuals), no matter how big the dataset.
  *  The structure of the graph contains valuable information about the importance of entities and also the communities they form. This is achieved by computing the number of relationships that certain entities take part in, and using this as a measure of how popular they are. An example of this can be seen on the [Moogi website](https://moogi.co), which uses only the structure of the graph to rank the results. 
 
 <!-- JCS Comments: Please can you clarify "graph is not important" as I don't understand what you mean, and also provide a suitable link to more about Pregel and map reduce  ? -->
@@ -57,7 +57,7 @@ then the instances of this: `Mike's car`, `Dave's car` and `Alice's car` can be 
 compute count in car;
 ```
 
-Consider the simple graph below that includes types, instances and some relationships. Analytics will consider every instance in the graph, so will not consider the types `person`, `writes` and `comment`, coloured in blue). To compute the count on this graph without specifying any subgraph, we call the following, which returns the number 6:   
+Consider the simple graph below that includes types, instances and some relationships. Analytics will consider every instance in the graph, so will not consider the types `person`, `writes` and `comment`, (coloured in blue). To compute the count on this graph without specifying any subgraph, we call the following, which returns the number 6:
 
 ```
 compute count;
