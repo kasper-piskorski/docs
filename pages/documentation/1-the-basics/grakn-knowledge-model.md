@@ -61,28 +61,30 @@ Note that no other forms of inheritance are currently supported in Grakn. All th
 
 ## Data
 
-Data elements are named instances to reflect that they are concrete pieces of data, corresponding to the ontology types described above. There are three data instances:
+The instance data is expressed via assertions about the types of specific entities, their relations, roles they play in those relations, and concrete resources they are associated with. The unique identifiers for all instances are assigned internally within the Grakn system. There are three basic types of data assertion (for precise Graql syntax see Page~):
 
-* **Entity**: A data instance of the Entity Type. For example, `William Titus` is an Entity corresponding to the Entity Type `man`.
+* **Entities**: assertions about types of entity instances, for example, an assertion about `Elizabeth Niesz` being of type `woman`.
 
-* **Resource**: A data instance of the Resource Type, which reflects a property of a specific Entity. For example, if `Elizabeth Niesz` is an instance of a `woman` then we can model her date of birth as a Resource, an instance of the Resource Type `birthdate`.  
+* **Relations**: assertions about relation instances and their types, for example, a `marriage` Relation between `Elizabeth Niesz` (in role `wife`) and `William Titus` (in role `husband`).
 
+* **Resources**: assertions about resources being associated with particular entities or relation instances, for example, resource with value "Elisabeth Niesz" of type `name` being associated with the entity representing Elizabeth Niesz. 
 
-* **Relation**: A data instance of a Relation Type, which essentially describes a relationship between Entities. For example, a `marriage` Relation between `Elizabeth Niesz` (isa `woman`) and `William Titus` (isa `man`).
-
-Note that `Elizabeth Niesz` plays the Role Type `wife` and `William Titus` plays the Role Type `husband`. Unlike the Entity, Resource and Relation instances, there are no instances of Role Types in the data layer.
-
-
-## Validation 
-
-Some examples
+Unlike the entity, resource and relation instances, there are no instances of Role Types in the data layer.
 
 
-## Rules
+### Validation 
 
-Given a set of inference rules, the Grakn reasoner is able to infer new information. The rules are defined as IF...THEN pairs, such that IF something is verified, THEN something else must be true. The reasoner checks if the first part of the rule is verified and, if it is, infers that the second part of the rule is true.
+To ensure data is correctly structured (i.e., consistent) with respect to the ontology, all data assertions are validated against the ontology constraints. A set of assertions about an instance of a specific entity or relation type is valid, whenever the resource types, role types, and (possibly inferred) types of the involved role players match the schema template of that entity or relation type. For example, data assertions in Figure~3 violate the schema templates depicted in Figure~2, by (1) including the resource of type `maiden name` on type `person` (which is not allowed in the ontology), and (2) by using an entity with the asserted type `person` in the `mother` role (while only those of type `woman` are accepted by the ontology). 
 
-As an example: **IF** X has a mother and the mother has a brother **THEN** X has an uncle.
+[... here comes a figure] Figure~3: Validation of data against the ontology.
+
+## Rule and sub-type inference
+
+The inference is a process of extracting implicit information from explicitly asserted data. Grakn supports two inference mechanisms: (1) type inference, based on the semantics of the `sub` hierarchies included in the ontology, and (2) a powerful rule-based inference involving user-defined IF-THEN rules. Both mechanisms are employed by default when querying the knowledge graph with Graql, thus supporting retrieval of both explicit and implicit information at query time.      
+
+The type inference is based on a simple graph traversal along the `sub` edges. Every instance of a given concept type is automatically classified as an instance of all (possibly indirect) supertypes of that type. In case of roles, every instance playing a given role is inferred to also play all its (possibly indirect) super-roles. 
+
+The rule-based inference exploits a set of user-defined Horn rules and is conducted by means of the rule reasoner built naitively into the Grakn system. A rule is en expression of the form IF G1 THEN G2, where G1 and G2 is a pair of match-insert Graql patterns. Whenever the pattern G1 is found in the data the pattern G2 is inserted, for example the rule `IF (child:X, mother:Y); (sister:Y brother:Z) THEN (nephew:X, uncle:Z) isa uncle-relation`, expresses that whenever X has a mother Y and Y has a brother Z, then we can infer that Z is an uncle of X, and X is a nephew of Z. For precise rule syntax see Page~.
 
 
 
