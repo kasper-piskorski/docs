@@ -9,12 +9,30 @@ folder: documentation
 comment_issue_id: 71
 ---
 
-The connected components algorithm can be used to find clusters of instances in the graph that are connected. The
- algorithm finds all instances (relations, resources and entities) that are connected via relations in the graph and
- gives each set a unique label. In the graph below you can see three connected components that correspond to groups of
- friends. In this graph three unique labels will be created one corresponding to each of the sets of connected instances.
+The connected components algorithm can be used to find clusters of instances in the graph that are connected.
+The algorithm finds all instances (relations, resources and entities) that are connected via relations in the graph and gives each set a unique label.
+In the graph below you can see three connected components that correspond to groups of friends.
+In this graph three unique labels will be created one corresponding to each of the sets of connected instances.
 
  ![Three connected components representing groups of friends.](/images/analytics_conn_comp.png)
+
+You can call the cluster algorithm to find the clusters above using:
+
+```
+compute cluster in person, knows;
+```
+
+The results you would actually get involve 3 clusters with sizes: 5, 7, 3.
+If you want to see the actual members of the clusters you have to use the modifier `members`.
+
+```
+compute cluster in person, knows; members;
+```
+
+Here the [subgraph](./analytics-overview.html) functionality has been used to get more meaningful results.
+Usually executing the results without specifying a subgraph will not result in meaningful information.
+Additionally, the [persist](./analytics-persist.html) modifier applies to connected components.
+This is useful when the clusters have meaning and knowing which instances in the cluster are important.
 
 {% include links.html %}
 
