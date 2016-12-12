@@ -36,6 +36,8 @@ Additionally, entity types and relation types can be declared as `abstract`, mea
 
 ![The concept types and their permitted associations via Grakn ontology constructs.](/images/knowledge-model-fig1.png)
 
+*Figure 1: The concept types and their permitted associations via Grakn ontology constructs.*
+
 <!-- This section may possibly be better if moved into a different, more low level page -->
 A well-formed Grakn ontology is further required to satisfy the following structural properties:
 
@@ -52,6 +54,9 @@ For example, in Figure~2, the entity type `woman` inherits the constraints `has-
 
 
 ![A sample of a Grakn ontology involving entity, relation and role types.](/images/knowledge-model-fig2.png)
+
+*Figure 2: A sample of a Grakn ontology involving entity, relation and role types.*
+
 
 Note that no other forms of inheritance are currently supported in Grakn. All the explicitly represented constraints, together with the inherited ones, form complete schema templates for particular entity and relation types, which are used to guide the data entry process and to validate the consistency of the data with respect to the ontology (see details below).  
 
@@ -79,6 +84,8 @@ For example, data assertions in Figure~3 violate the schema templates depicted i
 2. by using an entity with the asserted type `person` in the `mother` role (while only those of type `woman` are accepted by the ontology). 
 
 ![Validation of data against the ontology.](/images/knowledge-model-fig3.png)
+
+*Figure 3: Validation of data against the ontology.*
 
 ## Rule and Sub-Type Inference
 

@@ -112,7 +112,7 @@ qb.match(var("x").has("name", "Pichu")).delete("x").execute();
 <dependency>
   <groupId>ai.grakn.graql</groupId>
   <artifactId>graql-parser</artifactId>
-  <version>0.7.0</version>
+  <version>0.8.0</version>
 </dependency>
 ```
 
