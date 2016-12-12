@@ -1,6 +1,6 @@
 ---
 title: Persisting to the Graph
-last_updated: November 24, 2016
+last_updated: December 12th, 2016
 tags: [analytics]
 summary: ""
 sidebar: documentation_sidebar

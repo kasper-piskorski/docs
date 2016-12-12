@@ -1,6 +1,6 @@
 ---
 title: Statistics
-last_updated: December 5th, 2016
+last_updated: December 12th, 2016
 tags: [analytics]
 summary: "This page introduces the statistics functionality of analytics."
 sidebar: documentation_sidebar
@@ -16,13 +16,13 @@ if the values you are calculating correspond to many different types of things?
 Graql analytics can perform the necessary computations through the `compute` query.  The available algorithms
 are: 
 
+*  `count`
 *  `max`
 *  `mean`
 *  `med (median)`
 *  `min`
 *  `std (standard deviation)`
 *  `sum`
-*  `count`
 
 For example, the following query executes a distributed computation to determine the mean price of all the vehicles (cars, trucks and motorbikes) in the graph. 
 

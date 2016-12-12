@@ -1,6 +1,6 @@
 ---
 title: Connected Components
-last_updated: November 24, 2016
+last_updated: December 12, 2016
 tags: [analytics]
 summary: "This page introduces the connected components algorithm and explains how to use it."
 sidebar: documentation_sidebar
@@ -29,10 +29,20 @@ If you want to see the actual members of the clusters you have to use the modifi
 compute cluster in person, knows; members;
 ```
 
-Here the [subgraph](./analytics-overview.html) functionality has been used to get more meaningful results.
-Usually executing the results without specifying a subgraph will not result in meaningful information.
-Additionally, the [persist](./analytics-persist.html) modifier applies to connected components.
-This is useful when the clusters have meaning and knowing which instances in the cluster are important.
+Here, the [subgraph](./analytics-overview.html) functionality has been used to get more meaningful results, because executing the cluster algorithm without specifying a subgraph will not result in meaningful information.
+
+
+### Persisting the Connected Components
+
+When the clusters have meaning, it is useful to be able to persist it to the graph, so it is available for querying.
+
+For this reason we have introduced `persist`, which is [documented further on a separate page](./analytics-persist.html). 
+
+To persist the cluster to the graph we call:
+
+```
+compute cluster in person, knows; members; persist;
+```
 
 {% include links.html %}
 

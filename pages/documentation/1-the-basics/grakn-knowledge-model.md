@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 17
 ---
 
-{% include note.html content="Please note that this page is in progress and subject to revision." %}
+{% include warning.html content="Please note that this page is in progress and subject to revision." %}
 
 In Grakn, a graph is made of two layers: the ontology layer and the data layer.
 
