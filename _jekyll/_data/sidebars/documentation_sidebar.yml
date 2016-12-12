@@ -99,6 +99,9 @@ entries:
       - title: Analytics Statistics
         output: web
         url: /documentation/graql-analytics/analytics-statistics.html 
+      - title: Analytics Shortest Path
+        output: web
+        url: /documentation/graql-analytics/analytics-shortest-path.html   
       - title: Analytics Degrees
         output: web
         url: /documentation/graql-analytics/analytics-degrees.html 
