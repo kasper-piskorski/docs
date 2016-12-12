@@ -35,26 +35,35 @@ entries:
   #  folderitems:
   #    - title: Fundamentals
   #      output: web
-  #      url: /documentation/knowledge-model/fundamentals.html
+  #      url: /documentation/grakn-knowledge-model/fundamentals.html
   #    - title: Inheritance
   #      output: web
-  #      url: /documentation/knowledge-model/inheritance.html
+  #      url: /documentation/grakn-knowledge-model/inheritance.html
   #    - title: Rules
   #      output: web
-  #      url: /documentation/knowledge-model/rules.html
-  - title: Graph API
+  #      url: /documentation/grakn-knowledge-model/rules.html
+  - title: Building an Ontology
     output: web
     folderitems:
-      - title: Overview
+      - title: Defining a Basic Ontology
         output: web
-        url: /documentation/core-api/overview.html
-      - title: Simple Schema Definition
+        url: /documentation/building-an-ontology/basic-ontology.html
+      - title: Defining a Hierarchical Ontology
         output: web
-        url: /documentation/core-api/simple-schema-definition.html
-      - title: Advanced Schema Definition
+        url: /documentation/building-an-ontology/hierarchical-ontology.html
+      - title: Defining a Rule-Driven Ontology
         output: web
-        url: /documentation/core-api/advanced-schema-definition.html
-  - title: Graql
+        url: /documentation/building-an-ontology/rule-driven-ontology.html
+      - title: Overview (deprecated)
+        output: web
+        url: /documentation/building-an-ontology/overview.html
+      - title: Simple Schema (deprecated)
+        output: web
+        url: /documentation/building-an-ontology/simple-schema-definition.html
+      - title: Advanced Schema (deprecated)
+        output: web
+        url: /documentation/building-an-ontology/advanced-schema-definition.html
+  - title: Querying with Graql
     output: web
     folderitems:
       - title: Overview
@@ -75,6 +84,9 @@ entries:
       - title: Insert Queries
         output: web
         url: /documentation/graql/insert-queries.html
+    #  - title: Graql Rules
+    #    output: web
+    #    url: /documentation/graql/graql-rules.html
       - title: Aggregate Queries
         output: web
         url: /documentation/graql/aggregate-queries.html
@@ -87,9 +99,6 @@ entries:
       - title: Graql Cheatsheet
         output: web
         url: /documentation/graql/graql-cheatsheet.html
-      - title: Java Graql
-        output: web
-        url: /documentation/graql/java-graql.html
   - title: Graql Analytics
     output: web
     folderitems: 
@@ -132,6 +141,12 @@ entries:
       - title: OWL Migration
         output: web
         url: /documentation/migration/OWL-migration.html
+  - title: Developing with Java
+    output: web
+    folderitems:
+      - title: Java Graql
+        output: web
+        url: /documentation/developing-with-java/java-graql.html
   - title: Advanced Grakn
     output: web
     folderitems:
@@ -186,21 +201,3 @@ entries:
       - title: Example Projects
         output: web
         url: /documentation/examples/projects.html
-#  - title: Core
-#    output: web
-#    folderitems:
-#      - title: Overview
-#        output: web
-#        url: /core/overview.html
-#  - title: Factory
-#    output: web
-#    folderitems:
-#      - title: Overview
-#        output: web
-#        url: /factory/overview.html
-#      - title: Tinker Graph Factory
-#        output: web
-#        url: /factory/tinker-graph-factory.html
-#      - title: Titan Graph Factory
-#        output: web
-#        url: /factory/titan-graph-factory.html

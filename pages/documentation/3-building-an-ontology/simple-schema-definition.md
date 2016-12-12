@@ -5,10 +5,12 @@ last_updated: August 23, 2016
 tags: [java, graph-api]
 summary: "Demonstrates how to create a schema for Grakn."
 sidebar: documentation_sidebar
-permalink: /documentation/core-api/simple-schema-definition.html
+permalink: /documentation/building-an-ontology/simple-schema-definition.html
 folder: documentation
 comment_issue_id: 21
 ---
+
+{% include warning.html content="This page is deprecated and will soon be removed." %}
 
 This article assumes that you have already looked at page that covers [Grakn Basics](../the-basics/grakn-basics.html).
 

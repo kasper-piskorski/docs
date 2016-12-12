@@ -5,10 +5,12 @@ last_updated: August 10, 2016
 tags: [java, graph-api]
 summary: "A basic example of how to use Grakn's Graph API."
 sidebar: documentation_sidebar
-permalink: /documentation/core-api/overview.html
+permalink: /documentation/building-an-ontology/overview.html
 folder: documentation
 comment_issue_id: 20
 ---
+
+{% include warning.html content="This page is deprecated and will soon be removed." %}
 
 If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html). This article assumes that you are set up and have already looked at the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that covers Graql queries.   
 You can find the code below in the example code directory of the Grakn distribution zip.
