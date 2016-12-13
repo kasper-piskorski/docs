@@ -19,7 +19,9 @@ The migration shell script can be found in `grakn-dist/bin` after it has been un
 ### SQL Migration
 
 ```bash
-usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> [-help] [-no] [-batch <arg>] [-keyspace <arg>] [-uri <arg>]
+usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> [-help] [-no] [-batch <arg>] [-keyspace <arg>] [-uri <arg>] [-v]
+
+ -b,--batch <arg>      number of rows to load at once
  -driver <arg>         JDBC driver
  -h,--help             print usage message
  -k,--keyspace <arg>   keyspace to use
@@ -30,6 +32,7 @@ usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -l
  -t,--template <arg>   template for the given SQL query
  -u,--uri <arg>        uri to engine endpoint
  -user <arg>           JDBC username
+ -v,--verbose          print counts of migrated data.
 ```
 
 Please see the [SQL migration documentation](./SQL-migration.html) for further information.
@@ -37,10 +40,10 @@ Please see the [SQL migration documentation](./SQL-migration.html) for further i
 ### CSV Migration
 
 ```bash
-usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
 
 OPTIONS
- -b,--batch <arg>       number of row to load at once
+ -b,--batch <arg>       number of rows to load at once
  -h,--help              print usage message
  -i,--input <arg>       input csv file
  -k,--keyspace <arg>    keyspace to use
@@ -48,6 +51,7 @@ OPTIONS
  -s,--separator <arg>   separator of columns in input file
  -t,--template <arg>    graql template to apply over data
  -u,--uri <arg>         uri to engine endpoint
+ -v,--verbose           print counts of migrated data.
 ```
 
 Please see the [CSV migration documentation](./CSV-migration.html) for further information.
@@ -55,14 +59,16 @@ Please see the [CSV migration documentation](./CSV-migration.html) for further i
 ### JSON Migration
 
 ```bash
-usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
- -b,--batch <arg>      number of row to load at once
+usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
+
+ -b,--batch <arg>      number of rows to load at once
  -h,--help             print usage message
  -i,--input <arg>      input json data file or directory
  -k,--keyspace <arg>   keyspace to use
  -n,--no               dry run - write to standard out
  -t,--template <arg>   graql template to apply over data
  -u,--uri <arg>        uri to engine endpoint
+ -v,--verbose          print counts of migrated data.
 ```
 
 Please see the [JSON migration documentation](./JSON-migration.html) for further information.
@@ -70,11 +76,14 @@ Please see the [JSON migration documentation](./JSON-migration.html) for further
 ### OWL Migration
 
 ```bash
-usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
+
+ -b,--batch <arg>      number of rows to load at once
  -h,--help             print usage message
  -i,--input <arg>      input owl file
  -k,--keyspace <arg>   keyspace to use
  -u,--uri <arg>        uri to engine endpoint
+ -v,--verbose          print counts of migrated data.
 ```
 
 NOTE: `-no` is not supported by OWL migration at the moment

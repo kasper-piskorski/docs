@@ -260,7 +260,7 @@ resource.ownerInstances();
 ```
 
 ## Where Next?
-If you want to find out more about using the Graph API, please take a look at the documentation about how to define a [simple schema](../core-api/simple-schema-definition.html) or an [advanced schema](../core-api/advanced-schema-definition.html).
+If you want to find out more about using the Graph API, please take a look at the documentation about how to define a [simple schema](./simple-schema-definition.html) or an [advanced schema](./advanced-schema-definition.html).
 
 {% include links.html %}
 

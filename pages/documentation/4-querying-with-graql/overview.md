@@ -12,7 +12,7 @@ folder: documentation
 Graql allows you to query a graph in a declarative, pattern matching fashion.
 
 You can execute Graql in the [Graql Shell](graql-shell.html) or using [Java
-Graql](java-graql.html).
+Graql](../developing-with-java/java-graql.html).
 
 ## Query types
 

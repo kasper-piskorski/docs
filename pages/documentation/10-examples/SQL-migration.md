@@ -38,7 +38,7 @@ Grakn Engine needs to be running for this example to work. If you need help star
 
 ### Running the Example in Java
 
-You can run this example by running the [`Main`](https://github.com/graknlabs/sample-projects/blob/master/example-sql-migration/src/main/java/Main.java) class. Check out the `SqlWorldMigrator` class for the bulk of the migration code.  
+You can run this example by running the `Main` class. Look at the `SqlWorldMigrator` class for the bulk of the migration code.  
 
 We run a few queries in the example to prove that the data has been migrated. After running the example, you should be able to answer the following questions (see the bottom of the page for answers - but please don't peek until you've tried it!):
 
@@ -49,56 +49,42 @@ We run a few queries in the example to prove that the data has been migrated. Af
 
 (We do not provide any guarantees for data integrity. Data is provided by MySQL.)
 
-### In-Memory Example (Lazy folks here, please)
 
-If you are feeling lazy, and do not want to install MySQL to test this out, we do provide an in-memory SQL database option.
-
-You can run this example by running the [`MainInMemory`](https://github.com/graknlabs/sample-projects/blob/master/example-sql-migration/src/main/java/MainInMemory.java) class. It demonstrates the same functionality by pre-loading the World data into an [H2](http://www.h2database.com/html/main.html) SQL database.
-
-<!--
-### Running the example in the shell
-
-The following command will run the above migration by using the shell script. Be sure to execute this from within `mindmaps-dist-x.x.x/bin`. 
-
-```
-./migration.sh sql -database jdbc:mysql://localhost:3306/world -user mindmaps -pass mindmaps -driver com.mysql.jdbc.Driver
-```
--->
 ## Test Yourself Answers
 
-You can see the code to answer these questions in the function [printInformationAboutWorld()](https://github.com/graknlabs/sample-projects/blob/master/example-sql-migration/src/main/java/SqlWorldMigrator.java).
+You can see the code to answer these questions in the function `printInformationAboutWorld()`.
 
 
-**What are the Types in the World graph in Grakn?**   
-Answer:
-   
-```
-country
-city 
-countrylanguage
-```
-
-**How many countries are in the world?**   
-   
-Answer: `239`
-
-**How may cities are in the world?**   
-   
-Answer: `4079`
-
-**What are the cities in Niger?**   
-Answer:   
 
 ```
-Niamey
+Migrated Types:
+[24800] - Base Type [ENTITY_TYPE] - Id [24800]  - Name [protest] - Abstract [false] 
+[28896] - Base Type [ENTITY_TYPE] - Id [28896]  - Name [municipality] - Abstract [false] 
+[37104] - Base Type [ENTITY_TYPE] - Id [37104]  - Name [suburab] - Abstract [false] 
+[122888416] - Base Type [ENTITY_TYPE] - Id [122888416]  - Name [district] - Abstract [false] 
+[122900704] - Base Type [ENTITY_TYPE] - Id [122900704]  - Name [country] - Abstract [false] 
+[20600] - Base Type [ENTITY_TYPE] - Id [20600]  - Name [province] - Abstract [false] 
+[24600] - Base Type [ENTITY_TYPE] - Id [24600]  - Name [origin] - Abstract [false] 
+[28792] - Base Type [ENTITY_TYPE] - Id [28792]  - Name [city] - Abstract [false] 
+[32888] - Base Type [ENTITY_TYPE] - Id [32888]  - Name [police-station] - Abstract [false] 
+[81924200] - Base Type [ENTITY_TYPE] - Id [81924200]  - Name [region] - Abstract [false] 
+[122892488] - Base Type [ENTITY_TYPE] - Id [122892488]  - Name [continent] - Abstract [false] 
+[122933272] - Base Type [ENTITY_TYPE] - Id [122933272]  - Name [language] - Abstract [false] 
+
+239 countries in our world
+
+4202 cities in our world
+
+Cities in Niger:
 Zinder
+Niamey
 Maradi
 ```
 
 
 ## Where Next?
 
-After running this SQL migration, check out the [Graql documentation](../graql/overview.html) and the [Graph API documentation](../core-api/overview.html) for more instructions on how you can explore **the world**.
+After running this SQL migration, check out the [Graql documentation](../graql/overview.html) and the [Graph API documentation](../developing-with-java/graph-api.html) for more instructions on how you can explore the world.
 
 
 {% include links.html %}

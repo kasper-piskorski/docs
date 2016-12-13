@@ -15,7 +15,7 @@ Graql is the declarative query language for Grakn.  The key principles and capab
 * Graql operates on concepts and relations between them.   
 * Graql will automatically execute the query in an efficient fashion, taking advantage of existing indexes.
 
-This page is intended to be a quick reference guide for those already familiar with Graql. For further information and additional documentation, please see the Graql section on our developer portal [grakn.ai/docs](http://www.grakn.ai/docs/graql/overview.html).
+This page is intended to be a quick reference guide for those already familiar with Graql. For further information and additional documentation, please see the Graql section on our [developer portal](https://grakn.ai/pages/documentation/graql/overview.html).
 
 ## match
 

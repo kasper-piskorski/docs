@@ -25,7 +25,7 @@ The path query uses a scalable shortest path algorithm to determine the smallest
 
 ### Subgraph
 
-If you are looking for more specific connections you can of course use the [subgraph](./analytics_overview.html) functionality.
+If you are looking for more specific connections you can of course use the [subgraph](./analytics-overview.html) functionality.
 In the following query only the paths through comments are investigated and the resulting graph is shown below.
 We have excluded friendships in this subgraph and now the shortest path is longer than before.
 

@@ -17,45 +17,53 @@ This page lists the examples of Grakn that we suggest you study to learn how to 
 
 If you would like to request a particular example, please get in touch with us by leaving a comment on this page or posting a question on the discussion boards.  Our [Community page](https://grakn.ai/community.html) lists other ways you can talk to us.
 
-### [Pokemon](./pokemon.html)
+### Genealogy Example
 
-A [simple example](./pokemon.html) to illustrate the basics of Grakn Graql statements and queries. You can also find the example within the Grakn distribution zip.
+The genealogy example is widely used across
 
-### [Philosophers](./philosophers.html)
-
-This is a [simple example](./philosophers.html) to illustrate the [basics of the object model](../the-basics/grakn-basics.html). You can also find the example within the Grakn distribution zip.
-
-
-### [Moogi](./moogi.html)
-
-[Moogi](https://moogi.co) is a large database of information about movies. We have provided some [documentation](./moogi.html) and a subset of the data for you to investigate.
+<!-- TO DO - Finish this -->
 
 ### [Modern](./modern.html)
 
 The [Modern example](./modern.html) is a simple one, designed to test your knowledge of Graql.
 
-### [SQL Migration](./SQL-migration.html)
-
-A common use-case is to migrate existing SQL data to a graph in Grakn. Please see the [SQL migration example](../examples/SQL-migration.html) for an example of how to use the migrator. We also cover SQL migration in a [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#).
-
 ### [OWL Migration](./OWL-migration.html)
 
 For more information about migrating OWL to Grakn, please see the [OWL migration example](../examples/OWL-migration.html).
 
-### Oncologists
+### SQL Migration
 
-The oncologists example walks through the basics of Grakn from a beginner's perspective. You can find the blog posts here:
+A common use-case is to migrate existing SQL data to a graph in Grakn. We walk through a simple example of using the migration script as part of the documentation about [SQL migration](../migration/SQL-migration.html), and there is a further example of [SQL migration using the Java API](../examples/SQL-migration.html). We also cover SQL migration in a [blog post](https://blog.grakn.ai/populating-mindmapsdb-with-the-world-5b2445aee60c#).
 
-* [Part 1](https://blog.grakn.ai/adding-semantics-to-graph-databases-with-mindmapsdb-part-1-82022bbb3b1c#.fyfw6h93a)    
-* [Part 2](https://blog.grakn.ai/adding-semantics-to-graph-databases-with-mindmapsdb-part2-833ec05bd28#.moeauu6sd)
-* [Part 3](https://blog.grakn.ai/adding-semantics-to-graph-databases-with-mindmapsdb-part-3-5bd4c8be91ec#.1z2qtq8ms)
-* [Part 4](https://blog.grakn.ai/adding-semantics-to-graph-databases-with-mindmapsdb-part-4-e1125e02dc85#.fc9qnj9bc)
+### CSV Migration
 
+There is an example of CSV migration on our [sample projects repo](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration) on Github. Please see the [readme file](https://github.com/graknlabs/sample-projects/blob/master/example-csv-migration/README.md) to get started.
 
-Sample code is here: [https://github.com/mikonapoli/oncologists_ontology](https://github.com/mikonapoli/oncologists_ontology)
+CSV migration is also covered in a [blog post](https://blog.grakn.ai/twenty-years-of-games-in-grakn-14faa974b16e#.cuox3cew2).
+
 
 ### R and Python bindings
-It is possible to extract data from Grakn and use it as a data science tool for analysis. You can take the results of a Graql query and store the results in a dataframe or similar structure, for use with R or Python. This [blog post](https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99#) explains and gives a simple example.
+It is possible to extract data from Grakn and use it as a data science tool for analysis. You can take the results of a Graql query and store the results in a dataframe or similar structure, for use with R or Python. This [blog post](https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99#) explains and gives a simple example. A further [blog post](https://blog.grakn.ai/grakn-pandas-celebrities-5854ad688a4f#.k5zucfp6f) uses the Python driver to examine our example movie dataset.
+
+
+### Pokemon
+
+The Grakn repo on Github contains [pokemon.gql](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/pokemon.gql), which is a simple example to illustrate a basic ontology and dataset. It is currently used in our Graql documentation to illustrate how to form a range of different Graql queries.
+
+### Philosophers
+
+The Grakn repo on Github contains [philosophers.gql](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/philosophers.gql), which contains a simple ontology and data, for use as an example.
+
+The [sample-projects](https://github.com/graknlabs/sample-projects) repo on Github contains a Java project that uses the Java Graph API on the same data and ontology. 
+
+### Moogi Movie Database
+
+[Moogi](https://moogi.co) is a large database of information about movies. We have provided a subset of its data to try out in our [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/movies) on Github.
+
+## Where Next?
+
+If you are interested in writing an example on Grakn, maybe as a way of trying it out, please take a look at the [Example Projects](./projects.html) page, which lists some ideas that we have for potential examples or research projects.
+
 
 {% include links.html %}
 

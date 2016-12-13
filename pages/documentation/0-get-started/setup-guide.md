@@ -44,7 +44,7 @@ Graql is our knowledge-oriented query language, which allows you to interface wi
 bin/graql.sh
 ```
 
-The Graql shell starts and you see a `>>>` prompt. Type in the following:   
+The Graql shell starts and you see a `>>>` prompt. Type in the following, but don't worry too much about what it means right now. We will go through it further in the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html).  
 
 ```graql   
 insert person isa entity-type;
@@ -53,15 +53,17 @@ insert person has-resource name;
 insert isa person, has name "Topsy";
 insert isa person, has name "Tim";
 commit
+match $x isa person, has name $n; select $x, $n;
 ```
 
+Then, you should see the following (although the long strings of numbers will be different):
+
 ```
-match $x isa person, has name $n; select $x, $n;
 $x id "ENTITY-person-89b823a0-606d-434d-a533-1e172b90c7bc" isa person; $n value "Topsy" isa name;
 $x id "ENTITY-person-afd29319-ff33-4b0c-b7e3-63d04ac81dcf" isa person; $n value "Tim" isa name;
 ```
 
-If you see the above output then congratulations! You have set up Grakn.
+If you do see the above output then congratulations! You have set up Grakn.
 
 You can now open [localhost:4567](http://localhost:4567) in your browser to start the visualiser, which provides a graphical dashboard on a graph.
 

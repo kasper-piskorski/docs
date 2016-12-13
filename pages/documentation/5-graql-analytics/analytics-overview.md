@@ -42,7 +42,7 @@ We cover this topic more in our documentation page on [statistics](./analytics-s
 At the moment we have a simple algorithm for determining 
 
 * [centrality measure (degree)](./analytics-degrees.html)
-* [paths between nodes (shortest path)](analytics-shortest-path.html) 
+* [paths between nodes (shortest path)](./analytics-shortest-path.html) 
 * [clusters or communities (connected components)](./analytics-connected-components.html). 
 
 ## The Knowledge Graph According to Analytics

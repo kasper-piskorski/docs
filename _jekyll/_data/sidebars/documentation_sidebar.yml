@@ -30,12 +30,12 @@ entries:
       - title: Visualising a Graph
         output: web
         url: /documentation/the-basics/visualiser.html
-  #- title: Grakn Knowledge Model
-  #  output: web
-  #  folderitems:
-  #    - title: Fundamentals
-  #      output: web
-  #      url: /documentation/grakn-knowledge-model/fundamentals.html
+ # - title: Grakn Knowledge Model
+ #   output: web
+ #   folderitems:
+ #     - title: Fundamentals
+ #       output: web
+ #       url: /documentation/grakn-knowledge-model/fundamentals.html
   #    - title: Inheritance
   #      output: web
   #      url: /documentation/grakn-knowledge-model/inheritance.html
@@ -183,24 +183,15 @@ entries:
       - title: Examples
         output: web
         url: /documentation/examples/examples.html
-      - title: Pokemon example
-        output: web
-        url: /documentation/examples/pokemon.html
-      - title: Philosophers example
-        output: web
-        url: /documentation/examples/philosophers.html
-      - title: Moogi example
-        output: web
-        url: /documentation/examples/moogi.html
       - title: Modern example
         output: web
         url: /documentation/examples/modern.html
-      - title: OWL migration
-        output: web
-        url: /documentation/examples/OWL-migration.html
       - title: SQL migration
         output: web
         url: /documentation/examples/SQL-migration.html
+      - title: OWL migration
+        output: web
+        url: /documentation/examples/OWL-migration.html
       - title: Example Projects
         output: web
         url: /documentation/examples/projects.html

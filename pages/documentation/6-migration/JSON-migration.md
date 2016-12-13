@@ -17,14 +17,15 @@ This tutorial shows you how to populate Grakn with JSON data. If you have not ye
 The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed.    
 
 ```bash
-usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
- -b,--batch <arg>      number of row to load at once
+usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
+ -b,--batch <arg>      number of rows to load at once
  -h,--help             print usage message
  -i,--input <arg>      input json data file or directory
  -k,--keyspace <arg>   keyspace to use
  -n,--no               dry run - write to standard out
  -t,--template <arg>   graql template to apply over data
  -u,--uri <arg>        uri to engine endpoint
+ -v,--verbose          print counts of migrated data.
 ```
 
 ## JSON Migration Basics
@@ -33,9 +34,7 @@ Once you have written an ontology for your domain, you will template Graql state
 
 JSON Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
 
-<!-- JSON Migration will apply your template to each [Alex - something missing here?] -->
-
-Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our [other migration guides](../migration.html) for more ideas on how to use Graql templates with data. 
+Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our [other migration guides](./migration.html) for more ideas on how to use Graql templates with data. 
 
 {% include note.html content="The JSON migrator can handle either a directory or a file as the -input parameter!" %}
 
@@ -164,7 +163,7 @@ isa has-type (pokemon-with-type: $p2, type-of-pokemon: $2);
 ```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/pages/api-reference/latest/index.html).
+You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
 
 {% include links.html %}
 

@@ -17,10 +17,10 @@ This tutorial shows you how to populate Grakn with CSV data. If you have not yet
 The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed. For CSV:
 
 ```bash
-usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
+usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
 
 OPTIONS
- -b,--batch <arg>       number of row to load at once
+ -b,--batch <arg>       number of rows to load at once
  -h,--help              print usage message
  -i,--input <arg>       input csv file
  -k,--keyspace <arg>    keyspace to use
@@ -28,6 +28,7 @@ OPTIONS
  -s,--separator <arg>   separator of columns in input file
  -t,--template <arg>    graql template to apply over data
  -u,--uri <arg>         uri to engine endpoint
+ -v,--verbose           print counts of migrated data.
 ```
 
 ## CSV Migration Basics
