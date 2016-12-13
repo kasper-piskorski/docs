@@ -48,7 +48,7 @@ GraknGraph graknGraph = Grakn.factory(Grakn.IN_MEMORY, "my-graph").getGraph();
 ## Modelling The Philosophers
 
 With a graph in place lets go through and repeat the [Quickstart
-Tutorial](../the-basics/quickstart-tutorial) using the Java Graph API.
+Tutorial](../the-basics/quickstart-tutorial.html) using the Java Graph API.
 
 ### Entity Types
 
