@@ -8,6 +8,7 @@ sidebar: documentation_sidebar
 permalink: /documentation/developing-with-java/java-setup.html
 folder: documentation
 ---
+{% include warning.html content="Please note that this page is in progress and subject to revision." %}
 
 {% include links.html %}
 
