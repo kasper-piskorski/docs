@@ -9,18 +9,30 @@ permalink: /documentation/graql/compute-queries.html
 folder: documentation
 ---
 
-A compute query executes a [Pregel algorithm](https://www.quora.com/What-are-the-main-concepts-behind-Googles-Pregel) to determine information about the graph in parallel. Called within the Graql shell, the general syntax is:
+A compute query executes a [Pregel algorithm](https://www.quora.com/What-are-the-main-concepts-behind-Googles-Pregel) to determine information about the graph in parallel.
+Called within the Graql shell, the general syntax is:
 
 ```
-compute [algorithm] in [subgraph];
+compute [algorithm] (arguments) (in subgraph); (modifiers;)
 ```
 
-* `algorithm` can be any of the [available statistics algorithms](#available-statistics-algorithms).
-* `subgraph` is a comma separated list of type IDs to be visited by the Pregel algorithm. 
+* `algorithm` can be any of the available [statistics](#available-statistics-algorithms) or [graph](#available-graph-algorithms).
+* `arguments` are different depending on the specific algorithm.
+* `subgraph` is a comma separated list of type IDs to be visited by the Pregel algorithm.
+* `modifiers` some algorithms can have their behaviour modified.
+
+The specific algorithms fall into two main categories and more information is given in the sections below.
+The simplest algorithm `count` can be executed using this query:
+
+```
+compute count;
+```
 
 ## Subgraph
 
-The subgraph syntax is provided to control the types that a chosen [algorithm](#available-algorithms) operates upon. By default, the compute algorithms include instances of every type in the calculation. Using the `in` keyword followed by a comma separated list of types will restrict the calculations to instances of those types only.
+The subgraph syntax is provided to control the types that a chosen [algorithm](#available-algorithms) operates upon.
+By default, the compute algorithms include instances of every type in the calculation.
+Using the `in` keyword followed by a comma separated list of types will restrict the calculations to instances of those types only.
 
 For example,
 
@@ -29,6 +41,7 @@ compute count in person;
 ```
 
 will return just the number of instances of the concept type person.
+Subgraphs can be applied to all compute queries and therefore are different to arguments and modifiers.
 
 ## Available Statistics Algorithms
 
@@ -114,6 +127,26 @@ compute std of age in person;
 ### Sum
 
 Computes the sum of a given resource type, similar to [mean](#mean).
+
+## Available Graph Algorithms
+
+The following algorithms all compute values based on the structure of the graph.
+A summary of the graph algorithms is given in the table below.
+
+| Algorithm | Description                                   |
+| ----------- | --------------------------------------------- |
+| [`cluster`](#cluster)     | Find connected clusters of instances.                        |
+| [`degrees`](#degrees)    | Find the number of related instances to each instance in the graph. |
+| [`path`](#path)    | Find the shortest path between two instances.                           |
+
+For further information see the individual sections below.
+
+### Cluster
+
+### Degrees
+
+### Path
+
 
 ## When to Use `aggregate` and When to Use `compute`
 
