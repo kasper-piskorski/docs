@@ -23,24 +23,22 @@ To use the API, add the following to your `pom.xml`:
 
 ## QueryBuilder
 
-The `QueryBuilder` class is how you begin building Graql queries.
-
 `Graql` contains several useful static methods such as `var` and `eq`, so it's recommended that you use a static import:
 
 ```java
 import static ai.grakn.graql.Graql.*;
 ```
 
-A `QueryBuilder` is constructed by providing a `GraknGraph`:
+A `QueryBuilder` is constructed from a `GraknGraph`:
 
 ```java-test-ignore
 GraknGraph graknGraph = Grakn.factory(Grakn.DEFAULT_URI, "my-graph").getGraph();
 QueryBuilder qb = graknGraph.graql();
 ```
 
-The user can also choose to not provide a transaction. This can be useful if
-you need to provide the transaction later (using `withTransaction`), or you
-only want to construct queries without executing them.
+The user can also choose to not provide a graph with `Graql.withoutGraph()`.
+This can be useful if you need to provide the graph later (using `withGraph`),
+or you only want to construct queries without executing them.
 
 The `QueryBuilder` class provides methods for building `match` and `insert`
 queries. `ask`, `insert` and `delete` queries can all be built from `match`
