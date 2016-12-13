@@ -139,6 +139,7 @@ A summary of the graph algorithms is given in the table below.
 | [`degrees`](#degrees)    | Find the number of related instances to each instance in the graph. |
 | [`path`](#path)    | Find the shortest path between two instances.                           |
 
+<!--
 For further information see the individual sections below.
 
 ### Cluster
@@ -146,7 +147,7 @@ For further information see the individual sections below.
 ### Degrees
 
 ### Path
-
+-->
 
 ## When to Use `aggregate` and When to Use `compute`
 
