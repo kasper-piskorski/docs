@@ -167,7 +167,7 @@ $x = 'bob'
 
 We then execute the constraint LHS on 'bob':
 
-```java
+```java-test-ignore
 Check whether bob is an instantiation of LHS:
 
         Query.parser("match
@@ -195,7 +195,7 @@ Alternatively we can process data on a relation basis, say the following informa
 Employment(bob, alice)        
 ```
 
-```java
+```java-test-ignore
 Check whether added relation leads to instantiation of LHS:
 
 (x, y) = Query.parser(Constraint.LHS).where($x id 'bob', $y id 'alice')
