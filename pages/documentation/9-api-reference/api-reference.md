@@ -8,13 +8,21 @@ toc: false
 comment_issue_id: 19
 ---
 
-Welcome to the API Reference landing page. From here, you can find the latest, and all previous, versions of our API reference, which are built from Javadocs.
+Welcome to the API Reference landing page. From here, you can find the latest, and all previous, versions of our API reference.
 
 ## Versions
-The latest version will always be posted at [https://grakn.ai/javadocs.html](https://grakn.ai/javadocs.html).   
+The latest version of our Javadocs documentation will always be posted at [https://grakn.ai/javadocs.html](https://grakn.ai/javadocs.html).   
 You can use the drop down selector to choose previous versions of the API reference, should you want to refer back to them. 
 
 {% include note.html content="Before Grakn v0.6.0, we used a different name (MindmapsDB); you can find API reference for versions of MindmapsDB from 0.1.0 - 0.5.0 [here](https://javadoc.io/doc/io.mindmaps/mindmaps-core/0.5.0)." %}
+
+## REST API
+
+We also provide documentation for our REST API, which can be found for the [latest version here](https://grakn.ai/pages/rest-api/latest/engine-apis.html).
+
+Previous versions can be found as follows:
+
+* [v0.9](https://grakn.ai/pages/rest-api/v0.9.0/engine-apis.html).
 
 ## Feedback
 We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.grakn.ai) or through our main [website](http://www.grakn.ai).

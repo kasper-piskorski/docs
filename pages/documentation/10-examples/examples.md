@@ -19,9 +19,8 @@ If you would like to request a particular example, please get in touch with us b
 
 ### Genealogy Example
 
-The genealogy example is widely used across
-
-<!-- TO DO - Finish this -->
+The genealogy example is widely used across our documentation about GRAKN.AI, because it is a simple, yet powerful, illustration of many key features.
+It is available on the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph), and is also discussed in the ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.4gnoaq2hr). 
 
 ### [Modern](./modern.html)
 
