@@ -16,7 +16,7 @@ In Grakn, a graph is made of two layers: the ontology layer and the data layer.
 
 ## Ontology
 
-The ontology is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed. Specifying the ontology enables logical reasoning over the represented knowledge, such as the extraction of implicit information from explicit data (inference) or discovery of inconsistencies in the data (validation).   
+The ontology is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed. Specifying the ontology enables automated reasoning over the represented knowledge, such as the extraction of implicit information from explicit data (inference) or discovery of inconsistencies in the data (validation).   
 
 Grakn ontologies use four types of `concepts` for modeling domain knowledge:   
  
@@ -62,7 +62,7 @@ Additionally, all concept types can be declared as `abstract`, meaning that they
 *Figure 1: The concept types and their permitted associations via Grakn ontology constructs.*
 
 <!-- This section may possibly be better if moved into a different, more low level page -->
-A well-formed Grakn ontology is required to satisfy the following structural properties (for examples see the following section):
+A well-formed Grakn ontology is required to satisfy the following structural properties (see examples in the following section):
 
 * each concept type can have at most one direct supertype,
 * each role type must be involved in exactly one relation type,
@@ -75,7 +75,7 @@ A well-formed Grakn ontology is required to satisfy the following structural pro
 
 As in object-oriented programming, the inheritance mechanism in Grakn enables subtypes to automatically take on some of the properties of their supertypes. This simplifies the construction of ontologies and helps keep them succinct. The Grakn knowledge model imposes inheritance of all `has-resource` and `plays-role` constraints on entity, relation and resource types.  
    
-For example, in Figure 2, the entity types `woman` and `man` inherit the constraints `has-resource name`, `plays-role partner1`, `plays-role partner2` from their supertype `person`. Similarly, the relation type `marriage` inherits the constraint `has-resource since` from `partnership`. 
+For example, in the ontology depicted in Figure 2, the entity types `woman` and `man` inherit the constraints `has-resource name`, `plays-role partner1`, `plays-role partner2` from their supertype `person`. Similarly, the relation type `marriage` inherits the constraint `has-resource since` from `partnership`. 
 
 
 ![A sample of a Grakn ontology.](/images/knowledge-model-fig2.png)
@@ -105,12 +105,12 @@ Note, that because of the transitivity of the `sub` construct, the type declarat
 * `woman plays-role wife`
 * `man sub person`
 * `man plays-role husband`
-* `marriage sub partnership`
 * `wife sub partner1`
 * `husband sub partner2`
 * `partnership has-resource since`
 * `partnership has-role partner1`
 * `partnership has-role partner2`
+* `marriage sub partnership`
 * `marriage has-role wife`
 * `marriage has-role husband`
 
@@ -140,7 +140,7 @@ Note, that unlike in the case of entity, relation and resource types, there are 
 
 ### Validation 
 
-To ensure data is correctly structured (i.e. consistent) with respect to the ontology, all data instances are validated against the ontology constraints. All the explicitly represented ontology constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation and, consequently, the data entry process. For example, the ontology in Figure 2, establishes the following schema templates for the concept types `woman` and `marriage`:
+To ensure data is correctly structured (i.e. consistent) with respect to the ontology, all data instances are validated against the ontology constraints. All the explicitly represented ontology constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation and, consequently, the data entry process. For example, the ontology in Figure 2 establishes the following schema templates for the concept types `woman` and `marriage`:
 
 #### `woman`
 
@@ -155,17 +155,17 @@ To ensure data is correctly structured (i.e. consistent) with respect to the ont
 * `has-role wife`
 * `has-role husband`
 
- A data instance `$x` of a concept type `C` is valid, whenever the following conditions are satisfied:
+ A data instance `inst` of a concept type `C` is valid, whenever the following conditions are satisfied:
  
- * `$x` instantiates only `C` (and indirectly all supertypes of `C`),
- * all types of resources associated with `$x` belong to the schema template of `C`,
- * for every role type `R` that `$x` plays in any relation instance in the data, there is a constraint `plays-role R` in the schema template of `C`,
- * whenever `$x` is a relation instance involving the role type `R` there is a constraint `has-role R` in the schema template of `C`.
+ * `inst` instantiates only `C` (called the base type of `inst`) and indirectly all supertypes of `C`,
+ * all types of resources associated with `inst` belong to the schema template of `C`,
+ * for every role type `R` that `inst` plays in any relation instance in the data, there is a constraint `plays-role R` in the schema template of `C`,
+ * whenever `inst` is a relation instance involving the role type `R` there is a constraint `has-role R` in the schema template of `C`.
 
 For example, data illustrated in Figure 3 violates the ontology from Figure 2, by:
  
-1. associating a resource of type `maiden name` with an instance of the type `woman` (which is not allowed in the ontology).
-2. by using an instance of the base type `person` in the `wife` role (while only those of type `woman` are accepted by the ontology). 
+1. associating a resource `'Smith'` of type `maiden-name` with an instance `inst1` of the base type `woman` (which is not allowed in the ontology).
+2. by using an instance `inst2` of the base type `person` in the `husband` role (while only those of type `man` are accepted by the ontology). 
 
 ![Validation of data against the ontology.](/images/knowledge-model-fig3.png)
 
@@ -173,15 +173,17 @@ For example, data illustrated in Figure 3 violates the ontology from Figure 2, b
 
 ## Rule and Sub-Type Inference
 
-Inference is a process of extracting implicit information from explicit data instances. Grakn supports two inference mechanisms: 
+Inference is a process of extracting implicit information from explicit data. Grakn supports two inference mechanisms: 
 
 1. type inference, based on the semantics of the `sub` hierarchies included in the ontology
 2. rule-based inference involving user-defined IF-THEN rules. 
 
-Both mechanisms are employed by default when querying the knowledge graph with Graql, thus supporting retrieval of both explicit and implicit information at query time.      
+Both mechanisms can be employed when querying the knowledge graph with Graql, thus supporting retrieval of both explicit and implicit information at query time.      
 
 ### Type Inference
-The type inference is based on a simple graph traversal along the `sub` edges. Every instance of a given concept type is automatically classified as an instance of all (possibly indirect) supertypes of that type. In case of roles, every instance playing a given role is inferred to also play all its (possibly indirect) super-roles. 
+The type inference is based on a simple graph traversal along the `sub` edges. Every instance of a given concept type is automatically classified as an (indirect) instance of all (possibly indirect) supertypes of that type. For example, whenever `woman sub person` is in the ontology, every instance of `woman` will be retrieved on the query `match $x isa person`. In case of roles, every instance playing a given role is inferred to also play all its (possibly indirect) super-roles. For example, whenever `inst` plays the role of wife in a relation of the type `marriage`, the system will infer that `inst` plays also the role of `partner1` in that relation, given the ontology from Figure 2. 
+
+The type inference is set ON by default when querying Grakn.  
 
 ### Rule-Based Inference
 The rule-based inference exploits a set of user-defined datalog rules and is conducted by means of the  reasoner built naitively into Grakn. Every rule is declared as an instance of a built-in Grakn type `inference-rule`. 
@@ -197,9 +199,9 @@ rhs
 (nephew:$x, uncle:$z) isa uncle-relation;
 ```
  
-The rule above expresses that, whenever instance $x has a mother $y and $y has a brother $z is found, one can infer that $z is an uncle of $x, while $x is a nephew of $z. 
+The rule above expresses that, whenever instance `inst1` has a mother `inst2` in the data, and `inst2` has a brother `inst3`, one can infer that `inst3` is an uncle of `inst1`, while `inst1` is a nephew of `inst3`. 
 
-For more detailed documentation on rules see [Graql Rules](../graql/graql-rules.html).
+The rule-based inference is set OFF by default when querying Grakn, and can be activated on request. For more detailed documentation on rules see [Graql Rules](../graql/graql-rules.html).
 
 
 ## Where Next?
