@@ -27,7 +27,9 @@ You can run all these components separately depending on the redundancy levels y
 ## Setting up Grakn
 ### Standalone Grakn
 You can start a standalone instance of Grakn by running `grakn.sh start`. This will produce a working environment for importing and analysing your data.
+
 By default Grakn stores your data in the extracted directory, under `db/cassandra/`.
+
 We recommend changing this to another location to make upgrading Grakn easier and faster in the future.
 
 You can specify the location in the `conf/cassandra/cassandra.yaml` configuration file:
@@ -37,9 +39,11 @@ You can specify the location in the `conf/cassandra/cassandra.yaml` configuratio
 
 ### Clustered database
 To add reliability and redudancy on the database layer, you can run Cassandra (DSE, OrientDB, other storage backends) separately and point Grakn to use the node/cluster.
+
 Running Cassandra requires an entire guide in itself - our brief recommendation is having at the minimum a cluster of 3 nodes with replication factor (RF) 3.
 
 Cassandra version: 2.1.9
+
 Specify an external database cluster in `conf/main/grakn.properties`:
 - `storage.hostname`: eg. 10.0.10.1,10.0.10.2,10.0.10.3
 
@@ -56,7 +60,9 @@ The database layer will need to be configured similarly to the [Clustered databa
 Grakn Engine uses the [Apache Kafka](https://kafka.apache.org/) streaming platform for distributed task execution. Kafka keeps track of its brokers' state in [Zookeeper](https://zookeeper.apache.org/).
 
 Kafka version: 2.10-0.10.1.0
+
 Zookeeper version: 3.4.9
+
 Configure Grakn to use an external Kafka and Zookeeper cluster in `conf/main/grakn-engine.properties`:
 - `tasks.kafka.bootstrap-servers`: eg. 10.0.20.1:9092,10.0.20.2:9092,10.0.20.3:9092
 - `tasks.zookeeper.servers`: eg. 10.0.30.1:2181,10.0.30.2:2181,10.0.3.30:2181
