@@ -171,6 +171,9 @@ entries:
       - title: Resources
         output: web
         url: /documentation/resources/resources.html
+      - title: Grakn Deployment Guide
+        output: web
+        url: /documentation/resources/grakn-deployment-guide.html
       - title: Grakn FAQ
         output: web
         url: /documentation/resources/faq.html
