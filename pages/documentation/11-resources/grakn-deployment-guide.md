@@ -77,20 +77,20 @@ For the default storage directory, `db/cassandra/`, you need to:
 - stop old Grakn
 - extract the latest Grakn package into a new directory
 - copy the entire contents of the `db` directory to the new location into the new `db` directory
-- start new Grakn Engine
+- start new Grakn
 
 #### External directory
 If you have changed the location of data_file_directories in the `conf/cassandra/cassandra.yaml`, you need to:
 - stop old Grakn
 - extract the latest Grakn package into a new directory
 - amend `data_file_directories`, `commitlog_directory` and `saved_caches_directory` to match your custom directories
-- start new Grakn Engine
+- start new Grakn
 
 You will need to amend these variables with every new version of Grakn.
 
 ### Distributed
 Upgrading Grakn in a distributed setup is very simple:
-- stop and remove old Grakn
+- stop and remove old Grakn Engine
 - roll out the latest Grakn package with the correct Cassandra/Kafka/Zookeeper variables in the configuration files
 - start new Grakn Engine
 
