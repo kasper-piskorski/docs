@@ -84,4 +84,6 @@ Upgrading Grakn in a distributed setup is very simple:
 - roll out the latest Grakn package with the correct Cassandra/Kafka/Zookeeper variables in the configuration files
 - start new Grakn Engine
 
+{% include links.html %}
+
 ## Comments
