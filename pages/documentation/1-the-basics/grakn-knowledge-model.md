@@ -1,7 +1,7 @@
 ---
 title: Grakn Knowledge Model
 keywords: setup, getting started, basics
-last_updated: December 7th, 2016
+last_updated: December 15th, 2016
 tags: [getting-started, reasoner, graql]
 summary: "Introducing the basics of the Grakn knowledge model."
 sidebar: documentation_sidebar
@@ -20,21 +20,42 @@ The ontology is a formal specification of all the relevant concepts and their me
 
 Grakn ontologies use four types of `concepts` for modeling domain knowledge:   
  
-* **Entity Types**: Types of objects or things in the domain, for example, `person`, `man`, `woman`.    
-* **Relation Types**: Types of n-ary relationships between different domain instances, for example, `marriage`, which is a relationship between two instances of enity types `woman` and `man`, playing roles of `wife` and `husband`, respectively. 
-* **Role Types**: Types of roles involved in specific relationships, for example: `wife`, `husband`.     
-* **Resource Types**: Types of attributes associated with domain instances, for example, `name`, or `age`.    
+* **Entity Types**: Types of objects or things in the domain.
+	* For example, `person`, `man`, `woman`.    
 
-The categorization of concept types is effectively enforced in Grakn knowledge model by declaring every concept type as a subtype (i.e., an extension) of exactly one of the four corresponding, built-in concept types: `enity`, `relation`, `role`, `resource`, for example, `person sub entity`, `marriage sub relation`, `wife sub role`, `name sub resource`.
+* **Relation Types**: Types of n-ary relationships between different domain instances. 
+	* For example, `marriage`, which is typically a relationship between two instances of entity types (`woman` and `man`), playing roles of `wife` and `husband`, respectively. 
+
+* **Role Types**: Types of roles involved in specific relationships. 
+	* For example, `wife`, `husband`.     
+
+* **Resource Types**: Types of attributes associated with domain instances.
+	* For example, `name`, or `age`.    
+
+The categorization of concept types is effectively enforced in the Grakn knowledge model by declaring every concept type as a subtype (i.e. an extension) of exactly one of the four corresponding, built-in concept types: 
+
+* `entity`
+	* e.g. `person sub entity` 	
+* `relation`
+	* e.g. `marriage sub relation`	 
+* `role`
+	* e.g. `wife sub role` 
+* `resource` 
+	* e.g. `name sub resource` 
+
 
 Different concept types can be related to each other via four constructs (see Figure 1): 
 
-* **sub**:  expressing that a concept type is a subtype (i.e., an extension) of another one, for example, `woman sub person`, `man sub person`.
-* **has-resource**: expressing that a concept type can be associated with a given resource type, for example, `person has-resource name`.
-* **plays-role**: expressing that instances of a given concept type are allowed to play a specific role, for example, `woman plays-role wife`, `man plays-role husband`. 
-* **has-role**: expressing that a given relation type involves a specific role, for example, `marriage has-role wife`, `marriage has-role husband`.
+* **sub**:  expressing that a concept type is a subtype (i.e., an extension) of another one.
+	* For example, `woman sub person`, `man sub person`.
+* **has-resource**: expressing that a concept type can be associated with a given resource type. 
+	* For example, `person has-resource name`.
+* **plays-role**: expressing that instances of a given concept type are allowed to play a specific role. 
+	* For example, `woman plays-role wife`, `man plays-role husband`. 
+* **has-role**: expressing that a given relation type involves a specific role. 
+	* For example, `marriage has-role wife`, `marriage has-role husband`.
 
-Additionally, all concept types can be declared as `abstract`, meaning that they cannot have any direct instances. For example, `person is-abstract` expresses that the only instances of `person` can be those that belong to more specific types, e.g., `man` or `woman`. 
+Additionally, all concept types can be declared as `abstract`, meaning that they cannot have any direct instances. For example, `person is-abstract` expresses that the only instances of `person` can be those that belong to more specialised subtypes of `person`, e.g., `man` or `woman`. 
 
 ![The concept types and their permitted associations via Grakn ontology constructs.](/images/knowledge-model-fig1.png)
 
@@ -52,7 +73,7 @@ A well-formed Grakn ontology is required to satisfy the following structural pro
 
 ### Inheritance 
 
-As in object-oriented programming, the inheritance mechanism in Grakn enables subtypes to automatically take on some properties of their supertypes. This simplifies the construction of ontologies and helps keeping them succinct. Grakn knowledge model imposes inheritance of all `has-resource` and `plays-role` constraints on entity, relation and resource types.  
+As in object-oriented programming, the inheritance mechanism in Grakn enables subtypes to automatically take on some of the properties of their supertypes. This simplifies the construction of ontologies and helps keep them succinct. The Grakn knowledge model imposes inheritance of all `has-resource` and `plays-role` constraints on entity, relation and resource types.  
    
 For example, in Figure 2, the entity types `woman` and `man` inherit the constraints `has-resource name`, `plays-role partner1`, `plays-role partner2` from their supertype `person`. Similarly, the relation type `marriage` inherits the constraint `has-resource since` from `partnership`. 
 
@@ -64,6 +85,7 @@ For example, in Figure 2, the entity types `woman` and `man` inherit the constra
 The ontology in Figure 2 consists of the following constraints:
 
 **Type declarations** (omitted in the figure):
+
 * `person sub entity`
 * `partnership sub relation`
 * `partner1 sub role` 
@@ -75,6 +97,7 @@ Note, that because of the transitivity of the `sub` construct, the type declarat
 
 
 **Explicit constraints**:
+
 * `person has-resource name`
 * `person plays-role partner1`
 * `person plays-role partner2`
@@ -92,6 +115,7 @@ Note, that because of the transitivity of the `sub` construct, the type declarat
 * `marriage has-role husband`
 
 **Inherited constraints**:
+
 * `woman has-resource name`
 * `woman plays-role partner1`
 * `woman plays-role partner2`
@@ -103,33 +127,36 @@ Note, that because of the transitivity of the `sub` construct, the type declarat
 
 ## Data
 
-The data is expressed by instantiating specific types of entities, relations, concrete resources they are associated with, and assigning roles the instances play in particular relations. The unique identifiers for all instances are defined internally within the Grakn system. There are three types of data instances:
+The data is expressed by instantiating specific types of entities, relations, and concrete resources they are associated with, and assigning roles to the instances played for particular relations. There are three types of data instances:
 
 * **Entities**: instances of entity types, for example, `insert $x isa woman` creates an instance of the entity type `woman`, 
 
 * **Relations**: instances of relation types, for example, `insert (wife:$x, husband:$y) isa marriage` creates an instance of the relation type `marriage` between some instances `$x`, playing the role of `wife`, and `$y`, playing the role of `husband`.
 
-* **Resources**: instances of resource types being associated with particular instances, for example, `insert $x has-name "Elisabeth Niesz"` creates an instance of the resource type `name` with value "Elizabeth Niesz" associated with some instance `$x`. 
+* **Resources**: instances of resource types being associated with particular instances, for example, `insert $x has-name "Elisabeth Niesz"` creates an instance of the resource type `name` with value "Elizabeth Niesz" associated with some instance `$x`. The unique identifiers for all instances are defined internally within the Grakn system. 
 
 Note, that unlike in the case of entity, relation and resource types, there are no instances of role types in the data layer.
 
 
 ### Validation 
 
-To ensure data is correctly structured (i.e., consistent) with respect to the ontology, all data instances are validated against the ontology constraints. All the explicitly represented ontology constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation and, consequently, the data entry process. For example, the ontology in Figure 2, establishes the following schema templates for the concept types `woman` and `marriage`:
+To ensure data is correctly structured (i.e. consistent) with respect to the ontology, all data instances are validated against the ontology constraints. All the explicitly represented ontology constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation and, consequently, the data entry process. For example, the ontology in Figure 2, establishes the following schema templates for the concept types `woman` and `marriage`:
 
-**`woman`**:
+#### `woman`
+
 * `has-resource name`
 * `plays-role wife`
 * `plays-role partner1`
 * `plays-role partner2`
 
-**`marriage`**:
+#### `marriage`
+
 * `has-resource since`
 * `has-role wife`
 * `has-role husband`
 
  A data instance `$x` of a concept type `C` is valid, whenever the following conditions are satisfied:
+ 
  * `$x` instantiates only `C` (and indirectly all supertypes of `C`),
  * all types of resources associated with `$x` belong to the schema template of `C`,
  * for every role type `R` that `$x` plays in any relation instance in the data, there is a constraint `plays-role R` in the schema template of `C`,
@@ -159,17 +186,18 @@ The type inference is based on a simple graph traversal along the `sub` edges. E
 ### Rule-Based Inference
 The rule-based inference exploits a set of user-defined datalog rules and is conducted by means of the  reasoner built naitively into Grakn. Every rule is declared as an instance of a built-in Grakn type `inference-rule`. 
 
-A rule is an expression of the form `lhs G1 rhs G2`, where `G1` and `G2` are a pair of Graql patterns. Whenever the left-hand-side (lhs) pattern `G1` is found in the data, the right-hand-side (rhs) pattern `G2` is inserted. For example, the following rule:
+A rule is an expression of the form `lhs G1 rhs G2`, where `G1` and `G2` are a pair of Graql patterns. Whenever the left-hand-side (lhs) pattern `G1` is found in the data, the right-hand-side (rhs) pattern `G2` is inserted. For example:
  
 
-`lhs
+```
+lhs
 (child:$x, mother:$y) isa motherhood;
 (sister:$y brother:$z) isa siblings;
 rhs
-(nephew:$x, uncle:$z) isa uncle-relation;`
+(nephew:$x, uncle:$z) isa uncle-relation;
+```
  
-
-expresses that whenever instance $x has a mother $y and $y has a brother $z, then one can infer that $z is an uncle of $x, while $x is a nephew of $z. 
+The rule above expresses that, whenever instance $x has a mother $y and $y has a brother $z is found, one can infer that $z is an uncle of $x, while $x is a nephew of $z. 
 
 For more detailed documentation on rules see [Graql Rules](../graql/graql-rules.html).
 
