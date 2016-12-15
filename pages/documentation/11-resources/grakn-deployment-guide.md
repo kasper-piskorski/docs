@@ -50,7 +50,7 @@ For further information on running Cassandra, see:
 For a fully scalable and distributed setup, you will need to run each component of Grakn in a separate cluster.
 This provides the highest level of redundancy and availability; you will want this for high throughput systems and to make the most out of Grakn. 
 
-The database layer will need to be configured similarly to the [Clustered database](#Clustered database) setup.
+The database layer will need to be configured similarly to the [Clustered database](#clustered-database) setup.
 
 Grakn Engine uses the [Apache Kafka](https://kafka.apache.org/) streaming platform for distributed task execution. Kafka keeps track of its brokers' state in [Zookeeper](https://zookeeper.apache.org/).
 Configure Grakn to use an external Kafka and Zookeeper cluster in `conf/main/grakn-engine.properties`:
