@@ -10,9 +10,8 @@ folder: documentation
 comment_issue_id: 18
 ---
 
-<!--
-insert ontology,
-insert data,
+<!--Will eventually cover the following:
+insert ontology and data, and test out a basic query plus visualiser it
 migrate data using graql migrator,
 query data with no inference
 insert rules,
@@ -91,7 +90,9 @@ match (spouse1: $x, spouse2: $y) isa marriage, has date $d; $x has identifier $x
 
 ## Where Next?
 
-Now you have started getting to grips with Grakn, please explore our additional [example code](../examples/examples.html) and documentation. We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://grakn.ai/community.html)!
+Now you have started getting to grips with Grakn, please explore our additional [example code](../examples/examples.html) and documentation. [Modern](../examples/modern.html) is an additional example of adding an ontology and data to a graph and making test queries, which is useful for getting to grips with Graql syntax.
+
+We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://grakn.ai/community.html)!
 
 {% include links.html %}
 
