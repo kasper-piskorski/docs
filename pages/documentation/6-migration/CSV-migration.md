@@ -55,16 +55,16 @@ Here is the ontology for the example:
 ```graql
 insert
 
-car isa entity-type
+car sub entity
     has-resource name
     has-resource year
     has-resource description
     has-resource price;
 
-name isa resource-type datatype string;
-year isa resource-type datatype string;
-description isa resource-type datatype string;
-price isa resource-type datatype double;
+name sub resource datatype string;
+year sub resource datatype string;
+description sub resource datatype string;
+price sub resource datatype double;
 
 ```
 
@@ -116,25 +116,25 @@ To start, we must write the ontology for this example.
 ```graql
 insert
 
-pokemon isa entity-type
+pokemon sub entity
     plays-role pokemon-with-type
     has-resource pokedex-no
     has-resource description;
 
-type-id isa resource-type datatype string;
-pokedex-no isa resource-type datatype long;
-description isa resource-type datatype string;
+type-id sub resource datatype string;
+pokedex-no sub resource datatype long;
+description sub resource datatype string;
 
-pokemon-type isa entity-type
+pokemon-type sub entity
     has-resource description
     has-resource type-id
     plays-role type-of-pokemon;
 
-has-type isa relation-type
+has-type sub relation
     has-role pokemon-with-type
     has-role type-of-pokemon;
-pokemon-with-type isa role-type;
-type-of-pokemon isa role-type;
+pokemon-with-type sub role;
+type-of-pokemon sub role;
 ```
 
 We define the three data files. Each file needs a template that to tell the Migrator how to deal with the data in each row.

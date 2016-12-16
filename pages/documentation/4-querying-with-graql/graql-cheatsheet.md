@@ -218,7 +218,7 @@ variable | id
 ```
 
 ```graql
-insert "TV Show" isa entity-type; movie isa entity-type;
+insert "TV Show" isa entity; movie isa entity;
 ```
 
 
@@ -265,7 +265,7 @@ match $m value contains "The Lord of the Rings";
 Match concepts with a resource matching a predicate.
 
 ```sql
-has resource-type [ = | != | < | <= | >= | > | contains ] {value}
+has resource [ = | != | < | <= | >= | > | contains ] {value}
 ```
 
 ```graql
@@ -275,7 +275,7 @@ match $m isa movie, has runtime > 180;
 Match related concepts.
 
 ```sql
-( [ [ role-type ] role-player , ... ] )
+( [ [ role ] role-player , ... ] )
 ```
 
 ```graql
@@ -316,21 +316,21 @@ insert blockbuster sub movie;
 ### has-role
 
 ```sql
-has-role role-type
+has-role role
 ```
 Insert a new relation type with two role types.
 
 ```graql
 insert
-director isa role-type;
-production-with-director isa role-type;
-directorship isa relation-type, has-role director, has-role production-with-director;
+director isa role;
+production-with-director isa role;
+directorship isa relation, has-role director, has-role production-with-director;
 ```
 
 ### plays-role
 
 ```sql
-plays-role role-type
+plays-role role
 ```
 
 Allow instances of a type to play a role in a relation.
@@ -342,7 +342,7 @@ insert person plays-role director;
 ### has-resource
 
 ```sql
-has-resource resource-type
+has-resource resource
 ```
 Allow instances of a type to have a resource.
 
@@ -358,7 +358,7 @@ datatype ( string | long | double | boolean )
 Insert a new resource type with the given datatype.
 
 ```graql
-insert name isa resource-type, datatype string;
+insert name isa resource, datatype string;
 ```
 
 {% include links.html %}

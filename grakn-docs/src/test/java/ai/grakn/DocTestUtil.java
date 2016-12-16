@@ -20,12 +20,12 @@ public class DocTestUtil {
         MovieGraphFactory.loadGraph(graknGraph);
         QueryBuilder qb = graknGraph.graql();
         qb.insert(
-                var().isa("pokemon").has("name", "Pikachu"),
-                var().isa("pokemon-type").has("name", "dragon"),
-                name("marriage").isa("relation-type"),
-                name("trainer").isa("role-type"),
-                name("pokemon-trained").isa("role-type"),
-                name("type-id").isa("resource-type").datatype(ResourceType.DataType.STRING),
+                var().sub("pokemon").has("name", "Pikachu"),
+                var().sub("pokemon-type").has("name", "dragon"),
+                name("marriage").sub("relation"),
+                name("trainer").sub("role"),
+                name("pokemon-trained").sub("role"),
+                name("type-id").sub("resource").datatype(ResourceType.DataType.STRING),
                 name("pokemon-type").hasResource("type-id")
         ).execute();
 

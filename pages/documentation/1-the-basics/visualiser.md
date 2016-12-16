@@ -109,7 +109,6 @@ This opens a separate tab in your browser and points it to the Grakn documentati
 The keyspaces that are currently in use by Grakn.
 
 
-
 ## Where Next?
 
 Now you have started getting to grips with Grakn, please explore our additional [example code](../examples/examples.html) and documentation. We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://grakn.ai/community.html)!

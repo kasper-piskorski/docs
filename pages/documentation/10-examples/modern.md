@@ -50,8 +50,8 @@ The relationships between the entities are straightforward:
 Here, we add person and software entity types to the graph, via the Graql shell:
 
 ```graql
-insert person isa entity-type;
-insert software isa entity-type;
+insert person sub entity;
+insert software sub entity;
 ```
 
 
@@ -60,13 +60,13 @@ insert software isa entity-type;
 To assign resources to the entities, which you can think of as attributes, we use resource types. First, we define what they are (age is a number, programming language is a string that represents the language's name), then we allocate them to the entity in question:
 
 ```graql
-insert age isa resource-type, datatype long;
+insert age sub resource, datatype long;
 insert person has-resource age;
 
-insert lang isa resource-type, datatype string;
+insert lang sub resource, datatype string;
 insert software has-resource lang;
 
-insert weight isa resource-type, datatype double;
+insert weight sub resource, datatype double;
 ```
 
 ### Relation Types
@@ -74,11 +74,11 @@ insert weight isa resource-type, datatype double;
 Let's first define the relationship between people. The diagram shows that marko knows vadas, but we don't have any information about whether the inverse is true (though it seems likely that vadas probably also knows marko). Let's set up a relationship called `knows`, which has two role-types - `knower` (for marko) and `known-about` (for vadas):
 
 ```graql
-insert knower isa role-type;
-insert known-about isa role-type;
+insert knower sub role;
+insert known-about sub role;
 insert person plays-role knower;
 insert person plays-role known-about;
-insert knows isa relation-type, has-role knower, has-role known-about, has-resource weight;	
+insert knows sub relation, has-role knower, has-role known-about, has-resource weight;	
 ```
 
 Note that the  `knows` relation type also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
@@ -86,13 +86,13 @@ Note that the  `knows` relation type also has an attribute, in the form of a res
 We can set up a similar relationship between software and the people that created it:
 
 ```graql
-insert programmer isa role-type;
-insert programmed isa role-type;
+insert programmer sub role;
+insert programmed sub role;
 
 insert person plays-role programmer;
 insert software plays-role programmed;
 
-insert programming isa relation-type, has-role programmer, has-role programmed, has-resource weight;
+insert programming sub relation, has-role programmer, has-role programmed, has-resource weight;
 ```
 
 And that's it. At this point, we have defined the schema of the graph.
@@ -156,7 +156,7 @@ $x id "josh" has age "32";
 $x id "peter" has age "35";
 ```
 
-Now let's look at querying for a relationship. We can query to find out which entities have a particular role-type associated with a relation-type. For example, we can match everyone with a `knower` role who knows someone else:
+Now let's look at querying for a relationship. We can query to find out which entities have a particular role associated with a relation. For example, we can match everyone with a `knower` role who knows someone else:
 
 ```graql
 match $x plays-role knows; 
@@ -205,9 +205,9 @@ Then type edit, which will open up the systems default text editor where you can
 
 ```graql 
 insert 
-age isa resource-type
+age sub resource
 	datatype long;
-person isa entity-type;
+person sub entity;
 person has-resource age;
 
 $marko isa person;
@@ -219,16 +219,16 @@ $josh has age 32;
 $vadas has age 27;
 $peter has age 35;
 
-weight isa resource-type
+weight sub resource
 	datatype double;
 
-knower isa role-type;
-known-about isa role-type;
+knower sub role;
+known-about sub role;
 
 person plays-role knower;
 person plays-role known-about;
 
-knows isa relation-type
+knows sub relation
 	has-role knower
 	has-role known-about
 	has-resource weight;
@@ -236,9 +236,9 @@ knows isa relation-type
 (knower: $marko, known-about: $josh) isa knows has weight 1.0;
 (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 
-lang isa resource-type
+lang sub resource
 	datatype string;
-software isa entity-type;
+software sub entity;
 software has-resource lang;
 
 "lop" isa software;
@@ -247,13 +247,13 @@ software has-resource lang;
 "lop" has lang "java";
 "ripple" has lang "java";
 
-programmer isa role-type;
-programmed isa role-type;
+programmer sub role;
+programmed sub role;
 
 person plays-role programmer;
 software plays-role programmed;
 
-programming isa relation-type
+programming sub relation
 	has-role programmer
 	has-role programmed
 	has-resource weight;
@@ -314,7 +314,7 @@ match $lop has name "lop"; (programmer: $x, $lop) isa programming;
 List everything you know about marko
 
 ```graql
-match $marko has name "marko"; $relation($marko, $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype;
+match $marko has name "marko"; $relation($marko, $y); $y isa $z; $z isa entity; $relation isa $reltype; select $y, $reltype;
 
 ```
 
