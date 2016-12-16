@@ -110,5 +110,3 @@ Upgrading Grakn in a distributed setup is very simple:
 You can perform a rolling deployment in this fashion with minimum impact on your services.
 
 {% include links.html %}
-
-## Comments
