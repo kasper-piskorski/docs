@@ -25,7 +25,7 @@ Grakn releases from our [GitHub repository](https://github.com/graknlabs/grakn) 
 * Kafka and Zookeeper
 * Cassandra
 
-You can run all these components separately depending on the redundancy levels you required.
+You can run all these components separately depending on the redundancy levels you require.
 
 ## Setting up Grakn
 
@@ -65,7 +65,7 @@ The database layer will need to be configured similarly to the [Clustered databa
 
 Grakn Engine uses the [Apache Kafka](https://kafka.apache.org/) streaming platform for distributed task execution. Kafka keeps track of its brokers' state in [Zookeeper](https://zookeeper.apache.org/).
 
-Kafka version: 2.10-0.10.1.0
+Kafka version: 2.11-0.10.1.0
 
 Zookeeper version: 3.4.9
 
@@ -103,9 +103,9 @@ You will need to amend these variables with every new version of Grakn.
 
 Upgrading Grakn in a distributed setup is very simple:
 
-- stop and remove old Grakn Engine (`./bin/grakn.sh stop`)
+- stop and remove old Grakn Engine (`./bin/grakn-engine.sh stop`)
 - roll out the latest Grakn package with the correct Cassandra/Kafka/Zookeeper variables in the configuration files
-- start new Grakn Engine (`./bin/grakn.sh start`)
+- start new Grakn Engine (`./bin/grakn-engine.sh start`)
 
 You can perform a rolling deployment in this fashion with minimum impact on your services.
 
