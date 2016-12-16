@@ -106,8 +106,8 @@ insert $marko isa person, has name "marko", has age 29;
 insert $vadas isa person, has name "vadas", has age 27;
 insert $josh isa person, has name "josh", has age 32;
 insert $peter isa person, has name "peter", has age 35;
-insert (knower: $marko, known-about: $josh) isa knows has weight 1.0;
-insert (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
+match $marko has name "marko"; $josh has name "josh"; insert (knower: $marko, known-about: $josh) isa knows has weight 1.0;
+match $marko has name "marko"; $vadas has name "vadas"; insert (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 ```
 
 
@@ -115,10 +115,10 @@ insert (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 insert $lop isa software, has lang "java", has name "lop";
 insert $ripple isa software, has lang "java", has name "ripple";
 
-insert (programmer: $marko, programmed: $lop) isa programming has weight 0.4;
-insert (programmer: $peter, programmed: $lop) isa programming has weight 0.2;
-insert (programmer: $josh, programmed: $lop) isa programming has weight 0.4;
-insert (programmer: $josh, programmed: $ripple) isa programming has weight 1.0;
+match $marko has name "marko"; $lop has name "lop"; insert (programmer: $marko, programmed: $lop) isa programming has weight 0.4;
+match $peter has name "peter"; $lop has name "lop"; insert (programmer: $peter, programmed: $lop) isa programming has weight 0.2;
+match $josh has name "josh"; $lop has name "lop"; insert (programmer: $josh, programmed: $lop) isa programming has weight 0.4;
+match $josh has name "josh"; $ripple has name "ripple"; insert (programmer: $josh, programmed: $ripple) isa programming has weight 1.0;
 ```
    
    

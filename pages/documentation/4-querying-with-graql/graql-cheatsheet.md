@@ -218,7 +218,7 @@ variable | id
 ```
 
 ```graql
-insert "TV Show" isa entity; movie isa entity;
+insert "TV Show" sub entity; movie sub entity;
 ```
 
 
@@ -322,9 +322,9 @@ Insert a new relation type with two role types.
 
 ```graql
 insert
-director isa role;
-production-with-director isa role;
-directorship isa relation, has-role director, has-role production-with-director;
+director sub role;
+production-with-director sub role;
+directorship sub relation, has-role director, has-role production-with-director;
 ```
 
 ### plays-role
@@ -358,7 +358,7 @@ datatype ( string | long | double | boolean )
 Insert a new resource type with the given datatype.
 
 ```graql
-insert name isa resource, datatype string;
+insert name sub resource, datatype string;
 ```
 
 {% include links.html %}
