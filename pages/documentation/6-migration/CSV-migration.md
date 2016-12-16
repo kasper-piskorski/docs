@@ -130,7 +130,7 @@ pokemon-type sub entity
     has-resource type-id
     plays-role type-of-pokemon;
 
-has-type suba relation-type
+has-type suba relation
     has-role pokemon-with-type
     has-role type-of-pokemon;
 pokemon-with-type sub role-type;

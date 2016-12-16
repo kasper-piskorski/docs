@@ -324,7 +324,7 @@ Insert a new relation type with two role types.
 insert
 director isa role-type;
 production-with-director isa role-type;
-directorship isa relation-type, has-role director, has-role production-with-director;
+directorship isa relation, has-role director, has-role production-with-director;
 ```
 
 ### plays-role

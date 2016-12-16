@@ -85,22 +85,22 @@ $eStefan isa tPerson;
 
 "owl-subject-op-isAncestorOf" sub role-type;
 "owl-object-op-isAncestorOf" sub role-type;
-"op-isAncestorOf" isa relation-type, has-role owl-subject-op-isAncestorOf, has-role owl-object-op-isAncestorOf;
+"op-isAncestorOf" isa relation, has-role owl-subject-op-isAncestorOf, has-role owl-object-op-isAncestorOf;
 tPerson plays-role owl-subject-op-isAncestorOf, plays-role owl-object-op-isAncestorOf;
 
 "owl-subject-op-hasAncestor" sub role-type;
 "owl-object-op-hasAncestor" sub role-type;
-"op-hasAncestor" isa relation-type, has-role owl-subject-op-hasAncestor, has-role owl-object-op-hasAncestor;
+"op-hasAncestor" isa relation, has-role owl-subject-op-hasAncestor, has-role owl-object-op-hasAncestor;
 tPerson plays-role owl-subject-op-hasAncestor, plays-role owl-object-op-hasAncestor;
 
 "owl-subject-op-isParentOf" sub role-type;
 "owl-object-op-isParentOf" sub role-type;
-"op-isParentOf" sub relation-type, has-role owl-subject-op-isParentOf, has-role owl-object-op-isParentOf;
+"op-isParentOf" sub relation, has-role owl-subject-op-isParentOf, has-role owl-object-op-isParentOf;
 tPerson plays-role owl-subject-op-isParentOf, plays-role owl-object-op-isParentOf;
 
 "owl-subject-op-hasParent" sub role-type;
 "owl-object-op-hasParent" sub role-type;
-"op-hasParent" sub relation-type, has-role owl-subject-op-hasParent, has-role owl-object-op-hasParent;
+"op-hasParent" sub relation, has-role owl-subject-op-hasParent, has-role owl-object-op-hasParent;
 tPerson plays-role owl-subject-op-hasParent, plays-role owl-object-op-hasParent;
 
 (owl-subject-op-isParentOf: $eStefan, owl-object-op-isParentOf: $eWitold) isa op-isParentOf;

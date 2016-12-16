@@ -55,7 +55,7 @@ insert
   person has-resource name;
   'husband' sub role-type;
   'wife' sub role-type;
-  'marriage' sub relation-type;
+  'marriage' sub relation;
   marriage has-role husband;
   $x has name 'Bob' isa man;
   $y has name 'Alice' isa woman;
@@ -97,7 +97,7 @@ insert
   person has-resource name;
   'husband' sub role-type;
   'wife' sub role-type;
-  'marriage' sub relation-type;
+  'marriage' sub relation;
   marriage has-role husband;
   marriage has-role wife;                     # Fix (1) and (2) and part of (5)
   $x has name 'Bob' isa man;

@@ -78,7 +78,7 @@ insert knower sub role-type;
 insert known-about sub role-type;
 insert person plays-role knower;
 insert person plays-role known-about;
-insert knows sub relation-type, has-role knower, has-role known-about, has-resource weight;	
+insert knows sub relation, has-role knower, has-role known-about, has-resource weight;	
 ```
 
 Note that the  `knows` relation type also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
@@ -92,7 +92,7 @@ insert programmed sub role-type;
 insert person plays-role programmer;
 insert software plays-role programmed;
 
-insert programming sub relation-type, has-role programmer, has-role programmed, has-resource weight;
+insert programming sub relation, has-role programmer, has-role programmed, has-resource weight;
 ```
 
 And that's it. At this point, we have defined the schema of the graph.
@@ -156,7 +156,7 @@ $x id "josh" has age "32";
 $x id "peter" has age "35";
 ```
 
-Now let's look at querying for a relationship. We can query to find out which entities have a particular role-type associated with a relation-type. For example, we can match everyone with a `knower` role who knows someone else:
+Now let's look at querying for a relationship. We can query to find out which entities have a particular role-type associated with a relation. For example, we can match everyone with a `knower` role who knows someone else:
 
 ```graql
 match $x plays-role knows; 
@@ -228,7 +228,7 @@ known-about sub role-type;
 person plays-role knower;
 person plays-role known-about;
 
-knows sub relation-type
+knows sub relation
 	has-role knower
 	has-role known-about
 	has-resource weight;
@@ -253,7 +253,7 @@ programmed sub role-type;
 person plays-role programmer;
 software plays-role programmed;
 
-programming sub relation-type
+programming sub relation
 	has-role programmer
 	has-role programmed
 	has-resource weight;

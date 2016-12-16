@@ -90,7 +90,7 @@ The colours used in the visualiser are as follows:
 | ----------- | --------------------------------------------- |
 | Pink     | Ontology meta-types                        |
 | Blue      | Data entity                         |
-| Green     | Ontology relation-type                       |
+| Green     | Ontology relation                       |
 | Orange     | Label                        |
 | Yellow     |                         |
 |      |                         |

@@ -22,7 +22,7 @@ public class DocTestUtil {
         qb.insert(
                 var().sub("pokemon").has("name", "Pikachu"),
                 var().sub("pokemon-type").has("name", "dragon"),
-                name("marriage").sub("relation-type"),
+                name("marriage").sub("relation"),
                 name("trainer").sub("role-type"),
                 name("pokemon-trained").sub("role-type"),
                 name("type-id").sub("resource-type").datatype(ResourceType.DataType.STRING),
