@@ -74,8 +74,8 @@ insert weight sub resource-type, datatype double;
 Let's first define the relationship between people. The diagram shows that marko knows vadas, but we don't have any information about whether the inverse is true (though it seems likely that vadas probably also knows marko). Let's set up a relationship called `knows`, which has two role-types - `knower` (for marko) and `known-about` (for vadas):
 
 ```graql
-insert knower sub role-type;
-insert known-about sub role-type;
+insert knower sub role;
+insert known-about sub role;
 insert person plays-role knower;
 insert person plays-role known-about;
 insert knows sub relation, has-role knower, has-role known-about, has-resource weight;	
@@ -86,8 +86,8 @@ Note that the  `knows` relation type also has an attribute, in the form of a res
 We can set up a similar relationship between software and the people that created it:
 
 ```graql
-insert programmer sub role-type;
-insert programmed sub role-type;
+insert programmer sub role;
+insert programmed sub role;
 
 insert person plays-role programmer;
 insert software plays-role programmed;
@@ -156,7 +156,7 @@ $x id "josh" has age "32";
 $x id "peter" has age "35";
 ```
 
-Now let's look at querying for a relationship. We can query to find out which entities have a particular role-type associated with a relation. For example, we can match everyone with a `knower` role who knows someone else:
+Now let's look at querying for a relationship. We can query to find out which entities have a particular role associated with a relation. For example, we can match everyone with a `knower` role who knows someone else:
 
 ```graql
 match $x plays-role knows; 
@@ -222,8 +222,8 @@ $peter has age 35;
 weight sub resource-type
 	datatype double;
 
-knower sub role-type;
-known-about sub role-type;
+knower sub role;
+known-about sub role;
 
 person plays-role knower;
 person plays-role known-about;
@@ -247,8 +247,8 @@ software has-resource lang;
 "lop" has lang "java";
 "ripple" has lang "java";
 
-programmer sub role-type;
-programmed sub role-type;
+programmer sub role;
+programmed sub role;
 
 person plays-role programmer;
 software plays-role programmed;

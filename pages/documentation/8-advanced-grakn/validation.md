@@ -49,12 +49,12 @@ insert
   'person' is-abstract sub entity;
   'man' is-abstract sub 'person';
   'woman' sub 'person';
-  'husband' sub role-type;
-  'wife' sub role-type;
+  'husband' sub role;
+  'wife' sub role;
   woman plays-role wife;
   person has-resource name;
-  'husband' sub role-type;
-  'wife' sub role-type;
+  'husband' sub role;
+  'wife' sub role;
   'marriage' sub relation;
   marriage has-role husband;
   $x has name 'Bob' isa man;
@@ -90,13 +90,13 @@ insert
   'person' sub entity;                   # Fix (4)
   'man' sub 'person';
   'woman' sub 'person';
-  'husband' sub role-type;
-  'wife' sub role-type;
+  'husband' sub role;
+  'wife' sub role;
   man plays-role husband;                     # Fix (3) and part of (5)
   woman plays-role wife;
   person has-resource name;
-  'husband' sub role-type;
-  'wife' sub role-type;
+  'husband' sub role;
+  'wife' sub role;
   'marriage' sub relation;
   marriage has-role husband;
   marriage has-role wife;                     # Fix (1) and (2) and part of (5)

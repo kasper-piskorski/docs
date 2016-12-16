@@ -114,8 +114,8 @@ occurs sub relation
   has-role event-occurred
   has-role pet-in-event;
 
-event-occurred sub role-type;
-pet-in-event sub role-type;
+event-occurred sub role;
+pet-in-event sub role;
 
 pet plays-role pet-in-event;
 event plays-role event-occurred;

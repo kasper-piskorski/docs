@@ -275,7 +275,7 @@ match $m isa movie, has runtime > 180;
 Match related concepts.
 
 ```sql
-( [ [ role-type ] role-player , ... ] )
+( [ [ role ] role-player , ... ] )
 ```
 
 ```graql
@@ -316,21 +316,21 @@ insert blockbuster sub movie;
 ### has-role
 
 ```sql
-has-role role-type
+has-role role
 ```
 Insert a new relation type with two role types.
 
 ```graql
 insert
-director isa role-type;
-production-with-director isa role-type;
+director isa role;
+production-with-director isa role;
 directorship isa relation, has-role director, has-role production-with-director;
 ```
 
 ### plays-role
 
 ```sql
-plays-role role-type
+plays-role role
 ```
 
 Allow instances of a type to play a role in a relation.

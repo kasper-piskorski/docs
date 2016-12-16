@@ -102,12 +102,12 @@ How do we define a "philosopher"? Very smart people have argued for a very long 
 A relation comprises of pairs of roles and role players. Relations and roles also have types, just like normal concepts.  
 
 First, we define a `relation` called `practice` that relates a
-`role-type` called `philosopher` to a `role-type` called `philosophy`:
+`role` called `philosopher` to a `role` called `philosophy`:
 
 ```graql
 insert practice sub relation;
-insert philosopher sub role-type;
-insert philosophy sub role-type;
+insert philosopher sub role;
+insert philosophy sub role;
 insert practice has-role philosopher, has-role philosophy;
 ```
 
@@ -159,8 +159,8 @@ First, extend our schema:
 
 ```graql
 insert education sub relation;
-insert teacher sub role-type;
-insert student sub role-type;
+insert teacher sub role;
+insert student sub role;
 insert education has-role teacher, has-role student;
 insert person plays-role teacher, plays-role student;
 ```
@@ -233,8 +233,8 @@ schema.
 
 ```graql
 insert knowledge sub relation;
-insert thinker sub role-type;
-insert thought sub role-type;
+insert thinker sub role;
+insert thought sub role;
 insert knowledge has-role thinker, has-role thought;
 insert fact sub entity, plays-role thought, has-resource name;
 insert description sub resource-type, datatype string;

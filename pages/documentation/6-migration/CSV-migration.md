@@ -130,11 +130,11 @@ pokemon-type sub entity
     has-resource type-id
     plays-role type-of-pokemon;
 
-has-type suba relation
+has-type sub relation
     has-role pokemon-with-type
     has-role type-of-pokemon;
-pokemon-with-type sub role-type;
-type-of-pokemon sub role-type;
+pokemon-with-type sub role;
+type-of-pokemon sub role;
 ```
 
 We define the three data files. Each file needs a template that to tell the Migrator how to deal with the data in each row.

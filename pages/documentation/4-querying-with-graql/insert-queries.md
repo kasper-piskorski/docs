@@ -309,8 +309,8 @@ has-pokedex-no sub relation,
   has-role has-pokedex-no-owner,
   has-role has-pokedex-no-value;
 
-has-pokedex-no-owner sub role-type;
-has-pokedex-no-value sub role-type;
+has-pokedex-no-owner sub role;
+has-pokedex-no-value sub role;
 
 pokemon plays-role has-pokedex-no-owner;
 pokedex-no plays-role has-pokedex-no-value;
@@ -327,8 +327,8 @@ qb.insert(
   name("has-pokedex-no").sub("relation")
     .hasRole("has-pokedex-no-owner").hasRole("has-pokedex-no-value"),
 
-  name("has-pokedex-no-owner").sub("role-type"),
-  name("has-pokedex-no-value").sub("role-type"),
+  name("has-pokedex-no-owner").sub("role"),
+  name("has-pokedex-no-value").sub("role"),
 
   name("pokemon").playsRole("has-pokedex-no-owner"),
   name("pokedex-no").playsRole("has-pokedex-no-value")
