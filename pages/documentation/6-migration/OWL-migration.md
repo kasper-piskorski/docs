@@ -79,7 +79,7 @@ Upon migration, the OWL ontology will be mapped to the Grakn Model. The followin
 ```graql
 insert
 
-"tPerson" sub entity-type;
+"tPerson" sub entity;
 $eWitold isa tPerson;
 $eStefan isa tPerson;
 

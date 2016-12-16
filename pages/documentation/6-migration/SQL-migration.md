@@ -76,7 +76,7 @@ We can define an ontology that corresponds to the SQL tables as follows:
 ```graql-test-ignore
 
 insert
-pet sub entity-type
+pet sub entity
     has-resource name
     has-resource owner
     has-resource sex
@@ -97,7 +97,7 @@ birth sub resource-type datatype string;
 death sub resource-type datatype string;
 count sub resource-type datatype long;
 
-event sub entity-type,
+event sub entity,
     has-resource name,
     has-resource date,
     has-resource description;

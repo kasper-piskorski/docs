@@ -218,7 +218,7 @@ variable | id
 ```
 
 ```graql
-insert "TV Show" isa entity-type; movie isa entity-type;
+insert "TV Show" isa entity; movie isa entity;
 ```
 
 

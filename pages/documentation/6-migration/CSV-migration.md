@@ -55,7 +55,7 @@ Here is the ontology for the example:
 ```graql
 insert
 
-car sub entity-type
+car sub entity
     has-resource name
     has-resource year
     has-resource description
@@ -116,7 +116,7 @@ To start, we must write the ontology for this example.
 ```graql
 insert
 
-pokemon sub entity-type
+pokemon sub entity
     plays-role pokemon-with-type
     has-resource pokedex-no
     has-resource description;
@@ -125,7 +125,7 @@ type-id sub resource-type datatype string;
 pokedex-no sub resource-type datatype long;
 description sub resource-type datatype string;
 
-pokemon-type sub entity-type
+pokemon-type sub entity
     has-resource description
     has-resource type-id
     plays-role type-of-pokemon;

@@ -50,8 +50,8 @@ The relationships between the entities are straightforward:
 Here, we add person and software entity types to the graph, via the Graql shell:
 
 ```graql
-insert person sub entity-type;
-insert software sub entity-type;
+insert person sub entity;
+insert software sub entity;
 ```
 
 
@@ -207,7 +207,7 @@ Then type edit, which will open up the systems default text editor where you can
 insert 
 age sub resource-type
 	datatype long;
-person sub entity-type;
+person sub entity;
 person has-resource age;
 
 $marko isa person;
@@ -238,7 +238,7 @@ knows sub relation-type
 
 lang sub resource-type
 	datatype string;
-software sub entity-type;
+software sub entity;
 software has-resource lang;
 
 "lop" isa software;
@@ -314,7 +314,7 @@ match $lop has name "lop"; (programmer: $x, $lop) isa programming;
 List everything you know about marko
 
 ```graql
-match $marko has name "marko"; $relation($marko, $y); $y isa $z; $z isa entity-type; $relation isa $reltype; select $y, $reltype;
+match $marko has name "marko"; $relation($marko, $y); $y isa $z; $z isa entity; $relation isa $reltype; select $y, $reltype;
 
 ```
 

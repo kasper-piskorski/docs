@@ -32,7 +32,7 @@ Assuming that you are building up the graph from scratch, rather than loading it
 bin/graql.sh
 ```
 ```graql
-insert person sub entity-type;
+insert person sub entity;
 ```
 
 And a resource for people's names:
@@ -77,7 +77,7 @@ $p isa person; $n value "Alexander" isa name;
 Next, let's add some `schools` of thought:
 
 ```graql
-insert school sub entity-type, has-resource name;
+insert school sub entity, has-resource name;
 insert isa school, has name "Peripateticism";
 insert isa school, has name "Platonism";
 insert isa school, has name "Idealism";
@@ -236,7 +236,7 @@ insert knowledge sub relation-type;
 insert thinker sub role-type;
 insert thought sub role-type;
 insert knowledge has-role thinker, has-role thought;
-insert fact sub entity-type, plays-role thought, has-resource name;
+insert fact sub entity, plays-role thought, has-resource name;
 insert description sub resource-type, datatype string;
 insert fact has-resource description;
 insert person plays-role thinker;
