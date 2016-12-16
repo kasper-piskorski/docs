@@ -76,15 +76,15 @@ The Role Types associated with a Relation Type can only be used for that relatio
 
 ### Subclasses
 
-Instances of the four meta-types described above can be subclassed. For example, subclasses of `person` (which is an instance of the meta-type EntityType) could be `man` and `woman`.  This simple subclassing allows us to expand and deepen our schema to whatever granularity of detail is needed.  
+Instances of the four meta-types described above can be subclassed. For example, subclasses of `person` (which is a subclass of the meta-type Entity) could be `man` and `woman`.  This simple subclassing allows us to expand and deepen our schema to whatever granularity of detail is needed.  
 
 {% include note.html content="In Grakl, we use the shorthand `sub ('subclass')` when referring to sub-typing or specialisation. <br />
 For example, `man sub person`. <br />
 We use the shorthand `isa` ('is a') to represent the type relationship. <br />
-For example, `car isa vehicle`.
+For example, `$x isa man`.
 " %}
 
-For example a simple schema would be `car` `isa` `vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `sub` `car` `isa` `vehicle`.
+For example a simple schema would be `$x` `isa` `vehicle` but with subclassing we could go as far as `a VW Gold TDI 2014` `isa` `VW` `sub` `car` `sub` `vehicle`.
 
 Types can have an additional property, `abstract`, which indicates the type cannot have direct instances. This is useful when we want to define a deeper schema. For example if we have `person` and its subclasses `man` and `woman`, then we may want to define `person` as `abstract` to prohibit it from having any direct instances, whereas the concrete types `man` and `woman` can have direct instances.
 

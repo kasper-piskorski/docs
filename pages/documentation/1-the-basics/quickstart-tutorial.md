@@ -33,7 +33,6 @@ If you're unsure of these steps, don't worry. Please see the [Setup guide](../ge
 
 This example is loosely based on the genealogy example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the data and ontology at this point, but initially we will simply show how to work with Graql to set up an ontology and add some data to a graph. 
 
-
 ## Ontology
 
 We are going to add ontology concepts for some people, their notable events (when they are born, get married, have children, die) and relationships (children, parents, spouses). 
@@ -64,6 +63,7 @@ insert isa person, has identifier "Scott Jones";
 ```
 
 Now we will add an instance of `marriage` between two of the `person` instances:
+
 ```
 match $s1 has identifier "Andrew Smith"; $s2 has identifier "Catherine Shaw"; insert (spouse1: $s1, spouse2: $s2) isa marriage has date "01-01-1980";
 commit
@@ -86,7 +86,6 @@ match (spouse1: $x, spouse2: $y) isa marriage, has date $d; $x has identifier $x
 
 {% include note.html content="In queries, Graql variables start with a `$`, which represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
 
-## Visualiser
 
 ## Where Next?
 

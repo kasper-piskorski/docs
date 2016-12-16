@@ -19,13 +19,13 @@ An ask query will return whether the given [match query](match-queries.html) has
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match dragon isa pokemon-type;
+match dragon sub pokemon-type;
 ask;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
-qb.match(name("dragon").isa("pokemon-type")).ask().execute();
+qb.match(name("dragon").sub("pokemon-type")).ask().execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
