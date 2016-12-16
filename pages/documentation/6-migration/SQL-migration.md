@@ -76,7 +76,7 @@ We can define an ontology that corresponds to the SQL tables as follows:
 ```graql-test-ignore
 
 insert
-pet isa entity-type
+pet sub entity-type
     has-resource name
     has-resource owner
     has-resource sex
@@ -90,14 +90,14 @@ snake sub pet;
 hamster sub pet;
 bird sub pet;
 
-name isa resource-type datatype string;
-owner isa resource-type datatype string;
-sex isa resource-type datatype string;
-birth isa resource-type datatype string;
-death isa resource-type datatype string;
-count isa resource-type datatype long;
+name sub resource-type datatype string;
+owner sub resource-type datatype string;
+sex sub resource-type datatype string;
+birth sub resource-type datatype string;
+death sub resource-type datatype string;
+count sub resource-type datatype long;
 
-event isa entity-type,
+event sub entity-type,
     has-resource name,
     has-resource date,
     has-resource description;
@@ -110,12 +110,12 @@ For Grakn, we can use the following:
 
 ```graql-test-ignore
 insert
-occurs isa relation-type
+occurs sub relation-type
   has-role event-occurred
   has-role pet-in-event;
 
-event-occurred isa role-type;
-pet-in-event isa role-type;
+event-occurred sub role-type;
+pet-in-event sub role-type;
 
 pet plays-role pet-in-event;
 event plays-role event-occurred;

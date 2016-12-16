@@ -32,13 +32,13 @@ Assuming that you are building up the graph from scratch, rather than loading it
 bin/graql.sh
 ```
 ```graql
-insert person isa entity-type;
+insert person sub entity-type;
 ```
 
 And a resource for people's names:
 
 ```graql
-insert name isa resource-type, datatype string;
+insert name sub resource-type, datatype string;
 insert person has-resource name;
 ```
 
@@ -56,7 +56,7 @@ insert isa person, has name "Alexander";
 So now we've created a simple graph, with one concept type and four
 concept instances.
 
-{% include note.html content="Every concept needs a type, using `isa`. <br/>   `Plato` `is a` `person`   <br/>  `person` `is a` `entity-type`" %}
+{% include note.html content="Every concept needs a type, using `isa`. <br/>   `Plato` `is a` `person`   <br/>  `person` `sub` `entity`" %}
 
 
 {% include tip.html content="Graql shell maintains a history of past commands with the 'up' and 'down' arrows. You can also autocomplete keywords, type and variable names using tab!" %}
@@ -77,7 +77,7 @@ $p isa person; $n value "Alexander" isa name;
 Next, let's add some `schools` of thought:
 
 ```graql
-insert school isa entity-type, has-resource name;
+insert school sub entity-type, has-resource name;
 insert isa school, has name "Peripateticism";
 insert isa school, has name "Platonism";
 insert isa school, has name "Idealism";
@@ -105,9 +105,9 @@ First, we define a `relation-type` called `practice` that relates a
 `role-type` called `philosopher` to a `role-type` called `philosophy`:
 
 ```graql
-insert practice isa relation-type;
-insert philosopher isa role-type;
-insert philosophy isa role-type;
+insert practice sub relation-type;
+insert philosopher sub role-type;
+insert philosophy sub role-type;
 insert practice has-role philosopher, has-role philosophy;
 ```
 
@@ -158,9 +158,9 @@ Great!
 First, extend our schema:
 
 ```graql
-insert education isa relation-type;
-insert teacher isa role-type;
-insert student isa role-type;
+insert education sub relation-type;
+insert teacher sub role-type;
+insert student sub role-type;
 insert education has-role teacher, has-role student;
 insert person plays-role teacher, plays-role student;
 ```
@@ -182,8 +182,8 @@ Some people have special titles and epithets and we want to talk about that.
 So, we'll create some resource types that can be attached to a person:
 
 ```graql
-insert title isa resource-type, datatype string;
-insert epithet isa resource-type, datatype string;
+insert title sub resource-type, datatype string;
+insert epithet sub resource-type, datatype string;
 insert person has-resource title, has-resource epithet;
 ```
 
@@ -232,12 +232,12 @@ Philosophers know lots of things. We should probably include this in our
 schema.
 
 ```graql
-insert knowledge isa relation-type;
-insert thinker isa role-type;
-insert thought isa role-type;
+insert knowledge sub relation-type;
+insert thinker sub role-type;
+insert thought sub role-type;
 insert knowledge has-role thinker, has-role thought;
-insert fact isa entity-type, plays-role thought, has-resource name;
-insert description isa resource-type, datatype string;
+insert fact sub entity-type, plays-role thought, has-resource name;
+insert description sub resource-type, datatype string;
 insert fact has-resource description;
 insert person plays-role thinker;
 ```

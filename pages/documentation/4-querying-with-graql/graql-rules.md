@@ -27,9 +27,9 @@ and associated pages
 
 We define the following hierarchy of rule objects - concepts:
 
-{ConceptType}<--(ako)--{RuleType}
-{RuleType}<--(isa)--{Inference Rule}
-{RuleType}<--(isa)--{Ronstraint Rule}
+{ConceptType}<--(sub)--{RuleType}
+{RuleType}<--(sub)--{Inference Rule}
+{RuleType}<--(sub)--{Ronstraint Rule}
 {inference rule}<--(isa)--{instance of inference rule, e.g. if daughter+brother then niece}
 {constraint rule}<--(isa)--{instance of constraint rule, e.g. if daughter then not married}
 

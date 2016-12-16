@@ -248,13 +248,13 @@ Add a role to this relation type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-insert trained-by isa relation-type, has-role trainer, has-role pokemon-trained;
+insert trained-by sub relation-type, has-role trainer, has-role pokemon-trained;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
 <pre>
 qb.insert(
-  name("trained-by").isa("relation-type")
+  name("trained-by").sub("relation-type")
     .hasRole("trainer").hasRole("pokemon-trained")
 );
 </pre>
@@ -305,12 +305,12 @@ insert pokemon has-resource pokedex-no;
 <pre>
 insert
 
-has-pokedex-no isa relation-type,
+has-pokedex-no sub relation-type,
   has-role has-pokedex-no-owner,
   has-role has-pokedex-no-value;
 
-has-pokedex-no-owner isa role-type;
-has-pokedex-no-value isa role-type;
+has-pokedex-no-owner sub role-type;
+has-pokedex-no-value sub role-type;
 
 pokemon plays-role has-pokedex-no-owner;
 pokedex-no plays-role has-pokedex-no-value;
@@ -324,11 +324,11 @@ qb.insert(name("pokemon").hasResource("pokedex-no"));
 <p>The above example is equivalent to:</p>
 <pre>
 qb.insert(
-  name("has-pokedex-no").isa("relation-type")
+  name("has-pokedex-no").sub("relation-type")
     .hasRole("has-pokedex-no-owner").hasRole("has-pokedex-no-value"),
 
-  name("has-pokedex-no-owner").isa("role-type"),
-  name("has-pokedex-no-value").isa("role-type"),
+  name("has-pokedex-no-owner").sub("role-type"),
+  name("has-pokedex-no-value").sub("role-type"),
 
   name("pokemon").playsRole("has-pokedex-no-owner"),
   name("pokedex-no").playsRole("has-pokedex-no-value")

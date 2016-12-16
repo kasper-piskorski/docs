@@ -45,17 +45,17 @@ This will be our first attempt:
 
 ```
 insert
-  'name' isa resource-type datatype string;
-  'person' is-abstract isa entity-type;
+  'name' sub resource-type datatype string;
+  'person' is-abstract sub entity-type;
   'man' is-abstract sub 'person';
   'woman' sub 'person';
-  'husband' isa role-type;
-  'wife' isa role-type;
+  'husband' sub role-type;
+  'wife' sub role-type;
   woman plays-role wife;
   person has-resource name;
-  'husband' isa role-type;
-  'wife' isa role-type;
-  'marriage' isa relation-type;
+  'husband' sub role-type;
+  'wife' sub role-type;
+  'marriage' sub relation-type;
   marriage has-role husband;
   $x has name 'Bob' isa man;
   $y has name 'Alice' isa woman;
@@ -86,18 +86,18 @@ Let's fix these issues and try again:
 
 ```
 insert
-  'name' isa resource-type datatype string;
-  'person' isa entity-type;                   # Fix (4)
+  'name' sub resource-type datatype string;
+  'person' sub entity-type;                   # Fix (4)
   'man' sub 'person';
   'woman' sub 'person';
-  'husband' isa role-type;
-  'wife' isa role-type;
+  'husband' sub role-type;
+  'wife' sub role-type;
   man plays-role husband;                     # Fix (3) and part of (5)
   woman plays-role wife;
   person has-resource name;
-  'husband' isa role-type;
-  'wife' isa role-type;
-  'marriage' isa relation-type;
+  'husband' sub role-type;
+  'wife' sub role-type;
+  'marriage' sub relation-type;
   marriage has-role husband;
   marriage has-role wife;                     # Fix (1) and (2) and part of (5)
   $x has name 'Bob' isa man;

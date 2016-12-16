@@ -47,8 +47,8 @@ bin/graql.sh
 The Graql shell starts and you see a `>>>` prompt. Type in the following, but don't worry too much about what it means right now. We will go through it further in the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html).  
 
 ```graql   
-insert person isa entity-type;
-insert name isa resource-type, datatype string;
+insert person sub entity-type;
+insert name sub resource-type, datatype string;
 insert person has-resource name;
 insert isa person, has name "Topsy";
 insert isa person, has name "Tim";
