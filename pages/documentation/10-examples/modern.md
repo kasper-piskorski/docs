@@ -60,13 +60,14 @@ insert software sub entity;
 To assign resources to the entities, which you can think of as attributes, we use resource types. First, we define what they are (age is a number, programming language is a string that represents the language's name), then we allocate them to the entity in question:
 
 ```graql
-insert age sub resource, datatype long;
-insert person has-resource age;
+insert age sub resource datatype long;
+insert name sub resource datatype string;
+insert person has-resource age, has-resource name;
 
-insert lang sub resource, datatype string;
-insert software has-resource lang;
+insert lang sub resource datatype string;
+insert software has-resource lang has-resource name;
 
-insert weight sub resource, datatype double;
+insert weight sub resource datatype double;
 ```
 
 ### Relation Types
@@ -101,46 +102,41 @@ And that's it. At this point, we have defined the schema of the graph.
 Now we have a schema, we can move on to adding in the data, which is pretty much just a typing exercise:
 
 ```graql
-insert has name "marko" isa person;
-insert has name "vadas" isa person;
-insert has name "josh" isa person;
-insert has name "peter" isa person;
-match $marko has name "marko"; insert $marko has age 29;
-match $josh has name "josh"; insert $josh has age 32;
-match $vadas has name "vadas"; insert $vadas has age 27;
-match $peter has name "peter"; insert $peter has age 35;
-match $marko has name "marko"; $josh has name "josh"; insert (knower: $marko, known-about: $josh) isa knows has weight 1.0;
-match $marko has name "marko"; $vadas has name "vadas"; insert (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
+insert $marko isa person, has name "marko", has age 29;
+insert $vadas isa person, has name "vadas", has age 27;
+insert $josh isa person, has name "josh", has age 32;
+insert $peter isa person, has name "peter", has age 35;
+insert (knower: $marko, known-about: $josh) isa knows has weight 1.0;
+insert (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 ```
 
 
 ```graql
-insert has name "lop" isa software;
-insert has name "ripple" isa software;
-match $lop has name "lop"; insert $lop has lang "java";
-match $ripple has name "ripple"; insert $ripple has lang "java";
-match $marko has name "marko"; $lop has name "lop"; insert (programmer: $marko, programmed: $lop) isa programming has weight 0.4;
-match $peter has name "peter"; $lop has name "lop"; insert (programmer: $peter, programmed: $lop) isa programming has weight 0.2;
-match $josh has name "josh"; $lop has name "lop"; insert (programmer: $josh, programmed: $lop) isa programming has weight 0.4;
-match $josh has name "josh"; $ripple has name "ripple"; insert (programmer: $josh, programmed: $ripple) isa programming has weight 1.0;
+insert $lop isa software, has lang "java", has name "lop";
+insert $ripple isa software, has lang "java", has name "ripple";
+
+insert (programmer: $marko, programmed: $lop) isa programming has weight 0.4;
+insert (programmer: $peter, programmed: $lop) isa programming has weight 0.2;
+insert (programmer: $josh, programmed: $lop) isa programming has weight 0.4;
+insert (programmer: $josh, programmed: $ripple) isa programming has weight 1.0;
 ```
    
    
 ## Querying
 
-This example is designed to get you up close and personal with Graql queries. It will run through a few basic examples, then ask you a set of "Test Yourself" questions. The answers are available at the end of the page, but please don't look at them immediately! The best way to find out how much you understand about using Graql is to challenge yourself to work out the queries without a prompt. 
+This example is designed to get you up close and personal with Graql queries. It will run through a few basic examples, then ask you a set of "Test Yourself" questions. 
 
 OK, so if you've followed the above, you should now have a schema and some data in a graph. How do you go about using the graph to answer your queries? That's where the `match` statement comes in. 
 
 As with any query language, you use a variable to receive the results of the match query, which you must prefix with a `$`. So, to make the query "List every person in the graph", you would use the following in Graql:
 
 ```graql
->>> match $x isa person;
+>>> match $x isa person, has name $n; select $n;
 
-$x id "marko" isa person; 
-$x id "vadas" isa person; 
-$x id "josh" isa person; 
-$x id "peter" isa person; 
+$n value "vadas" isa name; 
+$n value "marko" isa name; 
+$n value "josh" isa name; 
+$n value "peter" isa name; 
 ```
  
 In Graql, a match is formed of three parts: the `match` statement, an optional `select` statement, and any other optional [modifiers](../graql/match-queries.html#modifiers) that you choose to apply to the listing of results. Only the first part of a match query is needed: the modifier parts are optional.   
@@ -148,7 +144,7 @@ In Graql, a match is formed of three parts: the `match` statement, an optional `
 In the `match $x isa person` query we are not using any select or delimiters, so let's add some now.  We can add a `select` statement to ask Graql to list out every person and to include their id (which is their name) and age. We use `order by` to modify how the results are listed out - in this case, we order them by ascending age, so the youngest person is shown first.
 
 ```graql
->>> match $x isa person, has age $a; select $x, $a; order by $a asc;
+>>> match $x isa person, has name $n, has age $a; select $n, $a; order by $a asc;
 
 $x id "vadas" has age "27"; 
 $x id "marko" has age "29"; 
@@ -156,16 +152,75 @@ $x id "josh" has age "32";
 $x id "peter" has age "35";
 ```
 
-Now let's look at querying for a relationship. We can query to find out which entities have a particular role associated with a relation. For example, we can match everyone with a `knower` role who knows someone else:
+## Complete Example
+Here is the complete example - the code to define the schema and insert the data into a graph. You can load this directly into Graql, if you don't want to type it out for yourself. Cut and paste the Graql below and start Graql:
 
-```graql
-match $x plays-role knows; 
+```bash
+bin/graql.sh
 ```
 
-We can also match every role that a `person` can play:
-```graql
-match person plays-role $x;
-```
+Then type edit, which will open up the systems default text editor where you can paste your chunk of text. Upon exiting the editor, the Graql will execute.
+
+```graql 
+insert 
+age sub resource datatype long;
+name sub resource datatype string;
+person sub entity;
+person has-resource age, has-resource name;
+
+$marko isa person;
+$vadas isa person;
+$josh isa person;
+$peter isa person;
+$marko has age 29, has name "marko";
+$josh has age 32, has name "josh";
+$vadas has age 27, has name "vadas";
+$peter has age 35, has name "peter";
+
+weight sub resource datatype double;
+
+knower sub role;
+known-about sub role;
+
+person plays-role knower;
+person plays-role known-about;
+
+knows sub relation
+	has-role knower
+	has-role known-about
+	has-resource weight;
+
+(knower: $marko, known-about: $josh) isa knows has weight 1.0;
+(knower: $marko, known-about: $vadas) isa knows has weight 0.5;
+
+lang sub resource datatype string;
+software sub entity;
+software has-resource lang, has-resource name;
+
+$lop isa software;
+$ripple isa software;
+
+$lop has lang "java", has name "lop";
+$ripple has lang "java", has name "ripple";
+
+programmer sub role;
+programmed sub role;
+
+person plays-role programmer;
+software plays-role programmed;
+
+programming sub relation
+	has-role programmer
+	has-role programmed
+	has-resource weight;
+
+
+(programmer: $marko, programmed: $lop) isa programming has weight 0.4;
+(programmer: $peter, programmed: $lop) isa programming has weight 0.2;
+(programmer: $josh, programmed: $lop) isa programming has weight 0.4;
+(programmer: $josh, programmed: $ripple) isa programming has weight 1.0;
+```   
+
 
 ## Test Yourself
 
@@ -193,135 +248,6 @@ match person plays-role $x;
 8. List everything you know about Marko
 
 
-## Complete Example
-Here is the complete example - the code to define the schema and insert the data into a graph. You can load this directly into Graql, if you don't want to type it out for yourself. Cut and paste the Graql below and start Graql:
-
-```bash
-bin/graql.sh
-```
-
-Then type edit, which will open up the systems default text editor where you can paste your chunk of text. Upon exiting the editor, the Graql will execute.
-
-
-```graql 
-insert 
-age sub resource
-	datatype long;
-person sub entity;
-person has-resource age;
-
-$marko isa person;
-$vadas isa person;
-$josh isa person;
-$peter isa person;
-$marko has age 29;
-$josh has age 32;
-$vadas has age 27;
-$peter has age 35;
-
-weight sub resource
-	datatype double;
-
-knower sub role;
-known-about sub role;
-
-person plays-role knower;
-person plays-role known-about;
-
-knows sub relation
-	has-role knower
-	has-role known-about
-	has-resource weight;
-
-(knower: $marko, known-about: $josh) isa knows has weight 1.0;
-(knower: $marko, known-about: $vadas) isa knows has weight 0.5;
-
-lang sub resource
-	datatype string;
-software sub entity;
-software has-resource lang;
-
-"lop" isa software;
-"ripple" isa software;
-
-"lop" has lang "java";
-"ripple" has lang "java";
-
-programmer sub role;
-programmed sub role;
-
-person plays-role programmer;
-software plays-role programmed;
-
-programming sub relation
-	has-role programmer
-	has-role programmed
-	has-resource weight;
-
-(programmer: "marko", programmed: "lop") isa programming has weight 0.4;
-(programmer: "peter", programmed: "lop") isa programming has weight 0.2;
-(programmer: "josh", programmed: "lop") isa programming has weight 0.4;
-(programmer: "josh", programmed: "ripple") isa programming has weight 1.0;
-```   
-
-## Answers to the Test Yourself section
-
-Here are our solutions to the queries we asked you to form. Please do have a go at them yourself first, before you peek below!
-
-List every person with their name and age in ascending age order
-
-```graql
-match $x isa person, has age $a; select $x, $a; order by $a asc;
-```
-
-List every person who has an age over 30, showing their name and age
-
-```graql
-match $x isa person, has age $a, has age > 30; select $x, $a;
-```
-
-List every person who knows someone else, and every person who is known about
-
-```graql
-match (knower: $x) isa knows;
-match (known-about: $x) isa knows;
-```
-
-List every person that marko knows
-
-```graql
-match $marko has name "marco"; (known-about: $x, $marko) isa knows;
-```
-
-List every item of software and the language associated with it
-
-```graql
-match $x isa software, has lang $lang;
-```
-
-List everything that josh has programmed
-
-```graql
-match $josh has name "josh"; (programmed: $x, $josh) isa programming;
-```
-
-List everyone who has programmed Lop
-
-```graql
-match $lop has name "lop"; (programmer: $x, $lop) isa programming;
-```
-
-List everything you know about marko
-
-```graql
-match $marko has name "marko"; $relation($marko, $y); $y isa $z; $z isa entity; $relation isa $reltype; select $y, $reltype;
-
-```
-
-
-## Where next?
-
-This example should give you some confidence at looking at the basic types and queries used in a MindmapDB graph. Take a look at the landing page for the Grakn Examples, for more complex examples, such as the Moogi movies dataset.
 
 {% include links.html %}
 

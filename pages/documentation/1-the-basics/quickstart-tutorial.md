@@ -64,7 +64,7 @@ insert isa person, has identifier "Scott Jones";
 
 Now we will add an instance of `marriage` between two of the `person` instances:
 
-```
+```graql
 match $s1 has identifier "Andrew Smith"; $s2 has identifier "Catherine Shaw"; insert (spouse1: $s1, spouse2: $s2) isa marriage has date "01-01-1980";
 commit
 ```
