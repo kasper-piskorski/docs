@@ -48,7 +48,7 @@ The Graql shell starts and you see a `>>>` prompt. Type in the following, but do
 
 ```graql   
 insert person sub entity;
-insert name sub resource-type, datatype string;
+insert name sub resource, datatype string;
 insert person has-resource name;
 insert isa person, has name "Topsy";
 insert isa person, has name "Tim";

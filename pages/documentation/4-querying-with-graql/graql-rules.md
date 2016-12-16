@@ -229,7 +229,7 @@ Constraint.expectation ?= Query.parser(Constraint.RHS).where($x id x, $y id y)
 | relations with incomplete roles | match (ancestor: $x, $y) isa ancestorship; | ✓ | ✓, not recommended | supported |
 | relations without type | match (ancestor: $x, $y); | ✓ | ✓ | supported |
 | match all relations | match ($x, $y); | ✓| x | supported |
-| relations with rscs in one line | match (ancestor: $x, $y) isa rel-typel has resource-type 'value'; |✓| x | supported |
+| relations with rscs in one line | match (ancestor: $x, $y) isa rel-typel has resource 'value'; |✓| x | supported |
 | relations with user specified var | match $r ($x, $y); |✓| ✓ | supported |
 | relations with roles as variables | match ($r: $x, $y) isa rel-type;  | ✓ | ✓ | experimental support |
 | relations with type var | match (ancestor: $x, $y) isa $rel; | ✓ | ✓ | supported |
@@ -246,8 +246,8 @@ Constraint.expectation ?= Query.parser(Constraint.RHS).where($x id x, $y id y)
 | has-resource        | match $x has-resource name; | ✓ | x |  supported   |
 | has-role   | match evolution has-role $x; | ✓ | x | supported |
 | is-abstract | match $x is-abstract; | ✓ | x | supported |
-| datatype | match $x isa resource-type, datatype string; | ✓| x |  supported |
-| regex | match $x isa resource-type, regex /hello/; | ✓ | x | supported |
+| datatype | match $x isa resource, datatype string; | ✓| x |  supported |
+| regex | match $x isa resource, regex /hello/; | ✓ | x | supported |
 
 ### Predicates
 

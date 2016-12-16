@@ -265,7 +265,7 @@ match $m value contains "The Lord of the Rings";
 Match concepts with a resource matching a predicate.
 
 ```sql
-has resource-type [ = | != | < | <= | >= | > | contains ] {value}
+has resource [ = | != | < | <= | >= | > | contains ] {value}
 ```
 
 ```graql
@@ -342,7 +342,7 @@ insert person plays-role director;
 ### has-resource
 
 ```sql
-has-resource resource-type
+has-resource resource
 ```
 Allow instances of a type to have a resource.
 
@@ -358,7 +358,7 @@ datatype ( string | long | double | boolean )
 Insert a new resource type with the given datatype.
 
 ```graql
-insert name isa resource-type, datatype string;
+insert name isa resource, datatype string;
 ```
 
 {% include links.html %}

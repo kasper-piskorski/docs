@@ -25,7 +25,7 @@ public class DocTestUtil {
                 name("marriage").sub("relation"),
                 name("trainer").sub("role"),
                 name("pokemon-trained").sub("role"),
-                name("type-id").sub("resource-type").datatype(ResourceType.DataType.STRING),
+                name("type-id").sub("resource").datatype(ResourceType.DataType.STRING),
                 name("pokemon-type").hasResource("type-id")
         ).execute();
 

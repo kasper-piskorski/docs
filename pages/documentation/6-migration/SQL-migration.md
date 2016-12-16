@@ -90,12 +90,12 @@ snake sub pet;
 hamster sub pet;
 bird sub pet;
 
-name sub resource-type datatype string;
-owner sub resource-type datatype string;
-sex sub resource-type datatype string;
-birth sub resource-type datatype string;
-death sub resource-type datatype string;
-count sub resource-type datatype long;
+name sub resource datatype string;
+owner sub resource datatype string;
+sex sub resource datatype string;
+birth sub resource datatype string;
+death sub resource datatype string;
+count sub resource datatype long;
 
 event sub entity,
     has-resource name,

@@ -38,7 +38,7 @@ insert person sub entity;
 And a resource for people's names:
 
 ```graql
-insert name sub resource-type, datatype string;
+insert name sub resource, datatype string;
 insert person has-resource name;
 ```
 
@@ -182,8 +182,8 @@ Some people have special titles and epithets and we want to talk about that.
 So, we'll create some resource types that can be attached to a person:
 
 ```graql
-insert title sub resource-type, datatype string;
-insert epithet sub resource-type, datatype string;
+insert title sub resource, datatype string;
+insert epithet sub resource, datatype string;
 insert person has-resource title, has-resource epithet;
 ```
 
@@ -237,7 +237,7 @@ insert thinker sub role;
 insert thought sub role;
 insert knowledge has-role thinker, has-role thought;
 insert fact sub entity, plays-role thought, has-resource name;
-insert description sub resource-type, datatype string;
+insert description sub resource, datatype string;
 insert fact has-resource description;
 insert person plays-role thinker;
 ```

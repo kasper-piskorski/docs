@@ -45,7 +45,7 @@ This will be our first attempt:
 
 ```
 insert
-  'name' sub resource-type datatype string;
+  'name' sub resource datatype string;
   'person' is-abstract sub entity;
   'man' is-abstract sub 'person';
   'woman' sub 'person';
@@ -86,7 +86,7 @@ Let's fix these issues and try again:
 
 ```
 insert
-  'name' sub resource-type datatype string;
+  'name' sub resource datatype string;
   'person' sub entity;                   # Fix (4)
   'man' sub 'person';
   'woman' sub 'person';

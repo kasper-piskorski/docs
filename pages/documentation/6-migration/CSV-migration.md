@@ -61,10 +61,10 @@ car sub entity
     has-resource description
     has-resource price;
 
-name sub resource-type datatype string;
-year sub resource-type datatype string;
-description sub resource-type datatype string;
-price sub resource-type datatype double;
+name sub resource datatype string;
+year sub resource datatype string;
+description sub resource datatype string;
+price sub resource datatype double;
 
 ```
 
@@ -121,9 +121,9 @@ pokemon sub entity
     has-resource pokedex-no
     has-resource description;
 
-type-id sub resource-type datatype string;
-pokedex-no sub resource-type datatype long;
-description sub resource-type datatype string;
+type-id sub resource datatype string;
+pokedex-no sub resource datatype long;
+description sub resource datatype string;
 
 pokemon-type sub entity
     has-resource description

@@ -60,13 +60,13 @@ insert software sub entity;
 To assign resources to the entities, which you can think of as attributes, we use resource types. First, we define what they are (age is a number, programming language is a string that represents the language's name), then we allocate them to the entity in question:
 
 ```graql
-insert age sub resource-type, datatype long;
+insert age sub resource, datatype long;
 insert person has-resource age;
 
-insert lang sub resource-type, datatype string;
+insert lang sub resource, datatype string;
 insert software has-resource lang;
 
-insert weight sub resource-type, datatype double;
+insert weight sub resource, datatype double;
 ```
 
 ### Relation Types
@@ -205,7 +205,7 @@ Then type edit, which will open up the systems default text editor where you can
 
 ```graql 
 insert 
-age sub resource-type
+age sub resource
 	datatype long;
 person sub entity;
 person has-resource age;
@@ -219,7 +219,7 @@ $josh has age 32;
 $vadas has age 27;
 $peter has age 35;
 
-weight sub resource-type
+weight sub resource
 	datatype double;
 
 knower sub role;
@@ -236,7 +236,7 @@ knows sub relation
 (knower: $marko, known-about: $josh) isa knows has weight 1.0;
 (knower: $marko, known-about: $vadas) isa knows has weight 0.5;
 
-lang sub resource-type
+lang sub resource
 	datatype string;
 software sub entity;
 software has-resource lang;
