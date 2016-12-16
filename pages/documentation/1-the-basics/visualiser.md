@@ -10,6 +10,28 @@ folder: documentation
 comment_issue_id: 52
 ---
 
+
+<!--
+
+Show how to use the types to visualise the ontology
+Click and hold on a node you can change the properties that you see
+Click to see the drawer on the right
+
+### Visualiser Colour Scheme
+
+The colours used in the visualiser are as follows:
+
+| Colour | Description                                   |
+| ----------- | --------------------------------------------- |
+| Pink     | Ontology meta-types                        |
+| Blue      | Data entity                         |
+| Green     | Ontology relation-type                       |
+| Orange     | Label                        |
+| Yellow     |                         |
+|      |                         |
+
+-->
+
 ## Introduction
 The Grakn visualiser provides a graphical tool to inspect and query your graph data. This article shows how to get it up and running on a basic example and introduces the visualiser's key features.
 
@@ -51,6 +73,8 @@ The main pane of your graph will be empty at this point. Click the Types button 
 
 There are a number of horizontal tabs on the left hand side of the screen, described as follows.
 
+## Pages
+
 ### Graph
 This is the main section of the visualiser that you will use to explore the graph. You can use the query section at the top of the main pane, then press "Submit" to visualise it. For example:
 
@@ -66,36 +90,24 @@ Alternatively, you can use the "Types" drawer to filter on specific types. For e
 
 ![Birth query](/images/match-$x-isa-birth.png)
 
-
-
 ### Console
-You can use this console to make queries instead of running a Graql shell in your terminal. 
+You can use this console to make queries instead of running a Graql shell in your terminal. You can run `match` and `compute` queries, but because the visualiser is read-only, you cannot make insertions.
 
 ### Config
+Shows a view on the Grakn configuration file. There are also 3 inference settings:
+
+* Activate Inference - activates inference, per query.
+* Materialise Inference - persists the inference into the graph, per query.
+* Materialisation: activate and persist all inference across the graph.
 
 ### Documentation
 This opens a separate tab in your browser and points it to the Grakn documentation portal. It may be how you ended up on this page!
 
-### Actions
+## Actions
 
 ### Keyspaces
 The keyspaces that are currently in use by Grakn.
 
-<!--
-### Visualiser Colour Scheme
-
-The colours used in the visualiser are as follows:
-
-| Colour | Description                                   |
-| ----------- | --------------------------------------------- |
-| Pink     | Ontology meta-types                        |
-| Blue      | Data entity                         |
-| Green     | Ontology relation                       |
-| Orange     | Label                        |
-| Yellow     |                         |
-|      |                         |
-
--->
 
 ## Where Next?
 

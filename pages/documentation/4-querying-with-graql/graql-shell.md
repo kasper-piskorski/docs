@@ -59,6 +59,7 @@ The REPL features several special commands:
 | `exit`       | Exits the REPL                                         |
 | `license`    | Prints the license                                     |
 
+{% include tip.html content="Graql shell maintains a history of past commands with the 'up' and 'down' arrows. You can also autocomplete keywords, type and variable names using tab!" %}
 
 ## Arguments
 

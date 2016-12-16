@@ -15,33 +15,34 @@ comment_issue_id: 16
 
 [![download](/images/download.png)](https://grakn.ai/download/latest)
 
-For more information on how to download older versions of Grakn, compiling from source code, or importing Grakn Java API library as development dependency, please visit our [Downloads page](../resources/downloads.html).
+For more information on how to download older versions of GRAKN.AI, compile from source code, or import the Grakn Java API library as a development dependency, please visit our [Downloads page](../resources/downloads.html).
 
-## Install Grakn
+## Install GRAKN.AI
 {% include note.html content="**Prerequisites**   <br />
-Grakn requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
+GRAKN.AI requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
 If you intend to build Grakn, you will also need Maven 3." %}
 
-Unzip the download into your preferred location and run the following in the terminal:
+Unzip the download into your preferred location and run the following in the terminal to start Grakn:
 
 ```bash
 cd [your Grakn install directory]
-bin/grakn.sh start
+./bin/grakn.sh start
 ```
 
 This will start an instance of Cassandra, which serves as the supported backend for Grakn. It starts also Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser dashboard.
 
 {% include note.html content="**Useful commands**  <br />
 To start Grakn, run `grakn.sh start`.   
-To stop Grakn, run `grakn.sh stop`. " %}
+To stop Grakn, run `grakn.sh stop`. 
+To remove all graphs from Grakn, run `grakn.sh clean`" %}
 
 
-## Set up Graql
+## Test the Graql Shell
 
-Graql is our knowledge-oriented query language, which allows you to interface with Grakn. We will start Graql and enter a few lines to check that all is working as it should.
+Graql is our knowledge-oriented query language, which allows you to interface with Grakn. To test that the installation is working correctly, here we will start the Graql shell and enter a few lines of code.
 
 ```bash
-bin/graql.sh
+./bin/graql.sh
 ```
 
 The Graql shell starts and you see a `>>>` prompt. Type in the following, but don't worry too much about what it means right now. We will go through it further in the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html).  
@@ -77,7 +78,7 @@ If you do not see the above message, please check our [FAQ page](../resources/fa
 
 
 ## Where next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query Grakn using Graql or Java.
+Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query Grakn using Graql.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 
