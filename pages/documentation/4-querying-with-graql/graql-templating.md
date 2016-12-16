@@ -53,65 +53,94 @@ Expressions can be used as the conditions in `if`/`elseif` statements or as the 
 
 #### Boolean expressions
 
-Boolean expressions only accept `true` and `false` (they will not work with `0/1` or `1/-1`). 
+Boolean expressions operate over `true` and `false`.
 
-|  Expression | Definition     | Usage | 
-|-------------|---------------|---| --- |
-| `and`          | `this && that`  |  `if (and this that) do { ... }` |
-| `or`          | `this || that`  |  `if (or this that) do { ... }` |
-| `not`          | `!this`   |  `if (not this) do { ... }` | 
+|  Expression | Usage | 
+|-------------|---| --- |
+| `and`       |  `if (<this> and <that>) do { ... }` |
+| `or`        |  `if (<this> or <that>) do { ... }` |
+| `not`       |  `if (not <this>) do { ... }` | 
 
-#### Comparison
+#### Comparisons
 
-|  Expression | Definition     | Usage | Notes
-|-------------|---------------|---| --- |
-| `eq`          | `this == that`  |  `if (eq this that) do { ... }` |
-| `ne`          | `this != that`  |  `if (ne this that) do { ... }` |
-| `gt`          | `this > that`   |  `if (gt this that) do { ... }` | operates on numbers
-| `ge`          | `this >= that`  |  `if (ge this that) do { ... }` | operates on numbers
-| `lt`          | `this < that`   |  `if (lt this that) do { ... }` | operates on numbers
-| `le`          | `this <= that`  |  `if (le this that) do { ... }` | operates on numbers
+|  Expression | Usage | Notes
+|-------------|---| --- |
+| `=`         |  `if (<this> = <that>) do { ... }` |
+| `!=`        |  `if (<this> != <that>) do { ... }` |
+| `>`         |  `if (<this> > <that>) do { ... }` | operates on numbers
+| `>=`        |  `if (<this> >= <that>) do { ... }` | operates on numbers
+| `<`         |  `if (<this> < <that>) do { ... }` | operates on numbers
+| `<=`        |  `if (<this> <= <that>) do { ... }` | operates on numbers
 
+### Conditionals 
+
+`if`, `else` and `elseif` are the included commands that provide conditional logic. 
+
+**`if` statements**:
+
+```graql-template
+if (<surname> != null)
+do { insert $x has surname <surname>; }
+```
+
+**`if`...`else`**
+
+```graql-template
+if ( <born> != null) 
+do { insert $x has birth-date <born>; } 
+else { insert $x; }
+```
+
+#### Groups
+
+Parenthesis can be used to group conditionals together. 
+
+```
+if( (first <= second) or (not (third <= second))) 
+do { insert isa y; } 
+else { insert isa z; }
+```
 
 ### Iteration
 
-Graql Templates allow you to iterate over a maps or lists.
+Graql Templates allow you to iterate over maps or lists.
 
-Example 1: `for` over a list:
-
-```graql-template
-for (whale in whales)
-do { $x isa whale has name <whale>; }
-```
-
-Example 2: `for` over a map:
+**For loop over a list**
 
 ```graql-template
-insert $x isa person;
-    for (name in names) do {
-        $x has nickname <name.nickname> ;
+insert
+    for (name in <names>)
+    do { 
+        $x has name <name>; 
     }
 ```
 
-Example 3: "enhanced" `for` over a map:
+**For loop over a map**
 
 ```graql-template
 insert $x isa person;
-    for (names) do {
-        $x has nickname <nickname> ;
+    for (address in <addresses>) do {
+        $x has street <address.street>
+    };
+```
+
+**Enhanced `for` loop over a map** In this type of loop it is not required to provide the item name. The properties within the `do` block context are inferred to be the first level children of the property in the `for` statement.
+
+```graql-template
+insert $x isa person;
+    for (<addresses>) do {
+        $x has street <street> ;
     }
 ```
 
-When iterating over a map as in Example 3, you are allowed to use the "enhanced" for syntax. In this loop, it is not required to provide the item name. The properties within the `do` block context are inferred to be the first level children of the property in the `for` statement.
-
-Example 5: doubly nested `for`:
+**Doubly nested `for`**
 
 ```graql-template
 insert
 
-for (people) do { 
+for (<people>) do { 
 $x isa person has name <name>;
-    for (addresses) do {
+    for (<addresses>) do {
     $y isa address ;
         $y has street <street> ;
         $y has number <number> ;
@@ -120,76 +149,100 @@ $x isa person has name <name>;
 }
 ```
 
-### Conditionals 
-
-`if`, `else` and `elseif` are the included commands that provide conditional logic. 
-
-Example 6: `if`:
-
-```graql-template
-if (ne dog null)
-do { insert $dog isa dog; }
-```
-
-Example 7: `if`...`else`:
-
-```graql-template
-if (ne firstName null) do {
-    insert $person has name <firstName>;
-} else {
-    insert $person;
-}
-```
-
 ### Macros
 
-Macros are denoted by an `@` symbol prefixing the name of the macro function. Mindmaps has included the following functions to the basic templating logic.  
+Macros are denoted by an `@` symbol prefixing the name of the macro function. 
 
-#### noescp
-
-Macro `noescp` is short for "no escape". This function will not add quotes or escape the characters inside the value when doing replacement. Accepts exactly one argument.
-
-e.g.
+**`noescp`**  is short for "no escape". This function will not add quotes or escape the characters inside the value when doing replacement. Exactly one argument accepted. Returns a string.
 
 ```graql-template
-insert $person has introduction "Hi! My name is @noescp(firstname) @noescp(lastname)";
+insert $x isa @noescp(<species>)-species;
 ```
 
-#### int
-
-`int` converts the contents of the data to an integer. Accepts exactly one argument.
-
-e.g.
+**`int`** converts the contents of the data to an integer. Exactly one argument accepted. 
 
 ```graql-template
-match $x isa thing has value @int(value);
+match $x isa thing has value @int(<value>);
 ```
 
-#### double
-
-`double` converts the contents of the data to a double. Accepts exactly one argument.
-
-e.g.
+**`long`** converts the contents of the data to an long. Exactly one argument accepted. 
 
 ```graql-template
-match $x isa thing has value @double(value);
+match $x isa thing has value @long(<value>);
 ```
 
-#### equals
-
-The `equals` macro returns a boolean and as such can be used in conditional statements. It can also be used in the Graql statment. Requires at least two arguments. 
-
-e.g. in Graql
+**`double`** converts the contents of the data to a double. Exactly one argument accepted. 
 
 ```graql-template
-insert $x isa hasEquivalentResource value @equals(this that other)
+match $x isa thing has value @double(<value>);
 ```
 
-e.g. in conditional
+**`boolean`** converts the contents of the data to a boolean. Exactly one argument accepted. 
 
 ```graql-template
-if (@equals(this that)) do { equals } else { not }"
+match $x isa thing has value @boolean(<value>);
 ```
+
+**`equals`** returns a boolean with a value specified by the gievn string. The boolean represents a `true` value if the string argumetn is not null and is equal, ignoring case, to the string "true". Can be used in conditional statements. Requires at least two arguments. 
+
+```graql-template
+insert $x isa thing value @equals(<this>, <that>, <other>)
+```
+
+```graql-template
+if (@equals(<this>, <that>)) do { equals }"
+```
+
+**`date`** `(<value>, fromFormat, toFormat)` converts a date string from the given format to another format. If the third argument is missing, converts to epoch time. Date format specifications can be found [here](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). Returns a string. 
+
+```graql-template
+insert $x value @date(<date>, "mm/dd/yyyy", "dd/mm/yyyy");
+```
+
+```
+insert $x value @date(<date>, "mm/dd/yyyy");
+```
+
+**`lower`** converts the contents of the data to lower case. 
+
+```graql-template
+match $x isa thing has value @lower(<value>);
+```
+
+**`upper`** converts the contents of the data to upper case.
+
+```graql-template
+match $x isa thing has value @upper(<value>);
+```
+
+**`split`** splits the given string around the matches of the given regular expression. More information about regular expressions can be found [here](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum). Returns a list of strings.
+
+```
+insert $x 
+    for (val in @split(<list>, ",")) do { 
+        has description <val>
+    };
+```
+
+**`concat`** concatenates all of the given arguments into a single string. If the arguments are not strings, it converts them to strings before concatenating. Returns a string.
+
+```
+insert $x has value @concat(<forname>, " ", <surname>);
+```
+
+#### Nesting macros
+
+When writing a template, you can nest macros inside other macros. When doing so, you're usnig the results of the nested macros as arguments to the enclosing ones. 
+
+For example, the `date` macro returns a string, but many people will want to convert to epoch time and store the value as a long. If that is the case you can:
+
+```
+insert $x value @long(@date(<date> "mm/dd/yyyy"));
+```
+
+#### User-defined Macros
+
+The described macros are built-in to Graql templating language. Grakn provides an interface that a user should extend in java to implement custom macros. The user should then register the created macro with the `QueryBuilder` class. This is done in the java migration [sample project](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration). 
 
 ### Scopes
 
@@ -200,7 +253,7 @@ For example, the following loop:
 ```graql-template
 insert $x isa pokemon has description <name>;
     
-for (types) do {
+for (<types>) do {
     $y isa pokemon-type ;
         $y has description <type-description> ;
         (pokemon-with-type: $x, type-of-pokemon: $y) isa has-type;
@@ -236,23 +289,6 @@ insert $x1 isa pokemon has description "Raichu";
     $y4 isa pokemon;
     (ancestor: $x1, descendent: $y4) isa evolution; 
 ```
-
-## Usage in Java
-
-For the moment, Graql templating can only be used through the Java API:
-
-```java
-String template = "insert " +
-                "for (whale in whales ) do {" +
-                "   $x isa whale has name <whale>;" +
-                "}";
-
-Map<String, Object> data = Collections.singletonMap("whales", Arrays.asList("shamu", "dory"));
-
-Graql.parseTemplate(template, data);
-```
-
-The data argument to the `parseTemplate()` function is a `Map<String, Object>`, where the `Object` is one of a `List<Object>`, `String`, `Double`, `Integer`, `Boolean` or another nested `Map<String, Object`.
 
 {% include links.html %}
 
