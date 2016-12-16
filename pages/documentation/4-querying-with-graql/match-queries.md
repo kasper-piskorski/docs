@@ -209,12 +209,12 @@ Match types that are a subclass of the given type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell7">
 <pre>
-match $x sub type;
+match $x sub concept;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java7">
 <pre>
-qb.match(var("x").sub("type"))
+qb.match(var("x").sub("concept"))
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

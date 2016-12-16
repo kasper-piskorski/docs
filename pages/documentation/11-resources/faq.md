@@ -115,7 +115,7 @@ Started ServerConnector@7aa5814d{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
 You can then open your browser and connect to the address printed on the console (http://0.0.0.0:4567). Select the Graql Visualiser tab and you will see a Graql shell, from which you can input queries, for example:
 
 ```graql
-match $x isa type;
+match $x sub concept;
 ```
 
 In result, you will see the resulting nodes and relations displayed inside the graql visualiser on the same page.

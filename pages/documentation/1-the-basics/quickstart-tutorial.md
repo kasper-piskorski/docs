@@ -76,11 +76,13 @@ The `match .... insert ...` syntax will perform the `insert` query for every res
 
 Check that the data has loaded, by performing a pair of queries:
 
+Find all people in the graph:
 ```graql
-# Find all people in the graph
 match $p isa person, has identifier $i;
+```
 
-# Find all people who are married
+Find all people who are married:
+```
 match (spouse1: $x, spouse2: $y) isa marriage, has date $d; $x has identifier $xi; $y has identifier $yi;  
 ```
 
