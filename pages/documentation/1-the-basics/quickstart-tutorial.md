@@ -10,17 +10,6 @@ folder: documentation
 comment_issue_id: 18
 ---
 
-<!--Will eventually cover the following:
-insert ontology and data, and test out a basic query plus visualiser it
-migrate data using graql migrator,
-query data with no inference
-insert rules,
-query data with inference
-analyse data using graql analytics
-delete data
--->
-
-
 ## Introduction
 If you have not yet set up GRAKN.AI, please [download the latest version](../resources/downloads.html), then start the Grakn engine and the Graql shell.
 
@@ -31,9 +20,11 @@ If you have not yet set up GRAKN.AI, please [download the latest version](../res
 
 If you're unsure of these steps, don't worry. Please see the [Setup guide](../get-started/setup-guide.html).
 
-This example is loosely based on the genealogy example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the data and ontology at this point, but initially we will simply show how to work with Graql to set up an ontology and add some data to a graph. 
+This example is loosely based on the genealogy example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the complete data and ontology here, but we will simply show how to work with Graql to set up an ontology and add some data to a graph. This is a basic "quick start" example to illustrate addition of an ontology and some data to Grakn, using the Graql shell. 
 
-## Ontology
+## Using the Graql Shell
+
+### Adding an Ontology
 
 We are going to add ontology concepts for some people, their notable events (when they are born, get married, have children, die) and relationships (children, parents, spouses). 
 
@@ -51,7 +42,7 @@ insert spouse1 sub role; spouse2 sub role; person plays-role spouse1; person pla
 insert marriage sub relation, has-role spouse1, has-role spouse2, has-resource date; date sub resource datatype string;
 ```
 
-## Data
+### Adding Data
 
 Now we will add some sample data to the graph, to correspond to the ontology we entered above. First, add four instances of `person`:
 
@@ -74,6 +65,7 @@ The `match .... insert ...` syntax will perform the `insert` query for every res
 
 {% include note.html content="<b>Don't forget to `commit`!</b> <br /> Nothing you have entered into the Graql shell has yet been committed to the graph, nor has it been validated. To save any changes you make to a graph, you need to type `commit` in the shell. It is a good habit to get into regularly committing what you have entered." %}
 
+### Querying Data
 Check that the data has loaded, by performing a pair of queries:
 
 ```graql
@@ -86,12 +78,37 @@ match (spouse1: $x, spouse2: $y) isa marriage, has date $d; $x has identifier $x
 
 {% include note.html content="In queries, Graql variables start with a `$`, which represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
 
+### Loading the Ontology and Data from File
+
+Above, was a quick overview to show the basics of making Graql queries on some basic data within the Graql shell. A more common use case is to load the ontology and data directly from `.gql` files into a graph instead of typing it all into the shell. You can find a good example of this in the [Visualising a Graph](./visualiser.html) documentation, which takes our full genealogy data, loads it into a graph and explores it using the Grakn visualiser.
+
+We shall move on to look at some of the other use cases that are typical for developers working with GRAKN.AI.
+
+## Data Migration
+
+{% include note.html content="The text in this section is a placeholder, and will be replaced with more detail in early 2017." %}
+
+Migrating data in formats such as CSV, SQL and JSON into Grakn is a key use case. We discuss this in [Migration](../migration/migration.html).
+
+## Using Inference
+
+{% include note.html content="The text in this section is a placeholder, and will be replaced with more detail in early 2017." %}
+
+The use of GRAKN.AI to infer new information about data lies at its core. Further information can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy) about the Genealogy data.
+
+## Using Analytics
+
+{% include note.html content="The text in this section is a placeholder, and will be replaced with more detail in early 2017." %}
+
+Use of Grakn Analytics is covered in [Analytics](../graql-analytics/analytics-overview.html).
+
 
 ## Where Next?
 
-Now you have started getting to grips with Grakn, please explore our additional [example code](../examples/examples.html) and documentation. [Modern](../examples/modern.html) is an additional example of adding an ontology and data to a graph and making test queries, which is useful for getting to grips with Graql syntax.
+This was a very high-level overview of some of the key use cases for Grakn, and has hardly touched the surface or gone into detail. Fear not, however, because 
+the rest of our developer documentation should be more in-depth! But, if you need extra information, please [get in touch](https://grakn.ai/community.html).
 
-We are always adding more and welcome ideas and improvement suggestions. Please [get in touch](https://grakn.ai/community.html)!
+A good place to start is to explore our additional [example code](../examples/examples.html) and documentation. 
 
 {% include links.html %}
 
