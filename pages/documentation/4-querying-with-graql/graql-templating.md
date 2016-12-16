@@ -95,7 +95,7 @@ else { insert $x; }
 
 Parenthesis can be used to group conditionals together. 
 
-```
+```graql-template
 if( (first <= second) or (not (third <= second))) 
 do { insert isa y; } 
 else { insert isa z; }
@@ -199,7 +199,7 @@ if (@equals(<this>, <that>)) do { equals }"
 insert $x value @date(<date>, "mm/dd/yyyy", "dd/mm/yyyy");
 ```
 
-```
+```graql-template
 insert $x value @date(<date>, "mm/dd/yyyy");
 ```
 
@@ -217,7 +217,7 @@ match $x isa thing has value @upper(<value>);
 
 **`split`** splits the given string around the matches of the given regular expression. More information about regular expressions can be found [here](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum). Returns a list of strings.
 
-```
+```graql-template
 insert $x 
     for (val in @split(<list>, ",")) do { 
         has description <val>
@@ -226,7 +226,7 @@ insert $x
 
 **`concat`** concatenates all of the given arguments into a single string. If the arguments are not strings, it converts them to strings before concatenating. Returns a string.
 
-```
+```graql-template
 insert $x has value @concat(<forname>, " ", <surname>);
 ```
 
@@ -236,7 +236,7 @@ When writing a template, you can nest macros inside other macros. When doing so,
 
 For example, the `date` macro returns a string, but many people will want to convert to epoch time and store the value as a long. If that is the case you can:
 
-```
+```graql-template
 insert $x value @long(@date(<date> "mm/dd/yyyy"));
 ```
 
