@@ -68,6 +68,7 @@ The visualiser has a number of horizontal navigation tabs on its left hand side,
 
 The main pane of your graph will be empty at this point. Click the Types button in the top right, then the Visualise button at the top right hand side of the newly opened drawer. The genealogy-graph ontology will be displayed.
 
+![Genealogy Ontology](/images/genealogy-ontology.png)
 
 ## Working With The Visualiser
 
