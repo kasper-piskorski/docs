@@ -1,11 +1,11 @@
 package ai.grakn;
 
 import groovy.util.Eval;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.DirectoryFileFilter;
-import org.apache.commons.io.filefilter.RegexFileFilter;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +16,12 @@ import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static ai.grakn.DocTestUtil.PAGES;
+import static ai.grakn.DocTestUtil.allMarkdownFiles;
+import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.fail;
 
+@RunWith(Parameterized.class)
 public class JavaDocsTest {
 
     private static final Pattern TAG_JAVA =
@@ -27,28 +31,34 @@ public class JavaDocsTest {
                     "(</pre>|```)", Pattern.DOTALL);
 
     private static String groovyPrefix;
-    private int numFound = 0;
+    private final File file;
+    private static int numFound = 0;
+
+    public JavaDocsTest(File file, @SuppressWarnings("UnusedParameters") String name) {
+        this.file = file;
+    }
+
+    @Parameterized.Parameters(name = "{1}")
+    public static Collection files() {
+        return allMarkdownFiles().stream()
+                .map(file -> new Object[] {file, file.toString().substring(PAGES.length())})
+                .collect(toList());
+    }
 
     @BeforeClass
     public static void loadGroovyPrefix() throws IOException {
         groovyPrefix = new String(Files.readAllBytes(Paths.get("src/test/java/ai/grakn/prefix.groovy")));
     }
 
-    @Test
-    public void testExamplesValidGroovy() throws IOException {
-        File dir = new File("..");
-
-        Collection<File> files =
-                FileUtils.listFiles(dir, new RegexFileFilter(".*\\.md"), DirectoryFileFilter.DIRECTORY);
-
-        files.forEach(this::assertFileValidGroovy);
-
+    @AfterClass
+    public static void assertEnoughExamplesFound() {
         if (numFound < 10) {
             fail("Only found " + numFound + " Java examples. Perhaps the regex is wrong?");
         }
     }
 
-    private void assertFileValidGroovy(File file) {
+    @Test
+    public void testExamplesValidGroovy() throws IOException {
         byte[] encoded = new byte[0];
         try {
             encoded = Files.readAllBytes(file.toPath());

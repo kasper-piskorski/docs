@@ -1,11 +1,11 @@
 package ai.grakn;
 
 import ai.grakn.exception.GraqlParsingException;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.DirectoryFileFilter;
-import org.apache.commons.io.filefilter.RegexFileFilter;
 import org.apache.tinkerpop.gremlin.util.function.TriConsumer;
+import org.junit.AfterClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,8 +17,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+import static ai.grakn.DocTestUtil.PAGES;
+import static ai.grakn.DocTestUtil.allMarkdownFiles;
+import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.fail;
 
+@RunWith(Parameterized.class)
 public class GraqlDocsTest {
 
     private static final Pattern TAG_GRAQL =
@@ -34,24 +38,30 @@ public class GraqlDocsTest {
                             "(```)", Pattern.DOTALL);
 
     private static final Pattern SHELL_GRAQL = Pattern.compile("^*>>>(.*?)$", Pattern.MULTILINE);
+    private final File file;
 
-    private int numFound = 0;
+    private static int numFound = 0;
 
-    @Test
-    public void testExamplesValidSyntax() throws IOException {
-        File dir = new File("..");
+    public GraqlDocsTest(File file, @SuppressWarnings("UnusedParameters") String name) {
+        this.file = file;
+    }
 
-        Collection<File> files =
-                FileUtils.listFiles(dir, new RegexFileFilter(".*\\.md"), DirectoryFileFilter.DIRECTORY);
+    @Parameterized.Parameters(name = "{1}")
+    public static Collection files() {
+        return allMarkdownFiles().stream()
+                .map(file -> new Object[] {file, file.toString().substring(PAGES.length())})
+                .collect(toList());
+    }
 
-        files.forEach(this::assertFileValidSyntax);
-
+    @AfterClass
+    public static void assertEnoughExamplesFound() {
         if (numFound < 10) {
             fail("Only found " + numFound + " Graql examples. Perhaps the regex is wrong?");
         }
     }
 
-    private void assertFileValidSyntax(File file) {
+    @Test
+    public void testExamplesValidSyntax() throws IOException {
         GraknGraph graph = DocTestUtil.getTestGraph();
 
         byte[] encoded = new byte[0];
