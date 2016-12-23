@@ -10,10 +10,10 @@ folder: documentation
 ---
 
 
-<!--Page to comprise: 
-(1) section that talks about rules, 
-(2) description of their syntax, what is allowed in their conclusion and what is not, 
-(3) configuration options, whether to materialize or not, 
+<!--Page to comprise:
+(1) section that talks about rules,
+(2) description of their syntax, what is allowed in their conclusion and what is not,
+(3) configuration options, whether to materialize or not,
 (4) maybe cover the future options for a choice of different reasoning algorithms etc?
 
 ?? Comparison of FC and BC?
@@ -24,250 +24,161 @@ and associated pages
 -->
 
 ## Rule Objects
+Grakn supports Graql-native, rule-based reasoning to allow automated capture and evolution of patterns within the graph. Graql reasoning is performed at query time and is guaranteed to be complete.
 
-We define the following hierarchy of rule objects - concepts:
-
-{ConceptType}<--(sub)--{RuleType}
-{RuleType}<--(sub)--{Inference Rule}
-{RuleType}<--(sub)--{Ronstraint Rule}
-{inference rule}<--(isa)--{instance of inference rule, e.g. if daughter+brother then niece}
-{constraint rule}<--(isa)--{instance of constraint rule, e.g. if daughter then not married}
-
-We introduce a single rule object in the Object Model being able to accommodate inference rules and constraint rules:
+The rule objects are instances of inference rule RuleType and assume the following general form:
 
 ```
-class Rule extends ConceptInstance - wrapped around a tinkerpop vertex class
-// to check for possible inference/satisfiability, we always evaluate if(lhs){evaluate rhs}
-// action specifies action executed on RHS pattern if expectation is not met
-{
-Query (String?) LHS
-Query (String?) RHS
-
-//only for constraint rules, this may be removed after graql implements negation
-Boolean expectation {true, false}
-Boolean materialise {true, false}
-
-//specifies whether it is an inference or constraint rule
-// this inherited from Concept.java
-String type 
-
-//add an edge with label "hypothesis" from conceptType to Rule concept
-addHypothesis(ConceptType conceptType)
-
-//add an edge with label "conclusion" from Rule concept to conceptType
-addConclusion(ConceptType conceptType)
-}
+if [rule-body] then [rule-head]
 ```
-
-
-## Rule Examples
-
-### Example Rule: "All Swedish women are pretty"
- 
-```Graql
-Rule:
-LHS: match
-   $x isa person;
-	 $x has gender "female";
-   $x has nationality Sweden";
-
-RHS: insert
-     $x has beauty-score 9;
-```
-
-Upon addition of this rule instance, the concept types of Person, Gender, and Nationality will be linked to it. 
-
-Once an instance of Gender or Nationality is added to the graph, it can be checked for being a partial instantiation of the rule by checking whether the value of the resource is met after downloading the relevant connected Rule Instance. If it is a partial instantiation then the LHS is executed with a where chain specifying the given instance.
-
-### Example Rule: If two companies have the same location and their directors are related, flag them as "suspicious"
- 
-```Graql
-select match
-    $x isa company;
-    $y isa company;
-    $x has address "address";
-    $y has address "address";
-    ($x, $u) isa directorship;
-    ($y, $v) isa directorship;
-    ($u, $v) select $x, $y;
-
-insert
-    $x has flag "suspicious";
-    $y has flag "suspicious";
-```
-
-Upon addition of this rule instance, the concept types of Company, Address and Directorship will be linked to it. 
-
-### Example Rule: "If a Person's parent has a brother, the person has an uncle"
- 
-```Graql
-Rule:
-LHS: match
-  	 ($x, $y);
-     ($y, $z);
-  
-     $x isa person;
-     $y isa person;
-     $z isa person;
-     $a (child $x, parent $z) isa hasParent;
-
-     ($z, $y) isa hasBrother select $x, $y;
-  
-RHS: insert 
-     isa hasUncle(nephew/niece $x, uncle $y);
-```
-
-### Example Rule: "Transitivity of a specific relation"
- 
-```Graql
-Rule:
-LHS: match
-  	 (roleA $x, roleB $y) isa someRelationType;
-     (roleA $y, roleB $z) isa someRelationType select $x, $z;
-     
-RHS: insert 
-		 isa someRelationType(roleA $x, roleB $z);
-```
-
-### Example Rule: "Two concepts being related results in something"
- 
-```Graql
-Rule:
-LHS: match
-     ($x, $y)
-  
-RHS: insert
-     isa someRelationType($x, $y);
-```
-
-
-## Constraint examples
-
-### Example Constraint: "Every person that is employed by a company must have a contract between them"
-
-```Graql
-Constraint:
-IF (LHS)
-        match
-        $x isa person
-        $y isa person
-        (employee $x, employer $y) isa employment
-THEN (RHS)
-        match
-        ($x, $y) isa contract ask;
-    
-expectation = true
-```
-
-
-Suppose the following piece of information is added:
-```
-$x = 'bob'
-```
-
-We then execute the constraint LHS on 'bob':
-
-```java-test-ignore
-Check whether bob is an instantiation of LHS:
-
-        Query.parser("match
-        $x isa person;$y isa person;
-        (employee $x, employer $y) isa employment").where($x id 'bob')
-       
-        we also need to check for:
-       
-        Query.parser("match
-        $x isa person;$y isa person;
-        (employee $x, employer $y) isa employment").where($y id 'bob')
-       
-        put the result of all queries above in to a list of (x,y) pairs called LHS
-then
-check if RHS meets the expectation:
-                     
-        for every item i(x,y) in LHS
-        Constraint.expectation ?= Query.parser("match
-        ($x, $y) isa contract ask").where($x id i.x, $y id i.y);
-```
-
-Alternatively we can process data on a relation basis, say the following information is added:
+or in Prolog/Datalog terms:
 
 ```
-Employment(bob, alice)        
+[rule-head] :- [rule-body].
 ```
 
-```java-test-ignore
-Check whether added relation leads to instantiation of LHS:
+In logical terms, we restrict the rules to be definite Horn clauses (i.e. disjunctions of atoms with at most one unnegated atom). In our system we define both the head and the body of rules as Graql patterns. Consequently, the rules are statements of the form:
 
-(x, y) = Query.parser(Constraint.LHS).where($x id 'bob', $y id 'alice')
-  
-Then check if RHS meets the expectation:
-Constraint.expectation ?= Query.parser(Constraint.RHS).where($x id x, $y id y)
+```
+p :- q1, q2, ..., qn
+```
+where p and q's are atoms that each correspond to a single Graql pattern.
+
+## Graql Rule Syntax
+In Graql we refer to the body and the head of the rule as the left-hand- and right-hand-side of the rule respectively. Therefore in Graql terms we define rule objects in the following way:
+
+```graql
+$optional-name isa inference-rule,
+lhs {
+    ...;
+    ...;
+    ...;
+},
+rhs {
+    ...;
+};
 ```
 
+In Graql the left-hand-side of the rule is required to be a conjunctive pattern, whereas the right-hand-side should contain a single pattern.
 
-## Support of Graql Constructs
+A classic reasoning example is the ancestor example: the two Graql rules R1 and R2 stated below define the ancestor relationship which can be understood as either happening between two generations directly between a parent and a child or between three generations when the first generation hop is expressed via a parentship relation whereas the second generation hop is captured by an ancestor relation.
 
+```graql
+$R1 isa inference-rule,
+lhs {
+    (parent: $x, child: $y) isa Parent;
+},
+rhs {
+    (ancestor: $x, descendant: $y) isa Ancestor;
+};
+
+$R2 isa inference-rule,
+lhs {
+    (parent: $x, child: $z) isa Parent;
+    (ancestor: $z, descendant: $y) isa Ancestor;
+},
+rhs {
+    (ancestor: $x, descendant: $y) isa Ancestor;
+};
+```
+
+The above defined rules correspond to the following definition of Prolog/Datalog clauses:
+
+```
+R1: ancestor(X, Y) :- parent(X, Y)  
+R2: ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y)
+```
+
+### Rule Java API
+Rule objects are instances of type inference-rule which can be retrieved by:
+
+```java
+RuleType inferenceRule = graknGraph.getMetaRuleInference();
+```
+
+Rule objects can be added to the graph both through the Graph API as well as through Graql. When adding rules with Graql we simply follow the Graql-defined rules with an insert statement, save as .gql file and load into graph in a standard manner. With the use of the Java API, the two rules constituting the ancestor example can be added in the following way:
+
+```java
+Pattern r1Body = var().rel("parent", "x").rel("child", "y").isa("Parent");
+Pattern r1Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
+
+Pattern r2Body = and(
+        var().rel("parent", "x").rel("child", "y").isa("Parent')"),
+        var().rel("ancestor", "z").rel("descendant", "y").isa("Ancestor")
+);
+Pattern r2Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
+
+Rule rule1 = inferenceRule.addRule(r1Body, r1Head);
+Rule rule2 = inferenceRule.addRule(r2Body, r2Head);
+```
+
+## Allowed Graql Constructs in Rules
+The tables below summarise Graql constructs that are allowed to appear in LHSs
+and RHSs of rules.
 ### Queries
 
-| Description        | Example  | Input | Body | Head | Level of support  
-| -------------------- |:---:|:---|:--|:--| -----:|
-| conjunctive queries        | - |  ✓ | ✓ | x | supported |
-| disjunctive queries        | - |  ✓ | x | x |  supported |
-| nested queries | queries with multiply nested conjunctions/disjunctions | ✓ | x | x | supported |
-| reified queries           | queries with complex constructs represented as variables (e.g. relations as roleplayers )  | ✓ | ✓ | x| experimental support |
-
+| Description        | LHS | RHS
+| -------------------- |:--|:--|
+| atomic queries | ✓ | ✓ |
+| conjunctive queries        | ✓ | x |
+| disjunctive queries        | x | x |  
 
 ### Variable Patterns
 
-| Description        | Example           | Body | Head | Level of support  
-| -------------------- |:--- |:--|:--|-----:|
-| isa | match $x isa pokemon; | ✓ | x | supported |
-| id  | match $x id "Articuno";  | ✓ | indirect only  | supported |
-| value | match $x value contains "lightning";  | ✓ | indirect only  | supported |
-| has | match $x has pokedex-no < 20; | ✓ |  |  supported |
-| relations with specified types | match (ancestor: $x, descendant: $y) isa ancestorship; | ✓ | ✓ | supported |
-| relations with incomplete roles | match (ancestor: $x, $y) isa ancestorship; | ✓ | ✓, not recommended | supported |
-| relations without type | match (ancestor: $x, $y); | ✓ | ✓ | supported |
-| match all relations | match ($x, $y); | ✓| x | supported |
-| relations with rscs in one line | match (ancestor: $x, $y) isa rel-typel has resource 'value'; |✓| x | supported |
-| relations with user specified var | match $r ($x, $y); |✓| ✓ | supported |
-| relations with roles as variables | match ($r: $x, $y) isa rel-type;  | ✓ | ✓ | experimental support |
-| relations with type var | match (ancestor: $x, $y) isa $rel; | ✓ | ✓ | supported |
-| resource comparison | match $x value > $y;  | ✓ | x | supported |
-| != | match $x != $y; | ✓ | x | supported |
-| has-scope | match ($x, $y) has-scope $z;match $x has-scope $y;  | ✓ | x | supported |
+| Description        | Pattern Example           | LHS | RHS
+| -------------------- |:--- |:--|:--|
+| isa | $x isa pokemon; | ✓ | x |
+| id  | $x id "Articuno";  | ✓ | indirect only  |
+| value | $x value contains "lightning";  | ✓ | indirect only  |
+| has | $x has pokedex-no < 20; | ✓ | ✓ |
+| relations | (ancestor: $x, descendant: $y) isa ancestorship; | ✓ | ✓ |
+| resource comparison | $x value > $y;  | ✓ | x |
+| != | $x != $y; | ✓ | x |
+| has-scope | ($x, $y) has-scope $z;$x has-scope $y;  | ✓ | x |
 
 ### Type Properties
 
-| Description        | Example   | Body | Head | Level of support  
-| -------------------- |:---|:--|:--|-----:|
-| sub        | match $x sub type; | ✓| x | supported |
-| plays-role | match $x plays-role ancestor; |✓| x | supported   |
-| has-resource        | match $x has-resource name; | ✓ | x |  supported   |
-| has-role   | match evolution has-role $x; | ✓ | x | supported |
-| is-abstract | match $x is-abstract; | ✓ | x | supported |
-| datatype | match $x isa resource, datatype string; | ✓| x |  supported |
-| regex | match $x isa resource, regex /hello/; | ✓ | x | supported |
+| Description        | Pattern Example   | LHS | RHS
+| -------------------- |:---|:--|:--|
+| sub        | $x sub type; | ✓| x |
+| plays-role | $x plays-role ancestor; |✓| x |
+| has-resource        | $x has-resource name; | ✓ | x |  
+| has-role   | evolution has-role $x; | ✓ | x |
+| is-abstract | $x is-abstract; | ✓ | x |
+| datatype | $x isa resource, datatype string; | ✓| x |
+| regex | $x isa resource, regex /hello/; | ✓ | x |
 
-### Predicates
+## Configuration options
+Graql offers certain degrees of freedom in deciding how and if reasoning should be performed
+Namely it offers two options:
+- whether reasoning should be on
+- whether inferred knowledge should be materialised (persisted).
 
-| Description        | Example           | Level of support  
-| -------------------- |:---| -----:|
-| Comparators        | match $x has height = 19, has weight > 1500;               | supported|
-| Contains | match $x has description $desc;$desc value contains "underground";    | supported  |
-| Regex        | match $x value /.\*(fast&#124;quick).\*/;      | supported  |
-| And and Or   | match $x has weight >20 and <30;        | supported |
+The first option is self-explanatory. Without turning the reasoning on the rules will not be triggered and no knowledge will be inferred. The materialisation option decides whether the inferred knowledge should be persisted to the graph or stored in memory. This has huge impact on performance and for larger graphs either materialisation should be avoided or the queries
+should be limited by employing the _limit_ modifier which allows termination in sensible time.
 
-### Modifiers
+The two settings can be controlled by providing suitable parameters to the QueryBuilder objects in the following way:
 
-| Description        | Level of support  
-| -------------------- | -----:|
-| limit        | supported |
-| offset | supported  |
-| distinct | supported  |
-| order   | supported |
-| select | supported |
+### Switching reasoning on
 
+```
+//graph is a GraknGraph instance
+QueryBuilder qb = graph.graql().infer(true);
+```
+
+### Switching materialisation on query construction
+
+```
+//graph is a GraknGraph instance
+QueryBuilder qb = graph.graql().infer(true).materialise(true);
+```
+
+Once the QueryBuilder has been defined, the constructed queries will obey the specified reasoning variants.
+The table below summarises the available reasoning configuration options together with their defaults.
+
+| Option       | Description | Default
+| -------------------- |:--|:--|
+| QueryBuilder::infer(boolean ) | controls whether reasoning should be turned on | False/Off |
+| QueryBuilder::materialise(boolean )       | controls whether inferred knowledge should be persisted to graph | False/Off |
 
 {% include links.html %}
-
