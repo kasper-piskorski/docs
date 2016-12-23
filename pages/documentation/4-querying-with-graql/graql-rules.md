@@ -166,7 +166,7 @@ The two settings can be controlled by providing suitable parameters to the Query
 QueryBuilder qb = graph.graql().infer(true);
 ```
 
-### Switching materialisation on query construction
+### Switching materialisation on
 
 ```
 //graph is a GraknGraph instance
