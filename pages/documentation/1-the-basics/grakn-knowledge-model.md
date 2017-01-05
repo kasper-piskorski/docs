@@ -142,18 +142,21 @@ Note, that unlike in the case of entity, relation and resource types, there are 
 
 To ensure data is correctly structured (i.e. consistent) with respect to the ontology, all data instances are validated against the ontology constraints. All the explicitly represented ontology constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation and, consequently, the data entry process. For example, the ontology in Figure 2 establishes the following schema templates for the concept types `woman` and `marriage`:
 
-#### `woman`
+```
+insert
+woman sub entity;
 
-* `has-resource name`
-* `plays-role wife`
-* `plays-role partner1`
-* `plays-role partner2`
+woman has-resource name,
+	plays-role wife,
+	plays-role partner1,
+	plays-role partner2;
 
-#### `marriage`
+marriage sub entity;
 
-* `has-resource since`
-* `has-role wife`
-* `has-role husband`
+marriage has-resource since,
+	has-role wife,
+	has-role husband;
+```
 
  A data instance `inst` of a concept type `C` is valid, whenever the following conditions are satisfied:
 
