@@ -17,7 +17,7 @@ The distributed Grakn knowledge graph presents two different ways to obtain insi
 <!-- JCS Comments: Please can you clarify "graph is not important" as I don't understand what you mean, and also provide a suitable link to more about Pregel and map reduce  ? -->
 
 {% include note.html content="Under the hood we use implementations of the Pregel distributed graph computing
-framework and map reduce when a graph is not important. This way we can implement algorithms that will scale horizontally." %}
+framework and/or map reduce when we need to aggregate tht result. This way we can implement algorithms that will scale horizontally." %}
 
 ## What Can I do With Analytics?
 
@@ -28,7 +28,7 @@ The functionality breaks down into two main tasks:
 
 ### Statistics
 
-Currently you can compute the `min`, `max`, `mean`, `median`, `sd` (standard deviation) and `sum` of resources attached to entities. This
+Currently you can compute the `min`, `max`, `mean`, `median`, `std` (standard deviation) and `sum` of resources attached to entities. This
 can also be achieved on a subgraph, which is a subset of the types in your dataset. For example, you can specify queries to find the mean price of cars and trucks in a graph:   
 
 ```
@@ -90,7 +90,7 @@ This graph also happens to include relationships between people and between mess
 <!-- JCS Comments: Sorry - this doesn't make sense to me. Please could you rephrase for the hard of thinking, or ping me to explain, so I can reword it when I understand? -->
 
 {% include note.html content="The degree is the simplest measure of the importance (centrality) of a node in a graph.
-Graql if very flexible and allows us to define the subgraph in which we want to compute the degree, and therefore determine
+Graql is very flexible and allows us to define the subgraph in which we want to compute the degree, and therefore determine
 importance according to various structures in the graph.
 " %}
 

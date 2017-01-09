@@ -19,7 +19,7 @@ are:
 *  `count`
 *  `max`
 *  `mean`
-*  `med (median)`
+*  `median`
 *  `min`
 *  `std (standard deviation)`
 *  `sum`
