@@ -189,6 +189,9 @@ entries:
       - title: Modern example
         output: web
         url: /documentation/examples/modern.html
+      - title: CSV migration
+        output: web
+        url: /documentation/examples/CSV-migration.html
       - title: SQL migration
         output: web
         url: /documentation/examples/SQL-migration.html
