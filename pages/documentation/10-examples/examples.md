@@ -36,7 +36,9 @@ A common use-case is to migrate existing SQL data to a graph in Grakn. We walk t
 
 ### CSV Migration
 
-There is an example of CSV migration on our [sample projects repo](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration) on Github. Please see the [readme file](https://github.com/graknlabs/sample-projects/blob/master/example-csv-migration/README.md) to get started.
+We have an example of [migrating genealogy data from CSV](../examples/CSV-migration.html). 
+
+Our [sample-projects repository on Github](https://github.com/graknlabs/sample-projects) also contains [an example that takes a simple CSV data file of pets](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration). Please see the [readme file](https://github.com/graknlabs/sample-projects/blob/master/example-csv-migration/README.md) to get started.
 
 CSV migration is also covered in a [blog post](https://blog.grakn.ai/twenty-years-of-games-in-grakn-14faa974b16e#.cuox3cew2).
 

@@ -330,7 +330,9 @@ insert (spouse1: $x0, spouse2: $y0) isa marriage;
 
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
+We have an additional, more extensive, example of [migrating genealogy data from CSV](../examples/CSV-migration.html). Our [sample-projects repository on Github](https://github.com/graknlabs/sample-projects) also contains [an example that takes a simple CSV data file of pets](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration), and another [example for video games](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration-games), as described in a separate [blog post](https://blog.grakn.ai/twenty-years-of-games-in-grakn-14faa974b16e#.do8tq0dm8).
+
+You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html). 
 
 {% include links.html %}
 
