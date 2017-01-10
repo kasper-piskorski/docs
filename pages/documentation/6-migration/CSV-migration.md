@@ -35,11 +35,11 @@ OPTIONS
 
 There are limitations on the CSV format that prevent it from expressing the semantics of the data. Grakn cannot automatically migrate and derive an ontology for your data. To have the full benefit of a knowledge graph, you must write the ontology for your dataset.
 
-CSV Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
+CSV Migration makes heavy use of the Graql templating language. You will need a foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
 
-Once you have written an ontology for your dataset, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The CSV migrator will apply the template to each row of data in the CSV file. If you are familiar with the Graql templating language, you are aware that it replaces the indicated sections in the template with provided data. In this migrator, the column header is the key and the content of each row at that column the value.
+Once you have written an ontology for your dataset, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The CSV migrator will apply the template to each row of data in the CSV file. If you are familiar with the Graql templating language, you are aware that it replaces the indicated sections in the template with provided data: the column header is the key and the content of each row at that column the value.
 
-#### Cars example
+## Example 1: Cars
 
 Let's take a simple example. First, the CSV:
 
@@ -67,7 +67,6 @@ description sub resource datatype string;
 price sub resource datatype double;
 
 ```
-
 
 And the Graql template:   
 
@@ -107,130 +106,228 @@ Year  Make  Model Description Price
 air  moon roof   loaded"  4799.00
 ```
 
-### Multiple Files
+## Example 2: Genealogy
 
-This small example will demonstrate creating one graph from three CSV data files using the templating language.
+This example uses a simple genealogy example to demonstrate the creation of a graph by importing data from three CSV files. For simplicity, the following text uses some of the data from our larger [genealogy-graph](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph) example, but it is subset of that dataset for the purposes of illustrating the migration process only.
 
-To start, we must write the ontology for this example.
+### Ontology
+
+A simple ontology is shown below. There is a single entity, `person`, which has a number of resources and can play various roles (`parent`, `child`, `spouse1` and `spouse2`) in two possible relations (`parentship` and `marriage`).
 
 ```graql
 insert
 
-pokemon sub entity
-    plays-role pokemon-with-type
-    has-resource pokedex-no
-    has-resource description;
+# Entities
 
-type-id sub resource datatype string;
-pokedex-no sub resource datatype long;
-description sub resource datatype string;
+person sub entity
+	plays-role parent
+	plays-role child
+	plays-role spouse1
+	plays-role spouse2
 
-pokemon-type sub entity
-    has-resource description
-    has-resource type-id
-    plays-role type-of-pokemon;
+	has-resource identifier
+	has-resource firstname
+	has-resource surname
+	has-resource middlename
+	has-resource picture
+	has-resource age
+	has-resource birth-date
+	has-resource death-date
+	has-resource gender;
 
-has-type sub relation
-    has-role pokemon-with-type
-    has-role type-of-pokemon;
-pokemon-with-type sub role;
-type-of-pokemon sub role;
-```
+# Roles and Relations
 
-We define the three data files. Each file needs a template that to tell the Migrator how to deal with the data in each row.
+marriage sub relation
+	has-role spouse1
+	has-role spouse2
+	has-resource picture;
 
-**pokemon.csv**
+spouse1 sub role;
+spouse2 sub role;
+
+parentship sub relation
+	has-role parent
+	has-role child;
+
+parent sub role;
+child sub role;
+
+# Resources
+
+identifier sub resource datatype string;
+firstname sub resource datatype string;
+surname sub resource datatype string;
+middlename sub resource datatype string;
+picture sub resource datatype string;
+age sub resource datatype long;
+birth-date sub resource datatype string;
+death-date sub resource datatype string;
+gender sub resource datatype string;
+``` 
+
+
+### Data Migration
+
+We will consider three CSV files that contain data to migrate into Grakn. 
+
+#### people.csv
+
+The *people.csv* file contains details of the people that we will use to create seven `person` entities. Note that not all fields are available for each person, but at the very least, each row is expected to have the following:
+
+* pid (this is the person identifier, and is a string representing their full name)
+* first name
+* gender
 
 ```csv
-id,identifier,species_id,height,weight
-4,charmander,4,6,85
-5,charmeleon,5,11,190
-6,charizard,6,17,905
+name1,name2,surname,gender,born,dead,pid,age,picture
+Timothy,,Titus, male,,,	Timothy Titus,,	
+Mary,,Guthrie,female,,,Mary Guthrie,,	
+John,,Niesz,male,1798-01-02,1872-03-06,John Niesz,74,
+Mary,,Young,female,1798-04-09,1868-10-28,Mary Young,70,
+William,Sanford,Titus,male,1818-03-23,01/01/1905,William Sanford Titus,76,
+Elizabeth,,Niesz,female,1820-08-27,1891-12-08,Elizabeth Niesz,71,
+Mary,Melissa,Titus,female,1847-08-12,10/05/1946,Mary Melissa Titus,98,
 ```
 
-**template**
-
-```graql-template
-insert 
-
-$x isa pokemon 
-  has description <identifier>
-  has pokedex-no @int(id);
-```
-
-To keep this example simple, here we've chosen to only migrate the data from the `id` and the `identifier` columns. The template creates one pokemon per row, attaching the descriptions and pokemon numbers as resources. The migrated insert statements look like:
-
-```graql
-insert $x0 has pokedex-no 4 isa pokemon has description "charmander";
-insert $x0 has description "charmeleon" has pokedex-no 5 isa pokemon;
-insert $x0 has pokedex-no 6 isa pokemon has description "charizard";
-```
-
-**types.csv**   
-
-```csv
-id,identifier
-1,normal
-2,fighting
-3,flying
-4,poison
-5,ground
-6,rock
-7,bug
-8,ghost
-9,steel
-10,fire
-```
-
-**template**:   
+The Graql template code for the Grakn migrator is as follows:
 
 ```graql-template
 insert
+	$p isa person has identifier <pid>
+		has firstname <name1>,
+		
+		if (<surname> != "") do 
+		{
+		has surname <surname>,
+		}
 
-$x isa pokemon-type 
-  has type-id <id>
-  has description <identifier>;
+		if (<name2> != "") do 
+		{
+		has middlename <name2>,
+		}
+
+		if (<picture> != "") do 
+		{
+		has picture <picture>,
+		}
+
+		if (<age> != "") do 
+		{
+		has age @long(<age>),
+		}
+
+		if (<born> != "") do 
+		{
+		has birth-date <born>,
+		}
+
+		if (<dead> != "") do 
+		{
+		has death-date <dead>,
+		}
+
+		has gender <gender>;
 ```
 
-This is another very simple example that results in the following inserts: 
+For each row in the CSV file, the template inserts a `person` entity with resources that take the value of the cells in that row. Where data is optional, the template checks to see if it is present before adding the resources for middlename, surname, picture, age, birth and death dates. 
+
+Calling the Grakn migrator on the *people.csv* file using the above template (named `people-migrator.gql`) is performed as follows:
+
+```bash
+./<grakn-install-location>/bin/migration.sh csv -i ./people.csv -t ./people-migrator.gql
+```
+
+The data insertion generated by the migrator is as follows:
 
 ```graql
-insert $x0 has description "normal" has type-id "1" isa pokemon-type;
-insert $x0 has type-id "2" has description "fighting" isa pokemon-type;
-insert $x0 has type-id "3" isa pokemon-type has description "flying";
-insert $x0 has description "poison" has type-id "4" isa pokemon-type;
-insert $x0 has type-id "5" has description "ground" isa pokemon-type;
-insert $x0 has description "rock" has type-id "6" isa pokemon-type;
-insert $x0 has description "bug" has type-id "7" isa pokemon-type;
-insert $x0 has type-id "8" isa pokemon-type has description "ghost";
-insert $x0 has description "steel" isa pokemon-type has type-id "9";
-insert $x0 has description "fire" has type-id "10" isa pokemon-type;
+insert $p0 has death-date "1891-12-08" isa person has gender "female" has identifier "Elizabeth Niesz" has surname "Niesz" has age 71 has firstname "Elizabeth" has birth-date "1820-08-27";
+insert $p0 has identifier "William Sanford Titus" has age 76 isa person has firstname "William" has surname "Titus" has gender "male" has birth-date "1818-03-23" has middlename "Sanford" has death-date "1905-01-01";
+insert $p0 isa person has surname "Titus" has firstname "Timothy" has identifier "Timothy Titus" has gender "male";
+insert $p0 isa person has firstname "Mary" has identifier "Mary Guthrie" has surname "Guthrie" has gender "female";
+insert $p0 isa person has firstname "Mary" has death-date "1946-05-10" has surname "Titus" has age 98 has identifier "Mary Melissa Titus" has middlename "Melissa" has gender "female" has birth-date "1847-08-12";
+insert $p0 has death-date "1872-03-06" has age 74 has identifier "John Niesz" isa person has birth-date "1798-01-02" has firstname "John" has gender "male" has surname "Niesz";
+insert $p0 has identifier "Mary Young" has birth-date "1798-04-09" isa person has firstname "Mary" has death-date "1868-10-28" has surname "Young" has gender "female" has age 70;
 ```
 
+#### births.csv
 
-**edges.csv**
+Each row of *births.csv* records a parent and child, with two rows for each of the three children listed:
 
 ```csv
-pokemon_id,type_id,slot
-4,10,1
-5,10,1
-6,10,1
-6,3,2
+parent,child
+Timothy Titus,William Sanford TitusMary Guthrie,	William Sanford Titus
+John Niesz,Elizabeth NieszMary Young,Elizabeth Niesz
+Elizabeth Niesz,Mary Melissa TitusWilliam Sanford Titus,Mary Melissa Titus
 ```
 
-**template**:   
+The Graql template code for the Grakn migrator is as follows:
 
 ```graql-template
 match
-  $pokemon has pokedex-no <pokemon_id>;
-  $type has type-id <type_id>;
-insert (pokemon-with-type: $pokemon, type-of-pokemon: $type) isa has-type;
+	$c isa person has identifier <child>;
+	$p isa person has identifier <parent>;
+insert
+	(child: $c, parent: $p) isa parentship;
 
 ```
 
-In this final template we create a `has-type` relationship between the values of the `pokemon_id` and `type_id` columns. You'll notice that to ensure the relationship is between the correct entities, we've had to find them in the graph before inserting using a `match-insert` query. 
+For each row in the CSV file, the template matches the child and parent cells to their corresponding `person` entities, and then inserts a `parentship` relation, placing the entities it has matched into the `child` and `parent` roles.
 
 {% include note.html content="You must ensure that all entities exist in a graph before inserting relations." %}
+
+The data insertion generated by the migrator is as follows:
+
+```graql
+match $c0 has identifier "William Sanford Titus" isa person; $p0 isa person has identifier "Timothy Titus";
+insert (child: $c0, parent: $p0) isa parentship;
+match $p0 isa person has identifier "Mary Guthrie"; $c0 has identifier "William Sanford Titus" isa person;
+insert (child: $c0, parent: $p0) isa parentship;
+match $p0 isa person has identifier "Elizabeth Niesz"; $c0 isa person has identifier "Mary Melissa Titus";
+insert (child: $c0, parent: $p0) isa parentship;
+match $c0 isa person has identifier "Mary Melissa Titus"; $p0 has identifier "William Sanford Titus" isa person;
+insert (child: $c0, parent: $p0) isa parentship;
+match $c0 isa person has identifier "Elizabeth Niesz"; $p0 has identifier "John Niesz" isa person;
+insert (child: $c0, parent: $p0) isa parentship;
+match $c0 isa person has identifier "Elizabeth Niesz"; $p0 has identifier "Mary Young" isa person;
+insert (child: $c0, parent: $p0) isa parentship;
+```
+
+#### weddings.csv
+
+The *weddings.csv* file contains two columns that correspond to both spouses in a marriage, and an optional column for a photograph of the happy couple:
+
+```csv
+spouse1,spouse2,pictureTimothy Titus,Mary Guthrie,John Niesz,Mary Young,http://1.bp.blogspot.com/-Ty9Ox8v7LUw/VKoGzIlsMII/AAAAAAAAAZw/UtkUvrujvBQ/s1600/johnandmary.jpgElizabeth Niesz,William Sanford Titus,
+```
+
+The Graql template code for the migrator is as follows:
+
+```graql-template
+match
+	$x has identifier <spouse1>;
+	$y has identifier <spouse2>;
+insert
+	(spouse1: $x, spouse2: $y) isa marriage
+
+	if (<picture> != "") do 
+		{
+		has picture <picture>
+		};
+```
+
+For each row in the CSV file, the template matches the two spouse cells to their corresponding `person` entities, and then inserts a `marriage` relation, placing the entities it has matched into the `spouse1` and `spouse2` roles. If there is data in the picture cell, a `picture` resource is also created for the `marriage` relation.
+
+The Graql insertion code is as follows:
+
+```graql
+match $x0 has identifier "Timothy Titus"; $y0 has identifier "Mary Guthrie";
+insert (spouse1: $x0, spouse2: $y0) isa marriage;
+match $x0 has identifier "John Niesz"; $y0 has identifier "Mary Young";
+insert has picture "http:\/\/1.bp.blogspot.com\/-Ty9Ox8v7LUw\/VKoGzIlsMII\/AAAAAAAAAZw\/UtkUvrujvBQ\/s1600\/johnandmary.jpg" (spouse1: $x0, spouse2: $y0) isa marriage;
+match $y0 has identifier "William Sanford Titus"; $x0 has identifier "Elizabeth Niesz";
+insert (spouse1: $x0, spouse2: $y0) isa marriage;
+```
+
 
 ## Where Next?
 You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
