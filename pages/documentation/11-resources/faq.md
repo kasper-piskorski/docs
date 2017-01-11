@@ -12,6 +12,16 @@ comment_issue_id: 23
 
 {% include note.html content="This page contains some of the questions were are mostly commonly asked, and is updated regularly. Please feel free to use our [discussion forums](http://discuss.grakn.ai) to ask us for help or advice." %}
 
+## About GRAKN.AI
+
+### Why did you develop a new ontology and query language? 
+
+We are often asked why we have developed a new ontology and query language rather than use existing standards like [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework), [OWL](https://en.wikipedia.org/wiki/Web_Ontology_Language) and [SPARQL](https://en.wikipedia.org/wiki/SPARQL). 
+
+Our underlying data model is that of a property graph, so in principle we’re able to import and export from/to RDF if needed. However, our ontology language is designed to strike a different and better balance between expressiveness and complexity than offered by the existing OWL profiles, especially in the context of knowledge graph structures. In consequence, our query language, Graql, is aligned with our ontology formalism to enable higher level query capabilities than supported by SPARQL over an RDF data model.
+
+OWL is not well-suited for graph-structures. Because of its formal foundations and computational limitations it is in fact a more natural language for managing tree-shaped data instead. OWL also makes it hard to help validate consistency of data and ensure it is well-structured, and this is what knowledge graph applications require.
+
 ## Bugs and strange behaviour
 
 ### Why does Grakn hang when I try to start it?   
