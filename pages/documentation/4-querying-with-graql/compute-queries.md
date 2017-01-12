@@ -72,36 +72,36 @@ compute count in person;
 
 ### Mean
 
-Computes the mean value of a given resource type. This algorithm requires the [subgraph](#subgraph) syntax to be used.
+Computes the mean value of a given resource. This algorithm requires the [subgraph](#subgraph) syntax to be used.
 For example,
 
 ```
 compute mean of age in person;
 ```
 
-would compute the mean of the value persisted in instances of the resource type age. It is also possible to provide a
-set of resource types.
+would compute the mean of the value persisted in instances of the resource `age`. It is also possible to provide a
+set of resources.
 
 ```
 compute mean of user-rating, expert-rating in movie;
 ```
 
-which would compute the mean of the union of the instances of the two resource types.
+which would compute the mean of the union of the instances of the two resources.
 
 ### Median
 
-Computes the median value of a given resource type. This algorithm requires the [subgraph](#subgraph) syntax to be used.
+Computes the median value of a given resource. This algorithm requires the [subgraph](#subgraph) syntax to be used.
 For example,
 
 ```
 compute median of age in person;
 ```
 
-would compute the median of the value persisted in instances of the resource type age. 
+would compute the median of the value persisted in instances of the resource `age`. 
 
 ### Minimum
 
-Computes the minimum value of a given resource type, similar to [mean](#mean).
+Computes the minimum value of a given resource, similar to [mean](#mean).
 
 ```
 compute min of age in person;
@@ -109,7 +109,7 @@ compute min of age in person;
 
 ### Maximum
 
-Computes the maximum value of a given resource type, similar to [mean](#mean).
+Computes the maximum value of a given resource, similar to [mean](#mean).
 
 ```
 compute max of age in person;
@@ -117,7 +117,7 @@ compute max of age in person;
 
 ### Standard Deviation
 
-Computes the standard deviation of a given resource type, similar to [mean](#mean).
+Computes the standard deviation of a given resource, similar to [mean](#mean).
 
 
 ```
@@ -126,7 +126,7 @@ compute std of age in person;
 
 ### Sum
 
-Computes the sum of a given resource type, similar to [mean](#mean).
+Computes the sum of a given resource, similar to [mean](#mean).
 
 ## Available Graph Algorithms
 

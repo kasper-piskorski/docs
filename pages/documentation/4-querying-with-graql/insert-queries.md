@@ -238,7 +238,7 @@ qb.insert(name("gen2-pokemon").sub("pokemon"));
 
 
 ### has-role
-Add a role to this relation type.
+Add a role to this relation.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell9" data-toggle="tab">Graql</a></li>
@@ -288,8 +288,7 @@ qb.insert(name("pokemon").playsRole("pokemon-trained"));
 
 Allow the concept type to have the given resource.
 
-This is done by creating a specific relation type relating the concept type
-and resource.
+This is done by creating a specific relation relating the concept and resource.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell11" data-toggle="tab">Graql</a></li>

@@ -169,7 +169,7 @@ qb.match(
 
 ### relation
 
-Match concepts that are relations between the given variables. If a role type is provided, the role player must be playing that role type.
+Match concepts that are relations between the given variables. If a role is provided, the role player must be playing that role.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell6" data-toggle="tab">Graql</a></li>
@@ -221,7 +221,7 @@ qb.match(var("x").sub("concept"))
 
 
 ### has-role
-Match relation types that have the given role.
+Match relations that have the given role.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell8" data-toggle="tab">Graql</a></li>
@@ -263,7 +263,7 @@ qb.match(var("x").playsRole("ancestor"));
 </div> <!-- tab-content -->
 
 ### has-resource
-Match concept types that can have the given resource types.
+Match concept types that can have the given resource.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell10" data-toggle="tab">Graql</a></li>

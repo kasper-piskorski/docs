@@ -18,25 +18,22 @@ The following consistency checks are executed upon `commit` depending on what is
 
 ### Plays Role Validation 
 
-This validation rule simply checks if an _Entity_ (which is a role player in a relation) is allowed to play the role it has been allocated to. For example, this is the rule that would prevent a dog from being a driver in a car.
+This validation rule simply checks if an entity (which is a role player in a relation) is allowed to play the role it has been allocated to. For example, this is the rule that would prevent a dog from being a driver in a car.
 
 ### Type Validation
 
 This validation rule ensures that abstract types do not have any instances. For example if we declare the type `vehicle` to be abstract, with `car` and `motorbike` to be sub types of `vehicle`, then only cars and motorbikes are allowed to have instances. 
 
-### Role Type Validation
+### Role Validation
 
-This rule checks that non abstract _Role Types_ are part of a _Relation Type_. For example if we declare the _Role Type_ `husband` and forget to link it to any `Relation Type`, then this check will fail.
+This rule checks that non abstract roles are part of a relation. For example if we declare the role `husband` and forget to link it to any relation, then this check will fail.
 
 ### Relation Validation
 
-A relation is valid if all of the role players of the relation are allowed to play their corresponding roles. 
-This also includes checking that the relation is an instance of a valid _Relation Type_. A _Relation Type_ is valid if it has at minimum two roles. 
+A relation is valid if: 
 
-### Relation Type Validation
-
-This checks that non abstract relation types have at least 2 roles. 
-For example, a _Relation Type_ `marriage` with only one role `husband` would fail this check.
+* all of the role players of the relation are allowed to play their corresponding roles. 
+* it has, at minimum, two roles. For example, a `marriage` with only one role `husband` would fail this check.
 
 ### An Example of Validation
 
@@ -76,8 +73,8 @@ The type ['man'] of role player ['ENTITY-man-2482cb91-1f12-40ea-b659-49d07d06ddf
     
 Lets see why:
 
-1. **Role Type Validation** failed because the role `wife` is not connected to any _Relation Type_
-2. **Relation Type Validation** failed because `marriage` only has one role `husband`.
+1. **Role Validation** failed because the role `wife` is not connected to any relation
+2. **Relation Validation** failed because `marriage` only has one role `husband`.
 3. **Type Validation** failed because we accidental made `man` abstract and we declared `Bob` to be an instance of `man`.
 4. **Plays Role Validation** failed because we forgot to say that a `man` can play the role of `husband`.
 5. **Relation Validation** failed because `Alice` is playing the role of a `wife` which is not part of a `marriage` and `Bob` is playing the role of a `husband`, which as a man he is not allowed to do.

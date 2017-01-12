@@ -282,13 +282,13 @@ Match related concepts.
 match ($x, $y);
 ```
 
-Match concepts related with a particular relation type.
+Match concepts related with a particular relation.
 
 ```graql
 match ($p1, $p2) isa marriage;
 ```
 
-Match two related concepts where one plays a specified role type.
+Match two related concepts where one plays a specified role.
 
 ```graql
 match (director: $p, $m);
@@ -318,7 +318,7 @@ insert blockbuster sub movie;
 ```sql
 has-role role
 ```
-Insert a new relation type with two role types.
+Insert a new relation with two roles.
 
 ```graql
 insert
@@ -355,7 +355,8 @@ insert person has-resource name;
 ```sql
 datatype ( string | long | double | boolean )
 ```
-Insert a new resource type with the given datatype.
+
+Insert a new resource with the given datatype.
 
 ```graql
 insert name sub resource, datatype string;

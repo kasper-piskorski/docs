@@ -45,7 +45,7 @@ Otherwise, only the specified properties are deleted.
 ## Properties
 
 ### has-role
-Removes the given role from the relation type.
+Removes the given role from the relation.
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell2" data-toggle="tab">Graql</a></li>
     <li><a href="#java2" data-toggle="tab">Java</a></li>

@@ -45,9 +45,9 @@ The relationships between the entities are straightforward:
 * there are two connections between marko and other people who he "knows" (josh and vadas). 
 * there are four connections between people and software, such that the people "created" the software. Lop was created by marko, peter and josh, which ripple was created by josh.
 
-### Entity Types
+### Entities
 
-Here, we add person and software entity types to the graph, via the Graql shell:
+Here, we add person and software entities, via the Graql shell:
 
 ```graql
 insert person sub entity;
@@ -55,9 +55,9 @@ insert software sub entity;
 ```
 
 
-### Resource Types
+### Resources
 
-To assign resources to the entities, which you can think of as attributes, we use resource types. First, we define what they are (age is a number, programming language is a string that represents the language's name), then we allocate them to the entity in question:
+To assign resources to the entities, which you can think of as attributes, we use resources. First, we define what they are (age is a number, programming language is a string that represents the language's name), then we allocate them to the entity in question:
 
 ```graql
 insert age sub resource datatype long;
@@ -70,9 +70,9 @@ insert software has-resource lang has-resource name;
 insert weight sub resource datatype double;
 ```
 
-### Relation Types
+### Relations
 
-Let's first define the relationship between people. The diagram shows that marko knows vadas, but we don't have any information about whether the inverse is true (though it seems likely that vadas probably also knows marko). Let's set up a relationship called `knows`, which has two role-types - `knower` (for marko) and `known-about` (for vadas):
+Let's first define the relationship between people. The diagram shows that marko knows vadas, but we don't have any information about whether the inverse is true (though it seems likely that vadas probably also knows marko). Let's set up a relationship called `knows`, which has two roles - `knower` (for marko) and `known-about` (for vadas):
 
 ```graql
 insert knower sub role;
@@ -82,7 +82,7 @@ insert person plays-role known-about;
 insert knows sub relation, has-role knower, has-role known-about, has-resource weight;	
 ```
 
-Note that the  `knows` relation type also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
+Note that the  `knows` relation also has an attribute, in the form of a resource called `weight` (though it's not clear from the TinkerPop example what this represents).
 
 We can set up a similar relationship between software and the people that created it:
 

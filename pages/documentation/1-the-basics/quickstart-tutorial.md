@@ -26,16 +26,15 @@ This example is loosely based on the genealogy example that we use throughout ou
 
 ### Adding an Ontology
 
-We are going to add ontology concepts for some people, their notable events (when they are born, get married, have children, die) and relationships (children, parents, spouses). 
+We are going to add some basic ontology concepts: entities, relations, roles and resources. Our example is very simple: a `person` entity with a resource named `identifier`, which is a string to hold the person's name. 
 
-Let's add our first concepts: an `entity-type` named `person` that has a `resource-type` named `identifier`, which is a string to hold the person's name. 
 Copy and paste the following into the Graql shell:
 
 ```graql
 insert person sub entity, has-resource identifier; identifier sub resource, datatype string;
 ```
 
-Now we will add a `relation-type`: a `marriage` which relates two `person` entity-types, one playing `role-type` of `spouse1` and the other playing the `role-type` of `spouse2`.  Only a `person` can take a role in the `marriage` (not a `car` or `dog` for example), so we also need to specify that to Grakn. Copy and paste each of the following lines into the Graql shell:
+Now we will add a relation: a `marriage` which relates two `person` entities, one playing the role `spouse1` and the other playing the role `spouse2`.  Only a `person` can take a role in the `marriage` (not a `car` or `dog` for example), so we also need to specify that to Grakn. Copy and paste each of the following lines into the Graql shell:
 
 ```graql
 insert spouse1 sub role; spouse2 sub role; person plays-role spouse1; person plays-role spouse2;
@@ -84,9 +83,9 @@ match (spouse1: $x, spouse2: $y) isa marriage, has date $d; $x has identifier $x
 
 ### Loading the Ontology and Data from File
 
-Above, was a quick overview to show the basics of making Graql queries on some basic data within the Graql shell. A more common use case is to load the ontology and data directly from `.gql` files into a graph instead of typing it all into the shell. You can find a good example of this in the [Visualising a Graph](./visualiser.html) documentation, which takes our full genealogy data, loads it into a graph and explores it using the Grakn visualiser.
+Above, was a quick overview to show the basics of making Graql queries on some basic data within the Graql shell. It is much more common to load the ontology and data directly from *.gql* files into a graph instead of typing it all into the shell. You can find a good example of this in the [Visualising a Graph](./visualiser.html) documentation, which takes our full genealogy data, loads it into a graph and explores it using the Grakn visualiser. Please see the [examples section](../examples/examples.html) of this documentation for others.
 
-We shall move on to look at some of the other use cases that are typical for developers working with GRAKN.AI.
+We shall now move on to look briefly at some of the other use cases that are typical for developers working with GRAKN.AI.
 
 ## Data Migration
 
