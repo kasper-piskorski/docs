@@ -84,9 +84,9 @@ entries:
       - title: Insert Queries
         output: web
         url: /documentation/graql/insert-queries.html
-    #  - title: Graql Rules
-    #    output: web
-    #    url: /documentation/graql/graql-rules.html
+      - title: Graql Rules
+        output: web
+        url: /documentation/graql/graql-rules.html
       - title: Aggregate Queries
         output: web
         url: /documentation/graql/aggregate-queries.html

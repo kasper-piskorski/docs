@@ -1,27 +1,13 @@
 ---
 title: Graql Rules
 keywords: graql, reasoner
-last_updated: December 9th 2016
+last_updated: January 2017
 tags: [graql, reasoner]
 summary: "Graql Rules"
 sidebar: documentation_sidebar
 permalink: /documentation/graql/graql-rules.html
 folder: documentation
 ---
-
-
-<!--Page to comprise:
-(1) section that talks about rules,
-(2) description of their syntax, what is allowed in their conclusion and what is not,
-(3) configuration options, whether to materialize or not,
-(4) maybe cover the future options for a choice of different reasoning algorithms etc?
-
-?? Comparison of FC and BC?
-
-Look through documentation on internal wiki:
-http://wiki.grakn.ai/docs/mindmaps-reasoner-project-definition
-and associated pages
--->
 
 ## Rule Objects
 Grakn supports Graql-native, rule-based reasoning to allow automated capture and evolution of patterns within the graph. Graql reasoning is performed at query time and is guaranteed to be complete.
@@ -42,10 +28,11 @@ In logical terms, we restrict the rules to be definite Horn clauses (i.e. disjun
 ```
 p :- q1, q2, ..., qn
 ```
+
 where p and q's are atoms that each correspond to a single Graql pattern.
 
 ## Graql Rule Syntax
-In Graql we refer to the body and the head of the rule as the left-hand- and right-hand-side of the rule respectively. Therefore in Graql terms we define rule objects in the following way:
+In Graql we refer to the body of the rule as the left-hand-side of the rule and the head as the right-hand-side of the rule. Therefore in Graql terms we define rule objects in the following way:
 
 ```graql
 $optional-name isa inference-rule,
@@ -61,7 +48,7 @@ rhs {
 
 In Graql the left-hand-side of the rule is required to be a conjunctive pattern, whereas the right-hand-side should contain a single pattern.
 
-A classic reasoning example is the ancestor example: the two Graql rules R1 and R2 stated below define the ancestor relationship which can be understood as either happening between two generations directly between a parent and a child or between three generations when the first generation hop is expressed via a parentship relation whereas the second generation hop is captured by an ancestor relation.
+A classic reasoning example is the ancestor example: the two Graql rules R1 and R2 stated below define the ancestor relationship which can be understood as either happening between two generations directly between a parent and a child or between three generations when the first generation hop is expressed via a parentship relation and the second generation hop is captured by an ancestor relation.
 
 ```graql
 $R1 isa inference-rule,
@@ -82,6 +69,8 @@ rhs {
 };
 ```
 
+When adding rules such as those defined above with Graql, we simply use an `insert` statement, and load the rules, saved as a *.gql* file, into the graph in a standard manner, much as for an ontology. 
+
 The above defined rules correspond to the following definition of Prolog/Datalog clauses:
 
 ```
@@ -96,7 +85,7 @@ Rule objects are instances of type inference-rule which can be retrieved by:
 RuleType inferenceRule = graknGraph.getMetaRuleInference();
 ```
 
-Rule objects can be added to the graph both through the Graph API as well as through Graql. When adding rules with Graql we simply follow the Graql-defined rules with an insert statement, save as .gql file and load into graph in a standard manner. With the use of the Java API, the two rules constituting the ancestor example can be added in the following way:
+Rule objects can be added to the graph both through the Graph API as well as through Graql. With the use of the Java API, the two rules constituting the ancestor example can be added in the following way:
 
 ```java
 Pattern r1Body = var().rel("parent", "x").rel("child", "y").isa("Parent");
@@ -113,8 +102,9 @@ Rule rule2 = inferenceRule.addRule(r2Body, r2Head);
 ```
 
 ## Allowed Graql Constructs in Rules
-The tables below summarise Graql constructs that are allowed to appear in LHSs
-and RHSs of rules.
+The tables below summarise Graql constructs that are allowed to appear in LHS
+and RHS of rules.   
+
 ### Queries
 
 | Description        | LHS | RHS
@@ -127,37 +117,34 @@ and RHSs of rules.
 
 | Description        | Pattern Example           | LHS | RHS
 | -------------------- |:--- |:--|:--|
-| isa | $x isa pokemon; | ✓ | x |
-| id  | $x id "Articuno";  | ✓ | indirect only  |
-| value | $x value contains "lightning";  | ✓ | indirect only  |
-| has | $x has pokedex-no < 20; | ✓ | ✓ |
-| relations | (ancestor: $x, descendant: $y) isa ancestorship; | ✓ | ✓ |
-| resource comparison | $x value > $y;  | ✓ | x |
-| != | $x != $y; | ✓ | x |
-| has-scope | ($x, $y) has-scope $z;$x has-scope $y;  | ✓ | x |
+| `isa` | `$x isa pokemon;` | ✓ | x |
+| `id`  | `$x id "Articuno";` | ✓ | indirect only  |
+| `value` | `$x value contains "lightning";`  | ✓ | indirect only  |
+| `has` | `$x has pokedex-no < 20;` | ✓ | ✓ |
+| `relation` | `(ancestor: $x, descendant: $y) isa ancestorship;` | ✓ | ✓ |
+| resource comparison | `$x value > $y;`  | ✓ | x |
+| `!=` | `$x != $y;` | ✓ | x |
+| `has-scope` | `($x, $y) has-scope $z;$x has-scope $y;`  | ✓ | x |
 
 ### Type Properties
 
 | Description        | Pattern Example   | LHS | RHS
 | -------------------- |:---|:--|:--|
-| sub        | $x sub type; | ✓| x |
-| plays-role | $x plays-role ancestor; |✓| x |
-| has-resource        | $x has-resource name; | ✓ | x |  
-| has-role   | evolution has-role $x; | ✓ | x |
-| is-abstract | $x is-abstract; | ✓ | x |
-| datatype | $x isa resource, datatype string; | ✓| x |
-| regex | $x isa resource, regex /hello/; | ✓ | x |
+| `sub`        | `$x sub type;` | ✓| x |
+| `plays-role` | `$x plays-role ancestor;` |✓| x |
+| `has-resource`        | `$x has-resource name;` | ✓ | x |  
+| `has-role`   | `evolution has-role $x;` | ✓ | x |
+| `is-abstract` | `$x is-abstract;` | ✓ | x |
+| `datatype` | `$x isa resource, datatype string;` | ✓| x |
+| `regex` | `$x isa resource, regex /hello/;` | ✓ | x |
 
 ## Configuration options
-Graql offers certain degrees of freedom in deciding how and if reasoning should be performed
-Namely it offers two options:
-- whether reasoning should be on
-- whether inferred knowledge should be materialised (persisted).
+Graql offers certain degrees of freedom in deciding how and if reasoning should be performed. Namely it offers two options:
 
-The first option is self-explanatory. Without turning the reasoning on the rules will not be triggered and no knowledge will be inferred. The materialisation option decides whether the inferred knowledge should be persisted to the graph or stored in memory. This has huge impact on performance and for larger graphs either materialisation should be avoided or the queries
-should be limited by employing the _limit_ modifier which allows termination in sensible time.
+* **whether reasoning should be on**. This option is self-explanatory. If the reasoning is not turned on, the rules will not be triggered and no knowledge will be inferred. 
+* **whether inferred knowledge should be materialised (persisted to the graph) or stored in memory**. Persisting to graph has a huge impact on performance when compared to in-memory inference, and, for larger graphs, materialisation should either be avoided or queries be limited by employing the _limit_ modifier, which allows termination in sensible time.
 
-The two settings can be controlled by providing suitable parameters to the QueryBuilder objects in the following way:
+In Java, the two settings can be controlled by providing suitable parameters to the `QueryBuilder` objects in the following way:
 
 ### Switching reasoning on
 
@@ -173,12 +160,13 @@ QueryBuilder qb = graph.graql().infer(true);
 QueryBuilder qb = graph.graql().infer(true).materialise(true);
 ```
 
-Once the QueryBuilder has been defined, the constructed queries will obey the specified reasoning variants.
+Once the `QueryBuilder` has been defined, the constructed queries will obey the specified reasoning variants.
+    
 The table below summarises the available reasoning configuration options together with their defaults.
 
 | Option       | Description | Default
 | -------------------- |:--|:--|
-| QueryBuilder::infer(boolean ) | controls whether reasoning should be turned on | False/Off |
-| QueryBuilder::materialise(boolean )       | controls whether inferred knowledge should be persisted to graph | False/Off |
+| `QueryBuilder::infer(boolean)` | controls whether reasoning should be turned on | False=Off |
+| `QueryBuilder::materialise(boolean)`       | controls whether inferred knowledge should be persisted to graph | False=Off |
 
 {% include links.html %}
