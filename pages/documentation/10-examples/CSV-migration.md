@@ -3,7 +3,7 @@ title: An Example of Migrating CSV to Grakn
 keywords: migration
 last_updated: January 2017
 tags: [migration, examples]
-summary: "A short example to illustrate migration of CSV to Grakn"
+summary: "An example to illustrate migration of CSV to Grakn"
 sidebar: documentation_sidebar
 permalink: /documentation/examples/CSV-migration.html
 folder: documentation
@@ -17,11 +17,11 @@ This example looks at the migration of genealogy data in CSV format to build a g
 
 As the blog post explains, the original data was a [document](http://www.lenzenresearch.com/titusnarrlineage.pdf) from [Lenzen Research](http://www.lenzenresearch.com/) that described the family history of Catherine Niesz Titus for three generations of her maternal lineage.
 
-In this example, we will walk through how to migrate the CSV data into Grakn, and confirm that we have succeeded using the visualiser and Graql shell to check that we can make some sample queries. 
+In this example, we will walk through how to migrate the CSV data into Grakn, and confirm that we have succeeded using the Grakn visualiser. 
 
 ## Genealogy Data
 
-The data for this example can be found as a set of CSV files in Grakn's [sample-datasets](https://github.com/graknlabs/sample-datasets) repository on Github. The data was put together by our team from narrative information gleaned from the original Lenzen Research [document](http://www.lenzenresearch.com/titusnarrlineage.pdf), with some minor additions to facilitate some interesting queries for Grakn's reasoner.
+The data for this example can be found as a set of CSV files in Grakn's [sample-datasets](https://github.com/graknlabs/sample-datasets) repository on Github. The data was put together by our team from narrative information gleaned from the original Lenzen Research [document](http://www.lenzenresearch.com/titusnarrlineage.pdf), with some minor additions to generate some interesting queries for Grakn's reasoner.
 
 Let's take a look at the *raw-data* directory in the [genealogy-graph repo](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph), which contains five CSV files. These files were put together by hand by our team, mostly by [Michelangelo](https://blog.grakn.ai/@doctormiko).
 
@@ -44,7 +44,7 @@ The complete ontology for the genealogy-graph demo is in our sample-datasets rep
 
 So, for this migration example, we will instead use *basic-ontology.gql*, which is also on the sample-datasets repository. It is a simplified ontology which represents the data imported from the CSV files described above. 
 
-### Entities
+### Entities and Resources
 
 The ontology contains the following entities:
 
@@ -70,24 +70,26 @@ The ontology contains the following entities:
  		- `document-type` 
  		- `notes`
 
-The ontology also contains the relationships between the entities, namely:
+### Relations and Roles
+
+The ontology also describes the relations between entities, namely:
  
-* the `event-protagonist` relationship
-		- Has a resource `function` (which is of datatype string and indicate newborn, spouse, parent or deceased).
+* the `event-protagonist` relation, which links events to people 
+		- The role of the person in the event is described by a resource named `function` (which is of datatype string and indicate newborn, spouse, parent or deceased).
 		- Has two associated roles: `happening` (played by an `event` entity such as a `birth` or `wedding`) and `protagonist` (played by a `person` entity)
  		
 
-Finally, there is another relationship, which is between `document` and `event` entities:
-
-* conclusion-evidence relationship
+* the `conclusion-evidence` relation, which links documentary evidence to an event
 		- Has two associated roles `evidence` (played by a `document`) and `conclusion` (played by an event such as a `wedding`).
+
+Note that in this example, no relations between `person` entities are described. The inference of such family relationships is discussed fully in a separate example that covers [inference using the Grakn reasoner](./inference.html).
 
 To load *basic-ontology.gql* into Grakn, make sure the engine is running and choose a clean keyspace in which to work (in the example below we use the default keyspace, so we are cleaning it before we get started). Pull down the [sample-datasets repo](https://github.com/graknlabs/sample-datasets), and call the following from the terminal, from within the *genealogy-graph* directory:
 
 ```bash
-<location-of-Grakn-on-your-computer>/bin/grakn.sh clean
-<location-of-Grakn-on-your-computer>/bin/grakn.sh start
-<location-of-Grakn-on-your-computer>/bin/graql.sh -f ./basic-ontology.gql
+<relative-path-to-Grakn>/bin/grakn.sh clean
+<relative-path-to-Grakn>/bin/grakn.sh start
+<relative-path-to-Grakn>/bin/graql.sh -f ./basic-ontology.gql
 ```
 		
 ## Migration Templates

@@ -189,15 +189,18 @@ entries:
       - title: Modern example
         output: web
         url: /documentation/examples/modern.html
-      - title: CSV migration
+      - title: CSV Migration
         output: web
         url: /documentation/examples/CSV-migration.html
-      - title: SQL migration
+      - title: SQL Migration
         output: web
         url: /documentation/examples/SQL-migration.html
-      - title: OWL migration
+      - title: OWL Migration
         output: web
         url: /documentation/examples/OWL-migration.html
+      - title: Graql Rules
+        output: web
+        url: /documentation/examples/inference.html
       - title: Example Projects
         output: web
         url: /documentation/examples/projects.html

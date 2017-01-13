@@ -1,5 +1,5 @@
 ---
-title: "Grakn reasoner"
+title: "Grakn Reasoner"
 tagName: reasoner
 search: exclude
 permalink: tag_reasoner.html
