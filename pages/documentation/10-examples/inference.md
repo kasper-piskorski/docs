@@ -10,14 +10,13 @@ folder: documentation
 comment_issue_id: 
 ---
 
-
 ## Introduction
 
-This is an example of using Grakn's reasoner to infer information about family relationships from a simple dataset of genealogy data. The data has been used previously as the basis of a [blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.2e6h72y0m) to illustrate the fundamentals of the Grakn visualiser, reasoner and analytics components. 
+This is an example of how to use Grakn's reasoner to infer information about family relationships from a simple dataset of genealogy data. The data has been used previously as the basis of a [blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.2e6h72y0m) to illustrate the fundamentals of the Grakn visualiser, reasoner and analytics components. 
 
 As the blog post explained, the original data was a [document](http://www.lenzenresearch.com/titusnarrlineage.pdf) from [Lenzen Research](http://www.lenzenresearch.com/) that described the family history of Catherine Niesz Titus for three generations of her maternal lineage. Our team gathered together a set of CSV files containing basic information about the family, such as names, dates of birth, death and marriage, who was a parent of who, and who married who.
  
-The full genealogy-graph example can be found on Grakn's [sample-datasets](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). repository on Github. In this example, we will explore how to use Grakn to make inferences and find information from the data that is not explicit in the dataset.
+The full genealogy-graph example can be found on Grakn's [sample-datasets](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). repository on Github. In this example, we will explore how to use Grakn to make inferences and find information from the data that is not explicit in the dataset. You can find documentation about writing rules for the Grakn reasoner [here](https://grakn.ai/pages/documentation/graql/graql-rules.html).
 
 
 ## Example Ontology
@@ -72,7 +71,7 @@ When the terminal prompt returns, the data will have been loaded into the defaul
 By default, inference is switched off, and the only data in the graph is what we have loaded, which is a set of people, event and document entities and a set of relations between people/events and documents/events. For example, if you submit the following query to the visualiser:
 
 ```graql
-match (child: $x, parent: $y) isa parentship;
+match (child: $c, parent: $p) isa parentship;
 ```
 
 You will receive no results at all. To find family relations between people, we need to:
@@ -89,12 +88,18 @@ The following loads the rules for this dataset from a file called *rules.gql*:
 To activate inference in the Grakn visualiser you need to open the Config settings, found on the left hand side of the screen. When the page opens you will see the "Activate Inference" checkbox. Check it, and Grakn is ready to start building some new information about the family. Try the query again:
 
 ```graql
-match (child: $x, parent: $y) isa parentship;
+match (child: $c, parent: $p) isa parentship;
 ```
 
 You should see something similar to the screenshot below in your visualiser window.
 
 ![Person query](/images/match-isa-parentship.png)
+
+Alternatively, you can make queries in the graql shell. You will need to start it as follows, to switch on inference and materialisation:
+
+```bash
+<relative-path-to-Grakn>/bin/graql.sh -n -m
+```
 
 ## Inference Rules
 
@@ -115,6 +120,8 @@ Then sheep are vegetarians.
 The initial statements can be seen as a set of rules with a particular structure: IF something is verified, THEN something else must be true.
 
 This is how the Grakn reasoner works. It checks all whether the rules in the first block can be verified and, if they can, infers the statement in the second block. The rules are written in Graql, and we call the first set of statements (the IF part or, if you prefer, the antecedent) simply the left hand side (LHS). The second part, not surprisingly, is the right hand side (RHS). Using Graql, both sides of the rule are enclosed in curly braces and preceded by, respectively, the keywords `lhs` and `rhs`. 
+
+{% include note.html content="The full documentation for writing rules for the Grakn reasoner is available from [here](https://grakn.ai/pages/documentation/graql/graql-rules.html)." %}
 
 ### Example 1: A `parentship` relation
 
@@ -144,55 +151,74 @@ If so, the right hand side of the rules state that:
 
 * the two `person` entities `$p` and `$c` are in a `parentship` relation where `$p` is the parent and `$c` is the child.
 
+Use of inference has made information that was in the dataset, but not explicit, easy to retrieve. For example, we can make a query to determine children who have the same name as their parents:
+
+```graql
+match (parent: $p, child: $c); $p has firstname $n; $c has firstname $n;
+```
+
+In the genealogy-graph example, there should be three results returned. William, John and Mary are names shared between pairs of parents and children.
+
 ### Example 2: Specific relations between parents and children
 
 We have just described the Grakn rules to infer `parentship` relations between `person` entities, but we have not identified the specific details of the parent (are they the mother or the father?) nor of the child (a son or a daughter?). The following rules add new roles to the `parentship` and assign the to the appropriate entities:
 
 ```graql
-isa inference-rule
+$genderizeParentships1 isa inference-rule
 lhs
-{(parent: $x, child: $y) isa parentship;
-$x has gender "female";
+{(parent: $p, child: $c) isa parentship;
+$p has gender "male";
+$c has gender "male";
 }
 rhs
-{(mother: $x) isa parentship;};
+{(father: $p, son: $c) isa parentship;};
 
-isa inference-rule
+$genderizeParentships2 isa inference-rule
 lhs
-{(parent: $x, child: $y) isa parentship;
-$x has gender "male";
+{(parent: $p, child: $c) isa parentship;
+$p has gender "male";
+$c has gender "female";
 }
 rhs
-{(father: $x) isa parentship;};
+{(father: $p, daughter: $c) isa parentship;};
 
-isa inference-rule
+$genderizeParentships3 isa inference-rule
 lhs
-{(child: $x, parent: $y) isa parentship;
-$x has gender "female";
+{(parent: $p, child: $c) isa parentship;
+$p has gender "female";
+$c has gender "male";
 }
 rhs
-{(daughter: $x) isa parentship;};
+{(mother: $p, son: $c) isa parentship;};
 
-isa inference-rule
+$genderizeParentships4 isa inference-rule
 lhs
-{(child: $x, parent: $y) isa parentship;
-$x has gender "male";
+{(parent: $p, child: $c) isa parentship;
+$p has gender "female";
+$c has gender "female";
 }
 rhs
-{(son: $x) isa parentship;};
+{(mother: $p, daughter: $c) isa parentship;};
 ```
 
 The four rules can be broken down as follows:
 
-* LHS: In the `parentship` relation between child `$x` and parent `$y`, does `$x` have a `gender` resource that is `female`?
-	* RHS: In the `parentship` relation, `$x` is in the role `daughter`
-* LHS: In the `parentship` relation between child `$x` and parent `$y`, does `$x` have a `gender` resource that is `male`?
-	* RHS: In the `parentship` relation, `$x` is in the role `son`
-* LHS: In the `parentship` relation between child `$x` and parent `$y`, does `$y` have a `gender` resource that is `female`
-	* RHS: In the `parentship` relation, `$y` is in the role `mother`
-* LHS: In the `parentship` relation between child `$x` and parent `$y`, does `$y` have a `gender` resource that is `male`?
-	* RHS: In the `parentship` relation, `$y` is in the role `father`
+* LHS: In the `parentship` relation between child `$c` and parent `$p`, do they both have a `gender` resource that is `male`?
+	* RHS: The `parentship` relation is between `father` and `son`
+* LHS: In the `parentship` relation between child `$c` and parent `$p`, does `$c` have a `gender` resource that is `female` and `$p` have a `gender` resource that is `male`?
+	* RHS: The `parentship` relation is between `father` and `daughter`
+* LHS: In the `parentship` relation between child `$c` and parent `$p`, does `$p` have a `gender` resource that is `male` and `$p` have a `gender` resource that is `female`?
+	* RHS: The `parentship` relation is between `mother` and `son`
+* LHS: In the `parentship` relation between child `$c` and parent `$p`, does `$p` have a `gender` resource that is `male`?
+	* RHS: The `parentship` relation is between `mother` and `daughtr`
 
+Now we have even more information from the data. Previously we made a query to determine children who have the same name as their parents. Now, we can make a query to determine just the sons who have the same name as their fathers:
+
+```graql
+match (father: $p, son: $c) isa parentship; $p has firstname $n; $c has firstname $n;
+```
+
+In the genealogy-graph example, there should be two results returned. William and John are names shared between father/son pairs.
 
 ### Example 3: A `grandparentship` relation
 
@@ -217,7 +243,56 @@ If so, the right hand side of the rules state that:
 
 * `$gp` and `$gc` are in a `grandparentship` relation, where `$gp` plays the `grandparent` role and `$gc` plays the `grandchild` role.
 
-The rules have allowed Grakn to reason implicit relationships between three generations of family members without the information being supplied in the dataset.
+Some additional rules can add more specifics to the `grandparentship` and assign the entities to the roles `grandson`, `granddaughter`, `grandmother` and `grandfather`:
+
+```graql
+$grandParents1 isa inference-rule
+lhs
+{($p, son: $gc) isa parentship;
+(father: $gp, $p) isa parentship;
+}
+rhs
+{(grandfather: $gp, grandson: $gc) isa grandparentship;};
+
+$grandParents2 isa inference-rule
+lhs
+{($p, daughter: $gc) isa parentship;
+(father: $gp, $p) isa parentship;
+}
+rhs
+{(grandfather: $gp, granddaughter: $gc) isa grandparentship;};
+
+$grandParents3 isa inference-rule
+lhs
+{($p, daughter: $gc) isa parentship;
+(mother: $gp, $p) isa parentship;
+}
+rhs
+{(grandmother: $gp, granddaughter: $gc) isa grandparentship;};
+
+$grandParents4 isa inference-rule
+lhs
+{($p, son: $gc) isa parentship;
+(mother: $gp, $p) isa parentship;
+}
+rhs
+{(grandmother: $gp, grandson: $gc) isa grandparentship;};
+```
+
+This allows us to query, for example, which grandfather/grandson pairs share the same name:
+
+```graql
+match (grandfather: $x, grandson: $y) isa grandparentship; $x has firstname $n; $y has firstname $n;
+```
+
+## Additional Queries
+
+Let's look at how to make a few further queries on the genealogy graph:
+
+* People with no children
+* People who have never married
+* People with no grandchildren
+
 
 ## Where Next?
 

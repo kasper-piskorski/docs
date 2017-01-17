@@ -148,14 +148,14 @@ In Java, the two settings can be controlled by providing suitable parameters to 
 
 ### Switching reasoning on
 
-```
+```java
 //graph is a GraknGraph instance
 QueryBuilder qb = graph.graql().infer(true);
 ```
 
 ### Switching materialisation on
 
-```
+```java
 //graph is a GraknGraph instance
 QueryBuilder qb = graph.graql().infer(true).materialise(true);
 ```
