@@ -93,7 +93,7 @@ Migrating data in formats such as CSV, SQL, OWL and JSON into Grakn is a key use
 
 ## Using Inference
 
-The use of GRAKN.AI to infer new information about data lies at its core. Further information can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy) about the genealogy data, and we have a [detailed example of using the Grakn reasoner](../examples/inference.html) to infer information about the genealogy dataset.
+The use of GRAKN.AI to infer new information about a dataset lies at its core. We have a [detailed example of using the Grakn reasoner](../examples/grakn-reasoner.html) to infer information about the genealogy dataset, and an additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
 
 ## Using Analytics
 

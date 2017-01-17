@@ -198,9 +198,9 @@ entries:
       - title: OWL Migration
         output: web
         url: /documentation/examples/OWL-migration.html
-      - title: Graql Rules
+      - title: Grakn Reasoner
         output: web
-        url: /documentation/examples/inference.html
+        url: /documentation/examples/grakn-reasoner.html
       - title: Example Projects
         output: web
         url: /documentation/examples/projects.html

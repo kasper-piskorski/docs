@@ -17,9 +17,10 @@ This page lists the examples of Grakn that we suggest you study to learn how to 
 
 If you would like to request a particular example, please get in touch with us by leaving a comment on this page or posting a question on the discussion boards.  Our [Community page](https://grakn.ai/community.html) lists other ways you can talk to us.
 
-### Genealogy Example
+### Genealogy Dataset
 
-The genealogy example is widely used across our documentation about GRAKN.AI, because it is a simple, yet powerful, illustration of many key features.
+The genealogy dataset is widely used across our documentation about GRAKN.AI, because it allows for a simple, yet powerful, illustration of many key features. As described below, it is used to illustrate CSV migration and the Grakn Reasoner.
+
 It is available on the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph), and is also discussed in the ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.4gnoaq2hr). 
 
 ### [Modern](./modern.html)
@@ -36,12 +37,16 @@ A common use-case is to migrate existing SQL data to a graph in Grakn. We walk t
 
 ### CSV Migration
 
-We have an example of [migrating genealogy data from CSV](../examples/CSV-migration.html). 
+We use the genealogy dataset to show [how to migrate genealogy data into Grakn from CSV](../examples/CSV-migration.html). 
 
 Our [sample-projects repository on Github](https://github.com/graknlabs/sample-projects) also contains [an example that takes a simple CSV data file of pets](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration). Please see the [readme file](https://github.com/graknlabs/sample-projects/blob/master/example-csv-migration/README.md) to get started.
 
 CSV migration is also covered in a [blog post](https://blog.grakn.ai/twenty-years-of-games-in-grakn-14faa974b16e#.cuox3cew2).
 
+
+### Grakn Reasoner
+
+We use the genealogy dataset to illustrate how to write rules to infer new information from a dataset. You can find the example [here](./grakn-reasoner.html).
 
 ### R and Python bindings
 It is possible to extract data from Grakn and use it as a data science tool for analysis. You can take the results of a Graql query and store the results in a dataframe or similar structure, for use with R or Python. This [blog post](https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99#) explains and gives a simple example. A further [blog post](https://blog.grakn.ai/grakn-pandas-celebrities-5854ad688a4f#.k5zucfp6f) uses the Python driver to examine our example movie dataset.

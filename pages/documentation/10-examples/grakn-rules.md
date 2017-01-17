@@ -1,11 +1,11 @@
 ---
-title: An Example of Inference using GRAKN.AI
+title: Inference with the GRAKN.AI Reasoner
 keywords: migration
 last_updated: January 2017
 tags: [reasoner, examples]
 summary: "An example to illustrate inference using genealogy data."
 sidebar: documentation_sidebar
-permalink: /documentation/examples/inference.html
+permalink: /documentation/examples/grakn-reasoner.html
 folder: documentation
 comment_issue_id: 
 ---
@@ -207,10 +207,10 @@ The four rules can be broken down as follows:
 	* RHS: The `parentship` relation is between `father` and `son`
 * LHS: In the `parentship` relation between child `$c` and parent `$p`, does `$c` have a `gender` resource that is `female` and `$p` have a `gender` resource that is `male`?
 	* RHS: The `parentship` relation is between `father` and `daughter`
-* LHS: In the `parentship` relation between child `$c` and parent `$p`, does `$p` have a `gender` resource that is `male` and `$p` have a `gender` resource that is `female`?
+* LHS: In the `parentship` relation between child `$c` and parent `$p`, does `$c` have a `gender` resource that is `male` and `$p` have a `gender` resource that is `female`?
 	* RHS: The `parentship` relation is between `mother` and `son`
-* LHS: In the `parentship` relation between child `$c` and parent `$p`, does `$p` have a `gender` resource that is `male`?
-	* RHS: The `parentship` relation is between `mother` and `daughtr`
+* LHS: In the `parentship` relation between child `$c` and parent `$p`, do both have a `gender` resource that is `female`?
+	* RHS: The `parentship` relation is between `mother` and `daughter`
 
 Now we have even more information from the data. Previously we made a query to determine children who have the same name as their parents. Now, we can make a query to determine just the sons who have the same name as their fathers:
 
@@ -285,14 +285,9 @@ This allows us to query, for example, which grandfather/grandson pairs share the
 match (grandfather: $x, grandson: $y) isa grandparentship; $x has firstname $n; $y has firstname $n;
 ```
 
-## Additional Queries
+In the genealogy-graph example, there should be three results returned. George, Jacob and John are names shared between grandfather/grandson pairs.
 
-Let's look at how to make a few further queries on the genealogy graph:
-
-* People with no children
-* People who have never married
-* People with no grandchildren
-
+![Person query](/images/match-grandfather-grandson-names.png)
 
 ## Where Next?
 
@@ -302,4 +297,4 @@ We will be using the genealogy data throughout our documentation. For an overvie
 
 {% include links.html %}
 
-## Comments
+

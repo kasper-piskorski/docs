@@ -82,7 +82,7 @@ The ontology also describes the relations between entities, namely:
 * the `conclusion-evidence` relation, which links documentary evidence to an event
 		- Has two associated roles `evidence` (played by a `document`) and `conclusion` (played by an event such as a `wedding`).
 
-Note that in this example, no relations between `person` entities are described. The inference of such family relationships is discussed fully in a separate example that covers [inference using the Grakn reasoner](./inference.html).
+Note that in this example, no relations between `person` entities are described. The inference of such family relationships is discussed fully in a separate example that covers [inference using the Grakn reasoner](./grakn-reasoner.html).
 
 To load *basic-ontology.gql* into Grakn, make sure the engine is running and choose a clean keyspace in which to work (in the example below we use the default keyspace, so we are cleaning it before we get started). Pull down the [sample-datasets repo](https://github.com/graknlabs/sample-datasets), and call the following from the terminal, from within the *genealogy-graph* directory:
 
