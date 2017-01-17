@@ -7,7 +7,7 @@ summary: "How to use the Grakn Visualiser."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/visualiser.html
 folder: documentation
-comment_issue_id: 52
+comment_issue_id: 17
 ---
 
 
@@ -117,4 +117,4 @@ Now you have started getting to grips with Grakn, please explore our additional 
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/52" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/17" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

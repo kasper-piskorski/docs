@@ -7,7 +7,7 @@ summary: "An example to illustrate migration of CSV to Grakn"
 sidebar: documentation_sidebar
 permalink: /documentation/examples/CSV-migration.html
 folder: documentation
-comment_issue_id: 42
+comment_issue_id: 27
 ---
 
 
@@ -314,4 +314,4 @@ We will be using the genealogy data throughout our documentation, and will short
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/42" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/27" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

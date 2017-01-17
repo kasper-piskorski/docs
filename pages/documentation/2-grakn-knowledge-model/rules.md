@@ -7,7 +7,7 @@ summary: "How to Use Rules with the Grakn Knowledge Model"
 sidebar: documentation_sidebar
 permalink: /documentation/grakn-knowledge-model/rules.html
 folder: documentation
-comment_issue_id: 
+comment_issue_id: 22
 ---
 
 {% include warning.html content="Please note that this page is in progress and subject to revision." %}
@@ -19,5 +19,5 @@ comment_issue_id:
 ## Comments
 Want to leave a comment? 
 
-<!-- TO DO
-Visit <a href="https://github.com/graknlabs/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.-->
+
+Visit <a href="https://github.com/graknlabs/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

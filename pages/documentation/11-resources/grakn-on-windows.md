@@ -7,7 +7,7 @@ summary: "A guide to setting up GRAKN.AI on Windows."
 sidebar: documentation_sidebar
 permalink: /documentation/resources/grakn-on-windows.html
 folder: documentation
-comment_issue_id: 
+comment_issue_id: 25
 ---
 
 ## Instructions
@@ -54,5 +54,7 @@ With this, Cassandra should be ready for Grakn.
 
 9. Go to http://localhost:4567 to make sure it’s running
 
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/25" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 
 {% include links.html %}

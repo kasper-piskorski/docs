@@ -41,3 +41,5 @@ When using a batch graph, many safety checks are skipped in favour of speed. One
 
 It would be possible to create multiple resources of the type `unique-id` with the value `1`. These duplicate resources are similarly merged and resolved by Grakn engine.
 
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/24" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

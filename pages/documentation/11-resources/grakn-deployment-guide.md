@@ -7,7 +7,7 @@ summary: "A guide to setting up a production deployment of GRAKN.AI."
 sidebar: documentation_sidebar
 permalink: /documentation/resources/grakn-deployment-guide.html
 folder: documentation
-comment_issue_id: 
+comment_issue_id: 25
 ---
 
 
@@ -108,5 +108,8 @@ Upgrading Grakn in a distributed setup is very simple:
 - start new Grakn Engine (`./bin/grakn-engine.sh start`)
 
 You can perform a rolling deployment in this fashion with minimum impact on your services.
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/25" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 
 {% include links.html %}

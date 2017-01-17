@@ -362,5 +362,8 @@ Insert a new resource with the given datatype.
 insert name sub resource, datatype string;
 ```
 
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/42" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+
 {% include links.html %}
 

@@ -7,7 +7,7 @@ summary: "An example to illustrate inference using genealogy data."
 sidebar: documentation_sidebar
 permalink: /documentation/examples/grakn-reasoner.html
 folder: documentation
-comment_issue_id: 
+comment_issue_id: 27
 ---
 
 ## Introduction
@@ -294,6 +294,9 @@ In the genealogy-graph example, there should be three results returned. George, 
 This example has illustrated the basics of the inference rules used by the Grakn reasoner. Having read it, you may want to further study our documentation about [Graql Rules](../graql/graql-rules.html) and further investigate the [example that imports the genealogy data from CSV format into Grakn](./CSV-migration.html).
 
 We will be using the genealogy data throughout our documentation. For an overview, please see our [Family Matters](https://blog.grakn.ai/family-matters-1bb639396a24#.uelgekrn2) blog post.
+
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/27" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 
 {% include links.html %}
 

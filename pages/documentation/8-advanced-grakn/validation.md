@@ -7,7 +7,7 @@ summary: "The page describes schema validation."
 sidebar: documentation_sidebar
 permalink: /documentation/advanced-grakn/validation.html
 folder: documentation
-comment_issue_id: 
+comment_issue_id: 24
 ---
 
 
@@ -104,4 +104,5 @@ insert
 
 Now we are correctly modelling the marriage between `Alice` and `Bob`.
 
-
+## Comments
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/24" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

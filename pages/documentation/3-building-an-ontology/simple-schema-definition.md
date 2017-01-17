@@ -7,7 +7,7 @@ summary: "Demonstrates how to create a schema for Grakn."
 sidebar: documentation_sidebar
 permalink: /documentation/building-an-ontology/simple-schema-definition.html
 folder: documentation
-comment_issue_id: 21
+comment_issue_id: 22
 ---
 
 {% include warning.html content="This page is deprecated and will soon be removed." %}
@@ -114,4 +114,4 @@ relation.putRolePlayer(actor, patrickStewart).putRolePlayer(movieCastIn, starTre
 {% include links.html %}
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/21" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
