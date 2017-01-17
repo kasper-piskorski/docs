@@ -1,5 +1,5 @@
 ---
-title: Graql Analytics
+title: Analytics Overview
 last_updated: December 12th, 2016
 tags: [analytics]
 summary: "This page provides an overview of the Graql analytics capabilities."

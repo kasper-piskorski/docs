@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 41
 ---
 
-For a comprehensive guide to migration, please see both our [Migration Tutorial](../migration/migration.html) and our additional documentation specific to [OWL Migration](../migration/OWL-migration.html).
+For a comprehensive guide to migration, please see both our [Migration Tutorial](../migration/migration-overview.html) and our additional documentation specific to [OWL Migration](../migration/OWL-migration.html).
 
 ## Introduction
 This example addresses the topic of OWL interoperability through a migration of a family tree OWL ontology. The sole prerequisite of this example is having the Grakn environment installed and the Engine running. If you need help starting Grakn Engine, please see the [setup guide](../get-started/setup-guide.html).
@@ -58,7 +58,7 @@ James Whitfield
 
 ## Where next?
 
-After running this OWL migration, check out the [Graql documentation](../graql/overview.html) and the [Graph API documentation](../developing-with-java/graph-api.html) for more instructions on how you can explore the family tree.
+After running this OWL migration, check out the [Graql documentation](../graql/graql-overview.html) and the [Graph API documentation](../developing-with-java/graph-api.html) for more instructions on how you can explore the family tree.
 
 {% include links.html %}
 

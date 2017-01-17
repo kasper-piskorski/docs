@@ -34,7 +34,7 @@ Once you have written an ontology for your domain, you will template Graql state
 
 JSON Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
 
-Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our [other migration guides](./migration.html) for more ideas on how to use Graql templates with data. 
+Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our [other migration guides](./migration-overview.html) for more ideas on how to use Graql templates with data. 
 
 {% include note.html content="The JSON migrator can handle either a directory or a file as the -input parameter!" %}
 

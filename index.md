@@ -30,7 +30,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 <div role="tabpanel" class="tab-pane" id="graql">
     <h2>About</h2>
-    <p>We have a set of pages about <a href="https://grakn.ai/pages/documentation/graql/overview.html">Graql queries</a>, and a <a href="https://grakn.ai/pages/documentation/graql/graql-cheatsheet.html">cheatsheet</a> as a handy reference.</p></div>
+    <p>We have a set of pages about <a href="https://grakn.ai/pages/documentation/graql/graql-overview.html">Graql queries</a>, and a <a href="https://grakn.ai/pages/documentation/graql/graql-cheatsheet.html">cheatsheet</a> as a handy reference.</p></div>
 
 <div role="tabpanel" class="tab-pane" id="apireference">
     <h2>API Reference</h2>
@@ -39,7 +39,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 <div role="tabpanel" class="tab-pane" id="gethelp">
     <h2>Get Help</h2>
-    <p>We are here to help! Take a look at our <a href="https://grakn.ai/pages/documentation/resources/resources.html">resources</a> page for a list of ways to get what you need, and the <a href="https://grakn.ai/pages/documentation/resources/faq.html">FAQ</a> page for some tips on common Grakn problems.</p>
+    <p>We are here to help! Take a look at our <a href="https://grakn.ai/pages/documentation/resources/resources-overview.html">resources</a> page for a list of ways to get what you need, and the <a href="https://grakn.ai/pages/documentation/resources/faq.html">FAQ</a> page for some tips on common Grakn problems.</p>
  <p>Our <a href="https://grakn.ai/pages/documentation/resources/downloads.html">downloads page</a> lists all Grakn downloads and prerequisites.</p>   
 </div>
 </div>

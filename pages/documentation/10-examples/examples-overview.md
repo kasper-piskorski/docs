@@ -1,11 +1,11 @@
 ---
-title: Grakn Examples
+title: Examples Overview
 keywords: examples
 last_updated: September 23, 2016
 tags: [getting-started, examples]
 summary: "Landing page for Grakn examples."
 sidebar: documentation_sidebar
-permalink: /documentation/examples/examples.html
+permalink: /documentation/examples/examples-overview.html
 folder: documentation
 comment_issue_id: 27
 ---

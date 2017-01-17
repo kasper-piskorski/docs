@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [graql]
 summary: "An introduction to Graql"
 sidebar: documentation_sidebar
-permalink: /documentation/graql/overview.html
+permalink: /documentation/graql/graql-overview.html
 folder: documentation
 ---
 

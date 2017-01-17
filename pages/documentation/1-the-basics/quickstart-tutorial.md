@@ -89,15 +89,11 @@ We shall now move on to look briefly at some of the other use cases that are typ
 
 ## Data Migration
 
-{% include note.html content="The text in this section is a placeholder, and will be replaced with more detail in early 2017." %}
-
-Migrating data in formats such as CSV, SQL and JSON into Grakn is a key use case. We discuss this in [Migration](../migration/migration.html).
+Migrating data in formats such as CSV, SQL, OWL and JSON into Grakn is a key use case. We discuss this in [Migration](../migration/migration-overview.html) and have a number of examples, such as an example of [migrating genealogy data from CSV](../examples/CSV-migration.html). 
 
 ## Using Inference
 
-{% include note.html content="The text in this section is a placeholder, and will be replaced with more detail in early 2017." %}
-
-The use of GRAKN.AI to infer new information about data lies at its core. Further information can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy) about the Genealogy data.
+The use of GRAKN.AI to infer new information about data lies at its core. Further information can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy) about the genealogy data, and we have a [detailed example of using the Grakn reasoner](../examples/inference.html) to infer information about the genealogy dataset.
 
 ## Using Analytics
 
@@ -109,9 +105,9 @@ Use of Grakn Analytics is covered in [Analytics](../graql-analytics/analytics-ov
 ## Where Next?
 
 This was a very high-level overview of some of the key use cases for Grakn, and has hardly touched the surface or gone into detail. Fear not, however, because 
-the rest of our developer documentation should be more in-depth! But, if you need extra information, please [get in touch](https://grakn.ai/community.html).
+the rest of our developer documentation and exapmles are more in-depth! But, if you need extra information, please [get in touch](https://grakn.ai/community.html).
 
-A good place to start is to explore our additional [example code](../examples/examples.html) and documentation. 
+A good place to start is to explore our additional [example code](../examples/examples-overview.html) and the documentation for [Graql](../graql/graql-overview.html), [migration](../migration/migration-overview.html), [analytics](../graql-analytics/analytics-overview.html) and the [API reference](https://grakn.ai/javadocs.html). 
 
 {% include links.html %}
 

@@ -290,7 +290,7 @@ insert isa conclusion-evidence (evidence: $d0, conclusion: $e0);
 
 ## Migration Script
 
-To invoke each of the migration templates on the appropriate .CSV file, you can call the Grakn migrator `migration.sh`, which resides in the */bin/* directory of the Grakn installation. Usage instructions are available as part of our [migration documentation](../migration/migration.html). 
+To invoke each of the migration templates on the appropriate .CSV file, you can call the Grakn migrator `migration.sh`, which resides in the */bin/* directory of the Grakn installation. Usage instructions are available as part of our [migration documentation](../migration/migration-overview.html). 
 
 However, for simplicity, the */raw-data/* directory of the genealogy-graph project contains a script called *loader.sh* that calls each migration script in turn, so you can simply call the script from the terminal, from within the genealogy-graph directory, passing in the path to the Grakn */bin/* directory.
 
@@ -307,7 +307,7 @@ We have completed the data import, and the graph can now be queried. Since we ha
 
 ## Where Next?
 
-This example has illustrated how to migrate CSV data into Grakn. Having read it, you may want to further study our documentation about [CSV migration](../migration/migration.html) and [Graql templating](https://grakn.ai/pages/documentation/graql/graql-templating.html).  
+This example has illustrated how to migrate CSV data into Grakn. Having read it, you may want to further study our documentation about [CSV migration](../migration/CSV-migration.html) and [Graql templating](https://grakn.ai/pages/documentation/graql/graql-templating.html).  
 
 We will be using the genealogy data throughout our documentation, and will shortly add further examples to illustrate the use of Grakn's inference and analytics, but as a starting point, please see our [Family Matters](https://blog.grakn.ai/family-matters-1bb639396a24#.uelgekrn2) blog post.
 

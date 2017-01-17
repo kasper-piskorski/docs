@@ -9,7 +9,7 @@ permalink: /documentation/the-basics/grakn-basics.html
 folder: documentation
 comment_issue_id: 17
 ---
-{% include warning.html content="This page is deprecated and will soon be removed. Please see the replacement page about [the Grakn Knowledge Model](./grakn-knowledge-model.html)" %}
+{% include warning.html content="Please note that this page is in progress and subject to revision." %}
 
 ## Schema and Data
 

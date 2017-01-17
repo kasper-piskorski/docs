@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [java, graph-api]
 summary: "A basic example of how to use Grakn's Graph API."
 sidebar: documentation_sidebar
-permalink: /documentation/building-an-ontology/overview.html
+permalink: /documentation/building-an-ontology/ontology-overview.html
 folder: documentation
 comment_issue_id: 20
 ---
@@ -41,7 +41,7 @@ GraknGraph graknGraph = Grakn.factory(Grakn.IN_MEMORY, "my-graph").getGraph();
 <dependency>
     <groupId>ai.grakn</groupId>
     <artifactId>grakn-titan-factory</artifactId>
-    <version>0.9.0</version>
+    <version>0.10.0</version>
 </dependency>
 ```
 

@@ -11,7 +11,7 @@ folder: documentation
 
 ## Basic Syntax
  
-Graql templates are Graql statements with the addition of functions and variables. Graql templates are primarily used for migrating data into Grakn, although as a component of Graql, they can be used whevever writing Graql in Java. You can find more examples of their usage in the [Migration](../migration/migration.html) section of the documentation. 
+Graql templates are Graql statements with the addition of functions and variables. Graql templates are primarily used for migrating data into Grakn, although as a component of Graql, they can be used whevever writing Graql in Java. You can find more examples of their usage in the [Migration](../migration/migration-overview.html) section of the documentation. 
 
 {% include note.html content=" For the moment, Graql Template usage is limited to Graql Java. It will not work in the Graql shell. " %}
 

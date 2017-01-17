@@ -1,11 +1,11 @@
 ---
-title: Migrating to Grakn
+title: Migration Overview
 keywords: setup, getting started
 last_updated: August 10, 2016
 tags: [getting-started, graql, migration]
 summary: "Landing page for documentation about loading data in different formats to populate a graph in Grakn."
 sidebar: documentation_sidebar
-permalink: /documentation/migration/migration.html
+permalink: /documentation/migration/migration-overview.html
 folder: documentation
 comment_issue_id: 32
 ---

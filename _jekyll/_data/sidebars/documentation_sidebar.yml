@@ -56,7 +56,7 @@ entries:
         url: /documentation/building-an-ontology/rule-driven-ontology.html
       - title: Overview (deprecated)
         output: web
-        url: /documentation/building-an-ontology/overview.html
+        url: /documentation/building-an-ontology/ontology-overview.html
       - title: Simple Schema (deprecated)
         output: web
         url: /documentation/building-an-ontology/simple-schema-definition.html
@@ -68,7 +68,7 @@ entries:
     folderitems:
       - title: Overview
         output: web
-        url: /documentation/graql/overview.html
+        url: /documentation/graql/graql-overview.html
       - title: Graql Shell
         output: web
         url: /documentation/graql/graql-shell.html
@@ -102,7 +102,7 @@ entries:
   - title: Graql Analytics
     output: web
     folderitems: 
-      - title: Graql Analytics Overview
+      - title: Overview
         output: web
         url: /documentation/graql-analytics/analytics-overview.html
       - title: Analytics Statistics
@@ -123,9 +123,9 @@ entries:
   - title: Migrating to Grakn
     output: web
     folderitems:
-      - title: Migrating to Grakn
+      - title: Overview
         output: web
-        url: /documentation/migration/migration.html
+        url: /documentation/migration/migration-overview.html
       - title: CSV Migration
         output: web
         url: /documentation/migration/CSV-migration.html
@@ -168,9 +168,9 @@ entries:
   - title: Resources
     output: web
     folderitems:
-      - title: Resources
+      - title: Overview
         output: web
-        url: /documentation/resources/resources.html
+        url: /documentation/resources/resources-overview.html
       - title: Grakn Deployment Guide
         output: web
         url: /documentation/resources/grakn-deployment-guide.html
@@ -183,9 +183,9 @@ entries:
   - title: Examples
     output: web
     folderitems:
-      - title: Examples
+      - title: Overview
         output: web
-        url: /documentation/examples/examples.html
+        url: /documentation/examples/examples-overview.html
       - title: Modern example
         output: web
         url: /documentation/examples/modern.html
