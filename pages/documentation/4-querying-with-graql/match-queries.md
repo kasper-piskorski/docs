@@ -9,16 +9,135 @@ permalink: /documentation/graql/match-queries.html
 folder: documentation
 ---
 
-A match query will search the graph for any subgraphs that match the given
-[patterns](#variable-patterns). A result is produced for each match found,
-containing any variables in the query. The results of the query can be modified with various [modifiers](#modifiers).
+A match query will search the graph for any subgraphs that match the given pattern, returning a result for each match found. The results of the query can be modified with various [modifiers](#modifiers). To follow and experiment further with the examples given below, please load the genealogy-graph ontology and data, which can be found in the *examples* directory of the Grakn installation zip, or on Github in the [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph);
+
+```bash
+<relative-path-to-Grakn>/bin/grakn.sh start 
+<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/genealogy-graph/ontology.gql
+<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/genealogy-graph/data.gql
+```
+
+## Properties
+
+### isa
+Match instances that have the given type. In the example, find all `person` entities.
+        
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>
+    <li><a href="#java1" data-toggle="tab">Java</a></li>
+</ul>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell1">
+<pre>match $x isa person;</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java1">
+<pre>qb.match(var("x").isa("person"));</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
 
 
-## Variable Patterns
+### id
+Match concepts that have a system id that matches the [predicate](#predicates).  
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell2" data-toggle="tab">Graql</a></li>
+    <li><a href="#java2" data-toggle="tab">Java</a></li>
+</ul>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell2">
+<pre>
+match $x id "1216728"
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java2">
+<pre>
+qb.match(var("x").has("id", "1216728"));
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
+
+### value
+
+Match all concepts that have a resource value. If a [predicate](#predicates) is provided, the resource value must match that predicate.  
+
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell3" data-toggle="tab">Graql</a></li>
+    <li><a href="#java3" data-toggle="tab">Java</a></li>
+</ul>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell3">
+<pre>
+match $x value;
+match $x value contains "Bar";
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java3">
+<pre>
+qb.match(var("x").value(contains("Bar")))
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
+
+
+### has
+
+Match concepts that have the resource that is specified. If a [predicate](#predicates) is provided, the resource must also match that predicate.  
+
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell4" data-toggle="tab">Graql</a></li>
+    <li><a href="#java4" data-toggle="tab">Java</a></li>
+</ul>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell4">
+<pre>
+match $x has identifier $y; 
+match $x has identifier $y; $y value contains "Bar"; 
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java4">
+<pre>
+
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
+
+
+### relation
+
+Match concepts that have a relation with the given variable. If a role is provided, the role player must be playing that role.
+
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell6" data-toggle="tab">Graql</a></li>
+    <li><a href="#java6" data-toggle="tab">Java</a></li>
+</ul>
+
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="shell6">
+<pre>
+match $x isa birth; ($x, $y); 
+match $x isa birth; (happening: $x, $y); 
+</pre>
+</div>
+<div role="tabpanel" class="tab-pane" id="java6">
+<pre>
+qb.match(
+  var("x").isa("birth"),
+  var().rel("happening", "x").rel("y")
+);
+</pre>
+</div> <!-- tab-pane -->
+</div> <!-- tab-content -->
+
+
+### Variable Patterns
 
 A pattern is a pattern to match in the graph. Patterns can be combined into a
 disjunction ('or') and grouped together with curly braces. Patterns are
 separated by semicolons, each pattern is independent of the others.
+
 A variable pattern is a pattern describing [properties](#properties) of a
 particular concept. The variable pattern can optionally be bound to a variable
 or an ID.
@@ -30,13 +149,7 @@ or an ID.
 
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell">
-<pre>match $x isa pokemon;
-{
-  $x id "Mew"
-} or {
-  ($x, $y);
-  $y isa pokemon-type, id "water";
-}</pre>
+<pre>match $x isa person, has identifier $y; {$y value contains "Elizabeth";} or {$y value contains "Mary";};</pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java">
 <pre>qb.match(
@@ -49,148 +162,6 @@ or an ID.
     )
   )
 );</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-
-
-## Properties
-
-### isa
-Match instances that have the given type.
-        
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>
-    <li><a href="#java1" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
-<pre>match $x isa pokemon;</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java1">
-<pre>qb.match(var("x").isa("pokemon"));</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-### id
-Match concepts that have an `id` which matches the [predicate](#predicates).  
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell2" data-toggle="tab">Graql</a></li>
-    <li><a href="#java2" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell2">
-<pre>
-match $x has name "Articuno";
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java2">
-<pre>
-qb.match(var("x").has("name", "Articuno"));
-</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-### value
-
-Match concepts that have a `value`. If a [predicate](#predicates) is provided, the resource must match that predicate.  
-
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell3" data-toggle="tab">Graql</a></li>
-    <li><a href="#java3" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell3">
-<pre>
-match $x value contains "lightning";
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java3">
-<pre>
-qb.match(var("x").value(contains("lightning")))
-</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-
-### has
-
-Match concepts that have a resource of `type`. If a [predicate](#predicates) is provided, the resource must match that predicate.  
-
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell4" data-toggle="tab">Graql</a></li>
-    <li><a href="#java4" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell4">
-<pre>
-match $x has pokedex-no < 20;
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java4">
-<pre>
-qb.match(var("x").has("pokedex-no", lt(20)));
-</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-
-The above is equivalent to:
-
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell5" data-toggle="tab">Graql</a></li>
-    <li><a href="#java5" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell5">
-<pre>
-match
-(has-pokedex-no-owner: $x, has-pokedex-no-value: $pokedex-no) isa has-pokedex-no;
-$pokedex-no value < 20;
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java5">
-<pre>
-qb.match(
-  var().rel("pokedex-no-owner", "x").rel("pokedex-no-value", "pokedex-no")
-    .isa("has-pokedex-no"),
-  var("pokedex-no").value(lt(20))
-);
-
-</pre>
-</div> <!-- tab-pane -->
-</div> <!-- tab-content -->
-
-
-### relation
-
-Match concepts that are relations between the given variables. If a role is provided, the role player must be playing that role.
-
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#shell6" data-toggle="tab">Graql</a></li>
-    <li><a href="#java6" data-toggle="tab">Java</a></li>
-</ul>
-
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell6">
-<pre>
-match
-$x isa pokemon;
-(ancestor: $x, $y);
-</pre>
-</div>
-<div role="tabpanel" class="tab-pane" id="java6">
-<pre>
-qb.match(
-  var("x").isa("pokemon"),
-  var().rel("ancestor", "x").rel("y")
-);
-</pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
@@ -209,7 +180,11 @@ Match types that are a subclass of the given type.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell7">
 <pre>
-match $x sub concept;
+match $x sub concept; # List all concepts
+match $x sub resource; # List all resources
+match $x sub entity; # List all entities
+match $x sub role; # List all roles
+match $x sub relation; # List all relations
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java7">
@@ -221,7 +196,7 @@ qb.match(var("x").sub("concept"))
 
 
 ### has-role
-Match relations that have the given role.
+Match roles to a given relation.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell8" data-toggle="tab">Graql</a></li>
@@ -231,12 +206,12 @@ Match relations that have the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell8">
 <pre>
-match evolution has-role $x;
+match event-protagonist has-role $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.match(name("evolution").hasRole(var("x")));
+qb.match(name("event-protagonist").hasRole(var("x")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -252,12 +227,12 @@ Match concept types that play the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-match $x plays-role ancestor;
+match $x plays-role happening;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
 <pre>
-qb.match(var("x").playsRole("ancestor"));
+qb.match(var("x").playsRole("happening"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -273,12 +248,12 @@ Match concept types that can have the given resource.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell10">
 <pre>
-match $x has-resource name;
+match $x has-resource firstname; <!--JCS: Why so many duplicates?-->
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java10">
 <pre>
-qb.match(var("x").hasResource("name"));
+qb.match(var("x").hasResource("firstname"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -293,12 +268,12 @@ The above is equivalent to:
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell11">
 <pre>
-match $x plays-role has-name-owner;
+match $x plays-role has-firstname-owner;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java11">
 <pre>
-qb.match(var("x").playsRole("has-name-owner"));
+qb.match(var("x").playsRole("has-firstname-owner"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -319,12 +294,12 @@ longs and doubles, these sort by value. Strings are ordered lexicographically.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell12">
 <pre>
-match $x has height = 19, has weight > 1500;
+match $x has age > 70;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java12">
 <pre>
-qb.match(var("x").has("height", 19).has("weight", gt(1500)));
+qb.match(var("x").has("age", gt(70));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -332,7 +307,7 @@ qb.match(var("x").has("height", 19).has("weight", gt(1500)));
 If a concept doesn't have a value, all predicates are considered false. The query below matches everything where the predicate `>10` is true. So, it will find all concepts with value greater than 10. However, if a concept does not have a value at all, the predicate is considered false, so it won’t appear in the results.
 
 ```graql
-match $x value >10;
+match $x value >30;
 ``` 
 
 
@@ -347,16 +322,15 @@ Asks if the given string is a substring.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell13">
 <pre>
-match $x has description $desc;
-$desc value contains "underground";
+match $x has identifier $id; $id value contains "Niesz";
 
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java13">
 <pre>
 qb.match(
-    var("x").has("description", var("desc")),
-    var("desc").value(contains("underground"))
+    var("x").has("identifier", var("id")),
+    var("id").value(contains("Niesz"))
 );
 </pre>
 </div> <!-- tab-pane -->
@@ -375,17 +349,26 @@ surround the expression with `.*`.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell14">
 <pre>
-match $x value /.*(fast|quick).*/;
+match $x value /.*(Mary|Barbara).*/;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java14">
 <pre>
-qb.match(var("x").value(regex(".*(fast|quick).*")));
+qb.match(var("x").value(regex(".*(Mary|Barbara).*")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
 ## Modifiers
+
+There are a number of modifiers that can be applied to a query:   
+
+* `distinct` - Removes any duplicate results.
+* `limit` - Limits the number of results returned from the query.
+* `offset` - Offsets the results returned from the query by the given number of results.
+* `order` - Orders the results by the given variable's degree. If a type is provided, order by the resource of that type on that concept. Order is ascending by default.
+* `select` - Indicates which variables to include in the results.
+
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell16" data-toggle="tab">Graql</a></li>
@@ -395,48 +378,33 @@ qb.match(var("x").value(regex(".*(fast|quick).*")));
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell16">
 <pre>
-match $x isa pokemon, has pokedex-no $no;
-select $x;
-limit 10; offset 30; distinct; order by $no asc;
-
+match $x isa person, has identifier $id; select $id; limit 10; offset 5; order by $id asc;
+match $x isa birth, has firstname $y; select $y; order by $y asc; distinct;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java16">
 <pre>
-qb.match(var("x").isa("pokemon").has("pokedex-no", var("no")))
-    .select("x")
+qb.match(var("x").isa("person").has("identifier", var("id")))
+    .select("id")
     .limit(10)
-    .offset(30)
-    .distinct()
-    .orderBy("no", Order.asc);
+    .offset(5)
+    .orderBy("id", Order.asc);
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
-### distinct
-Remove any duplicate results.
-
-### limit
-Limit the query to the given number of results.
-
 Note that the order in which you specify modifiers can be important. If you make a query and `limit` the results returned, say to 10 as in the example, then specify the `distinct` modifier _after_ the `limit`, you may find that `distinct` removes any non-unique results, so you end up with fewer than the 10 results you expected to be returned to you. To ensure that you receive _exactly_ 10 distinct results, you are better to use `distinct` before `limit`.
      
 ```graql
-match $x isa pokemon, has pokedex-no $no;
-select $x;
-distinct; limit 10; offset 30; order by $no asc;
+match $x isa birth, has firstname $y; select $y; limit 10; distinct; order by $y asc;
+# Returns 9 results
+match $x isa birth, has firstname $y; select $y; distinct; limit 10; order by $y asc;
+# Returns 10 results
 ```
 
-### offset
-Offset the query by the given number of results.
 
-### order
-Order the results by the given variable's degree. If a type is provided, order
-by the resource of that type on that concept. Order is ascending by default.
 
-### select
 
-Indicates which variables to include in the results.
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/42" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

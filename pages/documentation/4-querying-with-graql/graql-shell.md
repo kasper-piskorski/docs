@@ -21,28 +21,37 @@ The Graql shell is contained in the `bin` folder. After starting the Grakn serve
 
 You can optionally pass arguments when starting the Graql shell, as follows:
 
+
 | Long Option   | Option   | Description                                      | Note |
 | ------------- | -------- | ------------------------------------------------ | |
-| `--batch`     | `-b`     | A path to a file containg a query to batch load. | The REPL does not open. The resulting graph is automatically committed. |
-| `--execute`   | `-e`     | A query to execute.                              | The REPL does not open. The resulting graph is automatically committed. |
-| `--file`      | `-f`     | A path to a file containg a query to execute.    | The REPL does not open. The resulting graph is automatically committed. |
-| `--help`      | `-h`     | Print usage message                              | |
-| `--keyspace`  | `-k`     | The keyspace of the graph.                       | |
-| `--uri`       | `-u`     | The URI to connect to engine.                    | |
-| `--version`   | `-v`     | Print version                                    | |
+| `--batch <arg>`     | `-b`     | A path to a file containg a query to batch load. | The REPL does not open. <br/> The resulting graph is automatically committed. |
+| `--execute <arg>`     | `-e`     | A query to execute.                              | The REPL does not open. <br/> The resulting graph is automatically committed. |
+| `--file <arg>`      | `-f`     | A path to a file containg a query to execute.    | The REPL does not open. <br/> The resulting graph is automatically committed. |
+| `--help`      | `-h`     | Print usage message.                             | |
+| `--implicit`  | `-i`     | Show implicit types.                             | | 
+| `--keyspace <arg>`  | `-k`     | The keyspace of the graph.                 | |
+| `--materialise` | `-m`   | Materialise inferred results.                    | |
+| `--infer`     | `-n`     | Perform inference on results.                    | |
+| `--output <arg>`  | `-o` | Output format for results                        | | 
+| `--pass <arg>`    | `-p`     | The password to sign in.                     | |
+| `--uri <arg>`   | `-r`|  The URI to connect to engine.                            | |
+| `--user <arg>`  | `-u`     | Username to sign in.                    | |
+| `--version`     | `-v`     | Print version                                    | |
 
+
+{% include tip.html content="You can see this list in the terminal by typing `graql.sh -h`" %}
 
 For example, to load some data from a file into a graph:
 
 ```bash
-bin/graql.sh -f examples/mammal-dataset.gql
+bin/graql.sh -f ./examples/mammal-dataset.gql
 ```
 
 
 To load data into a different graph, or keyspace, you can specify the graph name:
 
 ```bash
-./graql.sh -k <graphname> -f examples/reptile-dataset.gql
+./graql.sh -k <graphname> -f ./examples/reptile-dataset.gql
 ``` 
 
 ## Queries
