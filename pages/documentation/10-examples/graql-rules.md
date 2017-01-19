@@ -1,21 +1,21 @@
 ---
-title: Inference with the GRAKN.AI Reasoner
+title: Reasoning with Graql
 keywords: migration
 last_updated: January 2017
 tags: [reasoner, examples]
 summary: "An example to illustrate inference using genealogy data."
 sidebar: documentation_sidebar
-permalink: /documentation/examples/grakn-reasoner.html
+permalink: /documentation/examples/graql-reasoning.html
 folder: documentation
 comment_issue_id: 27
 ---
 
 ## Introduction
 
-This is an example of how to use Grakn's reasoner to infer information about family relationships from a simple dataset of genealogy data. The data has been used previously as the basis of a [blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.2e6h72y0m) to illustrate the fundamentals of the Grakn visualiser, reasoner and analytics components. 
+This is an example of how to use Grakn's reasoner to infer information about family relationships from a simple dataset of genealogy data. The data has been used previously as the basis of a [blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.2e6h72y0m) to illustrate the fundamentals of the Grakn visualiser, reasoner and analytics components.
 
 As the blog post explained, the original data was a [document](http://www.lenzenresearch.com/titusnarrlineage.pdf) from [Lenzen Research](http://www.lenzenresearch.com/) that described the family history of Catherine Niesz Titus for three generations of her maternal lineage. Our team gathered together a set of CSV files containing basic information about the family, such as names, dates of birth, death and marriage, who was a parent of who, and who married who.
- 
+
 The full genealogy-graph example can be found on Grakn's [sample-datasets](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). repository on Github. In this example, we will explore how to use Grakn to make inferences and find information from the data that is not explicit in the dataset. You can find documentation about writing rules for the Grakn reasoner [here](https://grakn.ai/pages/documentation/graql/graql-rules.html).
 
 
@@ -26,11 +26,11 @@ On GRAKN.AI, the first step when working with a dataset is to define its ontolog
 * logical reasoning over the represented knowledge, such as the extraction of implicit information from explicit data (inference)
 * discovery of inconsistencies in the data (validation).
 
-The complete ontology for the genealogy-graph demo is in our sample-datasets repository, named [ontology.gql](https://github.com/graknlabs/sample-datasets/blob/master/genealogy-graph/ontology.gql). 
+The complete ontology for the genealogy-graph demo is in our sample-datasets repository, named [ontology.gql](https://github.com/graknlabs/sample-datasets/blob/master/genealogy-graph/ontology.gql).
 
 At a very high-level, the ontology contains the following entities:
 
-* `person` 
+* `person`
 * `event`     
 	* `birth`, a subclass of an `event`   
 	* `death`, a subclass of an `event`   
@@ -38,13 +38,13 @@ At a very high-level, the ontology contains the following entities:
 * `document`, which we will not consider in this example.
 
 
-The ontology also describes possible family relationships between `person` entities, such as parent/child, siblings, grandparent/grandchild, which will discuss shortly. 
+The ontology also describes possible family relationships between `person` entities, such as parent/child, siblings, grandparent/grandchild, which will discuss shortly.
 
 In addition, there is an `event-protagonist` relation:
 
 * The role of the person in the event is described by a resource named `function` (which is of datatype string to indicate newborn, spouse, parent or deceased).
 * The relation two associated roles: `happening` (played by an `event` entity such as a `birth` or `wedding`) and `protagonist` (played by a `person` entity)
- 		
+
 Finally, there is another relation, which is between `document` and `event` entities, the `conclusion-evidence` relation, which we will not consider in this example, as it is not relevant to the concepts we are discussing.
 
 
@@ -55,7 +55,7 @@ To load the *ontology.gql* file into Grakn, make sure the engine is running and 
 <relative-path-to-Grakn>/bin/grakn.sh start
 <relative-path-to-Grakn>/bin/graql.sh -f ./ontology.gql
 ```
-		
+
 ## Data
 
 The data for this example is discussed more fully in our [example on CSV migration](./CSV-migration.html), which discusses how the original data is laid out in CSV files and migrated into GRAKN.AI. For the purposes of this example, we can simply load the data from a .gql file into the graph:
@@ -117,15 +117,15 @@ It is possible to infer the following:
 Then sheep are vegetarians.
 ```
 
-The initial statements can be seen as a set of rules with a particular structure: IF something is verified, THEN something else must be true.
+The initial statements can be seen as a set of premises. If all the premises are met we can infer a new fact that sheep are vegatarians. If we hypothetise that sheep are vegetarians then the whole example can be expressed with a particular two-block structure: IF some premises are met, THEN a given hypothesis is true.
 
-This is how the Grakn reasoner works. It checks all whether the rules in the first block can be verified and, if they can, infers the statement in the second block. The rules are written in Graql, and we call the first set of statements (the IF part or, if you prefer, the antecedent) simply the left hand side (LHS). The second part, not surprisingly, is the right hand side (RHS). Using Graql, both sides of the rule are enclosed in curly braces and preceded by, respectively, the keywords `lhs` and `rhs`. 
+This is how the Grakn reasoner works. It checks whether the statements in the first block can be verified and, if they can, infers the statement in the second block. The rules are written in Graql, and we call the first set of statements (the IF part or, if you prefer, the antecedent) simply the left hand side (LHS). The second part, not surprisingly, is the right hand side (RHS). Using Graql, both sides of the rule are enclosed in curly braces and preceded by, respectively, the keywords `lhs` and `rhs`. 
 
 {% include note.html content="The full documentation for writing rules for the Grakn reasoner is available from [here](https://grakn.ai/pages/documentation/graql/graql-rules.html)." %}
 
 ### Example 1: A `parentship` relation
 
-The following code is part of the set of rules in [*rules.gql*](https://github.com/graknlabs/sample-datasets/blob/master/genealogy-graph/rules.gql) that we loaded into the graph earlier. 
+The following code is part of the set of rules in [*rules.gql*](https://github.com/graknlabs/sample-datasets/blob/master/genealogy-graph/rules.gql) that we loaded into the graph earlier.
 
 ```graql
 # Naming the rule is optional
@@ -144,7 +144,7 @@ rhs
 Here, the left hand side rules check these statements:
 
 * does a `birth` event (`$b`) have a `confidence` resource set to "high" (which means that it has been added by the Grakn migrator from CSV data, so is reliable)?
-* does an `event-protagonist` relation between this `birth` event (`$b`) and a `person` entity (`$p`) have a `function` resource called "parent"? 
+* does an `event-protagonist` relation between this `birth` event (`$b`) and a `person` entity (`$p`) have a `function` resource called "parent"?
 * does an `event-protagonist` relation between this `birth` event (`$b`) and a `person` entity (`$c`) have a `function` resource called "newborn"?
 
 If so, the right hand side of the rules state that:
@@ -299,5 +299,3 @@ We will be using the genealogy data throughout our documentation. For an overvie
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/27" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 
 {% include links.html %}
-
-
