@@ -2,7 +2,7 @@
 title: Grakn Knowledge Model
 keywords: setup, getting started, basics
 last_updated: December 15th, 2016
-tags: [getting-started, reasoner, graql]
+tags: [getting-started, reasoning, graql]
 summary: "Introducing the basics of the Grakn knowledge model."
 sidebar: documentation_sidebar
 permalink: /documentation/the-basics/grakn-knowledge-model.html

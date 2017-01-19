@@ -2,7 +2,7 @@
 title: Graql Rules
 keywords: graql, reasoner
 last_updated: January 2017
-tags: [graql, reasoner]
+tags: [graql, reasoning]
 summary: "Graql Rules"
 sidebar: documentation_sidebar
 permalink: /documentation/graql/graql-rules.html

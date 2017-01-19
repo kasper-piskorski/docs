@@ -1,5 +1,5 @@
 ---
-title: Modern Grakn Example
+title: Modern Example in Graql
 keywords: graql, query
 last_updated: September 19, 2016
 tags: [graql, examples]

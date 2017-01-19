@@ -7,6 +7,6 @@ allowed-tags:
   - faq
   - migration
   - analytics
-  - reasoner
+  - reasoning
   - advanced-grakn
   - examples

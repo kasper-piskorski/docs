@@ -289,6 +289,18 @@ In the genealogy-graph example, there should be three results returned. George, 
 
 ![Person query](/images/match-grandfather-grandson-names.png)
 
+## Other Queries 
+
+There are some queries that are currently not possible. For example:
+
+* Who has no children?
+* Who has never married?
+* Who has the most grandchildren?
+* Who has the most brothers?
+
+If you want to infer information from a dataset such as this example, and want to check whether it is possible, please reach out to us via [Slack](https://grakn.ai/slack.html) or our [discussion forum](https://discuss.grakn.ai).
+
+
 ## Where Next?
 
 This example has illustrated the basics of the inference rules used by Graql. Having read it, you may want to further study our documentation about [Graql Rules](../graql/graql-rules.html) and further investigate the [example that imports the genealogy data from CSV format into Grakn](./CSV-migration.html).

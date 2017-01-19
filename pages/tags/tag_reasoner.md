@@ -1,8 +1,8 @@
 ---
-title: "Grakn Reasoner"
-tagName: reasoner
+title: "Reasoning with Graql"
+tagName: reasoning
 search: exclude
-permalink: tag_reasoner.html
+permalink: tag_reasoning.html
 sidebar: documentation_sidebar
 folder: tags
 ---
