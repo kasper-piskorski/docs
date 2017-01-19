@@ -2,7 +2,7 @@
 title: Reasoning with Graql
 keywords: migration
 last_updated: January 2017
-tags: [reasoner, examples]
+tags: [reasoning, examples]
 summary: "An example to illustrate inference using genealogy data."
 sidebar: documentation_sidebar
 permalink: /documentation/examples/graql-reasoning.html
@@ -12,11 +12,11 @@ comment_issue_id: 27
 
 ## Introduction
 
-This is an example of how to use Grakn's reasoner to infer information about family relationships from a simple dataset of genealogy data. The data has been used previously as the basis of a [blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.2e6h72y0m) to illustrate the fundamentals of the Grakn visualiser, reasoner and analytics components.
+This is an example of how to use the reasoning facilities of Graql to infer information about family relationships from a simple dataset of genealogy data. The data has been used previously as the basis of a [blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.2e6h72y0m) to illustrate the fundamentals of the Grakn visualiser as well as reasoning and analytics capabilities.
 
 As the blog post explained, the original data was a [document](http://www.lenzenresearch.com/titusnarrlineage.pdf) from [Lenzen Research](http://www.lenzenresearch.com/) that described the family history of Catherine Niesz Titus for three generations of her maternal lineage. Our team gathered together a set of CSV files containing basic information about the family, such as names, dates of birth, death and marriage, who was a parent of who, and who married who.
 
-The full genealogy-graph example can be found on Grakn's [sample-datasets](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). repository on Github. In this example, we will explore how to use Grakn to make inferences and find information from the data that is not explicit in the dataset. You can find documentation about writing rules for the Grakn reasoner [here](https://grakn.ai/pages/documentation/graql/graql-rules.html).
+The full genealogy-graph example can be found on Grakn's [sample-datasets](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). repository on Github. In this example, we will explore how to use Grakn to make inferences and find information from the data that is not explicit in the dataset. You can find documentation about writing rules in Graql [here](https://grakn.ai/pages/documentation/graql/graql-rules.html).
 
 
 ## Example Ontology
@@ -76,7 +76,7 @@ match (child: $c, parent: $p) isa parentship;
 
 You will receive no results at all. To find family relations between people, we need to:
 
-* Load a set of rules for the reasoner, which we will discuss further shortly
+* Load a set of rules to the graph, which we will discuss further shortly
 * Activate inference.
 
 The following loads the rules for this dataset from a file called *rules.gql*:
@@ -103,7 +103,7 @@ Alternatively, you can make queries in the graql shell. You will need to start i
 
 ## Inference Rules
 
-Inference is the process of deducing information from incomplete data. For example, given the following statements:
+Inference is the process of deducing new information from available data. For example, given the following statements:
 
 ```
 If grass is not an animal.
@@ -119,9 +119,9 @@ Then sheep are vegetarians.
 
 The initial statements can be seen as a set of premises. If all the premises are met we can infer a new fact that sheep are vegatarians. If we hypothetise that sheep are vegetarians then the whole example can be expressed with a particular two-block structure: IF some premises are met, THEN a given hypothesis is true.
 
-This is how the Grakn reasoner works. It checks whether the statements in the first block can be verified and, if they can, infers the statement in the second block. The rules are written in Graql, and we call the first set of statements (the IF part or, if you prefer, the antecedent) simply the left hand side (LHS). The second part, not surprisingly, is the right hand side (RHS). Using Graql, both sides of the rule are enclosed in curly braces and preceded by, respectively, the keywords `lhs` and `rhs`. 
+This is how reasoning in Graql works. It checks whether the statements in the first block can be verified and, if they can, infers the statement in the second block. The rules are written in Graql, and we call the first set of statements (the IF part or, if you prefer, the antecedent) simply the left hand side (LHS). The second part, not surprisingly, is the right hand side (RHS). Using Graql, both sides of the rule are enclosed in curly braces and preceded by, respectively, the keywords `lhs` and `rhs`.
 
-{% include note.html content="The full documentation for writing rules for the Grakn reasoner is available from [here](https://grakn.ai/pages/documentation/graql/graql-rules.html)." %}
+{% include note.html content="The full documentation for writing rules in Graql is available from [here](https://grakn.ai/pages/documentation/graql/graql-rules.html)." %}
 
 ### Example 1: A `parentship` relation
 
@@ -291,7 +291,7 @@ In the genealogy-graph example, there should be three results returned. George, 
 
 ## Where Next?
 
-This example has illustrated the basics of the inference rules used by the Grakn reasoner. Having read it, you may want to further study our documentation about [Graql Rules](../graql/graql-rules.html) and further investigate the [example that imports the genealogy data from CSV format into Grakn](./CSV-migration.html).
+This example has illustrated the basics of the inference rules used by Graql. Having read it, you may want to further study our documentation about [Graql Rules](../graql/graql-rules.html) and further investigate the [example that imports the genealogy data from CSV format into Grakn](./CSV-migration.html).
 
 We will be using the genealogy data throughout our documentation. For an overview, please see our [Family Matters](https://blog.grakn.ai/family-matters-1bb639396a24#.uelgekrn2) blog post.
 
