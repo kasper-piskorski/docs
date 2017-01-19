@@ -20,7 +20,7 @@ If you have not yet set up GRAKN.AI, please [download the latest version](../res
 
 If you're unsure of these steps, don't worry. Please see the [Setup guide](../get-started/setup-guide.html).
 
-This example is loosely based on the genealogy example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the complete data and ontology here, but we will simply show how to work with Graql to set up an ontology and add some data to a graph. This is a basic "quick start" example to illustrate addition of an ontology and some data to Grakn, using the Graql shell. 
+This example is loosely based on the genealogy-graph example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the complete data and ontology here: this is a basic "quick start" example to illustrate addition of an ontology and some data to Grakn, using the Graql shell. 
 
 ## Using the Graql Shell
 
@@ -83,7 +83,7 @@ match (spouse1: $x, spouse2: $y) isa marriage, has date $d; $x has identifier $x
 
 ### Loading the Ontology and Data from File
 
-Above, was a quick overview to show the basics of making Graql queries on some basic data within the Graql shell. It is much more common to load the ontology and data directly from *.gql* files into a graph instead of typing it all into the shell. You can find a good example of this in the [Visualising a Graph](./visualiser.html) documentation, which takes our full genealogy data, loads it into a graph and explores it using the Grakn visualiser. Please see the [examples section](../examples/examples.html) of this documentation for others.
+Above, was a quick overview to show the basics of making Graql queries on some basic data within the Graql shell. It is much more common to load the ontology and data directly from *.gql* files into a graph instead of typing it all into the shell. You can find a good example of this in the [Visualising a Graph](./visualiser.html) documentation, which takes our full genealogy data, loads it into a graph and explores it using the Grakn visualiser. Please see the [examples section](../examples/examples.html) of this documentation for additional examples.
 
 We shall now move on to look briefly at some of the other use cases that are typical for developers working with GRAKN.AI.
 
@@ -93,7 +93,7 @@ Migrating data in formats such as CSV, SQL, OWL and JSON into Grakn is a key use
 
 ## Using Inference
 
-The use of GRAKN.AI to infer new information about a dataset lies at its core. We have a [detailed example of using the Grakn reasoner](../examples/grakn-reasoner.html) to infer information about the genealogy dataset, and an additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
+The use of GRAKN.AI to infer new information about a dataset lies at its core. We have a [detailed example of using the Grakn reasoner](../examples/grakn-reasoner.html) to infer information about the genealogy dataset. An additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
 
 ## Using Analytics
 
@@ -104,8 +104,7 @@ Use of Grakn Analytics is covered in [Analytics](../graql-analytics/analytics-ov
 
 ## Where Next?
 
-This was a very high-level overview of some of the key use cases for Grakn, and has hardly touched the surface or gone into detail. Fear not, however, because 
-the rest of our developer documentation and exapmles are more in-depth! But, if you need extra information, please [get in touch](https://grakn.ai/community.html).
+This page was a very high-level overview of some of the key use cases for Grakn, and has hardly touched the surface or gone into detail. The rest of our developer documentation and examples are more in-depth and should answer any questions that you may have, but if you need extra information, please [get in touch](https://grakn.ai/community.html).
 
 A good place to start is to explore our additional [example code](../examples/examples-overview.html) and the documentation for [Graql](../graql/graql-overview.html), [migration](../migration/migration-overview.html), [analytics](../graql-analytics/analytics-overview.html) and the [API reference](https://grakn.ai/javadocs.html). 
 
