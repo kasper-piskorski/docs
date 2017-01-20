@@ -11,63 +11,126 @@ comment_issue_id: 17
 ---
 
 ## Introduction
-If you have not yet set up GRAKN.AI, please [download the latest version](../resources/downloads.html), then start the Grakn engine and the Graql shell.
 
-```bash
-./bin/grakn.sh start
-./bin/graql.sh
-```
+In this guide, we are going to load a single file to set up a simple graph and insert some data. This example is loosely based on the genealogy-graph example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the complete data and ontology here: this is a basic "quick start" example to illustrate a simple ontology and some basic data. 
 
-If you're unsure of these steps, don't worry. Please see the [Setup guide](../get-started/setup-guide.html).
-
-This example is loosely based on the genealogy-graph example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the complete data and ontology here: this is a basic "quick start" example to illustrate addition of an ontology and some data to Grakn, using the Graql shell. 
+If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started/setup-guide.html). 
 
 ## Using the Graql Shell
 
-### Adding an Ontology
+We will first make sure we are working with a clean 'keyspace'. From the terminal:
 
-We are going to add some basic ontology concepts: entities, relations, roles and resources. Our example is very simple: a `person` entity with a resource named `identifier`, which is a string to hold the person's name. 
-
-Copy and paste the following into the Graql shell:
-
-```graql
-insert person sub entity, has-resource identifier; identifier sub resource, datatype string;
+```bash
+<relative-path-to-Grakn>/bin/grakn.sh clean
 ```
 
-Now we will add a relation: a `marriage` which relates two `person` entities, one playing the role `spouse1` and the other playing the role `spouse2`.  Only a `person` can take a role in the `marriage` (not a `car` or `dog` for example), so we also need to specify that to Grakn. Copy and paste each of the following lines into the Graql shell:
+We then start the Grakn engine: 
 
-```graql
-insert spouse1 sub role; spouse2 sub role; person plays-role spouse1; person plays-role spouse2;
-insert marriage sub relation, has-role spouse1, has-role spouse2, has-resource date; date sub resource datatype string;
+```bash
+<relative-path-to-Grakn>/bin/grakn.sh start
 ```
 
-### Adding Data
+Finally, we load the ontology and data into Grakn, so we have a graph to work with, using the *basic-genealogy.gql* file stored in the *examples* directory of the Grakn distribution zip. You can also find this file on [Github](). Simply invoke the Graql shell passing the -f flag to indicate the file to load into a graph (if you are interested, please see our [documentation about flags supported by the Graql shell](../graql/graql-shell.html)):
 
-Now we will add some sample data to the graph, to correspond to the ontology we entered above. First, add four instances of `person`:
-
-```graql
-insert isa person, has identifier "Andrew Smith";
-insert isa person, has identifier "Catherine Shaw";
-insert isa person, has identifier "Paula Carter";
-insert isa person, has identifier "Scott Jones";
+```bash
+<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/basic-genealogy.gql
 ```
 
-Now we will add an instance of `marriage` between two of the `person` instances:
+
+### The Ontology
+
+You can find out much more about the Grakn ontology in our documentation about the [Grakn knowledge model](./grakn-knowledge-model.html), which states that
+
+> "The ontology is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed". 
+
+For the purposes of this guide, you can think of the ontology as a schema that describes items of data and defines how they relate to one another.
+
+There are a number of things we can say about ontology shown below:
+
+* there is one entity, `person`, which represents a person in the family whose genealogy data we are studying. 
+* the `person` entity has a number of resources to describe aspects of the person, such as their name, age, dates of birth and death, gender and a URL to a picture of them (if one exists). Those resources are all expressed as strings, except for the age, which is of datatype long.
+* there are two relations that a `person` can participate in: `marriage` and `parentship`
+* the person can play different roles in those relations, as a spouse (`spouse1` or `spouse2` - we aren't assigning them by gender to be husband or wife in this example) and as a `parent` or `child`.   
+* the `marriage` relation has a resource, which is a URL to a wedding picture, if one exists. 
 
 ```graql
-match $s1 has identifier "Andrew Smith"; $s2 has identifier "Catherine Shaw"; insert (spouse1: $s1, spouse2: $s2) isa marriage has date "01-01-1980";
-commit
+person sub entity
+	plays-role parent
+	plays-role child
+	plays-role spouse1
+	plays-role spouse2
+
+	has-resource identifier
+	has-resource firstname
+	has-resource surname
+	has-resource middlename
+	has-resource picture
+	has-resource age
+	has-resource birth-date
+	has-resource death-date
+	has-resource gender;
+
+# Resources
+
+identifier sub resource datatype string;
+firstname sub resource datatype string;
+surname sub resource datatype string;
+middlename sub resource datatype string;
+picture sub resource datatype string;
+age sub resource datatype long;
+birth-date sub resource datatype string;
+death-date sub resource datatype string;
+gender sub resource datatype string;
+
+# Roles and Relations
+
+marriage sub relation
+	has-role spouse1
+	has-role spouse2
+	has-resource picture;
+
+spouse1 sub role;
+spouse2 sub role;
+
+parentship sub relation
+	has-role parent
+	has-role child;
+
+parent sub role;
+child sub role;
 ```
 
-The `match .... insert ...` syntax will perform the `insert` query for every result of the `match` query.
+### The Data
 
+The data is rather cumbersome, so we will not reproduce it all here. It is part of our [genealogy-graph](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph) project, and you can find out much more about the Niesz family in our [CSV migration](../examples/CSV-migration.html) and [Graql reasoning](../examples/graql-reasoning.html) example documentation. Here is a snippet of some of the data that you added to the graph when you loaded the *basic-genealogy.gql* file:
 
-{% include note.html content="<b>Don't forget to `commit`!</b> <br /> Nothing you have entered into the Graql shell has yet been committed to the graph, nor has it been validated. To save any changes you make to a graph, you need to type `commit` in the shell. It is a good habit to get into regularly committing what you have entered." %}
+```
+$57472 isa person has firstname "Mary" has identifier "Mary Guthrie" has surname "Guthrie" has gender "female";
+$86144 has surname "Dudley" isa person has identifier "Susan Josephine Dudley" has gender "female" has firstname "Susan" has middlename "Josephine";
+$118912 has age 74 isa person has firstname "Margaret" has surname "Newman" has gender "female" has identifier "Margaret Newman";
+...
+$8304 (parent: $57472, child: $41324624) isa parentship;
+$24816 (parent: $81976, child: $41096) isa parentship;
+$37104 isa parentship (parent: $49344, child: $41127960);
+...
+$122884216 (spouse2: $57472, spouse1: $41406488) isa marriage;
+$40972456 (spouse2: $40964120, spouse1: $8248) isa marriage;
+$81940536 (spouse2: $233568, spouse1: $41361488) has picture "http:\/\/1.bp.blogspot.com\/-Ty9Ox8v7LUw\/VKoGzIlsMII\/AAAAAAAAAZw\/UtkUvrujvBQ\/s1600\/johnandmary.jpg" isa marriage;
+```
 
-### Querying Data
-Check that the data has loaded, by performing a pair of queries:
+Don't worry about the numbers such as `$57472`. These are variables in Graql, and happen to have randomly assigned numbers to make them unique. Each statement is adding either a `person`, a `parentship` or a `marriage` to the graph.  We will show how to add more data to the graph shortly in the Extending The Graph section. First, however, it is time to check the graph in the Graql shell. 
 
-Find all people in the graph:
+### Querying the Graph
+
+To start the [Graql shell](../graql/graql-shell.html), type the following from the terminal:
+
+```bash
+<relative-path-to-Grakn>/bin/graql.sh
+```
+
+You will see a `>>>` prompt, at which point, you can make a number queries to explore the graph, as more fully described in the [Graql documentation](../graql/graql-overview.html). Here, we will make a couple of `match` queries:
+
+Find all people in the graph, and list their `identifier` resources (a string that represents their full name):
 
 ```graql
 match $p isa person, has identifier $i;
@@ -76,20 +139,44 @@ match $p isa person, has identifier $i;
 Find all people who are married:
 
 ```graql
-match (spouse1: $x, spouse2: $y) isa marriage, has date $d; $x has identifier $xi; $y has identifier $yi;  
+match (spouse1: $x, spouse2: $y) isa marriage; $x has identifier $xi; $y has identifier $yi;  
 ```
+
+<!-- JCS: Trying to show all parents ```match $x isa parentship; (parent: $p, child: $c); $p has identifier $pname; $c has identifier $cname;``` but lots of duplicates?! -->
 
 {% include note.html content="In queries, Graql variables start with a `$`, which represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
 
-### Loading the Ontology and Data from File
+### Extending the Graph
 
-Above, was a quick overview to show the basics of making Graql queries on some basic data within the Graql shell. It is much more common to load the ontology and data directly from *.gql* files into a graph instead of typing it all into the shell. You can find a good example of this in the [Visualising a Graph](./visualiser.html) documentation, which takes our full genealogy data, loads it into a graph and explores it using the Grakn visualiser. Please see the [examples section](../examples/examples.html) of this documentation for additional examples.
+Besides make `match` queries, it is also possible to [`insert`](../graql/insert-queries.html) and [`delete`](../graql/delete-queries.html) items in the graph through the Graql shell.
 
-We shall now move on to look briefly at some of the other use cases that are typical for developers working with GRAKN.AI.
+```graql
+insert $gormenghast isa person has firstname "Titus" has identifier "Titus Groan" has surname "Groan" has gender "male";
+commit;
+```
 
-## Data Migration
+{% include note.html content="<b>Don't forget to `commit`!</b> <br /> Nothing you have entered into the Graql shell has yet been committed to the graph, nor has it been validated. To save any changes you make to a graph, you need to type `commit` in the shell. It is a good habit to get into regularly committing what you have entered." %}
 
-Migrating data in formats such as CSV, SQL, OWL and JSON into Grakn is a key use case. We discuss this in [Migration](../migration/migration-overview.html) and have a number of examples, such as an example of [migrating genealogy data from CSV](../examples/CSV-migration.html). 
+To find your inserted `person`:
+
+```graql
+match $x isa person has identifier "Titus Groan"; 
+```
+
+To delete the `person` again:
+
+```graql
+match $x isa person has identifier "Titus Groan"; delete $x;
+```
+
+## Using the Grakn Visualiser
+
+The [Grakn visualiser](./visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the types within the graph. The screenshot below shows a basic query (`match $x isa person;`) typed into the form at the top of the main pane, and visualised by pressing "Submit":
+
+![Person query](/images/match-$x-isa-person.png)
+
+The help tab on the main pane shows a set of key combinations that you can use to further drill into the data. You can zoom the display in and out, and move the nodes around for better visibility. Please see our [Grakn visualiser](./visualiser.html) documentation for further details.
+
 
 ## Using Inference
 
@@ -101,6 +188,10 @@ The use of GRAKN.AI to infer new information about a dataset lies at its core. W
 
 Use of Grakn Analytics is covered in [Analytics](../graql-analytics/analytics-overview.html).
 
+
+## Data Migration
+
+Migrating data in formats such as CSV, SQL, OWL and JSON into Grakn is a key use case. We have used a simple example here, which loaded *basic-genealogy.gql* data directly into a graph. However, that file is based on CSV data that can be migrated into Grakn to provide a more complex graph. The [CSV migration example](../examples/CSV-migration.html) explains the steps in further detail. There are a number of other formats besides CSV that are supported, and more information can be found in the [migration documentation](../migration/migration-overview.html).
 
 ## Where Next?
 

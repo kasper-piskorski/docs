@@ -38,28 +38,22 @@ The Grakn visualiser provides a graphical tool to inspect and query your graph d
 ## Loading and Visualising a Graph
 If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
 
-You can find the genealogy example that we will work with in the the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph).
+You can find the *basic-genealogy.gql* example that we will work with in the *examples* directory of the Grakn distribution zip. You can also find this file on [Github](). 
 
-The first step is to load the ontology and data into Grakn. You need to use your terminal to do this, as the visualiser is a read-only interface to a graph. Start Grakn, and load the genealogy-graph ontology. Assuming you are working in the Grakn distribution folder, and have created a subfolder within it for the genealogy-graph example called `genealogy`, your call will look like this:
+The first step is to load the ontology and data into Grakn. You need to use your terminal to do this, as the visualiser is a read-only interface to a graph. From the terminal, start Grakn, and load the file as follows:
 
 ```bash
-./bin/grakn.sh start
-./bin/graql.sh -f ./genealogy/ontology.gql -k "family"
+<relative-path-to-Grakn>/bin/grakn.sh start
+<relative-path-to-Grakn>/bin/graql.sh -f ./examples/basic-genealogy.gql -k "family"
 ```
 
 {% include note.html content="To illustrate the use of different keyspaces, will we use a keyspace called `family` in this example, but you can simply use the default keyspace if you prefer, if it is not already in use, by omitting the -k argument." %}
 
-Then load in the data to the same keyspace
-
-```bash
-./bin/graql.sh -f ./genealogy/data.gql -k "family"
-```
-
 You can test in the Graql shell that all has loaded correctly. For example:
 
 ```bash
-./bin/graql.sh -k family
-match $x isa person, has identifier $y;
+<relative-path-to-Grakn>/bin/graql.sh -k family
+match $p isa person, has identifier $i;
 ```
 
 Now open the visualiser by browsing to [localhost:4567](http://localhost:4567). 
@@ -85,11 +79,11 @@ match $x isa person;
 
 ![Person query](/images/match-$x-isa-person.png)
 
-The help tab on the main pane shows a set of key combinations that you can use to further drill into the data.
+The help tab on the main pane shows a set of key combinations that you can use to further drill into the data. You can zoom the display in and out, and move the nodes around for better visibility.
 
-Alternatively, you can use the "Types" drawer to filter on specific types. For example, clear the graph using the "Clear" button, then select "Types", followed by "Entities" and filter on `birth` entities. The equivalent query will be shown in the query section at the top of the main pane, and the visualiser displays all births. You can zoom the display in and out, and move the nodes around for better visibility.
+Alternatively, you can use the "Types" drawer to filter on specific types. For example, clear the graph using the "Clear" button, then select "Types", followed by "Entities" and filter on `picture` resources. The equivalent query will be shown in the query section at the top of the main pane, and the visualiser displays all the `picture` resources in the graph. These resources are strings that are URLs, and you can see the information the graph stores for each by single clicking one of them, at which point a drawer slides out on the right hand side, as shown: 
 
-![Birth query](/images/match-$x-isa-birth.png)
+![Picture query](/images/match-$x-isa-picture.png)
 
 ### Console
 You can use this console to make queries instead of running a Graql shell in your terminal. You can run `match` and `compute` queries, but because the visualiser is read-only, you cannot make insertions.
