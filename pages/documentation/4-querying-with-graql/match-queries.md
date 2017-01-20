@@ -9,12 +9,11 @@ permalink: /documentation/graql/match-queries.html
 folder: documentation
 ---
 
-A match query will search the graph for any subgraphs that match the given pattern, returning a result for each match found. The results of the query can be modified with various [modifiers](#modifiers). To follow and experiment further with the examples given below, please load the genealogy-graph ontology and data, which can be found in the *examples* directory of the Grakn installation zip, or on Github in the [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph);
+A match query will search the graph for any subgraphs that match the given pattern, returning a result for each match found. The results of the query can be modified with various [modifiers](#modifiers). To follow along, or experiment further, with the examples given below, please load the *basic-genealogy.gql* file, which can be found in the *examples* directory of the Grakn installation zip, or on [Github]().
 
 ```bash
 <relative-path-to-Grakn>/bin/grakn.sh start 
-<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/genealogy-graph/ontology.gql
-<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/genealogy-graph/data.gql
+<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/basic-genealogy.gql
 ```
 
 ## Properties
@@ -47,7 +46,8 @@ Match concepts that have a system id that matches the [predicate](#predicates).
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x id "1216728"
+# Insert one of the system id values that were displayed from the previous query. For example:
+match $x id "1216728"; 
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
@@ -117,15 +117,16 @@ Match concepts that have a relation with the given variable. If a role is provid
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell6">
 <pre>
-match $x isa birth; ($x, $y); 
-match $x isa birth; (happening: $x, $y); 
+match $x isa person; ($x, $y); 
+match $x isa person; (spouse1:$x, $y); 
+match $x isa person; (spouse1:$x, $y); $x has identifier $xn; $y has identifier $yn;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java6">
 <pre>
 qb.match(
-  var("x").isa("birth"),
-  var().rel("happening", "x").rel("y")
+  var("x").isa("person"),
+  var().rel("spouse1", "x").rel("y")
 );
 </pre>
 </div> <!-- tab-pane -->
@@ -134,13 +135,7 @@ qb.match(
 
 ### Variable Patterns
 
-A pattern is a pattern to match in the graph. Patterns can be combined into a
-disjunction ('or') and grouped together with curly braces. Patterns are
-separated by semicolons, each pattern is independent of the others.
-
-A variable pattern is a pattern describing [properties](#properties) of a
-particular concept. The variable pattern can optionally be bound to a variable
-or an ID.
+Patterns can be combined into a disjunction ('or') and grouped together with curly braces. Patterns are separated by semicolons, and each pattern is independent of the others. The variable pattern can optionally be bound to a variable or an ID.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell" data-toggle="tab">Graql</a></li>
@@ -152,16 +147,7 @@ or an ID.
 <pre>match $x isa person, has identifier $y; {$y value contains "Elizabeth";} or {$y value contains "Mary";};</pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java">
-<pre>qb.match(
-  var("x").isa("pokemon"),
-  or(
-    var("x").id("Mew"),
-    and(
-      var().rel("x").rel("y"),
-      var("y").isa("pokemon-type").id("water")
-    )
-  )
-);</pre>
+<pre><!--JCS TO DO --></pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
@@ -206,12 +192,12 @@ Match roles to a given relation.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell8">
 <pre>
-match event-protagonist has-role $x;
+match parentship has-role $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.match(name("event-protagonist").hasRole(var("x")));
+qb.match(name("parentship").hasRole(var("x")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -227,12 +213,12 @@ Match concept types that play the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell9">
 <pre>
-match $x plays-role happening;
+match $x plays-role child;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java9">
 <pre>
-qb.match(var("x").playsRole("happening"));
+qb.match(var("x").playsRole("child"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -307,7 +293,7 @@ qb.match(var("x").has("age", gt(70));
 If a concept doesn't have a value, all predicates are considered false. The query below matches everything where the predicate `>10` is true. So, it will find all concepts with value greater than 10. However, if a concept does not have a value at all, the predicate is considered false, so it won’t appear in the results.
 
 ```graql
-match $x value >30;
+match $x value >10;
 ``` 
 
 
@@ -379,7 +365,7 @@ There are a number of modifiers that can be applied to a query:
 <div role="tabpanel" class="tab-pane active" id="shell16">
 <pre>
 match $x isa person, has identifier $id; select $id; limit 10; offset 5; order by $id asc;
-match $x isa birth, has firstname $y; select $y; order by $y asc; distinct;
+match $x isa person, has firstname $y; select $y; order by $y asc; distinct;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java16">
@@ -396,9 +382,9 @@ qb.match(var("x").isa("person").has("identifier", var("id")))
 Note that the order in which you specify modifiers can be important. If you make a query and `limit` the results returned, say to 10 as in the example, then specify the `distinct` modifier _after_ the `limit`, you may find that `distinct` removes any non-unique results, so you end up with fewer than the 10 results you expected to be returned to you. To ensure that you receive _exactly_ 10 distinct results, you are better to use `distinct` before `limit`.
      
 ```graql
-match $x isa birth, has firstname $y; select $y; limit 10; distinct; order by $y asc;
+match $x isa person, has firstname $y; select $y; limit 10; distinct; order by $y asc;
 # Returns 9 results
-match $x isa birth, has firstname $y; select $y; distinct; limit 10; order by $y asc;
+match $x isa person, has firstname $y; select $y; distinct; limit 10; order by $y asc;
 # Returns 10 results
 ```
 

@@ -9,7 +9,7 @@ permalink: /documentation/graql/ask-queries.html
 folder: documentation
 ---
 
-An ask query will return whether the given [match query](match-queries.html) has any results.
+An ask query will return whether the given [match query](match-queries.html) has any results. To follow along, or experiment further, with the examples given below, please load the *basic-genealogy.gql* file, which can be found in the *examples* directory of the Grakn installation zip, or on [Github]().
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>
@@ -19,13 +19,14 @@ An ask query will return whether the given [match query](match-queries.html) has
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match dragon sub pokemon-type;
-ask;
+match divorce sub relation; ask;
+match marriage sub relation; ask;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
-qb.match(name("dragon").sub("pokemon-type")).ask().execute();
+qb.match(name("divorce").sub("relation")).ask().execute();
+qb.match(name("marriage").sub("relation")).ask().execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->

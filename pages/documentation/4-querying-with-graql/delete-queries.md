@@ -9,11 +9,11 @@ permalink: /documentation/graql/delete-queries.html
 folder: documentation
 ---
 
-A delete query will delete the specified [variable
-patterns](#variable-patterns) for every result of the [match
-query](match-queries.html). If a variable pattern indicates just a variable, then
-the whole concept will be deleted. If it is more specific (such as indicating
-the `id` or `isa`) it will only delete the specified properties.
+A delete query will delete the specified [variable patterns](#variable-patterns) for every result of the [match query](match-queries.html). If a variable pattern indicates just a variable, then the whole concept will be deleted. If it is more specific (such as indicating the `id` or `isa`) it will only delete the specified properties. 
+
+To follow along, or experiment further, with the examples given below, please load the *basic-genealogy.gql* file, which can be found in the *examples* directory of the Grakn installation zip, or on [Github]().
+
+
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>
     <li><a href="#java1" data-toggle="tab">Java</a></li>
@@ -22,12 +22,12 @@ the `id` or `isa`) it will only delete the specified properties.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match $x isa pokemon; delete $x;
+match $x isa person; delete $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
-qb.match(var("x").isa("pokemon")).delete("x").execute();
+qb.match(var("x").isa("person")).delete("x").execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -35,12 +35,10 @@ qb.match(var("x").isa("pokemon")).delete("x").execute();
 
 ## Variable Patterns
 
-A variable pattern in a delete query describes [properties](#properties) to
-delete on a particular concept. The variable pattern is always bound to a
+A variable pattern in a delete query describes [properties](#properties) to delete on a particular concept. The variable pattern is always bound to a
 variable name.
 
-If a variable pattern has no properties, then the concept itself is deleted.
-Otherwise, only the specified properties are deleted.
+If a variable pattern has no properties, then the concept itself is deleted. Otherwise, only the specified properties are deleted.
 
 ## Properties
 
@@ -54,12 +52,12 @@ Removes the given role from the relation.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
-match $x type-name "evolution"; delete $x has-role descendent;
+match $x type-name "marriage"; delete $x has-role spouse1;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.match(var("x").name("evolution")).delete(var("x").hasRole("descendent"));
+qb.match(var("x").name("marriage")).delete(var("x").hasRole("spouse1"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -76,12 +74,12 @@ Disallows the concept type from playing the given role.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x type-name "pokemon-type"; delete $x plays-role attacking-type;
+match $x type-name "person"; delete $x plays-role sibling1;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
 <pre>
-qb.match(var("x").name("pokemon-type")).delete(var("x").playsRole("attacking-type"));
+qb.match(var("x").name("person")).delete(var("x").playsRole("sibling1"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -98,12 +96,12 @@ only delete resources matching that value.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
-match $x has name "Bulbasaur"; delete $x has weight $y;
+match $x has identifier "Mary Guthrie"; delete $x has middlename $y;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
 <pre>
-qb.match(var("x").has("name", "Bulbasaur")).delete(var("x").has("weight"));
+qb.match(var("x").has("identifier", "Mary Guthrie")).delete(var("x").has("middlename"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
