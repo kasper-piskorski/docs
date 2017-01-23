@@ -21,7 +21,7 @@ First up, you need to load the ontology and dataset (which are all in one file) 
 <relative-path-to-Grakn>/bin/graql.sh
 ```
 
-Here are the queries. Type each one in a separate line and see what happens! Comments are marked with a #, so you can ignore them.
+Here are the queries. Type each one in a separate line and see what happens. Comments are marked with a #, so you can ignore them.
 
 ```
 match $x isa pokemon;
@@ -55,6 +55,31 @@ match $x isa pokemon, has pokedex-no $no; select $no; distinct; order by $no asc
 
 # match...insert
 match $pk has name "Pikachu"; insert $p isa pokemon, has name "Pichu", has pokedex-no 172; (descendent: $pk, ancestor: $p) isa evolution;
+match $p has name "Pichu"; $e has name "electric"; insert (pokemon-with-type: $p, type-of-pokemon: $e) isa has-type;
+
+# insert queries 
+insert has name "Totodile" isa pokemon;
+insert value "Ash" isa name;
+insert isa pokemon, has name "Pichu" has height 30;
+insert gen2-pokemon sub pokemon;
+insert trained-by sub relation, has-role trainer, has-role pokemon-trained;
+insert pokemon plays-role pokemon-trained;
+insert pokemon has-resource pokedex-no;
+
+# delete queries
+match $x has name "Bulbasaur"; delete $x has weight $y;
+
+# aggregate queries
+match $x isa pokemon; aggregate count;
+match $x isa pokemon, has weight $w; aggregate sum $w;
+match $x isa pokemon, has height $h; aggregate max $h;
+match $x isa pokemon, has name $n; aggregate min $n;
+match $x isa pokemon, has height $h; aggregate average $h;
+match $x isa pokemon, has weight $w; aggregate median $w;
+match $x isa pokemon-type; $y isa pokemon-type; (attacking-type: $x, defending-type: $y) isa super-effective; aggregate group $x;
+match $x isa pokemon, has weight $w, has height $h; aggregate (min $w as minWeight, max $h as maxHeight);
+
+
 ```
 
 

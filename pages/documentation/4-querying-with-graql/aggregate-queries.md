@@ -9,7 +9,13 @@ permalink: /documentation/graql/aggregate-queries.html
 folder: documentation
 ---
 
-An aggregate query applies an operation onto a [match query](match-queries.html), to return information about the results (e.g. a count).
+An aggregate query applies an operation onto a [match query](match-queries.html), to return information about the results (e.g. a count). To follow along, or experiment further, with the examples given below, please load the *basic-genealogy.gql* file, which can be found in the *examples* directory of the Grakn installation zip, or on [Github]().
+
+```bash
+<relative-path-to-Grakn>/bin/grakn.sh start 
+<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/basic-genealogy.gql
+```
+
 
 
 ## Aggregate Functions
@@ -21,12 +27,12 @@ Count the number of results of the match query or aggregate result.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match $x isa pokemon; aggregate count;
+match $x isa person; aggregate count;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
-qb.match(var("x").isa("pokemon")).aggregate(count());
+qb.match(var("x").isa("person")).aggregate(count());
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -38,16 +44,14 @@ Sum the given resource variable.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match
-$x isa pokemon, has weight $w;
-aggregate sum $w;
+match $x isa person, has age $a; aggregate sum $a;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("pokemon").has("weight", var("w"))
-).aggregate(sum("w"));
+    var("x").isa("person").has("age", var("a"))
+).aggregate(sum("a"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -59,15 +63,13 @@ Find the maximum of the given resource variable.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match
-$x isa pokemon, has height $h;
-aggregate max $h;
+match $x isa person, has age $a; aggregate max $a;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("pokemon").has("height", var("h"))
+    var("x").isa("person").has("age", var("a"))
 ).aggregate(max("h"));
 </pre>
 </div> <!-- tab-pane -->
@@ -80,15 +82,13 @@ Find the minimum of the given resource variable.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match
-$x isa pokemon, has name $n;
-aggregate min $n;
+match $x isa person, has firstname $n; aggregate min $n;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("pokemon").has("name", var("n"))
+    var("x").isa("person").has("firstname", var("n"))
 ).aggregate(min("n"));
 </pre>
 </div> <!-- tab-pane -->
@@ -101,16 +101,14 @@ Find the average (mean) of the given resource variable.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match
-$x isa pokemon, has height $h;
-aggregate average $h;
+match $x isa person, has age $a; aggregate average $a;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("pokemon").has("height", var("h"))
-).aggregate(average("h"));
+    var("x").isa("person").has("age", var("a"))
+).aggregate(average("a"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -123,15 +121,15 @@ Find the median of the given resource variable.
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
 match
-$x isa pokemon, has weight $w;
-aggregate median $w;
+match $x isa person, has age $a; aggregate median $a;
+
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("pokemon").has("weight", var("w"))
-).aggregate(median("w"));
+    var("x").isa("person").has("age", var("a"))
+).aggregate(median("a"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -146,19 +144,15 @@ aggregate operation, e.g. `count`.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match
-$x isa pokemon-type;
-$y isa pokemon-type;
-(attacking-type: $x, defending-type: $y) isa super-effective;
-aggregate group $x;
+match $x isa person; $y isa person; (parent: $x, child: $y) isa parentship; aggregate group $x;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("pokemon-type"),
-    var("y").isa("pokemon-type"),
-    var().rel("attacking-type", "x").rel("defending-type", "y").isa("super-effective")
+    var("x").isa("person"),
+    var("y").isa("person"),
+    var().rel("parent", "x").rel("child", "y").isa("parentship")
 ).aggregate(group("x"));
 </pre>
 </div> <!-- tab-pane -->
@@ -171,16 +165,14 @@ Select and name multiple aggregates.
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match
-$x isa pokemon, has weight $w, has height $h;
-aggregate (min $w as minWeight, max $h as maxHeight);
+match $x isa person, has age $a, has gender $g; aggregate (min $a as minAge, max $g as maxGender);
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("pokemon").has("weight", var("w")).has("height", var("h")),
-).aggregate(select(min("w").as("minWeight"), max("h").as("maxHeight")));
+    var("x").isa("person").has("age", var("w")).has("gender", var("h")),
+).aggregate(select(min("w").as("minAge"), max("h").as("maxGender")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -192,7 +184,7 @@ Aggregate queries are computationally light and run single-threaded on a single 
 For example, you can use an aggregate query to filter results by resource. The following  aggregate query, allows you to match the number of people of a particular name:
 
 ```
-match $x has name 'Bob'; aggregate count;
+match $x has identifier contains "Elizabeth"; aggregate count;
 ```
 
 Compute queries are computationally intensive and run in parallel on a cluster (so are good for big data).

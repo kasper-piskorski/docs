@@ -251,44 +251,47 @@ During iteration Graql variables will be automatically suffixed with an index.
 For example, the following loop:
 
 ```graql-template
-insert $x isa pokemon has description <name>;
-    
-for (<types>) do {
-    $y isa pokemon-type ;
-        $y has description <type-description> ;
-        (pokemon-with-type: $x, type-of-pokemon: $y) isa has-type;
-}
+insert
+	$p isa person has identifier <pid>
+		has firstname <name1>,
+		
+		if (<surname> != "") do 
+		{
+		has surname <surname>,
+		}
 
-$y isa pokemon;
-(ancestor: $x, descendent: $y) isa evolution;
+		if (<name2> != "") do 
+		{
+		has middlename <name2>,
+		}
+		
+		if (<age> != "") do 
+		{
+		has age @long(<age>),
+		}
+
+		if (<born> != "") do 
+		{
+		has birth-date <born>,
+		}
+
+		if (<dead> != "") do 
+		{
+		has death-date <dead>,
+		}
+
+		has gender <gender>;
 ```
 
 would result in the expanded Graql queries:
 
 ```graql
-insert $x0 isa pokemon has description "Pikachu";
-    
-    $y0 isa pokemon-type ;
-        $y0 has description "Electric" ;
-        (pokemon-with-type: $x0, type-of-pokemon: $y0) isa has-type;
-    $y1 isa pokemon-type ;
-        $y1 has description "Mouse" ;
-        (pokemon-with-type: $x0, type-of-pokemon: $y1) isa has-type;
-
-    $y2 isa pokemon;
-    (ancestor: $x0, descendent: $y2) isa evolution; 
+...
+insert $p0 isa person has firstname "Barbara" has identifier "Barbara Newman" has surname "Newman" has gender "female";
+insert $p0 has birth-date "1811-03-06" isa person has surname "Newman" has gender "male" has death-date "1898-09-10" has identifier "Henry Newman" has age 87 has firstname "Henry";
+... 
 ```
 
-```graql
-insert $x1 isa pokemon has description "Raichu";
-    
-    $y3 isa pokemon-type ;
-        $y3 has description "Electric" ;
-        (pokemon-with-type: $x1, type-of-pokemon: $y3) isa has-type;
-
-    $y4 isa pokemon;
-    (ancestor: $x1, descendent: $y4) isa evolution; 
-```
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/42" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
