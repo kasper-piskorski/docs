@@ -186,9 +186,6 @@ entries:
       - title: Overview
         output: web
         url: /documentation/examples/examples-overview.html
-      - title: Modern example
-        output: web
-        url: /documentation/examples/modern.html
       - title: CSV Migration
         output: web
         url: /documentation/examples/CSV-migration.html
@@ -201,6 +198,12 @@ entries:
       - title: Reasoning with Graql
         output: web
         url: /documentation/examples/graql-reasoning.html
+      - title: Modern example
+        output: web
+        url: /documentation/examples/modern.html
+      - title: Pokemon example
+        output: web
+        url: /documentation/examples/pokemon.html
       - title: Example Projects
         output: web
         url: /documentation/examples/projects.html
