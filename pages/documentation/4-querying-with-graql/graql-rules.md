@@ -117,11 +117,11 @@ and RHS of rules.
 
 | Description        | Pattern Example           | LHS | RHS
 | -------------------- |:--- |:--|:--|
-| `isa` | `$x isa pokemon;` | ✓ | x |
-| `id`  | `$x id "Articuno";` | ✓ | indirect only  |
-| `value` | `$x value contains "lightning";`  | ✓ | indirect only  |
-| `has` | `$x has pokedex-no < 20;` | ✓ | ✓ |
-| `relation` | `(ancestor: $x, descendant: $y) isa ancestorship;` | ✓ | ✓ |
+| `isa` | `$x isa person;` | ✓ | x |
+| `id`  | `$x id "264597";` | ✓ | indirect only  |
+| `value` | `$x value contains "Bar";`  | ✓ | indirect only  |
+| `has` | `$x has age < 20;` | ✓ | ✓ |
+| `relation` | `(parent: $x, child: $y) isa parentship;` | ✓ | ✓ |
 | resource comparison | `$x value > $y;`  | ✓ | x |
 | `!=` | `$x != $y;` | ✓ | x |
 | `has-scope` | `($x, $y) has-scope $z;$x has-scope $y;`  | ✓ | x |
@@ -131,9 +131,9 @@ and RHS of rules.
 | Description        | Pattern Example   | LHS | RHS
 | -------------------- |:---|:--|:--|
 | `sub`        | `$x sub type;` | ✓| x |
-| `plays-role` | `$x plays-role ancestor;` |✓| x |
-| `has-resource`        | `$x has-resource name;` | ✓ | x |  
-| `has-role`   | `evolution has-role $x;` | ✓ | x |
+| `plays-role` | `$x plays-role parent;` |✓| x |
+| `has-resource`        | `$x has-resource firsname;` | ✓ | x |  
+| `has-role`   | `marriage has-role $x;` | ✓ | x |
 | `is-abstract` | `$x is-abstract;` | ✓ | x |
 | `datatype` | `$x isa resource, datatype string;` | ✓| x |
 | `regex` | `$x isa resource, regex /hello/;` | ✓ | x |
