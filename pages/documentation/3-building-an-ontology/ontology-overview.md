@@ -12,7 +12,7 @@ comment_issue_id: 22
 
 {% include warning.html content="This page is deprecated and will soon be removed." %}
 
-If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html). This article assumes that you are set up and have already looked at the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that covers Graql queries.   
+If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html). This article assumes that you are set up and have already looked at the [Quickstart Tutorial](../get-started/quickstart-tutorial.html) that covers Graql queries.   
 You can find the code below in the example code directory of the Grakn distribution zip.
 
 ## Introduction
@@ -48,7 +48,7 @@ GraknGraph graknGraph = Grakn.factory(Grakn.IN_MEMORY, "my-graph").getGraph();
 ## Modelling The Philosophers
 
 With a graph in place lets go through and repeat the [Quickstart
-Tutorial](../the-basics/quickstart-tutorial.html) using the Java Graph API.
+Tutorial](../get-started/quickstart-tutorial.html) using the Java Graph API.
 
 ### Entity Types
 

@@ -49,7 +49,7 @@ For more information about migrating OWL to Grakn, please see the [OWL migration
 
 ### Reasoning with Graql 
 
-We use the genealogy dataset to illustrate how to write rules to infer new information from a dataset. You can find the example [here](./grakn-reasoner.html).
+We use the genealogy dataset to illustrate how to write rules to infer new information from a dataset. You can find the example [here](./graql-reasoning.html).
 
 ### Modern
 

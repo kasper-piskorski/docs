@@ -39,7 +39,7 @@ Finally, we load the ontology and data into Grakn, so we have a graph to work wi
 
 ### The Ontology
 
-You can find out much more about the Grakn ontology in our documentation about the [Grakn knowledge model](./grakn-knowledge-model.html), which states that
+You can find out much more about the Grakn ontology in our documentation about the [Grakn knowledge model](../the-basics/grakn-knowledge-model.html), which states that
 
 > "The ontology is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed". 
 
@@ -171,16 +171,16 @@ match $x isa person has identifier "Titus Groan"; delete $x;
 
 ## Using the Grakn Visualiser
 
-The [Grakn visualiser](./visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the types within the graph. The screenshot below shows a basic query (`match $x isa person;`) typed into the form at the top of the main pane, and visualised by pressing "Submit":
+The [Grakn visualiser](../grakn-dashboard/visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the types within the graph. The screenshot below shows a basic query (`match $x isa person;`) typed into the form at the top of the main pane, and visualised by pressing "Submit":
 
 ![Person query](/images/match-$x-isa-person.png)
 
-The help tab on the main pane shows a set of key combinations that you can use to further drill into the data. You can zoom the display in and out, and move the nodes around for better visibility. Please see our [Grakn visualiser](./visualiser.html) documentation for further details.
+The help tab on the main pane shows a set of key combinations that you can use to further drill into the data. You can zoom the display in and out, and move the nodes around for better visibility. Please see our [Grakn visualiser](../grakn-dashboard/visualiser.html) documentation for further details.
 
 
 ## Using Inference
 
-The use of GRAKN.AI to infer new information about a dataset lies at its core. We have a [detailed example of using the Grakn reasoner](../examples/grakn-reasoner.html) to infer information about the genealogy dataset. An additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
+The use of GRAKN.AI to infer new information about a dataset lies at its core. We have a [detailed example of using the Grakn reasoner](../examples/graql-reasoning.html) to infer information about the genealogy dataset. An additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
 
 ## Using Analytics
 

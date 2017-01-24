@@ -114,7 +114,7 @@ Currently, there is no official support for languages other than Java. But we ar
 
 ### How do I visualise a graph?
 
-Grakn comes with a basic visualiser, with a web-interface. We appreciate any feedback you give us about it via the [discussion boards](https://discuss.grakn.ai/t/visualise-my-data/57).
+Grakn comes with a basic [visualiser](../grakn-dashboard/visualiser.html), with a web-interface. We appreciate any feedback you give us about it via the [discussion boards](https://discuss.grakn.ai/t/visualise-my-data/57).
 
 Once you have started Grakn, you will see a message in the console:
 

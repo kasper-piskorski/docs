@@ -64,7 +64,7 @@ The data for this example is discussed more fully in our [example on CSV migrati
 <relative-path-to-Grakn>/bin/graql.sh -f ./data.gql
 ```
 
-When the terminal prompt returns, the data will have been loaded into the default keyspace, and you can start to look it using the [Grakn visualiser](../the-basics/visualiser.html), by navigating to [http://localhost:4567](http://localhost:4567) in your browser.
+When the terminal prompt returns, the data will have been loaded into the default keyspace, and you can start to look it using the [Grakn visualiser](../grakn-dashboard/visualiser.html), by navigating to [http://localhost:4567](http://localhost:4567) in your browser.
 
 ## Inferring Family Relations
 

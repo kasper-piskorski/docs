@@ -13,7 +13,7 @@ comment_issue_id: 27
 If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html). For a comprehensive guide to all Graql keywords, please see the [Graql documentation](https://grakn.ai/pages/documentation/graql/graql-overview.html).
 
 ## Introduction
-We have a few examples on how to work with Graql using different datasets. For example, see our [blog posts](https://medium.com/p/e1125e02dc85) and the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) that introduces how to make Graql queries.
+We have a few examples on how to work with Graql using different datasets. For example, see our [blog posts](https://medium.com/p/e1125e02dc85) and the [Quickstart Tutorial](../get-started/quickstart-tutorial.html) that introduces how to make Graql queries.
 
 This example takes a very simple example from [TinkerPop3 Documentation](http://tinkerpop.apache.org/docs/3.0.1-incubating/), called TinkerPop Modern. Here it is, shown diagrammatically:
 

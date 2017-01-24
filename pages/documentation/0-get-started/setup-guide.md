@@ -45,7 +45,7 @@ Graql is our knowledge-oriented query language, which allows you to interface wi
 ./bin/graql.sh
 ```
 
-The Graql shell starts and you see a `>>>` prompt. Type in the following, but don't worry too much about what it means right now. We will go through it further in the [Quickstart Tutorial](../the-basics/quickstart-tutorial.html).  
+The Graql shell starts and you see a `>>>` prompt. Type in the following, but don't worry too much about what it means right now. We will go through it further in the [Quickstart Tutorial](./quickstart-tutorial.html).  
 
 ```graql   
 insert person sub entity;
@@ -70,7 +70,7 @@ You can now open [localhost:4567](http://localhost:4567) in your browser to star
 
 ![Visualising a graph](/images/topsyandtim.png)
 
-Further information about the visualiser can be found in [Visualising a Graph](../the-basics/visualiser.html).
+Further information about the visualiser can be found in [Visualising a Graph](../grakn-dashboard/visualiser.html).
 
 
 ### Troubleshooting  
@@ -78,7 +78,7 @@ If you do not see the above message, please check our [FAQ page](../resources/fa
 
 
 ## Where next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load populate and query Grakn using Graql.
+Our [Quickstart Tutorial](./quickstart-tutorial.html) will show you how to load populate and query Grakn using Graql.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

@@ -208,7 +208,7 @@ The rule-based inference is set OFF by default when querying Grakn, and can be a
 
 
 ## Where Next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load an ontology, rules and data into Grakn using Graql, and to make basic queries.
+Our [Quickstart Tutorial](../get-started/quickstart-tutorial.html) will show you how to load an ontology, rules and data into Grakn using Graql, and to make basic queries.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 

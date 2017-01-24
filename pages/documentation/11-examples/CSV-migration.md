@@ -82,7 +82,7 @@ The ontology also describes the relations between entities, namely:
 * the `conclusion-evidence` relation, which links documentary evidence to an event
 		- Has two associated roles `evidence` (played by a `document`) and `conclusion` (played by an event such as a `wedding`).
 
-Note that in this example, no relations between `person` entities are described. The inference of such family relationships is discussed fully in a separate example that covers [inference using the Grakn reasoner](./grakn-reasoner.html).
+Note that in this example, no relations between `person` entities are described. The inference of such family relationships is discussed fully in a separate example that covers [inference using the Grakn reasoner](./graql-reasoning.html).
 
 To load *basic-ontology.gql* into Grakn, make sure the engine is running and choose a clean keyspace in which to work (in the example below we use the default keyspace, so we are cleaning it before we get started). Pull down the [sample-datasets repo](https://github.com/graknlabs/sample-datasets), and call the following from the terminal, from within the *genealogy-graph* directory:
 
@@ -298,7 +298,7 @@ However, for simplicity, the */raw-data/* directory of the genealogy-graph proje
  ./loader.sh <location-of-Grakn-on-your-computer>/bin
 ```
 
-The migration will take a minute or two, and the terminal will report which file it is migrating at each step. When it is complete, it will report that it is "Done migrating data". To check that it has been successful, open the [Grakn visualiser](../the-basics/visualiser.html) and select Types, then Entities, and choose one of those presented to you (the entities should be those described [above](./CSV-migration.html#entities)]. The visualiser will display the entities it has imported. The screenshot below illustrates the result from selecting to see all `person` entities.
+The migration will take a minute or two, and the terminal will report which file it is migrating at each step. When it is complete, it will report that it is "Done migrating data". To check that it has been successful, open the [Grakn visualiser](../grakn-dashboard/visualiser.html) and select Types, then Entities, and choose one of those presented to you (the entities should be those described [above](./CSV-migration.html#entities)]. The visualiser will display the entities it has imported. The screenshot below illustrates the result from selecting to see all `person` entities.
 
 ![Person query](/images/match-$x-isa-person.png)
 

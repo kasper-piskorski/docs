@@ -145,7 +145,7 @@ instance of
 <!-- Removed a section on the meta ontology. We could create a separate article about this later if we think it's useful --> 
 
 ## Where Next?
-Our [Quickstart Tutorial](../the-basics/quickstart-tutorial.html) will show you how to load a schema and data into Grakn using Graql.
+Our [Quickstart Tutorial](../get-started/quickstart-tutorial.html) will show you how to load a schema and data into Grakn using Graql.
 
 You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
 
