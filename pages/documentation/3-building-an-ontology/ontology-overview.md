@@ -18,7 +18,7 @@ You can find the code below in the example code directory of the Grakn distribut
 ## Introduction
 
 In Grakn, the Graph API is the implementation of the object model discussed in
-[Grakn Basics](../the-basics/grakn-basics.html). It allows you to create graphs using Java 8. 
+[Grakn Basics](../the-basics/grakn-basics.html). It allows you to create graphs using Java 8.
 
 ### Initialising Grakn in Java    
 
@@ -41,7 +41,7 @@ GraknGraph graknGraph = Grakn.factory(Grakn.IN_MEMORY, "my-graph").getGraph();
 <dependency>
     <groupId>ai.grakn</groupId>
     <artifactId>grakn-titan-factory</artifactId>
-    <version>0.10.0</version>
+    <version>0.9.0</version>
 </dependency>
 ```
 
@@ -211,13 +211,13 @@ alexander.hasResource(lordOfAsia);
 Suppose you have an instance with a resource, which in Graql would look something like `my-thing has-resource name`:
 
 How do you retrieve the name using the Graph API? There are three ways to get resources. The simplest is via its id, if that is known:
-    
+
 ```java-test-ignore
 <V> Resource<V> getResource(String id);
 ```
 
 Another method is to use the literal value, but this returns a collection of resources:
-   
+
 ```java-test-ignore
 <V> Collection<Resource<V>> getResourcesByValue(V value);
 ```
@@ -239,7 +239,7 @@ graknGraph.getResourceType("name").getResource("bob"); //This will return a sing
 #### Getting Resources When Knowing The Entity
 
 If you have an entity and want to get a resource of a particular type attached to that entity you can do so with:
-   
+
 ```java-test-ignore
 Collection<Resource<?>> resources(ResourceType ... resourceTypes);
 ```
@@ -252,7 +252,7 @@ resources = myThing.resources(graknGraph.getResourceType("name"));
 #### Getting From The Resource To The Entity
 
 If you have a resource you can get the entitie(s) attached to it with:
-   
+
 ```java   
 resource = resources.iterator().next();
 resource.owner();

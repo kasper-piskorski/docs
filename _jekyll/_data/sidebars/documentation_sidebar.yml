@@ -26,7 +26,7 @@ entries:
         url: /documentation/the-basics/grakn-basics.html
       - title: Grakn Knowledge Model
         output: web
-        url: /documentation/the-basics/grakn-knowledge-model.html  
+        url: /documentation/the-basics/grakn-knowledge-model.html
  # - title: Grakn Knowledge Model
  #   output: web
  #   folderitems:
@@ -98,20 +98,20 @@ entries:
         url: /documentation/graql/graql-cheatsheet.html
   - title: Graql Analytics
     output: web
-    folderitems: 
+    folderitems:
       - title: Overview
         output: web
         url: /documentation/graql-analytics/analytics-overview.html
       - title: Analytics Statistics
         output: web
-        url: /documentation/graql-analytics/analytics-statistics.html 
+        url: /documentation/graql-analytics/analytics-statistics.html
       - title: Analytics Shortest Path
         output: web
-        url: /documentation/graql-analytics/analytics-shortest-path.html   
+        url: /documentation/graql-analytics/analytics-shortest-path.html
       - title: Analytics Degrees
         output: web
-        url: /documentation/graql-analytics/analytics-degrees.html 
-      - title: Analytics Persist  
+        url: /documentation/graql-analytics/analytics-degrees.html
+      - title: Analytics Persist
         output: web
         url: /documentation/graql-analytics/analytics-persist.html
       - title: Connected Components
