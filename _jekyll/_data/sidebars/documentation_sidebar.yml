@@ -3,7 +3,7 @@
 entries:
 - title: Sidebar
   product: Grakn
-  version: 0.10.0
+  version: 0.9.0
   folders:
 
   - title: Get Started
@@ -15,15 +15,12 @@ entries:
       - title: Setup Guide
         output: web
         url: /documentation/get-started/setup-guide.html
+      - title: Quickstart Tutorial
+        output: web
+        url: /documentation/get-started/quickstart-tutorial.html
   - title: The Basics
     output: web
     folderitems:
-      - title: Quickstart Tutorial
-        output: web
-        url: /documentation/the-basics/quickstart-tutorial.html
-      - title: Visualising a Graph
-        output: web
-        url: /documentation/the-basics/visualiser.html
       - title: Grakn Basics
         output: web
         url: /documentation/the-basics/grakn-basics.html
@@ -42,7 +39,7 @@ entries:
   #    - title: Rules
   #      output: web
   #      url: /documentation/grakn-knowledge-model/rules.html
-  - title: Building an Ontology
+  - title: Graql Ontology
     output: web
     folderitems:
       - title: Defining a Basic Ontology
@@ -63,7 +60,7 @@ entries:
       - title: Advanced Schema (deprecated)
         output: web
         url: /documentation/building-an-ontology/advanced-schema-definition.html
-  - title: Querying with Graql
+  - title: Graql Querying
     output: web
     folderitems:
       - title: Overview
@@ -150,6 +147,12 @@ entries:
       - title: Java Graql
         output: web
         url: /documentation/developing-with-java/java-graql.html
+  - title: Grakn Dashboard
+    output: web
+    folder items:    
+      - title: Grakn Visualiser
+        output: web
+        url: /documentation/grakn-dashboard/visualiser.html
   - title: Advanced Grakn
     output: web
     folderitems:

@@ -18,6 +18,8 @@ The migration shell script can be found in `/bin` directory of your Grakn enviro
 
 ```bash
 usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
+ 
+OPTIONS
  -b,--batch <arg>      number of rows to load at once
  -h,--help             print usage message
  -i,--input <arg>      input json data file or directory
@@ -26,13 +28,16 @@ usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg
  -t,--template <arg>   graql template to apply over data
  -u,--uri <arg>        uri to engine endpoint
  -v,--verbose          print counts of migrated data.
+ 
 ```
 
 ## JSON Migration Basics
 
-Once you have written an ontology for your domain, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology.
+There are limitations on the JSON format that prevent it from expressing the semantics of the data, so Grakn cannot automatically migrate and derive an ontology for your data. To have the full benefit of a knowledge graph, you must write the ontology for your dataset up-front.
 
-JSON Migration makes heavy use of the Graql templating language. You should have a solid foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
+Once you have written an ontology for your dataset, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The JSON migrator will apply the template to each row of data in the JSON file, replacing the indicated sections in the template with provided data: the column header is the key and the content of each row at that column the value.
+
+{% include note.html content="JSON Migration makes heavy use of the Graql templating language. You will need a foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more." %}
 
 Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our [other migration guides](./migration-overview.html) for more ideas on how to use Graql templates with data. 
 

@@ -35,9 +35,10 @@ OPTIONS
 
 There are limitations on the CSV format that prevent it from expressing the semantics of the data. Grakn cannot automatically migrate and derive an ontology for your data. To have the full benefit of a knowledge graph, you must write the ontology for your dataset.
 
-CSV Migration makes heavy use of the Graql templating language. You will need a foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more.
+Once you have written an ontology for your dataset, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The CSV migrator will apply the template to each row of data in the CSV file, replacing the sections indicated in the template with provided data: the column header is the key and the content of each row at that column the value.
 
-Once you have written an ontology for your dataset, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The CSV migrator will apply the template to each row of data in the CSV file. If you are familiar with the Graql templating language, you are aware that it replaces the indicated sections in the template with provided data: the column header is the key and the content of each row at that column the value.
+{% include note.html content="CSV Migration makes heavy use of the Graql templating language. You will need a foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more." %}
+
 
 ## Example 1: Cars
 
