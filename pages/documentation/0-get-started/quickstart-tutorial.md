@@ -5,7 +5,7 @@ last_updated: December 2016
 tags: [getting-started, graql]
 summary: "This document will work through a simple example using the Graql shell to show how to get started with GRAKN.AI."
 sidebar: documentation_sidebar
-permalink: /documentation/the-basics/quickstart-tutorial.html
+permalink: /documentation/get-started/quickstart-tutorial.html
 folder: documentation
 comment_issue_id: 17
 ---

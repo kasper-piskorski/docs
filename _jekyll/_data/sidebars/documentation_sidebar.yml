@@ -149,7 +149,7 @@ entries:
         url: /documentation/developing-with-java/java-graql.html
   - title: Grakn Dashboard
     output: web
-    folder items:    
+    folderitems:
       - title: Grakn Visualiser
         output: web
         url: /documentation/grakn-dashboard/visualiser.html

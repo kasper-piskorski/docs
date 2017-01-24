@@ -5,7 +5,7 @@ last_updated: August 10, 2016
 tags: [getting-started, graql]
 summary: "How to use the Grakn Visualiser."
 sidebar: documentation_sidebar
-permalink: /documentation/the-basics/visualiser.html
+permalink: /documentation/grakn-dashboard/visualiser.html
 folder: documentation
 comment_issue_id: 17
 ---
