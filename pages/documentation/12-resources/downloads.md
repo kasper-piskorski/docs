@@ -50,7 +50,7 @@ Inside the `lib` directory of Grakn.zip are the jars you will need to
 develop with Grakn.
 
 If you would like to start developing with minimal effort you can integrate the jar file, e.g.
-`graql-shell-0.2.1-jar-with-dependencies.jar` into your project. This however
+`graql-shell-x.y.z-jar-with-dependencies.jar` into your project. This however
 may be a bit inflexible as all dependencies are compiled in.
 
 If you would like more flexibility, in the `lib` directory all the Grakn
@@ -64,7 +64,7 @@ Here are some links to guides for adding external jars using different IDEs:
 - [Netbeans](http://oopbook.com/java-classpath-2/classpath-in-netbeans/)
 
 ## Questions?
-Please see our [FAQ](../resources/faq.html) page if you encounter any problems when installing and running Grakn. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.grakn.ai) or on [Stack Overflow](http://www.stackoverflow.com).
+Please see our [FAQ](../resources/faq.html) page if you encounter any problems when installing and running Grakn. If our guide doesn't cover the issue, please do get in touch on our [discussion forums](http://discuss.grakn.ai), on [Stack Overflow](http://www.stackoverflow.com) or via our [Slack channels](https://grakn.ai/slack.html).
 
 {% include links.html %}
 

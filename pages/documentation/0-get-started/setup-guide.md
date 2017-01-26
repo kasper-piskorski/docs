@@ -33,54 +33,54 @@ This will start an instance of Cassandra, which serves as the supported backend 
 
 {% include note.html content="**Useful commands**  <br />
 To start Grakn, run `grakn.sh start`.   
-To stop Grakn, run `grakn.sh stop`. 
+To stop Grakn, run `grakn.sh stop`.    
 To remove all graphs from Grakn, run `grakn.sh clean`" %}
 
 
 ## Test the Graql Shell
 
-Graql is our knowledge-oriented query language, which allows you to interface with Grakn. To test that the installation is working correctly, here we will start the Graql shell and enter a few lines of code.
+To test that the installation is working correctly, we will start the Graql shell and load a simple ontology and data file, *basic-genealogy.gql*, which will be included in the */examples* folder of the Grakn installation zip from the next release and onwards. It is not currently in the zip, so you will need to get it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/examples/basic-genealogy.gql). In the code below, we assume that it is in the */examples* folder. 
+
+Type in the following to load the example graph.
+
+
+```bash
+./bin/graql.sh -f ./examples/basic-genealogy.gql
+```
+
+Then type the following to start the Graql shell:
 
 ```bash
 ./bin/graql.sh
 ```
 
-The Graql shell starts and you see a `>>>` prompt. Type in the following, but don't worry too much about what it means right now. We will go through it further in the [Quickstart Tutorial](./quickstart-tutorial.html).  
+The Graql shell starts and you see a `>>>` prompt. Graql is our knowledge-oriented query language, which allows you to interface with Grakn. We will type in a query to check that everything is working. 
+
 
 ```graql   
-insert person sub entity;
-insert name sub resource, datatype string;
-insert person has-resource name;
-insert isa person, has name "Topsy";
-insert isa person, has name "Tim";
-commit
-match $x isa person, has name $n; select $x, $n;
+match $x isa person, has identifier $n;
 ```
 
-Then, you should see the following (although the long strings of numbers will be different):
+You should see a printout of a number of lines of text, each of which includes a name, such as "William Sanford Titus" or "Elizabeth Niesz".
 
-```
-$x id "ENTITY-person-89b823a0-606d-434d-a533-1e172b90c7bc" isa person; $n value "Topsy" isa name;
-$x id "ENTITY-person-afd29319-ff33-4b0c-b7e3-63d04ac81dcf" isa person; $n value "Tim" isa name;
-```
+If you see the above output then congratulations! You have set up Grakn.
 
-If you do see the above output then congratulations! You have set up Grakn.
+## Test the Visualiser
 
-You can now open [localhost:4567](http://localhost:4567) in your browser to start the visualiser, which provides a graphical dashboard on a graph.
+The [Grakn visualiser](../grakn-dashboard/visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the types within the graph. The screenshot below shows a basic query (`match $x isa person;`) typed into the form at the top of the main pane, and visualised by pressing "Submit":
 
-![Visualising a graph](/images/topsyandtim.png)
+![Person query](/images/match-$x-isa-person.png)
 
-Further information about the visualiser can be found in [Visualising a Graph](../grakn-dashboard/visualiser.html).
-
+The help tab on the main pane shows a set of key combinations that you can use to further drill into the data. You can zoom the display in and out, and move the nodes around for better visibility. Please see our [Grakn visualiser](../grakn-dashboard/visualiser.html) documentation for further details.
 
 ### Troubleshooting  
-If you do not see the above message, please check our [FAQ page](../resources/faq.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.grakn.ai), or on [Stack Overflow](http://stackoverflow.com).
+If you do not see the above message, please check our [FAQ page](../resources/faq.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.grakn.ai), on [Stack Overflow](http://stackoverflow.com) or on our [Slack channel](https://grakn.ai/slack.html).
 
 
 ## Where next?
-Our [Quickstart Tutorial](./quickstart-tutorial.html) will show you how to load populate and query Grakn using Graql.
+Our [Quickstart Tutorial](./quickstart-tutorial.html) will go into more detail about using Grakn and Graql.
 
-You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. Please get in touch!
+You can find additional example code and documentation on this portal. We are always adding more and welcome ideas and improvement suggestions. [Please get in touch](https://grakn.ai/community.html)!
 
 {% include links.html %}
 

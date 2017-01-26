@@ -11,7 +11,7 @@ toc: false
 
 Welcome to our documentation portal. We have a growing collection of pages to help you get up and running with the Grakn environment.
 
-Take a look around! We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.grakn.ai) or through our main [website](http://www.grakn.ai). If you'd like to request a page, please ask us on the forums - and if there's anything you want to improve on these pages, you can contribute to them directly via [github](https://github.com/graknlabs/docs/).
+Take a look around! We hope you find our documentation helpful, but if you need more information, please don't hesitate to contact us using our [discussion forums](http://discuss.grakn.ai) or through our [Slack channel](https://grakn.ai/slack.html). If you'd like to request a page, please ask us on the forums - and if there's anything you want to improve on these pages, you can leave us a comment using the link at the bottom of each page, or even contribute to them directly via [github](https://github.com/graknlabs/docs/).
 
 
 <ul id="profileTabs" class="nav nav-tabs">
@@ -25,7 +25,6 @@ Take a look around! We hope you find our documentation helpful, but if you need 
     <h2>Guide for beginners</h2>
 <p>Check out our guide to <a href="https://grakn.ai/pages/documentation/get-started/setup-guide.html">download and set up Grakn</a>.</p>
 <p>When you're set up, there's an <a href="https://grakn.ai/pages/documentation/get-started/quickstart-tutorial.html">introductory tutorial</a> to show the basics of Graql and how to use the Java API.</p>
-<p>Read about the <a href="https://grakn.ai/pages/documentation/the-basics/grakn-basics.html">basics of the Grakn object model</a>.</p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="graql">
@@ -39,7 +38,7 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 <div role="tabpanel" class="tab-pane" id="gethelp">
     <h2>Get Help</h2>
-    <p>We are here to help! Take a look at our <a href="https://grakn.ai/pages/documentation/resources/resources-overview.html">resources</a> page for a list of ways to get what you need, and the <a href="https://grakn.ai/pages/documentation/resources/faq.html">FAQ</a> page for some tips on common Grakn problems.</p>
+    <p>We are here to help! Take a look at our <a href="https://grakn.ai/pages/documentation/resources/resources-overview.html">resources</a> page for a list of ways to get what you need, and the <a href="https://grakn.ai/pages/documentation/resources/faq.html">FAQ</a> page for some tips on commonly asked questions.</p>
  <p>Our <a href="https://grakn.ai/pages/documentation/resources/downloads.html">downloads page</a> lists all Grakn downloads and prerequisites.</p>   
 </div>
 </div>
