@@ -144,6 +144,9 @@ entries:
       - title: Graph API
         output: web
         url: /documentation/developing-with-java/graph-api.html
+      #- title: Multi-threading
+      #  output: web
+      #  url: /documentation/developing-with-java/multithreading.html 
       - title: Java Graql
         output: web
         url: /documentation/developing-with-java/java-graql.html
