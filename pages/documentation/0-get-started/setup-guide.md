@@ -39,10 +39,9 @@ To remove all graphs from Grakn, run `grakn.sh clean`" %}
 
 ## Test the Graql Shell
 
-To test that the installation is working correctly, we will start the Graql shell and load a simple ontology and data file, *basic-genealogy.gql*, which will be included in the */examples* folder of the Grakn installation zip from the next release and onwards. It is not currently in the zip, so you will need to get it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/examples/basic-genealogy.gql). In the code below, we assume that it is in the */examples* folder. 
+To test that the installation is working correctly, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from the next release and onwards. It is not currently in the zip, so you will need to get it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that the file is in the */examples* folder. 
 
 Type in the following to load the example graph.
-
 
 ```bash
 ./bin/graql.sh -f ./examples/basic-genealogy.gql

@@ -1,7 +1,7 @@
 ---
 title: Quickstart Tutorial
 keywords: setup, getting started
-last_updated: December 2016
+last_updated: January 2017
 tags: [getting-started, graql]
 summary: "This document will work through a simple example using the Graql shell to show how to get started with GRAKN.AI."
 sidebar: documentation_sidebar
@@ -10,31 +10,34 @@ folder: documentation
 comment_issue_id: 17
 ---
 
-## Introduction
+## Introduction 
 
-In this guide, we are going to load a single file to set up a simple graph and insert some data. This example is loosely based on the genealogy-graph example that we use throughout our documentation. You can find the full example, including data and ontology, in the [sample-datasets repo on Github](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph). However, we are not going to load the complete data and ontology here: this is a basic "quick start" example to illustrate a simple ontology and some basic data. 
-
-If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started/setup-guide.html). 
+If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started/setup-guide.html). In this tutorial, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from the next release and onwards. It is not currently in the zip, so you will need to get it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that it is in the */examples* folder. 
 
 ## Using the Graql Shell
 
-We will first make sure we are working with a clean 'keyspace'. From the terminal:
+The first few steps mirror those in the [Setup Guide](./setup-guide.html), and you can skip to [The Ontology](./get-started.html#the-ontology) if you have already run through that example. Start Grakn and load the example graph:
 
 ```bash
-<relative-path-to-Grakn>/bin/grakn.sh clean
+./bin/grakn.sh start
+./bin/graql.sh -f ./examples/basic-genealogy.gql
 ```
 
-We then start the Grakn engine: 
+{% include note.html content="Above, we are invoking the Graql shell and passing the -f flag to indicate the file to load into a graph. If you are interested, please see our documentation about other [flags supported by the Graql shell](https://grakn.ai/pages/documentation/graql/graql-shell.html)." %}
+
+Then start the Graql shell:
 
 ```bash
-<relative-path-to-Grakn>/bin/grakn.sh start
+./bin/graql.sh
 ```
 
-Finally, we load the ontology and data into Grakn, so we have a graph to work with, using the *basic-genealogy.gql* file stored in the *examples* directory of the Grakn distribution zip. You can also find this file on [Github](). Simply invoke the Graql shell passing the -f flag to indicate the file to load into a graph (if you are interested, please see our [documentation about flags supported by the Graql shell](../graql/graql-shell.html)):
+The Graql shell starts and you see a `>>>` prompt. Type in a query to check that everything is working: 
 
-```bash
-<relative-path-to-Grakn>/bin/graql.sh -f <relative-path-to-Grakn>/examples/basic-genealogy.gql
+```graql   
+match $x isa person, has identifier $n;
 ```
+
+You should see a printout of a number of lines of text, each of which includes a name, such as "William Sanford Titus" or "Elizabeth Niesz".
 
 
 ### The Ontology
