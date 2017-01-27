@@ -5,12 +5,17 @@ last_updated: September 13, 2016
 summary: false
 tags: [overview]
 sidebar: platform_sidebar
-permalink: /platform/index.html
+permalink: ./platform/index.html 
 folder: platform
 toc: false
 ---
 
-*Grakn is a knowledge graph data platform that stores data in a way that allows machines to understand the meaning of information. Grakn performs machine reasoning through Graql, a knowledge-oriented graph query language capable of reasoning and graph analytics.*
+*GRAKN.AI is a knowledge graph data platform that stores data in a way that allows machines to understand the meaning of information. Grakn performs machine reasoning through Graql, a knowledge-oriented graph query language capable of reasoning and graph analytics.*
+
+Here is our CEO and Founder, Haikal Pribadi, presenting GRAKN.AI at a recent event.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OeFrudRlXAM?list=PLDaQNzoeb9L7UZDPq7z1Gd2Rc0m_oeSDQ" frameborder="0" allowfullscreen></iframe>
+
 
 ## Grakn
 
