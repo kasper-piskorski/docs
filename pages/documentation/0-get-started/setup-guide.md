@@ -20,7 +20,7 @@ For more information on how to download older versions of GRAKN.AI, compile from
 ## Install GRAKN.AI
 {% include note.html content="**Prerequisites**   <br />
 GRAKN.AI requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
-If you intend to build Grakn, you will also need Maven 3." %}
+If you intend to build Grakn, or develop on top of it, you will also need Maven 3." %}
 
 Unzip the download into your preferred location and run the following in the terminal to start Grakn:
 
@@ -29,7 +29,12 @@ cd [your Grakn install directory]
 ./bin/grakn.sh start
 ```
 
-This will start an instance of Cassandra, which serves as the supported backend for Grakn. It starts also Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser dashboard.
+This will start:
+
+* an instance of Cassandra, which serves as the supported backend for Grakn.
+* Grakn Engine, which is an HTTP server providing batch loading, monitoring and the browser dashboard.
+* Apache Kafka.
+* Apache Zookeeper.
 
 {% include note.html content="**Useful commands**  <br />
 To start Grakn, run `grakn.sh start`.   
@@ -41,13 +46,13 @@ To remove all graphs from Grakn, run `grakn.sh clean`" %}
 
 To test that the installation is working correctly, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from the next release and onwards. It is not currently in the zip, so you will need to get it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that the file is in the */examples* folder. 
 
-Type in the following to load the example graph.
+Type in the following to load the example graph. This starts the Graql shell in non-interactive mode, loading the specified file and exiting after the load is complete.
 
 ```bash
 ./bin/graql.sh -f ./examples/basic-genealogy.gql
 ```
 
-Then type the following to start the Graql shell:
+Then type the following to start the Graql shell in its interactive (REPL) mode, type:
 
 ```bash
 ./bin/graql.sh
@@ -66,7 +71,7 @@ If you see the above output then congratulations! You have set up Grakn.
 
 ## Test the Visualiser
 
-The [Grakn visualiser](../grakn-dashboard/visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the types within the graph. The screenshot below shows a basic query (`match $x isa person;`) typed into the form at the top of the main pane, and visualised by pressing "Submit":
+The [Grakn visualiser](../grakn-dashboard/visualiser.html) provides a graphical tool to inspect and query your graph data. You can open the visualiser by navigating to [localhost:4567](http://localhost:4567) in your web browser. The visualiser allows you to make queries or simply browse the knowledge ontology within the graph. The screenshot below shows a basic query (`match $x isa person;`) typed into the form at the top of the main pane, and visualised by pressing "Submit":
 
 ![Person query](/images/match-$x-isa-person.png)
 
