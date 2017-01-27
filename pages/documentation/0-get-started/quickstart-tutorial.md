@@ -10,7 +10,7 @@ folder: documentation
 comment_issue_id: 17
 ---
 
-## Lightning Summary
+## Summary
 
 This example takes a simple genealogy dataset and briefly reviews its ontology, then illustrates how to query, extend and visualise the graph, before demonstrating reasoning and analytics with Graql.  
 
@@ -55,20 +55,20 @@ For the purposes of this guide, you can think of the ontology as a schema that d
 
 ```graql
 person sub entity
-	plays-role parent
-	plays-role child
-	plays-role spouse1
-	plays-role spouse2
+  plays-role parent
+  plays-role child
+  plays-role spouse1
+  plays-role spouse2
 
-	has-resource identifier
-	has-resource firstname
-	has-resource surname
-	has-resource middlename
-	has-resource picture
-	has-resource age
-	has-resource birth-date
-	has-resource death-date
-	has-resource gender;
+  has-resource identifier
+  has-resource firstname
+  has-resource surname
+  has-resource middlename
+  has-resource picture
+  has-resource age
+  has-resource birth-date
+  has-resource death-date
+  has-resource gender;
 
 # Resources
 
@@ -85,16 +85,16 @@ gender sub resource datatype string;
 # Roles and Relations
 
 marriage sub relation
-	has-role spouse1
-	has-role spouse2
-	has-resource picture;
+  has-role spouse1
+  has-role spouse2
+  has-resource picture;
 
 spouse1 sub role;
 spouse2 sub role;
 
 parentship sub relation
-	has-role parent
-	has-role child;
+  has-role parent
+  has-role child;
 
 parent sub role;
 child sub role;
@@ -201,8 +201,104 @@ The help tab on the main pane shows a set of key combinations that you can use t
 
 
 ## Using Inference
+We will move on to discuss the use of GRAKN.AI to infer new information about a dataset. For example, the ontology we discussed above, and the data we added to the graph, dealt only with a `person`, not a man, woman, girl or boy, and the relations we added were simple `parentship` relations with `parent` and `child` roles. We do not have any direct information about the nature of the parent and child in each relation - they could be father and son, father and daughter, mother and son or mother and daughter.
 
-We have a [detailed example of using the Grakn reasoner](../examples/graql-reasoning.html) to infer information about the genealogy dataset. An additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
+However, the `person` entity does have a gender resource, and we can use Grakn to infer more information about each relationship by using that property. The ontology accommodates the more specific roles of mother, father, daughter and son:
+
+```graql
+person 
+  plays-role son
+  plays-role daughter
+  plays-role mother
+  plays-role father
+	
+parentship sub relation
+  has-role mother
+  has-role father
+  has-role son
+  has-role daughter;
+
+mother sub parent;
+father sub parent;
+son sub child;
+daughter sub child;
+```
+
+{% include note.html content="You don't need to reload the *basic-genealogy.gql* file into Grakn pick up these extra roles. We simply didn't show this part in our earlier discussion of the ontology, to keep things as simple as possible." %}
+
+Included in *basic-genealogy.gql* are a set of Graql rules to instruct Grakn's reasoner on how to label each parentship relation:
+
+```graql
+$genderizeParentships1 isa inference-rule
+lhs
+{(parent: $p, child: $c) isa parentship;
+$p has gender "male";
+$c has gender "male";
+}
+rhs
+{(father: $p, son: $c) isa parentship;};
+
+$genderizeParentships2 isa inference-rule
+lhs
+{(parent: $p, child: $c) isa parentship;
+$p has gender "male";
+$c has gender "female";
+}
+rhs
+{(father: $p, daughter: $c) isa parentship;};
+
+$genderizeParentships3 isa inference-rule
+lhs
+{(parent: $p, child: $c) isa parentship;
+$p has gender "female";
+$c has gender "male";
+}
+rhs
+{(mother: $p, son: $c) isa parentship;};
+
+$genderizeParentships4 isa inference-rule
+lhs
+{(parent: $p, child: $c) isa parentship;
+$p has gender "female";
+$c has gender "female";
+}
+rhs
+{(mother: $p, daughter: $c) isa parentship;};
+```
+
+If you're unfamiliar with it, don't worry too much about the syntax of the rules just now. It is sufficient to know that for each `parentship` relation, Graql checks whether the pattern in the first block (left hand side or lhs) can be verified and, if it can, infers the statement in the second block (right hand side or rhs) to be true, so inserts a relation between gendered parents and children. 
+
+Let's test it out!
+
+First, try making a match query to find `parentship` relations between fathers and sons in the Graql shell:
+
+```graql
+match (father: $p, son: $c) isa parentship; $p has identifier $n1; $c has identifier $n2;
+```
+
+Did you get any results? Probably not, because reasoning is not enabled by default at present, although as Grakn develops, we expect that to change. If you didn't see any results, you need to `exit` the Graql shell and restart it, passing `-n and -m` flags to switch on reasoning (see our documentation for more information about [flags supported by the Graql shell](https://grakn.ai/pages/documentation/graql/graql-shell.html)).
+
+```bash
+./bin/graql.sh -n -m
+```
+
+Try the query again:
+
+```graql
+match (father: $p, son: $c) isa parentship; $p has identifier $n1; $c has identifier $n2;
+```
+
+There may be a pause, and then you should see a stream of results as Grakn infers the `parentships` between male `parent` and `child` entities. It is, in effect, building new information about the family which was not explicit in the dataset.
+
+You may want to take a look at the results of this query in the Grakn visualiser and, as for the shell, you will need to activate inference before you see any results. Browse to the visualiser at [localhost:4567](http://localhost:4567) and open the Config settings on the left hand side of the screen. When the page opens you will see the “Activate Inference” checkbox. Check it, and try submitting the query above or a variation of it for mothers and sons, fathers and daughters etc. Or, you can even go one step further and find out fathers who have the same name as their sons:
+
+```graql
+match (father: $p, son: $c) isa parentship; $p has firstname $n; $c has firstname $n;
+```
+
+![Father-Son Shared Names query](/images/father-son-shared-names.png)
+
+If you want to find out more about the Graql reasoner, we have a [detailed example](../examples/graql-reasoning.html) that uses a slightly different version of the genealogy dataset. An additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
 
 ## Using Analytics
 
