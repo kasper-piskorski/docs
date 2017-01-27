@@ -11,7 +11,7 @@ folder: documentation
 
 A delete query will delete the specified [variable patterns](#variable-patterns) for every result of the [match query](match-queries.html). If a variable pattern indicates just a variable, then the whole concept will be deleted. If it is more specific (such as indicating the `id` or `isa`) it will only delete the specified properties. 
 
-To follow along, or experiment further, with the examples given below, please load the *basic-genealogy.gql* file, which can be found in the *examples* directory of the Grakn installation zip, or on [Github]().
+To follow along, or experiment further, with the examples given below, please load the *basic-genealogy.gql* file, which can be found in the *examples* directory of the Grakn installation zip, or on [Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql).
 
 
 <ul id="profileTabs" class="nav nav-tabs">
