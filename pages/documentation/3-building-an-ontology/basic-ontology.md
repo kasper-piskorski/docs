@@ -22,8 +22,8 @@ Before starting it is worth reading through [Grakn Basics](../the-basics/grakn-b
 The process we will follow is a general guideline as to how you may start designing your ontology.
 The ontology we will be building will be used for a genealogy graph used for mapping out a family tree. 
 
-It is worth noting that the ontology does not need to completely finalised before loading data. 
-The ontology of a grakn graph can be expanded even after loading data.
+It is worth noting that the ontology does not need to be completely finalised before loading data. 
+The ontology of a Grakn graph can be expanded even after loading data.
 
 ## Identifying Entity Types
 
@@ -44,9 +44,9 @@ Grakn provides you with the ability to attach resources to entity types.
 These resources help in describing what a specific Entity Type is composed of.
 For example a `car` Entity Type could include an `engine`, a `licence number`, and a `transmission type` as resources which help describe that car.
 
-So what help describe a `person`? 
-Philosophical debates aside let us go with something simple. A `person` typically has a `firstname`, a `lastname`, a `gender`, and an `age`.
-We can model this and other resources which identify a person with:
+So what helps describe a `person`? 
+Philosophical debates aside let us go with something simple. A `person` typically has a `firstname`, a `lastname`, and a `gender`.
+We can model this and other resources that identify a person with:
 
     person sub entity
 	    has-resource identifier
@@ -82,7 +82,7 @@ So what types of relationships exist in a family tree?
 For our example lets just go with `marriage` and `parenshiop`.
 The next question is what roles typically make up the relationship? 
 Well our `marriage`s will be between two spouses, `spouse1` and `spouse2`.
-For `parenshiop` we will say it is composed of a `parent` and a `child`.
+For `parentship` we will say it is composed of a `parent` and a `child`.
 
 So now we can define these Relation Types more formally:
 
@@ -104,7 +104,7 @@ So now we can define these Relation Types more formally:
 ## Allowing Roles To Be Played
 
 Above we defined 4 roles, `spouse1`, `spouse2`, `parent`, and `child`. 
-The next step is to give our Entity Types permission to play specific Roles. 
+The next step is to give our Entity Types permission to play specific roles. 
 We do this explicitly so that we don't accidentally relate data which should not be related. 
 For example, this will prevent us from accidentally saying that a `dog` and a `person` can have a child.
  
