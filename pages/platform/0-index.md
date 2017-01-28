@@ -12,7 +12,7 @@ toc: false
 
 For applications to be more intelligent, it needs to know more. To know more, applications need to collect more information. When collecting and integrating more information, the resulting dataset becomes increasingly complex.
 
-What makes dataset complex?
+*What makes dataset complex?*
 
 Data model makes datasets complex.  Real world models are filled with hierarchies and hyper-relationships, but our current modelling techniques are all based on binary relations. Querying these datasets are challenging because query languages are only able to retrieve explicitly stored data, but not implicitly derived information.
 
@@ -29,7 +29,9 @@ Grakn is a database in the form of a knowledge graph, that uses an intuitive ont
 
 Grakn's ontology modelling constructs include but not limited to data type hierarchy, relation type hierarchy, bidirectional relationships, multi-type relationships, N-ary relationships, relationships in relationships, and so on. In other words, Grakn allows you to model the real world and all the hierarchies and hyper-relationships contained in it.
 
-Grakn's ontology is also flexible, allowing your data model to evolve regularly even when you have lots of data, building a lasting advantage as your business “learns”. Later in the year, we will show who you can have a machine learning system adapt and grow your Grakn ontology.
+> Grakn's ontology guarantees the correctness of information in the graph at any point in time.
+
+Grakn's ontology is also flexible, allowing your data model to evolve regularly even when you have lots of data, building a lasting advantage as your business “learns”. Later in the year, we will show who you can have a machine learning system adapt and grow your Grakn ontology. Our ontology is a key functionality in maintaining data quality, as it guarantees that correctness of information in graph any point in time.
 
 Grakn is built using several graph computing and distributed computing platforms, such as [Apache TinkerPop](https://tinkerpop.apache.org/) and [Apache Spark](http://spark.apache.org/). Grakn is designed to be sharded and replicated over a network of distributed machines.
 

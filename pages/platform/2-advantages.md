@@ -2,7 +2,7 @@
 title: Why use Grakn?
 keywords: advantages
 last_updated: September 13, 2016
-summary: false
+summary: Grakn provides a flexible and rich data model, intelligent query language, real-time analytics, and inference capabilities
 tags: [overview]
 sidebar: platform_sidebar
 permalink: /platform/advantages.html
@@ -10,9 +10,7 @@ folder: platform
 toc: false
 ---
 
-Grakn provides flexible schema, intelligent query language, real-time analytics, and inference capabilities.
-
-## Flexible object-oriented schema
+## Rich and flexible data model
 
 Grakn allows you to define a schema that truly describes the meaning of your data through a model that could express the real world. Your schema could flexibly evolve as your business grows.
 
