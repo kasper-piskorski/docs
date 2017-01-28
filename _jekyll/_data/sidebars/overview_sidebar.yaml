@@ -7,12 +7,12 @@ entries:
     - title: Introduction
       output: web
       url: /overview/index.html
-    - title: Applications
-      output: web
-      url: /overview/applications.html
     - title: Advantages
       output: web
       url: /overview/advantages.html
+    - title: Applications
+      output: web
+      url: /overview/applications.html
     # - title: Database Comparison
     #   output: web
     #   url: /overview/comparison.html
