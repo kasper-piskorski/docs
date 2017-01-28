@@ -1,11 +1,11 @@
 ---
-title: Grakn Platform
-keywords: platform
+title: Grakn Overview
+keywords: overview
 last_updated: September 13, 2016
 tags: [overview, faq]
-sidebar: platform_sidebar
-permalink: /platform/faq.html
-folder: platform
+sidebar: overview_sidebar
+permalink: /overview/faq.html
+folder: overview
 ---
 
 ### What is a Graph Database?

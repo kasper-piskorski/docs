@@ -4,9 +4,9 @@ keywords: developer
 last_updated: September 13, 2016
 summary: false
 tags: [overview]
-sidebar: platform_sidebar
-permalink: /platform/developer.html
-folder: platform
+sidebar: overview_sidebar
+permalink: /overview/developer.html
+folder: overview
 toc: false
 ---
 

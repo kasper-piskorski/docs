@@ -4,9 +4,9 @@ keywords: use case
 last_updated: September 13, 2016
 summary: false
 tags: [overview]
-sidebar: platform_sidebar
-permalink: /platform/use-case.html
-folder: platform
+sidebar: overview_sidebar
+permalink: /overview/use-case.html
+folder: overview
 toc: false
 ---
 

@@ -2,26 +2,26 @@
 
 entries:
 - title: Sidebar
-  product: Grakn Platform
+  product: Overview
   items:
     - title: Introduction
       output: web
-      url: /platform/index.html
-    - title: System Applications
+      url: /overview/index.html
+    - title: Applications
       output: web
-      url: /platform/applications.html
+      url: /overview/applications.html
     - title: Advantages
       output: web
-      url: /platform/advantages.html
+      url: /overview/advantages.html
     # - title: Database Comparison
     #   output: web
-    #   url: /platform/comparison.html
+    #   url: /overview/comparison.html
     # - title: Use Case
     #   output: web
-    #   url: /platform/use-case.html
-    - title: Developer
+    #   url: /overview/use-case.html
+    - title: Documentation
       output: web
-      url: /platform/developer.html
+      url: /index.html
     # - title: FAQ
     #   output: web
-    #   url: /platform/faq.html
+    #   url: /overview/faq.html

@@ -93,7 +93,7 @@ defaults:
 
 sidebars:
 - documentation_sidebar
-- platform_sidebar
+- overview_sidebar
 
 description: "A Distributed Knowledge Graph"
 # the description is used in the feed.xml file

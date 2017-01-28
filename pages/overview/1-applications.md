@@ -10,7 +10,7 @@ folder: overview
 toc: false
 ---
 
-Grakn makes building AI applications become much easier.
+Grakn makes building intelligent systems for complex data easy.
 
 ## Semantic Search Engines
 

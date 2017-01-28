@@ -4,9 +4,9 @@ keywords: comparison
 last_updated: September 13, 2016
 summary: false
 tags: [overview]
-sidebar: platform_sidebar
-permalink: /platform/comparison.html
-folder: platform
+sidebar: overview_sidebar
+permalink: /overview/comparison.html
+folder: overview
 toc: false
 ---
 

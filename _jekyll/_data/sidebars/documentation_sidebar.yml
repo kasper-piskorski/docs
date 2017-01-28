@@ -2,7 +2,7 @@
 
 entries:
 - title: Sidebar
-  product: Grakn
+  product: Documentation
   version: 0.9.0
   folders:
 
@@ -18,6 +18,9 @@ entries:
       - title: Quickstart Tutorial
         output: web
         url: /documentation/get-started/quickstart-tutorial.html
+      - title: Overview
+        output: web
+        url: /overview/index.html
   - title: The Basics
     output: web
     folderitems:
@@ -146,7 +149,7 @@ entries:
         url: /documentation/developing-with-java/graph-api.html
       #- title: Multi-threading
       #  output: web
-      #  url: /documentation/developing-with-java/multithreading.html 
+      #  url: /documentation/developing-with-java/multithreading.html
       - title: Java Graql
         output: web
         url: /documentation/developing-with-java/java-graql.html
