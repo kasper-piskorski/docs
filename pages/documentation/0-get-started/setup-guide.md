@@ -78,7 +78,7 @@ The [Grakn visualiser](../grakn-dashboard/visualiser.html) provides a graphical 
 The help tab on the main pane shows a set of key combinations that you can use to further drill into the data. You can zoom the display in and out, and move the nodes around for better visibility. Please see our [Grakn visualiser](../grakn-dashboard/visualiser.html) documentation for further details.
 
 ### Troubleshooting  
-If you do not see the above message, please check our [FAQ page](../resources/faq.html). If you have any questions, please ask a question on our [discussion forum](http://discuss.grakn.ai), on [Stack Overflow](http://stackoverflow.com) or on our [Slack channel](https://grakn.ai/slack.html).
+If you are having trouble getting Grakn running, please check our [FAQ page](../resources/faq.html), and if you have any questions, do ask them on our [discussion forum](http://discuss.grakn.ai), on [Stack Overflow](http://stackoverflow.com) or on our [Slack channel](https://grakn.ai/slack.html).
 
 
 ## Where next?
