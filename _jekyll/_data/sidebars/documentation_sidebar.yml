@@ -18,9 +18,6 @@ entries:
       - title: Quickstart Tutorial
         output: web
         url: /documentation/get-started/quickstart-tutorial.html
-      - title: Overview
-        output: web
-        url: /overview/index.html
   - title: The Basics
     output: web
     folderitems:

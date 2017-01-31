@@ -26,7 +26,7 @@ This dependency will give you access to the Core API as well as in in memory gra
 ## Server Dependent Setup
 
 If you require persistence and would like to access the entirety of the Grakn stack then it is vital to have an instance of engine running.  
-Please see [Setup Guide](./setup-guide.html) on more details on how to setup a Grakn server.
+Please see the [Setup Guide](../get-started/setup-guide.html) on more details on how to setup a Grakn server.
 
 Depending on the configuration of the Grakn server your java application will require one of the following dependencies: 
 
@@ -67,14 +67,18 @@ The string "keyspace" uniquely identifies the graph and allows you to create dif
 
 Please **note** that graph keyspaces are **not** case sensitive so the following two graphs are actually the same graph:
 
+```java
    GraknGraph graph1 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
    GraknGraph graph2 = Grakn.factory("127.6.21.2", "KeYsPaCe").getGraph();
+```
    
 All graphs are also singletons specific to their keysoaces so be aware that in the following case:
 
+```java
   GraknGraph graph1 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
   GraknGraph graph2 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
   GraknGraph graph3 = Grakn.factory("127.6.21.2", "keyspace").getGraph();
+```
   
 Any changes to `graph1`, `graph2`, or `graph3` will all be persisted to the same graph.
 
