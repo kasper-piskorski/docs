@@ -1,8 +1,8 @@
 ---
-title: Why use Grakn?
+title: Why use GRAKN.AI?
 keywords: advantages
 last_updated: September 13, 2016
-summary: Grakn provides a flexible and rich data model, intelligent query language, real-time analytics, and inference capabilities
+summary: Grakn provides a flexible and rich data model, data logical integrity, optimised and reasoning query language, and graph analytics out-of-the-box.
 tags: [overview]
 sidebar: overview_sidebar
 permalink: /overview/advantages.html
@@ -10,18 +10,40 @@ folder: overview
 toc: false
 ---
 
-## Rich and flexible data model
+GRAKN.AI makes working with complex data easy by providing an ontology that allows you to model the world and all the type hierarchies and hyper-relationships contained within it, and a query language that uses machine reasoning for retrieving explicitly stored data and implicitly derived knowledge.
 
-Grakn allows you to define a schema that truly describes the meaning of your data through a model that could express the real world. Your schema could flexibly evolve as your business grows.
+## Expressive data model
 
-## Write complex queries intuitively
+> Grakn allows you to model the real world.
 
-Through Graql, Grakn allows you to express complex questions in simple and short pattern matching statements. The equivalent queries would be long and unintuitive in other languages.
+Grakn allows you to model the real world and all the hierarchies and hyper-relationships contained within it. The ontology modelling constructs include but not limited to data type hierarchy, relation type hierarchy, bidirectional relationships, multi-type relationships, N-ary relationships, relationships in relationships, conditional relationships, virtual relationships, dynamic relationships, and so on.
 
-## Perform real-time analytics
+## Logical integrity of information
 
-Grakn allows you to analyse your data in place using Graql, without further engineering effort. Learn more about your data, even when you don't know much about the structure.
+> Grakn maintains a higher data quality with stronger information consistency.
 
-## Discover implicit information
+Grakn's ontology functions as a data schema constraint that guarantees the logical integrity of information stored in the database, in real time. In consequence, data is maintained at a higher quality with much stronger information consistency. Grakn allows your team to catch all data errors as soon as it arrives in your system. In Grakn's Enterprise solution, you can also have real-time alerts of violations of advanced business rules.
 
-Grakn’s Graql is a knowledge-oriented query language. Graql allows for queries of both associative and contextual natures, for retrieving explicitly stored and implicitly derived knowledge.
+## Flexible data model
+
+> Grakn allows your business model to evolve regularly.
+
+Grakn's ontology is flexible. You can add new data and relation types, update type names, delete unused types, all while storing and retrieving of data from and to the database. This allows your business model to evolve regularly even when you have lots of data, building a lasting advantage as your business “learns”.  In Grakn's Enterprise solution, you can have a machine learning system adapt and grow your Grakn ontology.
+
+##  Machine reasoning query language
+
+> Grakn allows you to discover deeply hidden and implicit association between data.
+
+Graql is a polymorphic, knowledge-oriented query language. It allows you to query many different types simultaneously through a common supertype, and it takes into account deep contextualisation of data. Graql uses machine reasoning to perform inference over data types, relation types, context disambiguation, implicit relationships and dynamic relationships. This allows you to discover deeply hidden and implicit association between data instances, through short and concise statements.
+
+## Optimised query execution
+
+> Graql reduces the time and complexity in writing deep relational queries while automatically optimising the execution of query traversal.
+
+When you're writing queries to execute on a highly interconnected data, you usually have to think hard about the structure of your query so that it executes the most optimal query traversal. However, being a declarative query language, Graql allows you define your query as a set of data patterns that could be written in any structure, and translate it to the most optimal query traversal for execution. This reduces the time and complexity in writing deep relational queries while automatically optimising the execution of query traversal.
+
+## Graph analytics out-of-the-box
+
+> Grakn allows you to spend more time analysing your data, and less time coding the algorithm for analysis.
+
+Graql is also capable of performing distributed graph analytics as part of the language, which allows you to perform analytics over large graphs out of the box. These types of analytics are usually not possible without developing custom distributed graph algorithms that are unique to a use case. With you Grakn, you can spend more time analysing your data, and less time coding the algorithm for analysis.
