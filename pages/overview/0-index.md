@@ -21,6 +21,8 @@ GRAKN.AI is the database solution for working with complex data that intelligent
 # Meet Grakn and Graql
 GRAKN.AI is composed of Grakn - the storage, and Graql - the language.
 
+<img src="/images/grakn-and-graql.jpg" style="width: 400px;"/>
+
 ## Grakn
 
 Grakn is a database in the form of a knowledge graph, that uses an intuitive ontology to model extremely complex datasets. It stores data in a way that allows machines to understand the meaning of information in the complete context of their relationships. Consequently, Grakn allows computers to process complex information more intelligently with less human intervention.
