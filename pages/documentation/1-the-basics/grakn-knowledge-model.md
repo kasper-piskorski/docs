@@ -26,7 +26,11 @@ Grakn ontologies use four types of concepts for modeling domain knowledge. The c
 
 **`role`**: Roles involved in specific relationships. For example, `wife`, `husband`.     
 
-**`resource`**: Attributes associated with domain instances. For example, `name`.    
+**`resource`**: Attributes associated with domain instances. For example, `name`. Resources consist of primitive types and values. They are very much like “data properties” in OWL, and have the following properties:
+
+- Datatype - Indicates the datatype of the resource. For example if the resource type is age the datatype would be long.
+- Regex - Optional. Can be used to constrain string data types to specific regex patterns.
+- Unique - A boolean which indicates if the resource should be unique across the graph.   
 
 <br /> <img src="/images/knowledge-model1.png" style="width: 600px;"/> <br />
 
