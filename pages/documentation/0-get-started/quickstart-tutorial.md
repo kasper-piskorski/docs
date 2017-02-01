@@ -20,7 +20,7 @@ If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started
 
 ## The Graql Shell
 
-The first few steps mirror those in the [Setup Guide](./setup-guide.html), and you can skip to [The Ontology](./get-started.html#the-ontology) if you have already run through that example. Start Grakn and load the example graph:
+The first few steps mirror those in the [Setup Guide](./setup-guide.html), and you can skip to [The Ontology](#the-ontology) if you have already run through that example. Start Grakn and load the example graph:
 
 ```bash
 ./bin/grakn.sh start

@@ -29,7 +29,7 @@ There are several examples available:
 
 * We use the genealogy dataset to show [how to migrate genealogy data into Grakn from CSV](../examples/CSV-migration.html). 
 
-* Our sample-projects repository on Github also contains [an example that takes a simple CSV data file of pets](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration). Please see the [readme file](https://github.com/graknlabs/sample-projects/blob/master/example-csv-migration/README.md) to get started.
+* Our sample-projects repository on Github also contains [an example that takes a simple CSV data file of pets](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration-pets). Please see the [readme file](https://github.com/graknlabs/sample-projects/blob/master/example-csv-migration-pets/README.md) to get started.
 
 * CSV migration is also covered in a [blog post](https://blog.grakn.ai/twenty-years-of-games-in-grakn-14faa974b16e#.cuox3cew2).
 

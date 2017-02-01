@@ -21,24 +21,12 @@ entries:
   - title: The Basics
     output: web
     folderitems:
-      - title: Grakn Basics
-        output: web
-        url: /documentation/the-basics/grakn-basics.html
+      #- title: Grakn Basics
+      #  output: web
+      #  url: /documentation/the-basics/grakn-basics.html
       - title: Grakn Knowledge Model
         output: web
         url: /documentation/the-basics/grakn-knowledge-model.html
- # - title: Grakn Knowledge Model
- #   output: web
- #   folderitems:
- #     - title: Fundamentals
- #       output: web
- #       url: /documentation/grakn-knowledge-model/fundamentals.html
-  #    - title: Inheritance
-  #      output: web
-  #      url: /documentation/grakn-knowledge-model/inheritance.html
-  #    - title: Rules
-  #      output: web
-  #      url: /documentation/grakn-knowledge-model/rules.html
   - title: Graql Ontology
     output: web
     folderitems:
