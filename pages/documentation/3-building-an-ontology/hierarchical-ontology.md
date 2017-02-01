@@ -14,6 +14,261 @@ comment_issue_id: 22
 
 ## Introduction
 
+In this section we are going to expand the ontology we defined in the [Basic Ontology](../building-an-ontology/basic-ontology.html). 
+We are going to introduce the idea of making ontologies deeper and more meaningful by defining a hierarchy of types.
+
+When we left off our ontology was defined as follows:
+
+    # Entities
+
+    person sub entity
+	    plays-role parent
+	    plays-role child
+	    plays-role spouse1
+	    plays-role spouse2
+	    has-resource identifier
+	    has-resource firstname
+	    has-resource surname
+	    has-resource middlename
+	    has-resource picture
+	    has-resource age
+	    has-resource birth-date
+	    has-resource death-date
+	    has-resource gender;
+
+    # Resources
+
+    identifier sub resource datatype string;
+    firstname sub resource datatype string;
+    surname sub resource datatype string;
+    middlename sub resource datatype string;
+    picture sub resource datatype string;
+    age sub resource datatype long;
+    birth-date sub resource datatype string;
+    death-date sub resource datatype string;
+    gender sub resource datatype string;
+
+    # Roles and Relations
+
+    marriage sub relation
+	    has-role spouse1
+	    has-role spouse2
+	    has-resource picture;
+
+    spouse1 sub role;
+    spouse2 sub role;
+
+    parentship sub relation
+	    has-role parent
+    	has-role child;
+
+    parent sub role;
+    child sub role;
+    
+This ontology represents a genealogy graph which models a family tree.
+This is a very simplistic ontology with plenty of room for improvement, so lets begin.
+ 
+ 
+## Hierarchies of Entity Types
+
+It is possible to define entity types more granularly.
+Think of sub categories of categories.
+This enables additional details to be embedded in the ontology. 
+For example, if we have a entity type called `vehicle` we can break that down further by differentiating between `cars` and `motorbikes`.
+This can be done as follows:
+
+    vehicle sub entity;
+    car sub vehicle;
+    motorbikes sub vehicle;
+    
+In the above example we are saying that a `car` is a subset of the entity type `vehicle`. 
+This means that when adding data to our graph we can now know if we dealing with a `car` or a `motorbike`.
+    
+So how can we use this technique to improve our existing genealogy ontology?
+We could break down `person` into `man` and `woman` for example.
+
+For the sake of making things more interesting we are going to introduce a new concept to the graph.
+A family is made up not only of people but of events which link those people together and better define their lives. 
+Events like births, weddings, funerals, and many others.
+We can model this as follows:
+
+    event sub entity
+    	is-abstract
+    	plays-role conclusion
+    	plays-role happening
+    	has-resource degree
+    	has-resource confidence
+    	has-resource date
+    	has-resource identifier
+    	has-resource notes;
+
+    wedding sub event;
+    
+    funeral sub event
+    	has-resource birth-date;
+    	
+    christening sub event
+    	has-resource death-date;
+    
+    birth sub event
+    	has-resource firstname
+    	has-resource middlename
+    	has-resource surname
+    	has-resource gender
+    	has-resource birth-date;
+    	
+    death sub event
+  	    has-resource death-date;  
+  	    
+Notice that for the `event` entity type we added `is-abstract`, this is an optional additional restriction to ensure we do not create any instances of `event`.
+This essentially forces us to use the most granular definitions provided, i.e. `birth`, `death`, etc . . .  
+
+## Hierarchies of Relation Types and Role Types
+
+You also have the ability to design hierarchies of relation types and role types. 
+Similarly to before this enables an ontology to be deeper and more expressive.
+For example if we have a relation type called `partnership` between two people we can expand on this by defining more detailed partnerships; `civil-partnership`, `marriage`, `unions`, etc . . .
+
+Now lets take a look at expanding our genealogy ontology.
+When modelling a domain there are many ways of doing so. 
+For this example we are going to redo the `marriage` relation type so that it can provide more meaning. 
+We will do the following:
+
+    relatives sub relation
+    	is-abstract;
+
+    marriage sub relatives
+    	has-role spouse1
+    	has-role spouse2
+	    has-role husband
+	    has-role wife
+	    has-resource date;
+	    
+	spouse sub role is-abstract;
+    generic-spouse sub spouse is-abstract;
+    spouse1 sub generic-spouse;
+    spouse2 sub generic-spouse;
+    husband sub spouse;
+    wife sub spouse;
+	    
+We have defined a new super type called `relatives` which enables us to link relatives together generically and we have said that marriage is a type of relative relation. 	    
+We have also expanded on the roles which make up a marriage. 
+Again enabling us to be more expressive and detailed about the domain we are modelling.
+From now on we can be clear if a person is a `husband` or a `wife` or just a `spouse` in a marriage.
+ 
+**Note:** The role type hierarchy we have defined. This is important because when we query for people who play the role of a `spouse` we will get all the `husbands` and `wives` as well.
+ 
+ 
+Lets expand this even further:
+
+    parentship sub relatives
+   	    has-role parent
+      	has-role mother
+    	has-role father
+   	    has-role child
+     	has-role son
+    	has-role daughter;
+    parent sub role;
+    mother sub parent;
+    father sub parent;
+    child sub role;
+    son sub child;
+    daughter sub child;
+
+Now we have provided more detail about being a parent. 
+We have also said that being a parent is a `relative` relation. 
+This is quite useful because when we ask for all relatives we will be getting relative's via birth and via marriage.
+ 
+## Wrapping up 
+
+We could go into far more detail regarding our genealogy graph but I will leave that to you.
+For the moment here is our more complex ontology to get you started on making your own deeper ontologies:
+
+    ## Entities
+
+    person sub entity
+    	plays-role spouse
+    	plays-role parent
+    	plays-role child
+    	plays-role sibling
+    	has-resource gender
+    	has-resource birth-date
+    	has-resource death-date
+    	has-resource identifier
+    	has-resource firstname
+    	has-resource middlename
+    	has-resource surname;
+    
+    gender sub resource datatype string;
+    birth-date sub date;
+    death-date sub date;
+    name sub resource datatype string;
+    firstname sub name;
+    middlename sub name;
+    surname sub name;
+    identifier sub resource datatype string;
+    
+    event sub entity
+        	is-abstract
+        	plays-role conclusion
+        	plays-role happening
+        	has-resource degree
+        	has-resource confidence
+        	has-resource date
+        	has-resource identifier
+        	has-resource notes;
+    
+    wedding sub event;
+    
+    funeral sub event
+        has-resource birth-date;
+        
+    christening sub event
+        has-resource death-date;
+    
+    birth sub event
+        has-resource firstname
+        has-resource middlename
+        has-resource surname
+        has-resource gender
+        has-resource birth-date;
+        
+    death sub event
+        has-resource death-date;   	    
+    
+    ## Relations
+    
+    relatives sub relation
+    	is-abstract;
+    
+    marriage sub relatives
+    	has-role spouse1
+    	has-role spouse2
+    	has-role husband
+    	has-role wife
+    	has-resource date;
+    spouse sub role is-abstract;
+    generic-spouse sub spouse is-abstract;
+    spouse1 sub generic-spouse;
+    spouse2 sub generic-spouse;
+    husband sub spouse;
+    wife sub spouse;
+    
+    parentship sub relatives
+    	has-role parent
+    	has-role mother
+    	has-role father
+    	has-role child
+    	has-role son
+    	has-role daughter;
+    parent sub role;
+    mother sub parent;
+    father sub parent;
+    child sub role;
+    son sub child;
+    daughter sub child;
+
+ 
 
 {% include links.html %}
 
