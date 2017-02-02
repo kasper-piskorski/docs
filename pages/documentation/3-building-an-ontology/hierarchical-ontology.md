@@ -1,8 +1,8 @@
 ---
 title: Hierarchical Ontology
 keywords: overview
-last_updated: December 2016
-tags: [java, graph-api]
+last_updated: February 2017
+tags: [graql, java, graph-api]
 summary: "How to build a hierarchical ontology"
 sidebar: documentation_sidebar
 permalink: /documentation/building-an-ontology/hierarchical-ontology.html
@@ -14,191 +14,188 @@ comment_issue_id: 22
 
 ## Introduction
 
-In this section we are going to expand the ontology we defined in the [Basic Ontology](../building-an-ontology/basic-ontology.html). 
+In this section we are going to expand the ontology we defined in the [Basic Ontology documentation](./basic-ontology.html), which we recommend you read before starting here. You may also find it helpful to refer to the [Knowledge Model](../the-basics/grakn-knowledge-model.html) documentation.
 We are going to introduce the idea of making ontologies deeper and more meaningful by defining a hierarchy of types.
 
-When we left off our ontology was defined as follows:
+When we left off, our ontology was defined as follows:
 
-    # Entities
+```graql
+ 
+# Entities
+    
+  person sub entity
+    has-resource identifier
+    has-resource firstname
+    has-resource surname
+    has-resource middlename
+    has-resource picture
+    has-resource age
+    has-resource birth-date
+    has-resource death-date
+    has-resource gender
+    plays-role parent
+    plays-role child
+    plays-role spouse1
+    plays-role spouse2;
 
-    person sub entity
-	    plays-role parent
-	    plays-role child
-	    plays-role spouse1
-	    plays-role spouse2
-	    has-resource identifier
-	    has-resource firstname
-	    has-resource surname
-	    has-resource middlename
-	    has-resource picture
-	    has-resource age
-	    has-resource birth-date
-	    has-resource death-date
-	    has-resource gender;
+# Resources
 
-    # Resources
+  identifier sub resource datatype string;
+  firstname sub resource datatype string;
+  surname sub resource datatype string;
+  middlename sub resource datatype string;
+  picture sub resource datatype string;
+  age sub resource datatype long;
+  birth-date sub resource datatype string;
+  death-date sub resource datatype string;
+  gender sub resource datatype string;
 
-    identifier sub resource datatype string;
-    firstname sub resource datatype string;
-    surname sub resource datatype string;
-    middlename sub resource datatype string;
-    picture sub resource datatype string;
-    age sub resource datatype long;
-    birth-date sub resource datatype string;
-    death-date sub resource datatype string;
-    gender sub resource datatype string;
+# Roles and Relations
 
-    # Roles and Relations
+  marriage sub relation
+    has-role spouse1
+    has-role spouse2
+    has-resource picture;
 
-    marriage sub relation
-	    has-role spouse1
-	    has-role spouse2
-	    has-resource picture;
+  spouse1 sub role;
+  spouse2 sub role;
 
-    spouse1 sub role;
-    spouse2 sub role;
+  parentship sub relation
+    has-role parent
+    has-role child;
 
-    parentship sub relation
-	    has-role parent
-    	has-role child;
-
-    parent sub role;
-    child sub role;
+  parent sub role;
+  child sub role;
+ ```
     
 This ontology represents a genealogy graph which models a family tree.
-This is a very simplistic ontology with plenty of room for improvement, so lets begin.
- 
+This is a very simplistic ontology with plenty of room for extension, so lets begin.
  
 ## Hierarchies of Entity Types
 
-It is possible to define entity types more granularly.
-Think of sub categories of categories.
-This enables additional details to be embedded in the ontology. 
-For example, if we have a entity type called `vehicle` we can break that down further by differentiating between `cars` and `motorbikes`.
-This can be done as follows:
+It is possible to define entity types more granularly. Think of sub categories of categories, enabling additional details to be embedded in the ontology. 
+For example, if we have a entity type called `vehicle`, we can break that down further by differentiating between `cars` and `motorbikes`. This can be done as follows:
 
-    vehicle sub entity;
-    car sub vehicle;
-    motorbikes sub vehicle;
+```graql
+  vehicle sub entity;
+  car sub vehicle;
+  motorbikes sub vehicle;
+```    
     
-In the above example we are saying that a `car` is a subset of the entity type `vehicle`. 
-This means that when adding data to our graph we can now know if we dealing with a `car` or a `motorbike`.
+In the above example we are saying that a `car` is a subtype of a `vehicle`. This means that when adding data to our graph, when we know we have a `vehicle`, we can also differentiate between a `car` and a `motorbike`.
     
 So how can we use this technique to improve our existing genealogy ontology?
-We could break down `person` into `man` and `woman` for example.
+  
+We could specialise the `person` entity into `man` and `woman` for example. However, for the sake of making things more interesting, we are going to introduce a new entity to the graph. A family is made up not only of people but of events, like births, weddings, funerals, and many others, which link those people together and better define their lives. 
 
-For the sake of making things more interesting we are going to introduce a new concept to the graph.
-A family is made up not only of people but of events which link those people together and better define their lives. 
-Events like births, weddings, funerals, and many others.
 We can model this as follows:
 
-    event sub entity
-    	is-abstract
-    	plays-role conclusion
-    	plays-role happening
-    	has-resource degree
-    	has-resource confidence
-    	has-resource date
-    	has-resource identifier
-    	has-resource notes;
-
-    wedding sub event;
+```graql    
+  event sub entity
+    is-abstract
+    has-resource degree
+    has-resource confidence
+    has-resource date
+    has-resource identifier
+    has-resource notes
+    plays-role conclusion
+    plays-role happening;
     
-    funeral sub event
-    	has-resource birth-date;
-    	
-    christening sub event
-    	has-resource death-date;
+  wedding sub event;
     
-    birth sub event
-    	has-resource firstname
-    	has-resource middlename
-    	has-resource surname
-    	has-resource gender
-    	has-resource birth-date;
+  funeral sub event
+    has-resource death-date;
     	
-    death sub event
-  	    has-resource death-date;  
+  christening sub event
+    has-resource birth-date;
+    
+  birth sub event
+    has-resource firstname
+    has-resource middlename
+    has-resource surname
+    has-resource gender
+    has-resource birth-date;
+    	
+  death sub event
+    has-resource death-date;
+``` 	      
   	    
-Notice that for the `event` entity type we added `is-abstract`, this is an optional additional restriction to ensure we do not create any instances of `event`.
-This essentially forces us to use the most granular definitions provided, i.e. `birth`, `death`, etc . . .  
+Notice that for the `event` entity type we added `is-abstract`, this is an optional additional restriction to ensure that we do not create any instances of `event`, but instead use the most granular definitions provided, i.e. `birth`, `death`, etc . . .  
 
 ## Hierarchies of Relation Types and Role Types
 
-You also have the ability to design hierarchies of relation types and role types. 
-Similarly to before this enables an ontology to be deeper and more expressive.
-For example if we have a relation type called `partnership` between two people we can expand on this by defining more detailed partnerships; `civil-partnership`, `marriage`, `unions`, etc . . .
+Grakn also allows you to design hierarchies of relation types and role types, enabling the ontology to be deeper and more expressive. For example, if we have a relation type called `partnership` between two people we can expand on this by defining more detailed partnerships; `civil-partnership`, `marriage`, `unions`, etc.
 
-Now lets take a look at expanding our genealogy ontology.
-When modelling a domain there are many ways of doing so. 
-For this example we are going to redo the `marriage` relation type so that it can provide more meaning. 
-We will do the following:
+Now lets take a look at expanding our genealogy ontology. When modelling a domain there are many ways of doing so. For this example we are going to redo the `marriage` relation type so that it can provide more meaning:
 
-    relatives sub relation
-    	is-abstract;
+```graql
+  relatives sub relation
+    is-abstract;
 
-    marriage sub relatives
-    	has-role spouse1
-    	has-role spouse2
-	    has-role husband
-	    has-role wife
-	    has-resource date;
+  marriage sub relatives
+    has-role spouse1
+    has-role spouse2
+    has-role husband
+    has-role wife
+    has-resource date;
 	    
-	spouse sub role is-abstract;
-    generic-spouse sub spouse is-abstract;
-    spouse1 sub generic-spouse;
-    spouse2 sub generic-spouse;
-    husband sub spouse;
-    wife sub spouse;
+  spouse sub role is-abstract;
+  generic-spouse sub spouse is-abstract;
+  spouse1 sub generic-spouse;
+  spouse2 sub generic-spouse;
+  husband sub spouse;
+  wife sub spouse;
+```
+    
 	    
-We have defined a new super type called `relatives` which enables us to link relatives together generically and we have said that marriage is a type of relative relation. 	    
-We have also expanded on the roles which make up a marriage. 
-Again enabling us to be more expressive and detailed about the domain we are modelling.
-From now on we can be clear if a person is a `husband` or a `wife` or just a `spouse` in a marriage.
- 
-**Note:** The role type hierarchy we have defined. This is important because when we query for people who play the role of a `spouse` we will get all the `husbands` and `wives` as well.
+We have defined a new super type called `relatives` which enables us to link generic relatives together, and we have said that marriage is a type of relative relation. We have also expanded on the roles which make up a marriage, enabling us to be more expressive and detailed about the domain we are modelling.
+From now on, we can be clear if a person is a `husband` or a `wife` or just a `spouse` in a marriage. Note that, when we query for people who play the role of a `spouse` we will get all the `husbands` and `wives` as well.
  
  
 Lets expand this even further:
 
-    parentship sub relatives
-   	    has-role parent
-      	has-role mother
-    	has-role father
-   	    has-role child
-     	has-role son
-    	has-role daughter;
+```graql
+  parentship sub relatives
+    has-role parent
+    has-role mother
+    has-role father
+    has-role child
+    has-role son
+    has-role daughter;
     parent sub role;
     mother sub parent;
     father sub parent;
     child sub role;
     son sub child;
     daughter sub child;
+```
 
 Now we have provided more detail about being a parent. 
 We have also said that being a parent is a `relative` relation. 
-This is quite useful because when we ask for all relatives we will be getting relative's via birth and via marriage.
+This is quite useful because when we ask for all relatives we will be getting relatives via birth and via marriage.
  
 ## Wrapping up 
 
 We could go into far more detail regarding our genealogy graph but I will leave that to you.
-For the moment here is our more complex ontology to get you started on making your own deeper ontologies:
+For the moment here is our more complex ontology to get you started on making your own deeper ontologies. You can find the ontology, the dataset and rules that accompany it, on Github in our [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph):
 
-    ## Entities
+```graql
 
-    person sub entity
-    	plays-role spouse
-    	plays-role parent
-    	plays-role child
-    	plays-role sibling
-    	has-resource gender
-    	has-resource birth-date
-    	has-resource death-date
-    	has-resource identifier
-    	has-resource firstname
-    	has-resource middlename
-    	has-resource surname;
-    
+# Entities
+
+  person sub entity
+    has-resource gender
+    has-resource birth-date
+    has-resource death-date
+    has-resource identifier
+    has-resource firstname
+    has-resource middlename
+    has-resource surname
+    plays-role spouse
+    plays-role parent
+    plays-role child
+    plays-role sibling;
+        
     gender sub resource datatype string;
     birth-date sub date;
     death-date sub date;
@@ -208,45 +205,45 @@ For the moment here is our more complex ontology to get you started on making yo
     surname sub name;
     identifier sub resource datatype string;
     
-    event sub entity
-        	is-abstract
-        	plays-role conclusion
-        	plays-role happening
-        	has-resource degree
-        	has-resource confidence
-        	has-resource date
-        	has-resource identifier
-        	has-resource notes;
+  event sub entity
+    is-abstract
+    has-resource degree
+    has-resource confidence
+    has-resource date
+    has-resource identifier
+    has-resource notes
+    plays-role conclusion
+    plays-role happening;
     
-    wedding sub event;
+  wedding sub event;
     
-    funeral sub event
-        has-resource birth-date;
+  funeral sub event
+    has-resource death-date;
         
-    christening sub event
-        has-resource death-date;
+  christening sub event
+    has-resource birth-date;
     
-    birth sub event
-        has-resource firstname
-        has-resource middlename
-        has-resource surname
-        has-resource gender
-        has-resource birth-date;
+  birth sub event
+    has-resource firstname
+    has-resource middlename
+    has-resource surname
+    has-resource gender
+    has-resource birth-date;
         
-    death sub event
-        has-resource death-date;   	    
+  death sub event
+    has-resource death-date;   	    
     
-    ## Relations
+## Relations
     
-    relatives sub relation
-    	is-abstract;
+  relatives sub relation
+    is-abstract;
     
-    marriage sub relatives
-    	has-role spouse1
-    	has-role spouse2
-    	has-role husband
-    	has-role wife
-    	has-resource date;
+  marriage sub relatives
+    has-role spouse1
+    has-role spouse2
+    has-role husband
+    has-role wife
+    has-resource date;
     spouse sub role is-abstract;
     generic-spouse sub spouse is-abstract;
     spouse1 sub generic-spouse;
@@ -254,19 +251,20 @@ For the moment here is our more complex ontology to get you started on making yo
     husband sub spouse;
     wife sub spouse;
     
-    parentship sub relatives
-    	has-role parent
-    	has-role mother
-    	has-role father
-    	has-role child
-    	has-role son
-    	has-role daughter;
+  parentship sub relatives
+    has-role parent
+    has-role mother
+    has-role father
+    has-role child
+    has-role son
+    has-role daughter;
     parent sub role;
     mother sub parent;
     father sub parent;
     child sub role;
     son sub child;
     daughter sub child;
+```
 
  
 

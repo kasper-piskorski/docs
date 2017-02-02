@@ -196,7 +196,6 @@ Therefore, the `employment` relation between a `company` and `person` is also, i
 A well-formed Grakn ontology is required to satisfy the following structural properties:
 
 * each concept type can have at most one direct supertype,
-* each role type must be involved in exactly one relation type,
 * each relation type must involve at least two distinct role types, 
 * each relation type must involve the same number of roles as its direct supertype. In such a case, every role type involved in the subtype relation must be a (possibly indirect) subtype of exactly one role type involved in the supertype relation.
 
