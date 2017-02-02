@@ -21,7 +21,7 @@ GRAKN.AI is the database solution for working with complex data that intelligent
 # Meet Grakn and Graql
 GRAKN.AI is composed of Grakn - the storage, and Graql - the language.
 
-<img src="/images/grakn-and-graql.jpg" style="width: 400px;"/>
+<!-- <img src="/images/grakn-and-graql.jpg" style="width: 400px;"/> -->
 
 ## Grakn
 
