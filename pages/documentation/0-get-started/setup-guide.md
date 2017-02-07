@@ -11,7 +11,7 @@ comment_issue_id: 16
 ---
 
 
-## First: Download Grakn
+## First: Download GRAKN.AI
 
 [![download](/images/download.png)](https://grakn.ai/download/latest)
 
@@ -41,6 +41,7 @@ To start Grakn, run `grakn.sh start`.
 To stop Grakn, run `grakn.sh stop`.    
 To remove all graphs from Grakn, run `grakn.sh clean`" %}
 
+Grakn Engine is configured by default to use port 4567, but this can be changed, as can settings for Kafka and Zookeeper, in the *grakn-engine.properties* file, found within the */conf* directory of the installation.
 
 ## Test the Graql Shell
 

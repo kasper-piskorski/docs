@@ -30,8 +30,8 @@ You can optionally pass arguments when starting the Graql shell, as follows:
 | `--help`      | `-h`     | Print usage message.                             | |
 | `--implicit`  | `-i`     | Show implicit types.                             | | 
 | `--keyspace <arg>`  | `-k`     | The keyspace of the graph.                 | |
-| `--materialise` | `-m`   | Materialise inferred results.                    | |
-| `--infer`     | `-n`     | Perform inference on results.                    | |
+| `--materialise` | `-m`   | Materialise inferred results.                    | Materialisation is not enabled by default at present, although as Grakn develops, we expect that to change.|
+| `--infer`     | `-n`     | Perform inference on results.                    | Reasoning is not enabled by default at present, although as Grakn develops, we expect that to change.|
 | `--output <arg>`  | `-o` | Output format for results                        | | 
 | `--pass <arg>`    | `-p`     | The password to sign in.                     | |
 | `--uri <arg>`   | `-r`|  The URI to connect to engine.                            | |

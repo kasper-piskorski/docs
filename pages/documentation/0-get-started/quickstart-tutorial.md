@@ -51,7 +51,7 @@ You can find out much more about the Grakn ontology in our documentation about t
 
 > "The ontology is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed". 
 
-For the purposes of this guide, you can think of the ontology as a schema that describes items of data and defines how they relate to one another. You need to have a basic understanding of the ontology to be able to make useful queries on the data, so let's review the basic chunks of it that are important for our initial demonstration:
+For the purposes of this guide, you can think of the ontology as a schema that describes items of data and defines how they relate to one another. You need to have a basic understanding of the ontology to be able to make useful queries on the data, so let's review the chunks of it that are important for our initial demonstration:
 
 ```graql
 insert
@@ -130,13 +130,13 @@ $40972456 (spouse2: $40964120, spouse1: $8248) isa marriage;
 $81940536 (spouse2: $233568, spouse1: $41361488) has picture "http:\/\/1.bp.blogspot.com\/-Ty9Ox8v7LUw\/VKoGzIlsMII\/AAAAAAAAAZw\/UtkUvrujvBQ\/s1600\/johnandmary.jpg" isa marriage;
 ```
 
-Don't worry about the numbers such as `$57472`. These are variables in Graql, and happen to have randomly assigned numbers to make them unique. Each statement is adding either a `person`, a `parentship` or a `marriage` to the graph.  We will show how to add more data to the graph shortly in the Extending The Graph section. First, however, it is time to query the graph in the Graql shell. 
+Don't worry about the numbers such as `$57472`. These are variables in Graql, and happen to have randomly assigned numbers to make them unique. Each statement is adding either a `person`, a `parentship` or a `marriage` to the graph.  We will show how to add more data to the graph shortly in the [Extending The Graph](#extending-the-graph) section. First, however, it is time to query the graph in the Graql shell. 
 
 ## Querying the Graph
 
 Having started Grakn engine and the Graql shell in its interactive mode, we are ready to make a number queries. First, we will make a couple of `match` queries.
 
-Find all people in the graph, and list their `identifier` resources (a string that represents their full name):
+Find all the people in the graph, and list their `identifier` resources (a string that represents their full name):
 
 ```graql
 match $p isa person, has identifier $i;
@@ -144,7 +144,7 @@ match $p isa person, has identifier $i;
 
 {% include note.html content="In queries, Graql variables start with a `$`, which represent wildcards, and are returned as results in `match` queries. A variable name can contain alphanumeric characters, dashes and underscores." %}
 
-Find all people who are married:
+Find all the people who are married:
 
 ```graql
 match (spouse1: $x, spouse2: $y) isa marriage; $x has identifier $xi; $y has identifier $yi;  
@@ -206,7 +206,7 @@ The help tab on the main pane shows a set of key combinations that you can use t
 
 ## Using Inference
 
-We will move on to discuss the use of GRAKN.AI to infer new information about a dataset. For example, the ontology we discussed above, and the data we added to the graph, dealt only with a `person`, not a man, woman, girl or boy, and the relations we added were simple, for example `parentship` relations with `parent` and `child` roles. We do not directly add information about the nature of the parent and child in each relation - they could be father and son, father and daughter, mother and son or mother and daughter.
+We will move on to discuss the use of GRAKN.AI to infer new information about a dataset. In the ontology, so far, we have dealt only with a person, not a man or woman, and the parentship relations were simply between parent and child roles. We did not directly add information about the nature of the parent and child in each relation - they could be father and son, father and daughter, mother and son or mother and daughter.
 
 However, the `person` entity does have a gender resource, and we can use Grakn to infer more information about each relationship by using that property. The ontology accommodates the more specific roles of mother, father, daughter and son:
 
@@ -303,7 +303,7 @@ match (father: $p, son: $c) isa parentship; $p has firstname $n; $c has firstnam
 
 ![Father-Son Shared Names query](/images/father-son-shared-names.png)
 
-If you want to find out more about the Graql reasoner, we have a [detailed example](../examples/graql-reasoning.html) that uses a slightly different version of the genealogy dataset. An additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
+If you want to find out more about the Graql reasoner, we have a [detailed example](../examples/graql-reasoning.html). An additional discussion on the same topic can be found in our ["Family Matters" blog post](https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy).
 
 ## Using Analytics
 
@@ -334,3 +334,4 @@ A good place to start is to explore our additional [example code](../examples/ex
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/17" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+
