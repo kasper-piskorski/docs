@@ -1,7 +1,7 @@
 ---
 title: CSV Migration to Grakn
 keywords: setup, getting started
-last_updated: November 2nd 2016
+last_updated: February 2017
 tags: [migration]
 summary: "This document will teach you how to migrate CSV data into Grakn."
 sidebar: documentation_sidebar
@@ -14,7 +14,7 @@ comment_issue_id: 32
 This tutorial shows you how to populate Grakn with CSV data. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for CSV
-The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed. For CSV:
+The migration shell script can be found in */bin* directory of your Grakn environment. We will illustrate its usage in an example below:
 
 ```bash
 usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
@@ -33,9 +33,11 @@ OPTIONS
 
 ## CSV Migration Basics
 
-There are limitations on the CSV format that prevent it from expressing the semantics of the data. Grakn cannot automatically migrate and derive an ontology for your data. To have the full benefit of a knowledge graph, you must write the ontology for your dataset.
+The steps to migrate the CSV to GRAKN.AI are:
 
-Once you have written an ontology for your dataset, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The CSV migrator will apply the template to each row of data in the CSV file, replacing the sections indicated in the template with provided data: the column header is the key and the content of each row at that column the value.
+* define an ontology for the data to derive the full benefit of a knowledge graph
+* create templated Graql to map the data to the ontology
+* invoke the Grakn migrator through the shell script or Java API. The CSV migrator will apply the template to each row of data in the CSV file, replacing the sections indicated in the template with provided data: the column header is the key and the content of each row at that column the value.
 
 {% include note.html content="CSV Migration makes heavy use of the Graql templating language. You will need a foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more." %}
 
@@ -57,10 +59,10 @@ Here is the ontology for the example:
 insert
 
 car sub entity
-    has-resource name
-    has-resource year
-    has-resource description
-    has-resource price;
+  has-resource name
+  has-resource year
+  has-resource description
+  has-resource price;
 
 name sub resource datatype string;
 year sub resource datatype string;
@@ -75,21 +77,21 @@ And the Graql template, *car-migrator.gql*:
 insert 
 
 $x isa car 
-    has name <Make>-<Model>
-    has year <Year>
-    has price @double(Price)
-    if (ne Description null) do { has description <Description>};
+  has name <Make>-<Model>
+  has year <Year>
+  has price @double(Price)
+  if (ne Description null) do { has description <Description>};
 ```
 
 The template will create a `car` entity for each row. It will attach `year` and `price` resources to each of these entities. If the `description` resource is present in the data, it will attach the appropriate `description` to the `car`.
 
-The template is applied to each row:
+The template is applied to each row by calling the migration script:
 
 ```bash
 ./<grakn-install-location>/bin/migration.sh csv -i ./cars.csv -t ./car-migrator.gql
 ```
 
-The resulting Graql statement, if printed out, looks like:
+The resulting Graql statement, if printed out, looks as follows:
 
 ```graql
 insert $x0 isa car has name "Ford" has description "ac, abs, moon" has price 3000.0 has year "1997";
@@ -103,8 +105,6 @@ You will note that the second Graql insert is missing the `description` resource
 
 The `separator` option allows you to specify the column separator. With this we are able to migrate a wider range of formats, including TSV.
 
-This file would be migrated in the same way as the previous example when you specify the separator using the `-s \t` argument:
-
 ```tsv
 Year  Make  Model Description Price
 1997  Ford  E350  "ac  abs   moon"  3000.00
@@ -113,11 +113,16 @@ Year  Make  Model Description Price
 air  moon roof   loaded"  4799.00
 ```
 
+This file would be migrated in the same way as the previous example when you specify the separator using the `-s \t` argument:
+
+```bash
+./<grakn-install-location>/bin/migration.sh csv -i ./cars.tsv -t ./car-migrator.gql -s \t
+```
 
 ## Where Next?
 We have an additional, more extensive, example that [migrates genealogy data from CSV](../examples/CSV-migration.html). Our [sample-projects repository on Github](https://github.com/graknlabs/sample-projects) also contains [an example that migrates a simple CSV pets dataset](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration-pets), and another [example for video games](https://github.com/graknlabs/sample-projects/tree/master/example-csv-migration-games), was described in a separate [blog post](https://blog.grakn.ai/twenty-years-of-games-in-grakn-14faa974b16e#.do8tq0dm8).
 
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html). 
+You can find further documentation about migration in our API reference documentation (which is in the */docs* directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html). 
 
 {% include links.html %}
 

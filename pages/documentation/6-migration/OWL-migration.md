@@ -14,7 +14,7 @@ comment_issue_id: 32
 This tutorial shows you how to migrate OWL into Grakn. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for OWL
-The migration shell script can be found in the `bin` directory after the Grakn distribution file has been unzipped. Usage is specific to the type of migration being performed. For OWL:
+The migration shell script can be found in */bin* directory of your Grakn environment. We will illustrate its usage in an example below:
 
 ```bash
 usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
@@ -30,6 +30,7 @@ usage: migration.sh owl -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [
 
 When you have read the following, you may find our extended example of [OWL migration](../examples/OWL-migration.html) useful.
 
+## Example OWL migration
 Consider the following OWL ontology:
 
 ```xml
@@ -74,7 +75,7 @@ The ontology defines a single class (type) `Person` as well as two instances of 
 hasAncestor(X, Y) :- hasParent(X, Z), hasAncestor(Z, Y);
 ```
 
-Upon migration, the OWL ontology will be mapped to the Grakn Model. The following Graql statement inserts an equivalent structure to the one obtained through the migration mapping:
+Upon migration, the OWL ontology will be mapped to Grakn. The resulting Graql statement, if printed out, looks as follows:
 
 ```graql
 insert

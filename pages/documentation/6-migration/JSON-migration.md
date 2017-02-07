@@ -1,7 +1,7 @@
 ---
 title: JSON Migration to Grakn
 keywords: setup, getting started
-last_updated: November 14th 2016
+last_updated: February 2017
 tags: [migration]
 summary: "This document will teach you how to migrate JSON data into Grakn."
 sidebar: documentation_sidebar
@@ -14,7 +14,7 @@ comment_issue_id: 32
 This tutorial shows you how to populate Grakn with JSON data. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script for JSON
-The migration shell script can be found in `/bin` directory of your Grakn environment. Usage is specific to the type of migration being performed.    
+The migration shell script can be found in */bin* directory of your Grakn environment. We will illustrate its usage in an example below:
 
 ```bash
 usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
@@ -31,17 +31,17 @@ OPTIONS
  
 ```
 
+{% include note.html content="The JSON migrator can handle either a directory or a file as the -input parameter!" %}
+
 ## JSON Migration Basics
 
-There are limitations on the JSON format that prevent it from expressing the semantics of the data, so Grakn cannot automatically migrate and derive an ontology for your data. To have the full benefit of a knowledge graph, you must write the ontology for your dataset up-front.
+The steps to migrate the CSV to GRAKN.AI are:
 
-Once you have written an ontology for your dataset, you will template Graql statements that instruct the migrator on how your data can be mapped to your ontology. The JSON migrator will apply the template to each row of data in the JSON file, replacing the indicated sections in the template with provided data: the column header is the key and the content of each row at that column the value.
+* define an ontology for the data to derive the full benefit of a knowledge graph
+* create templated Graql to map the data to the ontology. Approach each JSON file as though you were inserting a single query, taking care that there are not more than one `match` or `insert` commands in your template. 
+* invoke the Grakn migrator through the shell script or Java API. 
 
 {% include note.html content="JSON Migration makes heavy use of the Graql templating language. You will need a foundation in Graql templating before continuing, so please read through our [templating documentation](../graql/graql-templating.html) to find out more." %}
-
-Approach each JSON file as though you were inserting a single query. The migrator cannot handle multiple queries per file, so take care that there is not more than one `match` or `insert` command in your template. Take a look at our [other migration guides](./migration-overview.html) for more ideas on how to use Graql templates with data. 
-
-{% include note.html content="The JSON migrator can handle either a directory or a file as the -input parameter!" %}
 
 ### Looping over a JSON array   
 
@@ -154,7 +154,7 @@ for(pokemon) do {
 }
 ```
 
-It will resolve as:    
+The resulting Graql statement, if printed out, looks as follows:
 
 ```graql
 match $1 has type-id "1"; $2 has type-id "2";
@@ -168,7 +168,7 @@ isa has-type (pokemon-with-type: $p2, type-of-pokemon: $2);
 ```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
+You can find further documentation about migration in our API reference documentation (which is in the */docs* directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html). An example of JSON migration using the Java API can be found on [Github](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration).
 
 {% include links.html %}
 

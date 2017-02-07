@@ -1,7 +1,7 @@
 ---
 title: Migration Overview
 keywords: setup, getting started
-last_updated: August 10, 2016
+last_updated: February 2017
 tags: [getting-started, graql, migration]
 summary: "Landing page for documentation about loading data in different formats to populate a graph in Grakn."
 sidebar: documentation_sidebar
@@ -11,31 +11,16 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This page introduces migration of data, stored in different formats, to populate a graph in Grakn. If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
+This page is an overview of how to migrate data to populate a graph in Grakn. We currently support migration of CSV, JSON, OWL and SQL data. For each type of data, the steps to migrate to GRAKN.AI are:
+
+- define an ontology for the data
+- create templated Graql to map the data to the ontology
+- invoke the Grakn migrator through the shell script or Java API.
+
+If you have not yet set up the Grakn environment, please see the [setup guide](../get-started/setup-guide.html).
 
 ## Migration Shell Script
-The migration shell script can be found in `grakn-dist/bin` after it has been unzipped. Usage is specific to the type of migration being performed:
-
-### SQL Migration
-
-```bash
-usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> [-help] [-no] [-batch <arg>] [-keyspace <arg>] [-uri <arg>] [-v]
-
- -b,--batch <arg>      number of rows to load at once
- -driver <arg>         JDBC driver
- -h,--help             print usage message
- -k,--keyspace <arg>   keyspace to use
- -location <arg>       JDBC url (location of DB)
- -n,--no               dry run - write to standard out
- -pass <arg>           JDBC password
- -q,--query <arg>      SQL Query
- -t,--template <arg>   template for the given SQL query
- -u,--uri <arg>        uri to engine endpoint
- -user <arg>           JDBC username
- -v,--verbose          print counts of migrated data.
-```
-
-Please see the [SQL migration documentation](./SQL-migration.html) for further information.
+The migration shell script can be found in *grakn-dist/bin* after it has been unzipped. Usage is specific to the type of migration being performed:
 
 ### CSV Migration
 
@@ -90,7 +75,30 @@ NOTE: `-no` is not supported by OWL migration at the moment
 
 Please see the [OWL migration documentation](./OWL-migration.html) for further information.
 
-### Export from Grakn
+### SQL Migration
+
+```bash
+usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> [-help] [-no] [-batch <arg>] [-keyspace <arg>] [-uri <arg>] [-v]
+
+ -b,--batch <arg>      number of rows to load at once
+ -driver <arg>         JDBC driver
+ -h,--help             print usage message
+ -k,--keyspace <arg>   keyspace to use
+ -location <arg>       JDBC url (location of DB)
+ -n,--no               dry run - write to standard out
+ -pass <arg>           JDBC password
+ -q,--query <arg>      SQL Query
+ -t,--template <arg>   template for the given SQL query
+ -u,--uri <arg>        uri to engine endpoint
+ -user <arg>           JDBC username
+ -v,--verbose          print counts of migrated data.
+```
+
+Please see the [SQL migration documentation](./SQL-migration.html) for further information.
+
+## Exporting from Grakn
+
+It is also possible to use the migration shell script to export data from Grakn. Usage is as follows:
 
 ```bash
 usage: migration.sh export -data -ontology [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
