@@ -180,7 +180,7 @@ In order to migrate the pets table from the SQL database, we prepare a SQL query
 SELECT * FROM pet; 
 ```
 
-We also prepare a Graql template, `pet-template.gql` which creates instances for data according to the defined ontology. The template will create an entity of the appropriate pet subtype (`cat`, `dog`, `snake`, `hamster` or `bird`) for each row returned by the query. It will attach name, owner and sex resources to each of these entities, and if the birth and death dates are present in the data, attaches those too.
+We also prepare a Graql template, *pet-template.gql* which creates instances for data according to the defined ontology. The template will create an entity of the appropriate pet subtype (`cat`, `dog`, `snake`, `hamster` or `bird`) for each row returned by the query. It will attach name, owner and sex resources to each of these entities, and if the birth and death dates are present in the data, attaches those too.
 
 ```
 insert
@@ -209,7 +209,7 @@ SELECT event.name AS name,
 FROM event;
 ```
 
-We prepare a Graql template `event-template.gql`:
+We prepare a Graql template *event-template.gql*:
 
 ```graql-test-ignore
 match $pet has name <name>
