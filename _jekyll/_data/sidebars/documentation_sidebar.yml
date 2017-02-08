@@ -30,13 +30,13 @@ entries:
   - title: Graql Ontology
     output: web
     folderitems:
-      - title: Defining a Basic Ontology
+      - title: Define a Basic Ontology
         output: web
         url: /documentation/building-an-ontology/basic-ontology.html
-      - title: Defining a Hierarchical Ontology
+      - title: Define a Hierarchical Ontology
         output: web
         url: /documentation/building-an-ontology/hierarchical-ontology.html
-      - title: Defining a Rule-Driven Ontology
+      - title: Define a Rule-Driven Ontology
         output: web
         url: /documentation/building-an-ontology/rule-driven-ontology.html
       - title: Overview (deprecated)
@@ -48,7 +48,7 @@ entries:
       - title: Advanced Schema (deprecated)
         output: web
         url: /documentation/building-an-ontology/advanced-schema-definition.html
-  - title: Graql Querying
+  - title: Graql Queries
     output: web
     folderitems:
       - title: Overview
@@ -105,7 +105,7 @@ entries:
       - title: Connected Components
         output: web
         url: /documentation/graql-analytics/analytics-connected-components.html
-  - title: Migrating to Grakn
+  - title: Migrate to Grakn
     output: web
     folderitems:
       - title: Overview
@@ -123,7 +123,7 @@ entries:
       - title: OWL Migration
         output: web
         url: /documentation/migration/OWL-migration.html
-  - title: Developing with Java
+  - title: Develop with Java
     output: web
     folderitems:
       - title: Java Development Setup

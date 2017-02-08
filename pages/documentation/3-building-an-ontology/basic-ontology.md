@@ -1,5 +1,5 @@
 ---
-title: Defining a Basic Ontology
+title: Define a Basic Ontology
 keywords: schema
 last_updated: December, 2016
 tags: [graph-api, java, advanced-grakn]
@@ -43,26 +43,26 @@ So what helps describe a `person`?
 Philosophical debates aside let us go with something simple. A `person` typically has a `firstname`, a `lastname`, and a `gender`. We can model this and other resources that identify a person with:
 
 ```graql
-  person sub entity
-    has-resource identifier
-    has-resource firstname
-    has-resource surname
-    has-resource middlename
-    has-resource picture
-    has-resource age
-    has-resource birth-date
-    has-resource death-date
-    has-resource gender;
+person sub entity
+  has-resource identifier
+  has-resource firstname
+  has-resource surname    
+  has-resource middlename
+  has-resource picture
+  has-resource age
+  has-resource birth-date
+  has-resource death-date
+  has-resource gender;
     
-    identifier sub resource datatype string;
-    firstname sub resource datatype string;
-    surname sub resource datatype string;
-    middlename sub resource datatype string;
-    picture sub resource datatype string;
-    age sub resource datatype long;
-    birth-date sub resource datatype string;
-    death-date sub resource datatype string;
-    gender sub resource datatype string;    
+  identifier sub resource datatype string;
+  firstname sub resource datatype string;
+  surname sub resource datatype string;
+  middlename sub resource datatype string;
+  picture sub resource datatype string;
+  age sub resource datatype long;
+  birth-date sub resource datatype string;
+  death-date sub resource datatype string;
+  gender sub resource datatype string;    
 ```	    
 
 
@@ -77,20 +77,20 @@ In a Grakn, N-ary relationships are also possible. For example, a `person` has a
 In our example, we will add `marriage` and `parentship` relationships. A `marriage` has two roles: `spouse1` and `spouse2`, while `parentship` has a `parent` role and a `child` role.
 
 ```graql
-  marriage sub relation
-    has-role spouse1
-    has-role spouse2
-    has-resource picture;
+marriage sub relation
+  has-role spouse1
+  has-role spouse2
+  has-resource picture;
 
-  spouse1 sub role;
-  spouse2 sub role;
+spouse1 sub role;
+spouse2 sub role;
 
-  parentship sub relation
-    has-role parent
-    has-role child;
+parentship sub relation
+  has-role parent
+  has-role child;
 
-  parent sub role;
-  child sub role;
+parent sub role;
+child sub role;
 ```
 
 ## Allowing Roles to be Played
@@ -100,11 +100,11 @@ The next step is to give our entity types permission to play specific roles.  We
 For this current example we only have one entity type, which can play all our current roles, so we explicitly state that with:  
 
 ```graql
-  person sub entity
-    plays-role parent
-    plays-role child
-    plays-role spouse1
-    plays-role spouse2
+person sub entity
+  plays-role parent
+  plays-role child
+  plays-role spouse1
+  plays-role spouse2
 ```    
 	    
 We have now completed our basic genealogy ontology.
@@ -114,9 +114,10 @@ We have now completed our basic genealogy ontology.
 The final ontology will now look something like this:
 
 ```graql
-
+insert
+ 
  # Entities
-    
+ 
   person sub entity
     has-resource identifier
     has-resource firstname
@@ -163,6 +164,7 @@ The final ontology will now look something like this:
   
 ```
 
+![Ontology](/images/basic-ontology1.png)
 
 # Summary
 

@@ -1,5 +1,5 @@
 ---
-title: Hierarchical Ontology
+title: Define a Hierarchical Ontology
 keywords: overview
 last_updated: February 2017
 tags: [graql, java, graph-api]
@@ -17,9 +17,12 @@ comment_issue_id: 22
 In this section we are going to expand the ontology we defined in the [Basic Ontology documentation](./basic-ontology.html), which we recommend you read before starting here. You may also find it helpful to refer to the [Knowledge Model](../the-basics/grakn-knowledge-model.html) documentation.
 We are going to introduce the idea of making ontologies deeper and more meaningful by defining a hierarchy of types.
 
-When we left off, our ontology was defined as follows:
+When we left off, our ontology looked as follows:
+
+![Ontology](/images/basic-ontology1.png)
 
 ```graql
+insert
  
 # Entities
     
@@ -66,7 +69,7 @@ When we left off, our ontology was defined as follows:
 
   parent sub role;
   child sub role;
- ```
+```
     
 This ontology represents a genealogy graph which models a family tree.
 This is a very simplistic ontology with plenty of room for extension, so lets begin.
@@ -77,9 +80,9 @@ It is possible to define entity types more granularly. Think of sub categories o
 For example, if we have a entity type called `vehicle`, we can break that down further by differentiating between `cars` and `motorbikes`. This can be done as follows:
 
 ```graql
-  vehicle sub entity;
-  car sub vehicle;
-  motorbikes sub vehicle;
+vehicle sub entity;
+car sub vehicle;
+motorbikes sub vehicle;
 ```    
     
 In the above example we are saying that a `car` is a subtype of a `vehicle`. This means that when adding data to our graph, when we know we have a `vehicle`, we can also differentiate between a `car` and a `motorbike`.
@@ -91,33 +94,33 @@ We could specialise the `person` entity into `man` and `woman` for example. Howe
 We can model this as follows:
 
 ```graql    
-  event sub entity
-    is-abstract
-    has-resource degree
-    has-resource confidence
-    has-resource date
-    has-resource identifier
-    has-resource notes
-    plays-role conclusion
-    plays-role happening;
+event sub entity
+  is-abstract
+  has-resource degree
+  has-resource confidence
+  has-resource date
+  has-resource identifier
+  has-resource notes
+  plays-role conclusion
+  plays-role happening;
     
-  wedding sub event;
-    
-  funeral sub event
-    has-resource death-date;
+wedding sub event;
+ 
+funeral sub event
+  has-resource death-date;
     	
-  christening sub event
-    has-resource birth-date;
+christening sub event
+  has-resource birth-date;
     
-  birth sub event
-    has-resource firstname
-    has-resource middlename
-    has-resource surname
-    has-resource gender
-    has-resource birth-date;
+birth sub event
+  has-resource firstname
+  has-resource middlename
+  has-resource surname
+  has-resource gender
+  has-resource birth-date;
     	
-  death sub event
-    has-resource death-date;
+death sub event
+  has-resource death-date;
 ``` 	      
   	    
 Notice that for the `event` entity type we added `is-abstract`, this is an optional additional restriction to ensure that we do not create any instances of `event`, but instead use the most granular definitions provided, i.e. `birth`, `death`, etc . . .  
@@ -129,22 +132,22 @@ Grakn also allows you to design hierarchies of relation types and role types, en
 Now lets take a look at expanding our genealogy ontology. When modelling a domain there are many ways of doing so. For this example we are going to redo the `marriage` relation type so that it can provide more meaning:
 
 ```graql
-  relatives sub relation
-    is-abstract;
+relatives sub relation
+  is-abstract;
 
-  marriage sub relatives
-    has-role spouse1
-    has-role spouse2
-    has-role husband
-    has-role wife
-    has-resource date;
+marriage sub relatives
+  has-role spouse1
+  has-role spouse2
+  has-role husband
+  has-role wife
+  has-resource date;
 	    
-  spouse sub role is-abstract;
-  generic-spouse sub spouse is-abstract;
-  spouse1 sub generic-spouse;
-  spouse2 sub generic-spouse;
-  husband sub spouse;
-  wife sub spouse;
+spouse sub role is-abstract;
+generic-spouse sub spouse is-abstract;
+spouse1 sub generic-spouse;
+spouse2 sub generic-spouse;
+husband sub spouse;
+wife sub spouse;
 ```
     
 	    
@@ -155,19 +158,20 @@ From now on, we can be clear if a person is a `husband` or a `wife` or just a `s
 Lets expand this even further:
 
 ```graql
-  parentship sub relatives
-    has-role parent
-    has-role mother
-    has-role father
-    has-role child
-    has-role son
-    has-role daughter;
-    parent sub role;
-    mother sub parent;
-    father sub parent;
-    child sub role;
-    son sub child;
-    daughter sub child;
+parentship sub relatives
+  has-role parent
+  has-role mother
+  has-role father
+  has-role child
+  has-role son
+  has-role daughter;
+    
+parent sub role;
+mother sub parent;
+father sub parent;
+child sub role;
+son sub child;
+daughter sub child;
 ```
 
 Now we have provided more detail about being a parent. 
@@ -180,6 +184,7 @@ We could go into far more detail regarding our genealogy graph but I will leave 
 For the moment here is our more complex ontology to get you started on making your own deeper ontologies. You can find the ontology, the dataset and rules that accompany it, on Github in our [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph):
 
 ```graql
+insert
 
 # Entities
 
@@ -244,12 +249,12 @@ For the moment here is our more complex ontology to get you started on making yo
     has-role husband
     has-role wife
     has-resource date;
-    spouse sub role is-abstract;
-    generic-spouse sub spouse is-abstract;
-    spouse1 sub generic-spouse;
-    spouse2 sub generic-spouse;
-    husband sub spouse;
-    wife sub spouse;
+    
+  spouse sub role is-abstract;
+  generic-spouse sub spouse is-abstract;
+  spouse1 sub generic-spouse;
+  spouse2 sub generic-spouse;
+  husband sub spouse;   wife sub spouse;
     
   parentship sub relatives
     has-role parent
@@ -258,15 +263,14 @@ For the moment here is our more complex ontology to get you started on making yo
     has-role child
     has-role son
     has-role daughter;
-    parent sub role;
-    mother sub parent;
-    father sub parent;
-    child sub role;
-    son sub child;
-    daughter sub child;
+  
+  parent sub role;
+  mother sub parent;
+  father sub parent;
+  child sub role;
+  son sub child;
+  daughter sub child;
 ```
-
- 
 
 {% include links.html %}
 
