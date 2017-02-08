@@ -20,7 +20,7 @@ For more information on how to download older versions of GRAKN.AI, compile from
 ## Install GRAKN.AI
 {% include note.html content="**Prerequisites**   <br />
 GRAKN.AI requires Java 8 (Standard Edition) with the `$JAVA_HOME` set accordingly. If you don't already have this installed, you can find it [here](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  
-If you intend to build Grakn, or develop on top of it, you will also need Maven 3." %}
+If you intend to build Grakn from source code, or develop on top of it, you will also need Maven 3." %}
 
 Unzip the download into your preferred location and run the following in the terminal to start Grakn:
 
@@ -45,7 +45,7 @@ Grakn Engine is configured by default to use port 4567, but this can be changed,
 
 ## Test the Graql Shell
 
-To test that the installation is working correctly, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from the next release and onwards. It is not currently in the zip, so you will need to get it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that the file is in the */examples* folder. 
+To test that the installation is working correctly, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from release 0.11.0 and onwards. You can also download it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that the file is in the */examples* folder. 
 
 Type in the following to load the example graph. This starts the Graql shell in non-interactive mode, loading the specified file and exiting after the load is complete.
 

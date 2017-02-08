@@ -72,11 +72,11 @@ insert
 ```
     
 This ontology represents a genealogy graph which models a family tree.
-This is a very simplistic ontology with plenty of room for extension, so lets begin.
+This is a very simplistic ontology with plenty of room for extension, so let's begin!
  
 ## Hierarchies of Entity Types
 
-It is possible to define entity types more granularly. Think of sub categories of categories, enabling additional details to be embedded in the ontology. 
+It is possible to define entity types more granularly. Think of sub-categories that enable additional details to be embedded in the ontology. 
 For example, if we have a entity type called `vehicle`, we can break that down further by differentiating between `cars` and `motorbikes`. This can be done as follows:
 
 ```graql
@@ -85,7 +85,7 @@ car sub vehicle;
 motorbikes sub vehicle;
 ```    
     
-In the above example we are saying that a `car` is a subtype of a `vehicle`. This means that when adding data to our graph, when we know we have a `vehicle`, we can also differentiate between a `car` and a `motorbike`.
+In the above example we are saying that a `car` is a subtype (a specialised type) of a `vehicle`. This means that when adding data to our graph, when we know we have a `vehicle`, we can also differentiate between a `car` and a `motorbike`.
     
 So how can we use this technique to improve our existing genealogy ontology?
   
@@ -143,9 +143,8 @@ marriage sub relatives
   has-resource date;
 	    
 spouse sub role is-abstract;
-generic-spouse sub spouse is-abstract;
-spouse1 sub generic-spouse;
-spouse2 sub generic-spouse;
+spouse1 sub spouse;
+spouse2 sub spouse;
 husband sub spouse;
 wife sub spouse;
 ```
@@ -175,7 +174,7 @@ daughter sub child;
 ```
 
 Now we have provided more detail about being a parent. 
-We have also said that being a parent is a `relative` relation. 
+We have also said that being a parent is a `relatives` relation. 
 This is quite useful because when we ask for all relatives we will be getting relatives via birth and via marriage.
  
 ## Wrapping up 
@@ -251,10 +250,10 @@ insert
     has-resource date;
     
   spouse sub role is-abstract;
-  generic-spouse sub spouse is-abstract;
-  spouse1 sub generic-spouse;
-  spouse2 sub generic-spouse;
-  husband sub spouse;   wife sub spouse;
+  spouse1 sub spouse;
+  spouse2 sub spouse;
+  husband sub spouse;   
+  wife sub spouse;
     
   parentship sub relatives
     has-role parent
@@ -273,6 +272,12 @@ insert
 ```
 
 {% include links.html %}
+
+## Where Next?
+
+We will continue to explore the development of an ontology in the next section on defining a [rule-driven ontology](./rule-driven-ontology.html).
+
+You can find the complete ontology for our genealogy graph project, the dataset and rules that accompany it, on Github in our [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph).
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/22" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

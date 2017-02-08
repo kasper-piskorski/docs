@@ -18,7 +18,7 @@ comment_issue_id: 22
 
 In this section we are going to run through the construction of a basic ontology. We recommend that you refer to the [Knowledge Model](../the-basics/grakn-knowledge-model.html) documentation before reading this page. The process we will follow is a general guideline as to how you may start designing an ontology.
 
-The ontology we will be building will be used for a genealogy graph used for mapping out a family tree. You can find the complete ontology, the dataset and rules that accompany it, on Github in our [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph) 
+The ontology we will be building will be used for a genealogy graph used for mapping out a family tree. You can find the complete ontology, the dataset and rules that accompany it, on Github in our [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph).
 
 
 ## Identifying Entity Types
@@ -166,11 +166,15 @@ insert
 
 ![Ontology](/images/basic-ontology1.png)
 
-# Summary
+## Summary
 
 In this tutorial we described our entity type `person` across separate steps. This was done to demonstrate the typical thought process when creating an ontology. It is typically good practice to group entity type definitions together as above. 
 
 {% include note.html content="It is worth noting that the ontology does not need to be completely finalised before loading data. The ontology of a Grakn graph can be expanded even after loading data." %}
+
+## Where Next?
+
+We will continue to explore the development of an ontology in the next section on defining a [hierarchical ontology](./hierarchical-ontology.html).
 
 
 ## Comments

@@ -16,7 +16,7 @@ This example takes a simple genealogy dataset and briefly reviews its ontology, 
 
 ## Introduction 
 
-If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started/setup-guide.html). In this tutorial, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from the next release and onwards. It is not currently in the zip, so you will need to get it from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that it is in the */examples* folder. 
+If you have not yet set up GRAKN.AI, please see the [Setup guide](../get-started/setup-guide.html). In this tutorial, we will load a simple ontology and some data from a file, *basic-genealogy.gql* and test it in the Graql shell and Grakn Visualiser. The *basic-genealogy.gql* file will be included in the */examples* folder of the Grakn installation zip from release 0.11.0 and onwards. It can also be downloaded from the [Grakn repo on Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). In the code below, we assume that it is in the */examples* folder. 
 
 ## The Graql Shell
 
@@ -109,7 +109,7 @@ There are a number of things we can say about ontology shown above:
 * there is one entity, `person`, which represents a person in the family whose genealogy data we are studying. 
 * the `person` entity has a number of resources to describe aspects of them, such as their name, age, dates of birth and death, gender and a URL to a picture of them (if one exists). Those resources are all expressed as strings, except for the age, which is of datatype long.
 * there are two relations that a `person` can participate in: `marriage` and `parentship`
-* the person can play different roles in those relations, as a spouse (`spouse1` or `spouse2` - we aren't assigning them by gender to be husband or wife at this point) and as a `parent` or `child` (again, we are not assigning a gender such as mother or father at this point).   
+* the person can play different roles in those relations, as a spouse (`spouse1` or `spouse2` - we aren't assigning them by gender to be husband or wife) and as a `parent` or `child` (again, we are not assigning a gender such as mother or father).   
 * the `marriage` relation has a resource, which is a URL to a wedding picture, if one exists. 
 
 ### The Data

@@ -1,7 +1,7 @@
 ---
 title: Java Graql
 keywords: graql, java
-last_updated: August 11, 2016
+last_updated: February 2017
 tags: [graql, java]
 summary: "How to construct and execute Graql queries programmatically in Java."
 sidebar: documentation_sidebar
@@ -130,6 +130,34 @@ qb.parse("insert isa pokemon, has name 'Pichu';").execute();
 
 qb.parse("match $x isa pokemon; delete $x;").execute();
 ```
+
+## Reasoning
+
+Reasoning can be configured using `QueryBuilder` objects in the following way:
+
+### Switching reasoning on
+
+```java
+//graph is a GraknGraph instance
+QueryBuilder qb = graph.graql().infer(true);
+```
+
+### Switching materialisation on
+
+```java
+//graph is a GraknGraph instance
+QueryBuilder qb = graph.graql().infer(true).materialise(true);
+```
+
+Once the `QueryBuilder` has been defined, the constructed queries will obey the specified reasoning variants.
+    
+The table below summarises the available reasoning configuration options together with their defaults.
+
+| Option       | Description | Default
+| -------------------- |:--|:--|
+| `QueryBuilder::infer(boolean)` | controls whether reasoning should be turned on | False=Off |
+| `QueryBuilder::materialise(boolean)`       | controls whether inferred knowledge should be persisted to graph | False=Off |
+
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/23" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.

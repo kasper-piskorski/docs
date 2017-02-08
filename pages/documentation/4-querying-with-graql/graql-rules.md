@@ -53,19 +53,19 @@ A classic reasoning example is the ancestor example: the two Graql rules R1 and 
 ```graql
 $R1 isa inference-rule,
 lhs {
-    (parent: $x, child: $y) isa Parent;
+    (parent: $p, child: $c) isa Parent;
 },
 rhs {
-    (ancestor: $x, descendant: $y) isa Ancestor;
+    (ancestor: $p, descendant: $c) isa Ancestor;
 };
 
 $R2 isa inference-rule,
 lhs {
-    (parent: $x, child: $z) isa Parent;
-    (ancestor: $z, descendant: $y) isa Ancestor;
+    (parent: $p, child: $c) isa Parent;
+    (ancestor: $c, descendant: $d) isa Ancestor;
 },
 rhs {
-    (ancestor: $x, descendant: $y) isa Ancestor;
+    (ancestor: $p, descendant: $d) isa Ancestor;
 };
 ```
 
@@ -78,28 +78,6 @@ R1: ancestor(X, Y) :- parent(X, Y)
 R2: ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y)
 ```
 
-### Rule Java API
-Rule objects are instances of type inference-rule which can be retrieved by:
-
-```java
-RuleType inferenceRule = graknGraph.getMetaRuleInference();
-```
-
-Rule objects can be added to the graph both through the Graph API as well as through Graql. With the use of the Java API, the two rules constituting the ancestor example can be added in the following way:
-
-```java
-Pattern r1Body = var().rel("parent", "x").rel("child", "y").isa("Parent");
-Pattern r1Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
-
-Pattern r2Body = and(
-        var().rel("parent", "x").rel("child", "y").isa("Parent')"),
-        var().rel("ancestor", "z").rel("descendant", "y").isa("Ancestor")
-);
-Pattern r2Head = var().rel("ancestor", "x").rel("descendant", "y").isa("Ancestor");
-
-Rule rule1 = inferenceRule.addRule(r1Body, r1Head);
-Rule rule2 = inferenceRule.addRule(r2Body, r2Head);
-```
 
 ## Allowed Graql Constructs in Rules
 The tables below summarise Graql constructs that are allowed to appear in LHS
@@ -144,30 +122,6 @@ Graql offers certain degrees of freedom in deciding how and if reasoning should 
 * **whether reasoning should be on**. This option is self-explanatory. If the reasoning is not turned on, the rules will not be triggered and no knowledge will be inferred. 
 * **whether inferred knowledge should be materialised (persisted to the graph) or stored in memory**. Persisting to graph has a huge impact on performance when compared to in-memory inference, and, for larger graphs, materialisation should either be avoided or queries be limited by employing the _limit_ modifier, which allows termination in sensible time.
 
-In Java, the two settings can be controlled by providing suitable parameters to the `QueryBuilder` objects in the following way:
-
-### Switching reasoning on
-
-```java
-//graph is a GraknGraph instance
-QueryBuilder qb = graph.graql().infer(true);
-```
-
-### Switching materialisation on
-
-```java
-//graph is a GraknGraph instance
-QueryBuilder qb = graph.graql().infer(true).materialise(true);
-```
-
-Once the `QueryBuilder` has been defined, the constructed queries will obey the specified reasoning variants.
-    
-The table below summarises the available reasoning configuration options together with their defaults.
-
-| Option       | Description | Default
-| -------------------- |:--|:--|
-| `QueryBuilder::infer(boolean)` | controls whether reasoning should be turned on | False=Off |
-| `QueryBuilder::materialise(boolean)`       | controls whether inferred knowledge should be persisted to graph | False=Off |
 
 ## Comments
 Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/42" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
