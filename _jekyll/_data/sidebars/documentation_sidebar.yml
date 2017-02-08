@@ -39,15 +39,6 @@ entries:
       - title: Define a Rule-Driven Ontology
         output: web
         url: /documentation/building-an-ontology/rule-driven-ontology.html
-      - title: Overview (deprecated)
-        output: web
-        url: /documentation/building-an-ontology/ontology-overview.html
-      - title: Simple Schema (deprecated)
-        output: web
-        url: /documentation/building-an-ontology/simple-schema-definition.html
-      - title: Advanced Schema (deprecated)
-        output: web
-        url: /documentation/building-an-ontology/advanced-schema-definition.html
   - title: Graql Queries
     output: web
     folderitems:
