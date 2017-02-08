@@ -99,9 +99,6 @@ entries:
       - title: Analytics Degrees
         output: web
         url: /documentation/graql-analytics/analytics-degrees.html
-      - title: Analytics Persist
-        output: web
-        url: /documentation/graql-analytics/analytics-persist.html
       - title: Connected Components
         output: web
         url: /documentation/graql-analytics/analytics-connected-components.html
