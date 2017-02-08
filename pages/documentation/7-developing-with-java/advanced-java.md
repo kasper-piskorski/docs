@@ -1,13 +1,14 @@
 ---
-title: Transaction Processing & Multithreading
+title: Advanced Java Development
 keywords: java
-last_updated: January 2017
+last_updated: February 2017
 tags: [java]
 summary: "Transaction Processing & Multithreading in Java"
 sidebar: documentation_sidebar
-permalink: /documentation/developing-with-java/multithreading.html
+permalink: /documentation/developing-with-java/advanced-java.html
 folder: documentation
 ---
+
 {% include warning.html content="Please note that this page is in progress and subject to revision." %}
 
 ## Comments
@@ -15,4 +16,3 @@ Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues
 
 
 {% include links.html %}
-
