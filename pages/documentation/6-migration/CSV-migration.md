@@ -79,8 +79,8 @@ insert
 $x isa car 
   has name <Make>-<Model>
   has year <Year>
-  has price @double(Price)
-  if (ne Description null) do { has description <Description>};
+  has price @double(<Price>)
+  if (ne <Description> null) do { has description <Description>};
 ```
 
 The template will create a `car` entity for each row. It will attach `year` and `price` resources to each of these entities. If the `description` resource is present in the data, it will attach the appropriate `description` to the `car`.

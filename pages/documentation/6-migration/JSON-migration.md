@@ -67,7 +67,7 @@ To migrate all of these types, we need to iterate over the array:
 
 ```graql-template
 insert
-for(types) do {
+for(<types>) do {
     $x isa pokemon-type
         has description <type>
         has type-id <id>;
@@ -134,21 +134,21 @@ This template is rather complicated. The first `match` portion is necessary to l
 
 ```graql-template
 match
-   for(pokemon) do {
-        for(t in types) do {
+   for(<pokemon>) do {
+        for(t in <types>) do {
             $<t> has type-id <t>;
         }
    }
 
 insert
-for(pokemon) do {
+for(<pokemon>) do {
     $p isa pokemon
         has weight <weight>
         has height <height>
         has pokedex-no <id>
         has description <identifier>;
 
-    for(t in types) do {
+    for(t in <types>) do {
         (pokemon-with-type: $p, type-of-pokemon: $<t>) isa has-type;
     }
 }
