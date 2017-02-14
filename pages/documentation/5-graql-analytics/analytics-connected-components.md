@@ -32,18 +32,6 @@ compute cluster in person, knows; members;
 Here, the [subgraph](./analytics-overview.html) functionality has been used to get more meaningful results, because executing the cluster algorithm without specifying a subgraph will not result in meaningful information.
 
 
-### Persisting the Connected Components
-
-When the clusters have meaning, it is useful to be able to persist it to the graph, so it is available for querying.
-
-For this reason we have introduced `persist`, which is [documented further on a separate page](./analytics-persist.html). 
-
-To persist the cluster to the graph we call:
-
-```
-compute cluster in person, knows; members; persist;
-```
-
 {% include links.html %}
 
 ## Comments

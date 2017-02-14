@@ -18,15 +18,12 @@ entries:
       - title: Quickstart Tutorial
         output: web
         url: /documentation/get-started/quickstart-tutorial.html
-  - title: The Basics
+  - title: Grakn Fundamentals
     output: web
     folderitems:
-      #- title: Grakn Basics
-      #  output: web
-      #  url: /documentation/the-basics/grakn-basics.html
       - title: Grakn Knowledge Model
         output: web
-        url: /documentation/the-basics/grakn-knowledge-model.html
+        url: /documentation/the-fundamentals/grakn-knowledge-model.html
   - title: Graql Ontology
     output: web
     folderitems:

@@ -59,20 +59,6 @@ The answer is now different:
 * **Alim**: 2
 * **Eric**: 1
 
-### Persisting the Degrees
-
-Sometimes we want the information above to be made available in the live system. For this reason we have introduced `persist`, which is [documented further on a separate page](./analytics-persist.html). 
-
-To persist the degrees to the graph we call:
-
-```
-compute degrees in person, knows; persist;
-```
-
-This will result in the graph shown below, with degrees that can now be queried using Graql. 
-
-![A simple social network.](/images/analytics_persist_degrees.png)
-
 {% include links.html %}
 
 ## Comments

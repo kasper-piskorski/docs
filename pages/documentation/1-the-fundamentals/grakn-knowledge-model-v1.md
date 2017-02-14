@@ -5,7 +5,7 @@ last_updated: December 15th, 2016
 tags: [getting-started, reasoning, graql]
 summary: "Introducing the basics of the Grakn knowledge model."
 sidebar: documentation_sidebar
-permalink: /documentation/the-basics/grakn-knowledge-model.html
+permalink: /documentation/the-fundamentals/grakn-knowledge-model.html
 folder: documentation
 comment_issue_id: 17
 ---
