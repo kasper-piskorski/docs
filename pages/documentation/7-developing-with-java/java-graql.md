@@ -51,7 +51,7 @@ Match queries are constructed using the `match` method. This will produce a
 such as `limit` and `distinct`:
 
 ```java
-MatchQuery tallPokemon = qb.match(var("x").isa("pokemon").has("height", gt(10))).limit(50);
+MatchQuery query = qb.match(var("x").isa("person").has("age", gt(70))).limit(50);
 ```
 
 `MatchQuery` is `Iterable` and has a `stream` method. Each result is a
@@ -60,7 +60,7 @@ MatchQuery tallPokemon = qb.match(var("x").isa("pokemon").has("height", gt(10)))
 A `MatchQuery` will only execute when it is iterated over.
 
 ```java
-for (Map<String, Concept> result : tallPokemon) {
+for (Map<String, Concept> result : query) {
   System.out.println(result.get("x").getId());
 }
 ```
@@ -69,66 +69,58 @@ If you're only interested in one variable name, it also includes a `get` method
 for requesting a single variable:
 
 ```
-tallPokemon.get("x").forEach(x -> System.out.println(x.getValue()));
+query.get("x").forEach(x -> System.out.println(x.asResource().getValue()));
 ```
 
 ## Ask Queries
 
 ```java
-if (qb.match(var().isa("pokemon-type").has("name", "dragon")).ask().execute()) {
-  System.out.println("Dragons are real!");
+if (qb.match(var().isa("person").has("firstname", "Mary")).ask().execute()) {
+  System.out.println("There is someone called Mary!");
 }
 ```
 
 ## Insert Queries
 
 ```java
-InsertQuery addPichu = qb.insert(var().isa("pokemon").has("name", "Pichu"));
+InsertQuery addAlice = qb.insert(var().isa("person").has("firstname", "Alice"));
 
-addPichu.execute();
+addAlice.execute();
 
-// Make everything dragons!
+// Marry Alice to everyone!
 qb.match(
-  var("x").isa("pokemon"),
-  var("dragon").has("name", "dragon")
+  var("someone").isa("person"),
+  var("alice").has("firstname", "Alice")
 ).insert(
-  var().isa("has-type")
-    .rel("pokemon-with-type", "x")
-    .rel("type-of-pokemon", "dragon")
+  var().isa("marriage")
+    .rel("spouse1", "someone")
+    .rel("spouse2", "alice")
 ).execute();
 ```
 
 ## Delete Queries
 
 ```java
-qb.match(var("x").has("name", "Pichu")).delete("x").execute();
+qb.match(var("x").has("firstname", "Alice")).delete("x").execute();
 ```
 
 ## Query Parser
-
-```xml
-<dependency>
-  <groupId>ai.grakn.graql</groupId>
-  <artifactId>graql-parser</artifactId>
-  <version>0.8.0</version>
-</dependency>
-```
 
 The `QueryBuilder` also allows the user to parse Graql query strings into Java Graql
 objects:
 
 ```java
-for (Concept x : qb.<MatchQuery>parse("match $x isa pokemon;").get("x")) {
+for (Concept x : qb.<MatchQuery>parse("match $x isa person;").get("x")) {
     System.out.println(x);
 }
 
-if (qb.<AskQuery>parse("match has name 'water' isa pokemon-type; ask;").execute()) {
-  System.out.println("Water is a pokemon type!");
+if (qb.<AskQuery>parse("match has name 'Bob' isa person; ask;").execute()) {
+  System.out.println("There is someone called Bob!");
 }
 
-qb.parse("insert isa pokemon, has name 'Pichu';").execute();
+qb.parse("insert isa person, has firstname 'Alice';").execute();
 
-qb.parse("match $x isa pokemon; delete $x;").execute();
+qb.parse("match $x isa person; delete $x;").execute();
 ```
 
 ## Reasoning
