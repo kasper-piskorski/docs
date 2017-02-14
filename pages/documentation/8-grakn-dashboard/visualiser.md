@@ -10,35 +10,13 @@ folder: documentation
 comment_issue_id: 17
 ---
 
-
-<!--
-
-Show how to use the types to visualise the ontology
-Click and hold on a node you can change the properties that you see
-Click to see the drawer on the right
-
-### Visualiser Colour Scheme
-
-The colours used in the visualiser are as follows:
-
-| Colour | Description                                   |
-| ----------- | --------------------------------------------- |
-| Pink     | Ontology meta-types                        |
-| Blue      | Data entity                         |
-| Green     | Ontology relation                       |
-| Orange     | Label                        |
-| Yellow     |                         |
-|      |                         |
-
--->
-
 ## Introduction
 The Grakn visualiser provides a graphical tool to inspect and query your graph data. This article shows how to get it up and running on a basic example and introduces the visualiser's key features.
 
 ## Loading and Visualising a Graph
 If you have not yet set up the Grakn environment, please see the [Setup guide](../get-started/setup-guide.html).
 
-You can find the *basic-genealogy.gql* example that we will work with in the *examples* directory of the Grakn distribution zip. You can also find this file on [Github](). 
+You can find the *basic-genealogy.gql* example that we will work with in the *examples* directory of the Grakn distribution zip. You can also find this file on [Github](https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql). 
 
 The first step is to load the ontology and data into Grakn. You need to use your terminal to do this, as the visualiser is a read-only interface to a graph. From the terminal, start Grakn, and load the file as follows:
 
@@ -58,11 +36,18 @@ match $p isa person, has identifier $i;
 
 Now open the visualiser by browsing to [localhost:4567](http://localhost:4567). 
 
-The visualiser has a number of horizontal navigation tabs on its left hand side, below the version number. We will go through each of them below, but to visualise your graph at this point in the example, you need to go to the keyspace tab and select the appropriate keyspace, e.g. `family`.
+To visualise your graph, go to the keyspace selector on the top right and select the appropriate keyspace, e.g. `family`.
 
-The main pane of your graph will be empty at this point. Click the Types button in the top right, then the Visualise button at the top right hand side of the newly opened drawer. The genealogy-graph ontology will be displayed.
+The main pane of your graph will be empty at this point. Click the Types dropdown in the top menu, then Entities and `person`. 
+The query for your selection will be displayed in the form with a default limit of 100 results applied. In this case:
 
-![Genealogy Ontology](/images/genealogy-ontology.png)
+```graql
+match $x isa person; offset 0; limit 100;
+```
+
+If you click and hold on any of the entities - a pop-up will open to allow you to select the labels shown on each node in the graph. In the screenshot below, we have selected to show the identifiers of each person.
+
+![Person query](/images/match-$x-isa-person.png)
 
 ## Working With The Visualiser
 
@@ -71,37 +56,37 @@ There are a number of horizontal tabs on the left hand side of the screen, descr
 ## Pages
 
 ### Graph
-This is the main section of the visualiser that you will use to explore the graph. You can use the query section at the top of the main pane, then press "Submit" to visualise it. For example:
+This is the main section of the visualiser that you will use to explore the graph. You can submit queries using the form, then press ">" to visualise the graph. For example:
 
 ```graql
-match $x isa person;
+match $x isa person, has firstname "John"; 
 ```
 
-![Person query](/images/match-$x-isa-person.png)
+You can zoom the display in and out, and move the nodes around for better visibility. 
 
-The help tab on the main pane shows a set of key combinations that you can use to further drill into the data. You can zoom the display in and out, and move the nodes around for better visibility.
+![John query](/images/john-query.png)
 
-Alternatively, you can use the "Types" drawer to filter on specific types. For example, clear the graph using the "Clear" button, then select "Types", followed by "Entities" and filter on `picture` resources. The equivalent query will be shown in the query section at the top of the main pane, and the visualiser displays all the `picture` resources in the graph. These resources are strings that are URLs, and you can see the information the graph stores for each by single clicking one of them, at which point a drawer slides out on the right hand side, as shown: 
+To clear the graph, press Shift + the "Clear" button.
 
-![Picture query](/images/match-$x-isa-picture.png)
+We have already shown an example of how to examine `person` entities using the entity selector. As another example, select "Types", followed by "Relations" and filter on `marriage` relations. The query will be shown in the query section at the top of the main pane, as previously, and the visualiser displays all the `marriage` relations in the graph. 
+
+![Marriages query](/images/marriages.png)
+
+There are also 3 query settings, which can be changed using the 'cog' button:
+
+* Activate inference - activates inference, per query.
+* Materialise inference - persists the inference into the graph, per query.
+* Materialise All: activate and persist all inference across the graph.
+
 
 ### Console
 You can use this console to make queries instead of running a Graql shell in your terminal. You can run `match` and `compute` queries, but because the visualiser is read-only, you cannot make insertions.
 
 ### Config
-Shows a view on the Grakn configuration file. There are also 3 inference settings:
-
-* Activate Inference - activates inference, per query.
-* Materialise Inference - persists the inference into the graph, per query.
-* Materialisation: activate and persist all inference across the graph.
+Shows a view on the Grakn configuration file. 
 
 ### Documentation
 This opens a separate tab in your browser and points it to the Grakn documentation portal. It may be how you ended up on this page!
-
-## Actions
-
-### Keyspaces
-The keyspaces that are currently in use by Grakn.
 
 
 ## Where Next?
