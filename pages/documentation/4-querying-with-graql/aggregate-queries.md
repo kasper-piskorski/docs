@@ -70,7 +70,7 @@ match $x isa person, has age $a; aggregate max $a;
 <pre>
 qb.match(
     var("x").isa("person").has("age", var("a"))
-).aggregate(max("h"));
+).aggregate(max("a"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -94,21 +94,21 @@ qb.match(
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 
-### Average
+### Mean
 
-Find the average (mean) of the given resource variable.
+Find the mean (average) of the given resource variable.
 
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
-match $x isa person, has age $a; aggregate average $a;
+match $x isa person, has age $a; aggregate mean $a;
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
     var("x").isa("person").has("age", var("a"))
-).aggregate(average("a"));
+).aggregate(mean("a"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -171,8 +171,8 @@ match $x isa person, has age $a, has gender $g; aggregate (min $a as minAge, max
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
 qb.match(
-    var("x").isa("person").has("age", var("w")).has("gender", var("h")),
-).aggregate(select(min("w").as("minAge"), max("h").as("maxGender")));
+    var("x").isa("person").has("age", var("a")).has("gender", var("g")),
+).aggregate(select(min("a").as("minAge"), max("g").as("maxGender")));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
