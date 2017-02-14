@@ -242,7 +242,7 @@ insert $x value @long(@date(<date> "mm/dd/yyyy"));
 
 #### User-defined Macros
 
-The described macros are built-in to Graql templating language. Grakn provides an interface that a user should extend in java to implement custom macros. The user should then register the created macro with the `QueryBuilder` class. This is done in the java migration [sample project](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration). 
+The described macros are built-in to Graql templating language. Grakn provides an interface that a user should extend in java to implement custom macros. The user should then register the created macro with the `QueryBuilder` class. 
 
 ### Scopes
 

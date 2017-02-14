@@ -168,7 +168,7 @@ isa has-type (pokemon-with-type: $p2, type-of-pokemon: $2);
 ```
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the */docs* directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html). An example of JSON migration using the Java API can be found on [Github](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration).
+You can find further documentation about migration in our API reference documentation (which is in the */docs* directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html). An example of JSON migration using the Java API can be found on [Github](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration-giphy).
 
 {% include links.html %}
 

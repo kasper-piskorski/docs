@@ -16,7 +16,7 @@ comment_issue_id: 22
 
 {% include links.html %}
 
-In this section we are going to run through the construction of a basic ontology. We recommend that you refer to the [Knowledge Model](../the-basics/grakn-knowledge-model.html) documentation before reading this page. The process we will follow is a general guideline as to how you may start designing an ontology.
+In this section we are going to run through the construction of a basic ontology. We recommend that you refer to the [Knowledge Model](../the-fundamentals/grakn-knowledge-model.html) documentation before reading this page. The process we will follow is a general guideline as to how you may start designing an ontology.
 
 The ontology we will be building will be used for a genealogy graph used for mapping out a family tree. You can find the complete ontology, the dataset and rules that accompany it, on Github in our [sample-datasets repository](https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph).
 

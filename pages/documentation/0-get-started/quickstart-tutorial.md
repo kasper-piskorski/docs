@@ -47,7 +47,7 @@ You should see a printout of a number of lines of text, each of which includes a
 
 ### The Ontology
 
-You can find out much more about the Grakn ontology in our documentation about the [Grakn knowledge model](../the-basics/grakn-knowledge-model.html), which states that
+You can find out much more about the Grakn ontology in our documentation about the [Grakn knowledge model](../the-fundamentals/grakn-knowledge-model.html), which states that
 
 > "The ontology is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed". 
 
@@ -324,7 +324,7 @@ This page was a very high-level overview of some of the key use cases for Grakn,
 
 A good place to start is to explore our additional [example code](../examples/examples-overview.html) and the documentation for:
  
-* The [Grakn knowledge model](../the-basics/grakn-knowledge-model.html)
+* The [Grakn knowledge model](../the-fundamentals/grakn-knowledge-model.html)
 * [Graql](../graql/graql-overview.html), including reasoning
 * [Migration](../migration/migration-overview.html)
 * [Analytics](../graql-analytics/analytics-overview.html) 

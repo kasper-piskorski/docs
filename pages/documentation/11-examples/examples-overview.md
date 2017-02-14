@@ -33,6 +33,10 @@ There are several examples available:
 
 * CSV migration is also covered in a [blog post](https://blog.grakn.ai/twenty-years-of-games-in-grakn-14faa974b16e#.cuox3cew2).
 
+### JSON Migration
+
+There is an additional example of using the Java Migration API on the [sample projects repository](https://github.com/graknlabs/sample-projects/tree/master/example-json-migration-giphy) on Github. 
+
 ### SQL Migration
 
 There are several examples available:

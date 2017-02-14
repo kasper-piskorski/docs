@@ -14,7 +14,7 @@ comment_issue_id: 22
 
 ## Introduction
 
-In this section we are going to expand the ontology we defined in the [Basic Ontology documentation](./basic-ontology.html), which we recommend you read before starting here. You may also find it helpful to refer to the [Knowledge Model](../the-basics/grakn-knowledge-model.html) documentation.
+In this section we are going to expand the ontology we defined in the [Basic Ontology documentation](./basic-ontology.html), which we recommend you read before starting here. You may also find it helpful to refer to the [Knowledge Model](../the-fundamentals/grakn-knowledge-model.html) documentation.
 We are going to introduce the idea of making ontologies deeper and more meaningful by defining a hierarchy of types.
 
 When we left off, our ontology looked as follows:
