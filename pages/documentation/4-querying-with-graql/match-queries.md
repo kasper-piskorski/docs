@@ -59,7 +59,7 @@ qb.match(var("x").has("id", "1216728"));
 
 ### value
 
-Match all concepts that have a resource value. If a [predicate](#predicates) is provided, the resource value must match that predicate.  
+Match all resources that have a value matching the given [predicate](#predicates).
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell3" data-toggle="tab">Graql</a></li>
@@ -69,7 +69,6 @@ Match all concepts that have a resource value. If a [predicate](#predicates) is 
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-match $x value;
 match $x value contains "Bar";
 </pre>
 </div>
@@ -83,7 +82,7 @@ qb.match(var("x").value(contains("Bar")))
 
 ### has
 
-Match concepts that have the resource that is specified. If a [predicate](#predicates) is provided, the resource must also match that predicate.  
+Match concepts that have the resource specified. If a [predicate](#predicates) is provided, the resource must also match that predicate.
 
 <ul id="profileTabs" class="nav nav-tabs">
     <li class="active"><a href="#shell4" data-toggle="tab">Graql</a></li>
@@ -94,12 +93,13 @@ Match concepts that have the resource that is specified. If a [predicate](#predi
 <div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
 match $x has identifier $y; 
-match $x has identifier $y; $y value contains "Bar"; 
+match $x has identifier contains "Bar"; 
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
 <pre>
-
+qb.match(var("x").has("identifier", var("x"));
+qb.match(var("x").has("identifier", contains("Bar"));
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -147,7 +147,15 @@ Patterns can be combined into a disjunction ('or') and grouped together with cur
 <pre>match $x isa person, has identifier $y; {$y value contains "Elizabeth";} or {$y value contains "Mary";};</pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java">
-<pre><!--JCS TO DO --></pre>
+<pre>
+qb.match(
+    var("x").isa("person").has("identifier", var("y")),
+    or(
+        var("y").value(contains("Elizabeth")),
+        var("y").value(contains("Mary"))
+    )
+);
+</pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
 

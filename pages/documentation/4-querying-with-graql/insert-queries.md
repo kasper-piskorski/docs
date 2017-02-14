@@ -35,6 +35,13 @@ commit;
 </div>
 <div role="tabpanel" class="tab-pane" id="java1">
 <pre>
+qb.match(var("p").has("identifier", "Mary Guthrie"))
+    .insert(var("p").has("middlename", "Mathilda"), 
+        var("p").has("birth-date", "1902-01-01"),
+        var("p").has("death-date", "1952-01-01"),
+        var("p").has("age", 50)
+    ).execute();
+graph.commit();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -60,7 +67,8 @@ commit;
 </div>
 <div role="tabpanel" class="tab-pane" id="java2">
 <pre>
-qb.insert(var().has("name", "Titus Groan").isa("person"));
+qb.insert(var().has("identifier", "Titus Groan").isa("person")).execute();
+graph.commit();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -78,13 +86,14 @@ It is not possible to insert a concept with the given id, as this is the job of 
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
-insert has id "1376496" isa person;
+insert has "id" "1376496" isa person;
 commit
 </pre>
 </div>
 <div role="tabpanel" class="tab-pane" id="java3">
 <pre>
-qb.insert(var().has("id", "1376496").isa("person"));
+qb.insert(var().has("id", "1376496").isa("person")).execute();
+graph.commit();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -107,7 +116,8 @@ commit
 </div>
 <div role="tabpanel" class="tab-pane" id="java4">
 <pre>
-qb.insert(var().value("Ash").isa("surname"));
+qb.insert(var().value("Ash").isa("surname")).execute();
+graph.commit();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -130,7 +140,8 @@ commit
 </div>
 <div role="tabpanel" class="tab-pane" id="java5">
 <pre>
-qb.insert(var().isa("person").has("identifier", "Fuchsia").has("gender", "female"));
+qb.insert(var().isa("person").has("identifier", "Fuchsia Groan").has("gender", "female")).execute();
+graph.commit();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -159,10 +170,11 @@ qb.match(
   var("p2").has("name", "Fuchsia Groan")
 ).insert(
   var()
-    .rel("spouse1", "p")
-    .rel("spouse2", "e")
+    .rel("spouse1", "p1")
+    .rel("spouse2", "p2")
     .isa("marriage")
-);
+).execute();
+graph.commit();
 
 </pre>
 </div> <!-- tab-pane -->
@@ -191,8 +203,8 @@ insert woman sub person;
 </div>
 <div role="tabpanel" class="tab-pane" id="java8">
 <pre>
-qb.insert(name("man").sub("person"));
-qb.insert(name("woman").sub("person"));
+qb.insert(name("man").sub("person")).execute();
+qb.insert(name("woman").sub("person")).execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -217,7 +229,7 @@ insert siblings sub relation, has-role sibling1, has-role sibling2;
 qb.insert(
   name("siblings").sub("relation")
     .hasRole("sibling1").hasRole("sibling2")
-);
+).execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -240,8 +252,8 @@ insert person plays-role sibling2;
 </div>
 <div role="tabpanel" class="tab-pane" id="java10">
 <pre>
-qb.insert(name("person").playsRole("sibling1"));
-qb.insert(name("person").playsRole("sibling2"));
+qb.insert(name("person").playsRole("sibling1")).execute();
+qb.insert(name("person").playsRole("sibling2")).execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
@@ -267,7 +279,7 @@ insert person has-resource nickname;
 
 <div role="tabpanel" class="tab-pane" id="java11">
 <pre>
-qb.insert(name("person").hasResource("nickname"));
+qb.insert(name("person").hasResource("nickname")).execute();
 </pre>
 </div> <!-- tab-pane -->
 </div> <!-- tab-content -->
