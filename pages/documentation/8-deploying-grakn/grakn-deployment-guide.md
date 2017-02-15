@@ -5,9 +5,9 @@ last_updated: December 15th 2016
 tags: [getting-started]
 summary: "A guide to setting up a production deployment of GRAKN.AI."
 sidebar: documentation_sidebar
-permalink: /documentation/resources/grakn-deployment-guide.html
+permalink: /documentation/deploying-grakn/grakn-deployment-guide.html
 folder: documentation
-comment_issue_id: 25
+comment_issue_id: 24
 ---
 
 
@@ -110,6 +110,6 @@ Upgrading Grakn in a distributed setup is very simple:
 You can perform a rolling deployment in this fashion with minimum impact on your services.
 
 ## Comments
-Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/25" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
+Want to leave a comment? Visit <a href="https://github.com/graknlabs/docs/issues/24" target="_blank">the issues on Github for this page</a> (you'll need a GitHub account). You are also welcome to contribute to our documentation directly via the "Edit me" button at the top of the page.
 
 {% include links.html %}

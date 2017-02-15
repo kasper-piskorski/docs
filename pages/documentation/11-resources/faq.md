@@ -18,7 +18,7 @@ comment_issue_id: 25
 
 We are often asked why we have developed a new ontology and query language rather than use existing standards like [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework), [OWL](https://en.wikipedia.org/wiki/Web_Ontology_Language) and [SPARQL](https://en.wikipedia.org/wiki/SPARQL). 
 
-Our underlying data model is that of a property graph, so in principle we’re able to import and export from/to RDF if needed. However, our ontology language is designed to strike a different and better balance between expressiveness and complexity than offered by the existing OWL profiles, especially in the context of knowledge graph structures. In consequence, our query language, Graql, is aligned with our ontology formalism to enable higher level query capabilities than supported by SPARQL over an RDF data model.
+We have written a [substantial explanation](https://blog.grakn.ai/knowledge-graph-representation-grakn-ai-or-owl-506065bd3f24#.5zjvkta9u) to this question on our blog. In summary, our underlying data model is that of a property graph, so in principle we’re able to import and export from/to RDF if needed. However, our ontology language is designed to strike a different and better balance between expressiveness and complexity than offered by the existing OWL profiles, especially in the context of knowledge graph structures. In consequence, our query language, Graql, is aligned with our ontology formalism to enable higher level query capabilities than supported by SPARQL over an RDF data model.
 
 OWL is not well-suited for graph-structures. Because of its formal foundations and computational limitations it is in fact a more natural language for managing tree-shaped data instead. OWL also makes it hard to help validate consistency of data and ensure it is well-structured, and this is what knowledge graph applications require.
 
@@ -88,6 +88,37 @@ The batch load is faster for larger datasets because it ignores some consistency
 
 Ignoring these checks allows data to be processed much faster at the risk of breaking consistency.
 
+### What is post-processing?
+
+The distributed and concurrent nature of the Grakn system means that, sometimes, post processing is required to ensure the data remains consistent. 
+
+**Role Player Optimisation **
+
+When allocating entities as role players to multiple relations for the first time it is possible to create duplicate associations. These associations do not affect the results of any queries or computations. For example, if in a new system we process simultaneously the following three statements in different transactions:    
+
+```graql
+1. insert $x has name 'Brad Pitt' isa person; $y has name 'Fury'; (actor: $x, movie: $y) isa acted-in;
+2. insert $x has name 'Brad Pitt' isa person; $y has name 'Troy'; (actor: $x, movie: $y) isa acted-in;
+3. insert $x has name 'Brad Pitt' isa person; $y has name 'Seven'; (actor: $x, movie: $y) isa acted-in;
+```
+
+It is possible for the system to record that `Brad Pitt` is an actor multiple times. The duplications will later be resolved and merged by Grakn engine.
+
+**Merging Resources **
+
+{% include note.html content="This only happens when using a batch graph." %}
+
+When using a batch graph, many safety checks are skipped in favour of speed. One such check is the possible existence of a resource before creating it. So if the following transactions are executed simultaneously while batch loading: 
+
+```graql
+1. insert $a has unique-id '1'
+2. insert $b has unique-id '1'
+3. insert $c has unique-id '1'
+```
+
+It would be possible to create multiple resources of the type `unique-id` with the value `1`. These duplicate resources are similarly merged and resolved by Grakn engine.
+
+
 ### Can I run Grakn on an existing Cassandra Platform?
 
 By default, Grakn is shipped with TitanDB, which in turn relies on Cassandra. When you call `grakn.sh start`, this starts a Cassandra instance and then starts the Grakn server.  You are not bound to use our instance of Cassandra, and can make adjustments to the settings in the `.properties` file in the `conf/main` directory of the Grakn, e.g. to make Titan use your Cassandra instance.
@@ -110,25 +141,12 @@ Please refer to the [Titan documentation](http://s3.thinkaurelius.com/docs/titan
 
 ### Do applications written on top of Grakn have to be in Java?
 
-Currently, there is no official support for languages other than Java. But we are open source and would be very willing to accept proposals from our community, and work with contributors, to create bindings to other languages.
+Currently, there is no official support for languages other than Java, although you can find blog posts that describe our experiments with [Haskell](https://blog.grakn.ai/grakn-ai-and-haskell-c166c7cc1d23), [Python](https://blog.grakn.ai/grakn-pandas-celebrities-5854ad688a4f) and [R](https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99). We would be very willing to accept proposals from our community and work with contributors to extend these initial offerings, and/or create bindings to other languages. 
 
 ### How do I visualise a graph?
 
-Grakn comes with a basic [visualiser](../grakn-dashboard/visualiser.html), with a web-interface. We appreciate any feedback you give us about it via the [discussion boards](https://discuss.grakn.ai/t/visualise-my-data/57).
+Grakn comes with a basic [visualiser](../grakn-dashboard/visualiser.html), with a web-interface. We appreciate any feedback you give us about it via the [discussion boards](https://discuss.grakn.ai/t/visualise-my-data/57). You will need to start Grakn, and then use your web browser to visit [localhost:4567](http://localhost:4567/) to visualise a graph.  Please see the [Get Started Guide](../get-started/setup-guide.html#test-the-visualiser) for more information about the visualiser.
 
-Once you have started Grakn, you will see a message in the console:
-
-```bash
-Started ServerConnector@7aa5814d{HTTP/1.1,[http/1.1]}{0.0.0.0:4567}
-```
-
-You can then open your browser and connect to the address printed on the console (http://0.0.0.0:4567). Select the Graql Visualiser tab and you will see a Graql shell, from which you can input queries, for example:
-
-```graql
-match $x sub concept;
-```
-
-In result, you will see the resulting nodes and relations displayed inside the graql visualiser on the same page.
 
 ### How do I clear a graph?
 
@@ -143,13 +161,12 @@ graph.clear();
 
 If you are using the Graql shell and have not committed what you have in the graph, you can just quit the shell and restart it, and all is clean.
 
-If you've committed, then you must currently remove your installation and re-create it.  First, call
+If you've committed, then you must stop Grakn and specifically clean the graph:
 
 ```bash
-pkill -9 java
+./bin/grakn.sh stop
+./bin/grakn.sh clean
 ```
-
-Then delete the Grakn install directory, and unzip a fresh copy from the distribution zip. It isn't very elegant at present, and we are working on a simpler way to clear out a graph.
 
 ### How do I run Graql from a bash script?
 
