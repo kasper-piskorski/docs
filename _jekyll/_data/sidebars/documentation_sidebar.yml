@@ -135,15 +135,12 @@ entries:
       - title: Grakn Visualiser
         output: web
         url: /documentation/grakn-dashboard/visualiser.html
-  - title: Advanced Grakn
+  - title: Deploy Grakn
     output: web
     folderitems:
-      - title: Post Processing
+      - title: Deploy Grakn
         output: web
-        url: /documentation/advanced-grakn/post-processing.html
-      - title: Validation
-        output: web
-        url: /documentation/advanced-grakn/validation.html
+        url: /documentation/deploy-grakn/grakn-deployment-guide.html
   - title: API Reference
     output: web
     folderitems:

@@ -221,7 +221,15 @@ insert
 
 ### Data Validation
 
-To ensure data is correctly structured (i.e. consistent) with respect to the ontology, all data instances are validated against the ontology constraints. All the explicitly represented ontology constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation. The following insertion will fail, because it is attempting to form an `employment` relationship between two `person` entities, rather than a `person` and a `company`:
+To ensure data is correctly structured (i.e. consistent) with respect to the ontology, all data instances are validated against the ontology constraints. All the explicitly represented ontology constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation. 
+
+We will consider the structural validation rules that are enforced in a Grakn graph. The following consistency checks are executed upon `commit` depending on what is being committed:
+
+#### Plays Role Validation 
+
+This validation rule simply checks if an entity (which is a role player in a relation) is allowed to play the role it has been allocated to. 
+
+The following insertion will fail, because it is attempting to form an `employment` relationship between two `person` entities, rather than a `person` and a `company`:
 
 ```graql
 insert
@@ -230,6 +238,95 @@ insert
   (employee: $x, employer: $y) isa employment;
 ```
 
+
+#### Type Validation
+
+This validation rule ensures that abstract types do not have any instances. For example if we declare the type `vehicle` to be abstract, with `car` and `motorbike` to be sub types of `vehicle`, then only cars and motorbikes are allowed to have instances. 
+
+#### Role Validation
+
+This rule checks that non abstract roles are part of a relation. For example if we declare the role `husband` and forget to link it to any relation, then this check will fail.
+
+#### Relation Validation
+
+A relation is valid if: 
+
+* all of the role players of the relation are allowed to play their corresponding roles. 
+* it has, at minimum, two roles. For example, a `marriage` with only one role `husband` would fail this check.
+
+#### An Example of Validation
+
+Let us say that we want to model a marriage between a man `Bob` and woman `Alice`.
+This will be our first attempt:
+
+```graql
+insert
+  person is-abstract sub entity;
+  person has-resource name;
+  name sub resource datatype string;
+  
+  man is-abstract sub person;
+  woman sub person;
+  
+  marriage sub relation;
+  marriage has-role husband;
+
+  husband sub role;
+  wife sub role;
+  
+  woman plays-role wife;
+    
+  $x has name 'Bob' isa man;
+  $y has name 'Alice' isa woman;
+  (husband: $x, wife: $y) isa marriage;
+```
+        
+This first attempt was horrible as we ended up failing all the validation rules.         
+On commit we will see an error similar to this:
+
+```bash
+A structural validation error has occurred. Please correct the [`5`] errors found.
+RoleType ['wife'] does not have exactly one has-role connection to any RelationType.
+The abstract Type ['man'] should not have any instances
+Relation Type ['marriage'] does not have two or more roles
+The relation ['RELATION-marriage-2b58b138-2c33-478c-8e8c-e7b357a20941'] has an invalid structure. This is either due to having more role players than roles or the Relation Type ['marriage'] not having the correct has-role connection to one of the provided roles. The provided roles('2'): ['husband,wife,']The provided role players('2'): ['husband,wife,']
+The type ['man'] of role player ['ENTITY-man-2482cb91-1f12-40ea-b659-49d07d06ddf1'] is not allowed to play RoleType ['husband']
+```
+    
+Lets see why:
+
+1. **Role Validation** failed because the role `wife` is not connected to any relation
+2. **Relation Validation** failed because `marriage` only has one role `husband`.
+3. **Type Validation** failed because we accidentally made `man` abstract and we declared `Bob` to be an instance of `man`.
+4. **Plays Role Validation** failed because we forgot to say that a `man` can play the role of `husband`.
+5. **Relation Validation** failed because `Alice` is playing the role of a `wife` which is not part of a `marriage` and `Bob` is playing the role of a `husband`, which as a man he is not allowed to do.
+
+Let's fix these issues and try again:
+
+```graql
+insert
+  person is-abstract sub entity;                   
+  person has-resource name;
+  name sub resource datatype string;
+  
+  man sub person; # Fix (3)
+  woman sub person;
+  
+  marriage sub relation;
+  marriage has-role husband;
+  marriage has-role wife; # Fix (1) and (2) and part of (5)
+  
+  husband sub role;
+  wife sub role;
+  man plays-role husband; # Fix (4)
+  woman plays-role wife;  
+
+  $x has name 'Bob' isa man;
+  $y has name 'Alice' isa woman;
+  (husband: $x, wife: $y) isa marriage;
+```
+
+Now we are correctly modelling the marriage between `Alice` and `Bob`.
 
 ## Rule and Sub-Type Inference
 

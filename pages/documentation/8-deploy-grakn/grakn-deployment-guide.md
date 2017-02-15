@@ -5,7 +5,7 @@ last_updated: December 15th 2016
 tags: [getting-started]
 summary: "A guide to setting up a production deployment of GRAKN.AI."
 sidebar: documentation_sidebar
-permalink: /documentation/deploying-grakn/grakn-deployment-guide.html
+permalink: /documentation/deploy-grakn/grakn-deployment-guide.html
 folder: documentation
 comment_issue_id: 24
 ---
