@@ -24,6 +24,11 @@ An aggregate query applies an operation onto a [match query](match-queries.html)
 
 Count the number of results of the match query or aggregate result.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell1" data-toggle="tab">Graql</a></li>
+    <li><a href="#java1" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="shell1">
 <pre>
@@ -41,13 +46,18 @@ qb.match(var("x").isa("person")).aggregate(count());
 
 Sum the given resource variable.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell2" data-toggle="tab">Graql</a></li>
+    <li><a href="#java2" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
+<div role="tabpanel" class="tab-pane active" id="shell2">
 <pre>
 match $x isa person, has age $a; aggregate sum $a;
 </pre>
 </div>
-<div role="tabpanel" class="tab-pane" id="java1">
+<div role="tabpanel" class="tab-pane" id="java2">
 <pre>
 qb.match(
     var("x").isa("person").has("age", var("a"))
@@ -60,13 +70,18 @@ qb.match(
 
 Find the maximum of the given resource variable.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell3" data-toggle="tab">Graql</a></li>
+    <li><a href="#java3" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
+<div role="tabpanel" class="tab-pane active" id="shell3">
 <pre>
 match $x isa person, has age $a; aggregate max $a;
 </pre>
 </div>
-<div role="tabpanel" class="tab-pane" id="java1">
+<div role="tabpanel" class="tab-pane" id="java3">
 <pre>
 qb.match(
     var("x").isa("person").has("age", var("a"))
@@ -79,13 +94,18 @@ qb.match(
 
 Find the minimum of the given resource variable.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell4" data-toggle="tab">Graql</a></li>
+    <li><a href="#java4" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
+<div role="tabpanel" class="tab-pane active" id="shell4">
 <pre>
 match $x isa person, has firstname $n; aggregate min $n;
 </pre>
 </div>
-<div role="tabpanel" class="tab-pane" id="java1">
+<div role="tabpanel" class="tab-pane" id="java4">
 <pre>
 qb.match(
     var("x").isa("person").has("firstname", var("n"))
@@ -98,13 +118,18 @@ qb.match(
 
 Find the mean (average) of the given resource variable.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell5" data-toggle="tab">Graql</a></li>
+    <li><a href="#java5" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
+<div role="tabpanel" class="tab-pane active" id="shell5">
 <pre>
 match $x isa person, has age $a; aggregate mean $a;
 </pre>
 </div>
-<div role="tabpanel" class="tab-pane" id="java1">
+<div role="tabpanel" class="tab-pane" id="java5">
 <pre>
 qb.match(
     var("x").isa("person").has("age", var("a"))
@@ -117,15 +142,20 @@ qb.match(
 
 Find the median of the given resource variable.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell6" data-toggle="tab">Graql</a></li>
+    <li><a href="#java6" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
+<div role="tabpanel" class="tab-pane active" id="shell6">
 <pre>
 match
 match $x isa person, has age $a; aggregate median $a;
 
 </pre>
 </div>
-<div role="tabpanel" class="tab-pane" id="java1">
+<div role="tabpanel" class="tab-pane" id="java6">
 <pre>
 qb.match(
     var("x").isa("person").has("age", var("a"))
@@ -141,13 +171,18 @@ Group the results by the given variable.
 The group aggregate can optionally accept a second argument which is another 
 aggregate operation, e.g. `count`.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell7" data-toggle="tab">Graql</a></li>
+    <li><a href="#java7" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
+<div role="tabpanel" class="tab-pane active" id="shell7">
 <pre>
 match $x isa person; $y isa person; (parent: $x, child: $y) isa parentship; aggregate group $x;
 </pre>
 </div>
-<div role="tabpanel" class="tab-pane" id="java1">
+<div role="tabpanel" class="tab-pane" id="java7">
 <pre>
 qb.match(
     var("x").isa("person"),
@@ -162,13 +197,18 @@ qb.match(
 
 Select and name multiple aggregates.
 
+<ul id="profileTabs" class="nav nav-tabs">
+    <li class="active"><a href="#shell8" data-toggle="tab">Graql</a></li>
+    <li><a href="#java8" data-toggle="tab">Java</a></li>
+</ul>
+
 <div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="shell1">
+<div role="tabpanel" class="tab-pane active" id="shell8">
 <pre>
 match $x isa person, has age $a, has gender $g; aggregate (min $a as minAge, max $g as maxGender);
 </pre>
 </div>
-<div role="tabpanel" class="tab-pane" id="java1">
+<div role="tabpanel" class="tab-pane" id="java8">
 <pre>
 qb.match(
     var("x").isa("person").has("age", var("a")).has("gender", var("g")),
@@ -183,13 +223,13 @@ Aggregate queries are computationally light and run single-threaded on a single 
 
 For example, you can use an aggregate query to filter results by resource. The following  aggregate query, allows you to match the number of people of a particular name:
 
-```
+```graql
 match $x has identifier contains "Elizabeth"; aggregate count;
 ```
 
 Compute queries are computationally intensive and run in parallel on a cluster (so are good for big data).
 
-```
+```graql
 compute count of person; 
 ```
 
