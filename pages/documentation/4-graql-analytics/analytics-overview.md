@@ -14,10 +14,8 @@ The distributed Grakn knowledge graph presents two different ways to obtain insi
  *   It intelligently aggregates large amounts of information. Graql allows you to specify what you want, instead of how to get it, and analytics allows you to do it at scale. For example, finding out the mean number and standard deviation of vehicles owned by companies (not individuals), no matter how big the dataset.
  *  The structure of the graph contains valuable information about the importance of entities and also the communities they form. This is achieved by computing the number of relationships that certain entities take part in, and using this as a measure of how popular they are. An example of this can be seen on the [Moogi website](https://moogi.co), which uses only the structure of the graph to rank the results. 
 
-<!-- JCS Comments: Please can you clarify "graph is not important" as I don't understand what you mean, and also provide a suitable link to more about Pregel and map reduce  ? -->
-
-{% include note.html content="Under the hood we use implementations of the Pregel distributed graph computing
-framework and/or map reduce when we need to aggregate tht result. This way we can implement algorithms that will scale horizontally." %}
+{% include note.html content="Under the hood we use implementations of the [Pregel algorithm](https://www.quora.com/What-are-the-main-concepts-behind-Googles-Pregel) distributed graph computing
+framework and/or [map reduce](https://en.wikipedia.org/wiki/MapReduce) when we need to aggregate the result. This way we can implement algorithms that will scale horizontally." %}
 
 ## What Can I do With Analytics?
 
@@ -29,10 +27,10 @@ The functionality breaks down into two main tasks:
 ### Statistics
 
 Currently you can compute the `min`, `max`, `mean`, `median`, `std` (standard deviation) and `sum` of resources attached to entities. This
-can also be achieved on a subgraph, which is a subset of the types in your dataset. For example, you can specify queries to find the mean price of cars and trucks in a graph:   
+can also be achieved on a subgraph, which is a subset of the types in your dataset. For example, you can specify queries to find the mean age of people in a graph:
 
 ```
-compute mean of price in car, truck;
+compute mean of age in person;
 ```
 
 We cover this topic more in our documentation page on [statistics](./analytics-statistics.html).
@@ -50,14 +48,16 @@ At the moment we have a simple algorithm for determining
 Graql analytics functionality is accessed via the `compute` query in the Graql language. In order to fully understand the
 syntax, an in-depth understanding of the graph is needed, so we will dive into some details here.
 
-Analytics only "sees" the instances of types, but is aware of the ontology. Therefore, if your graph has a type `car`
-then the instances of this: `Mike's car`, `Dave's car` and `Alice's car` can be counted using analytics.  Often you are not interested in the whole knowledge graph when performing calculations, and it is possible to specify a subgraph (a subset of your data to work on) to Graql. For example, a knowledge graph may contain cars, trucks, trains, people and the relationships between them, but these can be excluded by specifying a subgraph using the `in` keyword.  To count just cars: 
+Analytics only "sees" the instances of types, but is aware of the ontology. Therefore, if your graph has a type `person`
+then the instances of this: `Jacob Young`, `Hermione Newman` and `Mary Niesz` can be counted using analytics.  Often you are not interested in the whole knowledge graph when performing calculations, and it is possible to specify a subgraph (a subset of your data to work on) to Graql. For example, a knowledge graph may contain groups, people and the relationships between them, but these can be excluded by specifying a subgraph using the `in` keyword.  To count just people:
 
 ```
-compute count in car;
+compute count in person;
 ```
 
-Consider the simple graph below that includes types, instances and some relationships. Analytics will consider every instance in the graph, so will not consider the types `person`, `writes` and `comment`, (coloured in blue). To compute the count on this graph without specifying any subgraph, we call the following, which returns the number 6:
+Consider the simple graph below that includes types and instances (some are entities and some are relations).
+Analytics will consider every instance in the graph, and therefore, will not consider the type nodes `person` and `marriage`, (coloured in pink).
+To compute the count on this graph without specifying any subgraph, we call the following, which returns the number 6:
 
 ```
 compute count;
