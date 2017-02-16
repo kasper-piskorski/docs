@@ -24,10 +24,10 @@ are:
 *  `std (standard deviation)`
 *  `sum`
 
-For example, the following query executes a distributed computation to determine the mean price of all the vehicles (cars, trucks and motorbikes) in the graph. 
+For example, the following query executes a distributed computation to determine the mean age of all of the people in the graph.
 
 ```
-compute mean of price in vehicles;
+compute mean of age in person;
 ```
 
 The [Compute Queries](../graql/compute-queries.html) documentation covers the usage of `compute` in more detail.
