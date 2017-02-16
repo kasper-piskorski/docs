@@ -11,7 +11,7 @@ comment_issue_id: 71
 
 The connected components algorithm can be used to find clusters of instances in the graph that are connected.
 The algorithm finds all instances (relations, resources and entities) that are connected via relations in the graph and gives each set a unique label.
-In the graph below you can see three connected components that correspond to groups of friends.
+In the graph below you can see three connected components that correspond to people who are related through marriage.
 In this graph three unique labels will be created one corresponding to each of the sets of connected instances.
 
  ![Three connected components representing groups of friends.](/images/analytics_conn_comp.png)
@@ -19,10 +19,10 @@ In this graph three unique labels will be created one corresponding to each of t
 You can call the cluster algorithm to find the clusters above using:
 
 ```
-compute cluster in person, knows;
+compute cluster in person, marriage;
 ```
 
-The results you would actually get involve 3 clusters with sizes: 5, 7, 3.
+The results you get involve 3 clusters with sizes: 3, 5, 3.
 If you want to see the actual members of the clusters you have to use the modifier `members`.
 
 ```
