@@ -103,7 +103,7 @@ $y isa person has firstname "Barbara" has surname "Herchelroth";
 The visualiser submits a query as follows: 
 
 ```graql
-compute path from "102432" to "192584"; # (The ID values in the strings will be different for each graph).
+compute path from "102432" to "192584"; # (The ID values in the strings will be different for each graph)
 ```
  
 The graph will display the relations, and nodes, that connect the two by the shortest path. If you chose Susan Dudley and Barbara Herchelroth, you should discover that Barbara is the great-grandmother of Susan’s husband.
