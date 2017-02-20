@@ -1,6 +1,6 @@
 ---
 title: Degrees
-last_updated: December 12th, 2016
+last_updated: February 2017
 tags: [analytics]
 summary: "This page introduces the computation of degrees in a graph."
 sidebar: documentation_sidebar
@@ -19,7 +19,7 @@ The `person` with the highest degree, or the greatest number of marriages, is ar
 The `degrees` algorithm computes how many arrows (edges) there are attached to instances in the graph. A map is returned
 that displays an instance ID and its degree. If we call:
 
-```
+```graql
 compute degrees;
 ```
 
@@ -41,7 +41,7 @@ Consider that in this graph, people with more marriages are more interesting.
 We can use the subgraph functionality to restrict the graph to only see people and who they are married to.
 Once the graph has been restricted we can determine the number of marriages by computing the degree:
 
-```
+```graql
 compute degrees in person, marriage;
 ```
 

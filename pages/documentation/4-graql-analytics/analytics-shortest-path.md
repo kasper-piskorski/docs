@@ -1,6 +1,6 @@
 ---
 title: Shortest Path
-last_updated: December 12th, 2016
+last_updated: February 2017
 tags: [analytics]
 summary: ""
 sidebar: documentation_sidebar
@@ -9,12 +9,12 @@ folder: documentation
 comment_issue_id: 71
 ---
 
-How are two instances in the graph related?
+## How are two instances in the graph related?
 When starting a task you don't always know in advance what you are looking for.
 Finding the shortest path between two instances in a graph can be a great way to explore connections because you do not need to provide any guidance.
 In the graph below I have displayed two specific people using the query:
 
-```
+```graql
 match
 $x has identifier "Barbara Shafner";
 $y has identifier "Jacob J. Niesz";
@@ -22,7 +22,7 @@ $y has identifier "Jacob J. Niesz";
 
 and then searched for relationships joining two of them using:
 
-```
+```graql
 compute path from "id1" to "id2";
 ```
 
@@ -34,12 +34,11 @@ The path query uses a scalable shortest path algorithm to determine the smallest
 ### Subgraph
 
 If you are looking for more specific connections you can of course use the [subgraph](./analytics-overview.html) functionality.
-In the following query only the blood relations are investigated and the resulting graph is shown below.
-We have excluded marriage in this subgraph and now the shortest path is longer than before.
+In the following query only the blood relations (parent/child relations) are investigated and the resulting graph is shown below.
+We have excluded marriage in this subgraph and as a result the shortest path is longer than before - it turns out the Barbara Shafner and Jacob J. Niesz are cousins (their mothers, Mary Young and Catherine Young, are sisters, their father being Jacob Young).
 
-```
+```graql
 compute path from "id1" to "id2" in person, parentship;
-
 ```
 
 ![Shortest path between people.](/images/analytics_path_parentship.png)

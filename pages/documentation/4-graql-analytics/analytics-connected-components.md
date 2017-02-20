@@ -1,6 +1,6 @@
 ---
 title: Connected Components
-last_updated: December 12, 2016
+last_updated: February 2017
 tags: [analytics]
 summary: "This page introduces the connected components algorithm and explains how to use it."
 sidebar: documentation_sidebar
@@ -18,14 +18,14 @@ In this graph three unique labels will be created one corresponding to each of t
 
 You can call the cluster algorithm to find the clusters above using:
 
-```
+```graql
 compute cluster in person, marriage;
 ```
 
 The results you get involve 3 clusters with sizes: 3, 5, 3.
 If you want to see the actual members of the clusters you have to use the modifier `members`.
 
-```
+```graql
 compute cluster in person, knows; members;
 ```
 

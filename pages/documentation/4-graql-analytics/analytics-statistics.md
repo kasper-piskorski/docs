@@ -1,6 +1,6 @@
 ---
 title: Statistics
-last_updated: December 12th, 2016
+last_updated: February 2017
 tags: [analytics]
 summary: "This page introduces the statistics functionality of analytics."
 sidebar: documentation_sidebar
@@ -26,7 +26,7 @@ are:
 
 For example, the following query executes a distributed computation to determine the mean age of all of the people in the graph.
 
-```
+```graql
 compute mean of age in person;
 ```
 
