@@ -14,9 +14,9 @@ In Grakn, a graph is made of two layers: the ontology layer and the data layer.
 
 ## Ontology
 
-The ontology must be clearly defined before loading data into the graph. It is a formal specification of all the relevant concepts and their meaningful associations in a given domain. It allows objects and relationships to be categorised into distinct types, and for generic properties of those types to be expressed. Specifying the ontology enables automated reasoning over the represented knowledge, such as the extraction of implicit information from explicit data ([inference](./grakn-knowledge-model.html#rule-and-sub-type-inference)) or discovery of inconsistencies in the data ([validation](./grakn-knowledge-model.html#data-validation)). 
+In Grakn, the [ontology](https://en.wikipedia.org/wiki/Ontology_(information_science)) is the formal specification of all the relevant concepts and their meaningful associations in a given domain. It allows objects and relationships to be categorised into distinct types, and for generic properties of those types to be expressed. Specifying the ontology enables [automated reasoning](https://en.wikipedia.org/wiki/Inference_engine) over the represented knowledge, such as the extraction of implicit information from explicit data ([inference](./grakn-knowledge-model.html#rule-and-sub-type-inference)) or discovery of inconsistencies in the data ([validation](./grakn-knowledge-model.html#data-validation)).  For this reason, the ontology must be clearly defined before loading data into the graph. 
 
-Grakn ontologies use four types of concepts for modeling domain knowledge. The categorization of concept types is enforced in the Grakn knowledge model by declaring every concept type as a subtype (i.e. an extension) of exactly one of the four corresponding, built-in concept types:
+[Grakn uses its our own declarative ontology language, Graql](https://blog.grakn.ai/knowledge-graph-representation-grakn-ai-or-owl-506065bd3f24#.d6mtn9ic2), and Grakn ontologies use four types of concepts for modeling domain knowledge. The categorization of concept types is enforced in the Grakn knowledge model by declaring every concept type as a subtype (i.e. an extension) of exactly one of the four corresponding, built-in concept types:
 
 **`entity`**: Objects or things in the domain. For example, `person`, `man`, `woman`.    
 

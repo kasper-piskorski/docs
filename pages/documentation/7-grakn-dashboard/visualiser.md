@@ -53,8 +53,6 @@ If you click and hold on any of the entities - a pop-up will open to allow you t
 
 There are a number of horizontal tabs on the left hand side of the screen, described as follows.
 
-## Pages
-
 ### Graph
 This is the main section of the visualiser that you will use to explore the graph. You can submit queries using the form, then press ">" to visualise the graph. For example:
 
@@ -66,7 +64,7 @@ You can zoom the display in and out, and move the nodes around for better visibi
 
 ![John query](/images/john-query.png)
 
-To clear the graph, press Shift + the "Clear" button.
+To clear the graph, press Shift + the "Clear" button (the circle with the cross through it).
 
 We have already shown an example of how to examine `person` entities using the entity selector. As another example, select "Types", followed by "Relations" and filter on `marriage` relations. The query will be shown in the query section at the top of the main pane, as previously, and the visualiser displays all the `marriage` relations in the graph. 
 
@@ -77,6 +75,7 @@ There are also 3 query settings, which can be changed using the 'cog' button:
 * Activate inference - activates inference, per query.
 * Materialise inference - persists the inference into the graph, per query.
 * Materialise All: activate and persist all inference across the graph.
+
 
 
 ### Console
