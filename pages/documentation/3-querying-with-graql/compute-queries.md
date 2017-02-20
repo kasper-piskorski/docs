@@ -16,10 +16,10 @@ Called within the Graql shell, the general syntax is:
 compute [algorithm] (arguments) (in subgraph); (modifiers;)
 ```
 
-* `algorithm` can be any of the available [statistics](#available-statistics-algorithms) or [graph](#available-graph-algorithms).
+* `algorithm` can be any of the available [statistics](#available-statistics-algorithms) or [graph](#available-graph-algorithms) algorithms.
 * `arguments` are different depending on the specific algorithm.
-* `subgraph` is a comma separated list of type IDs to be visited by the Pregel algorithm.
-* `modifiers` some algorithms can have their behaviour modified.
+* `subgraph` is a comma separated list of types to be visited by the Pregel algorithm.
+* `modifiers` some algorithms can have their output modified.
 
 The specific algorithms fall into two main categories and more information is given in the sections below.
 The simplest algorithm `count` can be executed using this query:
@@ -79,11 +79,11 @@ For example,
 compute mean of age in person;
 ```
 
-would compute the mean of the value persisted in instances of the resource `age`. It is also possible to provide a
-set of resources.
+would compute the mean value of `age` across all instances of the type `person`.
+It is also possible to provide a set of resources.
 
 ```
-compute mean of user-rating, expert-rating in movie;
+compute mean of resource-a, resource-b in person;
 ```
 
 which would compute the mean of the union of the instances of the two resources.
@@ -127,6 +127,12 @@ compute std of age in person;
 ### Sum
 
 Computes the sum of a given resource, similar to [mean](#mean).
+
+```
+compute sum of age in person;
+```
+
+{% include warning.html content="When an instance has two resources of the same type attached, or two resources specified as arguments to the algorithm, statistics will include this by assuming there were two instances each with a single resource." %}
 
 ## Available Graph Algorithms
 

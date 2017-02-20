@@ -12,29 +12,37 @@ comment_issue_id: 71
 How are two instances in the graph related?
 When starting a task you don't always know in advance what you are looking for.
 Finding the shortest path between two instances in a graph can be a great way to explore connections because you do not need to provide any guidance.
-In the graph below I have displayed all of the people and then searched for relationships joining two of them using:
+In the graph below I have displayed two specific people using the query:
 
 ```
-compute path from "41001152" to "20496";
+match
+$x has identifier "Barbara Shafner";
+$y has identifier "Jacob J. Niesz";
 ```
 
-You can see that the two people selected are friends of friends.
+and then searched for relationships joining two of them using:
+
+```
+compute path from "id1" to "id2";
+```
+
+You can see below that the two people selected are married.
 The path query uses a scalable shortest path algorithm to determine the smallest number of relations required to get from once concept to the other.
 
-![Shortest path between people.](/images/analytics_path_knows.png)
+![Shortest path between people.](/images/analytics_path_marriage.png)
 
 ### Subgraph
 
 If you are looking for more specific connections you can of course use the [subgraph](./analytics-overview.html) functionality.
-In the following query only the paths through comments are investigated and the resulting graph is shown below.
-We have excluded friendships in this subgraph and now the shortest path is longer than before.
+In the following query only the blood relations are investigated and the resulting graph is shown below.
+We have excluded marriage in this subgraph and now the shortest path is longer than before.
 
 ```
-compute path from "20496" to "36960" in person, comment, writes, reply;
+compute path from "id1" to "id2" in person, parentship;
 
 ```
 
-![Shortest path between people.](/images/analytics_path_comments.png)
+![Shortest path between people.](/images/analytics_path_parentship.png)
 
 {% include links.html %}
 
