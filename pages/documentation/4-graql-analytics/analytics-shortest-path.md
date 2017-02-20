@@ -2,7 +2,7 @@
 title: Shortest Path
 last_updated: February 2017
 tags: [analytics]
-summary: ""
+summary: "This page introduces the shortest path functionality of analytics."
 sidebar: documentation_sidebar
 permalink: /documentation/graql-analytics/analytics-shortest-path.html
 folder: documentation
