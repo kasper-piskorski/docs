@@ -10,8 +10,12 @@ comment_issue_id: 19
 
 Welcome to the API Reference landing page. From here, you can find the latest, and all previous, versions of our API reference.
 
-## Versions
-The latest version of our Javadocs documentation will always be posted at [https://grakn.ai/javadocs.html](https://grakn.ai/javadocs.html).   
+## API Reference
+
+[![Javadocs](/images/javadocs.png)](https://grakn.ai/javadocs.html)
+
+The latest version of our Javadocs API Reference documentation will always be posted at the link above [(https://grakn.ai/javadocs.html).](https://grakn.ai/javadocs.html)   
+
 You can use the drop down selector to choose previous versions of the API reference, should you want to refer back to them. 
 
 {% include note.html content="Before Grakn v0.6.0, we used a different name (MindmapsDB); you can find API reference for versions of MindmapsDB from 0.1.0 - 0.5.0 [here](https://javadoc.io/doc/io.mindmaps/mindmaps-core/0.5.0)." %}

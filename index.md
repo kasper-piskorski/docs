@@ -32,8 +32,12 @@ Take a look around! We hope you find our documentation helpful, but if you need 
     <p>We have a set of pages about <a href="https://grakn.ai/pages/documentation/graql/graql-overview.html">Graql queries</a>, and a <a href="https://grakn.ai/pages/documentation/graql/graql-cheatsheet.html">cheatsheet</a> as a handy reference.</p></div>
 
 <div role="tabpanel" class="tab-pane" id="apireference">
-    <h2>API Reference</h2>
-    <p>Our API reference documents can be found <a target="_blank" href="https://grakn.ai/pages/documentation/api-reference/api-reference.html">here</a>. The API reference is also available in the Grakn distribution that you can download from <a href="https://grakn.ai/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
+
+<a href="https://grakn.ai/javadocs.html"><img src="./images/javadocs.png" /></a>
+
+<br />
+<p>The API reference is also available in the Grakn distribution that you can download from <a href="https://grakn.ai/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
+    <p>Additional API reference documents can be found <a target="_blank" href="https://grakn.ai/pages/documentation/api-reference/api-reference.html">here</a>. </p>
 </div>
 
 <div role="tabpanel" class="tab-pane" id="gethelp">
