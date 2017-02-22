@@ -1,7 +1,7 @@
 ---
 title: Quickstart Tutorial
 keywords: setup, getting started
-last_updated: January 2017
+last_updated: February 2017
 tags: [getting-started, graql]
 summary: "This document will work through a simple example using the Graql shell to show how to get started with GRAKN.AI."
 sidebar: documentation_sidebar
@@ -307,10 +307,63 @@ If you want to find out more about the Graql reasoner, we have a [detailed examp
 
 ## Using Analytics
 
-{% include note.html content="The text in this section is a placeholder, and will be replaced with more detail in early 2017." %}
+Turning to [Graql analytics](../graql-analytics/analytics-overview.html), we can illustrate some basic queries in the Grakn visualiser.
 
-Use of Grakn Analytics is covered in [Analytics](../graql-analytics/analytics-overview.html).
+### Statistics
+The mean age at death can be calculated using `compute mean` as follows, entering it into the visualiser's query form:
 
+```graql
+compute mean of age in person; # returns 78.23 (rounded to 2 decimal places)
+```
+
+You can take a look at the values of age at death for the person entities in the genealogy dataset as follows:
+
+```graql
+match $x isa person, has age $a;  offset 0; limit 100;
+```
+
+![Mean ages calculated](/images/compute-mean-age.png)
+
+Other statistical values can be calculated similarly, e.g. values for `count`:
+
+```graql
+compute count in person; # 60
+```
+
+A full list of statistics that can be explored is documented in the [Compute Queries](../graql/compute-queries.html) documentation.
+
+### Shortest Path
+
+It is also possible to find the shortest path between two nodes in the graph. The documentation for the Grakn visualiser describes how to use the [query builder tool](../grakn-dashboard/visualiser.html#analytics-queries---shortest-path), and includes a video.
+
+In brief, let's select two people from the genealogy dataset:
+
+```graql
+match $x has identifier "Barbara Shafner"; $y has identifier "Jacob J. Niesz";
+```
+
+and then search for relationships joining two of them using:
+
+```graql
+compute path from "id1" to "id2"; # Use the actual values of identifier for each person
+# e.g. compute path from "114848" to "348264";
+```
+
+You can see below that the two people selected are married.
+
+The path query uses a scalable shortest path algorithm to determine the smallest number of relations required to get from once concept to the other.
+
+![Shortest path between people](/images/analytics_path_marriage.png)
+
+To narrow the path to specific relations between specific entities:
+
+```graql
+compute path from "id1" to "id2" in person, parentship;
+```
+
+The above limits the path to blood relations (parent/child relations) thus excludes marriage. As a result, the shortest path between the two people is now longer: Barbara Shafner and Jacob J. Niesz are cousins (their mothers, Mary Young and Catherine Young, are sisters, their father being Jacob Young).
+
+![Shortest path between people](/images/analytics_path_parentship.png)
 
 ## Data Migration
 

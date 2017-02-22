@@ -29,7 +29,7 @@ compute path from "id1" to "id2";
 You can see below that the two people selected are married.
 The path query uses a scalable shortest path algorithm to determine the smallest number of relations required to get from once concept to the other.
 
-![Shortest path between people.](/images/analytics_path_marriage.png)
+![Shortest path between people](/images/analytics_path_marriage.png)
 
 ### Subgraph
 
@@ -41,7 +41,7 @@ We have excluded marriage in this subgraph and as a result the shortest path is 
 compute path from "id1" to "id2" in person, parentship;
 ```
 
-![Shortest path between people.](/images/analytics_path_parentship.png)
+![Shortest path between people](/images/analytics_path_parentship.png)
 
 {% include links.html %}
 
