@@ -20,6 +20,9 @@ entries:
   - title: Grakn Fundamentals
     output: web
     folderitems:
+      - title: Grakn Architecture Overview
+        output: web
+        url: /documentation/the-fundamentals/grakn-architecture.html
       - title: Grakn Knowledge Model
         output: web
         url: /documentation/the-fundamentals/grakn-knowledge-model.html
