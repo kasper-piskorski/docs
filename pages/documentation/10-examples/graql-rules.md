@@ -58,7 +58,9 @@ You will receive parentship results, but if you clear the query and then submit 
 match (mother: $c, daughter: $p) isa parentship;
 ```
 
-You will receive no results at all. To find inferred relations between the people in our dataset, you need to activate inference in the Grakn visualiser. Open the Config settings, found on the left hand side of the screen. When the page opens you will see the "Activate Inference" checkbox. Check it, and Grakn is ready to start building some new information about the family. Try the query again:
+You will receive no results at all. To find inferred relations between the people in our dataset, you need to activate inference in the Grakn visualiser. Open the Query settings under the cog button, which is on the far right hand side of the horizontal icon menu (at the top of the screen).
+
+You will see the "Activate inference" checkbox. Check it, and Grakn is ready to start building some new information about the family. Try the query again:
 
 ```graql
 match (mother: $c, daughter: $p) isa parentship;

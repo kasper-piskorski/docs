@@ -78,6 +78,14 @@ A short video illustrates the process:
 
 <br />
 
+#### Inference
+
+There are 3 query settings that can be changed using the 'cog' button (on the far right hand side of the horizontal icon menu at the top of the screen):
+
+* Activate inference - activates inference, per query.
+* Materialise inference - persists the inference into the graph, per query.
+* Materialise All: activate and persist all inference across the graph.
+
 #### Analytics Queries - Shortest Path
 You will notice a 'pencil' icon (on the far left of the horizontal icon menu at the top of the screen) that can be used to build Graql queries. The following video illustrates how to build a shortest path query:
 
@@ -110,6 +118,8 @@ The graph will display the relations, and nodes, that connect the two by the sho
 
 #### Explore Relations
 
+{% include note.html content="Make sure to [activate inference](#inference) before exploring relations!" %}
+
 The Query Builder menu also has an "Explore Relations" option, which allows you to determine the relations between nodes. To illustrate that, clear the graph and submit a query as follows:
 
 ```graql
@@ -127,15 +137,6 @@ match $x id "102432"; $y id "192584"; $r($x, $y); offset 0; limit 100;
 ```
 
 The visualiser will display the relations between the two nodes you selected (e.g. siblings).
-
-#### Inference
-
-There are also 3 settings that can be changed using the 'cog' button (on the far right hand side of the horizontal icon menu at the top of the screen):
-
-* Activate inference - activates inference, per query.
-* Materialise inference - persists the inference into the graph, per query.
-* Materialise All: activate and persist all inference across the graph.
-
 
 ### Console
 You can use this console to make queries instead of running a Graql shell in your terminal. You can run `match` and `compute` queries, but because the visualiser is read-only, you cannot make insertions.

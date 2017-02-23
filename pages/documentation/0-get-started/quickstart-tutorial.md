@@ -295,7 +295,13 @@ match (father: $p, son: $c) isa parentship; $p has identifier $n1; $c has identi
 
 There may be a pause, and then you should see a stream of results as Grakn infers the `parentships` between male `parent` and `child` entities. It is, in effect, building new information about the family which was not explicit in the dataset.
 
-You may want to take a look at the results of this query in the Grakn visualiser and, as for the shell, you will need to activate inference before you see any results. Browse to the visualiser at [localhost:4567](http://localhost:4567) and open the Config settings on the left hand side of the screen. When the page opens you will see the “Activate Inference” checkbox. Check it, and try submitting the query above or a variation of it for mothers and sons, fathers and daughters etc. Or, you can even go one step further and find out fathers who have the same name as their sons:
+You may want to take a look at the results of this query in the Grakn visualiser and, as for the shell, you will need to activate inference before you see any results. 
+
+1.	Browse to the visualiser at [localhost:4567](http://localhost:4567). 
+2. Open the Query settings under the cog button, which is on the far right hand side of the horizontal icon menu (at the top of the screen).
+3. You will see the "Activate inference" checkbox. Ensure that it is checked.
+
+Now try submitting the query above or a variation of it for mothers and sons, fathers and daughters etc. Or, you can even go one step further and find out fathers who have the same name as their sons:
 
 ```graql
 match (father: $p, son: $c) isa parentship; $p has firstname $n; $c has firstname $n;
@@ -319,7 +325,7 @@ compute mean of age in person; # returns 78.23 (rounded to 2 decimal places)
 You can take a look at the values of age at death for the person entities in the genealogy dataset as follows:
 
 ```graql
-match $x isa person, has age $a;  offset 0; limit 100;
+match $x isa person, has age $a;
 ```
 
 ![Mean ages calculated](/images/compute-mean-age.png)
