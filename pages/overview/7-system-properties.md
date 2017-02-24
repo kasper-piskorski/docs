@@ -4,7 +4,7 @@ keywords: system, properties, db-engines
 last_updated: February 24th 2017
 tags: [overview]
 sidebar: overview_sidebar
-summary: "GRAKN.AI System Properties"
+summary: "A look-up table of GRAKN.AI's system properties"
 permalink: /overview/system-properties.html
 folder: overview
 toc: false
@@ -13,7 +13,9 @@ comment_issue_id:
 
 ## System Properties
 
-This information is correct at time of publication but may be subject to change. Please let the [Grakn Community](https://grakn.ai/community.html) know if you have any queries.
+This information is correct at time of publication but may be subject to change. 
+   
+Please let the [Grakn Community](https://grakn.ai/community.html) know if you have any queries.
 
 <br />
 

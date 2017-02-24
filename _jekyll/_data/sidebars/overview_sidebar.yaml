@@ -13,7 +13,7 @@ entries:
     - title: Applications
       output: web
       url: /overview/applications.html
-    - title: GRAKN.AI System Properties
+    - title: System Properties
       output: web
       url: /overview/system-properties.html  
     # - title: Database Comparison
