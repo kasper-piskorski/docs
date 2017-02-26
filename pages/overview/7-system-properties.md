@@ -20,13 +20,6 @@ Please let the [Grakn Community](https://grakn.ai/community.html) know if you ha
 <br />
 
 | **Property** | **Value** |
-| Description | A distributed knowledge graph data platform with a reasoning query language. | 
-| Database model	| Graph DBMS | 
-| Website	| https://grakn.ai | 
-| Technical documentation	| https://grakn.ai/pages/index.html | 
-| Developer	| Grakn Labs Ltd | 
-| Initial release	| 0.1 - on 9th of September 2016 | 
-| Current release	| 0.11 - on 13th of February 2017 | 
 | License	| Open Source (GPLv3, Commerical licenses available) | 
 | Cloud-based	 | No, but commercial option provides cloud offering. | 
 | Implementation language	| Java | 
