@@ -13,11 +13,11 @@ folder: documentation
 
 ## Loader Client
 
-The Grakn loader is a java client for batch loading data into a Grakn graph. The client operates by sending requests to the Grakn REST Tasks endpoint and polling for the status of submitted tasks. The client provides a number of useful features, including batching insert queries, blocking and callback on batch execution status. These configuration options allow the user to finely-tune batch loading settings. 
+The Grakn loader is a java client for multithreaded batch loading into a Grakn graph and should be used when loading large quantities of data. The client operates by sending requests to the Grakn REST Tasks endpoint and polling for the status of submitted tasks. The user no longer needs to implement these REST transactions for themselves. The client additionally provides a number of useful features, including batching insert queries, blocking and callback on batch execution status. These configuration options allow the user to finely-tune batch loading settings. 
 
 It is possible for batches of insert queries to fail upon insertion and by default client will not log the status of the batch execution. The user can specify a callback function to operate on the result of the batch from the server to print and accumulate status information.
 
-If possible, the user should attempt to monitor the server logs.  
+If you are working using the Graql shell, this is also avaiable using the `-b` option. 
 
 ## Usage
 
@@ -33,7 +33,7 @@ The second constructor allows the user to specify a callback function to execute
 LoaderClient loader = new LoaderClient(String keyspace, String uri, Consumer<Json> onCompletionOfTask);
 ```
 
-The loader client can be thought of as an empty bucket in which to dump insert queries that will be batch-loaded into the specified graph. Batching, blocking and callbacks are all executed based on how the user has configured the client, which simplifies usage. The following code will load 100 inserts into the graph.
+The loader client can be thought of as an empty bucket in which to dump insert queries that will be batch-loaded into the specified graph. Batching, blocking and callbacks are all executed based on how the user has configured the client, which simplifies usage. The following code will load 100 insert queries into the graph.
 
 ```java
 InsertQuery insert = insert(var().isa("person"));
@@ -75,9 +75,11 @@ loader.add(insert);
 
 loader.waitToFinish();
 ```
-Flushing in the middle of adding queries will force-send batches to the server. The following code will execute in two transactions, the first containing one insert and the second transaction containing two. 
+Flushing in the middle of adding queries will force-send batches to the server, overriding the set batch size. The following code will execute in two transactions, the first containing one insert and the second transaction containing two, even though the batch size is set to five. 
 
 ```java
+loader.setBatchSize(5);
+
 // First transaction
 loader.add(insert);
 
@@ -89,6 +91,8 @@ loader.add(insert);
 
 loader.waitToFinish();
 ```
+
+This property can directly effect loading times- if you find that your data is loading too slowly, try increasing the size of the batch. 
 
 ### Number Active Tasks
 **default**: 25
@@ -126,7 +130,7 @@ The server response is describes more in deatils in the REST api documentation. 
 }
 ```
 
-Migration uses this callback function to track status information about the number of batches that have completed for the running migration. 
+Migration uses this callback function to track status information about the number of batches that have completed for the running migration.
 
 ```java
 AtomicInteger numberBatchesCompleted = new AtomicInteger(0);
@@ -138,6 +142,8 @@ loader.setTaskCompletionConsumer((Json json) -> {
 	LOG.info("Batches completed: {}\nStatus of last batch: {}", completed, status);
 });
 ```
+
+This callback is executed whenever a terminal response from the server is received, even if an exception was thrown. In the case of an execption, the Json argument will be either empty or contain the errored response from the server including the server-side exception. 
 
 ### Retry policy
 **default**: false 
