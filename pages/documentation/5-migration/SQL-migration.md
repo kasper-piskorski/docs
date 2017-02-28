@@ -17,20 +17,25 @@ This tutorial shows you how to populate a graph in Grakn with SQL data, by walki
 The migration shell script can be found in */bin* directory of your Grakn environment. We will illustrate its usage in an example below:
 
 ```bash
-usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> [-help] [-no] [-batch <arg>] [-keyspace <arg>] [-uri <arg>] [-v]
+usage: migration.sh sql -template <arg> -driver <arg> -user <arg> -pass <arg> -location <arg> -keyspace <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-retry <arg>] [-v] 
  
- -b,--batch <arg>      number of rows to load at once
+ -a,--active <arg>     Number of tasks (batches) running on the server at
+                       any one time. Default 25.
+ -b,--batch <arg>      Number of rows to execute in one Grakn transaction.
+                       Default 25.
+ -c,--config <arg>     Configuration file.
  -driver <arg>         JDBC driver
- -h,--help             print usage message
- -k,--keyspace <arg>   keyspace to use
+ -h,--help             Print usage message.
+ -k,--keyspace <arg>   Grakn graph. Required.
  -location <arg>       JDBC url (location of DB)
- -n,--no               dry run - write to standard out
+ -n,--no               Write to standard out.
  -pass <arg>           JDBC password
  -q,--query <arg>      SQL Query
- -t,--template <arg>   template for the given SQL query
- -u,--uri <arg>        uri to engine endpoint
+ -r,--retry <arg>      Retry sending tasks if engine is not available
+ -t,--template <arg>   Graql template to apply to the data.
+ -u,--uri <arg>        Location of Grakn Engine.
  -user <arg>           JDBC username
-  -v,--verbose         print counts of migrated data.
+ -v,--verbose          Print counts of migrated data.
 ```
 
 Grakn relies on the JDBC API to connect to any RDBMS that uses the SQL language. The example that follows is written in MySQL, but SQL to Grakn migration will work with any database it can connect to using a JDBC driver. This has been tested on MySQL, Oracle and PostgresQL.

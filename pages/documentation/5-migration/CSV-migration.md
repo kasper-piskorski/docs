@@ -17,18 +17,26 @@ This tutorial shows you how to populate Grakn with CSV data. If you have not yet
 The migration shell script can be found in */bin* directory of your Grakn environment. We will illustrate its usage in an example below:
 
 ```bash
-usage: ./migration.sh csv -template <arg> -input <arg> [-help] [-no] [-separator <arg>] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
+usage: ./migration.sh csv -template <arg> -input <arg> -keyspace <arg> [-help] [-no] [-separator <arg>] [-active <arg>] [-batch <arg>] [-uri <arg>] [-null <arg>] [-quote <arg>] [-r <arg>] [-v]
 
 OPTIONS
- -b,--batch <arg>       number of rows to load at once
- -h,--help              print usage message
- -i,--input <arg>       input csv file
- -k,--keyspace <arg>    keyspace to use
- -n,--no                dry run - write to standard out
- -s,--separator <arg>   separator of columns in input file
- -t,--template <arg>    graql template to apply over data
- -u,--uri <arg>         uri to engine endpoint
- -v,--verbose           print counts of migrated data.
+ -a,--active <arg>      Number of tasks (batches) running on the server at
+                        any one time. Default 25.
+ -b,--batch <arg>       Number of rows to execute in one Grakn
+                        transaction. Default 25.
+ -c,--config <arg>      Configuration file.
+ -h,--help              Print usage message.
+ -i,--input <arg>       Input csv file.
+ -k,--keyspace <arg>    Grakn graph. Required.
+ -l,--null <arg>        String that will be evaluated as null.
+ -n,--no                Write to standard out.
+ -q,--quote <arg>       Character used to encapsulate values containing
+                        special characters.
+ -r,--retry <arg>       Retry sending tasks if engine is not available
+ -s,--separator <arg>   Separator of columns in input file.
+ -t,--template <arg>    Graql template to apply to the data.
+ -u,--uri <arg>         Location of Grakn Engine.
+ -v,--verbose           Print counts of migrated data.
 ```
 
 ## CSV Migration Basics

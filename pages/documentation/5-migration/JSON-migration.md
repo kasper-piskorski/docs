@@ -17,18 +17,22 @@ This tutorial shows you how to populate Grakn with JSON data. If you have not ye
 The migration shell script can be found in */bin* directory of your Grakn environment. We will illustrate its usage in an example below:
 
 ```bash
-usage: migration.sh json -template <arg> -input <arg> [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>] [-v]
+usage: migration.sh json -template <arg> -input <arg> -keyspace <arg> [-help] [-no] [-batch <arg>] [-active <arg>] [-uri <arg>] [-retry <arg>] [-v]
  
 OPTIONS
- -b,--batch <arg>      number of rows to load at once
- -h,--help             print usage message
- -i,--input <arg>      input json data file or directory
- -k,--keyspace <arg>   keyspace to use
- -n,--no               dry run - write to standard out
- -t,--template <arg>   graql template to apply over data
- -u,--uri <arg>        uri to engine endpoint
- -v,--verbose          print counts of migrated data.
- 
+ -a,--active <arg>     Number of tasks (batches) running on the server at
+                       any one time. Default 25.
+ -b,--batch <arg>      Number of rows to execute in one Grakn transaction.
+                       Default 25.
+ -c,--config <arg>     Configuration file.
+ -h,--help             Print usage message.
+ -i,--input <arg>      Input json data file or directory.
+ -k,--keyspace <arg>   Grakn graph. Required.
+ -n,--no               Write to standard out.
+ -r,--retry <arg>      Retry sending tasks if engine is not available
+ -t,--template <arg>   Graql template to apply to the data.
+ -u,--uri <arg>        Location of Grakn Engine.
+ -v,--verbose          Print counts of migrated data.
 ```
 
 {% include note.html content="The JSON migrator can handle either a directory or a file as the -input parameter!" %}
