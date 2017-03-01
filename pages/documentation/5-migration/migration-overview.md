@@ -11,9 +11,9 @@ comment_issue_id: 32
 ---
 
 ## Introduction
-This page is an overview of how to migrate data to populate a graph in Grakn. We currently support migration of CSV, JSON, OWL and SQL data. For each type of data, the steps to migrate to GRAKN.AI are:
+This page introduces the concept of data migration into a Grakn graph. We currently support migration of CSV, JSON, OWL and SQL data. For each type of data, the steps to migrate to GRAKN.AI are:
 
-- define an ontology for the data
+- define an ontology for the data in Graql
 - create templated Graql to map the data to the ontology
 - invoke the Grakn migrator through the shell script or Java API.
 
@@ -27,13 +27,13 @@ The migration shell script can be found in *grakn-dist/bin* after it has been un
 + [OWL migration documentation](./OWL-migration.html)
 + [SQL migration documentation](./SQL-migration.html)
 
-## Migration from Java
+## Using Java APIs
 
-Check the [Developing With Java](../developing-with-java/migration-api.html) section for more details on how one would migrate data using java.
+Check the [Developing With Java](../developing-with-java/migration-api.html) section for more details on how to migrate data using java.
 
-## Exporting from Grakn
+## Exporting Data from Grakn
 
-It is also possible to use the migration shell script to export data from Grakn. Usage is as follows:
+It is also possible to export data from Grakn using the migration shell script. Usage is as follows:
 
 ```bash
 usage: migration.sh export -data -ontology [-help] [-no] [-batch <arg>] [-uri <arg>] [-keyspace <arg>]
@@ -48,7 +48,7 @@ usage: migration.sh export -data -ontology [-help] [-no] [-batch <arg>] [-uri <a
 Exporting data or the ontology from Grakn, into Graql, will always redirect to standard out. 
 
 ## Where Next?
-You can find further documentation about migration in our API reference documentation (which is in the `/docs` directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
+You can find further documentation about migration in our API reference documentation (which is in the */docs* directory of the distribution zip file, and also online [here](https://grakn.ai/javadocs.html).
 
 {% include links.html %}
 

@@ -9,8 +9,6 @@ permalink: /documentation/developing-with-java/loader-api.html
 folder: documentation
 ---
 
-{% include warning.html content="Please note that this page is in progress and subject to revision." %}
-
 ## Loader Client
 
 The Grakn loader is a java client for multithreaded batch loading into a Grakn graph and should be used when loading large quantities of data. The client operates by sending requests to the Grakn REST Tasks endpoint and polling for the status of submitted tasks. The user no longer needs to implement these REST transactions for themselves. The client additionally provides a number of useful features, including batching insert queries, blocking and callback on batch execution status. These configuration options allow the user to finely-tune batch loading settings. 
