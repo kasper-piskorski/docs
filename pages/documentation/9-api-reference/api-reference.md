@@ -12,9 +12,9 @@ Welcome to the API Reference landing page. From here, you can find the latest, a
 
 ## API Reference
 
-[![Javadocs](/images/javadocs.png)](https://grakn.ai/javadocs.html)
+[![Javadocs](https://javadoc.io/badge/ai.grakn/grakn.svg)](https://javadoc.io/doc/ai.grakn/grakn)
 
-The latest version of our Javadocs API Reference documentation will always be posted at the link above [(https://grakn.ai/javadocs.html).](https://grakn.ai/javadocs.html)   
+The latest version of our Javadocs API Reference documentation will always be posted at [(https://grakn.ai/javadocs.html).](https://grakn.ai/javadocs.html).   
 
 You can use the drop down selector to choose previous versions of the API reference, should you want to refer back to them. 
 

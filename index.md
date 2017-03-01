@@ -33,9 +33,9 @@ Take a look around! We hope you find our documentation helpful, but if you need 
 
 <div role="tabpanel" class="tab-pane" id="apireference">
 
-<a href="https://grakn.ai/javadocs.html"><img src="./images/javadocs.png" /></a>
+<a href="https://javadoc.io/doc/ai.grakn/grakn"><img src="https://javadoc.io/badge/ai.grakn/grakn.svg" alt="Javadocs"></a>
 
-<br />
+<br /> <br />
 <p>The API reference is also available in the Grakn distribution that you can download from <a href="https://grakn.ai/pages/documentation/resources/downloads.html">here</a>, in the <code>docs</code> directory.</p>
     <p>Additional API reference documents can be found <a target="_blank" href="https://grakn.ai/pages/documentation/api-reference/api-reference.html">here</a>. </p>
 </div>
