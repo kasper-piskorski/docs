@@ -141,9 +141,9 @@ A summary of the graph algorithms is given in the table below.
 
 | Algorithm | Description                                   |
 | ----------- | --------------------------------------------- |
-| [`cluster`](#cluster)     | Find connected clusters of instances.                        |
-| [`degrees`](#degrees)    | Find the number of related instances to each instance in the graph. |
-| [`path`](#path)    | Find the shortest path between two instances.                           |
+| [`cluster`](../graql-analytics/analytics-connected-components.html)     | Find connected clusters of instances.                        |
+| [`degrees`](../graql-analytics/analytics-degrees.html)    | Find the number of related instances to each instance in the graph. |
+| [`path`](../graql-analytics/analytics-shortest-path.html)    | Find the shortest path between two instances.                           |
 
 <!--
 For further information see the individual sections below.
