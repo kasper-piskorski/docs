@@ -167,9 +167,6 @@ entries:
       - title: Overview
         output: web
         url: /documentation/examples/examples-overview.html
-      - title: Basic Analytics
-        output: web
-        url: /documentation/examples/analytics.html
       - title: CSV Migration
         output: web
         url: /documentation/examples/CSV-migration.html
@@ -188,6 +185,6 @@ entries:
       - title: Pokemon example
         output: web
         url: /documentation/examples/pokemon.html
-      - title: Example Projects
+      - title: Statistical Analysis
         output: web
-        url: /documentation/examples/projects.html
+        url: /documentation/examples/analytics.html
