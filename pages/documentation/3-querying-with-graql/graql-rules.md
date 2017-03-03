@@ -25,7 +25,7 @@ Graql rules assume the following general form:
 ```
 if [rule-body] then [rule-head]
 ```
-People familiar with Prolog/Datalog, may recognise the similar form:
+People familiar with Prolog/Datalog, may recognise it as similar:
 
 ```
 [rule-head] :- [rule-body].
