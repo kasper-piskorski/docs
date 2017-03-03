@@ -79,9 +79,10 @@ Pattern rule2RHS = and(graph.graql().parsePatterns("(ancestor: $p, descendant: $
 ```
 
 We conclude the rule creation with defining the rules from their constituent patterns:
+
 ```java
-Rule rule1 = inferenceRule.addRule(r1Body, r1Head);
-Rule rule2 = inferenceRule.addRule(r2Body, r2Head);
+Rule rule1 = inferenceRule.addRule(rule1LHS, rule1RHS);
+Rule rule2 = inferenceRule.addRule(rule2LHS, rule2RHS);
 ```
 
 
