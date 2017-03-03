@@ -12,11 +12,11 @@ folder: documentation
 Grakn supports Graql-native, rule-based reasoning to allow automated capture and evolution of patterns within the graph. Graql reasoning is performed at query time and is guaranteed to be complete.
 
 Thanks to the reasoning facility, common patterns in the graph can be defined and associated with existing ontology elements.
-The association happens by means of rules.
+The association happens by means of rules. This not only allows to compress and simplify typical queries but offers the ability to derive new non-trivial information by combining defined patterns.
 
-Once a given query is executed, Graql will not only query the graph for exact matches but will also inspect the defined rules to check whether additional information can be found (inferred) by combining the patterns defined in the rules. The completeness property of Graql reasoning guarantees that for a given content of the graph and the rule base, the query result shall contain all possible answers derived by combining database lookups and rule application.
+Provided the reasoning is turned on, once a given query is executed, Graql will not only query the graph for exact matches but will also inspect the defined rules to check whether additional information can be found (inferred) by combining the patterns defined in the rules. The completeness property of Graql reasoning guarantees that for a given content of the graph and the defined rule set, the query result shall contain all possible answers derived by combining database lookups and rule applications.
 
-In this section we shall describe the logics behind the rules as well as how can we define pattern associations by suitably defined rules.
+In this section we shall briefly describe the logics behind the rules as well as how can we define pattern associations by suitably defined rules.
 
 ## Graql Rules
 
