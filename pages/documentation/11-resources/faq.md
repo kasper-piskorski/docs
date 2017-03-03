@@ -77,6 +77,10 @@ In order to check the status of the loading, you can open a new terminal window,
 tail -f grakn.log
 ```
 
+
+### I want to load a large amount of data into a graph - how do I do it?
+Graql is single-threaded and doesn't support batch-loading. You may want to use the Java [loader client](../developing-with-java/loader-api.html), which provides multi-threaded batch loading, or the `-b` flag if you are using the [Graql shell](../graql/graql-shell.html).
+
 ### What are the differences between a batch graph load and a normal graph load?
 
 The batch load is faster for larger datasets because it ignores some consistency checks, on the assumption that you have pre-filtered your data. Checks ignored include:
