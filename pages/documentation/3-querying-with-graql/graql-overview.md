@@ -23,6 +23,16 @@ There are five types of queries, which are begun with the follow keywords:
 - [delete](delete-queries.html) - for deleting types and instances    
 - [compute](compute-queries.html) - for computing useful information about your graph
 
+## Reserved keywords
+Here is an alphabetical list of Graql's reserved keywords:
+
+```graql
+aggregate, asc, askboolean, bycompute, containsdatatype, delete, desc, distinct, doublefromhas, has-key, has-resource, has-role, has-scopeid, in, insert, is-abstract, isalhs, limit, longmatchof, offset, or, orderplays, plays-roleregex, rhsselect, string, subto, type-namevalueTRUE/FALSE
+```Graql templates also use the following keywords:
+```graql-template
+anddoelse, elseifforif, innot, nullTRUE/FALSE
+```
+
 ## Cheatsheet reference
 If you are already familiar with Graql, you may find our [cheatsheet reference](graql-cheatsheet.html) a helpful page to bookmark or print out!
 
