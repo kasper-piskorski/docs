@@ -568,7 +568,7 @@ we will get the following concepts in return:
 A' = P' \ F' \ M' | x = {A, B, C}
 ```
 
-which is clearly different to the anticipated result of `A = {C}` - our answer set is not a set of orphans, instead it is a projection from a set of people pairs where pairs playing in `parentship` relations are excluded.
+which is clearly different to the anticipated result of `A = {C}` - our answer set is not a set of orphans, instead it is a projection from a set of people pairs where pairs playing in a `parentship` relation are excluded.
 As a result, extra care should be taken and thought given when formulating queries with negation blocks.
 
 One might be tempted to put the two negation blocks into one. Let's look at the outcome of that. If we define:
